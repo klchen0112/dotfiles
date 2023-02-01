@@ -18,7 +18,7 @@
     nodePackages.pyright
     # python310
     # python310Packages.conda
-
+    fontconfig
     wakatime
     nil
     gh
