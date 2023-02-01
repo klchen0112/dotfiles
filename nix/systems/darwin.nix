@@ -16,8 +16,8 @@
     nodejs # Required for VSCode's webhint extension
     # for python
     nodePackages.pyright
-    
-    python310Packages.conda
+    # python310
+    # python310Packages.conda
 
     wakatime
     nil
@@ -66,6 +66,7 @@
 
   # Auto upgrade nix package and the daemon service.
   services.nix-daemon.enable = true;
+  services.emacs.enable = true;
   # nix.package = pkgs.nix;
 
   # Create /etc/bashrc that loads the nix-darwin environment.
