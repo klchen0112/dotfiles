@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: mathbf
+# key: mbf
+# uuid: mbf
+# --
+\mathbf{$0}

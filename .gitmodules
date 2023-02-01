@@ -1,0 +1,3 @@
+[submodule "Rime"]
+	path = Rime
+	url = https://github.com/klchen0112/RIME_JD.git
