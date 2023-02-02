@@ -28,6 +28,10 @@
       hanazono
       lmodern
       # lmmath
+      # nerdfonts
+      material-design-icons
+      weather-icons
+      emacs-all-the-icons-fonts
     ];
   };
 }
