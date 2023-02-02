@@ -66,7 +66,10 @@
 
   # Auto upgrade nix package and the daemon service.
   services.nix-daemon.enable = true;
+
+  services.emacs.package = inputs.emacs-overlay.packages.${system}.emacsGit;
   services.emacs.enable = true;
+  #
   # nix.package = pkgs.nix;
 
   # Create /etc/bashrc that loads the nix-darwin environment.
