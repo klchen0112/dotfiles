@@ -20,7 +20,7 @@
     mission-control.url = "github:Platonic-Systems/mission-control";
     mission-control.inputs.nixpkgs.follows = "nixpkgs";
     flake-root.url = "github:srid/flake-root";
-
+    mach-nix.url = "github:DavHau/mach-nix";
     # Software inputs
     nixos-shell.url = "github:Mic92/nixos-shell";
     nixos-vscode-server.url = "github:msteen/nixos-vscode-server";

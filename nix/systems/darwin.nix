@@ -16,7 +16,10 @@
     nodejs # Required for VSCode's webhint extension
     # for python
     nodePackages.pyright
-    # python310
+    python39
+    python39Packages.pip
+    inputs.mach-nix.packages.${system}.mach-nix
+    # python39Packages.torch
     # python310Packages.conda
     fontconfig
     wakatime
