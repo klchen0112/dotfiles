@@ -1789,15 +1789,15 @@ In that case, insert the number."
 :END:
 #+begin_src emacs-lisp conf :tangle config.el
 
-(use-package! conda
-  :hook
-  (find-file-hook . (lambda () (when (bound-and-true-p conda-project-env-path)
-                                          (conda-env-activate-for-buffer))))
-  :config
-  (conda-env-initialize-interactive-shells)
-  (if IS-MAC (setq conda-anaconda-home (expand-file-name "~/miniconda/base")))
-  (setq conda-env-autoactivate-mode t)
-)
+;;(use-package! conda
+;;  :hook
+;;  (find-file-hook . (lambda () (when (bound-and-true-p conda-project-env-path)
+;;                                          (conda-env-activate-for-buffer))))
+;;  :config
+;;  (conda-env-initialize-interactive-shells)
+;;  (if IS-MAC (setq conda-anaconda-home (expand-file-name "~/miniconda/base")))
+;;  (setq conda-env-autoactivate-mode t)
+;;)
 #+end_src
 ** Latex mode
 *** Latex Preview
