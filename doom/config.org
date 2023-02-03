@@ -140,7 +140,7 @@
 
        :os
        (:if IS-MAC macos)  ; improve compatibility with macOS
-       tty               ; improve the terminal Emacs experience
+       ;;tty               ; improve the terminal Emacs experience
 
        :lang
        ;;agda              ; types of types of types of types...
@@ -212,7 +212,7 @@
        ;;purescript        ; javascript, but functional
        (python +lsp
                +pyright
-               +conda
+               ;;+conda
                ;; +poetry
                +tree-sitter
                )            ; beautiful is better than ugly
@@ -571,7 +571,7 @@ npm install nodejieba
   (meow/setup-leader)
   )
 (defun set-useful-keybindings()
-  (keymap-set doom-leader-workspaces/windows-map "t" 'treemacs-select-window)
+  ;;(keymap-set doom-leader-workspaces/windows-map "t" 'treemacs-select-window)
   (keymap-global-set "M-j" 'kmacro-start-macro-or-insert-counter)
   (keymap-global-set "M-k" 'kmacro-end-or-call-macro)
   ;; for doom emacs buffer management
@@ -1795,7 +1795,7 @@ In that case, insert the number."
                                           (conda-env-activate-for-buffer))))
   :config
   (conda-env-initialize-interactive-shells)
-  (if IS-MAC (setq conda-anaconda-home (expand-file-name "/opt/homebrew/Caskroom/miniconda/base")))
+  (if IS-MAC (setq conda-anaconda-home (expand-file-name "~/miniconda/base")))
   (setq conda-env-autoactivate-mode t)
 )
 #+end_src
@@ -2098,11 +2098,9 @@ use dash open app dash
   :config
   (setq wakatime-cli-path
         (cond
-         (IS-MAC "/opt/homebrew/bin/wakatime-cli")
+         (IS-MAC "/run/current-system/sw/bin/wakatime-cli")
          (IS-WINDOWS "~/.wakatime/wakatime-cli")
         ))
-
-  (setq wakatime-api-key "e84a8cdb-576e-4f1b-a801-134822c60ea2")
   (global-wakatime-mode)
 )
 #+end_src
