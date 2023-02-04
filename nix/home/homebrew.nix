@@ -6,6 +6,10 @@
     {
 
       enable = true;
+      onActivation = {
+        upgrade = true;
+        cleanup = "uninstall";
+      };
       taps = [
         "homebrew/autoupdate"
         "homebrew/cask"
@@ -13,6 +17,10 @@
         "homebrew/core"
         "homebrew/services"
       ];
+      # brews = [
+      #   "lua"
+      #   "luarocks"
+      # ];
       casks = [
         "adrive"
         "font-sf-pro"

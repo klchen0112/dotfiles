@@ -7,6 +7,7 @@
     fd
     bat
     fish
+    fzf
     wget
     ripgrep
     sd
@@ -19,6 +20,10 @@
     python39
     python39Packages.pip
     inputs.mach-nix.packages.${system}.mach-nix
+
+    # lua53
+    lua53Packages.luarocks
+    lua53Packages.fennel
     # python39Packages.torch
     # python310Packages.conda
     fontconfig
