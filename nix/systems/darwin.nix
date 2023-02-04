@@ -26,6 +26,12 @@
     lua53Packages.fennel
     # python39Packages.torch
     # python310Packages.conda
+    # julia
+
+    rustc
+    # rustup
+    rust-analyzer
+
     fontconfig
     wakatime
     nil

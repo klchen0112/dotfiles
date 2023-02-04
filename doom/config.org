@@ -47,16 +47,16 @@
        doom              ; what makes DOOM look the way it does
        doom-dashboard    ; a nifty splash screen for Emacs
        ;;doom-quit         ; DOOM quit-message prompts when you quit Emacs
-       (emoji +unicode)  ; 🙂
+       ;;(emoji +unicode)  ; 🙂
        hl-todo           ; highlight TODO/FIXME/NOTE/DEPRECATED/HACK/REVIEW
        ;;hydra
        ;;indent-guides     ; highlighted indent columns
        (ligatures
-        ;;+extra
-        ;;+fira ; fira font ligatures
-        ;;+hasklig ; HaskLig font ligatures
-        ;;+iosevka ; iosevka font ligatures
-        ;; +pragmata-pro ; Pragmata-Pro font ligatures
+        +extra
+        +fira ; fira font ligatures
+        +hasklig ; HaskLig font ligatures
+        +iosevka ; iosevka font ligatures
+        +pragmata-pro ; Pragmata-Pro font ligatures
         )       ; ligatures and symbols to make your code pretty again
        ;;minimap           ; show a map of the code on the side
        modeline          ; snazzy, Atom-inspired modeline, plus API
@@ -78,11 +78,10 @@
        :editor
        ;;(meow  +qwerty +override +leader)
        ;;(evil +everywhere); come to  dark side, we have cookies
-       file-templates    ; auto-snippets for files
+       ;;file-templates    ; auto-snippets for files
        fold              ; (nigh) universal code folding
        (format ; automated prettiness
-        +onsave
-        ;;only-changes
+        +onsave ; only-changes
         )
        ;;god               ; run Emacs commands without modifier keys
        ;;lispy             ; vim for lisp, for people who don't like vim
@@ -110,7 +109,7 @@
 
        :checkers
        (syntax +childframe)              ; tasing you for every semicolon you forget
-       (spell +aspell) ; tasing you for misspelling mispelling
+       (spell +flyspell) ; tasing you for misspelling mispelling
        grammar           ; tasing grammar mistake every you make
 
        :tools
@@ -194,18 +193,18 @@
        nix               ; I hereby declare "nix geht mehr!"
        ;;ocaml             ; an objective camel
        (org              ; organize your plain life in plain text
-        +brain
+        ;;+brain
         ;;+contacts ; Insert org-mode links to items selected in various Mac apps.
         +dragndrop                  ; drag & drop files/images into org buffers
-        +gnuplot                    ; who doesn't like pretty pictures
-        +hugo                     ; use Emacs for hugo blogging
+        ;;+gnuplot                    ; who doesn't like pretty pictures
+        ;;+hugo                     ; use Emacs for hugo blogging
         ;; +journal ;; use org roam dailyies
         +noter ;; enhanced pdf notetaking
         ;;+pretty                     ; yessss my pretties! (nice unicode symbols)
         ;;+jupyter                    ; ipython/jupyter support for babel
         +pandoc                     ; export-with-pandoc support
-        +pomodoro                 ; be fruitful with the tomato technique
-        +present                    ; using org-mode for presentations
+        ;;+pomodoro                 ; be fruitful with the tomato technique
+        ;;+present                    ; using org-mode for presentations
         +roam2)                     ; wander around notes
        ;;php               ; perl's insecure younger brother
        ;;plantuml          ; diagrams for confusing people more
@@ -242,7 +241,7 @@
        :app
        ;;calendar
        ;;emms
-       everywhere           ; *leave* Emacs!? You must be joking
+       ;;everywhere           ; *leave* Emacs!? You must be joking
        ;;irc               ; how neckbeards socialize
        ;;(rss +org)        ; emacs as an RSS reader
        ;;twitter           ; twitter client https://twitter.com/vnought
@@ -1346,8 +1345,8 @@ See `org-capture-templates' for more information."
   (setq org-id-link-to-org-use-id t)
   (setq org-roam-completion-everywhere t)
   (setq org-roam-capture-templates '(("d" "default" plain "%?"
-                                      :if-new
-                                      (file+head "pages/${slug}.org" "#+title: ${title}\n- tags :: \n")
+                                      :target
+                                      (file+head "pages/%<%Y%m%d%H%M%S>-${slug}.org" "#+title: ${title}\n- tags :: \n")
                                       :unnarrowed t)))
   (setq org-roam-dailies-capture-templates
         '(
@@ -1580,7 +1579,7 @@ tasks."
    "com.apple.keylayout.ABC"
    ;; Other language input source: "rime", "sogou" or another one.
    ;; "im.rime.inputmethod.Squirrel.Rime"
-   "im.rime.inputmethod.Squirrel.Rime")
+   "im.rime.inputmethod.Squirrel.Hans")
   (add-hook 'meow-insert-exit-hook #'sis-set-english)
   (add-to-list 'sis-context-hooks 'meow-insert-exit-hook)
 )
@@ -1590,34 +1589,34 @@ tasks."
 2. 加入了中英文自动检测
 *** Package
 #+begin_src emacs-lisp :tangle packages.el
-(package! rime)
+;;(package! rime)
 #+end_src
 *** rime init
 #+begin_src emacs-lisp conf :tangle config.el
-(cond
- (IS-MAC
-  (use-package! rime
-    :custom
-    (rime-librime-root (expand-file-name "librime" doom-user-dir))
-    (rime-show-candidate 'posframe)
-    (rime-show-preedit 'inline)
-    (rime-user-data-dir (expand-file-name "Rime" doom-user-dir))
-    (rime-emacs-module-header-root
-     "/opt/homebrew/opt/emacs-plus@29/include"
-     ;;"/opt/homebrew/Cellar/emacs-plus@28/28.2/include"
-     ;;"/opt/homebrew/Cellar/emacs-mac/emacs-28.2-mac-9.1/include"
-     )
-    :config
-    (setq default-input-method "rime")
-    (setq rime-inline-ascii-trigger 'shift-r)
-    (setq rime-translate-keybindings '("C-f" "C-b" "C-n" "C-p" "C-g" "<left>" "<right>" "<up>" "<down>" "<prior>" "<next>" "<delete>"))
-    (setq rime-disable-predicates
-     '(meow-normal-mode-p
-       meow-motion-mode-p
-       meow-keypad-mode-p
-       meow-beacon-mode-p
-    ))
-)))
+;;(cond
+;; (IS-MAC
+;;  (use-package! rime
+;;    :custom
+;;    (rime-librime-root (expand-file-name "librime" doom-user-dir))
+;;    (rime-show-candidate 'posframe)
+;;    (rime-show-preedit 'inline)
+;;    (rime-user-data-dir (expand-file-name "Rime" doom-user-dir))
+;;    (rime-emacs-module-header-root
+;;     "/opt/homebrew/opt/emacs-plus@29/include"
+;;     ;;"/opt/homebrew/Cellar/emacs-plus@28/28.2/include"
+;;     ;;"/opt/homebrew/Cellar/emacs-mac/emacs-28.2-mac-9.1/include"
+;;     )
+;;    :config
+;;    (setq default-input-method "rime")
+;;    (setq rime-inline-ascii-trigger 'shift-r)
+;;    (setq rime-translate-keybindings '("C-f" "C-b" "C-n" "C-p" "C-g" "<left>" "<right>" "<up>" "<down>" "<prior>" "<next>" "<delete>"))
+;;    (setq rime-disable-predicates
+;;     '(meow-normal-mode-p
+;;       meow-motion-mode-p
+;;       meow-keypad-mode-p
+;;       meow-beacon-mode-p
+;;    ))
+;;)))
 #+end_src
 * completion
 ** corfu
