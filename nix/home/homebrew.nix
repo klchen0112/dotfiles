@@ -10,8 +10,19 @@
         upgrade = true;
         cleanup = "uninstall";
       };
+      masApps = {
+        wechat = 836500024;
+        qq = 451108668;
+        dingtalk = 1435447041;
+        tencent-meeting = 1484048379;
+        emby = 992180193;
+        "microsoft-word" = 462054704;
+        "microsoft-powerpoint" = 462062816;
+        "microsoft-excel" = 462058435;
+        onedrive = 823766827;
+        "goodnotes-5" = 1444383602;
+      };
       taps = [
-        "homebrew/autoupdate"
         "homebrew/cask"
         "homebrew/cask-fonts"
         "homebrew/core"
@@ -36,7 +47,6 @@
         "telegram"
         "baidunetdisk"
         "iterm2"
-        "tencent-meeting"
         "balenaetcher"
         "keyboardcleantool"
         "todesk"
@@ -46,15 +56,12 @@
         "dash"
         "nutstore"
         "visual-studio-code"
-        "dingtalk"
         "omnidisksweeper"
         "vlc"
         "discord"
+        "plex"
         "plexamp"
-        "wechat"
-        "miniconda"
         "font-sf-arabic"
-        "qq"
         "xnviewmp"
         "font-sf-compact"
         "raycast"
