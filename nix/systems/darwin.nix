@@ -41,7 +41,8 @@
     inputs.hci.packages.${system}.hercules-ci-cli
     inputs.nixpkgs-match.packages.${system}.default
 
-
+    boost
+    cmake
   ];
   environment.shells = with pkgs ; [ fish ];
   nix = {
