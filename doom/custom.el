@@ -32,3 +32,4 @@
  '(org-todo ((t (:inherit 'fixed-pitch)))))
 
 (put 'customize-group 'disabled nil)
+(put 'projectile-ripgrep 'disabled nil)
