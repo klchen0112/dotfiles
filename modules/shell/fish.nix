@@ -9,6 +9,7 @@
 {
   programs = {
 fish = {
+  enable = true;
 # shellAbbrs = {
 # ls = "exa";
 # ll = "exa -lha";
@@ -21,7 +22,7 @@ fish = {
 # };
 
 # issue from https://github.com/LnL7/nix-darwin/issues/122
-loginShellInit = "fish_add_path --move --prepend --path $HOME/.nix-profile/bin /run/wrappers/bin /etc/profiles/per-user/$USER/bin /nix/var/nix/profiles/default/bin /run/current-system/sw/bin /opt/homebrew/bin";
+# loginShellInit = "fish_add_path --move --prepend --path $HOME/.nix-profile/bin /run/wrappers/bin /etc/profiles/per-user/$USER/bin /nix/var/nix/profiles/default/bin /run/current-system/sw/bin /opt/homebrew/bin";
 
 # plugins = with pkgs; [
 # {

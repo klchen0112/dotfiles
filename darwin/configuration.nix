@@ -63,7 +63,7 @@ emacs-all-the-icons-fonts
   };
 
   environment = {
-    shells = with pkgs; [ zsh ]; # Default shell
+    shells = with pkgs; [ fish ]; # Default shell
     variables = {
       # System variables
       EDITOR = "nvim";
@@ -184,6 +184,8 @@ onedrive = 823766827;
       experimental-features = nix-command flakes
     '';
   };
+  nixpkgs.config.allowUnfree = true;
+
   security.pam.enableSudoTouchIdAuth = true;
   system = {
     defaults = {

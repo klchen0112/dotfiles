@@ -14,6 +14,7 @@
 [
   # ./git.nix
   ./fish.nix
+  ./starship.nix
   # ./zsh.nix
   # ./direnv.nix
 ]
