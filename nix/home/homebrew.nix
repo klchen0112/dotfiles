@@ -28,10 +28,12 @@
         "homebrew/core"
         "homebrew/services"
       ];
-      # brews = [
-      #   "lua"
-      #   "luarocks"
-      # ];
+      brews = [
+        # "lua"
+        # "luarocks"
+        "mas"
+        "pngpaste" # for emacs download clipboard
+      ];
       casks = [
         "adrive"
         "font-sf-pro"

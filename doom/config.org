@@ -1,4 +1,3 @@
-
 #+TITLE: config
 #+AUTHOR: klchen0112
 #+EMAIL: klchen0112@gmail.com
@@ -7,9 +6,6 @@
 #+property: header-args :elisp :exports code
 #+property: header-args :tangle no :results silent :eval no-export
 * Init.el
-:PROPERTIES:
-:ID:       75b80b6e-8eec-4e64-be42-3a25f97ae5db
-:END:
 #+begin_src emacs-lisp :tangle init.el
 ;;; init.el -*- lexical-binding: t; -*-
                                         ;   ;
