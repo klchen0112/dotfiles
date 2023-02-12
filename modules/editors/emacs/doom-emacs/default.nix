@@ -26,7 +26,8 @@
     fd
     curl
     emacs29
-
+    
+    fontconfig
     # for emacs sqlite
     gcc
 

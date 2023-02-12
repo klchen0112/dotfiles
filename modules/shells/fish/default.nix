@@ -23,16 +23,16 @@
       loginShellInit = "fish_add_path --move --prepend --path $HOME/.nix-profile/bin /run/wrappers/bin /etc/profiles/per-user/$USER/bin /nix/var/nix/profiles/default/bin /run/current-system/sw/bin /opt/homebrew/bin";
 
       plugins = with pkgs; [
-        # {
-        #   name = "z";
-        #   src = pkgs.fetchFromGitHub
-        #     {
-        #       owner = "jethrokuan";
-        #       repo = "z";
-        #       rev = "85f863f20f24faf675827fb00f3a4e15c7838d76";
-        #       sha256 = "+FUBM7CodtZrYKqU542fQD+ZDGrd2438trKM0tIESs0=";
-        #     };
-        # }
+        {
+          name = "z";
+          src = pkgs.fetchFromGitHub
+            {
+              owner = "jethrokuan";
+              repo = "z";
+              rev = "85f863f20f24faf675827fb00f3a4e15c7838d76";
+              sha256 = "+FUBM7CodtZrYKqU542fQD+ZDGrd2438trKM0tIESs0=";
+            };
+        }
         {
           name = "tide";
           inherit (pkgs.fishPlugins.tide) src;
