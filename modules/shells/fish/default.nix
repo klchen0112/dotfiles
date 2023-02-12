@@ -23,16 +23,16 @@
       loginShellInit = "fish_add_path --move --prepend --path $HOME/.nix-profile/bin /run/wrappers/bin /etc/profiles/per-user/$USER/bin /nix/var/nix/profiles/default/bin /run/current-system/sw/bin /opt/homebrew/bin";
 
       plugins = with pkgs; [
-        {
-          name = "z";
-          src = pkgs.fetchFromGitHub
-            {
-              owner = "jethrokuan";
-              repo = "z";
-              rev = "85f863f20f24faf675827fb00f3a4e15c7838d76";
-              sha256 = "cebdfdaf478296e9d818fb9212e483c5c22ede18e066a5d8fb53bc223146b2d3";
-            };
-        }
+        # {
+        #   name = "z";
+        #   src = pkgs.fetchFromGitHub
+        #     {
+        #       owner = "jethrokuan";
+        #       repo = "z";
+        #       rev = "85f863f20f24faf675827fb00f3a4e15c7838d76";
+        #       sha256 = "+FUBM7CodtZrYKqU542fQD+ZDGrd2438trKM0tIESs0=";
+        #     };
+        # }
         {
           name = "tide";
           inherit (pkgs.fishPlugins.tide) src;
@@ -52,6 +52,12 @@
       ];
     };
   };
-  home.packages = with pkgs; [ fish ];
+  home.packages = with pkgs; [
+    exa
+    ripgrep
+    bat
+    tmux
+    fish
+  ];
 
 }

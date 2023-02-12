@@ -50,16 +50,16 @@
 
   environment = {
     shells = with pkgs; [ fish ]; # Default shell
-    variables = {
-      # System variables
-      EDITOR = "nvim";
-      VISUAL = "nvim";
-    };
+    # variables = {
+    #   # System variables
+    #   EDITOR = "nvim";
+    #   VISUAL = "nvim";
+    # };
     systemPackages =
       with pkgs; [
         # Installed Nix packages
         # Terminal
-        home-manager
+        # home-manager
         fish
         zsh
       ];

@@ -6,8 +6,8 @@
 
   home.packages = with pkgs;
   [
-    python39
-    python39Packages.pip
+    python310
+    python310Packages.pip
 
     nodejs
     nodePackages.pyright
