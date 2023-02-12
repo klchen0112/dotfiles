@@ -38,5 +38,10 @@
     pkgs-unstable.terraform-ls
 
     tree-sitter
+
+    # fonts
+    material-design-icons
+    weather-icons
+    emacs-all-the-icons-fonts
   ];
 }
