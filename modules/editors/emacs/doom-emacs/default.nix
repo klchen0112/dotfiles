@@ -6,26 +6,30 @@
 # flake.nix
 #   ├─ ./hosts
 #   │   └─ configuration.nix
+#   ├─ ./darwin
+#   │   └─ configuration.nix
 #   └─ ./modules
 #       └─ ./editors
 #           └─ ./emacs
 #               └─ ./doom-emacs
-#                   └─ ./alt
-#                       └─ native.nix *
+
 #
 
 
-{ config, pkgs,location, ... }:
+{ config, pkgs, location, ... }:
 
 {
-  services.emacs.enable = true;
-  programs.emacs = {
+  services.emacs = {
     enable = true;
-    package = pkgs.emacsUnstable;
+    # package = pkgs.emacsGit;
   };
+
+  # programs.emacs = {
+  #   enable = true;
+  # };
   # programs.doom-emacs = {
-    # enable = true;
-    # doomPrivateDir = ${location}/doom;
+  # enable = true;
+  # doomPrivateDir = ${location}/doom;
   # };
   # system.userActivationScripts = {
   #   # Installation script every time nixos-rebuild is run. So not during initial install.
@@ -46,6 +50,7 @@
   # };
 
   environment.systemPackages = with pkgs; [
+    emacs
     ripgrep
     coreutils
     fd

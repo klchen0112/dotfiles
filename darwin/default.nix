@@ -10,12 +10,10 @@
 
 { lib, inputs, nixpkgs, home-manager, darwin, user, ... }:
 
-let
-  system = "aarch64-darwin"; # System architecture
-in
+
 {
-  macbook = darwin.lib.darwinSystem {
-    inherit system;
+  macbook-pro-m1 = darwin.lib.darwinSystem {
+    system = "aarch64-darwin";
     specialArgs = { inherit user inputs; };
     modules = [
       # Modules that are used

@@ -13,7 +13,8 @@
 { pkgs, ... }:
 
 {
-  home = {                                        # Specific packages for macbook
+  home = {
+    # Specific packages for macbook
     # packages = with pkgs; [
     #   # Terminal
     #   pfetch

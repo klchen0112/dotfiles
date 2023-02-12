@@ -11,8 +11,8 @@
 
 {
   imports =
-  (import ../modules/editors) ++
-  (import ../modules/shell);
+    (import ../modules/editors) ++
+    (import ../modules/shell);
 
   users.users."${user}" = {
     # macOS user
@@ -29,36 +29,36 @@
     # Fonts
     fontDir.enable = true;
     fonts = with pkgs; [
-fira-code
-ibm-plex
-roboto-mono
-twemoji-color-font
-mononoki
-symbola
-noto-fonts
-noto-fonts-extra
-noto-fonts-emoji
-noto-fonts-cjk-sans
-noto-fonts-cjk-serif
-# noto-fonts-lgc-plus
-lxgw-wenkai
-liberation_ttf
-overpass
-freefont_ttf
-source-code-pro
-source-sans-pro
-source-serif-pro
-sarasa-gothic
-iosevka
-cm_unicode
-hanazono
-lmodern
-# lmmath
-# nerdfonts
-material-design-icons
-weather-icons
-emacs-all-the-icons-fonts
-];
+      fira-code
+      ibm-plex
+      roboto-mono
+      twemoji-color-font
+      mononoki
+      symbola
+      noto-fonts
+      noto-fonts-extra
+      noto-fonts-emoji
+      noto-fonts-cjk-sans
+      noto-fonts-cjk-serif
+      # noto-fonts-lgc-plus
+      lxgw-wenkai
+      liberation_ttf
+      overpass
+      freefont_ttf
+      source-code-pro
+      source-sans-pro
+      source-serif-pro
+      sarasa-gothic
+      iosevka
+      cm_unicode
+      hanazono
+      lmodern
+      # lmmath
+      # nerdfonts
+      material-design-icons
+      weather-icons
+      emacs-all-the-icons-fonts
+    ];
 
   };
 
@@ -76,14 +76,9 @@ emacs-all-the-icons-fonts
       git
       ranger
       bat
+      # nix
+      nixpkgs-fmt
 
-
-      # Doom Emacs
-      emacs
-      fd
-      ripgrep
-      pandoc
-      tree-sitter
     ];
   };
 
@@ -106,67 +101,68 @@ emacs-all-the-icons-fonts
       cleanup = "zap"; # Uninstall not listed packages and casks
     };
     masApps = {
-wechat = 836500024;
-qq = 451108668;
-dingtalk = 1435447041;
-tencent-meeting = 1484048379;
-emby = 992180193;
-"microsoft-word" = 462054704;
-"microsoft-powerpoint" = 462062816;
-"microsoft-excel" = 462058435;
-onedrive = 823766827;
-"goodnotes-5" = 1444383602;
-};
+      wechat = 836500024;
+      qq = 451108668;
+      dingtalk = 1435447041;
+      tencent-meeting = 1484048379;
+      emby = 992180193;
+      "microsoft-word" = 462054704;
+      "microsoft-powerpoint" = 462062816;
+      "microsoft-excel" = 462058435;
+      onedrive = 823766827;
+      "goodnotes-5" = 1444383602;
+    };
 
-    taps = ["homebrew/cask"
-  "homebrew/cask-fonts"
-  "homebrew/core"
-  "homebrew/services"
-];
+    taps = [
+      "homebrew/cask"
+      "homebrew/cask-fonts"
+      "homebrew/core"
+      "homebrew/services"
+    ];
     brews = [
       "mas"
-  "pngpaste" # for emacs download clipboard
+      "pngpaste" # for emacs download clipboard
 
 
     ];
     casks = [
-"adrive"
-"font-sf-pro"
-"snipaste"
-"anki"
-"google-chrome"
-"steam"
-"appcleaner"
-"hammerspoon"
-"sublime-text"
-"authy"
-"hiddenbar"
-"telegram"
-"baidunetdisk"
-"iterm2"
-"balenaetcher"
-"keyboardcleantool"
-"todesk"
-"calibre"
-"marginnote"
-"vial"
-"dash"
-"nutstore"
-"visual-studio-code"
-"omnidisksweeper"
-"vlc"
-"discord"
-"plex"
-"plexamp"
-"font-sf-arabic"
-"xnviewmp"
-"font-sf-compact"
-"raycast"
-"zerotier-one"
-"font-sf-mono"
-"sioyek"
-"zotero"
-];
+      "adrive"
+      "font-sf-pro"
+      "snipaste"
+      "anki"
+      "google-chrome"
+      "steam"
+      "appcleaner"
+      "hammerspoon"
+      "sublime-text"
+      "authy"
+      "hiddenbar"
+      "telegram"
+      "baidunetdisk"
+      "iterm2"
+      "balenaetcher"
+      "keyboardcleantool"
+      "todesk"
+      "calibre"
+      "marginnote"
+      "vial"
+      "dash"
+      "nutstore"
+      "visual-studio-code"
+      "omnidisksweeper"
+      "vlc"
+      "discord"
+      "plex"
+      "plexamp"
+      "font-sf-arabic"
+      "xnviewmp"
+      "font-sf-compact"
+      "raycast"
+      "zerotier-one"
+      "font-sf-mono"
+      "sioyek"
+      "zotero"
+    ];
 
 
   };
@@ -184,8 +180,14 @@ onedrive = 823766827;
       experimental-features = nix-command flakes
     '';
   };
-  nixpkgs.config.allowUnfree = true;
-
+  nixpkgs = {
+    config.allowUnfree = true;
+    # overlays = [
+    #   (import (builtins.fetchTarball {
+    #     url = https://github.com/nix-community/emacs-overlay/archive/master.tar.gz;
+    #   }))
+    # ];
+  };
   security.pam.enableSudoTouchIdAuth = true;
   system = {
     defaults = {

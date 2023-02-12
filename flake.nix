@@ -20,7 +20,7 @@
   inputs = # All flake references used to build my NixOS setup. These are dependencies.
     {
       nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable"; # Nix Packages
-
+      nixos-hardware.url = "github:NixOS/nixos-hardware";
       home-manager = {
         # User Package Management
         url = "github:nix-community/home-manager";
@@ -45,7 +45,7 @@
       emacs-overlay = {
         # Emacs Overlays
         url = "github:nix-community/emacs-overlay";
-        flake = false;
+        # flake = false;
       };
 
       doom-emacs = {
