@@ -19,6 +19,6 @@
       '';
     };
   home.packages = with pkgs; [
-    zsh;
+    zsh
   ];
 }
