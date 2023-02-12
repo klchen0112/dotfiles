@@ -59,7 +59,7 @@
       with pkgs; [
         # Installed Nix packages
         # Terminal
-        # home-manager
+        home-manager
         fish
         zsh
       ];

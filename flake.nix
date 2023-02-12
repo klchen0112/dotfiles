@@ -138,6 +138,11 @@
           modules = [
             # Modules that are used
             ./darwin
+            home-manager.darwinModules.home-manager
+            {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+            }
           ];
         };
       };
