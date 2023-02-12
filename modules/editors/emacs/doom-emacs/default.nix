@@ -16,20 +16,20 @@
 #
 
 
-{ config, pkgs, location, ... }:
+{ config, pkgs,  ... }:
 
 {
-  services.emacs = {
-    enable = true;
-    # package = pkgs.emacsGit;
-  };
-
-  # programs.emacs = {
+  # services.emacs = {
   #   enable = true;
+  #   package = pkgs.emacsUnstable;
   # };
-  # programs.doom-emacs = {
-  # enable = true;
-  # doomPrivateDir = ${location}/doom;
+
+  programs.emacs = {
+    enable = true;
+  };
+  # programs.doomEmacs = {
+    # enable = true;
+    # doomPrivateDir = ${HOME}/.config/doom;
   # };
   # system.userActivationScripts = {
   #   # Installation script every time nixos-rebuild is run. So not during initial install.
@@ -49,11 +49,11 @@
   #   };
   # };
 
-  environment.systemPackages = with pkgs; [
-    emacs
-    ripgrep
-    coreutils
-    fd
-    #git
-  ]; # Dependencies
+  # environment.systemPackages = with pkgs; [
+  #   emacs
+  #   ripgrep
+  #   coreutils
+  #   fd
+  #   #git
+  # ]; # Dependencies
 }

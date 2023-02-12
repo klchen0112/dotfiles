@@ -12,8 +12,8 @@
 
 
 [
-  # ./git.nix
-  ./fish.nix
+  ./git
+  ./fish
   # ./zsh.nix
   # ./direnv.nix
 ]

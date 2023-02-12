@@ -66,9 +66,13 @@
     let # Variables that can be used in the config files.
       user = "chenkailong";
       location = "$HOME/.config";
+      nixpkgs.overlays = [ (import self.inputs.emacs-overlay) ];
     in
     # Use above variables in ...
     {
+
+      formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.nixpkgs-fmt;
+      formatter.aarch64-darwin = nixpkgs.aarch64-darwin.nixpkgs-fmt;
       nixosConfigurations = (
         # NixOS configurations
         import ./hosts {
@@ -82,7 +86,7 @@
         # Darwin Configurations
         import ./darwin {
           inherit (nixpkgs) lib;
-          inherit inputs nixpkgs home-manager darwin user;
+          inherit inputs nixpkgs home-manager darwin user location doom-emacs;
         }
       );
 

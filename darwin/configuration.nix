@@ -10,10 +10,6 @@
 { config, pkgs, user, ... }:
 
 {
-  imports =
-    (import ../modules/editors) ++
-    (import ../modules/shell);
-
   users.users."${user}" = {
     # macOS user
     home = "/Users/${user}";
@@ -76,9 +72,14 @@
       git
       ranger
       bat
+      exa
       # nix
       nixpkgs-fmt
 
+      # Doom Emacs
+      emacs
+      fd
+      ripgrep
     ];
   };
 

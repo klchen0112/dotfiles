@@ -13,6 +13,9 @@
 { pkgs, ... }:
 
 {
+  imports =
+    (import ../modules/editors) ++
+    (import ../modules/shell);
   home = {
     # Specific packages for macbook
     # packages = with pkgs; [
