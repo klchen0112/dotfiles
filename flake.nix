@@ -79,11 +79,12 @@
       ];
     in
     rec {
+      # Devshell for bootstrapping
+      # Accessible through 'nix develop' or 'nix-shell' (legacy)
       devShells = forAllSystems (system: {
         default =
           nixpkgs-unstable.legacyPackages.${system}.callPackage ./shell.nix { };
       });
-
       legacyPackages = forAllSystems (system:
         import inputs.nixpkgs {
           inherit system;

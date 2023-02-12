@@ -31,6 +31,11 @@
     gcc
 
     nodejs
+    # Typescript
+    nodePackages.typescript
+    nodePackages.typescript-language-server
+
+    pkgs-unstable.terraform-ls
 
     tree-sitter
   ];

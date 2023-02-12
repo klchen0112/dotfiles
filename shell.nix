@@ -1,5 +1,3 @@
-
-
 # Shell for bootstrapping flake-enabled nix and home-manager
 { pkgs ? let
   # If pkgs is not defined, instantiate nixpkgs from locked commit
@@ -22,5 +20,4 @@ pkgs.mkShell {
     nixfmt
     nil
     nodePackages_latest.vscode-langservers-extracted
-  ];
-}
+];
