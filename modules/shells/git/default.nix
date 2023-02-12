@@ -9,7 +9,7 @@
 
     git = {
       enable = true;
-      package = pkgs.gitAndTools.gitFull;
+      # package = pkgs.gitAndTools.gitFull;
       extraConfig = {
         init.defaultBranch = "master"; # https://srid.ca/unwoke
         core.editor = "emacsclient";

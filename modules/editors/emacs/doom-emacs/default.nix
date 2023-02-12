@@ -31,5 +31,7 @@
     gcc
 
     nodejs
+
+    tree-sitter
   ];
 }

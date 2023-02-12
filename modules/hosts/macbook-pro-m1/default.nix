@@ -2,9 +2,9 @@
 
 {
   imports = [
-    ../../modules/editors/emacs/doom-emacs
-    ../../modules/shells/fish
-    ../../modules/shells/git
+    ../../editors/emacs/doom-emacs
+    ../../shells/git
+    # ../../shells/fish
   ];
 
   home = {
