@@ -15,14 +15,11 @@
 #
 
 
-{ config, pkgs,location, ... }:
+{ config, pkgs, ... }:
 
 {
   services.emacs.enable = true;
-  programs.doom-emacs = {
-    enable = true;
-    doomPrivateDir = ${location}/doom;
-  };
+
   system.userActivationScripts = {
     # Installation script every time nixos-rebuild is run. So not during initial install.
     doomEmacs = {

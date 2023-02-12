@@ -10,12 +10,9 @@
 { config, pkgs, user, ... }:
 
 {
-  imports = [
-  (import  ../modules/editors)
-  (import ../modules/shell)
-  #  ./modules/yabai.nix
-  #  ./modules/skhd.nix
-  ];
+  imports =
+  (import ../modules/editors) ++
+  (import ../modules/shell);
 
   users.users."${user}" = {
     # macOS user
@@ -187,7 +184,7 @@ onedrive = 823766827;
       experimental-features = nix-command flakes
     '';
   };
-
+  security.pam.enableSudoTouchIdAuth = true;
   system = {
     defaults = {
       NSGlobalDomain = {
@@ -213,9 +210,9 @@ onedrive = 823766827;
         TrackpadRightClick = true;
       };
     };
-    security.pam.enableSudoTouchIdAuth = true;
 
-    activationScripts.postActivation.text = ''sudo chsh -s ${pkgs.zsh}/bin/zsh''; # Since it's not possible to declare default shell, run this command after build
+
+    activationScripts.postActivation.text = ''sudo chsh -s ${pkgs.zsh}/bin/fish''; # Since it's not possible to declare default shell, run this command after build
     stateVersion = 4;
   };
 }

@@ -10,8 +10,9 @@
 #               └─ ...
 #
 
+
 [
-  ./git.nix
+  # ./git.nix
   ./fish.nix
   # ./zsh.nix
   # ./direnv.nix
