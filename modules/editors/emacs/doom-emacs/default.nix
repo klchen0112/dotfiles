@@ -16,44 +16,20 @@
 #
 
 
-{ config, pkgs,  ... }:
+{ config,lib, pkgs,pkgs-unstable,inputs, ... }:
 
 {
-  # services.emacs = {
-  #   enable = true;
-  #   package = pkgs.emacsUnstable;
-  # };
 
-  programs.emacs = {
-    enable = true;
-  };
-  # programs.doomEmacs = {
-    # enable = true;
-    # doomPrivateDir = ${HOME}/.config/doom;
-  # };
-  # system.userActivationScripts = {
-  #   # Installation script every time nixos-rebuild is run. So not during initial install.
-  #   doomEmacs = {
-  #     text = ''
-  #       source ${config.system.build.setEnvironment}
-  #       EMACS="$HOME/.emacs.d"
+  home.packages = with pkgs; [
+    python3 # treemacs
+    ripgrep
+    fd
+    curl
+    emacs29
 
-  #       if [ ! -d "$EMACS" ]; then
-  #         ${pkgs.git}/bin/git clone https://github.com/doomemacs/doomemacs.git $EMACS
-  #         yes | $EMACS/bin/doom install
-  #         $EMACS/bin/doom sync
-  #       else
-  #         $EMACS/bin/doom sync
-  #       fi
-  #     ''; # It will always sync when rebuild is done. So changes will always be applied.
-  #   };
-  # };
+    # for emacs sqlite
+    gcc
 
-  # environment.systemPackages = with pkgs; [
-  #   emacs
-  #   ripgrep
-  #   coreutils
-  #   fd
-  #   #git
-  # ]; # Dependencies
+    nodejs
+  ];
 }

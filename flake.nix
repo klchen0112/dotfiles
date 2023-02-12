@@ -19,8 +19,11 @@
 
   inputs = # All flake references used to build my NixOS setup. These are dependencies.
     {
-      nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable"; # Nix Packages
+      nixpkgs.url = "github:nixos/nixpkgs/nixos-22.11"; # Nix Packages
+      nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable"; # Nix Packages
       nixos-hardware.url = "github:NixOS/nixos-hardware";
+
+      flake-utils.url = "github:numtide/flake-utils";
       home-manager = {
         # User Package Management
         url = "github:nix-community/home-manager";
@@ -42,19 +45,20 @@
         inputs.nixpkgs.follows = "nixpkgs";
       };
 
-      emacs-overlay = {
-        # Emacs Overlays
-        url = "github:nix-community/emacs-overlay";
-        # flake = false;
-      };
-
       doom-emacs = {
-        # Nix-community Doom Emacs
         url = "github:nix-community/nix-doom-emacs";
         inputs.nixpkgs.follows = "nixpkgs";
         inputs.emacs-overlay.follows = "emacs-overlay";
       };
 
+      emacs-overlay = {
+        url = "github:nix-community/emacs-overlay/master";
+      };
+
+      emacs29-src = {
+        url = "github:emacs-mirror/emacs/emacs-29";
+        flake = false;
+      };
       hyprland = {
         # Official Hyprland flake
         url = "github:vaxerski/Hyprland";
@@ -62,40 +66,86 @@
       };
     };
 
-  outputs = inputs @ { self, nixpkgs, home-manager, darwin, nur, nixgl, doom-emacs, hyprland, ... }: # Function that tells my flake which to use and what do what to do with the dependencies.
+  outputs = inputs @ { self, nixpkgs, nixpkgs-unstable, home-manager, flake-utils, darwin, nur, nixgl, emacs-overlay, hyprland, ... }: # Function that tells my flake which to use and what do what to do with the dependencies.
     let # Variables that can be used in the config files.
       user = "chenkailong";
       location = "$HOME/.config";
-      nixpkgs.overlays = [ (import self.inputs.emacs-overlay) ];
+      forAllSystems = nixpkgs.lib.genAttrs [
+        "aarch64-linux"
+        "i686-linux"
+        "x86_64-linux"
+        "aarch64-darwin"
+        "x86_64-darwin"
+      ];
     in
-    # Use above variables in ...
-    {
+    rec {
+      devShells = forAllSystems (system: {
+        default =
+          nixpkgs-unstable.legacyPackages.${system}.callPackage ./shell.nix { };
+      });
 
-      formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.nixpkgs-fmt;
-      formatter.aarch64-darwin = nixpkgs.aarch64-darwin.nixpkgs-fmt;
+      legacyPackages = forAllSystems (system:
+        import inputs.nixpkgs {
+          inherit system;
+          # This adds our overlays to pkgs
+          overlays = [
+            emacs-overlay.overlay
+            (final: prev: {
+              emacs29 = prev.emacsGit.overrideAttrs (old: {
+                name = "emacs29";
+                version = "29.0-${inputs.emacs29-src.shortRev}";
+                src = inputs.emacs29-src;
+              });
+            })
+          ];
+
+          # NOTE: Using `nixpkgs.config` in your NixOS config won't work
+          # Instead, you should set nixpkgs configs here
+          # (https://nixos.org/manual/nixpkgs/stable/#idm140737322551056)
+          config.allowUnfree = true;
+        });
+      # formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.nixpkgs-fmt;
+      # formatter.aarch64-darwin = nixpkgs.legacyPackages.aarch64-darwin.nixpkgs-fmt;
       nixosConfigurations = (
         # NixOS configurations
         import ./hosts {
           # Imports ./hosts/default.nix
           inherit (nixpkgs) lib;
-          inherit inputs nixpkgs home-manager nur user location doom-emacs hyprland; # Also inherit home-manager so it does not need to be defined here.
+          inherit inputs nixpkgs home-manager nur user location hyprland; # Also inherit home-manager so it does not need to be defined here.
         }
       );
+      homeConfigurations = {
 
-      darwinConfigurations = (
-        # Darwin Configurations
-        import ./darwin {
-          inherit (nixpkgs) lib;
-          inherit inputs nixpkgs home-manager darwin user location doom-emacs;
-        }
-      );
+        "chenkailong@macbook-pro-m1" = home-manager.lib.homeManagerConfiguration {
+          pkgs = legacyPackages.aarch64-darwin;
+          extraSpecialArgs = {
+            inherit inputs;
+            # personal-packages = personal-packages.packages.aarch64-darwin;
+            pkgs-unstable = nixpkgs-unstable.legacyPackages.aarch64-darwin;
+          }; # Pass flake inputs to our config
+          modules = [ ./modules/hosts/macbook-pro-m1 ];
+        };
+      };
+      darwinConfigurations = {
+        "macbook-pro-m1" = darwin.lib.darwinSystem {
+          system = "aarch64-darwin";
+          specialArgs = {
+            inherit user inputs;
+            pkgs-unstable = nixpkgs-unstable.legacyPackages.aarch64-darwin;
+          };
+          pkgs = legacyPackages.aarch64-darwin;
+          modules = [
+            # Modules that are used
+            ./darwin
+          ];
+        };
+      };
 
-      homeConfigurations = (
-        # Non-NixOS configurations
-        import ./nix {
-          inherit (nixpkgs) lib;
-          inherit inputs nixpkgs home-manager nixgl user;
-        }
-      );
+
+
+
+
+      formatter =
+        forAllSystems (system: nixpkgs.legacyPackages.${system}.nixfmt);
     };
 }

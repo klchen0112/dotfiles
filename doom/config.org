@@ -567,8 +567,8 @@ npm install nodejieba
   )
 (defun set-useful-keybindings()
   ;;(keymap-set doom-leader-workspaces/windows-map "t" 'treemacs-select-window)
-  (keymap-global-set "M-j" 'kmacro-start-macro-or-insert-counter)
-  (keymap-global-set "M-k" 'kmacro-end-or-call-macro)
+  ;;(keymap-global-set "M-j" 'kmacro-start-macro-or-insert-counter)
+  ;;(keymap-global-set "M-k" 'kmacro-end-or-call-macro)
   ;; for doom emacs buffer management
   (map! :leader
         ;; make doom-leader-buffer-map alive
