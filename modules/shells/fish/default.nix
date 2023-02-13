@@ -58,6 +58,8 @@
     bat
     tmux
     fish
+    starship
   ];
+  programs.starship.enableFishIntegration = true;
 
 }

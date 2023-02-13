@@ -6,5 +6,6 @@
     exa
     bat
     tree
+    starship
   ];
 }
