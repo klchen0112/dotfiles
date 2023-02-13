@@ -34,10 +34,6 @@
             };
         }
         {
-          name = "tide";
-          inherit (pkgs.fishPlugins.tide) src;
-        }
-        {
           name = "fzf-fish";
           inherit (pkgs.fishPlugins.fzf-fish) src;
         }
