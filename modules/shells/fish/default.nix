@@ -52,10 +52,9 @@
     exa
     ripgrep
     bat
+    fzf
     tmux
     fish
-    starship
   ];
-  programs.starship.enableFishIntegration = true;
 
 }
