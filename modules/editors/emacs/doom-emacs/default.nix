@@ -26,7 +26,7 @@
     fd
     curl
     coreutils
-    emacsGit
+    emacsUnstable
 
     fontconfig
     # for emacs sqlite

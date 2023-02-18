@@ -45,20 +45,10 @@
         inputs.nixpkgs.follows = "nixpkgs";
       };
 
-      doom-emacs = {
-        url = "github:nix-community/nix-doom-emacs";
-        inputs.nixpkgs.follows = "nixpkgs";
-        inputs.emacs-overlay.follows = "emacs-overlay";
-      };
-
       emacs-overlay = {
         url = "github:nix-community/emacs-overlay/master";
       };
 
-      emacs29-src = {
-        url = "github:emacs-mirror/emacs/emacs-29";
-        flake = false;
-      };
       hyprland = {
         # Official Hyprland flake
         url = "github:vaxerski/Hyprland";
@@ -86,13 +76,7 @@
           # This adds our overlays to pkgs
           overlays = [
             emacs-overlay.overlay
-            (final: prev: {
-              emacs29 = prev.emacsGit.overrideAttrs (old: {
-                name = "emacs29";
-                version = "29.0-${inputs.emacs29-src.shortRev}";
-                src = inputs.emacs29-src;
-              });
-            })
+
           ];
 
           # NOTE: Using `nixpkgs.config` in your NixOS config won't work
