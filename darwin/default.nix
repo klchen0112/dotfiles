@@ -61,7 +61,7 @@
         fish
         zsh
         wakatime
-        nixfmt
+        nixpkgs-fmt
         coreutils
       ];
   };
