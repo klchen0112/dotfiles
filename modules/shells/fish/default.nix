@@ -53,6 +53,7 @@
     ripgrep
     bat
     fzf
+    shfmt
     tmux
     fish
   ];

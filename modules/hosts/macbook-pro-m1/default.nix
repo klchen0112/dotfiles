@@ -8,6 +8,8 @@
     ../../shells/zsh
     ../../shells/terminal
     ../../lang/python
+    ../../lang/julia
+    ../../lang/markdown
   ];
 
   home = {

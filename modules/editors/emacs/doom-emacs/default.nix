@@ -25,20 +25,15 @@
     ripgrep
     fd
     curl
-    emacs29
-    
+    coreutils
+    emacsGit
+
     fontconfig
     # for emacs sqlite
     gcc
+    # org mode dot
+    graphviz
 
-    nodejs
-    # Typescript
-    nodePackages.typescript
-    nodePackages.typescript-language-server
-
-    pkgs-unstable.terraform-ls
-
-    tree-sitter
 
     # fonts
     material-design-icons

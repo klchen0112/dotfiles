@@ -41,7 +41,7 @@
       lmodern
       # lmmath
       # nerdfonts
-      
+
     ];
 
   };
@@ -60,16 +60,19 @@
         home-manager
         fish
         zsh
+        wakatime
+        nixfmt
+        coreutils
       ];
   };
 
 
   services = {
     nix-daemon.enable = true; # Auto upgrade daemon
-    # emacs = {
-      # enable = true;
-      # package = pkgs.emacsGit;
-    # };
+     emacs = {
+       enable = true;
+      package = pkgs.emacsGit;
+     };
   };
 
   homebrew = {
