@@ -1332,12 +1332,15 @@ See `org-capture-templates' for more information."
          ("C-c n s" . org-roam-db-sync)
          ;; Dailies
          ("C-c n j" . org-roam-dailies-capture-today))
-  :config
+  :init
   (setq org-roam-directory "~/org")
   ;; 自动创建org roam 文件夹
   (unless (file-exists-p org-roam-directory) (make-directory org-roam-directory t))
+  (setq org-roam-db-gc-threshold most-positive-fixnum
+        )
+
+  :config
   (setq org-roam-dailies-directory (expand-file-name "journals" org-roam-directory))
-  (setq org-roam-db-gc-threshold most-positive-fixnum)
   (setq org-roam-file-extensions '("org"))
 
   (setq org-id-link-to-org-use-id t)
@@ -1875,7 +1878,7 @@ async latex view
 )
 #+end_src
 
-***** config
+***** COMMENT config
 #+begin_src emacs-lisp conf :tangle config.el
 (when (executable-find "xelatex")
   (use-package! xenops
@@ -1951,7 +1954,7 @@ async latex view
     ;;                     :image-converter
     ;;                     ("convert -density %D -trim -antialias %f -quality 100 %O"))))
     )
-)
+  )
 
 (after! xenops
   (defun xenops-math-block-delimiter-lines-regexp ()
@@ -1971,13 +1974,13 @@ async latex view
     (xenops-parse-element-at-point 'algorithm))
 
 
-(add-to-list 'xenops-elements '(algorithm
+  (add-to-list 'xenops-elements '(algorithm
                                   (:delimiters
-                                   ("^[ 	]*\\\\begin{algorithm}" "^[ 	]*\\\\end{algorithm}"))
+                                   ("^[ 	]*\\\\begin{algorithm}"
+                                    "^[ 	]*\\\\end{algorithm}"))
                                   (:parser . xenops-math-parse-algorithm-at-point)
                                   (:handlers . block-math)))
-)
-
+  )
 #+end_src
 **** org fragtog
 ***** package
@@ -1994,10 +1997,6 @@ async latex view
 **** org preview settings
 #+begin_src emacs-lisp :tangle config.el
 
-(setq org-highlight-latex-and-related '(native script entities))
-
-(require 'org-src)
-(add-to-list 'org-src-block-faces '("latex" (:inherit default :extend t)))
 ;;(setq org-preview-latex-default-process 'dvisvgm)
 ;;(setq org-preview-latex-process-alist
 ;;      '((dvipng :programs
@@ -2036,29 +2035,29 @@ async latex view
 ;;                     ("convert -density %D -trim -antialias %f -quality 100 %O")))
 ;;)
 
-(setq org-format-latex-header "\\documentclass{article}
-\\usepackage[usenames]{xcolor}
-
-\\usepackage[T1]{fontenc}
-
-\\usepackage{booktabs}
-
-\\pagestyle{empty}             % do not remove
-% The settings below are copied from fullpage.sty
-\\setlength{\\textwidth}{\\paperwidth}
-\\addtolength{\\textwidth}{-3cm}
-\\setlength{\\oddsidemargin}{1.5cm}
-\\addtolength{\\oddsidemargin}{-2.54cm}
-\\setlength{\\evensidemargin}{\\oddsidemargin}
-\\setlength{\\textheight}{\\paperheight}
-\\addtolength{\\textheight}{-\\headheight}
-\\addtolength{\\textheight}{-\\headsep}
-\\addtolength{\\textheight}{-\\footskip}
-\\addtolength{\\textheight}{-3cm}
-\\setlength{\\topmargin}{1.5cm}
-\\addtolength{\\topmargin}{-2.54cm}
-% my custom stuff
-")
+;;(setq org-format-latex-header "\\documentclass{article}
+;;\\usepackage[usenames]{xcolor}
+;;
+;;\\usepackage[T1]{fontenc}
+;;
+;;\\usepackage{booktabs}
+;;
+;;\\pagestyle{empty}             % do not remove
+;;% The settings below are copied from fullpage.sty
+;;\\setlength{\\textwidth}{\\paperwidth}
+;;\\addtolength{\\textwidth}{-3cm}
+;;\\setlength{\\oddsidemargin}{1.5cm}
+;;\\addtolength{\\oddsidemargin}{-2.54cm}
+;;\\setlength{\\evensidemargin}{\\oddsidemargin}
+;;\\setlength{\\textheight}{\\paperheight}
+;;\\addtolength{\\textheight}{-\\headheight}
+;;\\addtolength{\\textheight}{-\\headsep}
+;;\\addtolength{\\textheight}{-\\footskip}
+;;\\addtolength{\\textheight}{-3cm}
+;;\\setlength{\\topmargin}{1.5cm}
+;;\\addtolength{\\topmargin}{-2.54cm}
+;;% my custom stuff
+;;")
 
 (setq org-format-latex-options
       (plist-put org-format-latex-options :background "Transparent"))

@@ -16,7 +16,7 @@
 #
 
 
-{ config,lib, pkgs,pkgs-unstable,inputs, ... }:
+{ config, lib, pkgs, pkgs-unstable, inputs, ... }:
 
 {
 
@@ -26,7 +26,8 @@
     fd
     curl
     coreutils
-    emacsUnstable
+    sqlite
+    emacsGit
 
     fontconfig
     # for emacs sqlite
