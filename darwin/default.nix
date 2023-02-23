@@ -101,11 +101,12 @@
       "homebrew/cask-fonts"
       "homebrew/core"
       "homebrew/services"
+      "laishulu/macism"
     ];
     brews = [
       "mas"
       "pngpaste" # for emacs download clipboard
-
+      "macism"
 
     ];
     casks = [

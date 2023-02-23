@@ -7,9 +7,11 @@
     ../../shells/fish
     ../../shells/zsh
     ../../shells/terminal
-    ../../lang/python
     ../../lang/julia
+    ../../lang/lua
     ../../lang/markdown
+    ../../lang/python
+
   ];
 
   home = {
