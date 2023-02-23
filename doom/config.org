@@ -74,7 +74,7 @@
        :editor
        ;;(meow  +qwerty +override +leader)
        ;;(evil +everywhere); come to  dark side, we have cookies
-       ;;file-templates    ; auto-snippets for files
+       file-templates    ; auto-snippets for files
        fold              ; (nigh) universal code folding
        (format ; automated prettiness
         +onsave ; only-changes
@@ -254,11 +254,7 @@
 ;;; $DOOMDIR/packages.el
 (disable-packages! evil-escape)
 (unpin! lsp-mode)
-(when (modulep! :tools lsp +eglot)
-  (unpin! eglot))
 (unpin! forge)
-(when (modulep! :completion corfu)
-  (unpin! evil-collection))
 #+end_src
 * Basic settings
 ** Simple Settings
@@ -313,9 +309,9 @@
  mouse-drag-and-drop-region-cross-program t
  mouse-drag-and-drop-region t)
 
-;;(pixel-scroll-precision-mode 1)
-;;(setq pixel-scroll-precision-large-scroll-height 60
-;;      pixel-scroll-precision-interpolation-factor 30.0)
+(pixel-scroll-precision-mode 1)
+(setq pixel-scroll-precision-large-scroll-height 60
+      pixel-scroll-precision-interpolation-factor 30.0)
 #+end_src
 ** workaround
 #+begin_src emacs-lisp config.el
@@ -1374,6 +1370,7 @@ See `org-capture-templates' for more information."
   (require 'org-roam-dailies)
   )
 
+(after! org-roam (set-file-template! "~/org/.+\\.org$" 'org-mode :ignore t))
 (use-package! websocket
   :after org-roam)
 
