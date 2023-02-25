@@ -1370,7 +1370,6 @@ See `org-capture-templates' for more information."
   (require 'org-roam-dailies)
   )
 
-(after! org-roam (set-file-template! "~/org/.+\\.org$" 'org-mode :ignore t))
 (use-package! websocket
   :after org-roam)
 
