@@ -695,7 +695,7 @@ rule-providers:
     type: http
     behavior: domain
     path: ./rule_provider/GlobalMedia_Domain.yaml
-    url: https://ghproxy.com/https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/GlobalMedia/GlobalMedia.yaml
+    url: https://ghproxy.com/https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/GlobalMedia/GlobalMedia_Domain.yaml
     interval: 86400
 
   Global_Domain:
@@ -706,11 +706,25 @@ rule-providers:
     interval: 86400
 
   Advertising_Domain:
-   type: http
-   behavior: domain
-   path: ./rule_provider/Advertising_Domain.yaml
-   url: https://ghproxy.com/https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/release/rule/Clash/Advertising/Advertising_Domain.yaml
-   interval: 86400
+    type: http
+    behavior: domain
+    path: ./rule_provider/Advertising_Domain.yaml
+    url: https://ghproxy.com/https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/release/rule/Clash/Advertising/Advertising_Domain.yaml
+    interval: 86400
+
+  AD_DIRECT:
+    type: http
+    behavior: classical
+    path: ./rule_provider/AD_DIRECT.yaml
+    url: https://ghproxy.com/https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Direct/Direct.yaml
+    interval: 86400
+
+  Privacy_Domain:
+    type: http
+    behavior: domain
+    path: ./rule_provider/Privacy_Domain.yaml
+    url: https://ghproxy.com/https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Privacy/Privacy_Domain.yaml
+    interval: 86400
 
 
   Developer:
@@ -741,6 +755,8 @@ rules:
   - DOMAIN-SUFFIX,nixos.org,Proxy
   - DOMAIN-SUFFIX,nixos.dev,Proxy
   # 局域网直连
+  - RULE-SET,Privacy_Domain,REJECT
+  - RULE-SET,AD_DIRECT,DIRECT
   - RULE-SET,Advertising_Domain,REJECT
   # PROCESS rule
   - PROCESS-NAME,aria2c,DIRECT
