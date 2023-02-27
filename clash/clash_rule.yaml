@@ -34,6 +34,7 @@ sniffer: #【Meta专属】sniffer域名嗅探器
     - "Mijia Cloud" # 米家设备，建议加
     - "dlg.io.mi.com"
     - "+.apple.com" # 苹果域名，建议加
+    - "+.tpddns.cn"
   # - '*.baidu.com'                    # 支持通配符
 
   force-domain: # 需要强制嗅探的域名，默认只对IP嗅探
@@ -640,7 +641,6 @@ rule-providers:
     url: https://ghproxy.com/https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Apple/Apple_Domain.yaml
     interval: 86400
 
-
   BiliBiliIntl:
     type: http
     behavior: classical
@@ -669,8 +669,6 @@ rule-providers:
 
     interval: 86400
 
-
-
   GameDownloadCN:
     type: http
     behavior: classical
@@ -683,7 +681,6 @@ rule-providers:
     path: ./rule_provider/Game.yaml
     url: https://ghproxy.com/https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/release/rule/Clash/Game/Game.yaml
     interval: 86400
-
 
   GlobalScholar:
     type: http
@@ -726,14 +723,12 @@ rule-providers:
     url: https://ghproxy.com/https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Privacy/Privacy_Domain.yaml
     interval: 86400
 
-
   Developer:
     type: http
     behavior: classical
     path: ./rule_provider/Developer.yaml
     url: https://ghproxy.com/https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Developer/Developer.yaml
     interval: 86400
-
 
   ZJU:
     type: file
@@ -742,6 +737,8 @@ rule-providers:
     url: https://ghproxy.com/https://raw.githubusercontent.com/ZJU-Rule/ZJU-Rule/master/Clash/ZJU.list
     interval: 86400
 rules:
+  - DOMAIN-SUFFIX,tpddns.cn,DIRECT
+  # - DOMAIN-SUFFIX,plex.direct,DIRECT
   # DNS 代理
   - DOMAIN-KEYWORD,announce,DIRECT
   - DOMAIN-KEYWORD,tracker,DIRECT
@@ -819,7 +816,6 @@ rules:
   - RULE-SET,Global_Domain,Proxy
   - RULE-SET,ChinaMax_Domain,DIRECT
   - RULE-SET,ChinaMax_IP,DIRECT,no-resolve
-
 
   # GEOIP规则
   - GEOIP,CN,DIRECT,no-resolve
