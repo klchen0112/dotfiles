@@ -9,6 +9,7 @@
     ../../shells/terminal
     ../../lang/julia
     ../../lang/lua
+    ../../lang/latex
     ../../lang/markdown
     ../../lang/python
 

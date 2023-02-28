@@ -15,6 +15,7 @@
     # Fonts
     fontDir.enable = true;
     fonts = with pkgs; [
+      comic-mono
       fira-code
       ibm-plex
       roboto-mono
