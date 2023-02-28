@@ -477,10 +477,10 @@ brew install sfmono-square
     ('dark  (load-theme 'doom-one t))
 ))
 
-(if IS-MAC
-   (add-hook 'ns-system-appearance-change-functions #'my/apply-theme)
+;;(if IS-MAC
+;;  (add-hook 'ns-system-appearance-change-functions #'my/apply-theme)
    (setq doom-theme (intern (random-choice doom-themes-light)))
-)
+;;)
 
 
 (use-package! doom-themes
