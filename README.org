@@ -1,12 +1,11 @@
 * Installation
 ** Nix Darwin Installation
-
+*** Setup
+#+begin_src
+$ mkdir -p ~/.config/nix
+$ echo "experimental-features = nix-command flakes" >> ~/.config/nix/nix.conf
+#+end_src
 *** Initial
-*In these commands*
-- Get git
-- Clone repository
-- First build of the flake on Darwin
-  - This is done because the darwin command is not yet available
 
 #+begin_src
   $ curl -L https://nixos.org/nix/install | sh
@@ -17,6 +16,6 @@
   $ cd ~/.config
   $ nix build ".#darwinConfigurations.macbook-pro-m1.system"
   $ ./result/sw/bin/darwin-rebuild switch --flake ".#macbook-pro-m1"
-  $ ome-manager switch --flake ".#chenkailong@macbook-pro-m1"
-
+  # for rebuild
+  darwin-rebuild switch --flake ".#macbook-pro-m1"
 #+end_src
