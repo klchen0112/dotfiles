@@ -84,16 +84,15 @@
           # (https://nixos.org/manual/nixpkgs/stable/#idm140737322551056)
           config.allowUnfree = true;
         });
-      # formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.nixpkgs-fmt;
-      # formatter.aarch64-darwin = nixpkgs.legacyPackages.aarch64-darwin.nixpkgs-fmt;
-      nixosConfigurations = (
-        # NixOS configurations
-        import ./hosts {
-          # Imports ./hosts/default.nix
-          inherit (nixpkgs) lib;
-          inherit inputs nixpkgs home-manager nur user location hyprland; # Also inherit home-manager so it does not need to be defined here.
-        }
-      );
+
+      # nixosConfigurations = (
+      #   # NixOS configurations
+      #   import ./hosts {
+      #     # Imports ./hosts/default.nix
+      #     inherit (nixpkgs) lib;
+      #     inherit inputs nixpkgs home-manager nur user location hyprland; # Also inherit home-manager so it does not need to be defined here.
+      #   }
+      # );
       homeConfigurations = {
 
         "chenkailong@macbook-pro-m1" = home-manager.lib.homeManagerConfiguration {
@@ -117,20 +116,16 @@
           modules = [
             # Modules that are used
             ./darwin
-            home-manager.darwinModules.home-manager
-            {
-              home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
-            }
+            # home-manager.darwinModules.home-manager
+            # {
+            #   home-manager.useGlobalPkgs = true;
+            #   home-manager.useUserPackages = true;
+            # }
           ];
         };
       };
 
-
-
-
-
-      formatter =
-        forAllSystems (system: nixpkgs.legacyPackages.${system}.nixfmt);
+      # formatter =
+      #   forAllSystems (system: nixpkgs.legacyPackages.${system}.nixfmt);
     };
 }

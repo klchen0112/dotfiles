@@ -7,6 +7,7 @@
     ../../shells/fish
     ../../shells/zsh
     ../../shells/terminal
+    ../../lang/cpp
     ../../lang/julia
     ../../lang/lua
     ../../lang/latex
