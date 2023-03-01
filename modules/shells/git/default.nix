@@ -1,12 +1,13 @@
 #
 # Git
 #
-{ config, lib, pkgs, ... }:
-
 {
-
+  config,
+  lib,
+  pkgs,
+  ...
+}: {
   programs = {
-
     git = {
       enable = true;
       package = pkgs.gitAndTools.gitFull;
@@ -20,6 +21,5 @@
         core.symlinks = true;
       };
     };
-
   };
 }

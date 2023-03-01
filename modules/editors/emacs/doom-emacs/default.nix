@@ -12,14 +12,15 @@
 #       └─ ./editors
 #           └─ ./emacs
 #               └─ ./doom-emacs
-
 #
-
-
-{ config, lib, pkgs, pkgs-unstable, inputs, ... }:
-
 {
-
+  config,
+  lib,
+  pkgs,
+  pkgs-unstable,
+  inputs,
+  ...
+}: {
   home.packages = with pkgs; [
     python3 # treemacs
     ripgrep
@@ -34,7 +35,6 @@
     gcc
     # org mode dot
     graphviz
-
 
     # fonts
     material-design-icons

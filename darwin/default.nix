@@ -6,11 +6,12 @@
 #       ├─ ./default.nix
 #       └─ ./configuration.nix *
 #
-
-{ config, pkgs, user, ... }:
-
 {
-
+  config,
+  pkgs,
+  user,
+  ...
+}: {
   fonts = {
     # Fonts
     fontDir.enable = true;
@@ -41,40 +42,36 @@
       hanazono
       lmodern
       # lmmath
-      nerdfonts
+      # nerdfonts
       sf-mono-liga-bin
-
     ];
-
   };
 
   environment = {
-    shells = with pkgs; [ fish ]; # Default shell
+    shells = with pkgs; [fish]; # Default shell
     # variables = {
     #   # System variables
     #   EDITOR = "nvim";
     #   VISUAL = "nvim";
     # };
-    systemPackages =
-      with pkgs; [
-        # Installed Nix packages
-        # Terminal
-        home-manager
-        fish
-        zsh
-        wakatime
-        nixpkgs-fmt
-        coreutils
-      ];
+    systemPackages = with pkgs; [
+      # Installed Nix packages
+      # Terminal
+      home-manager
+      fish
+      zsh
+      wakatime
+      nixpkgs-fmt
+      coreutils
+    ];
   };
-
 
   services = {
     nix-daemon.enable = true; # Auto upgrade daemon
-     emacs = {
-       enable = true;
+    emacs = {
+      enable = true;
       package = pkgs.emacsGit;
-     };
+    };
   };
 
   homebrew = {
@@ -143,8 +140,6 @@
       "sioyek"
       "zotero"
     ];
-
-
   };
 
   nix = {
@@ -193,12 +188,11 @@
         Clicking = true;
         TrackpadRightClick = true;
       };
-
     };
 
     keyboard = {
-        enableKeyMapping = true;
-        remapCapsLockToControl = true;
+      enableKeyMapping = true;
+      remapCapsLockToControl = true;
     };
     # activationScripts.postActivation.text = ''sudo chsh -s ${pkgs.zsh}/bin/fish''; # Since it's not possible to declare default shell, run this command after build
     stateVersion = 4;

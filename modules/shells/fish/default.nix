@@ -1,10 +1,12 @@
 #
 # fish configuration
 #
-
-{ config, lib, pkgs, ... }:
-
 {
+  config,
+  lib,
+  pkgs,
+  ...
+}: {
   programs = {
     fish = {
       enable = true;
@@ -25,7 +27,8 @@
       plugins = with pkgs; [
         {
           name = "z";
-          src = pkgs.fetchFromGitHub
+          src =
+            pkgs.fetchFromGitHub
             {
               owner = "jethrokuan";
               repo = "z";
@@ -57,5 +60,4 @@
     tmux
     fish
   ];
-
 }

@@ -1,6 +1,9 @@
-{ config, lib, pkgs, ... }:
-
 {
+  config,
+  lib,
+  pkgs,
+  ...
+}: {
   imports = [
     ../../editors/emacs/doom-emacs
     ../../shells/git
@@ -12,8 +15,9 @@
     ../../lang/lua
     ../../lang/latex
     ../../lang/markdown
+    ../../lang/nix
+    ../../lang/nodejs
     ../../lang/python
-
   ];
 
   home = {
@@ -21,5 +25,4 @@
     homeDirectory = "/Users/chenkailong";
     stateVersion = "22.11";
   };
-
 }

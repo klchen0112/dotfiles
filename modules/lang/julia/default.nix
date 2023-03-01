@@ -1,11 +1,10 @@
-
-{ config, lib, pkgs, ... }:
-
 {
-
-
-  home.packages = with pkgs;
-  [
-    # julia           
+  config,
+  lib,
+  pkgs,
+  ...
+}: {
+  home.packages = with pkgs; [
+    # julia
   ];
 }
