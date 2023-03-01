@@ -43,4 +43,8 @@
     weather-icons
     emacs-all-the-icons-fonts
   ];
+  #programs.emacs = {
+  #  enable = true;
+  #  package = pkgs.emacsGit;
+  #};
 }

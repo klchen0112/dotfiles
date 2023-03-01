@@ -5,7 +5,7 @@
   ...
 }: {
   imports = [
-    ../../editors/emacs/doom-emacs
+    ../../editors/emacs
     ../../editors/vscode
     ../../lang/cpp
     ../../lang/julia
