@@ -1,8 +1,7 @@
-{
-  config,
-  lib,
-  pkgs,
-  ...
+{ config
+, lib
+, pkgs
+, ...
 }: {
   home.packages = with pkgs; [
     exa
@@ -16,7 +15,7 @@
     enableFishIntegration = true;
     settings = {
       add_newline = false;
-      format = "$shlvl$shell$username$hostname$nix_shell$git_branch$git_commit$git_state$git_status$directory$jobs$cmd_duration$character";
+      format = "$shlvl$shell$username$hostname$git_branch$git_commit$git_state$git_status$cmake$python$nix_shell$directory$cmd_duration$sudo$line_break$jobs$character";
       shlvl = {
         disabled = false;
         symbol = "ﰬ";
@@ -30,16 +29,18 @@
         zsh_indicator = "[ZSH](bright-white) ";
       };
       username = {
+        disabled = false;
         style_user = "bright-white bold";
         style_root = "bright-red bold";
       };
       hostname = {
+        disabled = false;
         style = "bright-green bold";
         ssh_only = true;
       };
       cmd_duration = {
         disabled = false;
-        symbol = "⏱ $duration";
+        format = "⏱ $duration";
       };
       git_branch = {
         disabled = false;
@@ -60,25 +61,27 @@
       };
       sudo = {
         disabled = false;
-        symbol = "as $symbol";
+        format = "as $symbol";
       };
       python = {
         disabled = false;
-        format = "${symbol}${pyenv_prefix}(${version})(\($virtualenv\))";
+        format = "[$symbol$pyenv_prefix]($version)(\($virtualenv\))";
+        symbol = " ";
       };
-    };
-    nix_shell = {
-      disabled = false;
-      foramt = "[$symbol$name]($style)";
-      symbol = "";
-    };
-    nodejs = {
-      disabled = false;
-      symbol = "$symbol($version)";
-    };
-    cmake = {
-      disabled = false;
-      symbol = "$symbol($version)";
+      nix_shell = {
+        disabled = false;
+        format = "[$symbol$name]($style)";
+        symbol = "";
+      };
+      nodejs = {
+        disabled = false;
+        format = "[$symbol]($version)";
+        symbol = " ";
+      };
+      cmake = {
+        disabled = false;
+        format = "$symbol($version)";
+      };
     };
   };
 }
