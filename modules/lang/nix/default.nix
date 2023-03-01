@@ -4,4 +4,7 @@
   pkgs,
   ...
 }: {
+  home.packages = with pkgs; [
+    Alejandra
+  ];
 }
