@@ -13,11 +13,11 @@
 #   └─ ./nix
 #       └─ default.nix
 #
-
 {
   description = "My Personal NixOS and Darwin System Flake Configuration";
 
-  inputs = # All flake references used to build my NixOS setup. These are dependencies.
+  inputs =
+    # All flake references used to build my NixOS setup. These are dependencies.
     {
       nixpkgs.url = "github:nixos/nixpkgs/nixos-22.11"; # Nix Packages
       nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable"; # Nix Packages
@@ -63,87 +63,99 @@
       };
     };
 
-  outputs = inputs @ { self, nixpkgs, nixpkgs-unstable, home-manager, flake-utils, darwin, nur, nixgl, emacs-overlay, hyprland, ... }: # Function that tells my flake which to use and what do what to do with the dependencies.
-    let # Variables that can be used in the config files.
-      user = "chenkailong";
-      location = "$HOME/.config";
-      forAllSystems = nixpkgs.lib.genAttrs [
-        "aarch64-linux"
-        "i686-linux"
-        "x86_64-linux"
-        "aarch64-darwin"
-        "x86_64-darwin"
-      ];
-    in
-    rec {
-      # Accessible through 'nix develop' or 'nix-shell' (legacy)
-      legacyPackages = forAllSystems (system:
-        import inputs.nixpkgs {
-          inherit system;
-          # This adds our overlays to pkgs
-          overlays = [
-            emacs-overlay.overlay
-            (final: prev: {
-              sf-mono-liga-bin = prev.stdenvNoCC.mkDerivation rec {
-                pname = "sf-mono-liga-bin";
-                version = "dev";
-                src = inputs.sf-mono-liga-src;
-                dontConfigure = true;
-                installPhase = ''
-                  mkdir -p $out/share/fonts/opentype
-                  cp -R $src/*.otf $out/share/fonts/opentype/
-                '';
-              };
-            }) 
-          ];
+  outputs = inputs @ {
+    self,
+    nixpkgs,
+    nixpkgs-unstable,
+    home-manager,
+    flake-utils,
+    darwin,
+    nur,
+    nixgl,
+    emacs-overlay,
+    hyprland,
+    ...
+  }:
+  # Function that tells my flake which to use and what do what to do with the dependencies.
+  let
+    # Variables that can be used in the config files.
+    user = "chenkailong";
+    location = "$HOME/.config";
+    forAllSystems = nixpkgs.lib.genAttrs [
+      "aarch64-linux"
+      "i686-linux"
+      "x86_64-linux"
+      "aarch64-darwin"
+      "x86_64-darwin"
+    ];
+  in rec {
+    # Accessible through 'nix develop' or 'nix-shell' (legacy)
+    legacyPackages = forAllSystems (system:
+      import inputs.nixpkgs {
+        inherit system;
+        # This adds our overlays to pkgs
+        overlays = [
+          emacs-overlay.overlay
+          (final: prev: {
+            sf-mono-liga-bin = prev.stdenvNoCC.mkDerivation rec {
+              pname = "sf-mono-liga-bin";
+              version = "dev";
+              src = inputs.sf-mono-liga-src;
+              dontConfigure = true;
+              installPhase = ''
+                mkdir -p $out/share/fonts/opentype
+                cp -R $src/*.otf $out/share/fonts/opentype/
+              '';
+            };
+          })
+        ];
 
-          # NOTE: Using `nixpkgs.config` in your NixOS config won't work
-          # Instead, you should set nixpkgs configs here
-          # (https://nixos.org/manual/nixpkgs/stable/#idm140737322551056)
-          config.allowUnfree = true;
-        });
+        # NOTE: Using `nixpkgs.config` in your NixOS config won't work
+        # Instead, you should set nixpkgs configs here
+        # (https://nixos.org/manual/nixpkgs/stable/#idm140737322551056)
+        config.allowUnfree = true;
+      });
 
-      # nixosConfigurations = (
-      #   # NixOS configurations
-      #   import ./hosts {
-      #     # Imports ./hosts/default.nix
-      #     inherit (nixpkgs) lib;
-      #     inherit inputs nixpkgs home-manager nur user location hyprland; # Also inherit home-manager so it does not need to be defined here.
-      #   }
-      # );
-      homeConfigurations = {
-
-        "chenkailong@macbook-pro-m1" = home-manager.lib.homeManagerConfiguration {
-          pkgs = legacyPackages.aarch64-darwin;
-          extraSpecialArgs = {
-            inherit inputs;
-            # personal-packages = personal-packages.packages.aarch64-darwin;
-            pkgs-unstable = nixpkgs-unstable.legacyPackages.aarch64-darwin;
-          }; # Pass flake inputs to our config
-          modules = [ ./modules/hosts/macbook-pro-m1 ];
-        };
+    # nixosConfigurations = (
+    #   # NixOS configurations
+    #   import ./hosts {
+    #     # Imports ./hosts/default.nix
+    #     inherit (nixpkgs) lib;
+    #     inherit inputs nixpkgs home-manager nur user location hyprland; # Also inherit home-manager so it does not need to be defined here.
+    #   }
+    # );
+    homeConfigurations = {
+      "chenkailong@macbook-pro-m1" = home-manager.lib.homeManagerConfiguration {
+        pkgs = legacyPackages.aarch64-darwin;
+        extraSpecialArgs = {
+          inherit inputs;
+          # personal-packages = personal-packages.packages.aarch64-darwin;
+          pkgs-unstable = nixpkgs-unstable.legacyPackages.aarch64-darwin;
+        }; # Pass flake inputs to our config
+        modules = [./modules/hosts/macbook-pro-m1];
       };
-      darwinConfigurations = {
-        "macbook-pro-m1" = darwin.lib.darwinSystem {
-          system = "aarch64-darwin";
-          specialArgs = {
-            inherit user inputs;
-            pkgs-unstable = nixpkgs-unstable.legacyPackages.aarch64-darwin;
-          };
-          pkgs = legacyPackages.aarch64-darwin;
-          modules = [
-            # Modules that are used
-            ./darwin
-            # home-manager.darwinModules.home-manager
-            # {
-            #   home-manager.useGlobalPkgs = true;
-            #   home-manager.useUserPackages = true;
-            # }
-          ];
-        };
-      };
-
-      # formatter =
-      #   forAllSystems (system: nixpkgs.legacyPackages.${system}.nixfmt);
     };
+    darwinConfigurations = {
+      "macbook-pro-m1" = darwin.lib.darwinSystem {
+        system = "aarch64-darwin";
+        specialArgs = {
+          inherit user inputs;
+          pkgs-unstable = nixpkgs-unstable.legacyPackages.aarch64-darwin;
+        };
+        pkgs = legacyPackages.aarch64-darwin;
+        modules = [
+          # Modules that are used
+          ./darwin
+          # home-manager.darwinModules.home-manager
+          # {
+          #   home-manager.useGlobalPkgs = true;
+          #   home-manager.useUserPackages = true;
+          # }
+        ];
+      };
+    };
+
+    formatter =
+      forAllSystems (system: nixpkgs.legacyPackages.${system}.alejandra);
+  };
 }
