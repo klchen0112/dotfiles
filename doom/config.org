@@ -403,8 +403,8 @@ brew install sfmono-square
 
 (cond
  (IS-MAC
-  (setq doom-font (font-spec :family "SF Mono"   :size 19)
-        doom-big-font (font-spec :family "SF Mono"  :size 19)
+  (setq doom-font (font-spec :family "Iosevka"   :size 19)
+        doom-big-font (font-spec :family "Comic Mono"  :size 19)
         doom-variable-pitch-font (font-spec :family "IBM Plex Serif"  :size 19)
         ;;doom-unicode-font (font-spec :family "FZSongKeBenXiuKai-R-GBK" :weight 'light :slant 'italic :size 21)
         doom-serif-font (font-spec :family "IBM Plex Serif"  :size 19))
