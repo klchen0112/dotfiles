@@ -48,6 +48,6 @@
       jnoortheen.nix-ide
     ];
     enableUpdateCheck = false;
-    userSettings = import ./settings.json;
+    userSettings = import ./settings.nix;
   };
 }
