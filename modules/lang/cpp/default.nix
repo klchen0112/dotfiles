@@ -7,7 +7,7 @@
   home.packages = with pkgs;
   [
     cmake
-    xmake
+    # xmake
     gcc
     # julia
   ];
