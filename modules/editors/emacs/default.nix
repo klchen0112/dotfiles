@@ -28,7 +28,7 @@
     curl
     coreutils
     sqlite
-    emacsGit
+    # emacsGit
 
     fontconfig
     # for emacs sqlite
@@ -43,8 +43,8 @@
     weather-icons
     emacs-all-the-icons-fonts
   ];
-  #programs.emacs = {
-  #  enable = true;
-  #  package = pkgs.emacsGit;
-  #};
+  programs.emacs = {
+    enable = true;
+    package = pkgs.emacsGit;
+  };
 }
