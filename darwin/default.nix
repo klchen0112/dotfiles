@@ -128,7 +128,6 @@
       "vial"
       "dash"
       "nutstore"
-      "visual-studio-code"
       "omnidisksweeper"
       "vlc"
       "discord"
