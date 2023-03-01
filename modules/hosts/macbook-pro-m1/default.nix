@@ -6,10 +6,6 @@
 }: {
   imports = [
     ../../editors/emacs/doom-emacs
-    ../../shells/git
-    ../../shells/fish
-    ../../shells/zsh
-    ../../shells/terminal
     ../../lang/cpp
     ../../lang/julia
     ../../lang/lua
@@ -18,6 +14,11 @@
     ../../lang/nix
     ../../lang/nodejs
     ../../lang/python
+    ../../shells/git
+    ../../shells/fish
+    ../../shells/zsh
+    ../../shells/terminal
+    ../../vpn
   ];
 
   home = {

@@ -136,7 +136,7 @@
       "plexamp"
       "xnviewmp"
       "raycast"
-      "zerotier-one"
+      "openvpn-connect"
       "sioyek"
       "zotero"
     ];
