@@ -17,5 +17,6 @@ $ echo "experimental-features = nix-command flakes" >> ~/.config/nix/nix.conf
   $ nix build ".#darwinConfigurations.macbook-pro-m1.system"
   $ ./result/sw/bin/darwin-rebuild switch --flake ".#macbook-pro-m1"
   # for rebuild
+  home-manager switch --flake ".#chenkailong@macbook-pro-m1"
   darwin-rebuild switch --flake ".#macbook-pro-m1"
 #+end_src
