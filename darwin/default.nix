@@ -41,7 +41,8 @@
       hanazono
       lmodern
       # lmmath
-      # nerdfonts
+      nerdfonts
+      sf-mono-liga-bin
 
     ];
 
@@ -99,7 +100,6 @@
 
     taps = [
       "homebrew/cask"
-      "homebrew/cask-fonts"
       "homebrew/core"
       "homebrew/services"
       "laishulu/macism"
@@ -108,11 +108,9 @@
       "mas"
       "pngpaste" # for emacs download clipboard
       "macism"
-
     ];
     casks = [
       "adrive"
-      "font-sf-pro"
       "snipaste"
       "anki"
       "google-chrome"
@@ -139,12 +137,9 @@
       "discord"
       "plex"
       "plexamp"
-      "font-sf-arabic"
       "xnviewmp"
-      "font-sf-compact"
       "raycast"
       "zerotier-one"
-      "font-sf-mono"
       "sioyek"
       "zotero"
     ];
