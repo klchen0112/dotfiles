@@ -25,8 +25,8 @@
         disabled = false;
         format = "$indicator";
         fish_indicator = "";
-        bash_indicator = "[BASH](bright-white) ";
-        zsh_indicator = "[ZSH](bright-white) ";
+        bash_indicator = "[BASH](bright-black) ";
+        zsh_indicator = "[ZSH](bright-black) ";
       };
       username = {
         disabled = false;
