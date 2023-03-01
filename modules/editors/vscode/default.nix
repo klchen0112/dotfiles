@@ -47,5 +47,7 @@
       kamadorueda.alejandra
       jnoortheen.nix-ide
     ];
+    enableUpdateCheck = false;
+    userSettings = import ./settings.json;
   };
 }
