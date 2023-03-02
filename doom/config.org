@@ -1043,6 +1043,7 @@ citar need vertico
           ("author" . "𝘼")
           ("email" . #("" 0 1 (display (raise -0.14))))
           ("date" . "𝘿")
+          ("filetags" "")
           ("property" . "☸")
           ("options" . "⌥")
           ("startup" . "⏻")
