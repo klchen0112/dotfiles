@@ -45,16 +45,18 @@
       };
       git_branch = {
         disabled = false;
-        format = "[$symbol$branch]($style) ";
+        format = "[$symbol $branch]($style) ";
         symbol = "שׂ";
         style = "bright-yellow bold";
       };
       git_commit = {
+        disabled = false;
         only_detached = true;
         format = "[ﰖ$hash]($style) ";
         style = "bright-yellow bold";
       };
       git_state = {
+        disabled = false;
         style = "bright-purple bold";
       };
       git_status = {
