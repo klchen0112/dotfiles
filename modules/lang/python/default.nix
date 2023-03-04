@@ -5,10 +5,8 @@
   ...
 }: {
   home.packages = with pkgs; [
-    python310
-    python310Packages.pip
-    python310Packages.isort
-
+    (python3.withPackages (ps: with ps; [isort matplotlib numpy pandas torch torchvision]))
+    # python3Full
     nodejs
     nodePackages.pyright
   ];

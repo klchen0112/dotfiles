@@ -22,7 +22,7 @@
   ...
 }: {
   home.packages = with pkgs; [
-    python3 # treemacs
+    # python/default.nix install python
     ripgrep
     fd
     curl
