@@ -306,8 +306,8 @@ proxy-groups:
   #   url: "http://cp.cloudflare.com/generate_204" # 用来测ping的地址
   #   interval: 300 # 测ping时间(秒)
   - name: 动画疯
-    type: load-balance
-    strategy: consistent-hashing
+    type: select
+    # strategy: consistent-hashing
     use:
       - 动画疯
     tolerance: 50 # 容差值：节点差值低于设定值时，不自动切换
