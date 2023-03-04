@@ -42,8 +42,6 @@
       hanazono
       lmodern
       # lmmath
-      # nerdfonts
-      sf-mono-liga-bin
     ];
   };
 
@@ -71,6 +69,9 @@
     emacs = {
       enable = true;
       package = pkgs.emacsGit;
+    };
+    yabai = {
+      enable = true;
     };
   };
 
@@ -138,6 +139,7 @@
       "openvpn-connect"
       "sioyek"
       "zotero"
+      "arc"
     ];
   };
 
