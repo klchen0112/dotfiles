@@ -79,8 +79,8 @@
         "strings" = true;
       };
       "files.autoSave" = "afterDelay";
-      "editor.codeLensFontFamily" = "'SF Mono','CMU Typewriter Text','Sarasa Mono SC'";
-      "editor.fontFamily" = "'SF Mono','Sarasa Mono SC'";
+      "editor.codeLensFontFamily" = "'Iosevka','CMU Typewriter Text','Sarasa Mono SC'";
+      "editor.fontFamily" = "'Iosevka','Sarasa Mono SC'";
       "editor.fontLigatures" = true;
       "editor.fontSize" = 16;
       "editor.formatOnPaste" = true;
