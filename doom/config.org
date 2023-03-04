@@ -405,7 +405,7 @@ brew install sfmono-square
  (IS-MAC
   (setq doom-font (font-spec :family "Iosevka"   :size 19)
         doom-big-font (font-spec :family "Comic Mono"  :size 19)
-        doom-variable-pitch-font (font-spec :family "IBM Plex Serif"  :size 19)
+        ;;doom-variable-pitch-font (font-spec :family "Iosevka"  :size 19)
         ;;doom-unicode-font (font-spec :family "FZSongKeBenXiuKai-R-GBK" :weight 'light :slant 'italic :size 21)
         doom-serif-font (font-spec :family "IBM Plex Serif"  :size 19))
   (add-hook! 'after-init-hook
@@ -461,7 +461,7 @@ brew install sfmono-square
                          "doom-old-hope" "doom-oceanic-next" "doom-monokai-pro" "doom-material" "doom-henna"
                          "doom-ephemeral" "chocolate" "doom-zenburn"))
 
-(setq doom-themes-light '("doom-one-light" "doom-solarized-light" "doom-flatwhite" "doom-ayu-light" "doom-opera-light"))
+(setq doom-themes-light '("doom-one-light" "doom-solarized-light" "doom-flatwhite" "doom-ayu-light" "doom-opera-light" "tsdh-light"))
 
 (defun random-choice (items)
   "Random choice a list"
@@ -1875,10 +1875,9 @@ async latex view
 )
 #+end_src
 
-***** COMMENT config
+***** config
 #+begin_src emacs-lisp conf :tangle config.el
-(when (executable-find "xelatex")
-  (use-package! xenops
+(use-package! xenops
     :after org
     :hook
     (org-mode . xenops-mode)
@@ -1950,8 +1949,8 @@ async latex view
     ;;                     ("pdflatex -interaction nonstopmode -shell-escape -output-directory %o %f")
     ;;                     :image-converter
     ;;                     ("convert -density %D -trim -antialias %f -quality 100 %O"))))
-    )
-  )
+)
+
 
 (after! xenops
   (defun xenops-math-block-delimiter-lines-regexp ()
