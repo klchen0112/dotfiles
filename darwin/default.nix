@@ -16,15 +16,17 @@
     # Fonts
     fontDir.enable = true;
     fonts = with pkgs; [
+      jetbrains-mono
+      cascadia-code
       comic-mono
       fira-code
       ibm-plex
       roboto-mono
       twemoji-color-font
-      mononoki
+      # mononoki
       symbola
-      noto-fonts
-      noto-fonts-extra
+      # noto-fonts
+      # noto-fonts-extra
       noto-fonts-emoji
       noto-fonts-cjk-sans
       noto-fonts-cjk-serif
@@ -33,10 +35,10 @@
       liberation_ttf
       overpass
       freefont_ttf
-      source-code-pro
-      source-sans-pro
-      source-serif-pro
-      sarasa-gothic
+      # source-code-pro
+      # source-sans-pro
+      # source-serif-pro
+      # sarasa-gothic
       iosevka
       cm_unicode
       hanazono
