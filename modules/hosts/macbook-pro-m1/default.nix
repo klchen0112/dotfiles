@@ -6,6 +6,7 @@
 }: {
   imports = [
     ../../editors/emacs
+    ../../editors/nvim
     ../../editors/vscode
     ../../lang/cpp
     ../../lang/julia
