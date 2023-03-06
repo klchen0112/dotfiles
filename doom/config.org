@@ -1558,7 +1558,7 @@ tasks."
    )
 #+end_src
 * Input Method
-** SIS
+** smart input source
 #+begin_src emacs-lisp :tangle packages.el
 (package! sis)
 #+end_src
@@ -1569,6 +1569,7 @@ tasks."
   ;; enable the /context/ and /inline region/ mode for specific buffers
   ;; (((text-mode prog-mode) . sis-context-mode)
   ;;  ((text-mode prog-mode) . sis-inline-mode))
+  :after meow
   :config
   ;; For MacOS
   (sis-ism-lazyman-config
@@ -1581,7 +1582,7 @@ tasks."
   (add-hook 'meow-insert-exit-hook #'sis-set-english)
   (add-to-list 'sis-context-hooks 'meow-insert-exit-hook)
 )
-#+End_src
+#+end_src
 ** Rime
 1. 使用rime作为输入法
 2. 加入了中英文自动检测
