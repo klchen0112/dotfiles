@@ -50,6 +50,8 @@
     enableUpdateCheck = false;
     userSettings = {
       "update.mode" = "none";
+      "extensions.autoCheckUpdates" = false;
+      "extensions.autoUpdate" = false;
       "C_Cpp.errorSquiggles" = "Enabled";
       "C_Cpp.intelliSenseEngine" = "Disabled";
       "C_Cpp.intelliSenseEngineFallback" = "Disabled";
