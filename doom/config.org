@@ -209,6 +209,7 @@
        ;;purescript        ; javascript, but functional
        (python +lsp
                +pyright
+               +pyenv
                ;;+conda
                ;; +poetry
                +tree-sitter
@@ -2145,7 +2146,7 @@ use dash open app dash
   :config
   (setq wakatime-cli-path
         (cond
-         (IS-MAC "/run/current-system/sw/bin/wakatime-cli")
+         (IS-MAC "~/.nix-profile/bin/wakatime-cli")
          (IS-WINDOWS "~/.wakatime/wakatime-cli")
         ))
   (global-wakatime-mode)
