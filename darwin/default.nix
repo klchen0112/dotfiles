@@ -12,6 +12,12 @@
   user,
   ...
 }: {
+  users.users."${user}" = {
+    # macOS user
+    home = "/Users/${user}";
+    shell = pkgs.fish; # Default shell
+  };
+
   fonts = {
     # Fonts
     fontDir.enable = true;
@@ -48,7 +54,7 @@
   };
 
   environment = {
-    shells = with pkgs; [fish]; # Default shell
+    shells = with pkgs; [bashInteractive fish zsh]; # Default shell
     # variables = {
     #   # System variables
     #   EDITOR = "nvim";
@@ -57,11 +63,10 @@
     systemPackages = with pkgs; [
       # Installed Nix packages
       # Terminal
-      home-manager
+      bash
       fish
       zsh
-      wakatime
-      nixpkgs-fmt
+      home-manager
       coreutils
     ];
   };

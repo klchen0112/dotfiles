@@ -42,6 +42,7 @@
     material-design-icons
     weather-icons
     emacs-all-the-icons-fonts
+    wakatime
   ];
   programs.emacs = {
     enable = true;
