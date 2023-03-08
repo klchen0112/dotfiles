@@ -49,6 +49,7 @@
     ];
     enableUpdateCheck = false;
     userSettings = {
+      "settingsSync.keybindingsPerPlatform" = true;
       "update.mode" = "none";
       "extensions.autoCheckUpdates" = false;
       "extensions.autoUpdate" = false;
@@ -81,8 +82,8 @@
         "strings" = true;
       };
       "files.autoSave" = "afterDelay";
-      "editor.codeLensFontFamily" = "'Iosevka','CMU Typewriter Text','Sarasa Mono SC'";
-      "editor.fontFamily" = "'Iosevka','Sarasa Mono SC'";
+      "editor.codeLensFontFamily" = "'Jetbrains Mono','Overpass','CMU Typewriter Text','Noto Serif CJK SC','Noto Serif";
+      "editor.fontFamily" = "'Jetbrains Mono','Overpass','CMU Typewriter Text','Noto Serif CJK SC','Noto Serif";
       "editor.fontLigatures" = true;
       "editor.fontSize" = 16;
       "editor.formatOnPaste" = true;
