@@ -147,6 +147,7 @@
       "sioyek"
       "zotero"
       "arc"
+      "via"
     ];
   };
 
@@ -162,6 +163,15 @@
       auto-optimise-store = true
       experimental-features = nix-command flakes
     '';
+    settings = {
+      substituters = [
+        "https://nix-community.cachix.org"
+        "https://cache.nixos.org/"
+      ];
+      trusted-public-keys = [
+        "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+      ];
+    };
   };
 
   security.pam.enableSudoTouchIdAuth = true;
@@ -179,6 +189,7 @@
         orientation = "bottom";
         showhidden = true;
         tilesize = 40;
+        appswitcher-all-displays = true;
       };
       finder = {
         # Finder settings
