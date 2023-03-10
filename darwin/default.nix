@@ -115,19 +115,19 @@
       "macism"
     ];
     casks = [
-      "adrive"
+      # "adrive"
       "snipaste"
       "anki"
       "google-chrome"
       "steam"
       "appcleaner"
-      "hammerspoon"
+      # "hammerspoon"
       "sublime-text"
       "authy"
       "hiddenbar"
       "telegram"
       "baidunetdisk"
-      "iterm2"
+      # "iterm2"
       "balenaetcher"
       "keyboardcleantool"
       "todesk"
@@ -147,7 +147,7 @@
       "sioyek"
       "zotero"
       "arc"
-      "via"
+      # "via"
     ];
   };
 
@@ -163,6 +163,7 @@
       auto-optimise-store = true
       experimental-features = nix-command flakes
     '';
+
     settings = {
       substituters = [
         "https://nix-community.cachix.org"

@@ -175,9 +175,10 @@
       "editor.unicodeHighlight.nonBasicASCII" = false;
       "remote.SSH.useLocalServer" = false;
       "workbench.colorTheme" = "Atom One Light";
-      "remote.SSH.remotePlatform"         = {
-    "ningbo203" ="linux";"ningbo204" ="linux";
-  };
+      "remote.SSH.remotePlatform" = {
+        "ningbo203" = "linux";
+        "ningbo204" = "linux";
+      };
     };
   };
 }

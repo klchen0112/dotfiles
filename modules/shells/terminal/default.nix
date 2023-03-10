@@ -1,89 +1,73 @@
+#
+# OpenVPN
+#
 {
   config,
   lib,
   pkgs,
   ...
 }: {
-  home.packages = with pkgs; [
-    exa
-    bat
-    tree
-    starship
-  ];
-  programs.starship = {
+  programs.alacritty = {
     enable = true;
-    enableZshIntegration = true;
-    enableFishIntegration = true;
     settings = {
-      add_newline = false;
-      format = "$shlvl$shell$username$hostname$git_branch$git_commit$git_state$git_status$cmake$python$nix_shell$directory$cmd_duration$sudo$line_break$jobs$character";
-      shlvl = {
-        disabled = false;
-        symbol = "ﰬ";
-        style = "bright-red bold";
+      cursor = {
+        style = "Block";
       };
-      shell = {
-        disabled = false;
-        format = "$indicator";
-        fish_indicator = "";
-        bash_indicator = "[BASH](bright-black) ";
-        zsh_indicator = "[ZSH](bright-black) ";
+
+      window = {
+        opacity = 1.0;
+        padding = {
+          x = 24;
+          y = 24;
+        };
       };
-      username = {
-        disabled = false;
-        style_user = "bright-white bold";
-        style_root = "bright-red bold";
+
+      font = {
+        normal = {
+          family = "Jetbrains Mono";
+          style = "Regular";
+        };
+        size = lib.mkMerge [
+          (lib.mkIf pkgs.stdenv.hostPlatform.isLinux 10)
+          (lib.mkIf pkgs.stdenv.hostPlatform.isDarwin 14)
+        ];
       };
-      hostname = {
-        disabled = false;
-        style = "bright-green bold";
-        ssh_only = true;
+
+      dynamic_padding = true;
+      decorations = "full";
+      title = "Terminal";
+      class = {
+        instance = "Alacritty";
+        general = "Alacritty";
       };
-      cmd_duration = {
-        disabled = false;
-        format = "⏱ $duration";
-      };
-      git_branch = {
-        disabled = false;
-        format = "[$symbol $branch]($style) ";
-        symbol = "שׂ";
-        style = "bright-yellow bold";
-      };
-      git_commit = {
-        disabled = false;
-        only_detached = true;
-        format = "[ﰖ$hash]($style) ";
-        style = "bright-yellow bold";
-      };
-      git_state = {
-        disabled = false;
-        style = "bright-purple bold";
-      };
-      git_status = {
-        disabled = false;
-      };
-      sudo = {
-        disabled = false;
-        format = "as $symbol";
-      };
-      python = {
-        disabled = false;
-        format = "[$symbol$pyenv_prefix]($version)(\($virtualenv\))";
-        symbol = " ";
-      };
-      nix_shell = {
-        disabled = false;
-        format = "[$symbol$name]($style)";
-        symbol = "";
-      };
-      nodejs = {
-        disabled = false;
-        format = "[$symbol]($version)";
-        symbol = " ";
-      };
-      cmake = {
-        disabled = false;
-        format = "$symbol($version)";
+
+      colors = {
+        primary = {
+          background = "0x1f2528";
+          foreground = "0xc0c5ce";
+        };
+
+        normal = {
+          black = "0x1f2528";
+          red = "0xec5f67";
+          green = "0x99c794";
+          yellow = "0xfac863";
+          blue = "0x6699cc";
+          magenta = "0xc594c5";
+          cyan = "0x5fb3b3";
+          white = "0xc0c5ce";
+        };
+
+        bright = {
+          black = "0x65737e";
+          red = "0xec5f67";
+          green = "0x99c794";
+          yellow = "0xfac863";
+          blue = "0x6699cc";
+          magenta = "0xc594c5";
+          cyan = "0x5fb3b3";
+          white = "0xd8dee9";
+        };
       };
     };
   };
