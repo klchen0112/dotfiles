@@ -213,7 +213,7 @@
                +cpython
                ;;+conda
                ;;+poetry
-               +tree-sitter
+               ;;+tree-sitter
                )            ; beautiful is better than ugly
        ;;qt                ; the 'cutest' gui framework ever
        ;;racket            ; a DSL for DSLs
@@ -467,8 +467,7 @@
 
 ;;(if IS-MAC
 ;;  (add-hook 'ns-system-appearance-change-functions #'my/apply-theme)
-   (setq doom-theme (intern (random-choice doom-themes-light)))
-;;)
+   (setq doom-theme 'doom-one-light)
 
 
 (use-package! doom-themes
@@ -1281,6 +1280,9 @@ See `org-capture-templates' for more information."
 
 * org-roam
 ** org-roam settings
+:PROPERTIES:
+:ID: 3f6a8789-2cb1-45ec-ab57-063d22cceaf8
+:END:
 #+begin_src elisp :tangle packages.el
 (unpin! org-roam)
 (package! org-roam)
@@ -1336,14 +1338,10 @@ See `org-capture-templates' for more information."
                                       :unnarrowed t)))
   (setq org-roam-dailies-capture-templates
         '(
-          ("d" "default" entry "** %<%H:%M> %?"
-           :if-new (file+head+olp "%<%Y-%m-%d>.org" "#+title: %<%Y/%m/%d>\n#+filetags: :journal:\n" ("%<%H:%M:%S>")))
-          ("r" "read" entry "*** %?"
-           :if-new (file+head+olp "%<%Y-%m-%d>.org" "#+title: %<%Y/%m/%d>\n#+filetags: :journal:\n" ("%<%H:%M:%S>" "What I read? :read:")))
-          ("t" "tasks" entry "*** %?"
-           :if-new (file+head+olp "%<%Y-%m-%d>.org" "#+title: %<%Y/%m/%d>\n#+filetags: :journal:\n" ("%<%H:%M:%S>" "TODO Tasks :task:")))
-          ("n" "notes" entry "*** %?"
-           :if-new (file+head+olp "%<%Y-%m-%d>.org" "#+title: %<%Y/%m/%d>\n#+filetags: :journal:\n" ("%<%M:%M:%S>" "Notes :note:")))
+          ("t" "tasks" entry "* TODO %?"
+           :if-new (file+head+olp "%<%Y-%m-%d>.org" "#+title: %<%Y/%m/%d>\n#+filetags: :journal:\n" ("TODO Tasks :task:")))
+          ("n" "notes" entry "* %?"
+           :if-new (file+head+olp "%<%Y-%m-%d>.org" "#+title: %<%Y/%m/%d>\n#+filetags: :journal:\n" ("Notes :note:")))
           ))
 
   ;; If you're using a vertical completion framework, you might want a more informative completion interface
@@ -1373,8 +1371,6 @@ See `org-capture-templates' for more information."
         org-roam-ui-follow t
         org-roam-ui-update-on-save t
         org-roam-ui-open-on-start nil))
-
-
 #+end_src
 
 ** org roam timestamps
