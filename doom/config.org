@@ -209,9 +209,10 @@
        ;;purescript        ; javascript, but functional
        (python +lsp
                +pyright
-               +pyenv
+               ;;+pyenv
+               +cpython
                ;;+conda
-               ;; +poetry
+               ;;+poetry
                +tree-sitter
                )            ; beautiful is better than ugly
        ;;qt                ; the 'cutest' gui framework ever
@@ -413,7 +414,7 @@
                (set-fontset-font "fontset-default" 'hangul   (font-spec :family "LXGW WenKai"))
                (set-fontset-font "fontset-default" 'cjk-misc (font-spec :family "Noto Serif CJK SC"))
                ;; Cyrillic: Привет, Здравствуйте, Здраво, Здравейте
-               (set-fontset-font "fontset-default" 'cyrillic (font-spec :family "Noto Serif"))
+               (set-fontset-font "fontset-default" 'cyrillic (font-spec :family "Noto cmd_Serif"))
                ))
   )
 

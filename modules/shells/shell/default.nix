@@ -19,7 +19,6 @@
       format = "$shlvl$shell$username$hostname$git_branch$git_commit$git_state$git_status$cmake$python$nix_shell$directory$cmd_duration$sudo$line_break$jobs$character";
       shlvl = {
         disabled = false;
-        symbol = "ﰬ";
         style = "bright-red bold";
       };
       shell = {
@@ -52,7 +51,7 @@
       git_commit = {
         disabled = false;
         only_detached = true;
-        format = "[ﰖ$hash]($style) ";
+        format = "[$hash]($style) ";
         style = "bright-yellow bold";
       };
       git_state = {
@@ -68,22 +67,19 @@
       };
       python = {
         disabled = false;
-        format = "[$symbol$pyenv_prefix]($version)(\($virtualenv\))";
-        symbol = " ";
+        format = "[$pyenv_prefix]($version)(\($virtualenv\))";
       };
       nix_shell = {
         disabled = false;
-        format = "[$symbol$name]($style)";
-        symbol = "";
+        format = "[$name]($style)";
       };
       nodejs = {
         disabled = false;
-        format = "[$symbol]($version)";
-        symbol = " ";
+        format = "($version)";
       };
       cmake = {
         disabled = false;
-        format = "$symbol($version)";
+        format = "($version)";
       };
     };
   };
