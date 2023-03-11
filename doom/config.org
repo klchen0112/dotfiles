@@ -1568,6 +1568,8 @@ tasks."
    "im.rime.inputmethod.Squirrel.Hans")
   (add-hook 'meow-insert-exit-hook #'sis-set-english)
   (add-to-list 'sis-context-hooks 'meow-insert-exit-hook)
+  (add-to-list 'sis-respect-minibuffer-triggers (cons 'org-roam-node-find (lambda () 'other)))
+  (add-to-list 'sis-respect-minibuffer-triggers (cons 'org-roam-node-insert (lambda () 'other)))
 )
 #+end_src
 ** Rime
