@@ -271,6 +271,12 @@ proxy-groups:
       - Proxy
       - 节点选择
       - DIRECT
+      - 香港
+      - 日本
+      - 新加坡
+      # - 台湾
+      - 美国
+      - 韩国
   - name: 香港
     type: load-balance
     strategy: consistent-hashing
@@ -743,6 +749,7 @@ rules:
   - DOMAIN-KEYWORD,announce,DIRECT
   - DOMAIN-KEYWORD,tracker,DIRECT
   - RULE-SET,DNS,DNS
+  - DOMAIN-SUFFIX,openai.com,美国
   - DOMAIN-SUFFIX,jsdelivr.net,DIRECT
   - DOMAIN-SUFFIX,fastgit.org,DIRECT
   # Github
