@@ -5,7 +5,7 @@
   ...
 }: {
   imports = [
-    ../../browser
+   #  ../../browser
     ../../editors/emacs
     ../../editors/nvim
     ../../editors/vscode
@@ -17,11 +17,12 @@
     ../../lang/nix
     ../../lang/nodejs
     ../../lang/python
-    ../../reader
+    # ../../reader
     ../../shells/git
     ../../shells/fish
     ../../shells/zsh
-    ../../shells/terminal
+    ../../shells/shell
+    ../../terminal
     ../../vpn
   ];
 
