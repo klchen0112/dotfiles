@@ -6,9 +6,7 @@
 }: {
   home.packages = with pkgs; [
     exa
-    bat
     tree
-    starship
   ];
   programs.starship = {
     enable = true;
@@ -81,6 +79,12 @@
         disabled = false;
         format = "($version)";
       };
+    };
+  };
+  programs.bat = {
+    enable = true;
+    config = {
+      theme = "OneHalfLight";
     };
   };
 }
