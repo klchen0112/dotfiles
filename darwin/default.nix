@@ -118,7 +118,7 @@
       # "adrive"
       "snipaste"
       "anki"
-
+      "google-chrome"
       "steam"
       "appcleaner"
       # "hammerspoon"
