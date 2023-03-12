@@ -141,7 +141,7 @@
         pkgs = legacyPackages.aarch64-darwin;
         modules = [
           # Modules that are used
-          ./darwin
+          ./machines/macbook-pro-m1
           # home-manager.darwinModules.home-manager
           # {
           #   home-manager.useGlobalPkgs = true;
