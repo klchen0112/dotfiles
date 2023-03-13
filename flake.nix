@@ -109,9 +109,18 @@
         # Instead, you should set nixpkgs configs here
         # (https://nixos.org/manual/nixpkgs/stable/#idm140737322551056)
         config.allowUnfree = true;
-        config.allowBroken  = true;
+        config.allowBroken = false;
       });
+    legacyPackages-unstable = forAllSystems (system:
+      import inputs.nixpkgs-unstable {
+        inherit system;
 
+        # NOTE: Using `nixpkgs.config` in your NixOS config won't work
+        # Instead, you should set nixpkgs configs here
+        # (https://nixos.org/manual/nixpkgs/stable/#idm140737322551056)
+        config.allowUnfree = true;
+        config.allowBroken = false;
+      });
     # nixosConfigurations = (
     #   # NixOS configurations
     #   import ./hosts {
@@ -125,8 +134,7 @@
         pkgs = legacyPackages.aarch64-darwin;
         extraSpecialArgs = {
           inherit inputs;
-          # personal-packages = personal-packages.packages.aarch64-darwin;
-          pkgs-unstable = nixpkgs-unstable.legacyPackages.aarch64-darwin;
+          pkgs-unstable = legacyPackages-unstable.aarch64-darwin;
         }; # Pass flake inputs to our config
         modules = [./modules/hosts/macbook-pro-m1];
       };
@@ -136,7 +144,7 @@
         system = "aarch64-darwin";
         specialArgs = {
           inherit user inputs;
-          pkgs-unstable = nixpkgs-unstable.legacyPackages.aarch64-darwin;
+          pkgs-unstable = legacyPackages-unstable.aarch64-darwin;
         };
         pkgs = legacyPackages.aarch64-darwin;
         modules = [

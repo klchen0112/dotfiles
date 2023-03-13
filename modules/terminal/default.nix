@@ -77,9 +77,9 @@
     # font = pkgs.jetbrains-mono;
     settings = {
       font_family = "JetBrains Mono Medium";
-      bold_font  = "JetBrains Mono Bold";
-      italic_font  = "JetBrains Mono Italic";
-      bold_italic_font  = "JetBrains Mono Bold Italic";
+      bold_font = "JetBrains Mono Bold";
+      italic_font = "JetBrains Mono Italic";
+      bold_italic_font = "JetBrains Mono Bold Italic";
       font_size = 16;
       remeber_window_size = true;
       initial_window_width = 640;

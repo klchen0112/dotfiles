@@ -64,7 +64,7 @@
       # Installed Nix packages
       # Terminal
       # bash
-      # fish
+      fish
       # zsh
       home-manager
       coreutils
