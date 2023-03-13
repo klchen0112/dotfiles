@@ -63,9 +63,9 @@
     systemPackages = with pkgs; [
       # Installed Nix packages
       # Terminal
-      bash
-      fish
-      zsh
+      # bash
+      # fish
+      # zsh
       home-manager
       coreutils
     ];
@@ -146,6 +146,7 @@
       "zotero"
       "arc"
       # "via"
+      "logseq"
     ];
   };
 

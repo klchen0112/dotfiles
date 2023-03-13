@@ -137,6 +137,8 @@
       "search.showLineNumbers" = true;
       "search.smartCase" = true;
       "terminal.integrated.defaultProfile.windows" = "PowerShell";
+      "terminal.external.osxExec" = "kitty.app";
+      "terminal.integrated.automationProfile.osx" = "fish";
       "terminal.integrated.enableBell" = true;
       "terminal.integrated.env.windows" = {
         "LC_ALL" = "zh_CN.UTF-8";

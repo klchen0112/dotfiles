@@ -5,9 +5,9 @@
   ...
 }: {
   imports = [
-   #  ../../browser
+    #  ../../browser
     ../../editors/emacs
-    ../../editors/nvim
+    # ../../editors/nvim
     ../../editors/vscode
     ../../lang/cpp
     ../../lang/julia
@@ -17,7 +17,7 @@
     ../../lang/nix
     ../../lang/nodejs
     ../../lang/python
-    # ../../reader
+    ../../reader
     ../../shells/git
     ../../shells/fish
     ../../shells/zsh
