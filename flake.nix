@@ -47,6 +47,11 @@
 
       emacs-overlay = {
         url = "github:nix-community/emacs-overlay/master";
+        inputs.nixpkgs.follows = "nixpkgs";
+      };
+      doom-emacs = {
+        url = "github:nix-community/nix-doom-emacs";
+        inputs.nixpkgs.follows = "nixpkgs";
       };
 
       hyprland = {
@@ -121,14 +126,19 @@
         config.allowUnfree = true;
         config.allowBroken = false;
       });
-    # nixosConfigurations = (
-    #   # NixOS configurations
-    #   import ./hosts {
-    #     # Imports ./hosts/default.nix
-    #     inherit (nixpkgs) lib;
-    #     inherit inputs nixpkgs home-manager nur user location hyprland; # Also inherit home-manager so it does not need to be defined here.
-    #   }
-    # );
+    nixosConfigurations = {
+      # NixOS configurations
+      "wsl" = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        specialArgs = {
+          inherit inputs user;
+          pkgs-unstable = legacyPackages-unstable.x86_64-linux;
+        };
+        modules = [
+          ./machines/wsl
+        ];
+      };
+    };
     homeConfigurations = {
       "chenkailong@macbook-pro-m1" = home-manager.lib.homeManagerConfiguration {
         pkgs = legacyPackages.aarch64-darwin;
@@ -161,5 +171,15 @@
 
     formatter =
       forAllSystems (system: nixpkgs.legacyPackages.${system}.alejandra);
+    nixConfig = {
+      commit-lockfile-summary = "flake: bump inputs";
+      substituters = [
+        "https://cache.nixos.org?priority=10"
+        "https://cache.ngi0.nixos.org/"
+        "https://nix-community.cachix.org?priority=5"
+        "https://nixpkgs-wayland.cachix.org"
+        "https://fortuneteller2k.cachix.org"
+      ];
+    };
   };
 }

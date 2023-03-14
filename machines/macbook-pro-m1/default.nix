@@ -77,9 +77,9 @@
       enable = true;
       package = pkgs.emacsGit;
     };
-    yabai = {
-      enable = true;
-    };
+    #yabai = {
+    #  enable = true;
+    #};
   };
 
   homebrew = {

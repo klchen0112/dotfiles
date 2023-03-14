@@ -19,7 +19,9 @@
         pull.rebase = "false";
         # For supercede
         core.symlinks = true;
+        lfs.enable = true;
       };
     };
+
   };
 }
