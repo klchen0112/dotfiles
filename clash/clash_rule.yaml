@@ -1,5 +1,5 @@
 # (HTTP and SOCKS5 in one port)
-mixed-port: 7890
+mixed-port: 47890
 #socks-port: 7891
 #redir-port: 7892 # Linux/MacOS 透明代理端口
 # tproxy-port: 7895 # 本地Linux Tproxy代理端口
@@ -35,6 +35,7 @@ sniffer: #【Meta专属】sniffer域名嗅探器
     - "dlg.io.mi.com"
     - "+.apple.com" # 苹果域名，建议加
     - "+.tpddns.cn"
+    - "+.zju.edu.cn"
   # - '*.baidu.com'                    # 支持通配符
 
   force-domain: # 需要强制嗅探的域名，默认只对IP嗅探
@@ -53,7 +54,7 @@ hosts: #host，支持通配符（非通配符域名优先级高于通配符域�
   "alpha.clash.dev": "::1"
 dns:
   enable: true # DNS开关(false/true)
-  listen: 0.0.0.0:1053 # DNS监听地址
+  listen: 0.0.0.0:41053 # DNS监听地址
   ipv6: false # IP6解析开关；如果为false，将返回ip6结果为空
 
   enhanced-mode: fake-ip # DNS模式(redir-host/fake-ip)
@@ -518,7 +519,7 @@ proxy-providers:
   #     url: http://cp.cloudflare.com/generate_204
   # RU: # 订阅名字，每个订阅不可重名，如果修改需要连同上方proxy-groups中use使用的一同修改
   #   type: file
-  #   # interval: 86400 # 订阅自动更新时间
+  #   # interval: 259200 # 订阅自动更新时间
   #   path: ./proxy_provider/mixed.yaml # 订阅节点存放位置
   #   filter: "俄罗斯"
   #   health-check:
@@ -527,7 +528,7 @@ proxy-providers:
   #     url: http://cp.cloudflare.com/generate_204
   # FR: # 订阅名字，每个订阅不可重名，如果修改需要连同上方proxy-groups中use使用的一同修改
   #   type: http
-  #   # interval: 86400 # 订阅自动更新时间
+  #   # interval: 259200 # 订阅自动更新时间
   #   path: ./proxy_provider/mixed.yaml # 订阅节点存放位置
   #   filter: "法国"
   #   health-check:
@@ -537,7 +538,7 @@ proxy-providers:
   # DE: # 订阅名字，每个订阅不可重名，如果修改需要连同上方proxy-groups中use使用的一同修改
   #   type: http
   #   #
-  #   # interval: 86400 # 订阅自动更新时间
+  #   # interval: 259200 # 订阅自动更新时间
   #   path: ./proxy_provider/mixed.yaml # 订阅节点存放位置
   #   filter: "德国"
   #   health-check:
@@ -554,7 +555,7 @@ proxy-providers:
   #     url: http://cp.cloudflare.com/generate_204
   # PH: # 订阅名字，每个订阅不可重名，如果修改需要连同上方proxy-groups中use使用的一同修改
   #   type: http
-  #   interval: 86400 # 订阅自动更新时间
+  #   interval: 259200 # 订阅自动更新时间
   #   path: ./proxy_provider/mixed.yaml # 订阅节点存放位置 # 订阅节点存放位置
   #   filter: "菲律宾"
   #   health-check:
@@ -580,7 +581,7 @@ proxy-providers:
   # AR: # 订阅名字，每个订阅不可重名，如果修改需要连同上方proxy-groups中use使用的一同修改
   #   type: http
   #   #
-  #   # interval: 86400 # 订阅自动更新时间
+  #   # interval: 259200 # 订阅自动更新时间
   #   path: ./proxy_provider/mixed.yaml # 订阅节点存放位置
   #   filter: "阿根廷"
   #   health-check:
@@ -590,7 +591,7 @@ proxy-providers:
   # UA: # 订阅名字，每个订阅不可重名，如果修改需要连同上方proxy-groups中use使用的一同修改
   #   type: http
   #   #
-  #   # interval: 86400 # 订阅自动更新时间
+  #   # interval: 259200 # 订阅自动更新时间
   #   path: ./proxy_provider/mixed.yaml # 订阅节点存放位置
   #   filter: "乌克兰"
   #   health-check:
@@ -600,7 +601,7 @@ proxy-providers:
   # BR: # 订阅名字，每个订阅不可重名，如果修改需要连同上方proxy-groups中use使用的一同修改
   #   type: http
   #   #
-  #   # interval: 86400 # 订阅自动更新时间
+  #   # interval: 259200 # 订阅自动更新时间
   #   path: ./proxy_provider/mixed.yaml # 订阅节点存放位置
   #   filter: "巴西"
   #   health-check:
@@ -631,118 +632,111 @@ rule-providers:
     behavior: classical
     path: ./rule_provider/Dns.yaml
     url: https://ghproxy.com/https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/release/rule/Clash/DNS/DNS.yaml
-    interval: 86400
+    interval: 259200
   Microsoft:
     type: http
     behavior: classical
 
     path: ./rule_provider/Microsoft.yaml
     url: https://ghproxy.com/https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Microsoft/Microsoft.yaml
-    interval: 86400
+    interval: 259200
 
   Apple_Domain:
     type: http
     behavior: domain
     path: ./rule_provider/Apple_Domain.yaml
     url: https://ghproxy.com/https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Apple/Apple_Domain.yaml
-    interval: 86400
+    interval: 259200
 
   BiliBiliIntl:
     type: http
     behavior: classical
     path: ./rule_provider/BiliBiliIntl.yaml
     url: https://ghproxy.com/https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/release/rule/Clash/BiliBiliIntl/BiliBiliIntl.yaml
-    interval: 86400
+    interval: 259200
 
   Bahamut:
     type: http
     behavior: classical
     path: ./rule_provider/Bahamut.yaml
     url: https://ghproxy.com/https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Bahamut/Bahamut.yaml
-    interval: 86400
+    interval: 259200
   ChinaMax_Domain:
     type: http
     behavior: domain
     path: ./rule_provider/ChinaMax_Domain.yaml
     url: https://ghproxy.com/https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/ChinaMax/ChinaMax_Domain.yaml
-    interval: 86400
-
-  ChinaMax_IP:
-    type: http
-    behavior: ipcidr
-    path: ./rule_provider/ChinaMax_IP.yaml
-    url: https://ghproxy.com/https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/ChinaMax/ChinaMax_IP.yaml
-
-    interval: 86400
+    interval: 259200
 
   GameDownloadCN:
     type: http
     behavior: classical
     path: ./rule_provider/GameDownloadCN.yaml
     url: https://ghproxy.com/https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Game/GameDownloadCN/GameDownloadCN.yaml
-    interval: 86400
+    interval: 259200
   Game:
     type: http
     behavior: classical
     path: ./rule_provider/Game.yaml
     url: https://ghproxy.com/https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/release/rule/Clash/Game/Game.yaml
-    interval: 86400
+    interval: 259200
 
   GlobalScholar:
     type: http
     behavior: classical
     path: ./rule_provider/GlobalScholar.yaml
     url: https://ghproxy.com/https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/GlobalScholar/GlobalScholar.yaml
-    interval: 86400
+    interval: 259200
   GlobalMedia_Domain:
     type: http
     behavior: domain
     path: ./rule_provider/GlobalMedia_Domain.yaml
     url: https://ghproxy.com/https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/GlobalMedia/GlobalMedia_Domain.yaml
-    interval: 86400
+    interval: 259200
 
   Global_Domain:
     type: http
     behavior: domain
     path: ./rule_provider/Global_Domain.yaml
     url: https://ghproxy.com/https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Global/Global_Domain.yaml
-    interval: 86400
+    interval: 259200
 
   Advertising_Domain:
     type: http
     behavior: domain
     path: ./rule_provider/Advertising_Domain.yaml
     url: https://ghproxy.com/https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/release/rule/Clash/Advertising/Advertising_Domain.yaml
-    interval: 86400
+    interval: 259200
 
   AD_DIRECT:
     type: http
-    behavior: classical
+    behavior: domain
     path: ./rule_provider/AD_DIRECT.yaml
     url: https://ghproxy.com/https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Direct/Direct.yaml
-    interval: 86400
+    interval: 259200
 
   Privacy_Domain:
     type: http
     behavior: domain
     path: ./rule_provider/Privacy_Domain.yaml
     url: https://ghproxy.com/https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Privacy/Privacy_Domain.yaml
-    interval: 86400
+    interval: 259200
 
   Developer:
     type: http
     behavior: classical
     path: ./rule_provider/Developer.yaml
     url: https://ghproxy.com/https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Developer/Developer.yaml
-    interval: 86400
+    interval: 259200
 
   ZJU:
     type: file
     behavior: classical
     path: ./rule_provider/ZJU.yaml
     url: https://ghproxy.com/https://raw.githubusercontent.com/ZJU-Rule/ZJU-Rule/master/Clash/ZJU.list
-    interval: 86400
+    interval: 259200
 rules:
+  - GEOIP,LAN,DIRECT,no-resolve
   - DOMAIN-SUFFIX,tpddns.cn,DIRECT
   # - DOMAIN-SUFFIX,plex.direct,DIRECT
   # DNS 代理
@@ -822,11 +816,9 @@ rules:
   - RULE-SET,GlobalMedia_Domain,Proxy
   - RULE-SET,Global_Domain,Proxy
   - RULE-SET,ChinaMax_Domain,DIRECT
-  - RULE-SET,ChinaMax_IP,DIRECT,no-resolve
 
   # GEOIP规则
-  - GEOIP,CN,DIRECT,no-resolve
-  - GEOIP,LAN,DIRECT
+  - GEOIP,CN,DIRECT
 
   # - GEOIP,HK,Proxy
   # - GEOIP,US,Proxy
