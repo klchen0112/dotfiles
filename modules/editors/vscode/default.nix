@@ -37,11 +37,13 @@
       # git
       eamodio.gitlens
       donjayamanne.githistory
+      mhutchie.git-graph
       # markdown
       yzhang.markdown-all-in-one
 
       # python
       ms-python.python
+      ms-pyright.pyright
 
       # nix
       bbenoist.nix
@@ -83,8 +85,8 @@
         "strings" = true;
       };
       "files.autoSave" = "afterDelay";
-      "editor.codeLensFontFamily" = "'JetBrains Mono','Overpass','CMU Typewriter Text','Noto Serif CJK SC','Noto Serif";
-      "editor.fontFamily" = "'JetBrains Mono','Overpass','CMU Typewriter Text','Noto Serif CJK SC','Noto Serif";
+      "editor.codeLensFontFamily" = "'JetBrains Mono','Overpass','CMU Typewriter Text','Noto Serif CJK SC','Noto Serif'";
+      "editor.fontFamily" = "'JetBrains Mono','Overpass','CMU Typewriter Text','Noto Serif CJK SC','Noto Serif'";
       "editor.fontLigatures" = true;
       "editor.fontSize" = 16;
       "editor.formatOnPaste" = true;

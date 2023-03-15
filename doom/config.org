@@ -211,7 +211,7 @@
                +pyright
                ;;+pyenv
                +cpython
-               ;;+conda
+               +conda
                ;;+poetry
                ;;+tree-sitter
                )            ; beautiful is better than ugly

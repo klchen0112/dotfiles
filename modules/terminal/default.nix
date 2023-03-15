@@ -5,6 +5,7 @@
   config,
   lib,
   pkgs,
+  pkgs-unstable,
   ...
 }: {
   # programs.alacritty = {
@@ -71,9 +72,13 @@
   #     };
   #   };
   # };
+  # home.packages = [
+  #   pkgs-unstable.kitty-themes
+  # ];
   programs.kitty = {
     enable = true;
-    theme = "Doom One Light";
+    # theme = "Doom One Light";
+    package = pkgs.kitty;
     # font = pkgs.jetbrains-mono;
     settings = {
       font_family = "JetBrains Mono Medium";

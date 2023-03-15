@@ -49,10 +49,6 @@
         url = "github:nix-community/emacs-overlay/master";
         inputs.nixpkgs.follows = "nixpkgs";
       };
-      doom-emacs = {
-        url = "github:nix-community/nix-doom-emacs";
-        inputs.nixpkgs.follows = "nixpkgs";
-      };
 
       hyprland = {
         # Official Hyprland flake
@@ -96,20 +92,7 @@
         # This adds our overlays to pkgs
         overlays = [
           emacs-overlay.overlay
-          (final: prev: {
-            sf-mono-liga-bin = prev.stdenvNoCC.mkDerivation rec {
-              pname = "sf-mono-liga-bin";
-              version = "dev";
-              src = inputs.sf-mono-liga-src;
-              dontConfigure = true;
-              installPhase = ''
-                mkdir -p $out/share/fonts/opentype
-                cp -R $src/*.otf $out/share/fonts/opentype/
-              '';
-            };
-          })
         ];
-
         # NOTE: Using `nixpkgs.config` in your NixOS config won't work
         # Instead, you should set nixpkgs configs here
         # (https://nixos.org/manual/nixpkgs/stable/#idm140737322551056)
@@ -119,7 +102,6 @@
     legacyPackages-unstable = forAllSystems (system:
       import inputs.nixpkgs-unstable {
         inherit system;
-
         # NOTE: Using `nixpkgs.config` in your NixOS config won't work
         # Instead, you should set nixpkgs configs here
         # (https://nixos.org/manual/nixpkgs/stable/#idm140737322551056)
