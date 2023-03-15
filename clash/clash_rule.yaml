@@ -1,5 +1,5 @@
 # (HTTP and SOCKS5 in one port)
-mixed-port: 47890
+mixed-port: 7890
 #socks-port: 7891
 #redir-port: 7892 # Linux/MacOS 透明代理端口
 # tproxy-port: 7895 # 本地Linux Tproxy代理端口
@@ -11,7 +11,7 @@ mode: rule # clash工作模式（rule/global/direct,meta暂不支持script）
 log-level: warning # 日志等级（info/warning/error/debug/silent）
 ipv6: false # ip6开关，当为false时，停止解析hostanmes为ip6地址
 
-external-controller: "127.0.0.1:9090" # 控制器监听地址
+external-controller: "0.0.0.0:9090" # 控制器监听地址
 # external-ui: /etc/clash/ui             # http服务路径，可以放静态web网页。
 #                                        # 如yacd的控制面板，可通过`http://{{external-controller}}/ui`直接使用
 #                                        # 也可以直接使用别人搭建好了的，博主就是这样。
@@ -64,6 +64,8 @@ dns:
     - tls://223.5.5.5:853
     - https://1.12.12.12/dns-query
     - https://223.5.5.5/dns-query
+    - 10.10.0.21
+    - 10.10.2.21
   # Lookup domains via specific nameservers
   # nameserver-policy:
   #   '+.ppyun3.top': 'tls://1.12.12.12:853'
@@ -73,7 +75,6 @@ dns:
   proxy-server-nameserver:
     - tls://1.12.12.12:853
     - tls://223.5.5.5:853
-    - tls://dns.rubyfish.cn:853
     - https://1.12.12.12/dns-query
   fallback: # 回落DNS服务器，支持udp/tcp/dot/doh/doq
     - "tls://1.1.1.1:853#DNS" #【Meta专属】"#DNS"代表该DNS服务器通过名为"DNS"的proxy Group访问
@@ -86,6 +87,8 @@ dns:
   fallback-filter: # 回落DNS服务器过滤
     geoip: true # 为真时，不匹配为geoip规则的使用fallback返回结果
     geoip-code: CN # geoip匹配区域设定
+    geosite:
+      - '!CN'
     ipcidr: # 列表中的ip使用fallback返回解析结果
       - 0.0.0.0/8
       - 10.0.0.0/8
