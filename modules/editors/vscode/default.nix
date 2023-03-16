@@ -51,6 +51,7 @@
       jnoortheen.nix-ide
     ];
     enableUpdateCheck = false;
+    enableExtensionUpdateCheck = false;
     userSettings = {
       "settingsSync.keybindingsPerPlatform" = true;
       "update.mode" = "none";
