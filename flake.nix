@@ -130,6 +130,14 @@
         }; # Pass flake inputs to our config
         modules = [./modules/hosts/macbook-pro-m1];
       };
+      "klchen@wsl" = home-manager.lib.homeManagerConfiguration {
+        pkgs = legacyPackages.x86_64-linux;
+        extraSpecialArgs = {
+          inherit inputs;
+          pkgs-unstable = legacyPackages-unstable.x86_64-linuxaarch64-darwin;
+        }; # Pass flake inputs to our config
+        modules = [./modules/hosts/wsl];
+      };
     };
     darwinConfigurations = {
       "macbook-pro-m1" = darwin.lib.darwinSystem {
