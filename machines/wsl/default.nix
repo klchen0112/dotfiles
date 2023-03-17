@@ -12,6 +12,9 @@
   user,
   ...
 }: {
+  imports = [
+    nixos-wsl.nixosModules.wsl
+  ];
   hardware.opengl.enable = true;
   environment = {
     shells = with pkgs; [bashInteractive fish zsh]
@@ -73,7 +76,19 @@
       # lmmath
     ];
   };
+    wsl = {
+    enable = true;
+    wslConf.automount.root = "/mnt";
+    defaultUser = "nixos";
+    startMenuLaunchers = true;
 
+    # Enable native Docker support
+    # docker-native.enable = true;
+
+    # Enable integration with Docker Desktop (needs to be installed)
+    # docker-desktop.enable = true;
+
+  };
     nix = {
     package = pkgs.nix;
     gc = {
@@ -97,5 +112,5 @@
       ];
     };
   };
-
+  system.stateVersion = "22.11";
 }
