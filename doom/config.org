@@ -310,7 +310,7 @@
 (setq
  mouse-drag-and-drop-region-cross-program t
  mouse-drag-and-drop-region t)
-
+(pixel-scroll-mode)
 (pixel-scroll-precision-mode 1)
 (setq pixel-scroll-precision-large-scroll-height 60
       pixel-scroll-precision-interpolation-factor 30.0)
@@ -498,7 +498,7 @@
 #+end_src
 ** global mode
 #+begin_src emacs-lisp :tangle config.el
-(pixel-scroll-mode)
+;;(pixel-scroll-mode)
 
 #+end_src
 * Editor
@@ -526,6 +526,57 @@ npm install nodejieba
 
 #+begin_src emacs-lisp :tangle config.el
 ;; below code from https://github.com/VitalyAnkh/config/blob/master/doom/config.org
+(defconst meow-cheatsheet-layout-engram
+    '((<TLDE> "[" "}")
+      (<AE01> "1" "|")
+      (<AE02> "2" "=")
+      (<AE03> "3" "~")
+      (<AE04> "4" "+")
+      (<AE05> "5" "<")
+      (<AE06> "6" ">")
+      (<AE07> "7" "^")
+      (<AE08> "8" "&")
+      (<AE09> "9" "%")
+      (<AE10> "0" "*")
+      (<AE11> "]" "}")
+      (<AE12> "/" "\\")
+      (<AD01> "b" "B")
+      (<AD02> "Y" "Y")
+      (<AD03> "o" "O")
+      (<AD04> "U" "U")
+      (<AD05> "b" "B")
+      (<AD06> "j" "J")
+      (<AD07> "l" "L")
+      (<AD08> "d" "D")
+      (<AD09> "w" "W")
+      (<AD10> "v" "v")
+      (<AD11> "z" "Z")
+      (<AD12> "#" "@")
+      (<BKSL> "$" "`")
+      (<AC01> "c" "C")
+      (<AC02> "i" "i")
+      (<AC03> "e" "E")
+      (<AC04> "a" "A")
+      (<AC05> "," ";")
+      (<AC06> "." "\"")
+      (<AC07> "h" "H")
+      (<AC08> "t" "T")
+      (<AC09> "s" "S")
+      (<AC10> "n" "N")
+      (<AC11> "q" "Q")
+      (<AB01> "g" "G")
+      (<AB02> "x" "X")
+      (<AB03> "j" "J")
+      (<AB04> "k" "K")
+      (<AB05> "-" "_")
+      (<AB06> "?" "!")
+      (<AB07> "r" "R")
+      (<AB08> "m" "M")
+      (<AB09> "f" "f")
+      (<AB10> "p" "P")
+      (<LSGT> "-" "_")))
+
+
 (defun meow/setup-leader ()
   (map! :leader
         "?" #'meow-cheatsheet
@@ -591,7 +642,7 @@ npm install nodejieba
   )
 
 (defun meow-setup ()
-  (setq meow-cheatsheet-layout meow-cheatsheet-layout-colemak-dh)
+  (setq meow-cheatsheet-layout meow-cheatsheet-layout-engram)
   (set-useful-keybindings)
   (meow/setup-doom-keybindings)
   ;; for doom emacs
@@ -638,101 +689,81 @@ npm install nodejieba
 
   (meow-normal-define-key
    '("0" . meow-expand-0)
-   '("9" . meow-expand-9)
-   '("8" . meow-expand-8)
-   '("7" . meow-expand-7)
-   '("6" . meow-expand-6)
-   '("5" . meow-expand-5)
-   '("4" . meow-expand-4)
-   '("3" . meow-expand-3)
-   '("2" . meow-expand-2)
    '("1" . meow-expand-1)
+   '("2" . meow-expand-2)
+   '("3" . meow-expand-3)
+   '("4" . meow-expand-4)
+   '("5" . meow-expand-5)
+   '("6" . meow-expand-6)
+   '("7" . meow-expand-7)
+   '("8" . meow-expand-8)
+   '("9" . meow-expand-9)
    '("-" . negative-argument)
-   '("v" . meow-reverse)
-   '("," . meow-bounds-of-thing)
-   '("." . meow-inner-of-thing)
-   '("{" . backward-paragraph)
-   '("}" . forward-paragraph)
-   '("<" . beginning-of-buffer)
-   '(">" . end-of-buffer)
+   '(";" . meow-reverse)
+   '("," . meow-inner-of-thing)
+   '("." . meow-bounds-of-thing)
    '("[" . meow-beginning-of-thing)
    '("]" . meow-end-of-thing)
-   '("e" . meow-append)
-   '("E" . meow-open-below)
-   '("l" . meow-back-word)
-   '("L" . meow-back-symbol)
+   '("/" . meow-visit)
+   '("a" . meow-append)
+   '("A" . meow-open-below)
+   '("b" . meow-back-word)
+   '("B" . meow-back-symbol)
    '("c" . meow-change)
-   '("i" . meow-next-word)
-   '("I" . meow-next-symbol)
-   '("T" . meow-find)
+   '("d" . meow-delete)
+   '("e" . meow-next-word)
+   '("E" . meow-next-symbol)
+   '("f" . meow-right)
+   '("f" . meow-right-expand)
    '("g" . meow-cancel-selection)
    '("G" . meow-grab)
-   '("b" . meow-left)
-   '("B" . meow-left-expand)
-   '("a" . meow-insert)
-   '("A" . meow-open-above)
+   '("h" . meow-left)
+   ;;'("H" . meow-left-expand)
+   '("i" . meow-insert)
+   '("I" . meow-open-above)
+   '("j" . meow-join)
+   '("k" . meow-kill)
+   '("l" . meow-line)
+   '("L" . meow-goto-line)
+   '("m" . meow-mark-word)
+   '("M" . meow-mark-symbol)
    '("n" . meow-next)
    '("N" . meow-next-expand)
-   '("p" . meow-prev)
-   '("P" . meow-prev-expand)
-   '("f" . meow-right)
-   '("F" . meow-right-expand)
-   '("m" . meow-join)
-   '("j" . meow-search)
    '("o" . meow-block)
    '("O" . meow-to-block)
-   '("k" . meow-save) ;; mnemonic save to Kill ring
+   '("p" . meow-prev)
+   '("P" . meow-prev-expand)
    '("q" . meow-quit)
    '("r" . meow-replace)
-   '("R" . meow-swap-grab)
-   '("d" . meow-kill)
+   '("r" . meow-swap-grab)
+   '("s" . meow-search)
+   '("S" . meow-open-above)
    '("t" . meow-till)
+   '("T" . meow-find)
    '("u" . meow-undo)
    '("U" . meow-undo-in-selection)
-   '("/" . meow-visit)
-   '("w" . meow-mark-word)
-   '("W" . meow-mark-symbol)
-   '("s" . meow-line)
-   '("S" . meow-goto-line)
+   '("v" . meow-visit)
+   '("w" . meow-next-word)
+   ;;'("W" . meow-next-symbol)
+   '("x" . meow-delete)
+   ;;'("X" . meow-backward-delete)
    '("y" . meow-yank)
    '("Y" . meow-sync-grab)
    '("z" . meow-pop-selection)
-   '("x" . repeat)
-   '(";" . consult-imenu)
-   '("h" . avy-goto-char-2)
-   '("H" . pop-global-mark)
+   '("'" . repeat)
+   '("\\" . qutoed-insert)
    '("<escape>" . ignore))
-
-  ;; Let =C-[= be the =ESC= of =evil= in =meow=:
-  (defun meow-insert-define-key (&rest keybindings)
-    "Define key for insert state.
-
-Usage:
-  (meow-insert-define-key
-   '(\"C-<space>\" . meow-insert-exit))"
-    (mapcar (lambda (key-ref)
-              (define-key meow-insert-state-keymap
-                          (kbd (car key-ref))
-                          (meow--parse-def (cdr key-ref))))
-            keybindings))
-  (meow-insert-define-key
-   '("\C-[" . meow-insert-exit))
 
   (setq meow-expand-exclude-mode-list nil)
   (setq meow-expand-hint-remove-delay 1024)
-  ;; TODO: replace define-key with keymap-set
-  (define-key input-decode-map (kbd "C-[") [control-bracketleft])
-  (define-key meow-insert-state-keymap [control-bracketleft] 'meow-insert-exit)
-  ;;(keymap-set input-decode-map "C-[" 'meow-insert-exit)
-  ;;(keymap-set meow-insert-state-keymap "C-[" 'meow-insert-exit)
 
   (setq meow-use-clipboard t
         meow-visit-sanitize-completion nil
         meow-expand-exclude-mode-list nil
         meow-expand-hint-remove-delay 1024
-        )
-  (add-to-list 'meow-mode-state-list '(hexl-mode . normal))
-  )
+   )
+
+)
 
 (use-package meow
   :init
@@ -740,7 +771,7 @@ Usage:
   :config
   (meow-setup)
   (meow-global-mode 1)
-  )
+)
 #+end_src
 
 * Biblio
@@ -1314,7 +1345,7 @@ See `org-capture-templates' for more information."
              org-roam-capture
              org-roam-node-find)
   :custom
-  (org-roam-database-connector 'sqlite-builtin)
+  (org-roam-database-connector 'sqlite-bulitin)
   :bind (("C-c n a" . org-id-get-create)
          ("C-c n l" . org-roam-buffer-toggle)
          ("C-c n f" . org-roam-node-find)
