@@ -68,15 +68,13 @@
       # zsh
       home-manager
       coreutils
+      cachix
     ];
   };
 
   services = {
     nix-daemon.enable = true; # Auto upgrade daemon
-    emacs = {
-      enable = true;
-      package = pkgs.emacsGit;
-    };
+
     #yabai = {
     #  enable = true;
     #};
@@ -115,6 +113,7 @@
       "macism"
     ];
     casks = [
+      "sunloginclient"
       # "adrive"
       "snipaste"
       "anki"

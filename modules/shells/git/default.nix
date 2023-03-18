@@ -22,6 +22,5 @@
         lfs.enable = true;
       };
     };
-
   };
 }

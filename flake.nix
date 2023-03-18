@@ -56,6 +56,8 @@
         inputs.nixpkgs.follows = "nixpkgs";
       };
 
+      vscode-server.url = "github:msteen/nixos-vscode-server";
+
       # fonts
     };
 
@@ -70,6 +72,7 @@
     nixgl,
     emacs-overlay,
     hyprland,
+    vscode-server,
     ...
   }:
   # Function that tells my flake which to use and what do what to do with the dependencies.
@@ -118,6 +121,14 @@
         };
         modules = [
           ./machines/wsl
+          vscode-server.nixosModule
+          ({
+            config,
+            pkgs,
+            ...
+          }: {
+            services.vscode-server.enable = true;
+          })
         ];
       };
     };
