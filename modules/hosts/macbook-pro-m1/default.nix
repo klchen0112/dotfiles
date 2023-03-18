@@ -7,6 +7,7 @@
   imports = [
     #  ../../browser
     ../../editors/emacs
+    ../../editors/vim
     # ../../editors/nvim
     ../../editors/vscode
     ../../lang/cpp

@@ -143,7 +143,7 @@
       "raycast"
       "openvpn-connect"
       "zotero"
-      "arc"
+      # "arc"
       # "via"
       "logseq"
     ];

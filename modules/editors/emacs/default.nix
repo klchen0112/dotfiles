@@ -48,5 +48,4 @@
     enable = true;
     package = pkgs.emacsGit;
   };
-
 }
