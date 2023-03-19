@@ -5,7 +5,13 @@
   programs = {
     vim = {
       enable = true;
-
+      settings = {
+        background = "light";
+        copyindent = true;
+        number = true;
+        relativenumber = true;
+        shiftwidth = 4;
+      };
       extraConfig = "
         set guifont=Courier:h12
         set foldenable      \" 允许折叠
@@ -16,7 +22,6 @@
         set tabstop=4 \" Tab键的宽度
         set expandtab
         set autoindent
-        set shiftwidth=4
         set matchtime=1 \" 匹配括号高亮的时间（单位是十分之一秒）
         set nocompatible \"去掉讨厌的有关vi一致性模式，避免以前版本的一些bug和局限
         set fileencodings=utf-8,ucs-bom,gb18030,gbk,gb2312,cp936 \"设置编码
@@ -26,7 +31,6 @@
         set mouse=a \" 鼠标
         set selection=exclusive
         set selectmode=mouse,key
-        set number \" 显示行号
         set cursorline \" 高亮当前行
         set cmdheight=2 \" 命令行显示2行
         set hlsearch \" 高亮所有的搜索目标
