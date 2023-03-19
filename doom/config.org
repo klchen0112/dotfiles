@@ -525,7 +525,6 @@ npm install nodejieba
 
 
 #+begin_src emacs-lisp :tangle config.el
-;; below code from https://github.com/VitalyAnkh/config/blob/master/doom/config.org
 (defconst meow-cheatsheet-layout-engram
     '((<TLDE> "[" "}")
       (<AE01> "1" "|")
@@ -765,9 +764,7 @@ npm install nodejieba
 
 )
 
-(use-package meow
-  :init
-  (require 'meow)
+(use-package! meow
   :config
   (meow-setup)
   (meow-global-mode 1)
@@ -843,8 +840,8 @@ npm install nodejieba
 citar need vertico
 #+begin_src emacs-lisp conf :tangle packages.el
 
-;; (package! citar)
-
+(package! citar)
+(package! embark)
 #+end_src
 
 #+begin_src emacs-lisp :tangle config.el
@@ -936,7 +933,8 @@ citar need vertico
                  :target (node "b93ffb0a-9383-4255-80ed-1142639fa458")
                  :unnarrowed t
                  :empty-lines-before 1
-                 :prepend t)))
+                 :prepend t))
+)
 
 
 (use-package! citar-org-roam
@@ -1010,6 +1008,17 @@ citar need vertico
   (org-special-keyword ((t (:inherit 'fixed-pitch))))
 )
 
+#+end_src
+
+** org 美化
+#+begin_src emacs-lisp conf :tangle packages.el
+(package! org-modern)
+(package! valign :recipe (:host github :repo "casouri/valign"))
+(package! org-superstar)
+#+end_src
+
+
+#+begin_src emacs-lisp conf :tangle config.el
 
 (use-package! org-superstar
   :after org
@@ -1025,19 +1034,6 @@ citar need vertico
   :custom
   (visual-fill-column-width 80))
 
-#+end_src
-
-** org 美化
-#+begin_src emacs-lisp conf :tangle packages.el
-(package! org-modern)
-(package! org-appear)
-(package! valign :recipe (:host github :repo "casouri/valign"))
-(package! org-superstar)
-#+end_src
-
-
-
-#+begin_src emacs-lisp conf :tangle config.el
 (use-package! org-modern
   :hook (org-mode . org-modern-mode)
   :config
@@ -1102,23 +1098,10 @@ citar need vertico
   (custom-set-faces! '(org-modern-statistics :inherit org-checkbox-statistics-todo))
 )
 
-
-(use-package! org-appear
-  :hook (org-mode . org-appear-mode)
-  :config
-  (setq org-appear-autoemphasis t
-        org-appear-autosubmarkers t
-        org-appear-autolinks nil)
-  ;; for proper first-time setup, `org-appear--set-elements'
-  ;; needs to be run after other hooks have acted.
-  (run-at-time nil nil #'org-appear--set-elements))
-
 (use-package! valign
-  :init
-  (require 'valign)
-  ;;:hook
-  ;;(org-mode . valign-mode)
-  ;;(markdown-mode . valign-mode)
+  :hook
+  (org-mode . valign-mode)
+  (markdown-mode . valign-mode)
   :config
   (setq valign-fancy-bar 1)
 )
@@ -1174,8 +1157,6 @@ citar need vertico
 
 ;; config org-mode
 ;;(use-package! org-mind-map
-;;  :init
-;;  (require 'ox-org)
 ;;  :config
 ;;  (setq org-mind-map-engine "dot")
 ;;)
@@ -1271,43 +1252,6 @@ citar need vertico
 (use-package! org-capture
   :after org
   )
-
-(after! org-capture
-  ;; these doct funcs from
-  (defun org-hugo-new-subtree-post-capture-template ()
-    "Returns `org-capture' template string for new Hugo post.
-See `org-capture-templates' for more information."
-    (let* ((title (read-from-minibuffer "Post Title: ")) ;Prompt to enter the post title
-           (fname (org-hugo-slug title)))
-      (mapconcat #'identity
-                 `(
-                   ,(concat "* TODO " title)
-                   ":PROPERTIES:"
-                   ,(concat ":EXPORT_FILE_NAME: " fname)
-                   ":END:"
-                   "\n\n")          ;Place the cursor here finally
-                 "\n")))
-
-  (setq org-capture-templates '(("t" "Personal todo" entry
-                                 (file+headline "pages/TODO.org" "Inbox")
-                                 "* [ ] %?\n%i\n%a" :prepend t)
-                                ("n" "Personal note" entry
-                                 (file "pages/Note.org")
-                                 "* %^{heading} %t %^g\n  %?\n")
-                                ("b" "Brain" plain (function org-brain-goto-end)
-                                 "* %i%?" :empty-lines 1)
-                                ("h"                ;`org-capture' binding + h
-                                 "Hugo post"
-                                 entry
-                                 ;; It is assumed that below file is present in `org-directory'
-                                 ;; and that it has a "Blog Ideas" heading. It can even be a
-                                 ;; symlink pointing to the actual location of all-posts.org!
-                                 (file+headline "~/org/blog/all-blog.org" "Blog Ideas")
-                                 (function org-hugo-new-subtree-post-capture-template))
-                                ("i" "Some ideas" entry
-                                 (file "pages/ideas.org")
-                                 "* TODO %?\n" :prepend t)))
-  )
 #+end_src
 ** org hugo
 #+begin_src elisp :tangle config.el
@@ -1329,7 +1273,7 @@ See `org-capture-templates' for more information."
 (package! org-roam-ui)
 
 (package! consult-org-roam)
-(package! emacsql-sqlite-builtin)
+
 #+end_src
 1. 设置org-roam templates 可以与 org-capture 混合使用
 2. 自动创建笔记的创建时间和修改时间
@@ -1344,56 +1288,49 @@ See `org-capture-templates' for more information."
              org-roam-setup
              org-roam-capture
              org-roam-node-find)
-  :custom
-  (org-roam-database-connector 'sqlite-bulitin)
   :bind (("C-c n a" . org-id-get-create)
          ("C-c n l" . org-roam-buffer-toggle)
          ("C-c n f" . org-roam-node-find)
          ("C-c n g" . org-roam-graph)
          ("C-c n i" . org-roam-node-insert)
-         ("C-c n n" . org-roam-capture)
+         ("C-c n c" . org-roam-capture)
          ("C-c n r" . org-roam-ref-find)
          ("C-c n R" . org-roam-ref-add)
          ("C-c n s" . org-roam-db-sync)
          ;; Dailies
          ("C-c n j" . org-roam-dailies-capture-today))
-  :init
-  (setq org-roam-directory "~/org")
+  :config
+  (org-roam-database-connector 'sqlite-bulitin)
+  (org-roam-directory (file-truename "~/org"))
+  # (org-roam-dailies-directory (expand-file-name "journals" org-roam-directory))
+  (org-roam-file-extensions '("org"))
   ;; 自动创建org roam 文件夹
   (unless (file-exists-p org-roam-directory) (make-directory org-roam-directory t))
-  (setq org-roam-db-gc-threshold most-positive-fixnum
-        )
 
-  :config
-  (setq org-roam-dailies-directory (expand-file-name "journals" org-roam-directory))
-  (setq org-roam-file-extensions '("org"))
-
+  (unless (file-exists-p org-roam-directory) (make-directory org-roam-dailies-directory t))
   (setq org-id-link-to-org-use-id t)
   (setq org-roam-completion-everywhere t)
-  (setq org-roam-capture-templates '(("d" "default" plain "%?"
-                                      :target
-                                      (file+head "pages/%<%Y%m%d%H%M%S>-${slug}.org" "#+title: ${title}\n- tags :: \n")
-                                      :unnarrowed t)))
+  (setq org-roam-capture-templates
+          '(("d" "default" plain "%?"
+                  :target
+            (file+head "pages/${slug}.org" "#+title: ${title}\n- tags :: \n")
+            :unnarrowed t)))
   (setq org-roam-dailies-capture-templates
         '(
           ("t" "tasks" entry "* TODO %?"
            :if-new (file+head+olp "%<%Y-%m-%d>.org" "#+title: %<%Y/%m/%d>\n#+filetags: :journal:\n" ("TODO Tasks :task:")))
           ("n" "notes" entry "* %?"
            :if-new (file+head+olp "%<%Y-%m-%d>.org" "#+title: %<%Y/%m/%d>\n#+filetags: :journal:\n" ("Notes :note:")))
-          ))
+          )
+  )
 
-  ;; If you're using a vertical completion framework, you might want a more informative completion interface
-  (setq org-roam-node-display-template (concat "${title:*} " (propertize "${tags:10}" 'face 'org-tag)))
-  (setq org-roam-db-autosync-mode 1)
+  (org-roam-db-autosync-mode)
   (setq org-roam-mode-sections
         (list #'org-roam-backlinks-section
               #'org-roam-reflinks-section
-              #'org-roam-unlinked-references-section
-	      ))
-  (require 'org-roam-protocol)
-  ;; Ensure the keymap is available
-  (require 'org-roam-dailies)
-  )
+              #'org-roam-unlinked-references-section)
+    )
+)
 
 (use-package! websocket
   :after org-roam)
@@ -1759,76 +1696,6 @@ tasks."
             (buffer-substring-no-properties (max (- (point) 3000) (point-min)) (point))))
     (setq codeium/document/text 'my-codeium/document/text)
     (setq codeium/document/cursor_offset 'my-codeium/document/cursor_offset))
-#+end_src
-** Company
-*** packages
-#+begin_src emacs-lisp conf :tangle no
-;; (package! company-fuzzy)
-#+end_src
-
-*** company lib
-为company mode 添加数字选择候选的功能
-#+begin_src emacs-lisp conf :tangle no
-(require 'company)
-(defun ora-company-number ()
-  "Forward to `company-complete-number'.
-Unless the number is potentially part of the candidate.
-In that case, insert the number."
-  (interactive)
-  (let* ((k (this-command-keys))
-         (re (concat "^" company-prefix k)))
-    (if (or (cl-find-if (lambda (s) (string-match re s))
-                        company-candidates)
-            (> (string-to-number k)
-               (length company-candidates))
-            (looking-back "[0-9]+\\.[0-9]*" (line-beginning-position)))
-        (self-insert-command 1)
-      (company-complete-number
-       (if (equal k "0")
-           10
-         (string-to-number k))))))
-(defun ora--company-good-prefix-p (orig-fn prefix)
-  (unless (and (stringp prefix) (string-match-p "\\`[0-9]+\\'" prefix))
-    (funcall orig-fn prefix)))
-(provide 'lib-company)
-#+end_src
-*** company config
-#+begin_src emacs-lisp conf :tangle no
-;; Company Mode
-(require 'company)
-(require 'lib-company)
- (use-package! company
-   :init
-   (setq company-require-match nil            ; Don't require match, so you can still move your cursor as expected.
-         company-tooltip-align-annotations t  ; Align annotation to the right side.
-         company-eclim-auto-save nil          ; Stop eclim auto save.
-         company-dabbrev-downcase nil)        ; No downcase when completion.
-   :config
-   (setq   company-idle-delay 0.2
-         company-show-quick-access t
-         company-transformers nil
-         company-minimum-prefix-length 2)
-   (advice-add 'company--good-prefix-p :around #'ora--company-good-prefix-p)
-   (let ((map company-active-map))
-     (mapc (lambda (x) (define-key map (format "%d" x) 'ora-company-number))
-         (number-sequence 0 9))
-   (define-key map " " (lambda ()
-                         (interactive)
-                         (company-abort)
-                         (self-insert-command 1)))
-   (define-key map (kbd "<return>") nil))
-   ;; Enable downcase only when completing the completion.
-   (defun jcs--company-complete-selection--advice-around (fn)
-     "Advice execute around `company-complete-selection' command."
-     (let ((company-dabbrev-downcase t))
-       (call-interactively fn)))
-   (advice-add 'company-complete-selection :around #'jcs--company-complete-selection--advice-around)
- )
-
- (use-package! company-fuzzy
-   :after company)
-
-(provide 'init-company)
 #+end_src
 ** lsp
 :PROPERTIES:
