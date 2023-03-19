@@ -17,7 +17,7 @@
   ];
   hardware.opengl.enable = true;
   environment = {
-    shells = with pkgs; [bashInteractive fish zsh]
+    shells = with pkgs; [bashInteractive fish zsh];
     systemPackages = with pkgs; [
       home-manager
       fish
@@ -76,7 +76,7 @@
       # lmmath
     ];
   };
-    wsl = {
+  wsl = {
     enable = true;
     wslConf.automount.root = "/mnt";
     defaultUser = "nixos";
@@ -87,9 +87,8 @@
 
     # Enable integration with Docker Desktop (needs to be installed)
     # docker-desktop.enable = true;
-
   };
-    nix = {
+  nix = {
     package = pkgs.nix;
     gc = {
       # Garbage collection
