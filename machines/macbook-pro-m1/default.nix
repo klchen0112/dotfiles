@@ -116,7 +116,7 @@
       skhdConfig = let
         modMask = "cmd";
         moveMask = "ctrl + cmd";
-        myTerminal = "emacsclient -a '' -nc --eval '(peel/vterm)'";
+        # myTerminal = "emacsclient -a '' -nc --eval '(peel/vterm)'";
         myEditor = "emacsclient -a '' -nc";
         myPlayer = "open /Applications/Plexamp.app";
         noop = "/dev/null";
@@ -133,6 +133,7 @@
           fst = "prev";
           snd = "last";
         };
+        keycodes = import ./keycodes.nix;
       in ''
         # windows ▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
         # select
@@ -162,12 +163,11 @@
         ${moveMask} - right                       : ${prefix} window --display prev
         ${moveMask} - left                        : ${prefix} window --display next
         # apps  ▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
-        ${modMask} - return                       : ${myTerminal}
         ${modMask} + shift - return               : ${myEditor}
         ${modMask} - p                            : ${myPlayer}
         # reset  ▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
         ${modMask} - q                            : pkill yabai; pkill skhd; osascript -e 'display notification "wm restarted"'
-        # blacklist 
+        # blacklist
         .blacklist [
         \"terminal\"
         \"qutebrowser\"
