@@ -1,7 +1,6 @@
 # (HTTP and SOCKS5 in one port)
-mixed-port: 7890
-#socks-port: 7891
-#redir-port: 7892 # Linux/MacOS 透明代理端口
+mixed-port : 7890
+
 # tproxy-port: 7895 # 本地Linux Tproxy代理端口
 # geodata-mode: true #【Meta专属】使用geoip.dat数据库(默认：false使用mmdb数据库)
 tcp-concurrent: true #【Meta专属】TCP连接并发，如果域名解析结果对应多个IP，并发所有IP，选择握手最快的IP进行连接
@@ -54,7 +53,7 @@ hosts: #host，支持通配符（非通配符域名优先级高于通配符域�
   "alpha.clash.dev": "::1"
 dns:
   enable: true # DNS开关(false/true)
-  listen: 0.0.0.0:41053 # DNS监听地址
+  listen: 0.0.0.0:1053 # DNS监听地址
   ipv6: false # IP6解析开关；如果为false，将返回ip6结果为空
 
   enhanced-mode: fake-ip # DNS模式(redir-host/fake-ip)
@@ -83,7 +82,8 @@ dns:
     - "https://9.9.9.9/dns-query#DNS"
     - "tls://8.8.8.8:853#DNS"
     - "https://8.8.8.8/dns-query#DNS"
-
+    - "tls://208.67.222.222:853#DNS"
+    - "https://208.67.220.220/dns-query#DNS"
   fallback-filter: # 回落DNS服务器过滤
     geoip: true # 为真时，不匹配为geoip规则的使用fallback返回结果
     geoip-code: CN # geoip匹配区域设定
@@ -184,7 +184,7 @@ proxy-groups:
       - 新加坡
       # - 台湾
       - 美国
-      - 韩国
+      # - 韩国
       # - 英国
       # - 泰国
       # # - 法国
@@ -206,7 +206,7 @@ proxy-groups:
       - SG
       # - TW
       - US
-      - KR
+      # - KR
       # - UK
       # - RU
       # - AU
@@ -232,7 +232,7 @@ proxy-groups:
       - 新加坡
       # - 台湾
       - 美国
-      - 韩国
+      # - 韩国
       # - 英国
       # # - 法国
       # - 俄罗斯
@@ -272,15 +272,18 @@ proxy-groups:
   - name: 学术
     type: select
     proxies:
+      - 学术节点
       - Proxy
       - 节点选择
       - DIRECT
-      - 香港
-      - 日本
-      - 新加坡
-      # - 台湾
-      - 美国
-      - 韩国
+  - name: 学术节点
+    type: load-balance
+    strategy: consistent-hashing
+    tolerance: 50 # 容差值：节点差值低于设定值时，不自动切换
+    url: "http://cp.cloudflare.com/generate_204" # 用来测ping的地址
+    interval: 300 # 测ping时间(秒)
+    use:
+      - Scholar
   - name: 香港
     type: load-balance
     strategy: consistent-hashing
@@ -331,14 +334,14 @@ proxy-groups:
     tolerance: 50 # 容差值：节点差值低于设定值时，不自动切换
     url: "http://cp.cloudflare.com/generate_204" # 用来测ping的地址
     interval: 300 # 测ping时间(秒)
-  - name: 韩国
-    type: load-balance
-    strategy: consistent-hashing
-    use:
-      - KR
-    tolerance: 50 # 容差值：节点差值低于设定值时，不自动切换
-    url: "http://cp.cloudflare.com/generate_204" # 用来测ping的地址
-    interval: 300 # 测ping时间(秒)
+  # - name: 韩国
+  #   type: load-balance
+  #   strategy: consistent-hashing
+  #   use:
+  #     - KR
+  #   tolerance: 50 # 容差值：节点差值低于设定值时，不自动切换
+  #   url: "http://cp.cloudflare.com/generate_204" # 用来测ping的地址
+  #   interval: 300 # 测ping时间(秒)
   # - name: 英国
   #   type: load-balance
   #   strategy: consistent-hashing
@@ -496,14 +499,14 @@ proxy-providers:
       enable: true
       interval: 300
       url: http://cp.cloudflare.com/generate_204
-  KR: # 订阅名字，每个订阅不可重名，如果修改需要连同上方proxy-groups中use使用的一同修改
-    type: file
-    path: ./proxy_provider/mixed.yaml # 订阅节点存放位置
-    filter: "韩国"
-    health-check:
-      enable: true
-      interval: 300
-      url: http://cp.cloudflare.com/generate_204
+  # KR: # 订阅名字，每个订阅不可重名，如果修改需要连同上方proxy-groups中use使用的一同修改
+  #   type: file
+  #   path: ./proxy_provider/mixed.yaml # 订阅节点存放位置
+  #   filter: "韩国"
+  #   health-check:
+  #     enable: true
+  #     interval: 300
+  #     url: http://cp.cloudflare.com/generate_204
   US: # 订阅名字，每个订阅不可重名，如果修改需要连同上方proxy-groups中use使用的一同修改
     type: file
     path: ./proxy_provider/mixed.yaml # 订阅节点存放位置
@@ -629,6 +632,13 @@ proxy-providers:
   #     enable: true
   #     interval: 300
   #     url: http://cp.cloudflare.com/generate_204
+  Scholar: # 订阅名字，每个订阅不可重名，如果修改需要连同上方proxy-groups中use使用的一同修改
+    type: file
+    path: ./proxy_provider/scholar.yaml # 订阅节点存放位置
+    health-check:
+      enable: true
+      interval: 300
+      url: http://cp.cloudflare.com/generate_204
 rule-providers:
   DNS:
     type: http
