@@ -77,18 +77,19 @@
   # ];
   programs.kitty = {
     enable = true;
+    font = {
+      name = "JetBrains Mono";
+      size = 16;
+    };
     # theme = "Doom One Light";
     package = pkgs.kitty;
-    # font = pkgs.jetbrains-mono;
     settings = {
-      font_family = "JetBrains Mono Medium";
-      bold_font = "JetBrains Mono Bold";
-      italic_font = "JetBrains Mono Italic";
-      bold_italic_font = "JetBrains Mono Bold Italic";
-      font_size = 16;
       remeber_window_size = true;
       initial_window_width = 640;
       initial_window_height = 400;
+      enable_audio_bell = false;
+      update_check_interval = 0;
     };
+    environment = {LS_COLORS = "1";};
   };
 }

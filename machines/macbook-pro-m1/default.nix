@@ -77,8 +77,7 @@
     nix-daemon.enable = true; # Auto upgrade daemon
     emacs = {
       enable = true;
-      package = pkgs.emacsGit;
-      additionalPath = ["/Users/${user}/.config"];
+      package = pkgs.emacsUnstable;
     };
     yabai = {
       enable = true;
