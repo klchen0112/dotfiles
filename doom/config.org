@@ -23,7 +23,7 @@
 ;;
 ;;      Alternatively, press 'gd' (or 'C-c c d') on a module to browse its
 ;;      directory (for easy access to its source code).
-
+(setq shell-file-name "/bin/bash")
 (doom! :input
        ;;bidi              ; (tfel ot) thgir etirw uoy gnipleh
        ;;chinese
@@ -271,11 +271,6 @@
 (setq user-full-name "klchen0112"
     user-mail-address "klchen0112@gmail.com")
 
-(setq max-specpdl-size 100000)
-(setq gcmh-high-cons-threshold most-positive-fixnum)
-
-
-
 (setq-default
  delete-by-moving-to-trash t                      ; Delete files to trash
  window-combination-resize t                      ; take new window space from all other windows (not just current)
@@ -310,10 +305,10 @@
 (setq
  mouse-drag-and-drop-region-cross-program t
  mouse-drag-and-drop-region t)
-(pixel-scroll-mode)
-(pixel-scroll-precision-mode 1)
-(setq pixel-scroll-precision-large-scroll-height 60
-      pixel-scroll-precision-interpolation-factor 30.0)
+;;(pixel-scroll-mode)
+;;(pixel-scroll-precision-mode 1)
+;;(setq pixel-scroll-precision-large-scroll-height 60
+;;     pixel-scroll-precision-interpolation-factor 30.0)
 #+end_src
 ** workaround
 #+begin_src emacs-lisp config.el
@@ -1266,13 +1261,14 @@ citar need vertico
 :ID: 3f6a8789-2cb1-45ec-ab57-063d22cceaf8
 :END:
 #+begin_src elisp :tangle packages.el
-(unpin! org-roam)
+;; (unpin! org-roam)
 (package! org-roam)
 
-(unpin! org-roam-ui)
+;; (unpin! org-roam-ui)
 (package! org-roam-ui)
 
 (package! consult-org-roam)
+(package! emacsql-sqlite-builtin)
 
 #+end_src
 1. 设置org-roam templates 可以与 org-capture 混合使用
@@ -1300,13 +1296,12 @@ citar need vertico
          ;; Dailies
          ("C-c n j" . org-roam-dailies-capture-today))
   :config
-  (org-roam-database-connector 'sqlite-bulitin)
-  (org-roam-directory (file-truename "~/org"))
-  # (org-roam-dailies-directory (expand-file-name "journals" org-roam-directory))
-  (org-roam-file-extensions '("org"))
+  (setq org-roam-database-connector 'sqlite-builtin
+        org-roam-directory (file-truename "~/org/pages")
+        org-roam-directory (file-truename "~/org/journals")
+        org-roam-file-extensions '("org"))
   ;; 自动创建org roam 文件夹
   (unless (file-exists-p org-roam-directory) (make-directory org-roam-directory t))
-
   (unless (file-exists-p org-roam-directory) (make-directory org-roam-dailies-directory t))
   (setq org-id-link-to-org-use-id t)
   (setq org-roam-completion-everywhere t)
@@ -1324,12 +1319,11 @@ citar need vertico
           )
   )
 
-  (org-roam-db-autosync-mode)
-  (setq org-roam-mode-sections
-        (list #'org-roam-backlinks-section
-              #'org-roam-reflinks-section
-              #'org-roam-unlinked-references-section)
-    )
+ (setq org-roam-mode-sections
+    (list #'org-roam-backlinks-section
+          #'org-roam-reflinks-section
+          #'org-roam-unlinked-references-section)
+  )
 )
 
 (use-package! websocket
