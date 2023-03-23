@@ -92,4 +92,18 @@
     };
     environment = {LS_COLORS = "1";};
   };
+  programs.wezterm = {
+    enable = true;
+    extraConfig = ''
+      return {
+        font = wezterm.font("JetBrains Mono"),
+        font_size = 16.0,
+        color_scheme = "AtomOneLight",
+        hide_tab_bar_if_only_one_tab = true,
+        keys = {
+          {key="n", mods="SHIFT|CTRL", action="ToggleFullScreen"},
+        }
+      }
+    '';
+  };
 }
