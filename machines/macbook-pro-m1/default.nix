@@ -166,13 +166,7 @@
         ${modMask} - p                            : ${myPlayer}
         # reset  ▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
         ${modMask} - q                            : pkill yabai; pkill skhd; osascript -e 'display notification "wm restarted"'
-        # blacklist
-        .blacklist [
-        \"terminal\"
-        \"qutebrowser\"
-        \"kitty\"
-        \"google chrome\"
-        ]'';
+      '';
     };
     spacebar = {
       enable = true;
@@ -341,7 +335,7 @@
       enableKeyMapping = true;
       remapCapsLockToControl = true;
     };
-    # activationScripts.postActivation.text = ''sudo chsh -s ${pkgs.zsh}/bin/fish''; # Since it's not possible to declare default shell, run this command after build
+    activationScripts.postActivation.text = ''sudo chsh -s ${pkgs.fish}/bin/fish'';
     stateVersion = 4;
   };
 }
