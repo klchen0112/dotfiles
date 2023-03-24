@@ -132,24 +132,6 @@
         ];
       };
     };
-    # homeConfigurations = {
-    #   "chenkailong@macbook-pro-m1" = home-manager.lib.homeManagerConfiguration {
-    #     pkgs = legacyPackages.aarch64-darwin;
-    #     extraSpecialArgs = {
-    #       inherit inputs;
-    #       pkgs-unstable = legacyPackages-unstable.aarch64-darwin;
-    #     }; # Pass flake inputs to our config
-    #     modules = [./modules/hosts/macbook-pro-m1];
-    #   };
-    #   "klchen@wsl" = home-manager.lib.homeManagerConfiguration {
-    #     pkgs = legacyPackages.x86_64-linux;
-    #     extraSpecialArgs = {
-    #       inherit inputs;
-    #       pkgs-unstable = legacyPackages-unstable.x86_64-linuxaarch64-darwin;
-    #     }; # Pass flake inputs to our config
-    #     modules = [./modules/hosts/wsl];
-    #   };
-    # };
     darwinConfigurations = {
       "macbook-pro-m1" = darwin.lib.darwinSystem {
         system = "aarch64-darwin";
@@ -163,11 +145,6 @@
           ./machines/macbook-pro-m1
           home-manager.darwinModules.home-manager
           modules/hosts/macbook-pro-m1/default.nix
-          # home-manager.darwinModules.home-manager
-          # {
-          #   home-manager.useGlobalPkgs = true;
-          #   home-manager.useUserPackages = true;
-          # }
         ];
       };
     };
