@@ -2,9 +2,8 @@
 # Git
 #
 {
-  config,
-  lib,
   pkgs,
+  pkgs-unstable,
   ...
 }: {
   programs = {

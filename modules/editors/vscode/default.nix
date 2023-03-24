@@ -10,11 +10,8 @@
 #       └─ ./editors
 #           └─ ./vscode
 {
-  config,
-  lib,
   pkgs,
   pkgs-unstable,
-  inputs,
   ...
 }: {
   programs.vscode = {

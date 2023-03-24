@@ -87,7 +87,6 @@
       "aarch64-darwin"
       "x86_64-darwin"
     ];
-  in rec {
     # Accessible through 'nix develop' or 'nix-shell' (legacy)
     legacyPackages = forAllSystems (system:
       import inputs.nixpkgs {
@@ -100,7 +99,7 @@
         # Instead, you should set nixpkgs configs here
         # (https://nixos.org/manual/nixpkgs/stable/#idm140737322551056)
         config.allowUnfree = true;
-        config.allowBroken = false;
+        config.allowBroken = true;
       });
     legacyPackages-unstable = forAllSystems (system:
       import inputs.nixpkgs-unstable {
@@ -109,8 +108,9 @@
         # Instead, you should set nixpkgs configs here
         # (https://nixos.org/manual/nixpkgs/stable/#idm140737322551056)
         config.allowUnfree = true;
-        config.allowBroken = false;
+        config.allowBroken = true;
       });
+  in rec {
     nixosConfigurations = {
       # NixOS configurations
       "wsl" = nixpkgs.lib.nixosSystem {
@@ -132,24 +132,24 @@
         ];
       };
     };
-    homeConfigurations = {
-      "chenkailong@macbook-pro-m1" = home-manager.lib.homeManagerConfiguration {
-        pkgs = legacyPackages.aarch64-darwin;
-        extraSpecialArgs = {
-          inherit inputs;
-          pkgs-unstable = legacyPackages-unstable.aarch64-darwin;
-        }; # Pass flake inputs to our config
-        modules = [./modules/hosts/macbook-pro-m1];
-      };
-      "klchen@wsl" = home-manager.lib.homeManagerConfiguration {
-        pkgs = legacyPackages.x86_64-linux;
-        extraSpecialArgs = {
-          inherit inputs;
-          pkgs-unstable = legacyPackages-unstable.x86_64-linuxaarch64-darwin;
-        }; # Pass flake inputs to our config
-        modules = [./modules/hosts/wsl];
-      };
-    };
+    # homeConfigurations = {
+    #   "chenkailong@macbook-pro-m1" = home-manager.lib.homeManagerConfiguration {
+    #     pkgs = legacyPackages.aarch64-darwin;
+    #     extraSpecialArgs = {
+    #       inherit inputs;
+    #       pkgs-unstable = legacyPackages-unstable.aarch64-darwin;
+    #     }; # Pass flake inputs to our config
+    #     modules = [./modules/hosts/macbook-pro-m1];
+    #   };
+    #   "klchen@wsl" = home-manager.lib.homeManagerConfiguration {
+    #     pkgs = legacyPackages.x86_64-linux;
+    #     extraSpecialArgs = {
+    #       inherit inputs;
+    #       pkgs-unstable = legacyPackages-unstable.x86_64-linuxaarch64-darwin;
+    #     }; # Pass flake inputs to our config
+    #     modules = [./modules/hosts/wsl];
+    #   };
+    # };
     darwinConfigurations = {
       "macbook-pro-m1" = darwin.lib.darwinSystem {
         system = "aarch64-darwin";
@@ -161,6 +161,8 @@
         modules = [
           # Modules that are used
           ./machines/macbook-pro-m1
+          home-manager.darwinModules.home-manager
+          modules/hosts/macbook-pro-m1/default.nix
           # home-manager.darwinModules.home-manager
           # {
           #   home-manager.useGlobalPkgs = true;

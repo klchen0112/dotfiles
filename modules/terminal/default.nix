@@ -2,10 +2,9 @@
 # OpenVPN
 #
 {
-  config,
-  lib,
   pkgs,
   pkgs-unstable,
+  # pkgs-unstable,
   ...
 }: {
   # programs.alacritty = {

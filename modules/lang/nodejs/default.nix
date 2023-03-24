@@ -1,7 +1,9 @@
 {
-  config,
-  lib,
   pkgs,
+  pkgs-unstable,
   ...
 }: {
+  home.packages = with pkgs; [
+    nodejs
+  ];
 }
