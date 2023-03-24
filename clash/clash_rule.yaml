@@ -1,7 +1,10 @@
-# (HTTP and SOCKS5 in one port)
-mixed-port : 7890
 
-# tproxy-port: 7895 # 本地Linux Tproxy代理端口
+port : 7894
+socks-port: 7891
+redir-port: 7892
+tproxy-port: 7893 # 本地Linux Tproxy代理端口
+mixed-port: 7890
+
 # geodata-mode: true #【Meta专属】使用geoip.dat数据库(默认：false使用mmdb数据库)
 tcp-concurrent: true #【Meta专属】TCP连接并发，如果域名解析结果对应多个IP，并发所有IP，选择握手最快的IP进行连接
 allow-lan: false # 允许局域网连接(false/true)
@@ -53,7 +56,7 @@ hosts: #host，支持通配符（非通配符域名优先级高于通配符域�
   "alpha.clash.dev": "::1"
 dns:
   enable: true # DNS开关(false/true)
-  listen: 0.0.0.0:1053 # DNS监听地址
+  listen: 0.0.0.0:7874 # DNS监听地址
   ipv6: false # IP6解析开关；如果为false，将返回ip6结果为空
 
   enhanced-mode: fake-ip # DNS模式(redir-host/fake-ip)
@@ -64,6 +67,8 @@ dns:
     - https://1.12.12.12/dns-query
     - https://223.5.5.5/dns-query
     - 10.66.10.10
+    - 10.10.0.21
+    - 10.10.2.21
   # Lookup domains via specific nameservers
   # nameserver-policy:
   #   '+.ppyun3.top': 'tls://1.12.12.12:853'
@@ -90,7 +95,7 @@ dns:
       - '!CN'
     ipcidr: # 列表中的ip使用fallback返回解析结果
       - 0.0.0.0/8
-      - 10.0.0.0/8
+      # - 10.0.0.0/8
       - 100.64.0.0/10
       - 127.0.0.0/8
       - 169.254.0.0/16
