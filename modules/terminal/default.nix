@@ -75,23 +75,23 @@
   # home.packages = [
   #   pkgs-unstable.kitty-themes
   # ];
-  programs.kitty = {
-    enable = true;
-    font = {
-      name = "JetBrains Mono";
-      size = 16;
-    };
-    # theme = "Doom One Light";
-    package = pkgs.kitty;
-    settings = {
-      remeber_window_size = true;
-      initial_window_width = 640;
-      initial_window_height = 400;
-      enable_audio_bell = false;
-      update_check_interval = 0;
-    };
-    environment = {LS_COLORS = "1";};
-  };
+  # programs.kitty = {
+  #   enable = true;
+  #   font = {
+  #     name = "JetBrains Mono";
+  #     size = 16;
+  #   };
+  #   # theme = "Doom One Light";
+  #   package = pkgs.kitty;
+  #   settings = {
+  #     remeber_window_size = true;
+  #     initial_window_width = 640;
+  #     initial_window_height = 400;
+  #     enable_audio_bell = false;
+  #     update_check_interval = 0;
+  #   };
+  #   environment = {LS_COLORS = "1";};
+  # };
   programs.wezterm = {
     enable = true;
     extraConfig = ''
