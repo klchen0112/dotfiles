@@ -521,7 +521,7 @@ npm install nodejieba
 
 #+begin_src emacs-lisp :tangle config.el
 (defconst meow-cheatsheet-layout-engram
-    '((<TLDE> "[" "}")
+    '((<TLDE> "[" "{")
       (<AE01> "1" "|")
       (<AE02> "2" "=")
       (<AE03> "3" "~")
@@ -535,9 +535,9 @@ npm install nodejieba
       (<AE11> "]" "}")
       (<AE12> "/" "\\")
       (<AD01> "b" "B")
-      (<AD02> "Y" "Y")
+      (<AD02> "y" "Y")
       (<AD03> "o" "O")
-      (<AD04> "U" "U")
+      (<AD04> "u" "U")
       (<AD05> "b" "B")
       (<AD06> "j" "J")
       (<AD07> "l" "L")
@@ -705,6 +705,7 @@ npm install nodejieba
    '("B" . meow-back-symbol)
    '("c" . meow-change)
    '("d" . meow-delete)
+   '("D" . meow-backspace)
    '("e" . meow-next-word)
    '("E" . meow-next-symbol)
    '("f" . meow-right)
@@ -739,7 +740,7 @@ npm install nodejieba
    '("v" . meow-visit)
    '("w" . meow-next-word)
    ;;'("W" . meow-next-symbol)
-   '("x" . meow-delete)
+   '("x" . meow-M-x)
    ;;'("X" . meow-backward-delete)
    '("y" . meow-yank)
    '("Y" . meow-sync-grab)
@@ -2034,18 +2035,14 @@ use dash open app dash
 ** Git Module
 ** Time tracking
 #+begin_src emacs-lisp :tangle packages.el
-(package! wakatime-mode)
+;;(package! wakatime-mode)
 #+end_src
 
 #+begin_src emacs-lisp :tangle config.el
-(use-package! wakatime-mode
-  :config
-  (setq wakatime-cli-path
-        (cond
-         (IS-MAC "~/.nix-profile/bin/wakatime-cli")
-         (IS-WINDOWS "~/.wakatime/wakatime-cli")
-        ))
-  (global-wakatime-mode)
-)
+;;(use-package! wakatime-mode
+;;  :config
+;; (setq wakatime-cli-path       (cond (IS-MAC "~/.nix-profile/bin/wakatime-cli") (IS-WINDOWS "~/.wakatime/wakatime-cli")))
+;;  (global-wakatime-mode)
+;;)
 #+end_src
 
