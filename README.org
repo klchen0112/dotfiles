@@ -1,3 +1,16 @@
+* Overview
+- Mac
+  - [[file:modules/hosts/macbook-pro-m1/default.nix][system]]
+    - skhd
+    - yabai
+    - emacs service
+    - homebrew
+      - use macs install app store
+    - fonts
+  - [[file:modules/hosts/macbook-pro-m1/default.nix][user]]
+    - editors
+    - [[file:modules/lang][lang]]
+    -
 * Installation
 ** Nix Darwin Installation
 *** Setup
@@ -19,3 +32,6 @@ $ echo "experimental-features = nix-command flakes" >> ~/.config/nix/nix.conf
   # for rebuild
   darwin-rebuild switch --flake ".#macbook-pro-m1"
 #+end_src
+
+* Thanks
+- [[https://github.com/julian-heng/yabai-config/][julian-heng/yabai-config]]
