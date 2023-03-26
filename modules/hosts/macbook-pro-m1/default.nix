@@ -28,7 +28,7 @@
         ../../lang/nodejs
         ../../lang/python
         ../../lang/rust
-        # ../../reader
+        ../../reader
         ../../shells/git
         ../../shells/fish
         ../../shells/zsh
