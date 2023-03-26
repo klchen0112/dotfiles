@@ -9,11 +9,7 @@
 #   └─ ./modules
 #       └─ ./editors
 #           └─ ./vscode
-{
-  pkgs,
-  pkgs-unstable,
-  ...
-}: {
+{pkgs, ...}: {
   programs.vscode = {
     enable = true;
     package = pkgs.vscode;

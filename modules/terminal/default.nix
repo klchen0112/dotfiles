@@ -3,8 +3,7 @@
 #
 {
   pkgs,
-  pkgs-unstable,
-  # pkgs-unstable,
+  #
   ...
 }: {
   # programs.alacritty = {

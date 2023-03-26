@@ -1,13 +1,9 @@
 #
 # OpenVPN
 #
-{
-  pkgs,
-  pkgs-unstable,
-  ...
-}: {
+{pkgs, ...}: {
   programs.google-chrome = {
     enable = true;
-    package = pkgs-unstable.google-chrome;
+    package = pkgs.google-chrome;
   };
 }

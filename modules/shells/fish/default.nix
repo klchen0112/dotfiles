@@ -1,11 +1,7 @@
 #
 # fish configuration
 #
-{
-  pkgs,
-  pkgs-unstable,
-  ...
-}: {
+{pkgs, ...}: {
   programs = {
     fish = {
       enable = true;

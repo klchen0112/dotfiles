@@ -19,8 +19,7 @@
   inputs =
     # All flake references used to build my NixOS setup. These are dependencies.
     {
-      nixpkgs.url = "github:nixos/nixpkgs/nixos-22.11"; # Nix Packages
-      nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable"; # Nix Packages
+      nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable"; # Nix Packages
       nixos-hardware.url = "github:NixOS/nixos-hardware";
 
       flake-utils.url = "github:numtide/flake-utils";
@@ -64,7 +63,6 @@
   outputs = inputs @ {
     self,
     nixpkgs,
-    nixpkgs-unstable,
     home-manager,
     flake-utils,
     darwin,
@@ -101,15 +99,6 @@
         config.allowUnfree = true;
         config.allowBroken = true;
       });
-    legacyPackages-unstable = forAllSystems (system:
-      import inputs.nixpkgs-unstable {
-        inherit system;
-        # NOTE: Using `nixpkgs.config` in your NixOS config won't work
-        # Instead, you should set nixpkgs configs here
-        # (https://nixos.org/manual/nixpkgs/stable/#idm140737322551056)
-        config.allowUnfree = true;
-        config.allowBroken = true;
-      });
   in rec {
     nixosConfigurations = {
       # NixOS configurations
@@ -117,7 +106,6 @@
         system = "x86_64-linux";
         specialArgs = {
           inherit inputs user;
-          pkgs-unstable = legacyPackages-unstable.x86_64-linux;
         };
         modules = [
           ./machines/wsl
@@ -137,7 +125,6 @@
         system = "aarch64-darwin";
         specialArgs = {
           inherit user inputs;
-          pkgs-unstable = legacyPackages-unstable.aarch64-darwin;
         };
         pkgs = legacyPackages.aarch64-darwin;
         modules = [

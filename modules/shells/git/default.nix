@@ -1,11 +1,7 @@
 #
 # Git
 #
-{
-  pkgs,
-  pkgs-unstable,
-  ...
-}: {
+{pkgs, ...}: {
   programs = {
     git = {
       enable = true;

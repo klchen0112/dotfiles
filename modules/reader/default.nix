@@ -1,10 +1,6 @@
-{
-  pkgs,
-  pkgs-unstable,
-  ...
-}: {
+{pkgs, ...}: {
   programs.sioyek = {
     enable = true;
-    package = pkgs-unstable.sioyek;
+    package = pkgs.sioyek;
   };
 }

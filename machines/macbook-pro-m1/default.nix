@@ -286,7 +286,7 @@
     # Declare Homebrew using Nix-Darwin
     enable = true;
     onActivation = {
-      autoUpdate = false; # Auto update packages
+      autoUpdate = true; # Auto update packages
       upgrade = false;
       cleanup = "zap"; # Uninstall not listed packages and casks
     };
@@ -336,7 +336,7 @@
       "marginnote"
       "vial"
       "dash"
-      "nutstore"
+      # "nutstore"
       "omnidisksweeper"
       "vlc"
       "discord"
