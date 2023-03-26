@@ -1,14 +1,9 @@
-{
-  pkgs,
-  pkgs-unstable,
-  ...
-}: {
+{pkgs, ...}: {
   home-manager = {
     useGlobalPkgs = true;
     useUserPackages = true;
     users.chenkailong = {
       pkgs,
-      pkgs-unstable,
       user,
       ...
     }: {
@@ -32,6 +27,7 @@
         ../../lang/nix
         ../../lang/nodejs
         ../../lang/python
+        ../../lang/rust
         # ../../reader
         ../../shells/git
         ../../shells/fish
