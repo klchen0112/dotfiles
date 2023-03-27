@@ -2,6 +2,7 @@
   home.packages = with pkgs; [
     exa
     tree
+    inetutils
   ];
   programs.starship = {
     enable = true;
