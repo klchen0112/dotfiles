@@ -315,7 +315,7 @@
       "macism"
     ];
     casks = [
-      "sunloginclient"
+      # "sunloginclient"
       # "adrive"
       "snipaste"
       "anki"
@@ -326,7 +326,7 @@
       "sublime-text"
       # "authy"
       # "hiddenbar"
-      "telegram"
+      # "telegram"
       "baidunetdisk"
       # "iterm2"
       "balenaetcher"
@@ -339,7 +339,7 @@
       # "nutstore"
       "omnidisksweeper"
       "vlc"
-      "discord"
+      # "discord"
       "plexamp"
       "xnviewmp"
       "raycast"
