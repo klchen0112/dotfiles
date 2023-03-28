@@ -1,9 +1,10 @@
 {pkgs, ...}: {
   home.packages = with pkgs; [
     cmake
+    
     # xmake
-    glib
-    gcc
+    # glib
+    # gcc
     # julia
   ];
 }

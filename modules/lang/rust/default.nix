@@ -1,6 +1,7 @@
 {pkgs, ...}: {
   home.packages = with pkgs; [
-    libiconv
+    # libiconv
+    # libiconvReal
     rustup
   ];
 }
