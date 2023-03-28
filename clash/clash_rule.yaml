@@ -54,6 +54,9 @@ hosts: #host，支持通配符（非通配符域名优先级高于通配符域�
   "*.clash.dev": 127.0.0.1 #例如foo.example.com>*.example.com>.example.com
   ".dev": 127.0.0.1
   "alpha.clash.dev": "::1"
+  'time.android.com': 203.107.6.88
+  'time.facebook.com': 203.107.6.88
+  'localhost': 127.0.0.1
 dns:
   enable: true # DNS开关(false/true)
   listen: 0.0.0.0:7874 # DNS监听地址
