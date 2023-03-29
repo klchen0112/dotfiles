@@ -839,11 +839,11 @@ rules:
 
   # GEOIP规则
   - GEOIP,CN,DIRECT
-
-  # - GEOIP,HK,Proxy
-  # - GEOIP,US,Proxy
-  # - GEOIP,JP,Proxy
-  # - GEOIP,SG,Proxy
+  - GEOIP,TELEGRAM,Proxy
+  - GEOIP,HK,香港
+  - GEOIP,US,美国
+  - GEOIP,JP,日本
+  - GEOIP,SG,新加坡
   # - GEOIP,TW,Proxy
   # - GEOIP,KR,Proxy
   # - GEOIP,TH,Proxy
