@@ -18,19 +18,24 @@
       mechatroner.rainbow-csv
       gruntfuggly.todo-tree
       johnpapa.vscode-peacock
+      github.github-vscode-theme
       # akamud.vscode-theme-onelight
-      emmanuelbeziat.vscode-great-icons
+      vscode-icons-team.vscode-icons
+
       # editor
       streetsidesoftware.code-spell-checker
       christian-kohler.path-intellisense
+      tuttieee.emacs-mcx
+
       # ssh
       ms-vscode-remote.remote-ssh
 
-      vscodevim.vim
       # git
       eamodio.gitlens
       donjayamanne.githistory
       mhutchie.git-graph
+      waderyan.gitblame
+
       # markdown
       yzhang.markdown-all-in-one
 
@@ -42,6 +47,8 @@
       bbenoist.nix
       kamadorueda.alejandra
       jnoortheen.nix-ide
+      # csv
+      mechatroner.rainbow-csv
     ];
     enableUpdateCheck = false;
     enableExtensionUpdateCheck = false;
@@ -173,7 +180,7 @@
       "editor.unicodeHighlight.ambiguousCharacters" = false;
       "editor.unicodeHighlight.nonBasicASCII" = false;
       "remote.SSH.useLocalServer" = false;
-      "workbench.colorTheme" = "Atom One Light";
+      "workbench.colorTheme" = "GitHub Light";
       "remote.SSH.remotePlatform" = {
         "ningbo203" = "linux";
         "ningbo204" = "linux";
