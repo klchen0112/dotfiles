@@ -15,6 +15,7 @@
       };
       imports = [
         #  ../../browser
+        ../../downloader
         ../../editors/emacs
         ../../editors/vim
         # ../../editors/nvim
