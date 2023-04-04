@@ -100,26 +100,26 @@
         config.allowBroken = true;
       });
   in rec {
-    nixosConfigurations = {
-      # NixOS configurations
-      "wsl" = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-        specialArgs = {
-          inherit inputs user;
-        };
-        modules = [
-          ./machines/wsl
-          vscode-server.nixosModule
-          ({
-            config,
-            pkgs,
-            ...
-          }: {
-            services.vscode-server.enable = true;
-          })
-        ];
-      };
-    };
+    # nixosConfigurations = {
+    #   # NixOS configurations
+    #   "wsl" = nixpkgs.lib.nixosSystem {
+    #     system = "x86_64-linux";
+    #     specialArgs = {
+    #       inherit inputs user;
+    #     };
+    #     modules = [
+    #       ./machines/wsl
+    #       vscode-server.nixosModule
+    #       ({
+    #         config,
+    #         pkgs,
+    #         ...
+    #       }: {
+    #         services.vscode-server.enable = true;
+    #       })
+    #     ];
+    #   };
+    # };
     darwinConfigurations = {
       "macbook-pro-m1" = darwin.lib.darwinSystem {
         system = "aarch64-darwin";
@@ -138,15 +138,5 @@
 
     formatter =
       forAllSystems (system: nixpkgs.legacyPackages.${system}.alejandra);
-    nixConfig = {
-      commit-lockfile-summary = "flake: bump inputs";
-      substituters = [
-        "https://cache.nixos.org?priority=10"
-        "https://cache.ngi0.nixos.org/"
-        "https://nix-community.cachix.org?priority=5"
-        "https://nixpkgs-wayland.cachix.org"
-        "https://fortuneteller2k.cachix.org"
-      ];
-    };
   };
 }

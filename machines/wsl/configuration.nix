@@ -1,35 +1,35 @@
-{ lib, pkgs, config, modulesPath, ... }:
+# { lib, pkgs, config, modulesPath, ... }:
 
-with lib;
-let
-  nixos-wsl = import ./nixos-wsl;
-in
-{
-  imports = [
-    "${modulesPath}/profiles/minimal.nix"
+# with lib;
+# let
+#   nixos-wsl = import ./nixos-wsl;
+# in
+# {
+#   imports = [
+#     "${modulesPath}/profiles/minimal.nix"
 
-    nixos-wsl.nixosModules.wsl
-  ];
+#     nixos-wsl.nixosModules.wsl
+#   ];
 
-  wsl = {
-    enable = true;
-    automountPath = "/mnt";
-    defaultUser = "nixos";
-    startMenuLaunchers = true;
+#   wsl = {
+#     enable = true;
+#     automountPath = "/mnt";
+#     defaultUser = "nixos";
+#     startMenuLaunchers = true;
 
-    # Enable native Docker support
-    # docker-native.enable = true;
+#     # Enable native Docker support
+#     # docker-native.enable = true;
 
-    # Enable integration with Docker Desktop (needs to be installed)
-    # docker-desktop.enable = true;
+#     # Enable integration with Docker Desktop (needs to be installed)
+#     # docker-desktop.enable = true;
 
-  };
+#   };
 
-  # Enable nix flakes
-  nix.package = pkgs.nixFlakes;
-  nix.extraOptions = ''
-    experimental-features = nix-command flakes
-  '';
+#   # Enable nix flakes
+#   nix.package = pkgs.nixFlakes;
+#   nix.extraOptions = ''
+#     experimental-features = nix-command flakes
+#   '';
 
-  system.stateVersion = "22.05";
-}
+#   system.stateVersion = "22.05";
+# }
