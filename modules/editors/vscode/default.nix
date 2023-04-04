@@ -13,43 +13,58 @@
   programs.vscode = {
     enable = true;
     package = pkgs.vscode;
-    extensions = with pkgs.vscode-extensions; [
-      #themes
-      mechatroner.rainbow-csv
-      gruntfuggly.todo-tree
-      johnpapa.vscode-peacock
-      github.github-vscode-theme
-      # akamud.vscode-theme-onelight
-      vscode-icons-team.vscode-icons
+    extensions = with pkgs.vscode-extensions;
+      [
+        #themes
+        mechatroner.rainbow-csv
+        gruntfuggly.todo-tree
+        johnpapa.vscode-peacock
+        github.github-vscode-theme
+        # akamud.vscode-theme-onelight
+        vscode-icons-team.vscode-icons
 
-      # editor
-      streetsidesoftware.code-spell-checker
-      christian-kohler.path-intellisense
-      tuttieee.emacs-mcx
+        # editor
+        streetsidesoftware.code-spell-checker
+        christian-kohler.path-intellisense
+        tuttieee.emacs-mcx
 
-      # ssh
-      ms-vscode-remote.remote-ssh
+        # ssh
+        ms-vscode-remote.remote-ssh
 
-      # git
-      eamodio.gitlens
-      donjayamanne.githistory
-      mhutchie.git-graph
-      waderyan.gitblame
+        # git
+        eamodio.gitlens
+        donjayamanne.githistory
+        mhutchie.git-graph
+        waderyan.gitblame
 
-      # markdown
-      yzhang.markdown-all-in-one
+        # markdown
+        yzhang.markdown-all-in-one
 
-      # python
-      ms-python.python
-      ms-pyright.pyright
+        # python
+        ms-python.python
+        ms-pyright.pyright
 
-      # nix
-      bbenoist.nix
-      kamadorueda.alejandra
-      jnoortheen.nix-ide
-      # csv
-      mechatroner.rainbow-csv
-    ];
+        # nix
+        bbenoist.nix
+        kamadorueda.alejandra
+        jnoortheen.nix-ide
+        # csv
+        mechatroner.rainbow-csv
+      ]
+      ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
+        {
+          name = "python-environment-manager";
+          publisher = "donjayamanne";
+          version = "1.0.4";
+          sha256 = "E7pbzPFKmHIOQzETjNkcrNbI2mwhpxHPpGBIk/iflpo=";
+        }
+        {
+          name = "vscode-theme-onelight";
+          publisher = "akamud";
+          version = "2.3.0";
+          sha256 = "CTD0s2lRMCi/WCGr6dP1Utrvtsdcbg4srRcrZJSFDqU=";
+        }
+      ];
     enableUpdateCheck = false;
     enableExtensionUpdateCheck = false;
     userSettings = {
@@ -86,8 +101,8 @@
         "strings" = true;
       };
       "files.autoSave" = "afterDelay";
-      "editor.codeLensFontFamily" = "'JetBrains Mono','Overpass','CMU Typewriter Text','Noto Serif CJK SC','Noto Serif'";
-      "editor.fontFamily" = "'JetBrains Mono','Overpass','CMU Typewriter Text','Noto Serif CJK SC','Noto Serif'";
+      "editor.codeLensFontFamily" = "'Iosevka','Overpass','CMU Typewriter Text','Noto Serif CJK SC','Noto Serif'";
+      "editor.fontFamily" = "'Iosevka','Overpass','CMU Typewriter Text','Noto Serif CJK SC','Noto Serif'";
       "editor.fontLigatures" = true;
       "editor.fontSize" = 16;
       "editor.formatOnPaste" = true;
@@ -180,7 +195,7 @@
       "editor.unicodeHighlight.ambiguousCharacters" = false;
       "editor.unicodeHighlight.nonBasicASCII" = false;
       "remote.SSH.useLocalServer" = false;
-      "workbench.colorTheme" = "GitHub Light";
+      "workbench.colorTheme" = "Atom One Light";
       "remote.SSH.remotePlatform" = {
         "ningbo203" = "linux";
         "ningbo204" = "linux";

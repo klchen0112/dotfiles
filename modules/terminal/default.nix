@@ -23,7 +23,7 @@
 
   #     font = {
   #       normal = {
-  #         family = "Jetbrains Mono";
+  #         family = "Iosevka";
   #         style = "Regular";
   #       };
   #       size = lib.mkMerge [
@@ -76,7 +76,7 @@
   # programs.kitty = {
   #   enable = true;
   #   font = {
-  #     name = "JetBrains Mono";
+  #     name = "Iosevka";
   #     size = 16;
   #   };
   #   # theme = "Doom One Light";
@@ -94,7 +94,7 @@
     enable = true;
     extraConfig = ''
       return {
-        font = wezterm.font("JetBrains Mono"),
+        font = wezterm.font("Iosevka"),
         font_size = 16.0,
         color_scheme = "AtomOneLight",
         hide_tab_bar_if_only_one_tab = true,

@@ -36,7 +36,9 @@
        ;;helm              ; the *other* search engine for love and life
        ;;ido               ; the other *other* search engine...
        ;;(ivy +fuzzy +prescient +childframe +icons)               ; a search engine for love and life
-       (vertico +icons +childframe)         ; the search engine of the future
+       (vertico +icons
+                +childframe ;; not for yabai
+                )         ; the search engine of the future
 
        :ui
        ;;deft              ; notational velocity for Emacs
@@ -344,7 +346,7 @@
 
 #+end_src
 * UI settings
-** frame size
+** frame
 #+begin_src emacs-lisp :tangle packages.el
 (package! zoom)
 #+end_src
@@ -360,6 +362,10 @@
 
 (add-to-list 'default-frame-alist '(width . 100))
 
+;; no title bar
+(add-to-list 'default-frame-alist '(undecorated . t))
+;; no round corners
+;; (add-to-list 'default-frame-alist '(undecorated-round . t))
 #+end_src
 ** font
 *** font config
@@ -386,8 +392,8 @@
 
 (cond
  (IS-MAC
-  (setq doom-font (font-spec :family "Jetbrains Mono"   :size 19)
-        doom-big-font (font-spec :family "Jetbrains Mono"  :size 36)
+  (setq doom-font (font-spec :family "Iosevka"   :size 19)
+        doom-big-font (font-spec :family "Iosevka"  :size 36)
         doom-variable-pitch-font (font-spec :family "Overpass"  :size 23)
         ;;doom-unicode-font (font-spec :family "FZSongKeBenXiuKai-R-GBK" :weight 'light :slant 'italic :size 21)
         doom-serif-font (font-spec :family "IBM Plex Serif"  :size 23))
