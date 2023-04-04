@@ -74,6 +74,7 @@
 
   services = {
     activate-system.enable = true;
+    # ariang.enable = true;
     nix-daemon.enable = true; # Auto upgrade daemon
     emacs = {
       enable = true;
