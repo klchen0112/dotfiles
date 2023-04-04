@@ -184,6 +184,7 @@
       "remote.SSH.remotePlatform" = {
         "ningbo203" = "linux";
         "ningbo204" = "linux";
+        "cy" = "linux";
       };
     };
   };
