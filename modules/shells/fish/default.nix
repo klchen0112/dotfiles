@@ -27,30 +27,32 @@
                         # # <<< mamba initialize <<<
                         ";
 
-      plugins = with pkgs; [
+      plugins = with pkgs.fishPlugins; [
+        {
+          name = "async-prompt";
+          src = async-prompt;
+        }
         {
           name = "z";
-          src =
-            pkgs.fetchFromGitHub
-            {
-              owner = "jethrokuan";
-              repo = "z";
-              rev = "85f863f20f24faf675827fb00f3a4e15c7838d76";
-              sha256 = "+FUBM7CodtZrYKqU542fQD+ZDGrd2438trKM0tIESs0=";
-            };
+          src = z;
         }
-        {
-          name = "fzf-fish";
-          inherit (pkgs.fishPlugins.fzf-fish) src;
-        }
+        # {
+        #   name = "fzf-fish";
+        #   src = fzf-fish;
+        # }
         {
           name = "colored-man-pages";
-          inherit (pkgs.fishPlugins.colored-man-pages) src;
+          src = colored-man-pages;
         }
         {
           name = "autopair";
-          inherit (pkgs.fishPlugins.autopair-fish) src;
+          src = autopair-fish;
         }
+        {
+          name = "tide";
+          src = tide;
+        }
+
       ];
     };
   };
@@ -61,6 +63,5 @@
     fzf
     shfmt
     tmux
-    fish
   ];
 }

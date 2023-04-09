@@ -5,7 +5,7 @@
     inetutils
   ];
   programs.starship = {
-    enable = true;
+    enable = false;
     enableZshIntegration = true;
     enableFishIntegration = true;
     settings = {
