@@ -37,7 +37,7 @@
        ;;ido               ; the other *other* search engine...
        ;;(ivy +fuzzy +prescient +childframe +icons)               ; a search engine for love and life
        (vertico +icons
-                +childframe ;; not for yabai
+                ;;+childframe ;; not for yabai
                 )         ; the search engine of the future
 
        :ui
@@ -50,10 +50,10 @@
        ;;hydra
        ;;indent-guides     ; highlighted indent columns
        (ligatures
-        ;;+extra
+        +extra
         ;;+fira ; fira font ligatures
         ;;+hasklig ; HaskLig font ligatures
-        ;;+iosevka ; iosevka font ligatures
+        +iosevka ; iosevka font ligatures
         ;;+pragmata-pro ; Pragmata-Pro font ligatures
         )       ; ligatures and symbols to make your code pretty again
        ;;minimap           ; show a map of the code on the side
@@ -1304,8 +1304,8 @@ citar need vertico
          ("C-c n j" . org-roam-dailies-capture-today))
   :config
   (setq org-roam-database-connector 'sqlite-builtin
-        org-roam-directory (file-truename "~/org/pages")
-        org-roam-directory (file-truename "~/org/journals")
+        org-roam-directory (file-truename "~/org")
+        ;;org-roam-directory (file-truename "~/org/journals")
         org-roam-file-extensions '("org"))
   ;; 自动创建org roam 文件夹
   (unless (file-exists-p org-roam-directory) (make-directory org-roam-directory t))
