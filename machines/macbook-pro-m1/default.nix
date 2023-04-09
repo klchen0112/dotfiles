@@ -84,81 +84,60 @@
 
     yabai = {
       enable = true;
-      config = {
-        external_bar = "all:0:26";
-      };
-      extraConfig = let
+      config = let
         gaps = {
-          top = "10";
-          bottom = "4";
-          left = "4";
-          right = "4";
-          inner = "6";
+          top = 10;
+          bottom = 4;
+          left = 4;
+          right = 4;
+          inner = 6;
         };
         color = {
           focused = "0xffe1e3e4";
           normal = "0xff494d64";
           preselect = "0xff9dd274";
         };
-      in ''
-        #!/usr/bin/env bash
-        # Unload the macOS WindowManager process
-        launchctl unload -F /System/Library/LaunchAgents/com.apple.WindowManager.plist > /dev/null 2>&1 &
-        # Uncomment to refresh ubersicht widget on workspace change
-        # Make sure to replace WIDGET NAME for the name of the ubersicht widget
-        #ubersicht_spaces_refresh_command="osascript -e 'tell application id \"tracesOf.Uebersicht\" to refresh widget id \"WIDGET NAME\"'"
+      in {
+        external_bar = "all:0:26";
+        layout = "bsp";
+        top_padding = gaps.top;
+        bottom_padding = gaps.bottom;
+        left_padding = gaps.left;
+        right_padding = gaps.right;
+        window_gap = gaps.inner;
 
-        # ===== Loading Scripting Additions ============
+        mouse_follows_focus = "off";
+        focus_follows_mouse = "off";
+        window_topmost = "off";
 
-        # See: https://github.com/koekeishiya/yabai/wiki/Installing-yabai-(latest-release)#macos-big-sur---automatically-load-scripting-addition-on-startup
-        sudo yabai --load-sa
-        yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
-        yabai -m signal --add event=window_focused action="sketchybar --trigger window_focus"
-        yabai -m signal --add event=display_added action="sleep 2 && $HOME/.config/yabai/create_spaces.sh"
-        yabai -m signal --add event=display_removed action="sleep 1 && $HOME/.config/yabai/create_spaces.sh"
-        yabai -m signal --add event=window_created action="sketchybar --trigger windows_on_spaces"
-        yabai -m signal --add event=window_destroyed action="sketchybar --trigger windows_on_spaces"
-        # ===== Tiling setting =========================
-        yabai -m config layout                      bsp
+        window_opacity = "off";
+        window_opacity_duration = 0.0;
+        active_window_border_color = color.focused;
+        normal_window_border_color = color.normal;
+        insert_feedback_color = color.preselect;
+        window_zoom_persist = "off";
+        window_placement = "second_child";
+        window_shadow = "float";
 
-        yabai -m config top_padding                 ${gaps.top}
-        yabai -m config bottom_padding              ${gaps.bottom}
-        yabai -m config left_padding                ${gaps.left}
-        yabai -m config right_padding               ${gaps.right}
-        yabai -m config window_gap                  ${gaps.inner}
+        window_border = "on";
+        window_border_radius = 10;
+        window_border_width = 2;
+        window_border_blur = "off";
+        window_animation_duration = 0.3;
 
-        yabai -m config mouse_follows_focus         off
-        yabai -m config focus_follows_mouse         off
+        active_window_opacity = 1.0;
+        normal_window_opacity = 0.90;
+        split_ratio = 0.50;
 
-        yabai -m config window_topmost              off
+        auto_balance = "off";
 
-        yabai -m config window_opacity              off
-        yabai -m config window_opacity_duration    0.0
-        yabai -m config active_window_border_color  ${color.focused}
-        yabai -m config normal_window_border_color  ${color.normal}
-        yabai -m config insert_feedback_color       ${color.preselect}
+        mouse_modifier = "fn";
+        mouse_action1 = "move";
+        mouse_action2 = "resize";
+        mouse_drop_action = "swap";
+      };
+      extraConfig = ''
 
-        yabai -m config window_zoom_persist         off
-        yabai -m config window_placement            second_child
-        yabai -m config window_shadow               float
-
-        yabai -m config window_border               on
-        yabai -m config window_border_radius       11
-        yabai -m config window_border_radius       11
-        yabai -m config window_border_width         2
-        yabai -m config window_border_blur         off
-        yabai -m config window_animation_duration  0.3
-
-        yabai -m config active_window_opacity       1.0
-        yabai -m config normal_window_opacity       0.90
-        yabai -m config split_ratio                 0.50
-
-        yabai -m config auto_balance                off
-
-        yabai -m config mouse_modifier              fn
-        yabai -m config mouse_action1               move
-        yabai -m config mouse_action2               resize
-        yabai -m config mouse_drop_action          swap
         # ===== Rules ==================================
         yabai -m rule --add label=emacs app=Emacs manage=on
         yabai -m rule --add label="Finder" app="^Finder$" title="(Co(py|nnect)|Move|Info|Pref)" manage=off
@@ -176,16 +155,14 @@
         yabai -m rule --add label="About This Mac" app="System Information" title="About This Mac" manage=off
         yabai -m rule --add app="Dash"                manage="off"
         yabai -m rule --add app="Plexamp"             manage="off"
-        # ===== Signals ================================
-
       '';
     };
     skhd = {
       enable = true;
       skhdConfig = let
-        current_workspace_prefix = "ctrl + cmd";
+        current_workspace_prefix = "ctrl + shift";
         current_workspace_move_prefix = "alt + shift";
-        diffent_workspace_move_prefix = "ctrl + shift";
+        diffent_workspace_move_prefix = "ctrl + cmd";
         size_chang_prefix = "alt + ctrl";
         insert_prefix = "cmd + alt";
       in ''
