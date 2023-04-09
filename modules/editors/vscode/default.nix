@@ -42,7 +42,7 @@
 
         # python
         ms-python.python
-        ms-pyright.pyright
+        # ms-pyright.pyright
 
         # nix
         bbenoist.nix
