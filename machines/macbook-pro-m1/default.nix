@@ -89,20 +89,21 @@
       };
       extraConfig = let
         gaps = {
-          top = "4";
-          bottom = "24";
+          top = "10";
+          bottom = "4";
           left = "4";
           right = "4";
-          inner = "4";
+          inner = "6";
         };
         color = {
-          focused = "0xE0808080";
-          normal = "0x00010101";
-          preselect = "0xE02d74da";
+          focused = "0xffe1e3e4";
+          normal = "0xff494d64";
+          preselect = "0xff9dd274";
         };
       in ''
         #!/usr/bin/env bash
-
+        # Unload the macOS WindowManager process
+        launchctl unload -F /System/Library/LaunchAgents/com.apple.WindowManager.plist > /dev/null 2>&1 &
         # Uncomment to refresh ubersicht widget on workspace change
         # Make sure to replace WIDGET NAME for the name of the ubersicht widget
         #ubersicht_spaces_refresh_command="osascript -e 'tell application id \"tracesOf.Uebersicht\" to refresh widget id \"WIDGET NAME\"'"
@@ -112,6 +113,11 @@
         # See: https://github.com/koekeishiya/yabai/wiki/Installing-yabai-(latest-release)#macos-big-sur---automatically-load-scripting-addition-on-startup
         sudo yabai --load-sa
         yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
+        yabai -m signal --add event=window_focused action="sketchybar --trigger window_focus"
+        yabai -m signal --add event=display_added action="sleep 2 && $HOME/.config/yabai/create_spaces.sh"
+        yabai -m signal --add event=display_removed action="sleep 1 && $HOME/.config/yabai/create_spaces.sh"
+        yabai -m signal --add event=window_created action="sketchybar --trigger windows_on_spaces"
+        yabai -m signal --add event=window_destroyed action="sketchybar --trigger windows_on_spaces"
         # ===== Tiling setting =========================
         yabai -m config layout                      bsp
 
@@ -125,14 +131,23 @@
         yabai -m config focus_follows_mouse         off
 
         yabai -m config window_topmost              off
-        yabai -m config window_opacity              off
-        yabai -m config window_shadow               float
 
-        yabai -m config window_border               on
-        yabai -m config window_border_width         2
+        yabai -m config window_opacity              off
+        yabai -m config window_opacity_duration    0.0
         yabai -m config active_window_border_color  ${color.focused}
         yabai -m config normal_window_border_color  ${color.normal}
         yabai -m config insert_feedback_color       ${color.preselect}
+
+        yabai -m config window_zoom_persist         off
+        yabai -m config window_placement            second_child
+        yabai -m config window_shadow               float
+
+        yabai -m config window_border               on
+        yabai -m config window_border_radius       11
+        yabai -m config window_border_radius       11
+        yabai -m config window_border_width         2
+        yabai -m config window_border_blur         off
+        yabai -m config window_animation_duration  0.3
 
         yabai -m config active_window_opacity       1.0
         yabai -m config normal_window_opacity       0.90
@@ -143,6 +158,7 @@
         yabai -m config mouse_modifier              fn
         yabai -m config mouse_action1               move
         yabai -m config mouse_action2               resize
+        yabai -m config mouse_drop_action          swap
         # ===== Rules ==================================
         yabai -m rule --add label=emacs app=Emacs manage=on
         yabai -m rule --add label="Finder" app="^Finder$" title="(Co(py|nnect)|Move|Info|Pref)" manage=off
@@ -203,10 +219,10 @@
 
         ## Current workspace move
         # Moving windows in spaces: current_workspace_move_prefix - {p, n, b, f}
-        ${current_workspace_move_prefix} - b : yabai -m window --swap west  || $(yabai -m window --display west  ; yabai -m display --focus west )
-        ${current_workspace_move_prefix} - n : yabai -m window --swap south || $(yabai -m window --display south ; yabai -m display --focus south)
-        ${current_workspace_move_prefix} - p : yabai -m window --swap north || $(yabai -m window --display north ; yabai -m display --focus north)
-        ${current_workspace_move_prefix} - f : yabai -m window --swap east  || $(yabai -m window --display east  ; yabai -m display --focus east )
+        ${current_workspace_move_prefix} - b : yabai -m window --warp west  || $(yabai -m window --display west  ; yabai -m display --focus west )
+        ${current_workspace_move_prefix} - n : yabai -m window --warp south || $(yabai -m window --display south ; yabai -m display --focus south)
+        ${current_workspace_move_prefix} - p : yabai -m window --warp north || $(yabai -m window --display north ; yabai -m display --focus north)
+        ${current_workspace_move_prefix} - f : yabai -m window --warp east  || $(yabai -m window --display east  ; yabai -m display --focus east )
 
         # toggle whether the focused window should be tiled (only on bsp spaces)
         ${current_workspace_move_prefix} - space : yabai -m window --toggle float
