@@ -123,7 +123,7 @@
         window_border_radius = 10;
         window_border_width = 2;
         window_border_blur = "off";
-        window_animation_duration = 0.3;
+        window_animation_duration = 0.0;
 
         active_window_opacity = 1.0;
         normal_window_opacity = 0.90;
@@ -137,13 +137,22 @@
         mouse_drop_action = "swap";
       };
       extraConfig = ''
+        ## auto create Display and move to window
+        yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
+        # yabai -m signal --add event=window_focused action="sketchybar --trigger window_focus"
+        yabai -m signal --add event=display_added action="sleep 2 && $HOME/.config/yabai/create_spaces.sh"
+        yabai -m signal --add event=display_removed action="sleep 1 && $HOME/.config/yabai/create_spaces.sh"
+        # yabai -m signal --add event=window_created action="sketchybar --trigger windows_on_spaces"
+        # yabai -m signal --add event=window_destroyed action="sketchybar --trigger windows_on_spaces"
 
+        $HOME/.config/yabai/create_spaces.sh
         # ===== Rules ==================================
         yabai -m rule --add label=emacs app=Emacs manage=on
-        yabai -m rule --add label="Finder" app="^Finder$" title="(Co(py|nnect)|Move|Info|Pref)" manage=off
+        yabai -m rule --add label="(Finder" app="^(Finder|访达)$" title="(Co(py|nnect)|Move|Info|Pref)" manage=off
         yabai -m rule --add label="Safari" app="^Safari$" title="^(General|(Tab|Password|Website|Extension)s|AutoFill|Se(arch|curity)|Privacy|Advance)$" manage=off
         yabai -m rule --add label="macfeh" app="^macfeh$" manage=off
-        yabai -m rule --add label="System Preferences" app="^System Preferences$" title=".*" manage=off
+        yabai -m rule --add label="System Preferences" app="^(System Preferences|系统偏好设置)$" title=".*" manage=off
+        yabai -m rule --add label="Calendar" app="^(Calendar|日历)$" title=".*" manage=off
         yabai -m rule --add label="App Store" app="^App Store$" manage=off
         yabai -m rule --add label="Activity Monitor" app="^Activity Monitor$" manage=off
         yabai -m rule --add label="KeePassXC" app="^KeePassXC$" manage=off
@@ -152,19 +161,25 @@
         yabai -m rule --add label="mpv" app="^mpv$" manage=off
         yabai -m rule --add label="Software Update" title="Software Update" manage=off
         yabai -m rule --add app="Raycast" manage=off
+        yabai -m rule --add app="Bitwarden" manage=off
         yabai -m rule --add label="About This Mac" app="System Information" title="About This Mac" manage=off
         yabai -m rule --add app="Dash"                manage="off"
-        yabai -m rule --add app="Plexamp"             manage="off"
+        yabai -m rule --add label=musicapp app="Plexamp" space=6
+        yabai -m rule --add app="^(微信|WeChat)$"  space=7
+        yabai -m rule --add app="^(QQ)$"  space=7
+        yabai -m rule --add app="^(钉钉|DingTalk)$"  space=7
+        yabai -m rule --add app="^(Telegram)$"  space=8
+        yabai -m rule --add app="^(Discord)$" space=8
       '';
     };
     skhd = {
       enable = true;
       skhdConfig = let
-        current_workspace_prefix = "ctrl + shift";
+        current_workspace_prefix = "ctrl + alt";
         current_workspace_move_prefix = "alt + shift";
-        diffent_workspace_move_prefix = "ctrl + cmd";
-        size_chang_prefix = "alt + ctrl";
-        insert_prefix = "cmd + alt";
+        diffent_workspace_move_prefix = "ctrl + cmd"; # in macos most app use ctrl + cmd - f to native-fullscreen
+        size_chang_prefix = "alt + cmd";
+        insert_prefix = "ctrl + shift";
       in ''
         ## Current workspace move and focus
         # focus window : current_workspace_prefix - {p, n, b, f}
@@ -175,24 +190,27 @@
         ${current_workspace_prefix} - a : yabai -m window --focus first || yabai -m display --focus north
         ${current_workspace_prefix} - e : yabai -m window --focus last  || yabai -m display --focus east
 
-        ## Current workspace window adjust
+
+        ## Current workspace window adjust use ${current_workspace_move_prefix} as prefix
         # Make window zoom to fullscreen: current_workspace_prefix - z
-        ${current_workspace_prefix} - z : yabai -m window --toggle zoom-fullscreen;
+        ${current_workspace_move_prefix} - z : yabai -m window --toggle zoom-fullscreen;
 
         # Mirror Space on X and Y Axis: current_workspace_move_prefix - {x, y,r}
-        ${current_workspace_prefix} - x : yabai -m space --mirror x-axis
-        ${current_workspace_prefix} - y : yabai -m space --mirror y-axis
-        ${current_workspace_prefix} - r : yabai -m space --rotate 90
+        ${current_workspace_move_prefix} - x : yabai -m space --mirror x-axis
+        ${current_workspace_move_prefix} - y : yabai -m space --mirror y-axis
+        ${current_workspace_move_prefix} - r : yabai -m space --rotate 90
 
         # Equalize size of windows
-        ${current_workspace_prefix} - space : yabai -m space --balance
+        ${current_workspace_move_prefix} - enter : yabai -m space --balance
         # Enable / Disable gaps in current workspace
-        ${current_workspace_prefix} - g : yabai -m space --toggle padding; yabai -m space --toggle gap
+        ${current_workspace_move_prefix} - g : yabai -m space --toggle padding; yabai -m space --toggle gap
 
         # toggle whether the focused window should have a border
-        ${current_workspace_prefix} - w : yabai -m window --toggle border
+        ${current_workspace_move_prefix} - w : yabai -m window --toggle border
         # toggle whether the focused window should be shown on all spaces
-        ${current_workspace_prefix} - s : yabai -m window --toggle sticky
+        ${current_workspace_move_prefix} - s : yabai -m window --toggle sticky
+        # toggle whether the focused window should be tiled (only on bsp spaces)
+        ${current_workspace_move_prefix} - space : yabai -m window --toggle float
 
         ## Current workspace move
         # Moving windows in spaces: current_workspace_move_prefix - {p, n, b, f}
@@ -201,8 +219,7 @@
         ${current_workspace_move_prefix} - p : yabai -m window --warp north || $(yabai -m window --display north ; yabai -m display --focus north)
         ${current_workspace_move_prefix} - f : yabai -m window --warp east  || $(yabai -m window --display east  ; yabai -m display --focus east )
 
-        # toggle whether the focused window should be tiled (only on bsp spaces)
-        ${current_workspace_move_prefix} - space : yabai -m window --toggle float
+
 
         ## Diffent Workspace Operation (size_chang_prefix - ...)
         # Moving windows between spaces: diffent_workspace_move_prefix - {1, 2, 3, 4, p, n,r } (Assumes 4 Spaces Max per Display)
@@ -220,6 +237,9 @@
         ${diffent_workspace_move_prefix} - a : yabai -m window --space first; yabai -m space --focus first;
         ${diffent_workspace_move_prefix} - e : yabai -m window --space last; yabai -m space --focus last;
         ${diffent_workspace_move_prefix} - r : yabai -m window --space recent; yabai -m space --focus recent;
+        # toggle fullscreen or split
+        ${diffent_workspace_move_prefix}  - f : yabai -m window --toggle native-fullscreen
+        ${diffent_workspace_move_prefix}  - s : yabai -m window --toggle split && yabai -m space --balance
 
         ## Resize (size_chang_prefix - ...)
         # Resize windows: size_chang_prefix - {p, n, b, f}
@@ -229,7 +249,7 @@
         ${size_chang_prefix} - f : yabai -m window --resize right:100:0   || yabai -m window --resize left:100:0
 
         ## Insertion (insert_prefix - ...)
-        # Set insertion point for focused container: shift + ctrl + lalt - {p,n,b,f,s}
+        # Set insertion point for focused container: ${insert_prefix}  - {p,n,b,f,s}
         ${insert_prefix} - b : yabai -m window --insert west
         ${insert_prefix} - n : yabai -m window --insert south
         ${insert_prefix} - p : yabai -m window --insert north
