@@ -36,7 +36,8 @@
         donjayamanne.githistory
         mhutchie.git-graph
         waderyan.gitblame
-
+        # shell
+        skyapps.fish-vscode
         # markdown
         yzhang.markdown-all-in-one
 
