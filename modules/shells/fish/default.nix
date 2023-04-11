@@ -28,14 +28,14 @@
                         ";
 
       plugins = with pkgs.fishPlugins; [
-        {
-          name = "async-prompt";
-          src = async-prompt;
-        }
-        {
-          name = "z";
-          src = z;
-        }
+        #{
+        #  name = "async-prompt";
+        #  src = async-prompt;
+        #}
+        #{
+        #  name = "z";
+        #  src = z;
+        #}
         # {
         #   name = "fzf-fish";
         #   src = fzf-fish;
