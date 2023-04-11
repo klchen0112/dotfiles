@@ -26,11 +26,9 @@
     ripgrep
     fd
     curl
-    coreutils
     sqlite
     # emacsGit
 
-    fontconfig
     # for emacs sqlite
     gcc
     # org mode dot
@@ -42,7 +40,6 @@
     material-design-icons
     weather-icons
     emacs-all-the-icons-fonts
-    wakatime
   ];
   programs.emacs = {
     enable = true;
