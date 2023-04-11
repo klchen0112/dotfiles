@@ -66,6 +66,7 @@
       # bash
       fish
       # zsh
+      fontconfig
       home-manager
       coreutils
       cachix
@@ -84,6 +85,7 @@
 
     yabai = {
       enable = true;
+      enableScriptingAddition = true;
       config = let
         gaps = {
           top = 10;
@@ -138,17 +140,20 @@
       };
       extraConfig = ''
         ## auto create Display and move to window
-        yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
+        # yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
         # yabai -m signal --add event=window_focused action="sketchybar --trigger window_focus"
-        yabai -m signal --add event=display_added action="sleep 2 && $HOME/.config/yabai/create_spaces.sh"
-        yabai -m signal --add event=display_removed action="sleep 1 && $HOME/.config/yabai/create_spaces.sh"
+        # yabai -m signal --add event=display_added action="sleep 2 && $HOME/.config/yabai/create_spaces.sh"
+        # yabai -m signal --add event=display_removed action="sleep 1 && $HOME/.config/yabai/create_spaces.sh"
         # yabai -m signal --add event=window_created action="sketchybar --trigger windows_on_spaces"
         # yabai -m signal --add event=window_destroyed action="sketchybar --trigger windows_on_spaces"
 
-        $HOME/.config/yabai/create_spaces.sh
+        # $HOME/.config/yabai/create_spaces.sh
+        # Space config
+        yabai -m config --space 6 layout float
+        yabai -m config --space 4 layout float
         # ===== Rules ==================================
         yabai -m rule --add label=emacs app=Emacs manage=on
-        yabai -m rule --add label="(Finder" app="^(Finder|访达)$" title="(Co(py|nnect)|Move|Info|Pref)" manage=off
+        yabai -m rule --add label="Finder" app="^(Finder|访达)$" title="(Co(py|nnect)|Move|Info|Pref)" manage=off
         yabai -m rule --add label="Safari" app="^Safari$" title="^(General|(Tab|Password|Website|Extension)s|AutoFill|Se(arch|curity)|Privacy|Advance)$" manage=off
         yabai -m rule --add label="macfeh" app="^macfeh$" manage=off
         yabai -m rule --add label="System Preferences" app="^(System Preferences|系统偏好设置)$" title=".*" manage=off
@@ -164,12 +169,17 @@
         yabai -m rule --add app="Bitwarden" manage=off
         yabai -m rule --add label="About This Mac" app="System Information" title="About This Mac" manage=off
         yabai -m rule --add app="Dash"                manage="off"
-        yabai -m rule --add label=musicapp app="Plexamp" space=6
-        yabai -m rule --add app="^(微信|WeChat)$"  space=7
-        yabai -m rule --add app="^(QQ)$"  space=7
-        yabai -m rule --add app="^(钉钉|DingTalk)$"  space=7
-        yabai -m rule --add app="^(Telegram)$"  space=8
-        yabai -m rule --add app="^(Discord)$" space=8
+
+        yabai -m rule --add label=musicapp app="Plexamp" space=4
+        yabai -m rule --add app="^(Telegram)$"  space=4
+        yabai -m rule --add app="^(Discord)$" space=4
+        yabai -m rule --add app="^(Spark)$"  space=4
+
+        yabai -m rule --add app="^(微信|WeChat)$"  space=6
+        yabai -m rule --add app="^(QQ)$"  space=6
+        yabai -m rule --add app="^(钉钉|DingTalk)$"  space=6
+
+
       '';
     };
     skhd = {
@@ -180,6 +190,7 @@
         diffent_workspace_move_prefix = "ctrl + cmd"; # in macos most app use ctrl + cmd - f to native-fullscreen
         size_chang_prefix = "alt + cmd";
         insert_prefix = "ctrl + shift";
+        high_prefix = "ctrl + shift + cmd";
       in ''
         ## Current workspace move and focus
         # focus window : current_workspace_prefix - {p, n, b, f}
