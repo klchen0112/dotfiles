@@ -36,3 +36,4 @@ $ echo "experimental-features = nix-command flakes" >> ~/.config/nix/nix.conf
 * Thanks
 - [[https://github.com/julian-heng/yabai-config/][julian-heng/yabai-config]]
 - [[https://github.com/FelixKratz/dotfiles][FelixKratz/dotfiles]]
+- [[https://github.com/camspiers/dotfiles][camspiers/dotfiles]]

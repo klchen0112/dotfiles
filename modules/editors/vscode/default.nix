@@ -21,7 +21,7 @@
         johnpapa.vscode-peacock
         github.github-vscode-theme
         # akamud.vscode-theme-onelight
-        vscode-icons-team.vscode-icons
+        # vscode-icons-team.vscode-icons
 
         # editor
         streetsidesoftware.code-spell-checker
@@ -35,7 +35,7 @@
         eamodio.gitlens
         donjayamanne.githistory
         mhutchie.git-graph
-        waderyan.gitblame
+        # waderyan.gitblame
         # shell
         skyapps.fish-vscode
         # markdown
@@ -64,6 +64,12 @@
           publisher = "akamud";
           version = "2.3.0";
           sha256 = "CTD0s2lRMCi/WCGr6dP1Utrvtsdcbg4srRcrZJSFDqU=";
+        }
+        {
+          name = "vscode-micromamba";
+          publisher = "corker";
+          version = "0.1.13";
+          sha256 = "7m35bnGrgOt3uyRwSu93FCLYxeRiA6y97E8ypoi4Ouo=";
         }
       ];
     enableUpdateCheck = false;

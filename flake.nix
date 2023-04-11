@@ -19,7 +19,7 @@
   inputs =
     # All flake references used to build my NixOS setup. These are dependencies.
     {
-      nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-22.11-darwin"; # Nix Packages
+      nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable"; # Nix Packages
       nixos-hardware.url = "github:NixOS/nixos-hardware";
 
       flake-utils.url = "github:numtide/flake-utils";
