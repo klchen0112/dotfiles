@@ -89,11 +89,11 @@
       enableScriptingAddition = true;
       config = let
         gaps = {
-          top = 10;
-          bottom = 4;
-          left = 4;
-          right = 4;
-          inner = 6;
+          top = 0;
+          bottom = 0;
+          left = 0;
+          right = 0;
+          inner = 0;
         };
         color = {
           focused = "0xffe1e3e4";
@@ -101,6 +101,7 @@
           preselect = "0xff9dd274";
         };
       in {
+        debug_output = "on";
         external_bar = "all:0:26";
         layout = "bsp";
         top_padding = gaps.top;
@@ -186,7 +187,8 @@
     skhd = {
       enable = true;
       skhdConfig = let
-        current_workspace_prefix = "alt + ctrl";
+        keycodes = import ./keycodes.nix;
+        ccurrent_workspace_prefix = "alt + ctrl";
         current_workspace_move_prefix = "alt + shift";
         diffent_workspace_move_prefix = "ctrl + cmd"; # in macos most app use ctrl + cmd - f to native-fullscreen
         size_chang_prefix = "alt + cmd";
@@ -195,80 +197,80 @@
       in ''
         ## Current workspace move and focus
         # focus window : current_workspace_prefix - {p, n, b, f}
-        ${current_workspace_prefix} - b : yabai -m window --focus west  || yabai -m display --focus west
+        ${current_workspace_prefix} - ${keycodes.LeftArrow} : yabai -m window --focus west  || yabai -m display --focus west
         ${current_workspace_prefix} - n : yabai -m window --focus south || yabai -m display --focus south
         ${current_workspace_prefix} - p : yabai -m window --focus north || yabai -m display --focus north
         ${current_workspace_prefix} - f : yabai -m window --focus east  || yabai -m display --focus east
-        ${current_workspace_prefix} - a : yabai -m window --focus first || yabai -m display --focus north
-        ${current_workspace_prefix} - e : yabai -m window --focus last  || yabai -m display --focus east
+        # ${current_workspace_prefix} - a : yabai -m window --focus first || yabai -m display --focus north
+        # ${current_workspace_prefix} - e : yabai -m window --focus last  || yabai -m display --focus east
 
 
-        ## Current workspace window adjust use ${current_workspace_move_prefix} as prefix
-        # Make window zoom to fullscreen: current_workspace_prefix - z
-        ${current_workspace_move_prefix} - z : yabai -m window --toggle zoom-fullscreen;
+        # ## Current workspace window adjust use ${current_workspace_move_prefix} as prefix
+        # # Make window zoom to fullscreen: current_workspace_prefix - z
+        # ${current_workspace_move_prefix} - z : yabai -m window --toggle zoom-fullscreen;
 
-        # Mirror Space on X and Y Axis: current_workspace_move_prefix - {x, y,r}
-        ${current_workspace_move_prefix} - x : yabai -m space --mirror x-axis
-        ${current_workspace_move_prefix} - y : yabai -m space --mirror y-axis
-        ${current_workspace_move_prefix} - r : yabai -m space --rotate 90
+        # # Mirror Space on X and Y Axis: current_workspace_move_prefix - {x, y,r}
+        # ${current_workspace_move_prefix} - x : yabai -m space --mirror x-axis
+        # ${current_workspace_move_prefix} - y : yabai -m space --mirror y-axis
+        # ${current_workspace_move_prefix} - r : yabai -m space --rotate 90
 
-        # Equalize size of windows
-        ${current_workspace_move_prefix} - enter : yabai -m space --balance
-        # Enable / Disable gaps in current workspace
-        ${current_workspace_move_prefix} - g : yabai -m space --toggle padding; yabai -m space --toggle gap
+        # # Equalize size of windows
+        # ${current_workspace_move_prefix} - enter : yabai -m space --balance
+        # # Enable / Disable gaps in current workspace
+        # ${current_workspace_move_prefix} - g : yabai -m space --toggle padding; yabai -m space --toggle gap
 
-        # toggle whether the focused window should have a border
-        ${current_workspace_move_prefix} - w : yabai -m window --toggle border
-        # toggle whether the focused window should be shown on all spaces
-        ${current_workspace_move_prefix} - s : yabai -m window --toggle sticky
-        # toggle whether the focused window should be tiled (only on bsp spaces)
-        ${current_workspace_move_prefix} - space : yabai -m window --toggle float
+        # # toggle whether the focused window should have a border
+        # ${current_workspace_move_prefix} - w : yabai -m window --toggle border
+        # # toggle whether the focused window should be shown on all spaces
+        # ${current_workspace_move_prefix} - s : yabai -m window --toggle sticky
+        # # toggle whether the focused window should be tiled (only on bsp spaces)
+        # ${current_workspace_move_prefix} - space : yabai -m window --toggle float
 
-        ## Current workspace move
-        # Moving windows in spaces: current_workspace_move_prefix - {p, n, b, f}
-        ${current_workspace_move_prefix} - b : yabai -m window --warp west  || $(yabai -m window --display west  ; yabai -m display --focus west )
-        ${current_workspace_move_prefix} - n : yabai -m window --warp south || $(yabai -m window --display south ; yabai -m display --focus south)
-        ${current_workspace_move_prefix} - p : yabai -m window --warp north || $(yabai -m window --display north ; yabai -m display --focus north)
-        ${current_workspace_move_prefix} - f : yabai -m window --warp east  || $(yabai -m window --display east  ; yabai -m display --focus east )
+        # ## Current workspace move
+        # # Moving windows in spaces: current_workspace_move_prefix - {p, n, b, f}
+        # ${current_workspace_move_prefix} - b : yabai -m window --warp west  || $(yabai -m window --display west  ; yabai -m display --focus west )
+        # ${current_workspace_move_prefix} - n : yabai -m window --warp south || $(yabai -m window --display south ; yabai -m display --focus south)
+        # ${current_workspace_move_prefix} - p : yabai -m window --warp north || $(yabai -m window --display north ; yabai -m display --focus north)
+        # ${current_workspace_move_prefix} - f : yabai -m window --warp east  || $(yabai -m window --display east  ; yabai -m display --focus east )
 
 
 
-        ## Diffent Workspace Operation (size_chang_prefix - ...)
-        # Moving windows between spaces: diffent_workspace_move_prefix - {1, 2, 3, 4, p, n,r } (Assumes 4 Spaces Max per Display)
-        ${diffent_workspace_move_prefix} - 1 : yabai -m window --space 1; yabai -m space --focus 1;
-        ${diffent_workspace_move_prefix} - 2 : yabai -m window --space 2; yabai -m space --focus 2;
-        ${diffent_workspace_move_prefix} - 3 : yabai -m window --space 3; yabai -m space --focus 3;
-        ${diffent_workspace_move_prefix} - 4 : yabai -m window --space 4; yabai -m space --focus 4;
-        ${diffent_workspace_move_prefix} - 5 : yabai -m window --space 5; yabai -m space --focus 5;
-        ${diffent_workspace_move_prefix} - 6 : yabai -m window --space 6; yabai -m space --focus 6;
-        ${diffent_workspace_move_prefix} - 7 : yabai -m window --space 7; yabai -m space --focus 7;
-        ${diffent_workspace_move_prefix} - 8 : yabai -m window --space 8; yabai -m space --focus 8;
-        ${diffent_workspace_move_prefix} - 9 : yabai -m window --space 9; yabai -m space --focus 9;
-        ${diffent_workspace_move_prefix} - p : yabai -m window --space prev; yabai -m space --focus prev;
-        ${diffent_workspace_move_prefix} - n : yabai -m window --space next; yabai -m space --focus next;
-        ${diffent_workspace_move_prefix} - a : yabai -m window --space first; yabai -m space --focus first;
-        ${diffent_workspace_move_prefix} - e : yabai -m window --space last; yabai -m space --focus last;
-        ${diffent_workspace_move_prefix} - r : yabai -m window --space recent; yabai -m space --focus recent;
-        # toggle fullscreen or split
-        ${diffent_workspace_move_prefix}  - f : yabai -m window --toggle native-fullscreen
-        ${diffent_workspace_move_prefix}  - s : yabai -m window --toggle split && yabai -m space --balance
+        # ## Diffent Workspace Operation (size_chang_prefix - ...)
+        # # Moving windows between spaces: diffent_workspace_move_prefix - {1, 2, 3, 4, p, n,r } (Assumes 4 Spaces Max per Display)
+        # ${diffent_workspace_move_prefix} - 1 : yabai -m window --space 1; yabai -m space --focus 1;
+        # ${diffent_workspace_move_prefix} - 2 : yabai -m window --space 2; yabai -m space --focus 2;
+        # ${diffent_workspace_move_prefix} - 3 : yabai -m window --space 3; yabai -m space --focus 3;
+        # ${diffent_workspace_move_prefix} - 4 : yabai -m window --space 4; yabai -m space --focus 4;
+        # ${diffent_workspace_move_prefix} - 5 : yabai -m window --space 5; yabai -m space --focus 5;
+        # ${diffent_workspace_move_prefix} - 6 : yabai -m window --space 6; yabai -m space --focus 6;
+        # ${diffent_workspace_move_prefix} - 7 : yabai -m window --space 7; yabai -m space --focus 7;
+        # ${diffent_workspace_move_prefix} - 8 : yabai -m window --space 8; yabai -m space --focus 8;
+        # ${diffent_workspace_move_prefix} - 9 : yabai -m window --space 9; yabai -m space --focus 9;
+        # ${diffent_workspace_move_prefix} - p : yabai -m window --space prev; yabai -m space --focus prev;
+        # ${diffent_workspace_move_prefix} - n : yabai -m window --space next; yabai -m space --focus next;
+        # ${diffent_workspace_move_prefix} - a : yabai -m window --space first; yabai -m space --focus first;
+        # ${diffent_workspace_move_prefix} - e : yabai -m window --space last; yabai -m space --focus last;
+        # ${diffent_workspace_move_prefix} - r : yabai -m window --space recent; yabai -m space --focus recent;
+        # # toggle fullscreen or split
+        # ${diffent_workspace_move_prefix}  - f : yabai -m window --toggle native-fullscreen
+        # ${diffent_workspace_move_prefix}  - s : yabai -m window --toggle split && yabai -m space --balance
 
-        ## Resize (size_chang_prefix - ...)
-        # Resize windows: size_chang_prefix - {p, n, b, f}
-        ${size_chang_prefix} - b : yabai -m window --resize right:-100:0  || yabai -m window --resize left:-100:0
-        ${size_chang_prefix} - n : yabai -m window --resize bottom:0:100  || yabai -m window --resize top:0:100
-        ${size_chang_prefix} - p : yabai -m window --resize bottom:0:-100 || yabai -m window --resize top:0:-100
-        ${size_chang_prefix} - f : yabai -m window --resize right:100:0   || yabai -m window --resize left:100:0
+        # ## Resize (size_chang_prefix - ...)
+        # # Resize windows: size_chang_prefix - {p, n, b, f}
+        # ${size_chang_prefix} - b : yabai -m window --resize right:-100:0  || yabai -m window --resize left:-100:0
+        # ${size_chang_prefix} - n : yabai -m window --resize bottom:0:100  || yabai -m window --resize top:0:100
+        # ${size_chang_prefix} - p : yabai -m window --resize bottom:0:-100 || yabai -m window --resize top:0:-100
+        # ${size_chang_prefix} - f : yabai -m window --resize right:100:0   || yabai -m window --resize left:100:0
 
-        ## Insertion (insert_prefix - ...)
-        # Set insertion point for focused container: ${insert_prefix}  - {p,n,b,f,s}
-        ${insert_prefix} - b : yabai -m window --insert west
-        ${insert_prefix} - n : yabai -m window --insert south
-        ${insert_prefix} - p : yabai -m window --insert north
-        ${insert_prefix} - f : yabai -m window --insert east
-        ${insert_prefix} - s : yabai -m window --insert stack
-        ## high (insert_prefix - ...)
-        ${high_prefix} - r : launchctl kickstart -k gui/''${UID}/org.nixos.yabai && launchctl kickstart -k gui/''${UID}/org.nixos.skhd
+        # ## Insertion (insert_prefix - ...)
+        # # Set insertion point for focused container: ${insert_prefix}  - {p,n,b,f,s}
+        # ${insert_prefix} - b : yabai -m window --insert west
+        # ${insert_prefix} - n : yabai -m window --insert south
+        # ${insert_prefix} - p : yabai -m window --insert north
+        # ${insert_prefix} - f : yabai -m window --insert east
+        # ${insert_prefix} - s : yabai -m window --insert stack
+        # ## high (insert_prefix - ...)
+        # ${high_prefix} - r : launchctl kickstart -k gui/''${UID}/org.nixos.yabai && launchctl kickstart -k gui/''${UID}/org.nixos.skhd
       '';
     };
     # spacebar = {
