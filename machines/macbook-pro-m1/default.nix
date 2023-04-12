@@ -197,7 +197,7 @@
       in ''
         ## Current workspace move and focus
         # focus window : current_workspace_prefix - {p, n, b, f}
-        ${current_workspace_prefix} - ${keycodes.LeftArrow} : yabai -m window --focus west  || yabai -m display --focus west
+        ${current_workspace_prefix} - b : yabai -m window --focus west  || yabai -m display --focus west
         ${current_workspace_prefix} - n : yabai -m window --focus south || yabai -m display --focus south
         ${current_workspace_prefix} - p : yabai -m window --focus north || yabai -m display --focus north
         ${current_workspace_prefix} - f : yabai -m window --focus east  || yabai -m display --focus east
