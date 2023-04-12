@@ -1746,7 +1746,7 @@ tasks."
 (use-package! conda
   :config
   ;;(conda-env-initialize-interactive-shells)
-  (if IS-MAC (setq conda-anaconda-home (expand-file-name "~/micromamba")))
+  (if IS-MAC (setq conda-anaconda-home "~/micromamba"))
   ;;(setq conda-env-autoactivate-mode t)
 )
 #+end_src

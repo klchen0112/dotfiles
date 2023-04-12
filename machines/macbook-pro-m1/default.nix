@@ -85,7 +85,7 @@
     };
 
     yabai = {
-      enable = false;
+      enable = true;
       enableScriptingAddition = true;
       config = let
         gaps = {
@@ -143,12 +143,12 @@
         ## auto create Display and move to window
         yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
         # yabai -m signal --add event=window_focused action="sketchybar --trigger window_focus"
-        yabai -m signal --add event=display_added action="sleep 2 && $HOME/.config/yabai/create_spaces.sh"
-        yabai -m signal --add event=display_removed action="sleep 1 && $HOME/.config/yabai/create_spaces.sh"
+        # yabai -m signal --add event=display_added action="sleep 2 && $HOME/.config/yabai/create_spaces.sh"
+        # yabai -m signal --add event=display_removed action="sleep 1 && $HOME/.config/yabai/create_spaces.sh"
         # yabai -m signal --add event=window_created action="sketchybar --trigger windows_on_spaces"
         # yabai -m signal --add event=window_destroyed action="sketchybar --trigger windows_on_spaces"
 
-        $HOME/.config/yabai/create_spaces.sh
+        # $HOME/.config/yabai/create_spaces.sh
         # Space config
         yabai -m config --space 6 layout float
         yabai -m config --space 4 layout float
@@ -184,9 +184,9 @@
       '';
     };
     skhd = {
-      enable = false;
+      enable = true;
       skhdConfig = let
-        current_workspace_prefix = "ctrl + alt";
+        current_workspace_prefix = "alt + ctrl";
         current_workspace_move_prefix = "alt + shift";
         diffent_workspace_move_prefix = "ctrl + cmd"; # in macos most app use ctrl + cmd - f to native-fullscreen
         size_chang_prefix = "alt + cmd";
@@ -267,6 +267,8 @@
         ${insert_prefix} - p : yabai -m window --insert north
         ${insert_prefix} - f : yabai -m window --insert east
         ${insert_prefix} - s : yabai -m window --insert stack
+        ## high (insert_prefix - ...)
+        ${high_prefix} - r : launchctl kickstart -k gui/''${UID}/org.nixos.yabai && launchctl kickstart -k gui/''${UID}/org.nixos.skhd
       '';
     };
     # spacebar = {

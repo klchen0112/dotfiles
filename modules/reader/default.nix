@@ -1,6 +1,6 @@
 {pkgs, ...}: {
-  #programs.sioyek = {
-  #  enable = true;
-  #  package = pkgs.sioyek;
-  #};
+  programs.sioyek = {
+    enable = true;
+      #  package = pkgs.sioyek;
+  };
 }
