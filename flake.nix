@@ -23,6 +23,8 @@
       nixos-hardware.url = "github:NixOS/nixos-hardware";
 
       flake-utils.url = "github:numtide/flake-utils";
+      flake-parts.url = "github:hercules-ci/flake-parts";
+
       home-manager = {
         # User Package Management
         url = "github:nix-community/home-manager";
