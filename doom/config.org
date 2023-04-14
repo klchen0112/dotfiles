@@ -298,10 +298,6 @@
       scroll-margin 2)                            ; It's nice to maintain a little margin
 (setq which-key-idle-delay 0.3) ;; I need the help, I really do
 
-(setq gc-cons-threshold 100000000)
-(setq read-process-output-max (* 1024 1024)) ;; 1mb
-
-
 ;; Drag text from emacs to other apps
 (setq
  mouse-drag-and-drop-region-cross-program t
@@ -317,8 +313,6 @@
 #+end_src
 ** Global mode
 #+begin_src emacs-lisp :tangle packages.el
-(package! keyfreq
-     :recipe (:host github :repo "suliveevil/keyfreq"))
 
 
 #+end_src
@@ -333,15 +327,7 @@
 (scroll-bar-mode 1)
 ;;(+global-word-wrap-mode +1)
 
-(use-package keyfreq
-  :config
-  (setq keyfreq-folder (expand-file-name "keyfreq" doom-cache-dir))
-  (keyfreq-mode 1)
-  (keyfreq-autosave-mode 1)
-  ;;(setq keyfreq-excluded-commands '(self-insert-command))
 
-
-  )
 
 #+end_src
 * UI settings
@@ -543,8 +529,8 @@ npm install nodejieba
       (<AD02> "y" "Y")
       (<AD03> "o" "O")
       (<AD04> "u" "U")
-      (<AD05> "b" "B")
-      (<AD06> "j" "J")
+      (<AD05> "''" "(")
+      (<AD06> "\"" ")")
       (<AD07> "l" "L")
       (<AD08> "d" "D")
       (<AD09> "w" "W")
@@ -1267,10 +1253,10 @@ citar need vertico
 :ID: 3f6a8789-2cb1-45ec-ab57-063d22cceaf8
 :END:
 #+begin_src elisp :tangle packages.el
-;; (unpin! org-roam)
+(unpin! org-roam)
 (package! org-roam)
 
-;; (unpin! org-roam-ui)
+(unpin! org-roam-ui)
 (package! org-roam-ui)
 
 (package! consult-org-roam)
@@ -1410,7 +1396,6 @@ citar need vertico
 
   (defun vulpea-project-p ()
     "Return non-nil if current buffer has any todo entry.
-
 TODO entries marked as done are ignored, meaning the this
 function returns nil if current buffer contains only completed
 tasks."
@@ -1743,11 +1728,17 @@ tasks."
 :ID:       d4be558f-c96d-4107-a442-14fe7648ce6b
 :END:
 #+begin_src emacs-lisp conf :tangle config.el
+
 (use-package! conda
+;; :init
+  ;;:hook
+  ;;(find-file (lambda () (when (bound-and-true-p conda-project-env-path)  (conda-env-activate-for-buffer))))
+  :custom
+  (conda-anaconda-home "~/micromamba")
   :config
-  ;;(conda-env-initialize-interactive-shells)
-  (if IS-MAC (setq conda-anaconda-home "~/micromamba"))
-  ;;(setq conda-env-autoactivate-mode t)
+  (conda-env-initialize-interactive-shells)
+  (setq conda-env-autoactivate-mode t
+        conda-env-home-directory (expand-file-name "~/micromamba"))
 )
 #+end_src
 ** Latex mode
