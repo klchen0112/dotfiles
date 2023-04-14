@@ -28,18 +28,18 @@
                         ";
 
       plugins = with pkgs.fishPlugins; [
-        #{
-        #  name = "async-prompt";
-        #  src = async-prompt;
-        #}
-        #{
-        #  name = "z";
-        #  src = z;
-        #}
-        # {
-        #   name = "fzf-fish";
-        #   src = fzf-fish;
-        # }
+        {
+          name = "async-prompt";
+          src = async-prompt;
+        }
+        {
+          name = "z";
+          src = z;
+        }
+        {
+          name = "fzf-fish";
+          src = fzf-fish;
+        }
         {
           name = "colored-man-pages";
           src = colored-man-pages;
@@ -48,11 +48,10 @@
           name = "autopair";
           src = autopair-fish;
         }
-        {
-          name = "tide";
-          src = tide;
-        }
-
+        # {
+        #   name = "tide";
+        #   src = tide;
+        # }
       ];
     };
   };
