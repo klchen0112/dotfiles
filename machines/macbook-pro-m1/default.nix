@@ -71,7 +71,7 @@
       coreutils
       cachix
       jq # for yabai json parser
-      sketchybar
+      # sketchybar
     ];
   };
 
@@ -172,14 +172,14 @@
         yabai -m rule --add label="About This Mac" app="System Information" title="About This Mac" manage=off
         yabai -m rule --add app="Dash"                manage="off"
 
-        yabai -m rule --add label=musicapp app="Plexamp" space=4
-        yabai -m rule --add app="^(Telegram)$"  space=4
-        yabai -m rule --add app="^(Discord)$" space=4
-        yabai -m rule --add app="^(Spark)$"  space=4
+        yabai -m rule --add label=musicapp app="Plexamp" space=6
+        yabai -m rule --add app="^(Telegram)$"  space=6
+        yabai -m rule --add app="^(Discord)$" space=6
+        yabai -m rule --add app="^(Spark)$"  space=6
 
-        yabai -m rule --add app="^(微信|WeChat)$"  space=6
-        yabai -m rule --add app="^(QQ)$"  space=6
-        yabai -m rule --add app="^(钉钉|DingTalk)$"  space=6
+        yabai -m rule --add app="^(微信|WeChat)$"  space=4
+        yabai -m rule --add app="^(QQ)$"  space=4
+        yabai -m rule --add app="^(钉钉|DingTalk)$"  space=4
 
 
       '';

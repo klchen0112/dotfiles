@@ -2,7 +2,6 @@
 # Download client
 #
 {pkgs, ...}: {
-
   programs.aria2 = {
     enable = true;
     settings = {
@@ -247,10 +246,10 @@
       ## 高级选项 ##
 
       # 启用异步 DNS 功能。默认：true
-      #async-dns=true
+      async-dns = true;
 
       # 指定异步 DNS 服务器列表，未指定则从 /etc/resolv.conf 中读取。
-      #async-dns-server=119.29.29.29,223.5.5.5,8.8.8.8,1.1.1.1
+      async-dns-server = "119.29.29.29,223.5.5.5,8.8.8.8,1.1.1.1";
 
       # 指定单个网络接口，可能的值：接口，IP地址，主机名
       # 如果接口具有多个 IP 地址，则建议指定 IP 地址。
