@@ -71,6 +71,12 @@
         #   version = "0.1.13";
         #   sha256 = "7m35bnGrgOt3uyRwSu93FCLYxeRiA6y97E8ypoi4Ouo=";
         # }
+        {
+          name = "theme-dracula";
+          publisher = "dracula-theme";
+          version = "2.24.2";
+          sha256 = "YNqWEIvlEI29mfPxOQVdd4db9G2qNodhz8B0MCAAWK8=";
+        }
       ];
     enableUpdateCheck = false;
     enableExtensionUpdateCheck = false;
@@ -202,7 +208,11 @@
       "editor.unicodeHighlight.ambiguousCharacters" = false;
       "editor.unicodeHighlight.nonBasicASCII" = false;
       "remote.SSH.useLocalServer" = false;
+      # "window.autoDetectColorScheme" = true;
+      # "workbench.preferredLightColorTheme" = "Atom One Light";
+      # "workbench.preferredDarkColorTheme" = "Dracula";
       "workbench.colorTheme" = "Atom One Light";
+
       "remote.SSH.remotePlatform" = {
         "ningbo203" = "linux";
         "ningbo204" = "linux";
