@@ -380,7 +380,7 @@
       "openvpn-connect"
       "zotero"
       # "skim"
-      # "arc"
+      "arc"
       # "via"
       "logseq"
     ];

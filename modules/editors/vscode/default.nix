@@ -43,6 +43,13 @@
 
         # python
         ms-python.python
+        ms-toolsai.jupyter
+        ms-toolsai.vscode-jupyter-slideshow
+        ms-toolsai.vscode-jupyter-cell-tags
+        ms-toolsai.jupyter-renderers
+        ms-toolsai.jupyter-keymap
+        # ms-python.vscode-pylance
+        ms-pyright.pyright
         # ms-pyright.pyright
 
         # nix
@@ -76,6 +83,12 @@
           publisher = "dracula-theme";
           version = "2.24.2";
           sha256 = "YNqWEIvlEI29mfPxOQVdd4db9G2qNodhz8B0MCAAWK8=";
+        }
+        {
+          name = "vsc-python-indent";
+          publisher = "KevinRose";
+          version = "1.18.0";
+          sha256 = "hiOMcHiW8KFmau7WYli0pFszBBkb6HphZsz+QT5vHv0=";
         }
       ];
     enableUpdateCheck = false;
