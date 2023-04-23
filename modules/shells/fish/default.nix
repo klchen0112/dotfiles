@@ -14,7 +14,7 @@
         E = "sudoedit";
         grep = "rg";
         cat = "bat";
-        conda = "micromamba";
+        # conda = "micromamba";
       };
       shellAliases = {
         # conda = "micromamba";
@@ -23,12 +23,6 @@
 
       # issue from https://github.com/LnL7/nix-darwin/issues/122
       loginShellInit = "fish_add_path --move --prepend --path $HOME/.nix-profile/bin /run/wrappers/bin /etc/profiles/per-user/$USER/bin /nix/var/nix/profiles/default/bin /run/current-system/sw/bin /opt/homebrew/bin
-                        # # >>> mamba initialize >>>
-                        # # !! Contents within this block are managed by 'mamba init' !!
-                        set -gx MAMBA_EXE \"/etc/profiles/per-user/$USER/bin/micromamba\"
-                        set -gx MAMBA_ROOT_PREFIX \"$HOME/micromamba\"
-                        eval \"/etc/profiles/per-user/$USER/bin/micromamba\" shell hook --shell fish --prefix \"$HOME/micromamba\" | source
-                        # # <<< mamba initialize <<<
                         ";
       plugins = with pkgs.fishPlugins; [
         {
