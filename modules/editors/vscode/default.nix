@@ -72,12 +72,12 @@
           version = "2.3.0";
           sha256 = "CTD0s2lRMCi/WCGr6dP1Utrvtsdcbg4srRcrZJSFDqU=";
         }
-        {
-          name = "vscode-micromamba";
-          publisher = "corker";
-          version = "0.1.15";
-          sha256 = "7m35bnGrgOt3uyRwSu93FCLYxeRiA6y97E8ypoi4Ouo=";
-        }
+        # {
+        #   name = "vscode-micromamba";
+        #   publisher = "corker";
+        #   version = "0.1.15";
+        #   sha256 = "7m35bnGrgOt3uyRwSu93FCLYxeRiA6y97E8ypoi4Ouo=";
+        # }
         {
           name = "theme-dracula";
           publisher = "dracula-theme";

@@ -36,7 +36,7 @@
        ;;ido               ; the other *other* search engine...
        ;;(ivy +fuzzy +prescient +childframe +icons)               ; a search engine for love and life
        (vertico +icons
-                ;;+childframe ;; not for yabai
+                +childframe ;; not for yabai
                 )         ; the search engine of the future
 
        :ui
@@ -1735,6 +1735,8 @@ tasks."
 ;; :init
   ;;:hook
   ;;(find-file (lambda () (when (bound-and-true-p conda-project-env-path)  (conda-env-activate-for-buffer))))
+  :custom
+  (conda-anaconda-home "/opt/homebrew/Caskroom/miniconda")
   :config
   (conda-env-initialize-interactive-shells)
   (setq conda-env-autoactivate-mode t)
@@ -2036,4 +2038,13 @@ use dash open app dash
 ;;  (global-wakatime-mode)
 ;;)
 #+end_src
+** Keyfreq
 
+#+begin_src emacs-lisp :tangle packages.el
+(package! keyfreq)
+#+end_src
+
+#+begin_src emacs-lisp :tangle config.el
+(setq keyfreq-mode t
+      keyfreq-autosave-mode t)
+#+end_src
