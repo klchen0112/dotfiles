@@ -350,7 +350,7 @@
     ];
     casks = [
       # "sunloginclient"
-      # "adrive"
+      "adrive"
       "snipaste"
       "anki"
       "google-chrome"

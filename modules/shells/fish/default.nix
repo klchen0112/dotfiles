@@ -16,6 +16,10 @@
         cat = "bat";
         conda = "micromamba";
       };
+      shellAliases = {
+        # conda = "micromamba";
+        "..." = "cd ../..";
+      };
 
       # issue from https://github.com/LnL7/nix-darwin/issues/122
       loginShellInit = "fish_add_path --move --prepend --path $HOME/.nix-profile/bin /run/wrappers/bin /etc/profiles/per-user/$USER/bin /nix/var/nix/profiles/default/bin /run/current-system/sw/bin /opt/homebrew/bin
@@ -26,7 +30,6 @@
                         eval \"/etc/profiles/per-user/$USER/bin/micromamba\" shell hook --shell fish --prefix \"$HOME/micromamba\" | source
                         # # <<< mamba initialize <<<
                         ";
-
       plugins = with pkgs.fishPlugins; [
         {
           name = "z";
