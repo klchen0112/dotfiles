@@ -22,8 +22,12 @@
       };
 
       # issue from https://github.com/LnL7/nix-darwin/issues/122
-      loginShellInit = "fish_add_path --move --prepend --path $HOME/.nix-profile/bin /run/wrappers/bin /etc/profiles/per-user/$USER/bin /nix/var/nix/profiles/default/bin /run/current-system/sw/bin /opt/homebrew/bin
-                        ";
+      loginShellInit = ''fish_add_path --move --prepend --path $HOME/.nix-profile/bin /run/wrappers/bin /etc/profiles/per-user/$USER/bin /nix/var/nix/profiles/default/bin /run/current-system/sw/bin /opt/homebrew/bin
+                        #>>> conda initialize >>>
+                        # !! Contents within this block are managed by 'conda init' !!
+                        eval /opt/homebrew/bin/conda "shell.fish" "hook" $argv | source
+                        # <<< conda initialize <<<
+                        '';
       plugins = with pkgs.fishPlugins; [
         {
           name = "z";

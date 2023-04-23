@@ -383,6 +383,7 @@
       "arc"
       # "via"
       "logseq"
+      "miniconda"
     ];
   };
 

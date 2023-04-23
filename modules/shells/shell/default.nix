@@ -42,6 +42,10 @@
         symbol = "שׂ";
         style = "bright-yellow bold";
       };
+      conda = {
+        disabled = false;
+        format = "[$symbol$environment](dimmed green) ";
+      };
       git_commit = {
         disabled = false;
         only_detached = true;
