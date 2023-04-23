@@ -1727,18 +1727,17 @@ tasks."
 :PROPERTIES:
 :ID:       d4be558f-c96d-4107-a442-14fe7648ce6b
 :END:
+
+
 #+begin_src emacs-lisp conf :tangle config.el
 
 (use-package! conda
 ;; :init
   ;;:hook
   ;;(find-file (lambda () (when (bound-and-true-p conda-project-env-path)  (conda-env-activate-for-buffer))))
-  :custom
-  (conda-anaconda-home "~/micromamba")
   :config
   (conda-env-initialize-interactive-shells)
-  (setq conda-env-autoactivate-mode t
-        conda-env-home-directory (expand-file-name "~/micromamba"))
+  (setq conda-env-autoactivate-mode t)
 )
 #+end_src
 ** Latex mode
