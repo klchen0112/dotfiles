@@ -29,10 +29,6 @@
 
       plugins = with pkgs.fishPlugins; [
         {
-          name = "async-prompt";
-          src = async-prompt;
-        }
-        {
           name = "z";
           src = z;
         }
