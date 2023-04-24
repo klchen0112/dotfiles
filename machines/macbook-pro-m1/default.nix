@@ -102,7 +102,7 @@
         };
       in {
         debug_output = "on";
-        external_bar = "all:0:26";
+        external_bar = "all:35:0";
         layout = "bsp";
         top_padding = gaps.top;
         bottom_padding = gaps.bottom;
@@ -202,7 +202,7 @@
         ${current_workspace_prefix} - ${keycodes.F} : yabai -m window --focus east  || yabai -m display --focus east
         # ${current_workspace_prefix} - ${keycodes.A} : yabai -m window --focus first || yabai -m display --focus north
         # ${current_workspace_prefix} - ${keycodes.E} : yabai -m window --focus last  || yabai -m display --focus east
-        
+
         ## Current workspace window adjust use ${current_workspace_move_prefix} as prefix
         # Make window zoom to fullscreen: current_workspace_prefix - ${keycodes.Z}
         ${current_workspace_move_prefix} - ${keycodes.Z} : yabai -m window --toggle zoom-fullscreen;
@@ -336,16 +336,22 @@
 
     taps = [
       "homebrew/cask"
+      "homebrew/cask-fonts"
       "homebrew/core"
       "homebrew/services"
       "laishulu/macism"
+      "FelixKratz/formulae"
     ];
     brews = [
       "mas"
       "pngpaste" # for emacs download clipboard
       "macism"
+      "sketchybar"
     ];
     casks = [
+      "font-sf-pro"
+      "font-sf-compact"
+      "font-sf-mono"
       # "sunloginclient"
       "adrive"
       "snipaste"
