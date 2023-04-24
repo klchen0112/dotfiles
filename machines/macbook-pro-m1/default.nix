@@ -202,8 +202,7 @@
         ${current_workspace_prefix} - ${keycodes.F} : yabai -m window --focus east  || yabai -m display --focus east
         # ${current_workspace_prefix} - ${keycodes.A} : yabai -m window --focus first || yabai -m display --focus north
         # ${current_workspace_prefix} - ${keycodes.E} : yabai -m window --focus last  || yabai -m display --focus east
-
-
+        
         ## Current workspace window adjust use ${current_workspace_move_prefix} as prefix
         # Make window zoom to fullscreen: current_workspace_prefix - ${keycodes.Z}
         ${current_workspace_move_prefix} - ${keycodes.Z} : yabai -m window --toggle zoom-fullscreen;
@@ -232,8 +231,6 @@
         ${current_workspace_move_prefix} - ${keycodes.P} : yabai -m window --warp north || (yabai -m window --display north ; yabai -m display --focus north)
         ${current_workspace_move_prefix} - ${keycodes.F} : yabai -m window --warp east  || (yabai -m window --display east  ; yabai -m display --focus east )
 
-
-
         ## Diffent Workspace Operation (size_chang_prefix - ...)
         # Moving windows between spaces: diffent_workspace_move_prefix - {1, 2, 3, 4, p, n,r } (Assumes 4 Spaces Max per Display)
         ${diffent_workspace_move_prefix} - 1 : yabai -m window --space 1; yabai -m space --focus 1;
@@ -250,6 +247,7 @@
         ${diffent_workspace_move_prefix} - ${keycodes.A} : yabai -m window --space first; yabai -m space --focus first;
         ${diffent_workspace_move_prefix} - ${keycodes.E} : yabai -m window --space last ; yabai -m space --focus last;
         ${diffent_workspace_move_prefix} - ${keycodes.X} : yabai -m window --space recent; yabai -m space --focus recent;
+
         # toggle fullscreen or split
         ${diffent_workspace_move_prefix}  - ${keycodes.F} : yabai -m window --toggle native-fullscreen
         ${diffent_workspace_move_prefix}  - ${keycodes.S} : yabai -m window --toggle split && yabai -m space --balance
