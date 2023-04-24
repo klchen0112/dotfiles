@@ -151,10 +151,10 @@
 
         # $HOME/.config/yabai/create_spaces.sh
         # Space config
-        yabai -m config --space 6 layout float
+        yabai -m config --space 8 layout float
         yabai -m config --space 4 layout float
         # ===== Rules ==================================
-        yabai -m rule --add label=emacs app="Emacs" native-fullscreen=on space=1 manage=off
+        yabai -m rule --add label=emacs app="Emacs" native-fullscreen=on manage=off
         yabai -m rule --add label="Finder" app="^(Finder|访达)$" title="(Co(py|nnect)|Move|Info|Pref)" manage=off
         yabai -m rule --add label="Safari" app="^Safari$" title="^(General|(Tab|Password|Website|Extension)s|AutoFill|Se(arch|curity)|Privacy|Advance)$" manage=off
         yabai -m rule --add label="macfeh" app="^macfeh$" manage=off
@@ -170,17 +170,16 @@
         yabai -m rule --add app="Raycast" manage=off
         yabai -m rule --add app="Bitwarden" manage=off
         yabai -m rule --add label="About This Mac" app="System Information" title="About This Mac" manage=off
-        yabai -m rule --add app="Dash"                manage="off"
+        yabai -m rule --add app="Dash" manage=off
 
-        yabai -m rule --add label=musicapp app="Plexamp" space=6
-        yabai -m rule --add app="^(Telegram)$"  space=6
-        yabai -m rule --add app="^(Discord)$" space=6
-        yabai -m rule --add app="^(Spark)$"  space=6
+        yabai -m rule --add label=musicapp app="Plexamp" space=8 manage=off
+        yabai -m rule --add app="^(Spark)$"  space=8 manage=off
 
-        yabai -m rule --add app="^(微信|WeChat)$"  space=4
-        yabai -m rule --add app="^(QQ)$"  space=4
-        yabai -m rule --add app="^(钉钉|DingTalk)$"  space=4
-
+        yabai -m rule --add app="^(微信|WeChat)$"  space=4 manage=off
+        yabai -m rule --add app="^(QQ)$"  space=4 manage=off
+        yabai -m rule --add app="^(钉钉|DingTalk)$"  space=4 manage=off
+        yabai -m rule --add app="^(Telegram)$"  space=4 manage=off
+        yabai -m rule --add app="^(Discord)$" space=4 manage=off
 
       '';
     };
@@ -215,7 +214,7 @@
         ${current_workspace_move_prefix} - ${keycodes.X} : yabai -m space --rotate 90
 
         # Equalize size of windows
-        ${current_workspace_move_prefix} - ${keycodes.E}nter : yabai -m space --balance
+        ${current_workspace_move_prefix} - ${keycodes.E} : yabai -m space --balance;
         # Enable / Disable gaps in current workspace
         ${current_workspace_move_prefix} - ${keycodes.G} : yabai -m space --toggle padding; yabai -m space --toggle gap
 
