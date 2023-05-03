@@ -72,6 +72,7 @@
       cachix
       jq # for yabai json parser
       # sketchybar
+      gzip
     ];
   };
 

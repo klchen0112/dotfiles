@@ -143,6 +143,8 @@
       "editor.suggest.snippetsPreventQuickSuggestions" = false;
       "editor.suggestOnTriggerCharacters" = true;
       "editor.suggestSelection" = "first";
+      "editor.bracketPairColorization.enabled" = true;
+      "editor.guides.bracketPairs" = "active";
       "clangd.arguments" = [
         "--log=verbose"
         "--pretty"

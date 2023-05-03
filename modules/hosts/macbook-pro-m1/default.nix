@@ -17,7 +17,7 @@
         #  ../../browser
         ../../downloader
         ../../editors/emacs
-        ../../editors/vim
+        # ../../editors/vim
         # ../../editors/nvim
         ../../editors/vscode
         ../../lang/cpp
