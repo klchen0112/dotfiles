@@ -177,10 +177,10 @@
           name = "colored-man-pages";
           src = colored-man-pages.src;
         }
-        {
-          name = "async-prompt";
-          src = async-prompt.src;
-        }
+        # {
+        #   name = "async-prompt";
+        #   src = async-prompt.src;
+        # }
         {
           name = "autopair";
           src = autopair-fish.src;
