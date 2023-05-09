@@ -1,6 +1,6 @@
 {pkgs, ...}: {
   home.packages = with pkgs; [
-    openscad
+    # openscad
 
     # xmake
     # glib

@@ -20,7 +20,7 @@
         # ../../editors/vim
         # ../../editors/nvim
         ../../editors/vscode
-        # ../../graphics
+        ../../graphics
         ../../lang/cpp
         ../../lang/json
         ../../lang/julia
