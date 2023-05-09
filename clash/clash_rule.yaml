@@ -12,7 +12,7 @@ bind-address: "*" # 监听IP白名单（当allow-lan：true），只允许列表
 mode: rule # clash工作模式（rule/global/direct,meta暂不支持script）
 log-level: warning # 日志等级（info/warning/error/debug/silent）
 ipv6: false # ip6开关，当为false时，停止解析hostanmes为ip6地址
-
+global-client-fingerprint: random
 external-controller: "0.0.0.0:9090" # 控制器监听地址
 # external-ui: /etc/clash/ui             # http服务路径，可以放静态web网页。
 #                                        # 如yacd的控制面板，可通过`http://{{external-controller}}/ui`直接使用
@@ -69,15 +69,10 @@ dns:
     - tls://223.5.5.5:853
     - https://1.12.12.12/dns-query
     - https://223.5.5.5/dns-query
-    - 10.66.10.10
-    - 10.10.0.21
-    - 10.10.2.21
   # Lookup domains via specific nameservers
-  # nameserver-policy:
-  #   '+.ppyun3.top': 'tls://1.12.12.12:853'
-  #   '+.ppyun2.top': 'tls://1.12.12.12:853'
-  #   '+.ppyun1.top': 'tls://1.12.12.12:853'
-  #   '+.qlyun.cc': 'tls://1.12.12.12:853'
+  nameserver-policy:
+    "+.zju.edu.cn,+.cc98.org": "10.10.0.21"
+    "geosite:cn,private,apple,steam@cn":  https://223.5.5.5/dns-query
   proxy-server-nameserver:
     - tls://1.12.12.12:853
     - tls://223.5.5.5:853
@@ -252,11 +247,6 @@ proxy-groups:
       # # - 巴西
       # - 印度
       # - 巴基斯坦
-  - name: DNS #【Meta专属】DNS代理组，配合上文"DNS配置"使用
-    type: select # 可任意name/type，此处仅做举例
-    proxies:
-      - Proxy
-      - DIRECT
 
   - name: Microsoft
     type: select
@@ -762,7 +752,7 @@ rules:
   # DNS 代理
   - DOMAIN-KEYWORD,announce,DIRECT
   - DOMAIN-KEYWORD,tracker,DIRECT
-  - RULE-SET,DNS,DNS
+  - RULE-SET,DNS,Proxy
   - DOMAIN-SUFFIX,openai.com,美国
   - DOMAIN-SUFFIX,jsdelivr.net,DIRECT
   - DOMAIN-SUFFIX,fastgit.org,DIRECT
