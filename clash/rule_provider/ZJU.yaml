@@ -8,7 +8,7 @@ payload:
 
   # CC98
   - DOMAIN-KEYWORD,cc98
-
+  - DOMAIN-SUFFIX,cc98.org
   # NexusHD
   - DOMAIN-KEYWORD,nexushd
 
