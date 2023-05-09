@@ -22,145 +22,141 @@
       };
       interactiveShellInit = ''
 
-        # set -gx doesn't work in this case for whatever reason
-        set -Ux _tide_left_items pwd git vi_mode
-        set -Ux _tide_prompt_69105 \x1b\x28B\x1b\x5bm\x1b\x28B\x1b\x5bm\x1b\x5b34m\x1b\x5b44m\x20\x40PWD\x40\x20\x1b\x5b34m\x1b\x5b40m\ue0b0\x1b\x5b32m\x1b\x5b40m\x20\u276f\x20\x1b\x28B\x1b\x5bm\x1b\x28B\x1b\x5bm\x1b\x5b30m\ue0b0 \x1b\x28B\x1b\x5bm\x1b\x28B\x1b\x5bm\x1b\x5b30m\ue0b2\x1b\x5b32m\x1b\x5b40m\x20\uf00c\x20\x1b\x5b33m\x1b\x5b40m\ue0b2\x1b\x5b30m\x1b\x5b43m\x2021m\x2023s\x20\x1b\x28B\x1b\x5bm\x1b\x28B\x1b\x5bm\x1b\x5b33m
-        set -Ux _tide_prompt_79899 \x1b\x28B\x1b\x5bm\x1b\x28B\x1b\x5bm\x1b\x5b34m\x1b\x5b44m\x20\x40PWD\x40\x20\x1b\x5b34m\x1b\x5b40m\ue0b0\x1b\x5b32m\x1b\x5b40m\x20\u276f\x20\x1b\x28B\x1b\x5bm\x1b\x28B\x1b\x5bm\x1b\x5b30m\ue0b0 \x1b\x28B\x1b\x5bm\x1b\x28B\x1b\x5bm\x1b\x5b30m\ue0b2\x1b\x5b32m\x1b\x5b40m\x20\uf00c\x20\x1b\x5b33m\x1b\x5b40m\ue0b2\x1b\x5b30m\x1b\x5b43m\x2015s\x20\x1b\x28B\x1b\x5bm\x1b\x28B\x1b\x5bm\x1b\x5b33m
-        set -Ux _tide_right_items status cmd_duration context jobs virtual_env rustc nix_shell
-
-        set -gx tide_aws_bg_color yellow
-        set -gx tide_aws_color brblack
-        set -gx tide_aws_icon \uf270
-        set -gx tide_character_color brgreen
-        set -gx tide_character_color_failure brred
-        set -gx tide_character_icon \u276f
-        set -gx tide_character_vi_icon_default \u276e
-        set -gx tide_character_vi_icon_replace \u25b6
-        set -gx tide_character_vi_icon_visual V
-        set -gx tide_chruby_bg_color red
-        set -gx tide_chruby_color black
-        set -gx tide_chruby_icon \ue23e
-        set -gx tide_cmd_duration_bg_color yellow
-        set -gx tide_cmd_duration_color black
-        set -gx tide_cmd_duration_decimals 0
-        set -gx tide_cmd_duration_icon \x1d
-        set -gx tide_cmd_duration_threshold 3000
-        set -gx tide_context_always_display false
-        set -gx tide_context_bg_color brblack
-        set -gx tide_context_color_default yellow
-        set -gx tide_context_color_root yellow
-        set -gx tide_context_color_ssh yellow
-        set -gx tide_context_hostname_parts 1
-        set -gx tide_crystal_bg_color brwhite
-        set -gx tide_crystal_color black
-        set -gx tide_crystal_icon \u2b22
-        set -gx tide_docker_bg_color blue
-        set -gx tide_docker_color black
-        set -gx tide_docker_default_contexts default colima
-        set -gx tide_docker_icon \uf308
-        set -gx tide_git_bg_color green
-        set -gx tide_git_bg_color_unstable yellow
-        set -gx tide_git_bg_color_urgent red
-        set -gx tide_git_color_branch black
-        set -gx tide_git_color_conflicted black
-        set -gx tide_git_color_dirty black
-        set -gx tide_git_color_operation black
-        set -gx tide_git_color_staged black
-        set -gx tide_git_color_stash black
-        set -gx tide_git_color_untracked black
-        set -gx tide_git_color_upstream black
-        set -gx tide_git_icon \x1d
-        set -gx tide_git_truncation_length 24
-        set -gx tide_go_bg_color brcyan
-        set -gx tide_go_color black
-        set -gx tide_go_icon \ue627
-        set -gx tide_java_bg_color yellow
-        set -gx tide_java_color black
-        set -gx tide_java_icon \ue256
-        set -gx tide_jobs_bg_color brblack
-        set -gx tide_jobs_color green
-        set -gx tide_jobs_icon \uf013
-        set -gx tide_kubectl_bg_color blue
-        set -gx tide_kubectl_color black
-        set -gx tide_kubectl_icon \u2388
-        set -gx tide_left_prompt_frame_enabled false
-        set -gx tide_left_prompt_items pwd git vi_mode
-        set -gx tide_left_prompt_prefix
-        set -gx tide_left_prompt_separator_diff_color \ue0b0
-        set -gx tide_left_prompt_separator_same_color \ue0b1
-        set -gx tide_left_prompt_suffix \ue0b0
-        set -gx tide_nix_shell_bg_color brblue
-        set -gx tide_nix_shell_color white
-        set -gx tide_nix_shell_icon \uf313
-        set -gx tide_node_bg_color green
-        set -gx tide_node_color black
-        set -gx tide_node_icon \u2b22
-        set -gx tide_os_bg_color white
-        set -gx tide_os_color black
-        set -gx tide_os_icon \uf313
-        set -gx tide_php_bg_color blue
-        set -gx tide_php_color black
-        set -gx tide_php_icon \ue608
-        set -gx tide_private_mode_bg_color brwhite
-        set -gx tide_private_mode_color black
-        set -gx tide_private_mode_icon \ufaf8
-        set -gx tide_prompt_add_newline_before true
-        set -gx tide_prompt_color_frame_and_connection brblack
-        set -gx tide_prompt_color_separator_same_color brblack
-        set -gx tide_prompt_icon_connection \x20
-        set -gx tide_prompt_min_cols 34
-        set -gx tide_prompt_pad_items true
-        set -gx tide_pwd_bg_color blue
-        set -gx tide_pwd_color_anchors brwhite
-        set -gx tide_pwd_color_dirs brwhite
-        set -gx tide_pwd_color_truncated_dirs white
-        set -gx tide_pwd_icon \x1d
-        set -gx tide_pwd_icon_home \uf015
-        set -gx tide_pwd_icon_unwritable \uf023
-        set -gx tide_pwd_markers \x2ebzr \x2ecitc \x2egit \x2ehg \x2enode\x2dversion \x2epython\x2dversion \x2eruby\x2dversion \x2eshorten_folder_marker \x2esvn \x2eterraform Cargo\x2etoml composer\x2ejson CVS go\x2emod package\x2ejson
-        set -gx tide_right_prompt_frame_enabled false
-        set -gx tide_right_prompt_items status cmd_duration context jobs node virtual_env rustc java php chruby go kubectl toolbox terraform aws nix_shell crystal
-        set -gx tide_right_prompt_prefix \ue0b2
-        set -gx tide_right_prompt_separator_diff_color \ue0b2
-        set -gx tide_right_prompt_separator_same_color \ue0b3
-        set -gx tide_right_prompt_suffix
-        set -gx tide_rustc_bg_color red
-        set -gx tide_rustc_color black
-        set -gx tide_rustc_icon \ue7a8
-        set -gx tide_shlvl_bg_color yellow
-        set -gx tide_shlvl_color black
-        set -gx tide_shlvl_icon \uf120
-        set -gx tide_shlvl_threshold 1
-        set -gx tide_status_bg_color black
-        set -gx tide_status_bg_color_failure red
-        set -gx tide_status_color green
-        set -gx tide_status_color_failure brwhite
-        set -gx tide_status_icon \uf00c
-        set -gx tide_status_icon_failure \u2718
-        set -gx tide_terraform_bg_color magenta
-        set -gx tide_terraform_color black
-        set -gx tide_terraform_icon \x1d
-        set -gx tide_time_bg_color white
-        set -gx tide_time_color black
-        set -gx tide_time_format
-        set -gx tide_toolbox_bg_color magenta
-        set -gx tide_toolbox_color black
-        set -gx tide_toolbox_icon \u2b22
-        set -gx tide_vi_mode_bg_color_default black
-        set -gx tide_vi_mode_bg_color_insert black
-        set -gx tide_vi_mode_bg_color_replace black
-        set -gx tide_vi_mode_bg_color_visual black
-        set -gx tide_vi_mode_color_default green
-        set -gx tide_vi_mode_color_insert green
-        set -gx tide_vi_mode_color_replace green
-        set -gx tide_vi_mode_color_visual green
-        set -gx tide_vi_mode_icon_default \u276e
-        set -gx tide_vi_mode_icon_insert \u276f
-        set -gx tide_vi_mode_icon_replace R
-        set -gx tide_vi_mode_icon_visual V
-        set -gx tide_virtual_env_bg_color brblack
-        set -gx tide_virtual_env_color cyan
-        set -gx tide_virtual_env_icon \ue73c
+        set -gx _tide_left_items:os\x1epwd\x1egit\x1enewline\x1echaracter
+        set -gx _tide_right_items:status\x1ecmd_duration\x1econtext\x1ejobs\x1evirtual_env
+        set -gx tide_aws_bg_color:normal
+        set -gx tide_aws_color:FF9900
+        set -gx tide_aws_icon:\uf270
+        set -gx tide_character_color:5FD700
+        set -gx tide_character_color_failure:FF0000
+        set -gx tide_character_icon:\u276f
+        set -gx tide_character_vi_icon_default:\u276e
+        set -gx tide_character_vi_icon_replace:\u25b6
+        set -gx tide_character_vi_icon_visual:V
+        set -gx tide_chruby_bg_color:normal
+        set -gx tide_chruby_color:B31209
+        set -gx tide_chruby_icon:\ue23e
+        set -gx tide_cmd_duration_bg_color:normal
+        set -gx tide_cmd_duration_color:87875F
+        set -gx tide_cmd_duration_decimals:0
+        set -gx tide_cmd_duration_icon:\uf252
+        set -gx tide_cmd_duration_threshold:3000
+        set -gx tide_context_always_display:false
+        set -gx tide_context_bg_color:normal
+        set -gx tide_context_color_default:D7AF87
+        set -gx tide_context_color_root:D7AF00
+        set -gx tide_context_color_ssh:D7AF87
+        set -gx tide_context_hostname_parts:1
+        set -gx tide_crystal_bg_color:normal
+        set -gx tide_crystal_color:FFFFFF
+        set -gx tide_crystal_icon:\u2b22
+        set -gx tide_docker_bg_color:normal
+        set -gx tide_docker_color:2496ED
+        set -gx tide_docker_default_contexts:default\x1ecolima
+        set -gx tide_docker_icon:\uf308
+        set -gx tide_git_bg_color:normal
+        set -gx tide_git_bg_color_unstable:normal
+        set -gx tide_git_bg_color_urgent:normal
+        set -gx tide_git_color_branch:5FD700
+        set -gx tide_git_color_conflicted:FF0000
+        set -gx tide_git_color_dirty:D7AF00
+        set -gx tide_git_color_operation:FF0000
+        set -gx tide_git_color_staged:D7AF00
+        set -gx tide_git_color_stash:5FD700
+        set -gx tide_git_color_untracked:00AFFF
+        set -gx tide_git_color_upstream:5FD700
+        set -gx tide_git_icon:\uf1d3
+        set -gx tide_git_truncation_length:24
+        set -gx tide_go_bg_color:normal
+        set -gx tide_go_color:00ACD7
+        set -gx tide_go_icon:\ue627
+        set -gx tide_java_bg_color:normal
+        set -gx tide_java_color:ED8B00
+        set -gx tide_java_icon:\ue256
+        set -gx tide_jobs_bg_color:normal
+        set -gx tide_jobs_color:5FAF00
+        set -gx tide_jobs_icon:\uf013
+        set -gx tide_kubectl_bg_color:normal
+        set -gx tide_kubectl_color:326CE5
+        set -gx tide_kubectl_icon:\u2388
+        set -gx tide_left_prompt_frame_enabled:false
+        set -gx tide_left_prompt_items:os\x1epwd\x1egit\x1enewline\x1echaracter
+        set -gx tide_left_prompt_prefix:
+        set -gx tide_left_prompt_separator_diff_color:\x20
+        set -gx tide_left_prompt_separator_same_color:\x20
+        set -gx tide_left_prompt_suffix:\x20
+        set -gx tide_nix_shell_bg_color:normal
+        set -gx tide_nix_shell_color:7EBAE4
+        set -gx tide_nix_shell_icon:\uf313
+        set -gx tide_node_bg_color:normal
+        set -gx tide_node_color:44883E
+        set -gx tide_node_icon:\u2b22
+        set -gx tide_os_bg_color:normal
+        set -gx tide_os_color:normal
+        set -gx tide_os_icon:\uf31b
+        set -gx tide_php_bg_color:normal
+        set -gx tide_php_color:617CBE
+        set -gx tide_php_icon:\ue608
+        set -gx tide_private_mode_bg_color:normal
+        set -gx tide_private_mode_color:FFFFFF
+        set -gx tide_private_mode_icon:\ufaf8
+        set -gx tide_prompt_add_newline_before:true
+        set -gx tide_prompt_color_frame_and_connection:6C6C6C
+        set -gx tide_prompt_color_separator_same_color:949494
+        set -gx tide_prompt_icon_connection:\u00b7
+        set -gx tide_prompt_min_cols:34
+        set -gx tide_prompt_pad_items:false
+        set -gx tide_pwd_bg_color:normal
+        set -gx tide_pwd_color_anchors:00AFFF
+        set -gx tide_pwd_color_dirs:0087AF
+        set -gx tide_pwd_color_truncated_dirs:8787AF
+        set -gx tide_pwd_icon:\uf07c
+        set -gx tide_pwd_icon_home:\uf015
+        set -gx tide_pwd_icon_unwritable:\uf023
+        set -gx tide_pwd_markers:\x2ebzr\x1e\x2ecitc\x1e\x2egit\x1e\x2ehg\x1e\x2enode\x2dversion\x1e\x2epython\x2dversion\x1e\x2eruby\x2dversion\x1e\x2eshorten_folder_marker\x1e\x2esvn\x1e\x2eterraform\x1eCargo\x2etoml\x1ecomposer\x2ejson\x1eCVS\x1ego\x2emod\x1epackage\x2ejson
+        set -gx tide_right_prompt_frame_enabled:false
+        set -gx tide_right_prompt_items:status\x1ecmd_duration\x1econtext\x1ejobs\x1enode\x1evirtual_env\x1erustc\x1ejava\x1ephp\x1echruby\x1ego\x1ekubectl\x1etoolbox\x1eterraform\x1eaws\x1enix_shell\x1ecrystal
+        set -gx tide_right_prompt_prefix:\x20
+        set -gx tide_right_prompt_separator_diff_color:\x20
+        set -gx tide_right_prompt_separator_same_color:\x20
+        set -gx tide_right_prompt_suffix:
+        set -gx tide_rustc_bg_color:normal
+        set -gx tide_rustc_color:F74C00
+        set -gx tide_rustc_icon:\ue7a8
+        set -gx tide_shlvl_bg_color:normal
+        set -gx tide_shlvl_color:d78700
+        set -gx tide_shlvl_icon:\uf120
+        set -gx tide_shlvl_threshold:1
+        set -gx tide_status_bg_color:normal
+        set -gx tide_status_bg_color_failure:normal
+        set -gx tide_status_color:5FAF00
+        set -gx tide_status_color_failure:D70000
+        set -gx tide_status_icon:\u2714
+        set -gx tide_status_icon_failure:\u2718
+        set -gx tide_terraform_bg_color:normal
+        set -gx tide_terraform_color:844FBA
+        set -gx tide_terraform_icon:\x1d
+        set -gx tide_time_bg_color:normal
+        set -gx tide_time_color:5F8787
+        set -gx tide_time_format:
+        set -gx tide_toolbox_bg_color:normal
+        set -gx tide_toolbox_color:613583
+        set -gx tide_toolbox_icon:\u2b22
+        set -gx tide_vi_mode_bg_color_default:normal
+        set -gx tide_vi_mode_bg_color_insert:normal
+        set -gx tide_vi_mode_bg_color_replace:normal
+        set -gx tide_vi_mode_bg_color_visual:normal
+        set -gx tide_vi_mode_color_default:949494
+        set -gx tide_vi_mode_color_insert:87AFAF
+        set -gx tide_vi_mode_color_replace:87AF87
+        set -gx tide_vi_mode_color_visual:FF8700
+        set -gx tide_vi_mode_icon_default:D
+        set -gx tide_vi_mode_icon_insert:I
+        set -gx tide_vi_mode_icon_replace:R
+        set -gx tide_vi_mode_icon_visual:V
+        set -gx tide_virtual_env_bg_color:normal
+        set -gx tide_virtual_env_color:00AFAF
+        set -gx tide_virtual_env_icon:\ue73c
       '';
       # issue from https://github.com/LnL7/nix-darwin/issues/122
       loginShellInit = ''        fish_add_path --move --prepend --path $HOME/.nix-profile/bin /run/wrappers/bin /etc/profiles/per-user/$USER/bin /nix/var/nix/profiles/default/bin /run/current-system/sw/bin /opt/homebrew/bin
