@@ -165,25 +165,33 @@
                                  # <<< conda initialize <<<
       '';
       plugins = with pkgs.fishPlugins; [
-        # {
-        #   name = "z";
-        #   src = z;
-        # }
-        # {
-        #   name = "fzf-fish";
-        #   src = fzf-fish;
-        # }
-        # {
-        #   name = "colored-man-pages";
-        #   src = colored-man-pages;
-        # }
-        # {
-        #   name = "autopair";
-        #   src = autopair-fish;
-        # }
+        {
+          name = "z";
+          src = z.src;
+        }
+        {
+          name = "fzf-fish";
+          src = fzf-fish.src;
+        }
+        {
+          name = "colored-man-pages";
+          src = colored-man-pages.src;
+        }
+        {
+          name = "async-prompt";
+          src = async-prompt.src;
+        }
+        {
+          name = "autopair";
+          src = autopair-fish.src;
+        }
         {
           name = "tide";
           src = tide.src;
+        }
+        {
+          name = "sponge";
+          src = sponge.src;
         }
       ];
     };
@@ -193,7 +201,6 @@
     ripgrep
     bat
     fzf
-    shfmt
     tmux
   ];
 }
