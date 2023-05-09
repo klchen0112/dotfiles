@@ -20,6 +20,7 @@
         # ../../editors/vim
         # ../../editors/nvim
         ../../editors/vscode
+        # ../../graphics
         ../../lang/cpp
         ../../lang/json
         ../../lang/julia
@@ -33,7 +34,7 @@
         ../../reader
         ../../shells/git
         ../../shells/fish
-        ../../shells/zsh
+        # ../../shells/zsh
         ../../shells/shell
         ../../terminal
         # ../../vpn

@@ -54,7 +54,7 @@
   };
 
   environment = {
-    shells = with pkgs; [bashInteractive fish zsh]; # Default shell
+    shells = with pkgs; [bashInteractive fish]; # Default shell
     # variables = {
     #   # System variables
     #   EDITOR = "nvim";
@@ -389,6 +389,7 @@
       "logseq"
       "miniconda"
       "activitywatch"
+      # "openscad"
     ];
   };
 

@@ -48,8 +48,8 @@
         ms-toolsai.vscode-jupyter-cell-tags
         ms-toolsai.jupyter-renderers
         ms-toolsai.jupyter-keymap
-        # ms-python.vscode-pylance
-        ms-pyright.pyright
+        ms-python.vscode-pylance
+        # ms-pyright.pyright
         # ms-pyright.pyright
 
         # nix

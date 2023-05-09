@@ -1,13 +1,12 @@
 {pkgs, ...}: {
   home.packages = with pkgs; [
     exa
-    tree
     inetutils
   ];
   programs.starship = {
-    enable = true;
-    enableZshIntegration = true;
-    enableFishIntegration = true;
+    enable = false;
+    enableZshIntegration = false;
+    enableFishIntegration = false;
     settings = {
       add_newline = false;
       format = "$shlvl$shell$username$hostname$git_branch$git_commit$git_state$git_status$cmake$python$nix_shell$directory$cmd_duration$sudo$line_break$jobs$character";
