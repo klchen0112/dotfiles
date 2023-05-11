@@ -144,16 +144,18 @@
       extraConfig = ''
         ## auto create Display and move to window
         yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
-        # yabai -m signal --add event=window_focused action="sketchybar --trigger window_focus"
+        yabai -m signal --add event=window_focused action="sketchybar --trigger window_focus"
         # yabai -m signal --add event=display_added action="sleep 2 && $HOME/.config/yabai/create_spaces.sh"
         # yabai -m signal --add event=display_removed action="sleep 1 && $HOME/.config/yabai/create_spaces.sh"
-        # yabai -m signal --add event=window_created action="sketchybar --trigger windows_on_spaces"
-        # yabai -m signal --add event=window_destroyed action="sketchybar --trigger windows_on_spaces"
+        yabai -m signal --add event=window_created action="sketchybar --trigger windows_on_spaces"
+        yabai -m signal --add event=window_destroyed action="sketchybar --trigger windows_on_spaces"
 
         # $HOME/.config/yabai/create_spaces.sh
         # Space config
-        yabai -m config --space 8 layout float
         yabai -m config --space 4 layout float
+        yabai -m config --space 8 layout float
+        yabai -m config --space 9 layout float
+        yabai -m config --space 10 layout float
         # ===== Rules ==================================
         yabai -m rule --add label=emacs app="Emacs" native-fullscreen=on manage=off
         yabai -m rule --add label="Finder" app="^(Finder|访达)$" title="(Co(py|nnect)|Move|Info|Pref)" manage=off
