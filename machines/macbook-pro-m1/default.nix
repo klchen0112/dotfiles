@@ -142,15 +142,19 @@
         mouse_drop_action = "swap";
       };
       extraConfig = ''
-        ## auto create Display and move to window
+
+        #!/usr/bin/env sh
+
+        # Unload the macOS WindowManager process
+        launchctl unload -F /System/Library/LaunchAgents/com.apple.WindowManager.plist > /dev/null 2>&1 &
         yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
         yabai -m signal --add event=window_focused action="sketchybar --trigger window_focus"
-        # yabai -m signal --add event=display_added action="sleep 2 && $HOME/.config/yabai/create_spaces.sh"
-        # yabai -m signal --add event=display_removed action="sleep 1 && $HOME/.config/yabai/create_spaces.sh"
+        yabai -m signal --add event=display_added action="sleep 2 && $HOME/.config/yabai/create_spaces.sh"
+        yabai -m signal --add event=display_removed action="sleep 1 && $HOME/.config/yabai/create_spaces.sh"
         yabai -m signal --add event=window_created action="sketchybar --trigger windows_on_spaces"
         yabai -m signal --add event=window_destroyed action="sketchybar --trigger windows_on_spaces"
-
-        # $HOME/.config/yabai/create_spaces.sh
+        ## auto create Display and move to window
+        $HOME/.config/yabai/create_spaces.sh
         # Space config
         yabai -m config --space 4 layout float
         yabai -m config --space 8 layout float

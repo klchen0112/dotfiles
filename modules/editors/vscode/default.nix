@@ -162,6 +162,7 @@
         "--function-arg-placeholders=false"
         "--compile-commands-dir=build"
       ];
+      "editor.tabCompletion" = "off";
       "clangd.detectExtensionConflicts" = false;
       "clangd.onConfigChanged" = "restart";
       "cmake.configureOnOpen" = false;
@@ -232,6 +233,9 @@
         "ningbo203" = "linux";
         "ningbo204" = "linux";
         "cy" = "linux";
+      };
+      "[yaml]" = {
+        "editor.comments.insertSpace" = false;
       };
     };
   };
