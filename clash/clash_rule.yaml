@@ -72,20 +72,21 @@ dns:
   # Lookup domains via specific nameservers
   nameserver-policy:
     "rule-set:ZJU": 10.10.0.21
+    "rule-set:Listpac_gfwlist": "tls://208.67.222.222:853"
     "geosite:cn,private,apple,steam@cn":  https://223.5.5.5/dns-query
   proxy-server-nameserver:
     - tls://1.12.12.12:853
     - tls://223.5.5.5:853
     - https://1.12.12.12/dns-query
   fallback: # 回落DNS服务器，支持udp/tcp/dot/doh/doq
-    - "tls://1.1.1.1:853#DNS" #【Meta专属】"#DNS"代表该DNS服务器通过名为"DNS"的proxy Group访问
-    - "https://1.1.1.1/dns-query#DNS"
-    - "tls://9.9.9.9:853#DNS"
-    - "https://9.9.9.9/dns-query#DNS"
-    - "tls://8.8.8.8:853#DNS"
-    - "https://8.8.8.8/dns-query#DNS"
-    - "tls://208.67.222.222:853#DNS"
-    - "https://208.67.220.220/dns-query#DNS"
+    - "tls://1.1.1.1:853" #【Meta专属】""代表该DNS服务器通过名为"DNS"的proxy Group访问
+    - "https://1.1.1.1/dns-query"
+    - "tls://9.9.9.9:853"
+    - "https://9.9.9.9/dns-query"
+    - "tls://8.8.8.8:853"
+    - "https://8.8.8.8/dns-query"
+    - "tls://208.67.222.222:853"
+    - "https://208.67.220.220/dns-query"
   fallback-filter: # 回落DNS服务器过滤
     geoip: true # 为真时，不匹配为geoip规则的使用fallback返回结果
     geoip-code: CN # geoip匹配区域设定
@@ -260,12 +261,6 @@ proxy-groups:
       - DIRECT
       - Proxy
 
-  - name: GlobalMedia
-    type: select
-    proxies:
-      - Proxy
-      - DIRECT
-
   - name: 学术
     type: select
     proxies:
@@ -274,13 +269,25 @@ proxy-groups:
       - 节点选择
       - DIRECT
   - name: 学术节点
-    type: load-balance
-    strategy: consistent-hashing
-    tolerance: 50 # 容差值：节点差值低于设定值时，不自动切换
-    url: "http://cp.cloudflare.com/generate_204" # 用来测ping的地址
-    interval: 300 # 测ping时间(秒)
+    type: select
+    # strategy: consistent-hashing
+    # tolerance: 50 # 容差值：节点差值低于设定值时，不自动切换
+    # url: "http://cp.cloudflare.com/generate_204" # 用来测ping的地址
+    # interval: 300 # 测ping时间(秒)
     use:
       - Scholar
+  - name: OpenAI
+    type: select # 手动代理组
+    proxies:
+      - 美国
+      - 节点选择
+      - Automatic
+      - 外服游戏
+      - 香港
+      - 日本
+      - 新加坡
+      # - 台湾
+
   - name: 香港
     type: load-balance
     strategy: consistent-hashing
@@ -671,13 +678,13 @@ rule-providers:
     path: ./rule_provider/Bahamut.yaml
     url: https://ghproxy.com/https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Bahamut/Bahamut.yaml
     interval: 259200
-  ChinaMax_Domain:
+
+  Listpac_China:
     type: http
     behavior: domain
-    path: ./rule_provider/ChinaMax_Domain.yaml
-    url: https://ghproxy.com/https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/ChinaMax/ChinaMax_Domain.yaml
+    path: ./rule_provider/listpac_china.yaml
+    url: https://ghproxy.com/https://github.com/Potterli20/file/releases/download/listpac/listpac_china_clash_premium.yaml
     interval: 259200
-
   GameDownloadCN:
     type: http
     behavior: classical
@@ -697,34 +704,38 @@ rule-providers:
     path: ./rule_provider/GlobalScholar.yaml
     url: https://ghproxy.com/https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/GlobalScholar/GlobalScholar.yaml
     interval: 259200
-  GlobalMedia_Domain:
+
+  Listpac_gfwlist:
     type: http
     behavior: domain
-    path: ./rule_provider/GlobalMedia_Domain.yaml
-    url: https://ghproxy.com/https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/GlobalMedia/GlobalMedia_Domain.yaml
+    path: ./rule_provider/listpac_gfwlist.yaml
+    url: https://ghproxy.com/https://github.com/Potterli20/file/releases/download/listpac/listpac_gfwlist_clash_premium.yaml
     interval: 259200
 
-  Global_Domain:
+  AD_BLOCK:
     type: http
     behavior: domain
-    path: ./rule_provider/Global_Domain.yaml
-    url: https://ghproxy.com/https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Global/Global_Domain.yaml
+    path: ./rule_provider/ad_blocked_domain.yaml
+    url: https://ghproxy.com/https://github.com/Potterli20/file/releases/download/ad-hosts-pro/ad-clash-premium.yaml
     interval: 259200
-
-  Advertising_Domain:
+  AD_BLOCK_YOUTUBE:
     type: http
     behavior: domain
-    path: ./rule_provider/Advertising_Domain.yaml
-    url: https://ghproxy.com/https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/release/rule/Clash/Advertising/Advertising_Domain.yaml
+    path: ./rule_provider/ad_blocked_domain_youtube.yaml
+    url: https://ghproxy.com/https://github.com/Potterli20/file/releases/download/ad-youtube-hosts/ad-youtube-clash.yaml
     interval: 259200
-
   AD_DIRECT:
     type: http
     behavior: domain
     path: ./rule_provider/AD_DIRECT.yaml
     url: https://ghproxy.com/https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Direct/Direct.yaml
     interval: 259200
-
+  # CN_BLOCKED_DOMAIN:
+  #   type: http
+  #   behavior: domain
+  #   path: ./rule_provider/CN_BLOCKED_DOMAIN.txt
+  #   url: https://ghproxy.com/https://github.com/Potterli20/file/releases/download/cn-blocked-domain/domains.txt
+  #   interval: 259200
   Privacy_Domain:
     type: http
     behavior: domain
@@ -737,6 +748,13 @@ rule-providers:
     behavior: classical
     path: ./rule_provider/Developer.yaml
     url: https://ghproxy.com/https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Developer/Developer.yaml
+    interval: 259200
+
+  OpenAI:
+    type: http
+    behavior: classical
+    path: ./rule_provider/OpenAI.yaml
+    url: https://ghproxy.com/https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/release/rule/Clash/OpenAI/OpenAI.yaml
     interval: 259200
 
   ZJU:
@@ -753,7 +771,7 @@ rules:
   - DOMAIN-KEYWORD,announce,DIRECT
   - DOMAIN-KEYWORD,tracker,DIRECT
   - RULE-SET,DNS,Proxy
-  - DOMAIN-SUFFIX,openai.com,美国
+  - RULE-SET,OpenAI,OpenAI
   - DOMAIN-SUFFIX,jsdelivr.net,DIRECT
   - DOMAIN-SUFFIX,fastgit.org,DIRECT
   # Github
@@ -763,9 +781,12 @@ rules:
   - DOMAIN-SUFFIX,nixos.org,Proxy
   - DOMAIN-SUFFIX,nixos.dev,Proxy
   # 局域网直连
+
+  # 广告过滤
   - RULE-SET,Privacy_Domain,REJECT
   - RULE-SET,AD_DIRECT,DIRECT
-  - RULE-SET,Advertising_Domain,REJECT
+  - RULE-SET,AD_BLOCK_YOUTUBE,REJECT
+  - RULE-SET,AD_BLOCK,REJECT
   # PROCESS rule
   - PROCESS-NAME,aria2c,DIRECT
   - PROCESS-NAME,BitComet,DIRECT
@@ -823,9 +844,8 @@ rules:
   # B站港澳台
   - RULE-SET,BiliBiliIntl,香港
   # 国际媒体
-  - RULE-SET,GlobalMedia_Domain,Proxy
-  - RULE-SET,Global_Domain,Proxy
-  - RULE-SET,ChinaMax_Domain,DIRECT
+  - RULE-SET,Listpac_gfwlist,Proxy
+  - RULE-SET,Listpac_China,DIRECT
 
   # GEOIP规则
   - GEOIP,CN,DIRECT
