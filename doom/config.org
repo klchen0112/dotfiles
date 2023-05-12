@@ -858,7 +858,8 @@ citar need vertico
                 "${title}\n#+filetags: :references:
 - bibliography ::
 - tags :: ${tags}
-- keywords :: ${keywords}\n* Notes
+- keywords :: ${keywords}
+- previous work :: \n* Notes
 :PROPERTIES:
 :Custom_ID: ${=key=}
 :URL: ${url}
@@ -1002,7 +1003,7 @@ citar need vertico
 ** org 美化
 #+begin_src emacs-lisp conf :tangle packages.el
 (package! org-modern)
-(package! valign :recipe (:host github :repo "casouri/valign"))
+;;(package! valign :recipe (:host github :repo "casouri/valign"))
 (package! org-superstar)
 #+end_src
 
@@ -1087,13 +1088,13 @@ citar need vertico
   (custom-set-faces! '(org-modern-statistics :inherit org-checkbox-statistics-todo))
 )
 
-(use-package! valign
-  :hook
-  (org-mode . valign-mode)
-  (markdown-mode . valign-mode)
-  :config
-  (setq valign-fancy-bar 1)
-)
+;;(use-package! valign
+;;  :hook
+;;  (org-mode . valign-mode)
+;;  (markdown-mode . valign-mode)
+;;  :config
+;;  (setq valign-fancy-bar 1)
+;;)
 
 #+end_src
 ** Heading structure
