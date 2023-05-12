@@ -157,7 +157,7 @@
         $HOME/.config/yabai/create_spaces.sh
         # Space config
         yabai -m config --space 4 layout float
-        yabai -m config --space 8 layout float
+        yabai -m config --space 5 layout float
         yabai -m config --space 9 layout float
         yabai -m config --space 10 layout float
         # ===== Rules ==================================
@@ -179,8 +179,8 @@
         yabai -m rule --add label="About This Mac" app="System Information" title="About This Mac" manage=off
         yabai -m rule --add app="Dash" manage=off
 
-        yabai -m rule --add label=musicapp app="Plexamp" space=8 manage=off
-        yabai -m rule --add app="^(Spark)$"  space=8 manage=off
+        yabai -m rule --add label=musicapp app="Plexamp" space=9 manage=off
+        yabai -m rule --add app="^(Spark)$"  space=9 manage=off
 
         yabai -m rule --add app="^(微信|WeChat)$"  space=4 manage=off
         yabai -m rule --add app="^(QQ)$"  space=4 manage=off
