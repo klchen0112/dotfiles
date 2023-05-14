@@ -21,6 +21,7 @@
         # ../../editors/nvim
         ../../editors/vscode
         ../../graphics
+        ../../keyboard
         ../../lang/cpp
         ../../lang/json
         ../../lang/julia
