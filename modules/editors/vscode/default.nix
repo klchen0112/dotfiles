@@ -233,6 +233,7 @@
         "ningbo203" = "linux";
         "ningbo204" = "linux";
         "cy" = "linux";
+        "i12500" = "linux";
       };
       "[yaml]" = {
         "editor.comments.insertSpace" = false;
