@@ -391,11 +391,12 @@
       "zotero"
       # "skim"
       "arc"
-      # "via"
+      "via"
       "logseq"
       "miniconda"
       "activitywatch"
       # "openscad"
+      "qmk-toolbox"
     ];
   };
 
