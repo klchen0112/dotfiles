@@ -156,7 +156,6 @@
         ## auto create Display and move to window
         $HOME/.config/yabai/create_spaces.sh
         # Space config
-        yabai -m config --space 4 layout float
         yabai -m config --space 5 layout float
         yabai -m config --space 9 layout float
         yabai -m config --space 10 layout float
@@ -195,10 +194,10 @@
       skhdConfig = let
         keycodes = import ./keycodes.nix;
         current_workspace_prefix = "ctrl + alt";
-        current_workspace_move_prefix = "shift + alt";
+        current_workspace_move_prefix = "shift + ctrl";
         diffent_workspace_move_prefix = "ctrl + cmd"; # in macos most app use ctrl + cmd - ${keycodes.F} to native-fullscreen
         size_chang_prefix = "cmd + alt";
-        insert_prefix = "shift + ctrl";
+        insert_prefix = "shift + alt";
         high_prefix = "shift + ctrl + cmd";
       in ''
         ## Current workspace move and focus
