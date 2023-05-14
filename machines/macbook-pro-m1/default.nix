@@ -217,7 +217,7 @@
         # Mirror Space on X and Y Axis: current_workspace_move_prefix - {x, y,r}
         ${current_workspace_move_prefix} - ${keycodes.X} : yabai -m space --mirror x-axis
         ${current_workspace_move_prefix} - ${keycodes.Y} : yabai -m space --mirror y-axis
-        ${current_workspace_move_prefix} - ${keycodes.X} : yabai -m space --rotate 90
+        ${current_workspace_move_prefix} - ${keycodes.R} : yabai -m space --rotate 90
 
         # Equalize size of windows
         ${current_workspace_move_prefix} - ${keycodes.E} : yabai -m space --balance;
