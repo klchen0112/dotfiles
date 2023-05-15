@@ -51,12 +51,13 @@
         inputs.nixpkgs.follows = "nixpkgs";
       };
 
-      doom-emacs = {                                                        # Nix-community Doom Emacs
+      doom-emacs = {
+        # Nix-community Doom Emacs
         url = "github:nix-community/nix-doom-emacs";
         inputs.nixpkgs.follows = "nixpkgs";
         inputs.emacs-overlay.follows = "emacs-overlay";
       };
-      
+
       hyprland = {
         # Official Hyprland flake
         url = "github:vaxerski/Hyprland";
@@ -106,6 +107,7 @@
         # (https://nixos.org/manual/nixpkgs/stable/#idm140737322551056)
         config.allowUnfree = true;
         config.allowBroken = true;
+        # config.allowUnsupportedSystem = true;
       });
   in rec {
     # nixosConfigurations = {

@@ -248,6 +248,7 @@
         ${diffent_workspace_move_prefix} - 7 : yabai -m window --space 7; yabai -m space --focus 7;
         ${diffent_workspace_move_prefix} - 8 : yabai -m window --space 8; yabai -m space --focus 8;
         ${diffent_workspace_move_prefix} - 9 : yabai -m window --space 9; yabai -m space --focus 9;
+        ${diffent_workspace_move_prefix} - 0 : yabai -m window --space 10; yabai -m space --focus 10;
         ${diffent_workspace_move_prefix} - ${keycodes.P} : yabai -m window --space prev ; yabai -m space --focus prev;
         ${diffent_workspace_move_prefix} - ${keycodes.N} : yabai -m window --space next ; yabai -m space --focus next;
         ${diffent_workspace_move_prefix} - ${keycodes.A} : yabai -m window --space first; yabai -m space --focus first;
@@ -273,7 +274,7 @@
         ${insert_prefix} - ${keycodes.F} : yabai -m window --insert east
         ${insert_prefix} - ${keycodes.S} : yabai -m window --insert stack
         ## high (insert_prefix - ...)
-        # ${high_prefix} - ${keycodes.X} : launchctl kickstart -k gui/''${UID}/org.nixos.yabai && launchctl kickstart -k gui/''${UID}/org.nixos.skhd
+        ${high_prefix} - ${keycodes.X} : launchctl kickstart -k gui/''${UID}/org.nixos.yabai && launchctl kickstart -k gui/''${UID}/org.nixos.skhd
       '';
     };
     # spacebar = {
