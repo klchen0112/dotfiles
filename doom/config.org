@@ -508,7 +508,7 @@ npm install nodejieba
 
 
 #+begin_src emacs-lisp :tangle config.el
-(defconst meow-cheatsheet-layout-engram
+ (defconst meow-cheatsheet-layout-engram
     '((<TLDE> "[" "{")
       (<AE01> "1" "|")
       (<AE02> "2" "=")
@@ -722,8 +722,8 @@ npm install nodejieba
    '("q" . meow-quit)
    '("r" . meow-replace)
    '("r" . meow-swap-grab)
-   '("s" . meow-search)
-   '("S" . meow-open-above)
+   '("s" . meow-save)
+   '("S" . meow-search)
    '("t" . meow-till)
    '("T" . meow-find)
    '("u" . meow-undo)
@@ -733,9 +733,9 @@ npm install nodejieba
 
    ;;'("W" . meow-next-symbol)
    '("x" . meow-M-x)
+
    ;;'("X" . meow-backward-delete)
-   '("y" . meow-save)
-   '("Y" . meow-yank)
+   '("y" . meow-yank)
    '("Y" . meow-sync-grab)
    '("z" . meow-pop-selection)
    '("'" . repeat)
@@ -968,7 +968,7 @@ citar need vertico
   (setq  org-hidden-keywords nil)
   (setq  org-hide-emphasis-markers t)
   (setq  org-hide-leading-stars nil)
-  (setq  org-image-actual-width '(512))
+  (setq  org-image-actual-width '(300))
   (setq  org-imenu-depth 1)
   (setq  org-pretty-entities t)
   (setq  org-startup-folded t)
@@ -1753,193 +1753,68 @@ tasks."
 async latex view
 ***** Package
 #+begin_src emacs-lisp conf :tangle packages.el
-(when (executable-find "xelatex")
-  (package! xenops)
-)
+;;(when (executable-find "xelatex")
+;;  (package! xenops)
+;;)
 #+end_src
 
 ***** config
 #+begin_src emacs-lisp conf :tangle config.el
-(use-package! xenops
-    :after org
-    :hook
-    (org-mode . xenops-mode)
-    (latex-mode . xenops-mode)
-    (LaTex-mode . xenops-mode)
-    :config
-    (setq xenops-reveal-on-entry t
-          ;;xenops-image-directory (expand-file-name "xenops/image" doom-cache-dir)
-          xenops-math-latex-process 'xelatex)
-    ;;(setq xenops-math-latex-process-alist
-    ;;      '((dvipng :programs
-    ;;         ("latex" "dvipng")
-    ;;         :description "dvi > png" :message "you need to install the programs: latex and dvipng." :image-input-type "dvi" :image-output-type "png" :image-size-adjust
-    ;;         (1.0 . 1.0)
-    ;;         :latex-compiler
-    ;;         ("latex -interaction nonstopmode -shell-escape -output-format dvi -output-directory %o %f")
-    ;;         :image-converter
-    ;;         ("dvipng -D %D -T tight -o %O %f"))
-    ;;        (latex :programs
-    ;;               ("latex" "dvisvgm")
-    ;;               :description "dvi > svg"
-    ;;               :message "you need to install the programs: latex and dvisvgm."
-    ;;               :image-input-type "dvi"
-    ;;               :image-output-type "svg"
-    ;;               :image-size-adjust
-    ;;               (1.2 . 1.2)
-    ;;               :latex-compiler
-    ;;               ("latex -interaction nonstopmode -output-format dvi -output-directory %o %f")
-    ;;               :image-converter
-    ;;               ("dvisvgm %f -n -b min -c %S -o %O"))
-    ;;        (lualatex :programs ("lualatex" "dvisvgm")
-    ;;                  :description "dvi > svg"
-    ;;                  :use-xcolor t
-    ;;                  :message
-    ;;                  "you need to install the programs: lualatex and dvisvgm. add --jiton option to use luajittex"
-    ;;                  :image-input-type "dvi"
-    ;;                  :image-output-type "svg"
-    ;;                  :image-size-adjust (1.0 . 1.0)
-    ;;                  :latex-compiler
-    ;;                  ("lualatex --interaction=nonstopmode --shell-escape --output-format dvi --output-directory=%o %f")
-    ;;                  :image-converter
-    ;;                  ("dvisvgm %f -n -b min -c %S -o %O"))
-    ;;        (tectonic :programs
-    ;;                  ("latex" "dvisvgm")
-    ;;                  :description "xdv > svg"
-    ;;                  :message "you need to install the programs: tectonic and dvisvgm."
-    ;;                  :image-input-type "xdv"
-    ;;                  :image-output-type "svg"
-    ;;                  :image-size-adjust (1.0 . 1.0)
-    ;;                  :latex-compiler
-    ;;                  ("tectonic -X compile %f -Z shell-escape --outfmt xdv --outdir %o")
-    ;;                  :image-converter
-    ;;                  ("dvisvgm %f -n -b min -c %S -o %O"))
-    ;;        (xelatex :programs ("xelatex" "dvisvgm")
-    ;;                 :description "xdv > svg"
-    ;;                 :message "you need to install the programs: xelatex and dvisvgm."
-    ;;                 :image-input-type "xdv"
-    ;;                 :image-output-type "svg"
-    ;;                 :image-size-adjust (0.75 . 0.75)
-    ;;                 :latex-compiler
-    ;;                 ("xelatex -no-pdf -interaction nonstopmode -shell-escape -output-directory %o %f")
-    ;;                 :image-converter
-    ;;                 ("dvisvgm %f -n -b min -c %S -o %O"))
-    ;;        (imagemagick :programs
-    ;;                     ("latex" "convert")
-    ;;                     :description "pdf > png" :message "you need to install the programs: latex and imagemagick." :image-input-type "pdf" :image-output-type "png" :image-size-adjust
-    ;;                     (1.0 . 1.0)
-    ;;                     :latex-compiler
-    ;;                     ("pdflatex -interaction nonstopmode -shell-escape -output-directory %o %f")
-    ;;                     :image-converter
-    ;;                     ("convert -density %D -trim -antialias %f -quality 100 %O"))))
-)
+;;(use-package! xenops
+;;    :after org
+;;    :hook
+;;    (org-mode . xenops-mode)
+;;    (latex-mode . xenops-mode)
+;;    (LaTex-mode . xenops-mode)
+;;    :config
+;;    (setq xenops-reveal-on-entry t
+;;          ;;xenops-image-directory (expand-file-name "xenops/image" doom-cache-dir)
+;;          xenops-math-latex-process 'xelatex)
+;;)
 
 
-(after! xenops
-  (defun xenops-math-block-delimiter-lines-regexp ()
-    "A regexp matching the start or end line of any block math element."
-    (format "\\(%s\\)"
-            (s-join "\\|"
-                    (apply #'append (xenops-elements-get-for-types '(block-math table algorithm) :delimiters)))))
-  (defun xenops-math-parse-element-at-point ()
-    "Parse any math element at point."
-    (or (xenops-math-parse-inline-element-at-point)
-        (xenops-math-parse-block-element-at-point)
-        (xenops-math-parse-table-at-point)
-        (xenops-math-parse-algorithm-at-point)))
-
-  (defun xenops-math-parse-algorithm-at-point ()
-    "Parse algorithm element at point."
-    (xenops-parse-element-at-point 'algorithm))
-
-
-  (add-to-list 'xenops-elements '(algorithm
-                                  (:delimiters
-                                   ("^[ 	]*\\\\begin{algorithm}"
-                                    "^[ 	]*\\\\end{algorithm}"))
-                                  (:parser . xenops-math-parse-algorithm-at-point)
-                                  (:handlers . block-math)))
-  )
+;;(after! xenops
+;;  (defun xenops-math-block-delimiter-lines-regexp ()
+;;    "A regexp matching the start or end line of any block math element."
+;;    (format "\\(%s\\)"
+;;            (s-join "\\|"
+;;                    (apply #'append (xenops-elements-get-for-types '(block-math table algorithm) :delimiters)))))
+;;  (defun xenops-math-parse-element-at-point ()
+;;    "Parse any math element at point."
+;;    (or (xenops-math-parse-inline-element-at-point)
+;;        (xenops-math-parse-block-element-at-point)
+;;        (xenops-math-parse-table-at-point)
+;;        (xenops-math-parse-algorithm-at-point)))
+;;
+;;  (defun xenops-math-parse-algorithm-at-point ()
+;;    "Parse algorithm element at point."
+;;    (xenops-parse-element-at-point 'algorithm))
+;;
+;;
+;;  (add-to-list 'xenops-elements '(algorithm
+;;                                  (:delimiters
+;;                                   ("^[ 	]*\\\\begin{algorithm}"
+;;                                    "^[ 	]*\\\\end{algorithm}"))
+;;                                  (:parser . xenops-math-parse-algorithm-at-point)
+;;                                  (:handlers . block-math)))
+;;  )
 #+end_src
 **** org fragtog
 ***** package
 #+begin_src emacs-lisp :tangle packages.el
-(package! org-fragtog)
+;;(package! org-fragtog)
 #+end_src
 
 ***** config
 #+begin_src emacs-lisp :tangle config.el
-(use-package! org-fragtog
- ;;:hook (org-mode . org-fragtog-mode)
-)
+;;(use-package! org-fragtog
+;;:hook (org-mode . org-fragtog-mode)
+;;)
 #+end_src
 **** org preview settings
 #+begin_src emacs-lisp :tangle config.el
 
-;;(setq org-preview-latex-default-process 'dvisvgm)
-;;(setq org-preview-latex-process-alist
-;;      '((dvipng :programs
-;;         ("latex" "dvipng")
-;;         :description "dvi > png"
-;;         :message "you need to install the programs: latex and dvipng."
-;;         :image-input-type "dvi"
-;;         :image-output-type "png"
-;;         :image-size-adjust
-;;         (0.35 . 0.35)
-;;         :latex-compiler
-;;         ("latex -interaction nonstopmode -output-directory=%o %f")
-;;         :image-converter
-;;         ("dvipng -D %D -T tight -o %O %f")
-;;         :transparent-image-converter
-;;         ("dvipng -D %D -T tight -bg Transparent -o %O %f"))
-;;        (dvisvgm :programs
-;;                 ("latex" "dvisvgm")
-;;                 :description "dvi > svg"
-;;                 :message "you need to install the programs: latex and dvisvgm."
-;;                 :image-input-type "dvi"
-;;                 :image-output-type "svg"
-;;                 :image-size-adjust
-;;                 (1.2 . 1.2)
-;;                 :latex-compiler
-;;                 ("latex -interaction nonstopmode -output-format=dvi -output-directory=%o %f")
-;;                 :image-converter
-;;                 ("dvisvgm %f -n -b min -c %S -o %O"))
-;;        (imagemagick :programs
-;;                     ("latex" "convert")
-;;                     :description "pdf > png" :message "you need to install the programs: latex and imagemagick." :image-input-type "pdf" :image-output-type "png" :image-size-adjust
-;;                     (1.0 . 1.0)
-;;                     :latex-compiler
-;;                     ("pdflatex -interaction nonstopmode -output-directory=%o %f")
-;;                     :image-converter
-;;                     ("convert -density %D -trim -antialias %f -quality 100 %O")))
-;;)
 
-;;(setq org-format-latex-header "\\documentclass{article}
-;;\\usepackage[usenames]{xcolor}
-;;
-;;\\usepackage[T1]{fontenc}
-;;
-;;\\usepackage{booktabs}
-;;
-;;\\pagestyle{empty}             % do not remove
-;;% The settings below are copied from fullpage.sty
-;;\\setlength{\\textwidth}{\\paperwidth}
-;;\\addtolength{\\textwidth}{-3cm}
-;;\\setlength{\\oddsidemargin}{1.5cm}
-;;\\addtolength{\\oddsidemargin}{-2.54cm}
-;;\\setlength{\\evensidemargin}{\\oddsidemargin}
-;;\\setlength{\\textheight}{\\paperheight}
-;;\\addtolength{\\textheight}{-\\headheight}
-;;\\addtolength{\\textheight}{-\\headsep}
-;;\\addtolength{\\textheight}{-\\footskip}
-;;\\addtolength{\\textheight}{-3cm}
-;;\\setlength{\\topmargin}{1.5cm}
-;;\\addtolength{\\topmargin}{-2.54cm}
-;;% my custom stuff
-;;")
-
-(setq org-format-latex-options
-      (plist-put org-format-latex-options :background "Transparent"))
 #+end_src
 ** Doc
 use dash open app dash
