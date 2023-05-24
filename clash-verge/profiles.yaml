@@ -1,0 +1,31 @@
+# Profiles Config for Clash Verge
+
+current: lh10ryT886do
+chain: null
+valid:
+- dns
+items:
+- uid: rgJHXBQeSYjj
+  type: remote
+  name: Clash_1684895782.yaml
+  file: rgJHXBQeSYjj.yaml
+  url: https://www.paopaoyun.cyou/link/9imnFJLlDGUtCszq?clash=1
+  extra:
+    upload: 1602884228
+    download: 27485211094
+    total: 324454580224
+    expire: 1686313263
+  updated: 1684897899
+- uid: lh10ryT886do
+  type: local
+  name: own_rule
+  file: lh10ryT886do.yaml
+  desc: ''
+  selected:
+  - name: Proxy
+    now: Automatic
+  - name: Streaming
+    now: Proxy
+  - name: Social
+    now: Proxy
+  updated: 1684896461
