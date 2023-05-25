@@ -26,37 +26,6 @@ profile: #缓存设置(文件位置./cache.db)
   store-selected: true #节点状态记忆（若不同配置有同代理名称,设置值共享）
   store-fake-ip: true #fake-ip缓存
 
-sniffer: #【Meta专属】sniffer域名嗅探器
-  enable: true # 嗅探开关
-  sniffing: # 嗅探协议对象：目前支持tls/http
-    - tls
-    - http
-
-  skip-domian: # 列表中的sni字段，保留mapping结果，不通过嗅探还原域名，优先级比force-domain高
-    - "Mijia Cloud" # 米家设备，建议加
-    - "dlg.io.mi.com"
-    - "+.apple.com" # 苹果域名，建议加
-    - "+.tpddns.cn"
-    - "+.zju.edu.cn"
-  # - '*.baidu.com'                    # 支持通配符
-
-  force-domain: # 需要强制嗅探的域名，默认只对IP嗅探
-    #  - '+'
-    - "+.netflix.com"
-    - "+.nflxvideo.net"
-    - "+.amazonaws.com"
-    - "+.media.dssott.com"
-  port-whitelist: #端口白名单，只对名单内的端口进行还原域名
-    - 80
-    - 443
-    # - 8000-9000
-hosts: #host，支持通配符（非通配符域名优先级高于通配符域名）
-  "*.clash.dev": 127.0.0.1 #例如foo.example.com>*.example.com>.example.com
-  ".dev": 127.0.0.1
-  "alpha.clash.dev": "::1"
-  'time.android.com': 203.107.6.88
-  'time.facebook.com': 203.107.6.88
-  'localhost': 127.0.0.1
 dns:
   enable: true # DNS开关(false/true)
   listen: 0.0.0.0:7874 # DNS监听地址
@@ -72,7 +41,6 @@ dns:
   # Lookup domains via specific nameservers
   nameserver-policy:
     "rule-set:ZJU": 10.10.0.21
-    "rule-set:Listpac_gfwlist": "tls://208.67.222.222:853"
   proxy-server-nameserver:
     - tls://1.12.12.12:853
     - tls://223.5.5.5:853
@@ -86,6 +54,99 @@ dns:
     - "https://8.8.8.8/dns-query"
     - "tls://208.67.222.222:853"
     - "https://208.67.220.220/dns-query"
+  fake-ip-filter:
+    # 以下域名列表参考自 vernesong/OpenClash 项目，并由 Hackl0us 整理补充
+    - '*.lan'
+    - '*.localdomain'
+    - '*.example'
+    - '*.invalid'
+    - '*.localhost'
+    - '*.test'
+    - '*.local'
+    - '*.home.arpa'
+    - 'time.*.com'
+    - 'time.*.gov'
+    - 'time.*.edu.cn'
+    - 'time.*.apple.com'
+    - 'time1.*.com'
+    - 'time2.*.com'
+    - 'time3.*.com'
+    - 'time4.*.com'
+    - 'time5.*.com'
+    - 'time6.*.com'
+    - 'time7.*.com'
+    - 'ntp.*.com'
+    - 'ntp1.*.com'
+    - 'ntp2.*.com'
+    - 'ntp3.*.com'
+    - 'ntp4.*.com'
+    - 'ntp5.*.com'
+    - 'ntp6.*.com'
+    - 'ntp7.*.com'
+    - '*.time.edu.cn'
+    - '*.ntp.org.cn'
+    - '+.pool.ntp.org'
+    - 'time1.cloud.tencent.com'
+    - 'music.163.com'
+    - '*.music.163.com'
+    - '*.126.net'
+    - 'musicapi.taihe.com'
+    - 'music.taihe.com'
+    - 'songsearch.kugou.com'
+    - 'trackercdn.kugou.com'
+    - '*.kuwo.cn'
+    - 'api-jooxtt.sanook.com'
+    - 'api.joox.com'
+    - 'joox.com'
+    - 'y.qq.com'
+    - '*.y.qq.com'
+    - 'streamoc.music.tc.qq.com'
+    - 'mobileoc.music.tc.qq.com'
+    - 'isure.stream.qqmusic.qq.com'
+    - 'dl.stream.qqmusic.qq.com'
+    - 'aqqmusic.tc.qq.com'
+    - 'amobile.music.tc.qq.com'
+    - '*.xiami.com'
+    - '*.music.migu.cn'
+    - 'music.migu.cn'
+    - '*.msftconnecttest.com'
+    - '*.msftncsi.com'
+    - 'msftconnecttest.com'
+    - 'msftncsi.com'
+    - 'localhost.ptlogin2.qq.com'
+    - 'localhost.sec.qq.com'
+    - '+.srv.nintendo.net'
+    - '+.stun.playstation.net'
+    - 'xbox.*.microsoft.com'
+    - 'xnotify.xboxlive.com'
+    - '+.battlenet.com.cn'
+    - '+.wotgame.cn'
+    - '+.wggames.cn'
+    - '+.wowsgame.cn'
+    - '+.wargaming.net'
+    - 'proxy.golang.org'
+    - 'stun.*.*'
+    - 'stun.*.*.*'
+    - '+.stun.*.*'
+    - '+.stun.*.*.*'
+    - '+.stun.*.*.*.*'
+    - 'heartbeat.belkin.com'
+    - '*.linksys.com'
+    - '*.linksyssmartwifi.com'
+    - '*.router.asus.com'
+    - 'mesu.apple.com'
+    - 'swscan.apple.com'
+    - 'swquery.apple.com'
+    - 'swdownload.apple.com'
+    - 'swcdn.apple.com'
+    - 'swdist.apple.com'
+    - 'lens.l.google.com'
+    - 'stun.l.google.com'
+    - '+.nflxvideo.net'
+    - '*.square-enix.com'
+    - '*.finalfantasyxiv.com'
+    - '*.ffxiv.com'
+    - '*.mcdn.bilivideo.cn'
   fallback-filter: # 回落DNS服务器过滤
     geoip: true # 为真时，不匹配为geoip规则的使用fallback返回结果
     geoip-code: CN # geoip匹配区域设定
@@ -219,8 +280,6 @@ proxy-groups:
     type: select
     use:
       - IPLC
-    proxies:
-      - DIRECT
   - name: "Automatic"
     type: url-test
     tolerance: 50 # 容差值：节点差值低于设定值时，不自动切换
@@ -655,44 +714,6 @@ proxy-providers:
       interval: 300
       url: http://cp.cloudflare.com/generate_204
 rule-providers:
-  DNS:
-    type: http
-    behavior: classical
-    path: ./rule_provider/DNS.yaml
-    url: https://ghproxy.com/https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/release/rule/Clash/DNS/DNS.yaml
-    interval: 259200
-
-  BiliBiliIntl:
-    type: http
-    behavior: classical
-    path: ./rule_provider/BiliBiliIntl.yaml
-    url: https://ghproxy.com/https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/release/rule/Clash/BiliBiliIntl/BiliBiliIntl.yaml
-    interval: 259200
-
-  Bahamut:
-    type: http
-    behavior: classical
-    path: ./rule_provider/Bahamut.yaml
-    url: https://ghproxy.com/https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Bahamut/Bahamut.yaml
-    interval: 259200
-
-
-  GlobalScholar:
-    type: http
-    behavior: classical
-    path: ./rule_provider/GlobalScholar.yaml
-    url: https://ghproxy.com/https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/GlobalScholar/GlobalScholar.yaml
-    interval: 259200
-
-
-  Developer:
-    type: http
-    behavior: classical
-    path: ./rule_provider/Developer.yaml
-    url: https://ghproxy.com/https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Developer/Developer.yaml
-    interval: 259200
-
-
 
   ZJU:
     type: file
@@ -707,7 +728,6 @@ rules:
   # DNS 代理
   - DOMAIN-KEYWORD,announce,DIRECT
   - DOMAIN-KEYWORD,tracker,DIRECT
-  - RULE-SET,DNS,Proxy
   - GEOSITE,openai,OpenAI
   - DOMAIN-SUFFIX,jsdelivr.net,DIRECT
   - DOMAIN-SUFFIX,fastgit.org,DIRECT
@@ -716,7 +736,8 @@ rules:
   - DOMAIN-SUFFIX,fastly.net,Proxy
   - DOMAIN-SUFFIX,nixos.org,Proxy
   - DOMAIN-SUFFIX,nixos.dev,Proxy
-  - GEOSITE,github,Proxy
+  - GEOSITE,category-dev-cn,Proxy
+  #- GEOSITE,category-dev-!cn,Proxy
   # 局域网直连
 
   # 广告过滤
@@ -757,10 +778,12 @@ rules:
 
   # ZJU
   - RULE-SET,ZJU,DIRECT
+  - GEOSITE,category-education-cn,DIRECT
 
 
   # 学术
-  - RULE-SET,GlobalScholar,学术
+  - GEOSITE,category-scholar-!cn,学术
+  - GEOSITE,category-scholar-cn,DIRECT
   - DOMAIN-SUFFIX,academictorrents.com,学术
   # 游戏
   - DOMAIN-SUFFIX,konami.net,外服游戏
@@ -774,10 +797,11 @@ rules:
   - GEOSITE,apple@cn,DIRECT
 
   # 巴哈姆特
-  - RULE-SET,Bahamut,动画疯
+  - GEOSITE,bahamut,动画疯
   # B站港澳台
-  - RULE-SET,BiliBiliIntl,香港
+
   - GEOSITE,bilibili,DIRECT
+  - GEOSITE,category-social-media-cn,DIRECT
   # 国际媒体
   - GEOSITE,spotify,Streaming
   - GEOSITE,youtube,Streaming
@@ -785,9 +809,10 @@ rules:
 
   # 国际社交 Social
   - GEOSITE,telegram,Social
-
-  - GEOSITE,geolocation-!cn,Proxy
+  - GEOSITE,discord,Social
   - GEOSITE,CN,DIRECT
+  - GEOSITE,geolocation-!cn,Proxy
+
   # GEOIP规则
   - GEOIP,CN,DIRECT
   - GEOIP,TELEGRAM,Social

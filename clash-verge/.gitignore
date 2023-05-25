@@ -3,7 +3,4 @@
 *.mmdb
 proxy_provider/*
 logs
-config.yaml
-clash-verge.yaml
-profiles.yaml
-verge.yaml
+*.yaml
