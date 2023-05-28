@@ -164,7 +164,7 @@
         yabai -m rule --add label="Finder" app="^(Finder|访达)$" title="(Co(py|nnect)|Move|Info|Pref)" manage=off
         yabai -m rule --add label="Safari" app="^Safari$" title="^(General|(Tab|Password|Website|Extension)s|AutoFill|Se(arch|curity)|Privacy|Advance)$" manage=off
         yabai -m rule --add label="macfeh" app="^macfeh$" manage=off
-        yabai -m rule --add label="System Preferences" app="^(System Preferences|系统偏好设置)$" title=".*" manage=off
+        yabai -m rule --add label="System Settings" app="^(System Settings|系统偏好设置)$" title=".*" manage=off
         yabai -m rule --add label="Calendar" app="^(Calendar|日历)$" title=".*" manage=off
         yabai -m rule --add label="App Store" app="^App Store$" manage=off
         yabai -m rule --add label="Activity Monitor" app="^Activity Monitor$" manage=off
@@ -195,8 +195,8 @@
         keycodes = import ./keycodes.nix;
         current_workspace_prefix = "ctrl + alt";
         current_workspace_move_prefix = "shift + ctrl";
-        diffent_workspace_move_prefix = "ctrl + cmd"; # in macos most app use ctrl + cmd - ${keycodes.F} to native-fullscreen
-        size_chang_prefix = "cmd + alt";
+        diffent_workspace_move_prefix = "alt + cmd"; # in macos most app use ctrl + cmd - ${keycodes.F} to native-fullscreen
+        size_chang_prefix = "cmd + ctrl";
         insert_prefix = "shift + alt";
         high_prefix = "shift + ctrl + cmd";
       in ''
@@ -274,7 +274,10 @@
         ${insert_prefix} - ${keycodes.F} : yabai -m window --insert east
         ${insert_prefix} - ${keycodes.S} : yabai -m window --insert stack
         ## high (insert_prefix - ...)
-        ${high_prefix} - ${keycodes.X} : launchctl kickstart -k gui/''${UID}/org.nixos.yabai && launchctl kickstart -k gui/''${UID}/org.nixos.skhd
+        ${high_prefix} - ${keycodes.X} :  \
+          /usr/bin/env osascript <<< \
+        "display notification \"Restarting Yabai\" with title \"Yabai\""; \
+        launchctl kickstart -k gui/''${UID}/org.nixos.yabai && launchctl kickstart -k gui/''${UID}/org.nixos.skhd
       '';
     };
     # spacebar = {
@@ -391,13 +394,14 @@
       "zotero"
       # "skim"
       "arc"
-      "via"
+      # "via"
       "logseq"
       "miniconda"
       "activitywatch"
       # "openscad"
       "qmk-toolbox"
       "mathpix-snipping-tool"
+      "tidgi"
     ];
   };
 
