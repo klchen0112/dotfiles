@@ -16,6 +16,7 @@
       imports = [
         #  ../../browser
         ../../downloader
+        # ../../editors/codeblocks
         ../../editors/emacs
         # ../../editors/vim
         # ../../editors/nvim
