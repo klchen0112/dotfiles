@@ -15,8 +15,8 @@
 ** Nix Darwin Installation
 *** Setup
 #+begin_src
-$ mkdir -p ~/.config/nix
-$ echo "experimental-features = nix-command flakes" >> ~/.config/nix/nix.conf
+mkdir -p ~/.config/nix
+echo "experimental-features = nix-command flakes" >> ~/.config/nix/nix.conf
 #+end_src
 *** Initial
 
