@@ -98,6 +98,12 @@
           version = "1.15.4";
           sha256 = "+EfEeta+qAnX/xmcGP0sa6U0+VhToiqdHEXQDENxyGA=";
         }
+        {
+          name = "docs-yaml";
+          publisher = "docsmsft";
+          version = "1.0.0";
+          sha256 = "ocmL3875chSn8hh9EjUZ+4NxOiobQwDvuXOyujJozEc=";
+        }
       ];
     enableUpdateCheck = false;
     enableExtensionUpdateCheck = false;
