@@ -241,7 +241,7 @@
 
        :app
        ;;calendar
-       ;;emms
+       emms
        ;;everywhere           ; *leave* Emacs!? You must be joking
        ;;irc               ; how neckbeards socialize
        ;;(rss +org)        ; emacs as an RSS reader
@@ -1888,21 +1888,30 @@ use dash open app dash
 #+end_src
 ** org media note
 #+begin_src emacs-lisp :tangle packages.el
-(package! pretty-hydra)  ;; dependency
-(package! org-media-note :recipe (:host github :repo "yuchen-lea/org-media-note"))
+;;(package! pretty-hydra)  ;; dependency
+;;(package! org-media-note :recipe (:host github :repo "yuchen-lea/org-media-note"))
 #+end_src
 
 
 #+begin_src emacs-lisp :tangle config.el
-(use-package! org-media-note
-  :init (setq org-media-note-use-org-ref t)
-  :hook (org-mode .  org-media-note-mode)
-  :after org
-  :bind (("H-v" . org-media-note-hydra/body))  ;; Main entrance
-  :config
-  (setq org-media-note-screenshot-image-dir "~/org/.attach/")  ;; Folder to save screenshot
-  (setq org-media-note-use-refcite-first t)  ;; use videocite link instead of video link if possible
-  )
+;;(use-package! org-media-note
+;;  :init (setq org-media-note-use-org-ref t)
+;;  :hook (org-mode .  org-media-note-mode)
+;;  :after org
+;;  :bind (("H-v" . org-media-note-hydra/body))  ;; Main entrance
+;;  :config
+;;  (setq org-media-note-screenshot-image-dir "~/org/.attach/")  ;; Folder to save screenshot
+;;  (setq org-media-note-use-refcite-first t)  ;; use videocite link instead of video link if possible
+;;  )
+#+end_src
+** mpvi
+
+#+begin_src emacs-lisp :tangle packages.el
+(package! mpvi :recipe (:host github :repo "lorniu/mpvi"))
+#+end_src
+
+#+begin_src emacs-lisp :tangle config.el
+(use-package! mpvi)
 #+end_src
 * Other module
 ** Git Module
