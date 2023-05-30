@@ -159,7 +159,7 @@
         yabai -m config --space 9 layout float
         yabai -m config --space 10 layout float
         # ===== Rules ==================================
-        yabai -m rule --add label=emacs app="Emacs" native-fullscreen=on manage=off
+        yabai -m rule --add label=emacs app="Emacs" manage=on
         yabai -m rule --add label="Finder" app="^(Finder|访达)$" title="(Co(py|nnect)|Move|Info|Pref)" manage=off
         yabai -m rule --add label="Safari" app="^Safari$" title="^(General|(Tab|Password|Website|Extension)s|AutoFill|Se(arch|curity)|Privacy|Advance)$" manage=off
         yabai -m rule --add label="macfeh" app="^macfeh$" manage=off
