@@ -13,6 +13,7 @@
   programs.vscode = {
     enable = true;
     package = pkgs.vscode;
+
     extensions = with pkgs.vscode-extensions;
       [
         #themes
@@ -51,6 +52,7 @@
         ms-python.vscode-pylance
         # ms-pyright.pyright
         # ms-pyright.pyright
+        # cpp
 
         # nix
         bbenoist.nix
@@ -89,6 +91,12 @@
           publisher = "KevinRose";
           version = "1.18.0";
           sha256 = "hiOMcHiW8KFmau7WYli0pFszBBkb6HphZsz+QT5vHv0=";
+        }
+        {
+          name = "cpptools";
+          publisher = "ms-vscode";
+          version = "1.15.4";
+          sha256 = "+EfEeta+qAnX/xmcGP0sa6U0+VhToiqdHEXQDENxyGA=";
         }
       ];
     enableUpdateCheck = false;
