@@ -142,11 +142,10 @@
         mouse_drop_action = "swap";
       };
       extraConfig = ''
-
         #!/usr/bin/env sh
 
         # Unload the macOS WindowManager process
-        launchctl unload -F /System/Library/LaunchAgents/com.apple.WindowManager.plist > /dev/null 2>&1 &
+
         yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
         yabai -m signal --add event=window_focused action="sketchybar --trigger window_focus"
         yabai -m signal --add event=display_added action="sleep 2 && $HOME/.config/yabai/create_spaces.sh"
@@ -200,6 +199,7 @@
         insert_prefix = "shift + alt";
         high_prefix = "shift + ctrl + cmd";
       in ''
+        #!/usr/bin/env sh
         ## Current workspace move and focus
         # focus window : current_workspace_prefix - {p, n, b, f}
         ${current_workspace_prefix} - ${keycodes.B} : yabai -m window --focus west  || yabai -m display --focus west
