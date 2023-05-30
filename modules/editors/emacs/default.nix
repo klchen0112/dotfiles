@@ -44,6 +44,8 @@
     # mpvi required
     mpv
     yt-dlp
+    tesseract5
+    ffmpeg_5
   ];
   programs.emacs = {
     enable = true;
