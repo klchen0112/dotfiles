@@ -3,4 +3,4 @@
 *.mmdb
 proxy_provider/*
 logs
-*.yaml
+/*.yaml

@@ -1,4 +1,3 @@
-
 port : 7894
 socks-port: 7891
 redir-port: 7892
@@ -243,7 +242,7 @@ proxy-groups:
       - 香港
       - 日本
       - 新加坡
-      # - 台湾
+      - 台湾
       - 美国
       # - 韩国
       # - 英国
@@ -289,7 +288,7 @@ proxy-groups:
       - 香港
       - 日本
       - 新加坡
-      # - 台湾
+      - 台湾
       - 美国
       # - 韩国
       # - 英国
@@ -319,7 +318,11 @@ proxy-groups:
     proxies:
       - Proxy
       - DIRECT
-
+  - name: B站港澳台
+    type: select # 手动代理组
+    proxies:
+      - 香港
+      - 台湾
   - name: Streaming
     type: select
     proxies:
@@ -356,7 +359,7 @@ proxy-groups:
       - 香港
       - 日本
       - 新加坡
-      # - 台湾
+      - 台湾
 
   - name: 香港
     type: load-balance
@@ -384,17 +387,16 @@ proxy-groups:
     url: "http://cp.cloudflare.com/generate_204" # 用来测ping的地址
     interval: 300 # 测ping时间(秒)
     filter: "新加坡"
-  # - name: 台湾
-  #   type: load-balance
-  #   strategy: consistent-hashing
-  #   use:
-  #     - TW
-  #   tolerance: 50 # 容差值：节点差值低于设定值时，不自动切换
-  #   url: "http://cp.cloudflare.com/generate_204" # 用来测ping的地址
-  #   interval: 300 # 测ping时间(秒)
+  - name: 台湾
+    type: load-balance
+    strategy: consistent-hashing
+    use:
+      - TW
+    tolerance: 50 # 容差值：节点差值低于设定值时，不自动切换
+    url: "http://cp.cloudflare.com/generate_204" # 用来测ping的地址
+    interval: 300 # 测ping时间(秒)
   - name: 动画疯
     type: select
-    # strategy: consistent-hashing
     use:
       - 动画疯
     tolerance: 50 # 容差值：节点差值低于设定值时，不自动切换
@@ -541,14 +543,14 @@ proxy-providers:
       enable: true
       interval: 300
       url: http://cp.cloudflare.com/generate_204
-  # TW: # 订阅名字，每个订阅不可重名，如果修改需要连同上方proxy-groups中use使用的一同修改
-  #   type: file
-  #   path: ./proxy_provider/mixed.yaml # 订阅节点存放位置
-  #   filter: "台湾"
-  #   health-check:
-  #     enable: true
-  #     interval: 300
-  #     url: http://cp.cloudflare.com/generate_204
+  TW: # 订阅名字，每个订阅不可重名，如果修改需要连同上方proxy-groups中use使用的一同修改
+     type: file
+     path: ./proxy_provider/mixed.yaml # 订阅节点存放位置
+     filter: "台湾"
+     health-check:
+       enable: true
+       interval: 300
+       url: http://cp.cloudflare.com/generate_204
   动画疯: # 订阅名字，每个订阅不可重名，如果修改需要连同上方proxy-groups中use使用的一同修改
     type: file
     path: ./proxy_provider/mixed.yaml # 订阅节点存放位置
@@ -799,7 +801,29 @@ rules:
   # 巴哈姆特
   - GEOSITE,bahamut,动画疯
   # B站港澳台
-
+  # 内容：BilibiliHMT 哔哩哔哩 港澳台番剧
+  # 数量：21条
+  - DOMAIN,p-bstarstatic.akamaized.net,B站港澳台
+  - DOMAIN,p.bstarstatic.com,B站港澳台
+  - DOMAIN,upos-bstar-mirrorakam.akamaized.net,B站港澳台
+  - DOMAIN,upos-bstar1-mirrorakam.akamaized.net,B站港澳台
+  - DOMAIN,upos-hz-mirrorakam.akamaized.net,B站港澳台
+  - DOMAIN-SUFFIX,acgvideo.com,B站港澳台
+  - DOMAIN-SUFFIX,bilibili.com,B站港澳台
+  - DOMAIN-SUFFIX,bilibili.tv,B站港澳台
+  - IP-CIDR,45.43.32.234/32,B站港澳台,no-resolve
+  - IP-CIDR,103.151.150.0/23,B站港澳台,no-resolve
+  - IP-CIDR,119.29.29.29/32,B站港澳台,no-resolve
+  - IP-CIDR,128.1.62.200/32,B站港澳台,no-resolve
+  - IP-CIDR,128.1.62.201/32,B站港澳台,no-resolve
+  - IP-CIDR,150.116.92.250/32,B站港澳台,no-resolve
+  - IP-CIDR,164.52.33.178/32,B站港澳台,no-resolve
+  - IP-CIDR,164.52.33.182/32,B站港澳台,no-resolve
+  - IP-CIDR,164.52.76.18/32,B站港澳台,no-resolve
+  - IP-CIDR,203.107.1.33/32,B站港澳台,no-resolve
+  - IP-CIDR,203.107.1.34/32,B站港澳台,no-resolve
+  - IP-CIDR,203.107.1.65/32,B站港澳台,no-resolve
+  - IP-CIDR,203.107.1.66/32,B站港澳台,no-resolve
   - GEOSITE,bilibili,DIRECT
   - GEOSITE,category-social-media-cn,DIRECT
   # 国际媒体
