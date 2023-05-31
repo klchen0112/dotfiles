@@ -244,7 +244,7 @@ proxy-groups:
       - 新加坡
       - 台湾
       - 美国
-      # - 韩国
+      - 韩国
       # - 英国
       # - 泰国
       # # - 法国
@@ -290,7 +290,7 @@ proxy-groups:
       - 新加坡
       - 台湾
       - 美国
-      # - 韩国
+      - 韩国
       # - 英国
       # # - 法国
       # - 俄罗斯
@@ -410,14 +410,14 @@ proxy-groups:
     tolerance: 50 # 容差值：节点差值低于设定值时，不自动切换
     url: "http://cp.cloudflare.com/generate_204" # 用来测ping的地址
     interval: 300 # 测ping时间(秒)
-  # - name: 韩国
-  #   type: load-balance
-  #   strategy: consistent-hashing
-  #   use:
-  #     - KR
-  #   tolerance: 50 # 容差值：节点差值低于设定值时，不自动切换
-  #   url: "http://cp.cloudflare.com/generate_204" # 用来测ping的地址
-  #   interval: 300 # 测ping时间(秒)
+  - name: 韩国
+    type: load-balance
+    strategy: consistent-hashing
+    use:
+      - KR
+    tolerance: 50 # 容差值：节点差值低于设定值时，不自动切换
+    url: "http://cp.cloudflare.com/generate_204" # 用来测ping的地址
+    interval: 300 # 测ping时间(秒)
   # - name: 英国
   #   type: load-balance
   #   strategy: consistent-hashing
@@ -575,14 +575,14 @@ proxy-providers:
       enable: true
       interval: 300
       url: http://cp.cloudflare.com/generate_204
-  # KR: # 订阅名字，每个订阅不可重名，如果修改需要连同上方proxy-groups中use使用的一同修改
-  #   type: file
-  #   path: ./proxy_provider/mixed.yaml # 订阅节点存放位置
-  #   filter: "韩国"
-  #   health-check:
-  #     enable: true
-  #     interval: 300
-  #     url: http://cp.cloudflare.com/generate_204
+  KR: # 订阅名字，每个订阅不可重名，如果修改需要连同上方proxy-groups中use使用的一同修改
+     type: file
+     path: ./proxy_provider/mixed.yaml # 订阅节点存放位置
+     filter: "韩国"
+     health-check:
+       enable: true
+       interval: 300
+       url: http://cp.cloudflare.com/generate_204
   US: # 订阅名字，每个订阅不可重名，如果修改需要连同上方proxy-groups中use使用的一同修改
     type: file
     path: ./proxy_provider/mixed.yaml # 订阅节点存放位置
@@ -716,7 +716,6 @@ proxy-providers:
       interval: 300
       url: http://cp.cloudflare.com/generate_204
 rule-providers:
-
   ZJU:
     type: file
     behavior: classical
@@ -835,8 +834,13 @@ rules:
   - GEOSITE,telegram,Social
   - GEOSITE,discord,Social
   - GEOSITE,CN,DIRECT
-  - GEOSITE,geolocation-!cn,Proxy
 
+  #- GEOSITE,hk,香港
+  #- GEOSITE,TW,台湾
+  #- GEOSITE,US,美国
+  #- GEOSITE,JP,日本
+  #- GEOSITE,SG,新加坡
+  #- GEOSITE,KR,韩国
   # GEOIP规则
   - GEOIP,CN,DIRECT
   - GEOIP,TELEGRAM,Social
