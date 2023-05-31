@@ -155,6 +155,9 @@
         ## auto create Display and move to window
         $HOME/.config/yabai/create_spaces.sh
         yabai -m config window_gap     5
+        yabai -m config window_opacity on
+        yabai -m config active_window_opacity 1.0
+        yabai -m config normal_window_opacity 0.95
         # Space config
         yabai -m config --space 5 layout float
         yabai -m config --space 9 layout float
@@ -195,8 +198,8 @@
       skhdConfig = let
         keycodes = import ./keycodes.nix;
         current_workspace_prefix = "ctrl + alt";
-        current_workspace_move_prefix = "shift + ctrl";
-        diffent_workspace_move_prefix = "alt + cmd"; # in macos most app use ctrl + cmd - ${keycodes.F} to native-fullscreen
+        current_workspace_move_prefix = "alt + cmd";
+        diffent_workspace_move_prefix = "shift + ctrl"; # in macos most app use ctrl + cmd - ${keycodes.F} to native-fullscreen
         size_chang_prefix = "cmd + ctrl";
         insert_prefix = "shift + alt";
         high_prefix = "shift + ctrl + cmd";
