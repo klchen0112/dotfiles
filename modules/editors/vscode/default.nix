@@ -99,10 +99,10 @@
           sha256 = "+EfEeta+qAnX/xmcGP0sa6U0+VhToiqdHEXQDENxyGA=";
         }
         {
-          name = "docs-yaml";
-          publisher = "docsmsft";
-          version = "1.0.0";
-          sha256 = "ocmL3875chSn8hh9EjUZ+4NxOiobQwDvuXOyujJozEc=";
+          name = "vscode-yaml";
+          publisher = "redhat";
+          version = "1.13.0";
+          sha256 = "8FUVGnUohSCpBUc+4h8yJIH+ICOOhzfuEpGsp7t2Xh0=";
         }
       ];
     enableUpdateCheck = false;
