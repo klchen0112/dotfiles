@@ -154,10 +154,12 @@
         yabai -m signal --add event=window_destroyed action="sketchybar --trigger windows_on_spaces"
         ## auto create Display and move to window
         $HOME/.config/yabai/create_spaces.sh
+        yabai -m config window_gap     5
         # Space config
         yabai -m config --space 5 layout float
         yabai -m config --space 9 layout float
         yabai -m config --space 10 layout float
+
         # ===== Rules ==================================
         yabai -m rule --add label=emacs app="Emacs" manage=on
         yabai -m rule --add label="Finder" app="^(Finder|访达)$" title="(Co(py|nnect)|Move|Info|Pref)" manage=off
