@@ -17,6 +17,7 @@
         #  ../../browser
         ../../downloader
         # ../../editors/codeblocks
+        ../../editors/jetbrains
         ../../editors/emacs
         # ../../editors/vim
         # ../../editors/nvim
