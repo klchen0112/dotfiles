@@ -10,7 +10,7 @@
       home = {
         username = "chenkailong";
         homeDirectory = "/Users/chenkailong";
-        stateVersion = "22.11";
+        stateVersion = "23.05";
         # shell = pkgs.fish;
       };
       imports = [

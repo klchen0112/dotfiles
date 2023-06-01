@@ -27,7 +27,7 @@
 
       home-manager = {
         # User Package Management
-        url = "github:nix-community/home-manager";
+        url = "github:nix-community/home-manager/release-23.05";
         inputs.nixpkgs.follows = "nixpkgs";
       };
 
@@ -78,6 +78,7 @@
     nur,
     nixgl,
     emacs-overlay,
+    doom-emacs,
     hyprland,
     vscode-server,
     ...
