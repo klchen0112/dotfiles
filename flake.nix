@@ -66,6 +66,10 @@
 
       vscode-server.url = "github:msteen/nixos-vscode-server";
 
+      nixos-wsl = {
+       url = "github:nix-community/NixOS-WSL";
+       inputs.nixpkgs.follows = "nixpkgs";
+      };
       # fonts
     };
 
@@ -77,6 +81,7 @@
     darwin,
     nur,
     nixgl,
+    nixos-wsl,
     emacs-overlay,
     doom-emacs,
     hyprland,
@@ -111,26 +116,26 @@
         # config.allowUnsupportedSystem = true;
       });
   in rec {
-    # nixosConfigurations = {
-    #   # NixOS configurations
-    #   "wsl" = nixpkgs.lib.nixosSystem {
-    #     system = "x86_64-linux";
-    #     specialArgs = {
-    #       inherit inputs user;
-    #     };
-    #     modules = [
-    #       ./machines/wsl
-    #       vscode-server.nixosModule
-    #       ({
-    #         config,
-    #         pkgs,
-    #         ...
-    #       }: {
-    #         services.vscode-server.enable = true;
-    #       })
-    #     ];
-    #   };
-    # };
+    nixosConfigurations = {
+      # NixOS configurations
+      "wsl" = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        specialArgs = {
+          inherit inputs user;
+        };
+        modules = [
+          ./machines/wsl
+          vscode-server.nixosModule
+          ({
+            config,
+            pkgs,
+            ...
+          }: {
+            services.vscode-server.enable = true;
+          })
+        ];
+      };
+    };
     darwinConfigurations = {
       "macbook-pro-m1" = darwin.lib.darwinSystem {
         system = "aarch64-darwin";

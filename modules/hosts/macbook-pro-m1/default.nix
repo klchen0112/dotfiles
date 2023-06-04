@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+{pkgs,user, ...}: {
   home-manager = {
     useGlobalPkgs = true;
     useUserPackages = true;
@@ -8,8 +8,8 @@
       ...
     }: {
       home = {
-        username = "chenkailong";
-        homeDirectory = "/Users/chenkailong";
+        username = "${user}";
+        homeDirectory = "/Users/${user}";
         stateVersion = "23.05";
         # shell = pkgs.fish;
       };

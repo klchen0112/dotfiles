@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+{pkgs, user,...}: {
   imports = [
     #  ../../browser
     ../../editors/emacs
@@ -22,8 +22,8 @@
   ];
 
   home = {
-    username = "klchen";
-    homeDirectory = "/Users/klchen";
+    username = "${user}";
+    homeDirectory = "/Users/${user}";
     stateVersion = "23.05";
   };
 }
