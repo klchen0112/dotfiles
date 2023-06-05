@@ -1,10 +1,15 @@
-port : 7894
+port: 7894
 socks-port: 7891
 redir-port: 7892
 tproxy-port: 7893 # 本地Linux Tproxy代理端口
 mixed-port: 7890
 
 geodata-mode: true #【Meta专属】使用geoip.dat数据库(默认：false使用mmdb数据库)
+geox-url:
+  geoip: "https://cdn.jsdelivr.net/gh/Loyalsoldier/v2ray-rules-dat@release/geoip.dat"
+  geosite: "https://cdn.jsdelivr.net/gh/Loyalsoldier/v2ray-rules-dat@release/geosite.dat"
+  mmdb: "https://cdn.jsdelivr.net/gh/Loyalsoldier/geoip@release/Country.mmdb"
+
 tcp-concurrent: true #【Meta专属】TCP连接并发，如果域名解析结果对应多个IP，并发所有IP，选择握手最快的IP进行连接
 allow-lan: false # 允许局域网连接(false/true)
 bind-address: "*" # 监听IP白名单（当allow-lan：true），只允许列表设备，'*'表示全部设备
@@ -29,7 +34,6 @@ dns:
   enable: true # DNS开关(false/true)
   listen: 0.0.0.0:7874 # DNS监听地址
   ipv6: false # IP6解析开关；如果为false，将返回ip6结果为空
-
   enhanced-mode: fake-ip # DNS模式(redir-host/fake-ip)
   fake-ip-range: 192.18.0.1/16
   nameserver: # 默认DNS服务器，支持udp/tcp/dot/doh/doq
@@ -55,97 +59,97 @@ dns:
     - "https://208.67.220.220/dns-query"
   fake-ip-filter:
     # 以下域名列表参考自 vernesong/OpenClash 项目，并由 Hackl0us 整理补充
-    - '*.lan'
-    - '*.localdomain'
-    - '*.example'
-    - '*.invalid'
-    - '*.localhost'
-    - '*.test'
-    - '*.local'
-    - '*.home.arpa'
-    - 'time.*.com'
-    - 'time.*.gov'
-    - 'time.*.edu.cn'
-    - 'time.*.apple.com'
-    - 'time1.*.com'
-    - 'time2.*.com'
-    - 'time3.*.com'
-    - 'time4.*.com'
-    - 'time5.*.com'
-    - 'time6.*.com'
-    - 'time7.*.com'
-    - 'ntp.*.com'
-    - 'ntp1.*.com'
-    - 'ntp2.*.com'
-    - 'ntp3.*.com'
-    - 'ntp4.*.com'
-    - 'ntp5.*.com'
-    - 'ntp6.*.com'
-    - 'ntp7.*.com'
-    - '*.time.edu.cn'
-    - '*.ntp.org.cn'
-    - '+.pool.ntp.org'
-    - 'time1.cloud.tencent.com'
-    - 'music.163.com'
-    - '*.music.163.com'
-    - '*.126.net'
-    - 'musicapi.taihe.com'
-    - 'music.taihe.com'
-    - 'songsearch.kugou.com'
-    - 'trackercdn.kugou.com'
-    - '*.kuwo.cn'
-    - 'api-jooxtt.sanook.com'
-    - 'api.joox.com'
-    - 'joox.com'
-    - 'y.qq.com'
-    - '*.y.qq.com'
-    - 'streamoc.music.tc.qq.com'
-    - 'mobileoc.music.tc.qq.com'
-    - 'isure.stream.qqmusic.qq.com'
-    - 'dl.stream.qqmusic.qq.com'
-    - 'aqqmusic.tc.qq.com'
-    - 'amobile.music.tc.qq.com'
-    - '*.xiami.com'
-    - '*.music.migu.cn'
-    - 'music.migu.cn'
-    - '*.msftconnecttest.com'
-    - '*.msftncsi.com'
-    - 'msftconnecttest.com'
-    - 'msftncsi.com'
-    - 'localhost.ptlogin2.qq.com'
-    - 'localhost.sec.qq.com'
-    - '+.srv.nintendo.net'
-    - '+.stun.playstation.net'
-    - 'xbox.*.microsoft.com'
-    - 'xnotify.xboxlive.com'
-    - '+.battlenet.com.cn'
-    - '+.wotgame.cn'
-    - '+.wggames.cn'
-    - '+.wowsgame.cn'
-    - '+.wargaming.net'
-    - 'proxy.golang.org'
-    - 'stun.*.*'
-    - 'stun.*.*.*'
-    - '+.stun.*.*'
-    - '+.stun.*.*.*'
-    - '+.stun.*.*.*.*'
-    - 'heartbeat.belkin.com'
-    - '*.linksys.com'
-    - '*.linksyssmartwifi.com'
-    - '*.router.asus.com'
-    - 'mesu.apple.com'
-    - 'swscan.apple.com'
-    - 'swquery.apple.com'
-    - 'swdownload.apple.com'
-    - 'swcdn.apple.com'
-    - 'swdist.apple.com'
-    - 'lens.l.google.com'
-    - 'stun.l.google.com'
-    - '+.nflxvideo.net'
-    - '*.square-enix.com'
-    - '*.finalfantasyxiv.com'
-    - '*.ffxiv.com'
-    - '*.mcdn.bilivideo.cn'
+    - "*.lan"
+    - "*.localdomain"
+    - "*.example"
+    - "*.invalid"
+    - "*.localhost"
+    - "*.test"
+    - "*.local"
+    - "*.home.arpa"
+    - "time.*.com"
+    - "time.*.gov"
+    - "time.*.edu.cn"
+    - "time.*.apple.com"
+    - "time1.*.com"
+    - "time2.*.com"
+    - "time3.*.com"
+    - "time4.*.com"
+    - "time5.*.com"
+    - "time6.*.com"
+    - "time7.*.com"
+    - "ntp.*.com"
+    - "ntp1.*.com"
+    - "ntp2.*.com"
+    - "ntp3.*.com"
+    - "ntp4.*.com"
+    - "ntp5.*.com"
+    - "ntp6.*.com"
+    - "ntp7.*.com"
+    - "*.time.edu.cn"
+    - "*.ntp.org.cn"
+    - "+.pool.ntp.org"
+    - "time1.cloud.tencent.com"
+    - "music.163.com"
+    - "*.music.163.com"
+    - "*.126.net"
+    - "musicapi.taihe.com"
+    - "music.taihe.com"
+    - "songsearch.kugou.com"
+    - "trackercdn.kugou.com"
+    - "*.kuwo.cn"
+    - "api-jooxtt.sanook.com"
+    - "api.joox.com"
+    - "joox.com"
+    - "y.qq.com"
+    - "*.y.qq.com"
+    - "streamoc.music.tc.qq.com"
+    - "mobileoc.music.tc.qq.com"
+    - "isure.stream.qqmusic.qq.com"
+    - "dl.stream.qqmusic.qq.com"
+    - "aqqmusic.tc.qq.com"
+    - "amobile.music.tc.qq.com"
+    - "*.xiami.com"
+    - "*.music.migu.cn"
+    - "music.migu.cn"
+    - "*.msftconnecttest.com"
+    - "*.msftncsi.com"
+    - "msftconnecttest.com"
+    - "msftncsi.com"
+    - "localhost.ptlogin2.qq.com"
+    - "localhost.sec.qq.com"
+    - "+.srv.nintendo.net"
+    - "+.stun.playstation.net"
+    - "xbox.*.microsoft.com"
+    - "xnotify.xboxlive.com"
+    - "+.battlenet.com.cn"
+    - "+.wotgame.cn"
+    - "+.wggames.cn"
+    - "+.wowsgame.cn"
+    - "+.wargaming.net"
+    - "proxy.golang.org"
+    - "stun.*.*"
+    - "stun.*.*.*"
+    - "+.stun.*.*"
+    - "+.stun.*.*.*"
+    - "+.stun.*.*.*.*"
+    - "heartbeat.belkin.com"
+    - "*.linksys.com"
+    - "*.linksyssmartwifi.com"
+    - "*.router.asus.com"
+    - "mesu.apple.com"
+    - "swscan.apple.com"
+    - "swquery.apple.com"
+    - "swdownload.apple.com"
+    - "swcdn.apple.com"
+    - "swdist.apple.com"
+    - "lens.l.google.com"
+    - "stun.l.google.com"
+    - "+.nflxvideo.net"
+    - "*.square-enix.com"
+    - "*.finalfantasyxiv.com"
+    - "*.ffxiv.com"
+    - "*.mcdn.bilivideo.cn"
   fallback-filter: # 回落DNS服务器过滤
     geoip: true # 为真时，不匹配为geoip规则的使用fallback返回结果
     geoip-code: CN # geoip匹配区域设定
@@ -236,8 +240,8 @@ proxy-groups:
   - name: Proxy
     type: select # 手动代理组
     proxies:
-      - 节点选择
       - Automatic
+      - 节点选择
       - 外服游戏
       - 香港
       - 日本
@@ -245,40 +249,41 @@ proxy-groups:
       - 台湾
       - 美国
       - 韩国
-      # - 英国
-      # - 泰国
-      # # - 法国
-      # - 俄罗斯
-      # # - 德国
-      # - 澳大利亚
-      # - 菲律宾
-      # - 土耳其
-      # # - 阿根廷
-      # # - 乌克兰
-      # # - 巴西
-      # - 印度
+      - 英国
+      - 法国
+      - 俄罗斯
+      - 德国
+      - 澳大利亚
+      - 菲律宾
+      - 土耳其
+      - 阿根廷
+      - 乌克兰
+      - 巴西
+      - 印度
       # - 巴基斯坦
+      # - 泰国
   - name: 节点选择
     type: select # 手动代理组
     use:
       - HK
       - JP
       - SG
-      # - TW
+      - TW
       - US
-      # - KR
-      # - UK
-      # - RU
-      # - AU
-      # - PH
-      # - TR
-      # - IN
+      - KR
+      - UK
+      - RU
+      - AU
+      - PH
+      - TR
+      - IN
       # - PK
 
   - name: 外服游戏
     type: select
     use:
       - IPLC
+      - IEPL
   - name: "Automatic"
     type: url-test
     tolerance: 50 # 容差值：节点差值低于设定值时，不自动切换
@@ -291,18 +296,19 @@ proxy-groups:
       - 台湾
       - 美国
       - 韩国
-      # - 英国
-      # # - 法国
-      # - 俄罗斯
-      # # - 德国
-      # - 澳大利亚
-      # - 菲律宾
-      # - 土耳其
-      # # - 阿根廷
-      # # - 乌克兰
-      # # - 巴西
-      # - 印度
-      # - 巴基斯坦
+      - 英国
+      - 法国
+      - 俄罗斯
+      - 德国
+      - 澳大利亚
+      - 菲律宾
+      - 土耳其
+      - 阿根廷
+      - 乌克兰
+      - 巴西
+      - 印度
+      #- 巴基斯坦
+      # - 泰国
   - name: OneDrive
     type: select
     proxies:
@@ -360,6 +366,20 @@ proxy-groups:
       - 日本
       - 新加坡
       - 台湾
+      - 韩国
+      - 英国
+      - 法国
+      - 俄罗斯
+      - 德国
+      - 澳大利亚
+      - 菲律宾
+      - 土耳其
+      - 阿根廷
+      - 乌克兰
+      - 巴西
+      - 印度
+      # - 巴基斯坦
+      # - 泰国
 
   - name: 香港
     type: load-balance
@@ -395,13 +415,13 @@ proxy-groups:
     tolerance: 50 # 容差值：节点差值低于设定值时，不自动切换
     url: "http://cp.cloudflare.com/generate_204" # 用来测ping的地址
     interval: 300 # 测ping时间(秒)
-  - name: 动画疯
-    type: select
-    use:
-      - 动画疯
-    tolerance: 50 # 容差值：节点差值低于设定值时，不自动切换
-    url: "http://cp.cloudflare.com/generate_204" # 用来测ping的地址
-    interval: 300 # 测ping时间(秒)
+  #- name: 动画疯
+  #  type: select
+  #  use:
+  #    - 动画疯
+  #  tolerance: 50 # 容差值：节点差值低于设定值时，不自动切换
+  #  url: "http://cp.cloudflare.com/generate_204" # 用来测ping的地址
+  #  interval: 300 # 测ping时间(秒)
   - name: 美国
     type: load-balance
     strategy: consistent-hashing
@@ -418,119 +438,127 @@ proxy-groups:
     tolerance: 50 # 容差值：节点差值低于设定值时，不自动切换
     url: "http://cp.cloudflare.com/generate_204" # 用来测ping的地址
     interval: 300 # 测ping时间(秒)
-  # - name: 英国
-  #   type: load-balance
-  #   strategy: consistent-hashing
-  #   use:
-  #     - UK
-  #   tolerance: 50 # 容差值：节点差值低于设定值时，不自动切换
-  #   url: "http://cp.cloudflare.com/generate_204" # 用来测ping的地址
-  #   interval: 300 # 测ping时间(秒)
-  # - name: 俄罗斯
-  #   type: load-balance
-  #   strategy: consistent-hashing
-  #   use:
-  #     - RU
-  #   tolerance: 50 # 容差值：节点差值低于设定值时，不自动切换
-  #   url: "http://cp.cloudflare.com/generate_204" # 用来测ping的地址
-  #   interval: 300 # 测ping时间(秒)
-  # # - name: 法国
-  # #   type: load-balance
-  # #  strategy: consistent-hashing
-  # #   use:
-  # #     - FR
-  # #   tolerance: 50 # 容差值：节点差值低于设定值时，不自动切换
-  # #   url: "http://cp.cloudflare.com/generate_204" # 用来测ping的地址
-  # #   interval: 300 # 测ping时间(秒)
-  # # - name: 德国
-  # #   type: load-balance
-  # #  strategy: consistent-hashing
-  # #   use:
-  # #     - DE
-  # #   tolerance: 50 # 容差值：节点差值低于设定值时，不自动切换
-  # #   url: "http://cp.cloudflare.com/generate_204" # 用来测ping的地址
-  # #   interval: 300 # 测ping时间(秒)
-  # - name: 澳大利亚
-  #   type: load-balance
-  #   strategy: consistent-hashing
-  #   use:
-  #     - AU
-  #   tolerance: 50 # 容差值：节点差值低于设定值时，不自动切换
-  #   url: "http://cp.cloudflare.com/generate_204" # 用来测ping的地址
-  #   interval: 300 # 测ping时间(秒)
-  # - name: 菲律宾
-  #   type: load-balance
-  #   strategy: consistent-hashing
-  #   use:
-  #     - PH
-  #   tolerance: 50 # 容差值：节点差值低于设定值时，不自动切换
-  #   url: "http://cp.cloudflare.com/generate_204" # 用来测ping的地址
-  #   interval: 300 # 测ping时间(秒)
-  # - name: 土耳其
-  #   type: load-balance
-  #   strategy: consistent-hashing
-  #   use:
-  #     - TR
-  #   tolerance: 50 # 容差值：节点差值低于设定值时，不自动切换
-  #   url: "http://cp.cloudflare.com/generate_204" # 用来测ping的地址
-  #   interval: 300 # 测ping时间(秒)
-  # - name: 阿根廷
-  #   type: load-balance
+  - name: 英国
+    type: load-balance
+    strategy: consistent-hashing
+    use:
+      - UK
+    tolerance: 50 # 容差值：节点差值低于设定值时，不自动切换
+    url: "http://cp.cloudflare.com/generate_204" # 用来测ping的地址
+    interval: 300 # 测ping时间(秒)
+  - name: 俄罗斯
+    type: load-balance
+    strategy: consistent-hashing
+    use:
+      - RU
+    tolerance: 50 # 容差值：节点差值低于设定值时，不自动切换
+    url: "http://cp.cloudflare.com/generate_204" # 用来测ping的地址
+    interval: 300 # 测ping时间(秒)
+  - name: 法国
+    type: load-balance
+    strategy: consistent-hashing
+    use:
+      - FR
+    tolerance: 50 # 容差值：节点差值低于设定值时，不自动切换
+    url: "http://cp.cloudflare.com/generate_204" # 用来测ping的地址
+    interval: 300 # 测ping时间(秒)
+  - name: 德国
+    type: load-balance
+    strategy: consistent-hashing
+    use:
+      - DE
+    tolerance: 50 # 容差值：节点差值低于设定值时，不自动切换
+    url: "http://cp.cloudflare.com/generate_204" # 用来测ping的地址
+    interval: 300 # 测ping时间(秒)
+  - name: 澳大利亚
+    type: load-balance
+    strategy: consistent-hashing
+    use:
+      - AU
+    tolerance: 50 # 容差值：节点差值低于设定值时，不自动切换
+    url: "http://cp.cloudflare.com/generate_204" # 用来测ping的地址
+    interval: 300 # 测ping时间(秒)
+  - name: 菲律宾
+    type: load-balance
+    strategy: consistent-hashing
+    use:
+      - PH
+    tolerance: 50 # 容差值：节点差值低于设定值时，不自动切换
+    url: "http://cp.cloudflare.com/generate_204" # 用来测ping的地址
+    interval: 300 # 测ping时间(秒)
+  - name: 土耳其
+    type: load-balance
+    strategy: consistent-hashing
+    use:
+      - TR
+    tolerance: 50 # 容差值：节点差值低于设定值时，不自动切换
+    url: "http://cp.cloudflare.com/generate_204" # 用来测ping的地址
+    interval: 300 # 测ping时间(秒)
+  - name: 阿根廷
+    type: load-balance
+    strategy: consistent-hashing
+    use:
+      - AR
+    tolerance: 50 # 容差值：节点差值低于设定值时，不自动切换
+    url: "http://cp.cloudflare.com/generate_204" # 用来测ping的地址
+    interval: 300 # 测ping时间(秒)
+  - name: 乌克兰
+    type: select
+    use:
+      - UA
+    tolerance: 50 # 容差值：节点差值低于设定值时，不自动切换
+    url: "http://cp.cloudflare.com/generate_204" # 用来测ping的地址
+    interval: 300 # 测ping时间(秒)
+  - name: 巴西
+    type: load-balance
+    strategy: consistent-hashing
+    use:
+      - BR
+    tolerance: 50 # 容差值：节点差值低于设定值时，不自动切换
+    url: "http://cp.cloudflare.com/generate_204" # 用来测ping的地址
+    intBRval: 300 # 测ping时间(秒)
+  - name: 印度
+    type: load-balance
+    strategy: consistent-hashing
+    use:
+      - IN
+    tolerance: 50 # 容差值：节点差值低于设定值时，不自动切换
+    url: "http://cp.cloudflare.com/generate_204" # 用来测ping的地址
+    interval: 300 # 测ping时间(秒)
+  #- name: 巴基斯坦
+  #  type: load-balance
   #  strategy: consistent-hashing
-  #   use:
-  #     - AR
-  #   tolerance: 50 # 容差值：节点差值低于设定值时，不自动切换
-  #   url: "http://cp.cloudflare.com/generate_204" # 用来测ping的地址
-  #   interval: 300 # 测ping时间(秒)
-  # - name: 乌克兰
-  #   type: select
-  #   use:
-  #     # - UA
-  #   tolerance: 50 # 容差值：节点差值低于设定值时，不自动切换
-  #   url: "http://cp.cloudflare.com/generate_204" # 用来测ping的地址
-  #   interval: 300 # 测ping时间(秒)
-  # - name: 巴西
-  #   type: load-balance
+  #  use:
+  #    - PK
+  #  tolerance: 50 # 容差值：节点差值低于设定值时，不自动切换
+  #  url: "http://cp.cloudflare.com/generate_204" # 用来测ping的地址
+  #  interval: 300 # 测ping时间(秒)
+  #- name: 泰国
+  #  type: load-balance
   #  strategy: consistent-hashing
-  #   use:
-  #     # - BR
-  #   tolerance: 50 # 容差值：节点差值低于设定值时，不自动切换
-  #   url: "http://cp.cloudflare.com/generate_204" # 用来测ping的地址
-  #   intBRval: 300 # 测ping时间(秒)
-  # - name: 印度
-  #   type: load-balance
-  #   strategy: consistent-hashing
-  #   use:
-  #     - IN
-  #   tolerance: 50 # 容差值：节点差值低于设定值时，不自动切换
-  #   url: "http://cp.cloudflare.com/generate_204" # 用来测ping的地址
-  #   interval: 300 # 测ping时间(秒)
-  # - name: 巴基斯坦
-  #   type: load-balance
-  #   strategy: consistent-hashing
-  #   use:
-  #     - PK
-  #   tolerance: 50 # 容差值：节点差值低于设定值时，不自动切换
-  #   url: "http://cp.cloudflare.com/generate_204" # 用来测ping的地址
-  #   interval: 300 # 测ping时间(秒)
-  # - name: 泰国
-  #   type: load-balance
-  #   strategy: consistent-hashing
-  #   use:
-  #     - TH
-  #   tolerance: 50 # 容差值：节点差值低于设定值时，不自动切换
-  #   url: "http://cp.cloudflare.com/generate_204" # 用来测ping的地址
-  #   interval: 300 # 测ping时间(秒)
+  #  use:
+  #    - TH
+  #  tolerance: 50 # 容差值：节点差值低于设定值时，不自动切换
+  #  url: "http://cp.cloudflare.com/generate_204" # 用来测ping的地址
+  #  interval: 300 # 测ping时间(秒)
   - name: 漏网之鱼
     type: select
     proxies:
-      - DIRECT
       - Proxy
+      - DIRECT
 proxy-providers:
   IPLC: # 订阅名订阅不可重名，如果修改需要连同上方proxy-groups中use使用的一同修改
     type: file
     path: ./proxy_provider/mixed.yaml # 订阅节点存放位置
     filter: "IPLC"
+    health-check:
+      enable: true
+      interval: 300
+      url: http://cp.cloudflare.com/generate_204
+  IEPL: # 订阅名订阅不可重名，如果修改需要连同上方proxy-groups中use使用的一同修改
+    type: file
+    path: ./proxy_provider/mixed.yaml # 订阅节点存放位置
+    filter: "深度访问"
     health-check:
       enable: true
       interval: 300
@@ -544,21 +572,21 @@ proxy-providers:
       interval: 300
       url: http://cp.cloudflare.com/generate_204
   TW: # 订阅名字，每个订阅不可重名，如果修改需要连同上方proxy-groups中use使用的一同修改
-     type: file
-     path: ./proxy_provider/mixed.yaml # 订阅节点存放位置
-     filter: "台湾"
-     health-check:
-       enable: true
-       interval: 300
-       url: http://cp.cloudflare.com/generate_204
-  动画疯: # 订阅名字，每个订阅不可重名，如果修改需要连同上方proxy-groups中use使用的一同修改
     type: file
     path: ./proxy_provider/mixed.yaml # 订阅节点存放位置
-    filter: "动画疯"
+    filter: "台湾"
     health-check:
       enable: true
       interval: 300
       url: http://cp.cloudflare.com/generate_204
+  #动画疯: # 订阅名字，每个订阅不可重名，如果修改需要连同上方proxy-groups中use使用的一同修改
+  #  type: file
+  #  path: ./proxy_provider/mixed.yaml # 订阅节点存放位置
+  #  filter: "动画疯"
+  #  health-check:
+  #    enable: true
+  #    interval: 300
+  #    url: http://cp.cloudflare.com/generate_204
   JP: # 订阅名字，每个订阅不可重名，如果修改需要连同上方proxy-groups中use使用的一同修改
     type: file
     path: ./proxy_provider/mixed.yaml # 订阅节点存放位置
@@ -576,13 +604,13 @@ proxy-providers:
       interval: 300
       url: http://cp.cloudflare.com/generate_204
   KR: # 订阅名字，每个订阅不可重名，如果修改需要连同上方proxy-groups中use使用的一同修改
-     type: file
-     path: ./proxy_provider/mixed.yaml # 订阅节点存放位置
-     filter: "韩国"
-     health-check:
-       enable: true
-       interval: 300
-       url: http://cp.cloudflare.com/generate_204
+    type: file
+    path: ./proxy_provider/mixed.yaml # 订阅节点存放位置
+    filter: "韩国"
+    health-check:
+      enable: true
+      interval: 300
+      url: http://cp.cloudflare.com/generate_204
   US: # 订阅名字，每个订阅不可重名，如果修改需要连同上方proxy-groups中use使用的一同修改
     type: file
     path: ./proxy_provider/mixed.yaml # 订阅节点存放位置
@@ -591,126 +619,127 @@ proxy-providers:
       enable: true
       interval: 300
       url: http://cp.cloudflare.com/generate_204
-  # UK: # 订阅名字，每个订阅不可重名，如果修改需要连同上方proxy-groups中use使用的一同修改
-  #   type: file
-  #   path: ./proxy_provider/mixed.yaml # 订阅节点存放位置
-  #   filter: "UK|英国"
-  #   health-check:
-  #     enable: true
-  #     interval: 300
-  #     url: http://cp.cloudflare.com/generate_204
-  # RU: # 订阅名字，每个订阅不可重名，如果修改需要连同上方proxy-groups中use使用的一同修改
-  #   type: file
-  #   # interval: 259200 # 订阅自动更新时间
-  #   path: ./proxy_provider/mixed.yaml # 订阅节点存放位置
-  #   filter: "俄罗斯"
-  #   health-check:
-  #     enable: true
-  #     interval: 300
-  #     url: http://cp.cloudflare.com/generate_204
-  # FR: # 订阅名字，每个订阅不可重名，如果修改需要连同上方proxy-groups中use使用的一同修改
-  #   type: http
-  #   # interval: 259200 # 订阅自动更新时间
-  #   path: ./proxy_provider/mixed.yaml # 订阅节点存放位置
-  #   filter: "法国"
-  #   health-check:
-  #     enable: true
-  #     interval: 300
-  #     url: http://cp.cloudflare.com/generate_204
-  # DE: # 订阅名字，每个订阅不可重名，如果修改需要连同上方proxy-groups中use使用的一同修改
-  #   type: http
-  #   #
-  #   # interval: 259200 # 订阅自动更新时间
-  #   path: ./proxy_provider/mixed.yaml # 订阅节点存放位置
-  #   filter: "德国"
-  #   health-check:
-  #     enable: true
-  #     interval: 300
-  #     url: http://cp.cloudflare.com/generate_204
-  # AU: # 订阅名字，每个订阅不可重名，如果修改需要连同上方proxy-groups中use使用的一同修改
-  #   type: file
-  #   path: ./proxy_provider/mixed.yaml # 订阅节点存放位置 # 订阅节点存放位置
-  #   filter: "澳大利亚|澳洲"
-  #   health-check:
-  #     enable: true
-  #     interval: 300
-  #     url: http://cp.cloudflare.com/generate_204
-  # PH: # 订阅名字，每个订阅不可重名，如果修改需要连同上方proxy-groups中use使用的一同修改
-  #   type: http
-  #   interval: 259200 # 订阅自动更新时间
-  #   path: ./proxy_provider/mixed.yaml # 订阅节点存放位置 # 订阅节点存放位置
-  #   filter: "菲律宾"
-  #   health-check:
-  #     enable: true
-  #     interval: 300
-  #     url: http://cp.clouKflare.com/generate_204
-  # TH: # 订阅名字，每个订阅不可重名，如果修改需要连同上方proxy-groups中use使用的一同修改
-  #   type: file
-  #   path: ./proxy_provider/mixed.yaml # 订阅节点存放位置 # 订阅节点存放位置
-  #   filter: "泰国"
-  #   health-check:
-  #     enable: true
-  #     interval: 300
-  #     url: http://cp.clouKflare.com/generate_204
-  # TR: # 订阅名字，每个订阅不可重名，如果修改需要连同上方proxy-groups中use使用的一同修改
-  #   type: file
-  #   path: ./proxy_provider/mixed.yaml # 订阅节点存放位置
-  #   filter: "土耳其"
-  #   health-check:
-  #     enable: true
-  #     interval: 300
-  #     url: http://cp.cloudflare.com/generate_204
-  # AR: # 订阅名字，每个订阅不可重名，如果修改需要连同上方proxy-groups中use使用的一同修改
-  #   type: http
-  #   #
-  #   # interval: 259200 # 订阅自动更新时间
-  #   path: ./proxy_provider/mixed.yaml # 订阅节点存放位置
-  #   filter: "阿根廷"
-  #   health-check:
-  #     enable: true
-  #     interval: 300
-  #     url: http://cp.cloudflare.com/generate_204
-  # UA: # 订阅名字，每个订阅不可重名，如果修改需要连同上方proxy-groups中use使用的一同修改
-  #   type: http
-  #   #
-  #   # interval: 259200 # 订阅自动更新时间
-  #   path: ./proxy_provider/mixed.yaml # 订阅节点存放位置
-  #   filter: "乌克兰"
-  #   health-check:
-  #     enable: true
-  #     interval: 300
-  #     url: http://cp.cloudflare.com/generate_204
-  # BR: # 订阅名字，每个订阅不可重名，如果修改需要连同上方proxy-groups中use使用的一同修改
-  #   type: http
-  #   #
-  #   # interval: 259200 # 订阅自动更新时间
-  #   path: ./proxy_provider/mixed.yaml # 订阅节点存放位置
-  #   filter: "巴西"
-  #   health-check:
-  #     enable: true
-  #     interval: 300
-  #     url: http://cp.cloudflare.com/generate_204
-  # IN:
-  #   # 订阅名字，每个订阅不可重名，如果修改需要连同上方proxy-groups中use使用的一同修改
-  #   type: file
-  #   path: ./proxy_provider/mixed.yaml # 订阅节点存放位置 # 订阅节点存放位置
-  #   filter: "印度"
-  #   health-check:
-  #     enable: true
-  #     interval: 300
-  #     url: http://cp.cloudflare.com/generate_204
-  # PK:
-  #   # 订阅名字，每个订阅不可重名，如果修改需要连同上方proxy-groups中use使用的一同修改
-  #   type: file
-  #   path: ./proxy_provider/mixed.yaml # 订阅节点存放位置 # 订阅节点存放位置
-  #   filter: "巴基斯坦"
-  #   health-check:
-  #     enable: true
-  #     interval: 300
-  #     url: http://cp.cloudflare.com/generate_204
+  UK: # 订阅名字，每个订阅不可重名，如果修改需要连同上方proxy-groups中use使用的一同修改
+    type: file
+    path: ./proxy_provider/mixed.yaml # 订阅节点存放位置
+    filter: "英国"
+    health-check:
+      enable: true
+      interval: 300
+      url: http://cp.cloudflare.com/generate_204
+  RU: # 订阅名字，每个订阅不可重名，如果修改需要连同上方proxy-groups中use使用的一同修改
+    type: file
+    # interval: 259200 # 订阅自动更新时间
+    path: ./proxy_provider/mixed.yaml # 订阅节点存放位置
+    filter: "俄罗斯"
+    health-check:
+      enable: true
+      interval: 300
+      url: http://cp.cloudflare.com/generate_204
+  FR: # 订阅名字，每个订阅不可重名，如果修改需要连同上方proxy-groups中use使用的一同修改
+    type: http
+    # interval: 259200 # 订阅自动更新时间
+    path: ./proxy_provider/mixed.yaml # 订阅节点存放位置
+    filter: "法国"
+    health-check:
+      enable: true
+      interval: 300
+      url: http://cp.cloudflare.com/generate_204
+  DE: # 订阅名字，每个订阅不可重名，如果修改需要连同上方proxy-groups中use使用的一同修改
+    type: http
+    #
+    # interval: 259200 # 订阅自动更新时间
+    path: ./proxy_provider/mixed.yaml # 订阅节点存放位置
+    filter: "德国"
+    health-check:
+      enable: true
+      interval: 300
+      url: http://cp.cloudflare.com/generate_204
+  AU: # 订阅名字，每个订阅不可重名，如果修改需要连同上方proxy-groups中use使用的一同修改
+    type: file
+    path: ./proxy_provider/mixed.yaml # 订阅节点存放位置 # 订阅节点存放位置
+    filter: "澳大利亚|澳洲|AU"
+    health-check:
+      enable: true
+      interval: 300
+      url: http://cp.cloudflare.com/generate_204
+  PH: # 订阅名字，每个订阅不可重名，如果修改需要连同上方proxy-groups中use使用的一同修改
+    type: http
+    interval: 259200 # 订阅自动更新时间
+    path: ./proxy_provider/mixed.yaml # 订阅节点存放位置 # 订阅节点存放位置
+    filter: "菲律宾"
+    health-check:
+      enable: true
+      interval: 300
+      url: http://cp.clouKflare.com/generate_204
+  #TH: # 订阅名字，每个订阅不可重名，如果修改需要连同上方proxy-groups中use使用的一同修改
+  #  type: file
+  #  path: ./proxy_provider/mixed.yaml # 订阅节点存放位置 # 订阅节点存放位置
+  #  filter: "泰国"
+  #  health-check:
+  #    enable: true
+  #    interval: 300
+  #    url: http://cp.clouKflare.com/generate_204
+  TR: # 订阅名字，每个订阅不可重名，如果修改需要连同上方proxy-groups中use使用的一同修改
+    type: file
+    path: ./proxy_provider/mixed.yaml # 订阅节点存放位置
+    filter: "土耳其"
+    health-check:
+      enable: true
+      interval: 300
+      url: http://cp.cloudflare.com/generate_204
+  AR: # 订阅名字，每个订阅不可重名，如果修改需要连同上方proxy-groups中use使用的一同修改
+    type: http
+    #
+    # interval: 259200 # 订阅自动更新时间
+    path: ./proxy_provider/mixed.yaml # 订阅节点存放位置
+    filter: "阿根廷"
+    health-check:
+      enable: true
+      interval: 300
+      url: http://cp.cloudflare.com/generate_204
+  UA: # 订阅名字，每个订阅不可重名，如果修改需要连同上方proxy-groups中use使用的一同修改
+    type: http
+    #
+    # interval: 259200 # 订阅自动更新时间
+    path: ./proxy_provider/mixed.yaml # 订阅节点存放位置
+    filter: "乌克兰"
+    health-check:
+      enable: true
+      interval: 300
+      url: http://cp.cloudflare.com/generate_204
+  BR: # 订阅名字，每个订阅不可重名，如果修改需要连同上方proxy-groups中use使用的一同修改
+    type: http
+    #
+    # interval: 259200 # 订阅自动更新时间
+    path: ./proxy_provider/mixed.yaml # 订阅节点存放位置
+    filter: "巴西"
+    health-check:
+      enable: true
+      interval: 300
+      url: http://cp.cloudflare.com/generate_204
+  IN:
+    # 订阅名字，每个订阅不可重名，如果修改需要连同上方proxy-groups中use使用的一同修改
+    type: file
+    path: ./proxy_provider/mixed.yaml # 订阅节点存放位置 # 订阅节点存放位置
+    filter: "印度"
+    health-check:
+      enable: true
+      interval: 300
+      url: http://cp.cloudflare.com/generate_204
+  #PK:
+  #  # 订阅名字，每个订阅不可重名，如果修改需要连同上方proxy-groups中use使用的一同修改
+  #  type: file
+  #  path: ./proxy_provider/mixed.yaml # 订阅节点存放位置 # 订阅节点存放位置
+  #  filter: "巴基斯坦"
+  #  health-check:
+  #    enable: true
+  #    interval: 300
+  #    url: http://cp.cloudflare.com/generate_204
   Scholar: # 订阅名字，每个订阅不可重名，如果修改需要连同上方proxy-groups中use使用的一同修改
     type: file
-    path: ./proxy_provider/scholar.yaml # 订阅节点存放位置
+    path: ./proxy_provider/mixed.yaml # 订阅节点存放位置 # 订阅节点存放位置
+    filter: "深度访问"
     health-check:
       enable: true
       interval: 300
@@ -781,7 +810,6 @@ rules:
   - RULE-SET,ZJU,DIRECT
   - GEOSITE,category-education-cn,DIRECT
 
-
   # 学术
   - GEOSITE,category-scholar-!cn,学术
   - GEOSITE,category-scholar-cn,DIRECT
@@ -798,7 +826,7 @@ rules:
   - GEOSITE,apple@cn,DIRECT
 
   # 巴哈姆特
-  - GEOSITE,bahamut,动画疯
+  - GEOSITE,bahamut,台湾
   # B站港澳台
   # 内容：BilibiliHMT 哔哩哔哩 港澳台番剧
   # 数量：21条
@@ -846,17 +874,20 @@ rules:
   - GEOIP,TELEGRAM,Social
   - GEOIP,HK,香港
   - GEOIP,US,美国
+  - GEOIP,TW,台湾
   - GEOIP,JP,日本
+  - GEOIP,KR,韩国
   - GEOIP,SG,新加坡
-  # - GEOIP,TW,Proxy
-  # - GEOIP,KR,Proxy
-  # - GEOIP,TH,Proxy
-  # - GEOIP,HP,Proxy
-  # - GEOIP,AU,Proxy
-  # - GEOIP,UK,Proxy
-  # - GEOIP,RU,Proxy
-  # - GEOIP,PK,Proxy
-  # - GEOIP,ID,Proxy
-  # - GEOIP,TR,Proxy
+  - GEOIP,FR,法国
+  #- GEOIP,UK,英国
+  - GEOIP,DE,德国
+  - GEOIP,AU,澳大利亚
+  - GEOIP,PH,菲律宾
+  - GEOIP,TR,土耳其
+  - GEOIP,AR,阿根廷
+  - GEOIP,UA,乌克兰
+  - GEOIP,BR,巴西
+  - GEOIP,IN,印度
+
   # 兜底规则
   - MATCH,漏网之鱼
