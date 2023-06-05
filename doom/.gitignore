@@ -1,6 +1,6 @@
 .auctex-auto
 librime
-config.el
-init.el
-packages.el
+/config.el
+/init.el
+/packages.el
 *.sh

@@ -33,6 +33,7 @@
     gcc
     # org mode dot
     graphviz
+    imagemagick
 
     pandoc
 
