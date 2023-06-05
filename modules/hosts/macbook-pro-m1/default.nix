@@ -1,17 +1,12 @@
-{pkgs,user, ...}: {
+{pkgs,username, ...}: {
   home-manager = {
     useGlobalPkgs = true;
     useUserPackages = true;
-    users.chenkailong = {
-      pkgs,
-      user,
-      ...
-    }: {
+    users.${username} = {
       home = {
-        username = "${user}";
-        homeDirectory = "/Users/${user}";
+        username = "${username}";
+        homeDirectory = "/Users/${username}";
         stateVersion = "23.05";
-        # shell = pkgs.fish;
       };
       imports = [
         #  ../../browser

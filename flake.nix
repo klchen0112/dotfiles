@@ -67,8 +67,8 @@
       vscode-server.url = "github:msteen/nixos-vscode-server";
 
       nixos-wsl = {
-       url = "github:nix-community/NixOS-WSL";
-       inputs.nixpkgs.follows = "nixpkgs";
+        url = "github:nix-community/NixOS-WSL";
+        inputs.nixpkgs.follows = "nixpkgs";
       };
       # fonts
     };
@@ -91,7 +91,7 @@
   # Function that tells my flake which to use and what do what to do with the dependencies.
   let
     # Variables that can be used in the config files.
-    user = "chenkailong";
+    username = "chenkailong";
     location = "$HOME/.config";
     forAllSystems = nixpkgs.lib.genAttrs [
       "aarch64-linux"
@@ -121,7 +121,7 @@
       "wsl" = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         specialArgs = {
-          inherit inputs user;
+          inherit inputs username;
         };
         modules = [
           ./machines/wsl
@@ -133,6 +133,8 @@
           }: {
             services.vscode-server.enable = true;
           })
+          home-manager.darwinModules.home-manager
+          modules/hosts/wsl/default.nix
         ];
       };
     };
@@ -140,7 +142,7 @@
       "macbook-pro-m1" = darwin.lib.darwinSystem {
         system = "aarch64-darwin";
         specialArgs = {
-          inherit user inputs;
+          inherit username inputs;
         };
         pkgs = legacyPackages.aarch64-darwin;
         modules = [

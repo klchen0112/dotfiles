@@ -9,12 +9,12 @@
 {
   config,
   pkgs,
-  user,
+  username,
   ...
 }: {
-  users.users.chenkailong = {
+  users.users.${username} = {
     # macOS user
-    home = "/Users/${user}";
+    home = "/Users/${username}";
     shell = pkgs.fish; # Default shell
   };
 
