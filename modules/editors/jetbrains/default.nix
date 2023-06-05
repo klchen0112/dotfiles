@@ -1,6 +1,6 @@
 #
-# Neovim
+# Jetbrains Toolbox
 #
 {pkgs, ...}: {
-  home.packages = with pkgs.jetbrains; [clion ];
+  home.packages = with pkgs.jetbrains; [idea-ultimate clion];
 }
