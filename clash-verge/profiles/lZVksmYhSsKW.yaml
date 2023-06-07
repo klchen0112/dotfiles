@@ -52,7 +52,7 @@ dns:
     - https://223.5.5.5/dns-query
   # Lookup domains via specific nameservers
   nameserver-policy:
-    "rule-set:ZJU": [ 10.10.0.21,10.10.2.21 ]
+    "rule-set:ZJU": [10.10.0.21, 10.10.2.21]
   proxy-server-nameserver:
     - tls://1.12.12.12:853
     - tls://223.5.5.5:853
@@ -872,21 +872,13 @@ rules:
   - GEOSITE,bilibili,哔哩哔哩
   - GEOSITE,category-social-media-cn,DIRECT
   # 国际媒体
-  - GEOSITE,spotify,Streaming
-  - GEOSITE,youtube,Streaming
-  - GEOSITE,netflix,Streaming
-
+  - GEOSITE,category-entertainment,Streaming
   # 国际社交 Social
   - GEOSITE,telegram,Social
   - GEOSITE,discord,Social
   - GEOSITE,CN,DIRECT
 
-  #- GEOSITE,hk,香港
-  #- GEOSITE,TW,台湾
-  #- GEOSITE,US,美国
-  #- GEOSITE,JP,日本
-  #- GEOSITE,SG,新加坡
-  #- GEOSITE,KR,韩国
+  - GEOSITE,geolocation-!cn,Proxy
   # GEOIP规则
   - GEOIP,CN,DIRECT
   - GEOIP,TELEGRAM,Social
@@ -897,7 +889,7 @@ rules:
   - GEOIP,KR,韩国
   - GEOIP,SG,新加坡
   - GEOIP,FR,法国
-  #- GEOIP,UK,英国
+  # - GEOIP,UK,英国
   - GEOIP,DE,德国
   - GEOIP,AU,澳大利亚
   - GEOIP,PH,菲律宾
