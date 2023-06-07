@@ -50,6 +50,6 @@
   ];
   programs.emacs = {
     enable = true;
-    package = pkgs.emacs-git;
+    package = pkgs.emacs-unstable;
   };
 }

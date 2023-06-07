@@ -82,7 +82,7 @@
     nix-daemon.enable = true; # Auto upgrade daemon
     emacs = {
       enable = true;
-      package = pkgs.emacs-git;
+      package = pkgs.emacs-unstable;
     };
 
     yabai = {
