@@ -339,8 +339,8 @@
 #+begin_src emacs-lisp conf :tangle config.el
 ;; Framing Size
 ;; start the initial frame maximized
-(add-hook 'window-setup-hook #'toggle-frame-maximized)
-(add-hook 'window-setup-hook #'toggle-frame-fullscreen)
+;;(add-hook 'window-setup-hook #'toggle-frame-maximized)
+;;(add-hook 'window-setup-hook #'toggle-frame-fullscreen)
 
 ;; no title bar
 (add-to-list 'default-frame-alist '(undecorated . t))
@@ -1802,14 +1802,14 @@ async latex view
 **** org fragtog
 ***** package
 #+begin_src emacs-lisp :tangle packages.el
-;;(package! org-fragtog)
+(package! org-fragtog)
 #+end_src
 
 ***** config
 #+begin_src emacs-lisp :tangle config.el
-;;(use-package! org-fragtog
-;;:hook (org-mode . org-fragtog-mode)
-;;)
+(use-package! org-fragtog
+:hook (org-mode . org-fragtog-mode)
+)
 #+end_src
 **** org preview settings
 #+begin_src emacs-lisp :tangle config.el
