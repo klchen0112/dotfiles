@@ -1,4 +1,8 @@
-{pkgs,username, ...}: {
+{
+  pkgs,
+  username,
+  ...
+}: {
   home-manager = {
     useGlobalPkgs = true;
     useUserPackages = true;
@@ -34,6 +38,7 @@
         ../../shells/fish
         # ../../shells/zsh
         ../../shells/shell
+        ../../socialMedia
         ../../terminal
         # ../../vpn
       ];
