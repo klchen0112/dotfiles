@@ -13,7 +13,7 @@
         stateVersion = "23.05";
       };
       imports = [
-        #  ../../browser
+        ../../browser
         ../../downloader
         # ../../editors/codeblocks
         ../../editors/jetbrains
