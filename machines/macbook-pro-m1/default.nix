@@ -160,7 +160,6 @@
         yabai -m config normal_window_opacity 0.95
         # Space config
         yabai -m config --space 5 layout float
-        yabai -m config --space 9 layout float
         yabai -m config --space 10 layout float
 
         # ===== Rules ==================================
@@ -182,13 +181,13 @@
         yabai -m rule --add label="About This Mac" app="System Information" title="About This Mac" manage=off
         yabai -m rule --add app="Dash" manage=off
 
-        yabai -m rule --add label=musicapp app="Plexamp" space=9 manage=off
+        yabai -m rule --add label=musicapp app="Plexamp" space=10 manage=off
 
         yabai -m rule --add app="^(Spark)$"  space=10 manage=off
         yabai -m rule --add app="^(微信|WeChat)$"  space=10 manage=off
         yabai -m rule --add app="^(QQ)$"  space=10 manage=off
         yabai -m rule --add app="^(钉钉|DingTalk)$" space=10 manage=off
-        yabai -m rule --add app="^(Telegram)$"  space=10manage=off
+        yabai -m rule --add app="^(Telegram)$"  space=10 manage=off
         yabai -m rule --add app="^(Discord)$" space=10 manage=off
 
       '';
