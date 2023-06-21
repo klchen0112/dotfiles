@@ -24,6 +24,7 @@
         ../../graphics
         ../../keyboard
         ../../lang/cpp
+        ../../lang/go
         ../../lang/json
         ../../lang/julia
         ../../lang/lua
