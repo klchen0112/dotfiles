@@ -1,6 +1,7 @@
 {
   pkgs,
   username,
+  inputs,
   ...
 }: {
   home-manager = {
@@ -13,6 +14,8 @@
         stateVersion = "23.05";
       };
       imports = [
+        inputs.nix-doom-emacs.hmModule
+
         ../../browser
         ../../downloader
         # ../../editors/codeblocks

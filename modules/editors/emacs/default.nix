@@ -17,7 +17,8 @@
   config,
   lib,
   pkgs,
-  pkgs-unstable,
+  username,
+  system,
   inputs,
   ...
 }: {
@@ -52,4 +53,9 @@
     enable = true;
     package = pkgs.emacs-unstable;
   };
+  # programs.doom-emacs = {
+  #   enable = true;
+  #   doomPrivateDir = ../../../doom;
+  # emacsPackage = pkgs.emacs-unstable;
+  # };
 }

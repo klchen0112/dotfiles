@@ -51,7 +51,7 @@
         inputs.nixpkgs.follows = "nixpkgs";
       };
 
-      doom-emacs = {
+      nix-doom-emacs = {
         # Nix-community Doom Emacs
         url = "github:nix-community/nix-doom-emacs";
         inputs.nixpkgs.follows = "nixpkgs";
@@ -83,7 +83,7 @@
     nixgl,
     nixos-wsl,
     emacs-overlay,
-    doom-emacs,
+    nix-doom-emacs,
     hyprland,
     vscode-server,
     ...
@@ -138,21 +138,26 @@
         ];
       };
     };
-    darwinConfigurations = {
-      "macbook-pro-m1" = darwin.lib.darwinSystem {
+    darwinConfigurations =
+      let
         system = "aarch64-darwin";
-        specialArgs = {
-          inherit username inputs;
+      in
+      {
+        "macbook-pro-m1" = darwin.lib.darwinSystem {
+          inherit system;
+          specialArgs = {
+            inherit username inputs system;
+          };
+            pkgs = legacyPackages.aarch64-darwin;
+              modules = [
+                  {documentation.enable = false;}
+                    # Modules that are used
+                    ./machines/macbook-pro-m1
+                    home-manager.darwinModules.home-manager
+                    modules/hosts/macbook-pro-m1/default.nix
+          ];
         };
-        pkgs = legacyPackages.aarch64-darwin;
-        modules = [
-          # Modules that are used
-          ./machines/macbook-pro-m1
-          home-manager.darwinModules.home-manager
-          modules/hosts/macbook-pro-m1/default.nix
-        ];
       };
-    };
 
     formatter =
       forAllSystems (system: nixpkgs.legacyPackages.${system}.alejandra);

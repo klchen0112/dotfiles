@@ -10,6 +10,8 @@
   config,
   pkgs,
   username,
+  system,
+  inputs,
   ...
 }: {
   users.users.${username} = {
@@ -83,6 +85,11 @@
     emacs = {
       enable = true;
       package = pkgs.emacs-unstable;
+      # https://github.com/nix-community/nix-doom-emacs/blob/master/docs/reference.md#emacs-daemon
+      #package = inputs.nix-doom-emacs.packages.${system}.doom-emacs.override {
+      #  doomPrivateDir = ../../doom;
+      #  emacsPackage = pkgs.emacs-unstable;
+      #};
     };
 
     yabai = {
