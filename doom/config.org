@@ -1833,7 +1833,7 @@ use dash open app dash
 #+end_src
 ** org noter and nov
 #+begin_src emacs-lisp :tangle packages.el
-(package! org-noter :recipe (:host nil :repo "https://notabug.org/c1-g/org-noter-plus-djvu"))
+(package! org-noter :recipe (:host nil :host github :repo "org-noter/org-noter"))
 
 ;;(package! org-noter-plus :recipe (:host github :repo "yuchen-lea/org-noter-plus"))
 #+end_src
