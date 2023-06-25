@@ -44,7 +44,6 @@
     emacs-all-the-icons-fonts
 
     # mpvi required
-    mpv
     yt-dlp
     tesseract5
     ffmpeg_5
@@ -53,9 +52,10 @@
     enable = true;
     package = pkgs.emacs-unstable;
   };
+  # doom-emacs will enable programs.emacs
   # programs.doom-emacs = {
   #   enable = true;
   #   doomPrivateDir = ../../../doom;
-  # emacsPackage = pkgs.emacs-unstable;
+  #   emacsPackage = pkgs.emacs-unstable;
   # };
 }

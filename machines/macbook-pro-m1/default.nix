@@ -397,7 +397,6 @@
       "dash"
       # "nutstore"
       "omnidisksweeper"
-      "vlc"
       # "discord"
       "plexamp"
       "xnviewmp"
