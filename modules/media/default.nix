@@ -4,7 +4,13 @@
 {pkgs, ...}: {
   programs.mpv = {
     enable = true;
-    
   };
-  # home.packages = with pkgs; [tor];
+  programs.sioyek = {
+    enable = true;
+    #  package = pkgs.sioyek;
+  };
+  home.packages = with pkgs; [
+    # calibre
+    raycast
+  ];
 }

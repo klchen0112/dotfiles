@@ -196,11 +196,24 @@
       ];
     };
   };
-  home.packages = with pkgs; [
-    exa
-    ripgrep
-    bat
-    fzf
-    tmux
-  ];
+  programs.exa = {
+    enable = true;
+    icons = true;
+    git = true;
+  };
+  programs.bat = {
+    enable = true;
+  };
+  home.packages = with pkgs; [ripgrep];
+  # programs.ripgrep = {
+  # enable = true;
+  # };
+  programs.fzf = {
+    enable = true;
+    enableFishIntegration = true;
+  };
+  programs.tmux = {
+    enable = true;
+    # defaultKeyMode = "emacs";
+  };
 }
