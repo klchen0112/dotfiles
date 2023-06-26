@@ -1,5 +1,7 @@
 {pkgs, ...}: {
-  home.packages = with pkgs; [
-    texlive.combined.scheme-full
-  ];
+  programs.texlive = {
+    enable = true;
+    package = pkgs.texlive.combined.scheme-full;
+  };
+
 }
