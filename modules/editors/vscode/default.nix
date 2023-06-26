@@ -56,7 +56,7 @@
 
         # nix
         bbenoist.nix
-        kamadorueda.alejandra
+        # kamadorueda.alejandra
         jnoortheen.nix-ide
         # csv
         mechatroner.rainbow-csv
