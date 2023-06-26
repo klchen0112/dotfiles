@@ -190,12 +190,12 @@
 
         yabai -m rule --add label=musicapp app="Plexamp" space=10 manage=off
 
-        yabai -m rule --add app="^(Spark)$"  space=10 manage=off
-        yabai -m rule --add app="^(微信|WeChat)$"  space=10 manage=off
-        yabai -m rule --add app="^(QQ)$"  space=10 manage=off
-        yabai -m rule --add app="^(钉钉|DingTalk)$" space=10 manage=off
-        yabai -m rule --add app="^(Telegram)$"  space=10 manage=off
-        yabai -m rule --add app="^(Discord)$" space=10 manage=off
+        yabai -m rule --add app="^(Spark)$" --toggle float space=10 manage=on
+        yabai -m rule --add app="^(微信|WeChat)$" --toggle float space=10 manage=off
+        yabai -m rule --add app="^(QQ)$" --toggle float space=10 manage=off
+        yabai -m rule --add app="^(钉钉|DingTalk)$"--toggle float space=10 manage=off
+        yabai -m rule --add app="^(Telegram)$" --toggle float space=10 manage=off
+        yabai -m rule --add app="^(Discord)$"--toggle float space=10 manage=off
 
       '';
     };
@@ -347,7 +347,6 @@
       qq = 451108668;
       dingtalk = 1435447041;
       tencent-meeting = 1484048379;
-      emby = 992180193;
       "microsoft-word" = 462054704;
       "microsoft-powerpoint" = 462062816;
       "microsoft-excel" = 462058435;
@@ -377,7 +376,6 @@
       # "sunloginclient"
       "adrive"
       "snipaste"
-      "anki"
       "google-chrome"
       "steam"
       "appcleaner"
@@ -402,7 +400,6 @@
       "openvpn-connect"
       "zotero"
       # "skim"
-      "arc"
       # "via"
       "logseq"
       "miniconda"
