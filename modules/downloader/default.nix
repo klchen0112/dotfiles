@@ -2,6 +2,9 @@
 # Download client
 #
 {pkgs, ...}: {
+  programs.yt-dlp = {
+    enable = true;
+  };
   programs.aria2 = {
     enable = true;
     settings = {

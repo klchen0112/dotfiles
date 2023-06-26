@@ -44,7 +44,6 @@
     emacs-all-the-icons-fonts
 
     # mpvi required
-    yt-dlp
     tesseract5
     ffmpeg_5
   ];
