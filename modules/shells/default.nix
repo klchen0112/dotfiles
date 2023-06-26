@@ -3,6 +3,31 @@
 #
 {pkgs, ...}: {
   programs = {
+    git = {
+      enable = true;
+      package = pkgs.gitAndTools.gitFull;
+      ignores = ["*~" "*.swp"];
+      attributes = ["*.pdf diff=pdf"];
+      lfs.enable = true;
+      extraConfig = {
+        init.defaultBranch = "master"; # https://srid.ca/unwoke
+        core.editor = "emacsclient";
+        #protocol.keybase.allow = "always";
+        credential.helper = "store --file ~/.git-credentials";
+        pull.rebase = "false";
+        # For supercede
+        core.symlinks = true;
+      };
+    };
+    bash.enable = true;
+    zsh = {
+      enable = true;
+      enableAutosuggestions = true; # Auto suggest options and highlights syntax, searches in history for options
+      enableSyntaxHighlighting = true;
+      defaultKeymap = "emacs";
+      enableCompletion = true;
+      history.size = 100000;
+    };
     fish = {
       enable = true;
       shellAbbrs = {
@@ -195,25 +220,109 @@
         }
       ];
     };
+    exa = {
+      enable = true;
+      icons = true;
+      git = true;
+    };
+    bat = {
+      enable = true;
+      config = {
+        theme = "OneHalfLight";
+      };
+    };
+    fzf = {
+      enable = true;
+      enableFishIntegration = true;
+    };
+    tmux = {
+      enable = true;
+      # defaultKeyMode = "emacs";
+    };
+    direnv = {
+      enable = true;
+      nix-direnv.enable = true;
+    };
+    starship = {
+      enable = false;
+      enableZshIntegration = false;
+      enableFishIntegration = false;
+      settings = {
+        add_newline = false;
+        format = "$shlvl$shell$username$hostname$git_branch$git_commit$git_state$git_status$cmake$python$nix_shell$directory$cmd_duration$sudo$line_break$jobs$character";
+        shlvl = {
+          disabled = false;
+          style = "bright-red bold";
+        };
+        shell = {
+          disabled = false;
+          format = "$indicator";
+          fish_indicator = "";
+          bash_indicator = "[BASH](bright-black) ";
+          zsh_indicator = "[ZSH](bright-black) ";
+        };
+        username = {
+          disabled = false;
+          style_user = "bright-white bold";
+          style_root = "bright-red bold";
+        };
+        hostname = {
+          disabled = false;
+          style = "bright-green bold";
+          ssh_only = true;
+        };
+        cmd_duration = {
+          disabled = false;
+          format = "⏱ $duration";
+        };
+        git_branch = {
+          disabled = false;
+          format = "[$symbol $branch]($style) ";
+          symbol = "שׂ";
+          style = "bright-yellow bold";
+        };
+        conda = {
+          disabled = false;
+          format = "[$symbol$environment](dimmed green) ";
+        };
+        git_commit = {
+          disabled = false;
+          only_detached = true;
+          format = "[$hash]($style) ";
+          style = "bright-yellow bold";
+        };
+        git_state = {
+          disabled = false;
+          style = "bright-purple bold";
+        };
+        git_status = {
+          disabled = false;
+        };
+        sudo = {
+          disabled = false;
+          format = "as $symbol";
+        };
+        python = {
+          disabled = false;
+          format = "[$pyenv_prefix]($version)(\($virtualenv\))";
+        };
+        nix_shell = {
+          disabled = false;
+          format = "[$name]($style)";
+        };
+        nodejs = {
+          disabled = false;
+          format = "($version)";
+        };
+        cmake = {
+          disabled = false;
+          format = "($version)";
+        };
+      };
+    };
   };
-  programs.exa = {
-    enable = true;
-    icons = true;
-    git = true;
-  };
-  programs.bat = {
-    enable = true;
-  };
-  home.packages = with pkgs; [ripgrep];
+  home.packages = with pkgs; [ripgrep inetutils];
   # programs.ripgrep = {
   # enable = true;
   # };
-  programs.fzf = {
-    enable = true;
-    enableFishIntegration = true;
-  };
-  programs.tmux = {
-    enable = true;
-    # defaultKeyMode = "emacs";
-  };
 }

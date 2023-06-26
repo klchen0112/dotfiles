@@ -38,10 +38,7 @@
         ../../lang/python
         ../../lang/rust
         ../../media
-        ../../shells/git
-        ../../shells/fish
-        # ../../shells/zsh
-        ../../shells/shell
+        ../../shells
         ../../socialMedia
         ../../terminal
         # ../../vpn
