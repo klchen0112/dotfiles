@@ -10,6 +10,7 @@
     #  package = pkgs.sioyek;
   };
   home.packages = with pkgs; [
+    anki
     # calibre
     raycast
   ];
