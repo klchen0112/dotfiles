@@ -87,13 +87,15 @@
 ;;  (package! xenops)
 ;;)
 
-(package! org-preview :recipe (:host github :repo "karthink/org-preview"))
+(package! org-xlatex :recipe (:host github :repo "ksqsf/org-xlatex"))
+
+;;(package! org-preview :recipe (:host github :repo "karthink/org-preview"))
 
 (if IS-MAC (package! dash-at-point))
 
 (unpin! pdf-tools)
 
-(package! org-noter :recipe (:host nil :host github :repo "org-noter/org-noter"))
+(package! org-noter :recipe (:host github :repo "org-noter/org-noter"))
 
 ;;(package! org-noter-plus :recipe (:host github :repo "yuchen-lea/org-noter-plus"))
 

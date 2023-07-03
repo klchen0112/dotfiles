@@ -83,6 +83,9 @@
 ;; DON'T use (`font-family-list'), it's unreliable on Linux
 ;; org mode table
 
+
+(setq auto-save-default t)
+
 (cond
  (IS-MAC
   (setq doom-font (font-spec :family "Iosevka"   :size 19)
@@ -819,7 +822,7 @@
   :config
   (setq org-roam-database-connector 'sqlite-builtin
         org-roam-directory (file-truename "~/org")
-        ;;org-roam-directory (file-truename "~/org/journals")
+        org-roam-dailies-directory (file-truename "~/org/journals/")
         org-roam-file-extensions '("org"))
   ;; 自动创建org roam 文件夹
   (unless (file-exists-p org-roam-directory) (make-directory org-roam-directory t))
@@ -1386,11 +1389,15 @@ derivative.")
 ;;                                  (:handlers . block-math)))
 ;;  )
 
-(use-package! org-preview
+(use-package org-xlatex
+  :after (org)
+  :hook (org-mode . org-xlatex-mode))
+
+;;(use-package! org-preview
   ;;:hook (org-mode . org-preview-mode)
-)
+;;)
 
-
+;;(add-hook 'org-mode-hook #'org-latex-preview-auto-mode)
 
 (if IS-MAC
 (use-package! dash-at-point

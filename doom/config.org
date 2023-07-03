@@ -102,7 +102,7 @@
        ;;eshell            ; the elisp shell that works everywhere
        ;;shell             ; simple shell REPL for Emacs
        ;;term              ; basic terminal emulator for Emacs
-       ;;vterm             ; the best terminal emulation in Emacs
+       vterm             ; the best terminal emulation in Emacs
 
        :checkers
        ;;(syntax +childframe)              ; tasing you for every semicolon you forget
@@ -371,6 +371,9 @@
 ;; wasn't installed correctly. Font issues are rarely Doom issues!
 ;; DON'T use (`font-family-list'), it's unreliable on Linux
 ;; org mode table
+
+
+(setq auto-save-default t)
 
 (cond
  (IS-MAC
@@ -1251,6 +1254,9 @@ citar need vertico
 #+end_src
 
 * org-roam
+:PROPERTIES:
+:ID:       466ca3d1-ca43-4265-9493-1177afe300ce
+:END:
 ** org-roam settings
 :PROPERTIES:
 :ID: 3f6a8789-2cb1-45ec-ab57-063d22cceaf8
@@ -1293,7 +1299,7 @@ citar need vertico
   :config
   (setq org-roam-database-connector 'sqlite-builtin
         org-roam-directory (file-truename "~/org")
-        ;;org-roam-directory (file-truename "~/org/journals")
+        org-roam-dailies-directory (file-truename "~/org/journals/")
         org-roam-file-extensions '("org"))
   ;; 自动创建org roam 文件夹
   (unless (file-exists-p org-roam-directory) (make-directory org-roam-directory t))
@@ -1952,21 +1958,32 @@ async latex view
 ;;                                  (:handlers . block-math)))
 ;;  )
 #+end_src
+**** org-xlatex
+***** package
+#+begin_src emacs-lisp conf :tangle packages.el
+(package! org-xlatex :recipe (:host github :repo "ksqsf/org-xlatex"))
+#+end_src
+***** config
+#+begin_src emacs-lisp conf :tangle config.el
+(use-package org-xlatex
+  :after (org)
+  :hook (org-mode . org-xlatex-mode))
+#+end_src
 **** org fragtog
 ***** package
 #+begin_src emacs-lisp :tangle packages.el
-(package! org-preview :recipe (:host github :repo "karthink/org-preview"))
+;;(package! org-preview :recipe (:host github :repo "karthink/org-preview"))
 #+end_src
 
 ***** config
 #+begin_src emacs-lisp :tangle config.el
-(use-package! org-preview
+;;(use-package! org-preview
   ;;:hook (org-mode . org-preview-mode)
-)
+;;)
 #+end_src
 **** org preview settings
 #+begin_src emacs-lisp :tangle config.el
-
+;;(add-hook 'org-mode-hook #'org-latex-preview-auto-mode)
 
 #+end_src
 ** Doc
@@ -1990,7 +2007,7 @@ use dash open app dash
 #+end_src
 ** org noter and nov
 #+begin_src emacs-lisp :tangle packages.el
-(package! org-noter :recipe (:host nil :host github :repo "org-noter/org-noter"))
+(package! org-noter :recipe (:host github :repo "org-noter/org-noter"))
 
 ;;(package! org-noter-plus :recipe (:host github :repo "yuchen-lea/org-noter-plus"))
 #+end_src
