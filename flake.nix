@@ -20,6 +20,7 @@
     # All flake references used to build my NixOS setup. These are dependencies.
     {
       nixpkgs.url = "github:nixos/nixpkgs/release-23.05"; # Nix Packages
+      systems.url = "github:nix-systems/default";
 
       nixos-hardware = {
         url = "github:NixOS/nixos-hardware";
@@ -27,10 +28,16 @@
 
       flake-utils = {
         url = "github:numtide/flake-utils";
+        inputs.systems.follows = "systems";
       };
 
       flake-parts = {
         url = "github:hercules-ci/flake-parts";
+      };
+
+      flake-compat = {
+        url = "github:edolstra/flake-compat";
+        flake = false;
       };
 
       home-manager = {
@@ -52,11 +59,13 @@
         # OpenGL
         url = "github:guibou/nixGL";
         inputs.nixpkgs.follows = "nixpkgs";
+        inputs.flake-utils.follows = "flake-utils";
       };
 
       emacs-overlay = {
         url = "github:nix-community/emacs-overlay/master";
         inputs.nixpkgs.follows = "nixpkgs";
+        inputs.flake-utils.follows = "flake-utils";
       };
 
       nix-doom-emacs = {
@@ -64,6 +73,8 @@
         url = "github:nix-community/nix-doom-emacs";
         inputs.nixpkgs.follows = "nixpkgs";
         inputs.emacs-overlay.follows = "emacs-overlay";
+        inputs.flake-utils.follows = "flake-utils";
+        inputs.flake-compat.follows = "flake-compat";
       };
 
       hyprland = {
@@ -72,11 +83,16 @@
         inputs.nixpkgs.follows = "nixpkgs";
       };
 
-      vscode-server.url = "github:msteen/nixos-vscode-server";
-
+      vscode-server = {
+        url = "github:msteen/nixos-vscode-server";
+        inputs.nixpkgs.follows = "nixpkgs";
+        inputs.flake-utils.follows = "flake-utils";
+      };
       nixos-wsl = {
         url = "github:nix-community/NixOS-WSL";
         inputs.nixpkgs.follows = "nixpkgs";
+        inputs.flake-utils.follows = "flake-utils";
+        inputs.flake-compat.follows = "flake-compat";
       };
       # fonts
     };
