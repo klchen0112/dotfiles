@@ -1,13 +1,13 @@
 #
 # fish configuration
 #
-{pkgs, ...}: {
+{ pkgs, ... }: {
   programs = {
     git = {
       enable = true;
       package = pkgs.gitAndTools.gitFull;
-      ignores = ["*~" "*.swp"];
-      attributes = ["*.pdf diff=pdf"];
+      ignores = [ "*~" "*.swp" ];
+      attributes = [ "*.pdf diff=pdf" ];
       lfs.enable = true;
       extraConfig = {
         init.defaultBranch = "master"; # https://srid.ca/unwoke
@@ -24,7 +24,7 @@
     };
     bash.enable = true;
     zsh = {
-      enable = true;
+      enable = false;
       enableAutosuggestions = true; # Auto suggest options and highlights syntax, searches in history for options
       enableSyntaxHighlighting = true;
       defaultKeymap = "emacs";
@@ -232,7 +232,9 @@
       enable = true;
       config = {
         theme = "OneHalfLight";
+        style = "numbers,header,grid,changes,snip";
       };
+      extraPackages = with pkgs.bat-extras; [ batdiff batman batgrep batwatch prettybat ];
     };
     fzf = {
       enable = true;
@@ -245,6 +247,8 @@
     direnv = {
       enable = true;
       nix-direnv.enable = true;
+      #  enableFishIntegration = true;
+      #  enableBashIntegration = true;
     };
     jq = {
       enable = true;
@@ -330,7 +334,7 @@
       };
     };
   };
-  home.packages = with pkgs; [ripgrep inetutils];
+  home.packages = with pkgs; [ ripgrep inetutils nodePackages.prettier ];
   # programs.ripgrep = {
   # enable = true;
   # };
