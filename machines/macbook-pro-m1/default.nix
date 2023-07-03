@@ -24,10 +24,10 @@
     # Fonts
     fontDir.enable = true;
     fonts = with pkgs; [
-      jetbrains-mono
-      cascadia-code
-      comic-mono
-      fira-code
+      # jetbrains-mono
+      # cascadia-code
+      # comic-mono
+      # fira-code
       ibm-plex
       roboto-mono
       twemoji-color-font
@@ -35,7 +35,7 @@
       symbola
       # noto-fonts
       # noto-fonts-extra
-      noto-fonts-emoji
+      # noto-fonts-emoji
       noto-fonts-cjk-sans
       noto-fonts-cjk-serif
       # noto-fonts-lgc-plus
