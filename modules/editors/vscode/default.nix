@@ -9,7 +9,7 @@
 #   └─ ./modules
 #       └─ ./editors
 #           └─ ./vscode
-{pkgs, ...}: {
+{ config, lib, pkgs, ... }: {
   programs.vscode = {
     enable = true;
     package = pkgs.vscode;
@@ -104,7 +104,17 @@
           version = "1.13.0";
           sha256 = "8FUVGnUohSCpBUc+4h8yJIH+ICOOhzfuEpGsp7t2Xh0=";
         }
-      ];
+
+      ] ++ (lib.optionals pkgs.stdenv.isDarwin
+        pkgs.vscode-utils.extensionsFromVscodeMarketplace
+        [{
+          name = "vscode-dash";
+          publisher = "deerawan";
+          version = "2.4.0";
+          sha256 = "Yqn59ppNWQRMWGYVLLWofogds+4t/WRRtSSfomPWQy4=";
+        }]
+      )
+    ;
     enableUpdateCheck = false;
     enableExtensionUpdateCheck = false;
     userSettings = {
@@ -195,7 +205,7 @@
       "git.autofetch" = true;
       "json.maxItemsComputed" = 10000;
       "security.workspace.trust.untrustedFiles" = "open";
-      "search.exclude" = {};
+      "search.exclude" = { };
       "search.showLineNumbers" = true;
       "search.smartCase" = true;
       "terminal.integrated.defaultProfile.windows" = "PowerShell";
@@ -252,8 +262,8 @@
       "[yaml]" = {
         "editor.comments.insertSpace" = false;
       };
-      "[python]" =  {
-          "editor.formatOnType" =  true;
+      "[python]" = {
+        "editor.formatOnType" = true;
       };
     };
   };
