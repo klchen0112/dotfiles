@@ -13,14 +13,13 @@
 #           └─ ./emacs
 #               └─ ./doom-emacs
 #
-{
-  config,
-  lib,
-  pkgs,
-  username,
-  system,
-  inputs,
-  ...
+{ config
+, lib
+, pkgs
+, username
+, system
+, inputs
+, ...
 }: {
   home.packages = with pkgs; [
     # python/default.nix install python
@@ -49,12 +48,12 @@
   ];
   programs.emacs = {
     enable = true;
-    package = pkgs.emacs-unstable;
+    package = pkgs.emacs-unstable.override { withNativeCompilation = true; };
   };
   # doom-emacs will enable programs.emacs
   # programs.doom-emacs = {
   #   enable = true;
   #   doomPrivateDir = ../../../doom;
-  #   emacsPackage = pkgs.emacs-unstable;
+  #   emacsPackage = pkgs.emacs-unstable.override { withNativeCompilation = true; };
   # };
 }
