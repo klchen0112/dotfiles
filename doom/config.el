@@ -1389,9 +1389,10 @@ derivative.")
 ;;                                  (:handlers . block-math)))
 ;;  )
 
-(use-package org-xlatex
-  :after (org)
-  :hook (org-mode . org-xlatex-mode))
+;;(use-package org-xlatex
+;;  :after org
+  ;;:hook (org-mode . org-xlatex-mode)
+;;)
 
 ;;(use-package! org-preview
   ;;:hook (org-mode . org-preview-mode)

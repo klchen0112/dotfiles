@@ -1961,13 +1961,14 @@ async latex view
 **** org-xlatex
 ***** package
 #+begin_src emacs-lisp conf :tangle packages.el
-(package! org-xlatex :recipe (:host github :repo "ksqsf/org-xlatex"))
+;;(package! org-xlatex :recipe (:host github :repo "ksqsf/org-xlatex"))
 #+end_src
 ***** config
 #+begin_src emacs-lisp conf :tangle config.el
-(use-package org-xlatex
-  :after (org)
-  :hook (org-mode . org-xlatex-mode))
+;;(use-package org-xlatex
+;;  :after org
+  ;;:hook (org-mode . org-xlatex-mode)
+;;)
 #+end_src
 **** org fragtog
 ***** package

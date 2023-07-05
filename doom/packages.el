@@ -87,7 +87,7 @@
 ;;  (package! xenops)
 ;;)
 
-(package! org-xlatex :recipe (:host github :repo "ksqsf/org-xlatex"))
+;;(package! org-xlatex :recipe (:host github :repo "ksqsf/org-xlatex"))
 
 ;;(package! org-preview :recipe (:host github :repo "karthink/org-preview"))
 
