@@ -31,7 +31,7 @@
 
        :completion
        ;;(corfu +icons +orderless) ; wait for doom merge
-       ;;(company +childframe)           ; the ultimate code completion backend
+       (company +childframe)           ; the ultimate code completion backend
        ;;helm              ; the *other* search engine for love and life
        ;;ido               ; the other *other* search engine...
        ;;(ivy +fuzzy +prescient +childframe +icons)               ; a search engine for love and life
@@ -939,6 +939,15 @@ citar need vertico
 #+end_src
 
 * org mode
+** org latex
+*** packages
+#+begin_src emacs-lisp :tangle packages.el
+(package! org :recipe (:host nil :repo "https://git.tecosaur.net/tec/org-mode.git" :branch "dev" :remote "tecosaur"))
+#+end_src
+*** config
+#+begin_src emacs-lisp
+
+#+end_src
 ** 设置 org-variable
 #+begin_src emacs-lisp conf :tangle config.el
 
@@ -1576,7 +1585,7 @@ tasks."
 ** corfu
 corfu code from [[https://github.com/LuigiPiucco/doom-emacs/tree/master][LuigiPiucco]]
 *** corfu config
-#+begin_src emacs-lisp :tangle config.el
+#+begin_src emacs-lisp :tangle no
 (defvar +corfu-auto-delay 0.1
   "How long after point stands still will completion be called automatically,
 in seconds.
@@ -1970,17 +1979,17 @@ async latex view
   ;;:hook (org-mode . org-xlatex-mode)
 ;;)
 #+end_src
-**** org fragtog
+**** org preview
 ***** package
 #+begin_src emacs-lisp :tangle packages.el
-;;(package! org-preview :recipe (:host github :repo "karthink/org-preview"))
+(package! org-preview :recipe (:host github :repo "karthink/org-preview"))
 #+end_src
 
 ***** config
 #+begin_src emacs-lisp :tangle config.el
-;;(use-package! org-preview
+(use-package! org-preview
   ;;:hook (org-mode . org-preview-mode)
-;;)
+)
 #+end_src
 **** org preview settings
 #+begin_src emacs-lisp :tangle config.el

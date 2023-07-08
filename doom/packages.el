@@ -33,6 +33,8 @@
 ;;     :recipe (:host github :repo "emacs-citar/citar-org-roam"
 ;;           :files ("*.el")))
 
+(package! org :recipe (:host nil :repo "https://git.tecosaur.net/tec/org-mode.git" :branch "dev" :remote "tecosaur"))
+
 (package! org-modern)
 ;;(package! valign :recipe (:host github :repo "casouri/valign"))
 (package! org-superstar)
@@ -89,7 +91,7 @@
 
 ;;(package! org-xlatex :recipe (:host github :repo "ksqsf/org-xlatex"))
 
-;;(package! org-preview :recipe (:host github :repo "karthink/org-preview"))
+(package! org-preview :recipe (:host github :repo "karthink/org-preview"))
 
 (if IS-MAC (package! dash-at-point))
 

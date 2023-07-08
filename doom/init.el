@@ -22,7 +22,7 @@
 
        :completion
        ;;(corfu +icons +orderless) ; wait for doom merge
-       ;;(company +childframe)           ; the ultimate code completion backend
+       (company +childframe)           ; the ultimate code completion backend
        ;;helm              ; the *other* search engine for love and life
        ;;ido               ; the other *other* search engine...
        ;;(ivy +fuzzy +prescient +childframe +icons)               ; a search engine for love and life
