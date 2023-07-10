@@ -171,29 +171,29 @@
             ./machines/i12500
             home-manager.nixosModules.home-manager
             ./modules/hosts/i12500
-          ]
-            };
+          ];
         };
-        darwinConfigurations =
-          let
-            system = "aarch64-darwin";
-          in
-          {
-            "macbook-pro-m1" = darwin.lib.darwinSystem {
-              inherit system;
-              specialArgs = {
-                inherit username inputs system;
-              };
-              pkgs = legacyPackages.aarch64-darwin;
-              modules = [
-                # Modules that are used
-                ./machines/macbook-pro-m1
-                home-manager.darwinModules.home-manager
-                modules/hosts/macbook-pro-m1/default.nix
-              ];
-            };
-          };
-        formatter = forAllSystems (system: nixpkgs.legacyPackages.${system}.nixpkgs-fmt);
-
       };
-    }
+      darwinConfigurations =
+        let
+          system = "aarch64-darwin";
+        in
+        {
+          "macbook-pro-m1" = darwin.lib.darwinSystem {
+            inherit system;
+            specialArgs = {
+              inherit username inputs system;
+            };
+            pkgs = legacyPackages.aarch64-darwin;
+            modules = [
+              # Modules that are used
+              ./machines/macbook-pro-m1
+              home-manager.darwinModules.home-manager
+              modules/hosts/macbook-pro-m1/default.nix
+            ];
+          };
+        };
+      formatter = forAllSystems (system: nixpkgs.legacyPackages.${system}.nixpkgs-fmt);
+
+    };
+}

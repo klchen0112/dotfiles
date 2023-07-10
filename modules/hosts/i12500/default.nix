@@ -1,8 +1,7 @@
-{
-  pkgs,
-  username,
-  inputs,
-  ...
+{ pkgs
+, username
+, inputs
+, ...
 }: {
   home-manager = {
     useGlobalPkgs = true;
@@ -16,15 +15,15 @@
       imports = [
         inputs.nix-doom-emacs.hmModule
 
-        ../../browser
-        ../../downloader
+        # ../../browser
+        # ../../downloader
         # ../../editors/codeblocks
-        ../../editors/jetbrains
+        # ../../editors/jetbrains
         ../../editors/emacs
         # ../../editors/vim
         # ../../editors/nvim
-        ../../editors/vscode
-        ../../graphics
+        # ../../editors/vscode
+        # ../../graphics
         ../../keyboard
         ../../lang/cpp
         ../../lang/go
@@ -37,10 +36,10 @@
         ../../lang/nodejs
         ../../lang/python
         ../../lang/rust
-        ../../media
+        # ../../media
         ../../shells
-        ../../socialMedia
-        ../../terminal
+        # ../../socialMedia
+        # ../../terminal
         # ../../vpn
       ];
     };

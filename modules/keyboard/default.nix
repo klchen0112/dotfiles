@@ -1,10 +1,10 @@
-{pkgs, ...}: {
+{ pkgs, ... }: {
   home.packages = with pkgs; [
-    # qmk
-
     # xmake
     # glib
     # gcc
     # julia
+  ] ++ pkgs.stdenv.isLinux [
+    qmk
   ];
 }
