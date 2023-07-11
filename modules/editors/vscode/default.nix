@@ -53,6 +53,9 @@
         # ms-pyright.pyright
         # ms-pyright.pyright
         # cpp
+        llvm-vs-code-extensions.vscode-clangd
+        ms-vscode.cmake-tools
+        # ms-vscode.cpptools
 
         # nix
         bbenoist.nix
@@ -95,7 +98,7 @@
         {
           name = "cpptools";
           publisher = "ms-vscode";
-          version = "1.15.4";
+          version = "1.16.3";
           sha256 = "+EfEeta+qAnX/xmcGP0sa6U0+VhToiqdHEXQDENxyGA=";
         }
         {

@@ -7,5 +7,6 @@
     # glib
     # gcc
     # julia
+    llvm_14
   ];
 }
