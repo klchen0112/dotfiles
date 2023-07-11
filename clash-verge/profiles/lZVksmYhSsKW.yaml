@@ -271,6 +271,7 @@ proxy-groups:
       - 印度
       # - 巴基斯坦
       # - 泰国
+      - DIRECT
   - name: 节点选择
     type: select # 手动代理组
     use:
@@ -298,6 +299,7 @@ proxy-groups:
     tolerance: 50 # 容差值：节点差值低于设定值时，不自动切换
     url: "http://cp.cloudflare.com/generate_204" # 用来测ping的地址
     interval: 300 # 测ping时间(秒)
+    lazy: true
     proxies:
       - 香港
       - 日本
@@ -342,7 +344,16 @@ proxy-groups:
   - name: B站港澳台
     type: select # 手动代理组
     proxies:
+      - 台湾
       - 香港
+      - DIRECT
+  - name: 动画疯
+    type: select
+    tolerance: 50 # 容差值：节点差值低于设定值时，不自动切换
+    url: "http://cp.cloudflare.com/generate_204" # 用来测ping的地址
+    interval: 300 # 测ping时间(秒)
+    lazy: true
+    proxies:
       - 台湾
       - DIRECT
   - name: Streaming
@@ -369,8 +380,10 @@ proxy-groups:
     # tolerance: 50 # 容差值：节点差值低于设定值时，不自动切换
     # url: "http://cp.cloudflare.com/generate_204" # 用来测ping的地址
     # interval: 300 # 测ping时间(秒)
+    lazy: true
     use:
       - Scholar
+
   - name: OpenAI
     type: select # 手动代理组
     proxies:
@@ -403,6 +416,7 @@ proxy-groups:
     tolerance: 50 # 容差值：节点差值低于设定值时，不自动切换
     url: "http://cp.cloudflare.com/generate_204" # 用来测ping的地址
     interval: 300 # 测ping时间(秒)
+    lazy: true
     use:
       - HK
   - name: 日本
@@ -414,6 +428,7 @@ proxy-groups:
     tolerance: 50 # 容差值：节点差值低于设定值时，不自动切换
     url: "http://cp.cloudflare.com/generate_204" # 用来测ping的地址
     interval: 300 # 测ping时间(秒)
+    lazy: true
   - name: 新加坡
     type: load-balance
     strategy: consistent-hashing
@@ -422,6 +437,7 @@ proxy-groups:
     tolerance: 50 # 容差值：节点差值低于设定值时，不自动切换
     url: "http://cp.cloudflare.com/generate_204" # 用来测ping的地址
     interval: 300 # 测ping时间(秒)
+    lazy: true
     filter: "新加坡"
   - name: 台湾
     type: load-balance
@@ -431,13 +447,8 @@ proxy-groups:
     tolerance: 50 # 容差值：节点差值低于设定值时，不自动切换
     url: "http://cp.cloudflare.com/generate_204" # 用来测ping的地址
     interval: 300 # 测ping时间(秒)
-  #- name: 动画疯
-  #  type: select
-  #  use:
-  #    - 动画疯
-  #  tolerance: 50 # 容差值：节点差值低于设定值时，不自动切换
-  #  url: "http://cp.cloudflare.com/generate_204" # 用来测ping的地址
-  #  interval: 300 # 测ping时间(秒)
+    lazy: true
+
   - name: 美国
     type: load-balance
     strategy: consistent-hashing
@@ -446,6 +457,7 @@ proxy-groups:
     tolerance: 50 # 容差值：节点差值低于设定值时，不自动切换
     url: "http://cp.cloudflare.com/generate_204" # 用来测ping的地址
     interval: 300 # 测ping时间(秒)
+    lazy: true
   - name: 韩国
     type: load-balance
     strategy: consistent-hashing
@@ -454,6 +466,7 @@ proxy-groups:
     tolerance: 50 # 容差值：节点差值低于设定值时，不自动切换
     url: "http://cp.cloudflare.com/generate_204" # 用来测ping的地址
     interval: 300 # 测ping时间(秒)
+    lazy: true
   - name: 英国
     type: load-balance
     strategy: consistent-hashing
@@ -462,6 +475,7 @@ proxy-groups:
     tolerance: 50 # 容差值：节点差值低于设定值时，不自动切换
     url: "http://cp.cloudflare.com/generate_204" # 用来测ping的地址
     interval: 300 # 测ping时间(秒)
+    lazy: true
   - name: 俄罗斯
     type: load-balance
     strategy: consistent-hashing
@@ -470,6 +484,7 @@ proxy-groups:
     tolerance: 50 # 容差值：节点差值低于设定值时，不自动切换
     url: "http://cp.cloudflare.com/generate_204" # 用来测ping的地址
     interval: 300 # 测ping时间(秒)
+    lazy: true
   - name: 法国
     type: load-balance
     strategy: consistent-hashing
@@ -478,6 +493,7 @@ proxy-groups:
     tolerance: 50 # 容差值：节点差值低于设定值时，不自动切换
     url: "http://cp.cloudflare.com/generate_204" # 用来测ping的地址
     interval: 300 # 测ping时间(秒)
+    lazy: true
   - name: 德国
     type: load-balance
     strategy: consistent-hashing
@@ -486,6 +502,7 @@ proxy-groups:
     tolerance: 50 # 容差值：节点差值低于设定值时，不自动切换
     url: "http://cp.cloudflare.com/generate_204" # 用来测ping的地址
     interval: 300 # 测ping时间(秒)
+    lazy: true
   - name: 澳大利亚
     type: load-balance
     strategy: consistent-hashing
@@ -494,6 +511,7 @@ proxy-groups:
     tolerance: 50 # 容差值：节点差值低于设定值时，不自动切换
     url: "http://cp.cloudflare.com/generate_204" # 用来测ping的地址
     interval: 300 # 测ping时间(秒)
+    lazy: true
   - name: 菲律宾
     type: load-balance
     strategy: consistent-hashing
@@ -502,6 +520,7 @@ proxy-groups:
     tolerance: 50 # 容差值：节点差值低于设定值时，不自动切换
     url: "http://cp.cloudflare.com/generate_204" # 用来测ping的地址
     interval: 300 # 测ping时间(秒)
+    lazy: true
   - name: 土耳其
     type: load-balance
     strategy: consistent-hashing
@@ -510,6 +529,7 @@ proxy-groups:
     tolerance: 50 # 容差值：节点差值低于设定值时，不自动切换
     url: "http://cp.cloudflare.com/generate_204" # 用来测ping的地址
     interval: 300 # 测ping时间(秒)
+    lazy: true
   - name: 阿根廷
     type: load-balance
     strategy: consistent-hashing
@@ -518,6 +538,7 @@ proxy-groups:
     tolerance: 50 # 容差值：节点差值低于设定值时，不自动切换
     url: "http://cp.cloudflare.com/generate_204" # 用来测ping的地址
     interval: 300 # 测ping时间(秒)
+    lazy: true
   - name: 乌克兰
     type: select
     use:
@@ -525,6 +546,7 @@ proxy-groups:
     tolerance: 50 # 容差值：节点差值低于设定值时，不自动切换
     url: "http://cp.cloudflare.com/generate_204" # 用来测ping的地址
     interval: 300 # 测ping时间(秒)
+    lazy: true
   - name: 巴西
     type: load-balance
     strategy: consistent-hashing
@@ -541,6 +563,7 @@ proxy-groups:
     tolerance: 50 # 容差值：节点差值低于设定值时，不自动切换
     url: "http://cp.cloudflare.com/generate_204" # 用来测ping的地址
     interval: 300 # 测ping时间(秒)
+    lazy: true
   #- name: 巴基斯坦
   #  type: load-balance
   #  strategy: consistent-hashing
@@ -549,6 +572,7 @@ proxy-groups:
   #  tolerance: 50 # 容差值：节点差值低于设定值时，不自动切换
   #  url: "http://cp.cloudflare.com/generate_204" # 用来测ping的地址
   #  interval: 300 # 测ping时间(秒)
+  #  lazy: true
   #- name: 泰国
   #  type: load-balance
   #  strategy: consistent-hashing
@@ -557,6 +581,7 @@ proxy-groups:
   #  tolerance: 50 # 容差值：节点差值低于设定值时，不自动切换
   #  url: "http://cp.cloudflare.com/generate_204" # 用来测ping的地址
   #  interval: 300 # 测ping时间(秒)
+  #  lazy: true
   - name: 漏网之鱼
     type: select
     proxies:
@@ -841,9 +866,11 @@ rules:
   - GEOSITE,onedrive,OneDrive
   # 苹果
   - GEOSITE,apple@cn,DIRECT
+  # 谷歌
+  - GEOSITE,google,Proxy
 
   # 巴哈姆特
-  - GEOSITE,bahamut,台湾
+  - GEOSITE,bahamut,动画疯
   # B站港澳台
   # 内容：BilibiliHMT 哔哩哔哩 港澳台番剧
   # 数量：21条
