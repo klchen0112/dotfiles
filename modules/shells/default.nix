@@ -42,7 +42,7 @@
         E = "sudoedit";
         grep = "rg";
         cat = "bat";
-        # conda = "micromamba";
+        conda = "micromamba";
       };
       shellAliases = {
         # conda = "micromamba";
@@ -186,11 +186,17 @@
         set -Ux tide_virtual_env_icon \ue73c
       '';
       # issue from https://github.com/LnL7/nix-darwin/issues/122
-      loginShellInit = ''        fish_add_path --move --prepend --path $HOME/.nix-profile/bin /run/wrappers/bin /etc/profiles/per-user/$USER/bin /nix/var/nix/profiles/default/bin /run/current-system/sw/bin /opt/homebrew/bin
-                                 #>>> conda initialize >>>
-                                 # !! Contents within this block are managed by 'conda init' !!
-                                 eval /opt/homebrew/bin/conda "shell.fish" "hook" $argv | source
-                                 # <<< conda initialize <<<
+      loginShellInit = ''fish_add_path --move --prepend --path $HOME/.nix-profile/bin /run/wrappers/bin /etc/profiles/per-user/$USER/bin /nix/var/nix/profiles/default/bin /run/current-system/sw/bin /opt/homebrew/bin
+                          #>>> conda initialize >>>
+                          # !! Contents within this block are managed by 'conda init' !!
+                          #  eval /opt/homebrew/bin/conda "shell.fish" "hook" $argv | source
+                          # <<< conda initialize <<<
+                          # >>> mamba initialize >>>
+                          # !! Contents within this block are managed by 'mamba init' !!
+                          set -gx MAMBA_EXE "/etc/profiles/per-user/chenkailong/bin/micromamba"
+                          set -gx MAMBA_ROOT_PREFIX $HOME/micromamba
+                          $MAMBA_EXE shell hook --shell fish --prefix $MAMBA_ROOT_PREFIX | source
+                          # <<< mamba initialize <<<
       '';
       plugins = with pkgs.fishPlugins; [
         {

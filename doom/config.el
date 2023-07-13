@@ -1154,6 +1154,8 @@ tasks."
 ;;    (setq codeium/document/text 'my-codeium/document/text)
 ;;    (setq codeium/document/cursor_offset 'my-codeium/document/cursor_offset))
 
+(if IS-MAC
+(use-package! micromamba)
 (use-package! conda
 ;; :init
   ;;:hook
@@ -1163,6 +1165,7 @@ tasks."
   :config
   (conda-env-initialize-interactive-shells)
   (setq conda-env-autoactivate-mode t)
+)
 )
 
 ;;(use-package! xenops

@@ -85,6 +85,8 @@
 (when (modulep! :os tty)
   (package! corfu-terminal))
 
+(if IS-MAC (package! micromamba))
+
 ;;(when (executable-find "xelatex")
 ;;  (package! xenops)
 ;;)

@@ -4,5 +4,6 @@
     # python3Full
     nodejs
     nodePackages.pyright
+    micromamba
   ];
 }

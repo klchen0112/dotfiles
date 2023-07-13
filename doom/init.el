@@ -203,7 +203,7 @@
                +pyright
                ;;+pyenv
                +cpython
-               +conda
+               (if (not IS-MAC) +conda)
                ;;+poetry
                ;;+tree-sitter
                )            ; beautiful is better than ugly

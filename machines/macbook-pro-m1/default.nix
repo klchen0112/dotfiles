@@ -406,7 +406,7 @@
       # "skim"
       # "via"
       "logseq"
-      "miniconda"
+      #"miniconda"
       "activitywatch"
       # "openscad"
       "qmk-toolbox"
