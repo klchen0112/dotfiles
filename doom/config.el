@@ -164,8 +164,9 @@
 (use-package! doom-themes
   :config
   ;;Global settings (defaults)
-  (setq doom-themes-enable-bold nil    ; if nil, bold is universally disabled
+  (setq doom-themes-enable-bold t    ; if nil, bold is universally disabled
         doom-themes-enable-italic t ; if nil, italics is universally disabled
+        doom-themes-padded-modeline t
         doom-themes-treemacs-enable-variable-pitch nil)
   (doom-themes-treemacs-config)
   (doom-themes-org-config))
@@ -1153,6 +1154,10 @@ tasks."
 ;;            (buffer-substring-no-properties (max (- (point) 3000) (point-min)) (point))))
 ;;    (setq codeium/document/text 'my-codeium/document/text)
 ;;    (setq codeium/document/cursor_offset 'my-codeium/document/cursor_offset))
+
+(after! lsp-mode
+  (setq lsp-ui-doc-show-with-cursor t)
+)
 
 (if IS-MAC
 (use-package! micromamba)
