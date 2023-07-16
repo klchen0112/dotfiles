@@ -83,8 +83,8 @@
     # ariang.enable = true;
     nix-daemon.enable = true; # Auto upgrade daemon
     emacs = {
-      enable = false;
-      package = pkgs.emacs-unstable.override { withNativeCompilation = true; };
+      enable = true;
+      package = pkgs.emacs-unstable;
       # https://github.com/nix-community/nix-doom-emacs/blob/master/docs/reference.md#emacs-daemon
       # package = inputs.nix-doom-emacs.packages.${system}.doom-emacs.override {
       #  doomPrivateDir = ../../doom;

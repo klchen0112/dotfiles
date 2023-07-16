@@ -48,12 +48,12 @@
   ];
   programs.emacs = {
     enable = true;
-    package = pkgs.emacs-unstable.override { withNativeCompilation = true; };
+    package = pkgs.emacs-unstable;
   };
   # doom-emacs will enable programs.emacs
   # programs.doom-emacs = {
   #   enable = true;
   #   doomPrivateDir = ../../../doom;
-  #   emacsPackage = pkgs.emacs-unstable.override { withNativeCompilation = true; };
+  #   emacsPackage = pkgs.emacs-unstable.override;
   # };
 }
