@@ -52,8 +52,8 @@
   };
   # doom-emacs will enable programs.emacs
   # programs.doom-emacs = {
-  #   enable = true;
-  #   doomPrivateDir = ../../../doom;
-  #   emacsPackage = pkgs.emacs-unstable.override;
+  #    enable = true;
+  #    doomPrivateDir = ../../../doom;
+  #    emacsPackage = pkgs.emacs-unstable;
   # };
 }

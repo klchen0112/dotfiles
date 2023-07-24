@@ -83,7 +83,7 @@
     # ariang.enable = true;
     nix-daemon.enable = true; # Auto upgrade daemon
     emacs = {
-      enable = true;
+      enable = false;
       package = pkgs.emacs-unstable;
       # https://github.com/nix-community/nix-doom-emacs/blob/master/docs/reference.md#emacs-daemon
       # package = inputs.nix-doom-emacs.packages.${system}.doom-emacs.override {
