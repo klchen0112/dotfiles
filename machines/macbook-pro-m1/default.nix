@@ -362,15 +362,12 @@
     taps = [
       "homebrew/cask"
       "homebrew/cask-fonts"
-      "homebrew/core"
       "homebrew/services"
       "laishulu/macism"
       "FelixKratz/formulae"
     ];
     brews = [
       "mas"
-      "pngpaste" # for emacs download clipboard
-      "macism"
       "sketchybar"
     ];
     casks = [
@@ -384,7 +381,6 @@
       "steam"
       "appcleaner"
       # "hammerspoon"
-      "sublime-text"
       # "authy"
       # "hiddenbar"
       # "telegram"

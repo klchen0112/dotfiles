@@ -45,6 +45,9 @@
     # mpvi required
     tesseract5
     ffmpeg_5
+    # pngpaste for org mode download clip
+    pngpaste
+
   ];
   programs.emacs = {
     enable = true;
