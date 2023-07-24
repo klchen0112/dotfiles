@@ -340,7 +340,7 @@
       };
     };
   };
-  home.packages = with pkgs; [ ripgrep inetutils nodePackages.prettier ];
+  home.packages = with pkgs; [ ripgrep inetutils nodePackages.prettier shfmt shellcheck];
   # programs.ripgrep = {
   # enable = true;
   # };
