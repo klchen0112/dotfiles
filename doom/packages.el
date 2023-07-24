@@ -33,7 +33,7 @@
 ;;     :recipe (:host github :repo "emacs-citar/citar-org-roam"
 ;;           :files ("*.el")))
 
-(package! org :recipe (:host nil :repo "https://git.tecosaur.net/tec/org-mode.git" :branch "dev" :remote "tecosaur"))
+;;(package! org :recipe (:host nil :repo "https://git.tecosaur.net/tec/org-mode.git" :branch "dev" :remote "tecosaur"))
 
 (package! org-modern)
 ;;(package! valign :recipe (:host github :repo "casouri/valign"))

@@ -943,7 +943,7 @@ citar need vertico
 ** org latex
 *** packages
 #+begin_src emacs-lisp :tangle packages.el
-(package! org :recipe (:host nil :repo "https://git.tecosaur.net/tec/org-mode.git" :branch "dev" :remote "tecosaur"))
+;;(package! org :recipe (:host nil :repo "https://git.tecosaur.net/tec/org-mode.git" :branch "dev" :remote "tecosaur"))
 #+end_src
 *** config
 #+begin_src emacs-lisp
