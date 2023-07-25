@@ -1287,6 +1287,13 @@ tasks."
 
 (use-package! mpvi)
 
+;;(use-package! telega
+;;  :commands (telega)
+;;  :defer t
+;;  :config
+;;  (setq telega-server-libs-prefix)
+;;)
+
 ;;(use-package! wakatime-mode
 ;;  :config
 ;; (setq wakatime-cli-path       (cond (IS-MAC "~/.nix-profile/bin/wakatime-cli") (IS-WINDOWS "~/.wakatime/wakatime-cli")))
