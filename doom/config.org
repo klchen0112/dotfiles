@@ -378,11 +378,11 @@
 
 (cond
  (IS-MAC
-  (setq doom-font (font-spec :family "Iosevka"   :size 19)
-        doom-big-font (font-spec :family "Iosevka"  :size 36)
-        doom-variable-pitch-font (font-spec :family "Overpass"  :size 23)
+  (setq doom-font (font-spec :family "Iosevka"   :size 14)
+        doom-big-font (font-spec :family "Iosevka"  :size 28)
+        doom-variable-pitch-font (font-spec :family "Overpass"  :size 17)
         ;;doom-unicode-font (font-spec :family "FZSongKeBenXiuKai-R-GBK" :weight 'light :slant 'italic :size 21)
-        doom-serif-font (font-spec :family "IBM Plex Serif"  :size 23))
+        doom-serif-font (font-spec :family "IBM Plex Serif"  :size 17))
   (add-hook! 'after-init-hook
              :append
              (lambda ()
@@ -2109,6 +2109,14 @@ use dash open app dash
 
 #+begin_src emacs-lisp :tangle config.el
 (use-package! mpvi)
+#+end_src
+** anki
+#+begin_src emacs-lisp :tangle packages.el
+(package! org-anki :recipe (:host github :repo "eyeinsky/org-anki"))
+#+end_src
+
+#+begin_src emacs-lisp :tangle config.el
+(use-package! org-anki)
 #+end_src
 * APP
 #+begin_src emacs-lisp :tangle packages.el

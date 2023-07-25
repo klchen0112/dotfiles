@@ -88,11 +88,11 @@
 
 (cond
  (IS-MAC
-  (setq doom-font (font-spec :family "Iosevka"   :size 19)
-        doom-big-font (font-spec :family "Iosevka"  :size 36)
-        doom-variable-pitch-font (font-spec :family "Overpass"  :size 23)
+  (setq doom-font (font-spec :family "Iosevka"   :size 14)
+        doom-big-font (font-spec :family "Iosevka"  :size 28)
+        doom-variable-pitch-font (font-spec :family "Overpass"  :size 17)
         ;;doom-unicode-font (font-spec :family "FZSongKeBenXiuKai-R-GBK" :weight 'light :slant 'italic :size 21)
-        doom-serif-font (font-spec :family "IBM Plex Serif"  :size 23))
+        doom-serif-font (font-spec :family "IBM Plex Serif"  :size 17))
   (add-hook! 'after-init-hook
              :append
              (lambda ()
@@ -192,7 +192,7 @@
 ;;  :commands jieba-mode
 ;;  :init (jieba-mode))
 
-(defconst meow-cheatsheet-layout-engram
+ (defconst meow-cheatsheet-layout-engram
     '((<TLDE> "[" "{")
       (<AE01> "1" "|")
       (<AE02> "2" "=")
@@ -1286,6 +1286,8 @@ tasks."
 ;;  )
 
 (use-package! mpvi)
+
+(use-package! org-anki)
 
 ;;(use-package! telega
 ;;  :commands (telega)
