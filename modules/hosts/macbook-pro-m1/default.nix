@@ -1,8 +1,7 @@
-{
-  pkgs,
-  username,
-  inputs,
-  ...
+{ pkgs
+, username
+, inputs
+, ...
 }: {
   home-manager = {
     useGlobalPkgs = true;
@@ -38,6 +37,7 @@
         ../../lang/python
         ../../lang/rust
         ../../media
+        ../../notes
         ../../shells
         ../../socialMedia
         ../../terminal
