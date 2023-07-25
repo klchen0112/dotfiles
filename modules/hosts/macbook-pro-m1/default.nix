@@ -41,6 +41,7 @@
         ../../shells
         ../../socialMedia
         ../../terminal
+        ../../vm
         # ../../vpn
       ];
     };
