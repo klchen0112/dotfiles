@@ -97,7 +97,7 @@
 
        :checkers
        (syntax +childframe)              ; tasing you for every semicolon you forget
-       (spell +everywhere +flyspell) ; tasing you for misspelling mispelling
+       (spell +everywhere) ; tasing you for misspelling mispelling
        ;;grammar           ; tasing grammar mistake every you make
 
        :tools
@@ -133,7 +133,8 @@
        :lang
        ;;agda              ; types of types of types of types...
        ;;beancount         ; mind the GAAP
-       (cc +lsp ; C > C++ == 1
+       (cc +lsp
+           ;; C > C++ == 1
            ;;+tree-sitter
            )
         ;;(clojure +lsp)           ; java with a lisp
