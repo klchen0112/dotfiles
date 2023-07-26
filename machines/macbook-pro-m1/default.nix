@@ -112,7 +112,7 @@
         in
         {
           debug_output = "on";
-          external_bar = "all:35:0";
+          external_bar = "all:24:0";
           layout = "bsp";
           top_padding = gaps.top;
           bottom_padding = gaps.bottom;
@@ -300,269 +300,268 @@
       enable = true;
       extraPackages = [ pkgs.jq ];
       config = ''
+                #!/bin/bash
         #!/bin/bash
 
-        source "$CONFIG_DIR/colors.sh" # Loads all defined colors
-        source "$CONFIG_DIR/icons.sh" # Loads all defined icons
+        scripts="${scripts}"
 
-        ITEM_DIR="$CONFIG_DIR/items" # Directory where the items are configured
-        PLUGIN_DIR="$CONFIG_DIR/plugins" # Directory where all the plugin scripts are stored
+        bar_color=0xff2e3440
+        # bar_color=0x30000000
+        icon_font="JetBrainsMono Nerd Font:Medium:13.0"
+        icon_color=0xbbd8dee9
+        icon_highlight_color=0xffebcb8b
+        label_font="$icon_font"
+        label_color="$icon_color"
+        label_highlight_color="$icon_highlight_color"
 
-        FONT="SF Pro" # Needs to have Regular, Bold, Semibold, Heavy and Black variants
-        PADDINGS=3 # All paddings use this value (icon, label, background)
+        spaces=()
+        for i in {1..10}
+        do
+        spaces+=(--add space space$i left \
+        --set space$i \
+        associated_display=1 \
+        associated_space=$i \
+        icon=$i \
+        click_script="yabai -m space --focus $i" \
+        script="$scripts/space.sh")
+        done
 
-        # Setting up and starting the helper process
-        HELPER=git.felix.helper
-        killall helper
-        (cd $CONFIG_DIR/helper && make)
-        $CONFIG_DIR/helper/helper $HELPER > /dev/null 2>&1 &
+        sketchybar -m \
+        --bar \
+        height=24 \
+        position=top \
+        sticky=on \
+        shadow=on \
+        padding_left=10 \
+        padding_right=10 \
+        color="$bar_color" \
+        --default \
+        icon.font="$icon_font" \
+        icon.color="$icon_color" \
+        icon.highlight_color="$icon_highlight_color" \
+        label.font="$label_font" \
+        label.color="$label_color" \
+        label.highlight_color="$label_highlight_color" \
+        icon.padding_left=10 \
+        icon.padding_right=6 \
+        --add item title center \
+        --set title script='sketchybar --set "$NAME" label="$INFO"' \
+        --subscribe title front_app_switched \
+        --add item clock right \
+        --set clock update_freq=10 script="$scripts/status.sh" icon.padding_left=2 \
+        --add item battery right \
+        --set battery update_freq=120 script="$scripts/battery.sh" \
+        --subscribe battery system_woke power_source_change \
+        --add item wifi right \
+        --set wifi script="$scripts/wifi.sh" click_script="$scripts/click-wifi.sh" \
+        --subscribe wifi wifi_change \
+        --add item load right \
+        --set load icon="􀍽" script="$scripts/window-indicator.sh" \
+        --subscribe load space_change \
+        --add item network right \
+        --add item input right \
+        --add event input_change 'AppleSelectedInputSourcesChangedNotification' \
+        --subscribe input input_change \
+        --set input script="$scripts/input.sh" label.padding_right=-8 \
+        --default \
+        icon.padding_left=0 \
+        icon.padding_right=2 \
+        label.padding_right=16 \
+        "''${spaces[@]}"
 
-        # Unload the macOS on screen indicator overlay for volume change
-        launchctl unload -F /System/Library/LaunchAgents/com.apple.OSDUIHelper.plist > /dev/null 2>&1 &
-
-        # Setting up the general bar appearance of the bar
-        bar=(
-          height=45
-          color=$BAR_COLOR
-          border_width=2
-          border_color=$BAR_BORDER_COLOR
-          shadow=off
-          position=top
-          sticky=on
-          padding_right=10
-          padding_left=10
-          y_offset=-5
-          margin=-2
-        )
-
-        sketchybar --bar "\$\{bar[@]}"
-
-        # Setting up default values
-        defaults=(
-          updates=when_shown
-          icon.font="$FONT:Bold:14.0"
-          icon.color=$ICON_COLOR
-          icon.padding_left=$PADDINGS
-          icon.padding_right=$PADDINGS
-          label.font="$FONT:Semibold:13.0"
-          label.color=$LABEL_COLOR
-          label.padding_left=$PADDINGS
-          label.padding_right=$PADDINGS
-          padding_right=$PADDINGS
-          padding_left=$PADDINGS
-          background.height=26
-          background.corner_radius=9
-          background.border_width=2
-          popup.background.border_width=2
-          popup.background.corner_radius=9
-          popup.background.border_color=$POPUP_BORDER_COLOR
-          popup.background.color=$POPUP_BACKGROUND_COLOR
-          popup.blur_radius=20
-          popup.background.shadow.drawing=on
-        )
-
-        sketchybar --default "\$\{defaults[@]}"
-
-        # Left
-        source $ITEM_DIR/apple.sh
-        source $ITEM_DIR/spaces.sh
-        source $ITEM_DIR/front_app.sh
-
-        # Center
-        source "$ITEM_DIR/spotify.sh"
-
-        # Right
-        source "$ITEM_DIR/calendar.sh"
-        source "$ITEM_DIR/brew.sh"
-        source "$ITEM_DIR/github.sh"
-        source "$ITEM_DIR/battery.sh"
-        source "$ITEM_DIR/volume.sh"
-        source "$ITEM_DIR/cpu.sh"
-
-        # Forcing all item scripts to run (never do this outside of sketchybarrc)
         sketchybar --update
 
-        echo "sketchybar configuation loaded.."
+        # ram disk
+        cache="$HOME/.cache/sketchybar"
+        mkdir -p "$cache"
+        if ! mount | grep -qF "$cache"
+        then
+        disk=$(hdiutil attach -nobrowse -nomount ram://1024)
+        disk="''${disk%% *}"
+        newfs_hfs -v sketchybar "$disk"
+        mount -t hfs -o nobrowse "$disk" "$cache"
+        fi
+
       '';
     };
-      # spacebar = {
-      #   enable = true;
-      #   package = pkgs.spacebar;
-      #   config = {
-      #     position = "top";
-      #     display = "main";
-      #     height = 26;
-      #     title = "on";
-      #     spaces = "on";
-      #     clock = "on";
-      #     power = "on";
-      #     padding_left = 20;
-      #     padding_right = 20;
-      #     spacing_left = 25;
-      #     spacing_right = 15;
-      #     text_font = ''"Menlo:Regular:12.0"'';
-      #     icon_font = ''"Font Awesome 5 Free:Solid:12.0"'';
-      #     background_color = "0xff202020";
-      #     foreground_color = "0xffa8a8a8";
-      #     power_icon_color = "0xffcd950c";
-      #     battery_icon_color = "0xffd75f5f";
-      #     dnd_icon_color = "0xffa8a8a8";
-      #     clock_icon_color = "0xffa8a8a8";
-      #     power_icon_strip = " ";
-      #     space_icon = "•";
-      #     space_icon_strip = "1 2 3 4 5 6 7 8 9 10";
-      #     spaces_for_all_displays = "on";
-      #     display_separator = "on";
-      #     display_separator_icon = "";
-      #     space_icon_color = "0xff458588";
-      #     space_icon_color_secondary = "0xff78c4d4";
-      #     space_icon_color_tertiary = "0xfffff9b0";
-      #     clock_icon = "";
-      #     dnd_icon = "";
-      #     clock_format = ''"%d/%m/%y %R"'';
-      #     right_shell = "on";
-      #     right_shell_icon = "";
-      #     right_shell_command = "whoami";
-      #   };
-      # };
-      };
+    # spacebar = {
+    #   enable = true;
+    #   package = pkgs.spacebar;
+    #   config = {
+    #     position = "top";
+    #     display = "main";
+    #     height = 26;
+    #     title = "on";
+    #     spaces = "on";
+    #     clock = "on";
+    #     power = "on";
+    #     padding_left = 20;
+    #     padding_right = 20;
+    #     spacing_left = 25;
+    #     spacing_right = 15;
+    #     text_font = ''"Menlo:Regular:12.0"'';
+    #     icon_font = ''"Font Awesome 5 Free:Solid:12.0"'';
+    #     background_color = "0xff202020";
+    #     foreground_color = "0xffa8a8a8";
+    #     power_icon_color = "0xffcd950c";
+    #     battery_icon_color = "0xffd75f5f";
+    #     dnd_icon_color = "0xffa8a8a8";
+    #     clock_icon_color = "0xffa8a8a8";
+    #     power_icon_strip = " ";
+    #     space_icon = "•";
+    #     space_icon_strip = "1 2 3 4 5 6 7 8 9 10";
+    #     spaces_for_all_displays = "on";
+    #     display_separator = "on";
+    #     display_separator_icon = "";
+    #     space_icon_color = "0xff458588";
+    #     space_icon_color_secondary = "0xff78c4d4";
+    #     space_icon_color_tertiary = "0xfffff9b0";
+    #     clock_icon = "";
+    #     dnd_icon = "";
+    #     clock_format = ''"%d/%m/%y %R"'';
+    #     right_shell = "on";
+    #     right_shell_icon = "";
+    #     right_shell_command = "whoami";
+    #   };
+    # };
+  };
 
-    homebrew = {
-      # Declare Homebrew using Nix-Darwin
-      enable = true;
-      onActivation = {
-        autoUpdate = true; # Auto update packages
-        upgrade = false;
-        cleanup = "zap"; # Uninstall not listed packages and casks
-      };
-      masApps = {
-        wechat = 836500024;
-        qq = 451108668;
-        dingtalk = 1435447041;
-        tencent-meeting = 1484048379;
-        "microsoft-word" = 462054704;
-        "microsoft-powerpoint" = 462062816;
-        "microsoft-excel" = 462058435;
-        onedrive = 823766827;
-        "goodnotes-5" = 1444383602;
-        xcode = 497799835;
-      };
-
-      taps = [
-        "homebrew/cask"
-        "homebrew/cask-fonts"
-        "homebrew/services"
-        "laishulu/macism"
-        "FelixKratz/formulae"
-      ];
-      brews = [
-        "mas"
-      ];
-      casks = [
-        "font-sf-pro"
-        "font-sf-compact"
-        "font-sf-mono"
-        # "sunloginclient"
-        "adrive"
-        "snipaste"
-        "google-chrome"
-        "steam"
-        "appcleaner"
-        # "hammerspoon"
-        # "authy"
-        # "hiddenbar"
-        # "telegram"
-        "baidunetdisk"
-        # "iterm2"
-        "balenaetcher"
-        "keyboardcleantool"
-        "todesk"
-        "marginnote"
-        "vial"
-        "dash"
-        # "nutstore"
-        "omnidisksweeper"
-        # "discord"
-        "plexamp"
-        "xnviewmp"
-        "openvpn-connect"
-        "zotero"
-        # "skim"
-        # "via"
-        "logseq"
-        #"miniconda"
-        "activitywatch"
-        # "openscad"
-        "qmk-toolbox"
-        "mathpix-snipping-tool"
-        "tidgi"
-      ];
+  homebrew = {
+    # Declare Homebrew using Nix-Darwin
+    enable = true;
+    onActivation = {
+      autoUpdate = true; # Auto update packages
+      upgrade = false;
+      cleanup = "zap"; # Uninstall not listed packages and casks
+    };
+    masApps = {
+      wechat = 836500024;
+      qq = 451108668;
+      dingtalk = 1435447041;
+      tencent-meeting = 1484048379;
+      "microsoft-word" = 462054704;
+      "microsoft-powerpoint" = 462062816;
+      "microsoft-excel" = 462058435;
+      onedrive = 823766827;
+      "goodnotes-5" = 1444383602;
+      xcode = 497799835;
     };
 
-    nix = {
-      package = pkgs.nix;
-      gc = {
-        # Garbage collection
-        automatic = true;
-        interval.Day = 7;
-        options = "--delete-older-than 7d";
+    taps = [
+      "homebrew/cask"
+      "homebrew/cask-fonts"
+      "homebrew/services"
+      "laishulu/macism"
+      "FelixKratz/formulae"
+    ];
+    brews = [
+      "mas"
+    ];
+    casks = [
+      "font-sf-pro"
+      "font-sf-compact"
+      "font-sf-mono"
+      # "sunloginclient"
+      "adrive"
+      "snipaste"
+      "google-chrome"
+      "steam"
+      "appcleaner"
+      # "hammerspoon"
+      # "authy"
+      # "hiddenbar"
+      # "telegram"
+      "baidunetdisk"
+      # "iterm2"
+      "balenaetcher"
+      "keyboardcleantool"
+      "todesk"
+      "marginnote"
+      "vial"
+      "dash"
+      # "nutstore"
+      "omnidisksweeper"
+      # "discord"
+      "plexamp"
+      "xnviewmp"
+      "openvpn-connect"
+      "zotero"
+      # "skim"
+      # "via"
+      "logseq"
+      #"miniconda"
+      "activitywatch"
+      # "openscad"
+      "qmk-toolbox"
+      "mathpix-snipping-tool"
+      "tidgi"
+    ];
+  };
+
+  nix = {
+    package = pkgs.nix;
+    gc = {
+      # Garbage collection
+      automatic = true;
+      interval.Day = 7;
+      options = "--delete-older-than 7d";
+    };
+    extraOptions = ''
+      auto-optimise-store = true
+      experimental-features = nix-command flakes
+    '';
+
+    settings = {
+      auto-optimise-store = true;
+
+      substituters = [
+        "https://nix-community.cachix.org"
+        "https://cache.nixos.org/"
+      ];
+      trusted-public-keys = [
+        "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+      ];
+    };
+  };
+
+  security.pam.enableSudoTouchIdAuth = true;
+  system = {
+    defaults = {
+      loginwindow.GuestEnabled = false;
+      NSGlobalDomain = {
+        # Global macOS system settings
+        KeyRepeat = 1;
+        NSAutomaticCapitalizationEnabled = false;
+        NSAutomaticSpellingCorrectionEnabled = false;
+        AppleShowAllExtensions = true;
+        _HIHideMenuBar = true;
       };
-      extraOptions = ''
-        auto-optimise-store = true
-        experimental-features = nix-command flakes
-      '';
-
-      settings = {
-        auto-optimise-store = true;
-
-        substituters = [
-          "https://nix-community.cachix.org"
-          "https://cache.nixos.org/"
-        ];
-        trusted-public-keys = [
-          "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
-        ];
+      dock = {
+        # Dock settings
+        autohide = true;
+        orientation = "bottom";
+        showhidden = true;
+        tilesize = 40;
+        appswitcher-all-displays = true;
+      };
+      finder = {
+        # Finder settings
+        AppleShowAllExtensions = true;
+        FXEnableExtensionChangeWarning = false;
+        QuitMenuItem = false; # I believe this probably will need to be true if using spacebar
+      };
+      trackpad = {
+        # Trackpad settings
+        Clicking = true;
+        TrackpadRightClick = true;
       };
     };
 
-    security.pam.enableSudoTouchIdAuth = true;
-    system = {
-      defaults = {
-        loginwindow.GuestEnabled = false;
-        NSGlobalDomain = {
-          # Global macOS system settings
-          KeyRepeat = 1;
-          NSAutomaticCapitalizationEnabled = false;
-          NSAutomaticSpellingCorrectionEnabled = false;
-          AppleShowAllExtensions = true;
-
-        };
-        dock = {
-          # Dock settings
-          autohide = true;
-          orientation = "bottom";
-          showhidden = true;
-          tilesize = 40;
-          appswitcher-all-displays = true;
-        };
-        finder = {
-          # Finder settings
-          AppleShowAllExtensions = true;
-          FXEnableExtensionChangeWarning = false;
-          QuitMenuItem = false; # I believe this probably will need to be true if using spacebar
-        };
-        trackpad = {
-          # Trackpad settings
-          Clicking = true;
-          TrackpadRightClick = true;
-        };
-      };
-
-      keyboard = {
-        enableKeyMapping = true;
-        remapCapsLockToControl = true;
-      };
-      # activationScripts.postActivation.text = ''sudo chsh -s ${pkgs.fish}/bin/fish'';
-      stateVersion = 4;
+    keyboard = {
+      enableKeyMapping = true;
+      remapCapsLockToControl = true;
     };
-  }
+    # activationScripts.postActivation.text = ''sudo chsh -s ${pkgs.fish}/bin/fish'';
+    stateVersion = 4;
+  };
+}
