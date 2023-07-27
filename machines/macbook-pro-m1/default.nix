@@ -112,7 +112,7 @@
         in
         {
           debug_output = "on";
-          external_bar = "all:24:0";
+          external_bar = "all:35:0";
           layout = "bsp";
           top_padding = gaps.top;
           bottom_padding = gaps.bottom;
@@ -299,92 +299,98 @@
     sketchybar = {
       enable = true;
       extraPackages = [ pkgs.jq ];
-      # this code from https://github.com/azuwis/nix-config/blob/master/darwin/sketchybar/default.nix
+      # this code from https://github.com/FelixKratz/dotfiles
       config =
         let
-          scripts = ./scripts;
+          sketchybar_scripts = ./sketchybar;
         in
         ''
           #!/bin/bash
 
-          scripts = "${scripts}"
+          source "${sketchybar_scripts}/colors.sh" # Loads all defined colors
+          source "${sketchybar_scripts}/icons.sh" # Loads all defined icons
 
-          bar_color=0xff2e3440
-          # bar_color=0x30000000
-          icon_font="JetBrainsMono Nerd Font:Medium:13.0"
-          icon_color=0xbbd8dee9
-          icon_highlight_color=0xffebcb8b
-          label_font="$icon_font"
-          label_color="$icon_color"
-          label_highlight_color="$icon_highlight_color"
+          ITEM_DIR="${sketchybar_scripts}/items" # Directory where the items are configured
+          PLUGIN_DIR="${sketchybar_scripts}/plugins" # Directory where all the plugin scripts are stored
 
-          spaces=()
-          for i in {1..10}
-          do
-          spaces+=(--add space space$i left \
-          --set space$i \
-          associated_display=1 \
-          associated_space=$i \
-          icon=$i \
-          click_script="yabai -m space --focus $i" \
-          script="$scripts/space.sh")
-          done
+          FONT="SF Pro" # Needs to have Regular, Bold, Semibold, Heavy and Black variants
+          PADDINGS=3 # All paddings use this value (icon, label, background)
 
-          sketchybar -m \
-          --bar \
-          height=24 \
-          position=top \
-          sticky=on \
-          shadow=on \
-          padding_left=10 \
-          padding_right=10 \
-          color="$bar_color" \
-          --default \
-          icon.font="$icon_font" \
-          icon.color="$icon_color" \
-          icon.highlight_color="$icon_highlight_color" \
-          label.font="$label_font" \
-          label.color="$label_color" \
-          label.highlight_color="$label_highlight_color" \
-          icon.padding_left=10 \
-          icon.padding_right=6 \
-          --add item title center \
-          --set title script='sketchybar --set "$NAME" label="$INFO"' \
-          --subscribe title front_app_switched \
-          --add item clock right \
-          --set clock update_freq=10 script="$scripts/status.sh" icon.padding_left=2 \
-          --add item battery right \
-          --set battery update_freq=120 script="$scripts/battery.sh" \
-          --subscribe battery system_woke power_source_change \
-          --add item wifi right \
-          --set wifi script="$scripts/wifi.sh" click_script="$scripts/click-wifi.sh" \
-          --subscribe wifi wifi_change \
-          --add item load right \
-          --set load icon="􀍽" script="$scripts/window-indicator.sh" \
-          --subscribe load space_change \
-          --add item network right \
-          --add item input right \
-          --add event input_change 'AppleSelectedInputSourcesChangedNotification' \
-          --subscribe input input_change \
-          --set input script="$scripts/input.sh" label.padding_right=-8 \
-          --default \
-          icon.padding_left=0 \
-          icon.padding_right=2 \
-          label.padding_right=16 \
-          "''${spaces[@]}"
+          # Setting up and starting the helper process
+          HELPER=git.felix.helper
+          killall helper
+          (cd ${sketchybar_scripts}/helper && make)
+          ${sketchybar_scripts}/helper/helper $HELPER > /dev/null 2>&1 &
 
+          # Unload the macOS on screen indicator overlay for volume change
+          launchctl unload -F /System/Library/LaunchAgents/com.apple.OSDUIHelper.plist > /dev/null 2>&1 &
+
+          # Setting up the general bar appearance of the bar
+          bar=(
+          height=45
+          color=$BAR_COLOR
+          border_width=2
+          border_color=$BAR_BORDER_COLOR
+          shadow=off
+          position=top
+          sticky=on
+          padding_right=10
+          padding_left=10
+          y_offset=-5
+          margin=-2
+          topmost=window
+          )
+
+          sketchybar --bar "\$\{bar[@]}"
+
+          # Setting up default values
+          defaults=(
+          updates=when_shown
+          icon.font="$FONT:Bold:14.0"
+          icon.color=$ICON_COLOR
+          icon.padding_left=$PADDINGS
+          icon.padding_right=$PADDINGS
+          label.font="$FONT:Semibold:13.0"
+          label.color=$LABEL_COLOR
+          label.padding_left=$PADDINGS
+          label.padding_right=$PADDINGS
+          padding_right=$PADDINGS
+          padding_left=$PADDINGS
+          background.height=26
+          background.corner_radius=9
+          background.border_width=2
+          popup.background.border_width=2
+          popup.background.corner_radius=9
+          popup.background.border_color=$POPUP_BORDER_COLOR
+          popup.background.color=$POPUP_BACKGROUND_COLOR
+          popup.blur_radius=20
+          popup.background.shadow.drawing=on
+          )
+
+          sketchybar --default "\$\{defaults[@]}"
+
+          # Left
+          source "$ITEM_DIR/apple.sh"
+          source "$ITEM_DIR/spaces.sh"
+          source "$ITEM_DIR/yabai.sh"
+          source "$ITEM_DIR/front_app.sh"
+
+          # Center
+          source "$ITEM_DIR/spotify.sh"
+
+          # Right
+          source "$ITEM_DIR/calendar.sh"
+          source "$ITEM_DIR/brew.sh"
+          source "$ITEM_DIR/wifi.sh"
+          # source "$ITEM_DIR/github.sh"
+          source "$ITEM_DIR/battery.sh"
+          source "$ITEM_DIR/volume.sh"
+          source "$ITEM_DIR/cpu.sh"
+
+          # Forcing all item scripts to run (never do this outside of sketchybarrc)
           sketchybar --update
 
-          # ram disk
-          cache="$HOME/.cache/sketchybar"
-          mkdir -p "$cache"
-          if ! mount | grep -qF "$cache"
-          then
-          disk=$(hdiutil attach -nobrowse -nomount ram://1024)
-          disk="''${disk%% *}"
-          newfs_hfs -v sketchybar "$disk"
-          mount -t hfs -o nobrowse "$disk" "$cache"
-          fi
+          echo "sketchybar configuation loaded.."
 
         '';
     };
