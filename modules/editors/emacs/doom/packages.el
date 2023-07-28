@@ -71,6 +71,9 @@
 ;;(package! rime)
 
 ;;(package! tempel)
+;;(package! tempel-collection)
+
+;; (package! codeium)
 
 (if IS-MAC (package! micromamba))
 

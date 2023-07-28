@@ -1612,14 +1612,7 @@ tasks."
 #+end_src
 ** codeium
 #+begin_src emacs-lisp :tangle packages.el
-(package! corfu :recipe (:files ("*.el" "extensions/*.el")))
-(package! cape)
-(package! dabbrev)
-(when (modulep! +icons)
-  (package! kind-icon))
-(when (modulep! :os tty)
-  (package! corfu-terminal))
-
+;; (package! codeium)
 #+end_src
 
 #+begin_src emacs-lisp :tangle config.el
