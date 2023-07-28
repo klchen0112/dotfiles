@@ -12,7 +12,6 @@ let
         (lib.removeSuffix ".nix" f)
         (import (./overlays + "/${f}")))
       (builtins.readDir ./overlays);
-
 in
 localOverlays // {
   default = lib.composeManyExtensions
