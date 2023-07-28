@@ -49,8 +49,8 @@
         ms-toolsai.vscode-jupyter-cell-tags
         ms-toolsai.jupyter-renderers
         ms-toolsai.jupyter-keymap
-        ms-python.vscode-pylance
-        # ms-pyright.pyright
+        # ms-python.vscode-pylance
+        ms-pyright.pyright
         # ms-pyright.pyright
         # cpp
         llvm-vs-code-extensions.vscode-clangd
@@ -115,6 +115,12 @@
           publisher = "deerawan";
           version = "2.4.0";
           sha256 = "Yqn59ppNWQRMWGYVLLWofogds+4t/WRRtSSfomPWQy4=";
+        }
+        {
+          name = "vscode-micromamba";
+          publisher = "corker";
+          version = "0.1.18";
+          sha256 = "2lCr4+S/mYAC1b6hxwkuRbueFFoJDxo7L+CTvPmUnxk=";
         }]
       )
     ;
