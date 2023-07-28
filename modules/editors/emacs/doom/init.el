@@ -96,8 +96,8 @@
        vterm             ; the best terminal emulation in Emacs
 
        :checkers
-       (syntax +childframe)              ; tasing you for every semicolon you forget
-       (spell +everywhere) ; tasing you for misspelling mispelling
+       ;;(syntax +childframe)              ; tasing you for every semicolon you forget
+       ;;(spell +everywhere) ; tasing you for misspelling mispelling
        ;;grammar           ; tasing grammar mistake every you make
 
        :tools
@@ -234,12 +234,12 @@
 
        :app
        ;;calendar
-       ;;emms
+       emms
        ;;everywhere           ; *leave* Emacs!? You must be joking
        ;;irc               ; how neckbeards socialize
        ;;(rss +org)        ; emacs as an RSS reader
        ;;twitter           ; twitter client https://twitter.com/vnought
 
        :config
-       literate
+       ;;literate
        (default +bindings +smartparens))

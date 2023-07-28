@@ -39,10 +39,6 @@
 ;;(package! valign :recipe (:host github :repo "casouri/valign"))
 (package! org-superstar)
 
-(package! org-ol-tree :recipe (:host github :repo "Townk/org-ol-tree"))
-
-(package! org-graph-view :recipe (:host github :repo "alphapapa/org-graph-view"))
-
 (package! org-download)
 
 ;;(package! org-mind-map :recipe (:host github :repo "the-ted/org-mind-map"
@@ -75,15 +71,6 @@
 ;;(package! rime)
 
 ;;(package! tempel)
-;;(package! tempel-collection)
-
-(package! corfu :recipe (:files ("*.el" "extensions/*.el")))
-(package! cape)
-(package! dabbrev)
-(when (modulep! +icons)
-  (package! kind-icon))
-(when (modulep! :os tty)
-  (package! corfu-terminal))
 
 (if IS-MAC (package! micromamba))
 
@@ -93,22 +80,20 @@
 
 ;;(package! org-xlatex :recipe (:host github :repo "ksqsf/org-xlatex"))
 
-(package! org-preview :recipe (:host github :repo "karthink/org-preview"))
-
 (if IS-MAC (package! dash-at-point))
 
 (unpin! pdf-tools)
 
-(package! org-noter :recipe (:host github :repo "org-noter/org-noter"))
+;;(package! org-noter :recipe (:host github :repo "org-noter/org-noter"))
 
 ;;(package! org-noter-plus :recipe (:host github :repo "yuchen-lea/org-noter-plus"))
 
 ;;(package! pretty-hydra)  ;; dependency
 ;;(package! org-media-note :recipe (:host github :repo "yuchen-lea/org-media-note"))
 
-(package! mpvi :recipe (:host github :repo "lorniu/mpvi"))
+;;(package! mpvi :recipe (:host github :repo "lorniu/mpvi"))
 
-(package! org-anki :recipe (:host github :repo "eyeinsky/org-anki"))
+;;(package! org-anki :recipe (:host github :repo "eyeinsky/org-anki"))
 
 ;;(package! telega :recipe (:host github :repo "zevlg/telega.el")  :pin "ac3634e2e7efe9c29c4311196e0ed67085d58f11")
 
