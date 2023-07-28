@@ -57,6 +57,14 @@
   programs.doom-emacs = {
     enable = true;
     doomPrivateDir = ./doom;
+    # emacsPackagesOverlay = self: super: {
+    #   lsp-pyright = super.lsp-pyright.overrideAttrs (esuper: {
+    #     buildInputs = esuper.buildInputs ++ [
+    #       pkgs.nodePackages.pyright
+    #     ];
+    #   });
+    # };
+
     # emacsPackage = pkgs.emacs29;
     # emacsPackagesOverlay = self: super: {
     #   mpvi = self.trivialBuild {

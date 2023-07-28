@@ -1288,7 +1288,7 @@ citar need vertico
          ;; Dailies
          ("C-c n j" . org-roam-dailies-capture-today))
   :config
-  (setq org-roam-database-connector 'sqlite-builtin
+  (setq ;;org-roam-database-connector 'sqlite-builtin
         org-roam-directory (file-truename "~/org")
         org-roam-dailies-directory (file-truename "~/org/journals/")
         org-roam-file-extensions '("org"))
