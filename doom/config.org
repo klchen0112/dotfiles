@@ -494,10 +494,6 @@
 #+end_src
 * Editor
 ** jieba
-#+begin_src shell :tangle setup-mac.sh
-npm install nodejieba
-#+end_src
-
 
 #+begin_src emacs-lisp :tangle packages.el
 ;;(package! jieba :recipe (:host github :repo "cireu/jieba.el"))

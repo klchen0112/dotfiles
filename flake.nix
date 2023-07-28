@@ -79,7 +79,7 @@
       nix-doom-emacs = {
         # Nix-community Doom Emacs
         url = "github:nix-community/nix-doom-emacs";
-        inputs.doom-emacs.url = "github:doomemacs/doomemacs";
+        # inputs.doom-emacs.url = "github:doomemacs/doomemacs/master";
         inputs.nixpkgs.follows = "nixpkgs";
         inputs.emacs-overlay.follows = "emacs-overlay";
         inputs.flake-utils.follows = "flake-utils";
