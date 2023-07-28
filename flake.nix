@@ -15,11 +15,21 @@
 #
 {
   description = "My Personal NixOS and Darwin System Flake Configuration";
+  nixConfig.substituters = [
+    "https://cache.nixos.org"
+    "https://nix-community.cachix.org"
+  ];
+  nixConfig.trusted-public-keys = [
+    "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
+    "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+  ];
+
 
   inputs =
     # All flake references used to build my NixOS setup. These are dependencies.
     {
       nixpkgs.url = "github:nixos/nixpkgs/release-23.05"; # Nix Packages
+      nixpkgs-unstable.url = "github:nixos/nixpkgs/nixpkgs-unstable"; # Nix Packages
       systems.url = "github:nix-systems/default";
 
       nixos-hardware = {
@@ -64,7 +74,7 @@
 
       emacs-overlay = {
         url = "github:nix-community/emacs-overlay/master";
-        inputs.nixpkgs.follows = "nixpkgs";
+        inputs.nixpkgs-stable.follows = "nixpkgs";
         inputs.flake-utils.follows = "flake-utils";
       };
 
@@ -124,13 +134,18 @@
         "aarch64-darwin"
         "x86_64-darwin"
       ];
+
+    in
+    rec {
       # Accessible through 'nix develop' or 'nix-shell' (legacy)
-      legacyPackages = forAllSystems (system:
+      overlays = import ./overlays/default.nix inputs;
+      pkgs = forAllSystems (localSystem:
         import inputs.nixpkgs {
-          inherit system;
+          inherit localSystem
+            ;
           # This adds our overlays to pkgs
           overlays = [
-            emacs-overlay.overlay
+            self.overlays.default
           ];
           # NOTE: Using `nixpkgs.config` in your NixOS config won't work
           # Instead, you should set nixpkgs configs here
@@ -139,14 +154,25 @@
           config.allowBroken = true;
           # config.allowUnsupportedSystem = true;
         });
-    in
-    rec {
+      pkgs-unstable = forAllSystems
+        (localSystem:
+          import inputs.nixpkgs-unstable {
+            inherit localSystem;
+            # This adds our overlays to pkgs
+            # NOTE: Using `nixpkgs.config` in your NixOS config won't work
+            # Instead, you should set nixpkgs configs here
+            # (https://nixos.org/manual/nixpkgs/stable/#idm140737322551056)
+            config.allowUnfree = true;
+            config.allowBroken = true;
+            # config.allowUnsupportedSystem = true;
+          });
+
       nixosConfigurations = {
         # NixOS configurations
         "wsl" = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
           specialArgs = {
-            inherit inputs username;
+            inherit inputs username pkgs-unstable;
           };
           modules = [
             ./machines/wsl
@@ -164,7 +190,7 @@
         "i12500" = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
           specialArgs = {
-            inherit inputs username;
+            inherit inputs username pkgs-unstable;
           };
           modules = [
             hyprland.nixosModules.default
@@ -175,16 +201,13 @@
         };
       };
       darwinConfigurations =
-        let
-          system = "aarch64-darwin";
-        in
         {
           "macbook-pro-m1" = darwin.lib.darwinSystem {
-            inherit system;
+            system = "aarch64-darwin";
             specialArgs = {
-              inherit username inputs system;
+              inherit username inputs pkgs-unstable;
             };
-            pkgs = legacyPackages.aarch64-darwin;
+            pkgs = pkgs.aarch64-darwin;
             modules = [
               # Modules that are used
               ./machines/macbook-pro-m1
@@ -194,6 +217,5 @@
           };
         };
       formatter = forAllSystems (system: nixpkgs.legacyPackages.${system}.nixpkgs-fmt);
-
     };
 }

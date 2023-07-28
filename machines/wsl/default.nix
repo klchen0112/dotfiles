@@ -6,23 +6,22 @@
 #       ├─ ./default.nix
 #       └─ ./configuration.nix *
 #
-{
-  config,
-  pkgs,
-  user,
-  ...
+{ config
+, pkgs
+, user
+, ...
 }: {
   hardware.opengl.enable = true;
-   wsl = {
+  wsl = {
     enable = true;
     defaultUser = "${username}";
     # 创建软件的桌面快捷方式
     startMenuLaunchers = true;
   };
   environment = {
-    shells = with pkgs; [bashInteractive fish];
+    shells = with pkgs; [ bashInteractive fish ];
     systemPackages = with pkgs; [
-        wsl-open
+      wsl-open
       home-manager
       fish
       coreutils
@@ -43,7 +42,7 @@
     home = "/Users/${user}";
     shell = pkgs.fish; # Default shell
     isNormalUser = true;
-    extraGroups = ["whell"];
+    extraGroups = [ "whell" ];
   };
 
   fonts = {
@@ -105,15 +104,6 @@
       experimental-features = nix-command flakes
     '';
 
-    settings = {
-      substituters = [
-        "https://nix-community.cachix.org"
-        "https://cache.nixos.org/"
-      ];
-      trusted-public-keys = [
-        "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
-      ];
-    };
   };
   system.stateVersion = "22.11";
   time.timeZone = "Asia/Shanghai";
