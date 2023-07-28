@@ -486,7 +486,6 @@
 #+end_src
 ** global mode
 #+begin_src emacs-lisp :tangle config.el
-(pixel-scroll-mode)
 (setq menu-bar-mode t)
 #+end_src
 * Editor

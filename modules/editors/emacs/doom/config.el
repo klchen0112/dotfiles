@@ -184,7 +184,6 @@
 
 ;; this code from https://randomgeekery.org/config/emacs/doom/
 
-(pixel-scroll-mode)
 (setq menu-bar-mode t)
 
 ;;(use-package jieba

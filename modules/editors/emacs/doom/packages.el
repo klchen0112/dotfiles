@@ -91,9 +91,9 @@
 ;;(package! pretty-hydra)  ;; dependency
 ;;(package! org-media-note :recipe (:host github :repo "yuchen-lea/org-media-note"))
 
-;;(package! mpvi :recipe (:host github :repo "lorniu/mpvi"))
+(package! mpvi :recipe (:host github :repo "lorniu/mpvi"))
 
-;;(package! org-anki :recipe (:host github :repo "eyeinsky/org-anki"))
+(package! org-anki :recipe (:host github :repo "eyeinsky/org-anki"))
 
 ;;(package! telega :recipe (:host github :repo "zevlg/telega.el")  :pin "ac3634e2e7efe9c29c4311196e0ed67085d58f11")
 
