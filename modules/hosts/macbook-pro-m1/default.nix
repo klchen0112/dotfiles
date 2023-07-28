@@ -1,4 +1,6 @@
-{ pkgs
+{ config
+, lib
+, pkgs
 , username
 , inputs
 , ...
@@ -19,7 +21,17 @@
         ../../downloader
         # ../../editors/codeblocks
         ../../editors/jetbrains
-        ../../editors/emacs
+        (import ../../editors/emacs/default.nix
+          (
+            {
+              config = config;
+              pkgs = pkgs;
+              lib = lib;
+              username = username;
+            }
+          )
+
+        )
         # ../../editors/vim
         # ../../editors/nvim
         ../../editors/vscode

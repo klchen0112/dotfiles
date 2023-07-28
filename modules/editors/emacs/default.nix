@@ -17,10 +17,9 @@
 , lib
 , pkgs
 , username
-, system
-, inputs
 , ...
-}: {
+}:
+{
   home.packages = with pkgs; [
     # python/default.nix install python
     ripgrep
@@ -49,6 +48,7 @@
     pngpaste
 
   ];
+
   # programs.emacs = {
   #   enable = true;
   #   package = pkgs.emacs-unstable;
@@ -64,7 +64,12 @@
     #     ];
     #   });
     # };
-
+    extraConfig =
+      # this code from https://github.com/ckiee/nixfiles/blob/main/modules/doom-emacs/default.nix
+      ''
+        (setq exec-path (append exec-path      '("/run/wrappers/bin" "/etc/profiles/per-user/${username}/bin" "/nix/var/nix/profiles/default/bin" "/run/current-system/sw/bin" "/opt/homebrew/bin")))
+        (setenv "PATH" (concat (getenv "PATH") ":/run/wrappers/bin:/etc/profiles/per-user/${username}/bin:/nix/var/nix/profiles/default/bin:/run/current-system/sw/bin:/opt/homebrew/bin"))
+      '';
     # emacsPackage = pkgs.emacs29;
     # emacsPackagesOverlay = self: super: {
     #   mpvi = self.trivialBuild {

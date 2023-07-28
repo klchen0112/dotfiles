@@ -262,6 +262,10 @@
 ;;(unpin! forge)
 #+end_src
 * Basic settings
+** exec path
+#+begin_src emacs-lisp :tangle config.el
+
+#+end_src
 ** Simple Settings
 #+begin_src emacs-lisp conf :tangle config.el
 ;;; $DOOMDIR/config.el -*- lexical-binding: t; -*-
@@ -345,9 +349,9 @@
 ;;(add-hook 'window-setup-hook #'toggle-frame-fullscreen)
 
 ;; no title bar
-(add-to-list 'default-frame-alist '(undecorated . t))
-(add-to-list 'default-frame-alist '(drag-internal-border . 1))
-(add-to-list 'default-frame-alist '(internal-border-width . 5))
+;;(add-to-list 'default-frame-alist '(undecorated . t))
+;;(add-to-list 'default-frame-alist '(drag-internal-border . 1))
+;;(add-to-list 'default-frame-alist '(internal-border-width . 5))
 ;; no round corners
 ;; (add-to-list 'default-frame-alist '(undecorated-round . t))
 #+end_src
