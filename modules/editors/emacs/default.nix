@@ -51,7 +51,7 @@
 
   programs.emacs = {
     enable = true;
-    package = pkgs.emacs-unstable;
+    package = pkgs.emacs29;
   };
   # doom-emacs will enable programs.emacs
   # programs.doom-emacs = {

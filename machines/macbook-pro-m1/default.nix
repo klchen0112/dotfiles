@@ -8,6 +8,7 @@
 #
 { config
 , pkgs
+, pkgs-unstable
 , username
 , system
 , inputs
@@ -84,12 +85,13 @@
     nix-daemon.enable = true; # Auto upgrade daemon
     emacs = {
       enable = true;
-      package = pkgs.emacs-unstable;
+      package = pkgs.emacs29;
     };
 
     yabai = {
       enable = true;
       enableScriptingAddition = true;
+      package = pkgs-unstable.aarch64-darwin.yabai;
       config =
         let
           gaps = {
@@ -107,7 +109,7 @@
         in
         {
           debug_output = "on";
-          external_bar = "all:35:0";
+          external_bar = "all:24:0";
           layout = "bsp";
           top_padding = gaps.top;
           bottom_padding = gaps.bottom;
