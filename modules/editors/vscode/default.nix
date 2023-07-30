@@ -83,12 +83,12 @@
         #   version = "0.1.15";
         #   sha256 = "7m35bnGrgOt3uyRwSu93FCLYxeRiA6y97E8ypoi4Ouo=";
         # }
-        {
-          name = "theme-dracula";
-          publisher = "dracula-theme";
-          version = "2.24.2";
-          sha256 = "YNqWEIvlEI29mfPxOQVdd4db9G2qNodhz8B0MCAAWK8=";
-        }
+        # {
+        #   name = "theme-dracula";
+        #   publisher = "dracula-theme";
+        #   version = "2.24.2";
+        #   sha256 = "YNqWEIvlEI29mfPxOQVdd4db9G2qNodhz8B0MCAAWK8=";
+        # }
         {
           name = "vsc-python-indent";
           publisher = "KevinRose";
@@ -99,7 +99,7 @@
           name = "cpptools";
           publisher = "ms-vscode";
           version = "1.16.3";
-          sha256 = "+EfEeta+qAnX/xmcGP0sa6U0+VhToiqdHEXQDENxyGA=";
+          sha256 = "Y4OX7N4whaJroJ9XQVVnIg1ywzsyZCgebpGFqg8L0F4=";
         }
         {
           name = "vscode-yaml";
@@ -116,12 +116,12 @@
           version = "2.4.0";
           sha256 = "Yqn59ppNWQRMWGYVLLWofogds+4t/WRRtSSfomPWQy4=";
         }
-        {
-          name = "vscode-micromamba";
-          publisher = "corker";
-          version = "0.1.18";
-          sha256 = "2lCr4+S/mYAC1b6hxwkuRbueFFoJDxo7L+CTvPmUnxk=";
-        }]
+          {
+            name = "vscode-micromamba";
+            publisher = "corker";
+            version = "0.1.18";
+            sha256 = "2lCr4+S/mYAC1b6hxwkuRbueFFoJDxo7L+CTvPmUnxk=";
+          }]
       )
     ;
     enableUpdateCheck = false;
