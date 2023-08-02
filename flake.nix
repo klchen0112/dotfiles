@@ -109,6 +109,7 @@
   outputs =
     inputs @ { self
     , nixpkgs
+    , nixpkgs-unstable
     , home-manager
     , flake-utils
     , darwin

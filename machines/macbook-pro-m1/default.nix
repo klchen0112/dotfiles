@@ -462,6 +462,7 @@
       "FelixKratz/formulae"
     ];
     brews = [
+      "macism"
       "mas"
     ];
     casks = [
