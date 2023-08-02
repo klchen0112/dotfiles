@@ -59,9 +59,9 @@
 ;;(add-hook 'window-setup-hook #'toggle-frame-fullscreen)
 
 ;; no title bar
-;;(add-to-list 'default-frame-alist '(undecorated . t))
-;;(add-to-list 'default-frame-alist '(drag-internal-border . 1))
-;;(add-to-list 'default-frame-alist '(internal-border-width . 5))
+(add-to-list 'default-frame-alist '(undecorated . t))
+(add-to-list 'default-frame-alist '(drag-internal-border . 1))
+(add-to-list 'default-frame-alist '(internal-border-width . 5))
 ;; no round corners
 ;; (add-to-list 'default-frame-alist '(undecorated-round . t))
 

@@ -30,8 +30,8 @@
        layout            ; auie,ctsrnm is the superior home row
 
        :completion
-       ;;(corfu +icons +orderless) ; wait for doom merge
-       (company +childframe)           ; the ultimate code completion backend
+       (corfu +icons +orderless) ; wait for doom merge
+       ;;(company +childframe)           ; the ultimate code completion backend
        ;;helm              ; the *other* search engine for love and life
        ;;ido               ; the other *other* search engine...
        ;;(ivy +fuzzy +prescient +childframe +icons)               ; a search engine for love and life
@@ -349,9 +349,9 @@
 ;;(add-hook 'window-setup-hook #'toggle-frame-fullscreen)
 
 ;; no title bar
-;;(add-to-list 'default-frame-alist '(undecorated . t))
-;;(add-to-list 'default-frame-alist '(drag-internal-border . 1))
-;;(add-to-list 'default-frame-alist '(internal-border-width . 5))
+(add-to-list 'default-frame-alist '(undecorated . t))
+(add-to-list 'default-frame-alist '(drag-internal-border . 1))
+(add-to-list 'default-frame-alist '(internal-border-width . 5))
 ;; no round corners
 ;; (add-to-list 'default-frame-alist '(undecorated-round . t))
 #+end_src
@@ -948,6 +948,29 @@ citar need vertico
 *** packages
 #+begin_src emacs-lisp :tangle packages.el
 ;;(package! org :recipe (:host nil :repo "https://git.tecosaur.net/tec/org-mode.git" :branch "dev" :remote "tecosaur"))
+(package! org :recipe
+  (:host nil :repo "https://git.tecosaur.net/mirrors/org-mode.git" :remote "mirror" :fork
+         (:host nil :repo "https://git.tecosaur.net/tec/org-mode.git" :branch "dev" :remote "tecosaur")
+         :files
+         (:defaults "etc")
+         :build t :pre-build
+         (with-temp-file "org-version.el"
+           (require 'lisp-mnt)
+           (let
+               ((version
+                 (with-temp-buffer
+                   (insert-file-contents "lisp/org.el")
+                   (lm-header "version")))
+                (git-version
+                 (string-trim
+                  (with-temp-buffer
+                    (call-process "git" nil t nil "rev-parse" "--short" "HEAD")
+                    (buffer-string)))))
+             (insert
+              (format "(defun org-release () \"The release version of Org.\" %S)\n" version)
+              (format "(defun org-git-version () \"The truncate git commit hash of Org mode.\" %S)\n" git-version)
+              "(provide 'org-version)\n"))))
+  :pin nil)
 #+end_src
 *** config
 #+begin_src emacs-lisp
