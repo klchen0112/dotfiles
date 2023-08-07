@@ -24,6 +24,11 @@
     # Fonts
     fontDir.enable = true;
     fonts = with pkgs; [
+      inputs.apple-fonts.packages.${pkgs.system}.sf-pro
+      inputs.apple-fonts.packages.${pkgs.system}.sf-compact
+      inputs.apple-fonts.packages.${pkgs.system}.sf-mono
+      inputs.apple-fonts.packages.${pkgs.system}.sf-arabic
+
       # jetbrains-mono
       # cascadia-code
       # comic-mono
@@ -466,9 +471,6 @@
       "mas"
     ];
     casks = [
-      "font-sf-pro"
-      "font-sf-compact"
-      "font-sf-mono"
       # "sunloginclient"
       "adrive"
       "snipaste"
@@ -502,7 +504,7 @@
       # "openscad"
       "qmk-toolbox"
       "mathpix-snipping-tool"
-      "tidgi"
+      # "tidgi"
     ];
   };
 

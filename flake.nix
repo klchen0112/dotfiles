@@ -105,6 +105,9 @@
         inputs.flake-compat.follows = "flake-compat";
       };
       # fonts
+      apple-fonts = {
+        url = "github:Lyndeno/apple-fonts.nix";
+      };
     };
 
   outputs =
