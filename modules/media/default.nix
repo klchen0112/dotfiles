@@ -8,15 +8,17 @@
   programs.sioyek = {
     enable = true;
     #  package = pkgs.sioyek;
-    bindings = [
+    bindings =
+  {
+    "move_up" = "k";
+    "move_down" = "j";
+    "move_left" = "h";
+    "move_right" = "l";
+    "screen_down" = [ "d" "<C-d>" ];
+    "screen_up" = [ "u" "<C-u>" ];
+  }
 
-      "move_up" = "p";
-      "move_down" = "n";
-      "move_left" = "b";
-      "move_right" = "f";
-      "screen_down" = [ "d" "<C-d>" ];
-      "screen_up" = [ "u" "<C-u>" ];
-    ];
+;
 
   };
   home.packages = with pkgs; [
