@@ -192,7 +192,7 @@
 ;;  :commands jieba-mode
 ;;  :init (jieba-mode))
 
- (defconst meow-cheatsheet-layout-engram
+(defconst meow-cheatsheet-layout-engram
     '((<TLDE> "[" "{")
       (<AE01> "1" "|")
       (<AE02> "2" "=")
@@ -619,6 +619,15 @@
   (org-property-value ((t (:inherit 'fixed-pitch))))
   (org-special-keyword ((t (:inherit 'fixed-pitch))))
 )
+
+;;(use-package! org-visual-outline
+;;  :after org
+;;  :hook
+;;  (org-mode . org-dynamic-bullets-mode)
+;;  (org-mode . org-visual-indent-mode)
+;;
+;;  )
+
 
 (use-package! org-superstar
   :after org

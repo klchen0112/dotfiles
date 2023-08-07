@@ -62,6 +62,8 @@
 ;;(package! valign :recipe (:host github :repo "casouri/valign"))
 (package! org-superstar)
 
+;;(package! org-visual-outline)
+
 (package! org-download)
 
 ;;(package! org-mind-map :recipe (:host github :repo "the-ted/org-mind-map"

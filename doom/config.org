@@ -6,6 +6,9 @@
 #+property: header-args :elisp :exports code
 #+property: header-args :tangle no :results silent :eval no-export
 * Init.el
+:PROPERTIES:
+:ID: d8d43fa6-0b7e-47c7-9c65-919b510c8202
+:END:
 #+begin_src emacs-lisp :tangle init.el
 ;;; init.el -*- lexical-binding: t; -*-
                                         ;   ;
@@ -250,7 +253,7 @@
        ;;twitter           ; twitter client https://twitter.com/vnought
 
        :config
-       ;;literate
+       literate
        (default +bindings +smartparens))
 #+end_src
 * packages
@@ -1045,10 +1048,20 @@ citar need vertico
 (package! org-modern)
 ;;(package! valign :recipe (:host github :repo "casouri/valign"))
 (package! org-superstar)
+
+;;(package! org-visual-outline)
 #+end_src
 
 
 #+begin_src emacs-lisp conf :tangle config.el
+;;(use-package! org-visual-outline
+;;  :after org
+;;  :hook
+;;  (org-mode . org-dynamic-bullets-mode)
+;;  (org-mode . org-visual-indent-mode)
+;;
+;;  )
+
 
 (use-package! org-superstar
   :after org
