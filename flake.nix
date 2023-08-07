@@ -27,8 +27,7 @@
   inputs =
     # All flake references used to build my NixOS setup. These are dependencies.
     {
-      nixpkgs.url = "github:nixos/nixpkgs/release-23.05"; # Nix Packages
-      nixpkgs-unstable.url = "github:nixos/nixpkgs/nixpkgs-unstable"; # Nix Packages
+      nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable"; # Nix Packages
       systems.url = "github:nix-systems/default";
 
       nixos-hardware = {
@@ -113,7 +112,6 @@
   outputs =
     inputs @ { self
     , nixpkgs
-    , nixpkgs-unstable
     , home-manager
     , flake-utils
     , darwin
@@ -158,25 +156,13 @@
           config.allowBroken = true;
           # config.allowUnsupportedSystem = true;
         });
-      pkgs-unstable = forAllSystems
-        (localSystem:
-          import inputs.nixpkgs-unstable {
-            inherit localSystem;
-            # This adds our overlays to pkgs
-            # NOTE: Using `nixpkgs.config` in your NixOS config won't work
-            # Instead, you should set nixpkgs configs here
-            # (https://nixos.org/manual/nixpkgs/stable/#idm140737322551056)
-            config.allowUnfree = true;
-            config.allowBroken = true;
-            # config.allowUnsupportedSystem = true;
-          });
 
       nixosConfigurations = {
         # NixOS configurations
         "wsl" = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
           specialArgs = {
-            inherit inputs username pkgs-unstable;
+            inherit inputs username;
           };
           modules = [
             ./machines/wsl
@@ -194,7 +180,7 @@
         "i12500" = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
           specialArgs = {
-            inherit inputs username pkgs-unstable;
+            inherit inputs username ;
           };
           modules = [
             hyprland.nixosModules.default
@@ -209,7 +195,7 @@
           "macbook-pro-m1" = darwin.lib.darwinSystem {
             system = "aarch64-darwin";
             specialArgs = {
-              inherit username inputs pkgs-unstable;
+              inherit username inputs;
             };
             pkgs = pkgs.aarch64-darwin;
             modules = [

@@ -8,7 +8,6 @@
 #
 { config
 , pkgs
-, pkgs-unstable
 , username
 , system
 , inputs
@@ -96,7 +95,6 @@
     yabai = {
       enable = true;
       enableScriptingAddition = true;
-      package = pkgs-unstable.aarch64-darwin.yabai;
       config =
         let
           gaps = {

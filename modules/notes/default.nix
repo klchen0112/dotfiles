@@ -3,6 +3,7 @@
 #
 { pkgs, ... }: {
   home.packages = with pkgs; [
-    #anki
+    # anki
+    # tidgi
   ];
 }
