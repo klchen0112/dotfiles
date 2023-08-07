@@ -27,7 +27,7 @@
   inputs =
     # All flake references used to build my NixOS setup. These are dependencies.
     {
-      nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable"; # Nix Packages
+      nixpkgs.url = "github:klchen0112/nixpkgs/tidgi"; # Nix Packages
       systems.url = "github:nix-systems/default";
 
       nixos-hardware = {
@@ -180,7 +180,7 @@
         "i12500" = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
           specialArgs = {
-            inherit inputs username ;
+            inherit inputs username;
           };
           modules = [
             hyprland.nixosModules.default
