@@ -15,14 +15,15 @@
 #
 {
   description = "My Personal NixOS and Darwin System Flake Configuration";
-  nixConfig.substituters = [
-    "https://cache.nixos.org"
-    "https://nix-community.cachix.org"
-  ];
-  nixConfig.trusted-public-keys = [
-    "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
-    "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
-  ];
+  nixConfig = {
+    extra-experimental-features = "nix-command flakes";
+    extra-substituters = [
+      "https://nix-community.cachix.org"
+    ];
+    extra-trusted-public-keys = [
+      "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+    ];
+  };
   inputs =
     # All flake references used to build my NixOS setup. These are dependencies.
     {
