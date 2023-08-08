@@ -484,7 +484,7 @@
       "balenaetcher"
       "keyboardcleantool"
       "todesk"
-      "marginnote"
+      # "marginnote"
       "vial"
       "dash"
       # "nutstore"
@@ -496,13 +496,11 @@
       "zotero"
       # "skim"
       # "via"
-      "logseq"
       #"miniconda"
       "activitywatch"
       # "openscad"
       "qmk-toolbox"
       "mathpix-snipping-tool"
-      # "tidgi"
     ];
   };
 

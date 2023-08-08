@@ -27,7 +27,7 @@
   inputs =
     # All flake references used to build my NixOS setup. These are dependencies.
     {
-      nixpkgs.url = "github:klchen0112/nixpkgs/tidgi"; # Nix Packages
+      nixpkgs.url = "github:NixOS/nixpkgs"; # Nix Packages
       systems.url = "github:nix-systems/default";
 
       nixos-hardware = {
