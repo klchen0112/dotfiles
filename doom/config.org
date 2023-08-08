@@ -255,6 +255,9 @@
        :config
        literate
        (default +bindings +smartparens))
+
+;;TODO remove add to list
+(add-to-list 'load-path (concat doom-emacs-dir ".local/straight/repos/nursery/lisp"))
 #+end_src
 * packages
 #+begin_src emacs-lisp conf :tangle packages.el
@@ -1408,29 +1411,26 @@ citar need vertico
 #+begin_src emacs-lisp conf :tangle packages.el
 (package! vulpea)
 (package! consult-org-roam)
+;;TODO
+(package! nursery
+     :recipe (:host github :repo "chrisbarrett/nursery"))
+
 #+end_src
 
 
 #+begin_src emacs-lisp conf :tangle config.el
+
+;; this code from https://github.com/brianmcgillion/doomd/blob/master/config.org
 (use-package! vulpea
-  :after org-roam
+  :after (org-agenda org-roam)
+  :commands (bmg/vulpea-agenda-files-update bmg/vulpea-project-update-tag)
+  :init
+  (add-hook 'find-file-hook #'bmg/vulpea-project-update-tag)
+  (add-hook 'before-save-hook #'bmg/vulpea-project-update-tag)
+  (advice-add 'org-agenda :before #'bmg/vulpea-agenda-files-update)
   :hook ((org-roam-db-autosync-mode . vulpea-db-autosync-enable))
-)
-
-(after! vulpea
-;;* dynamic agenda https://github.com/brianmcgillion/doomd/blob/master/config.org
-  ;; https://d12frosted.io/posts/2021-01-16-task-management-with-roam-vol5.html
-  ;; The 'roam-agenda' tag is used to tell vulpea that there is a todo item in this file
-  (add-to-list 'org-tags-exclude-from-inheritance "roam-agenda")
-
-  (defun vulpea-buffer-p ()
-    "Return non-nil if the currently visited buffer is a note."
-    (and buffer-file-name
-         (string-prefix-p
-          (expand-file-name (file-name-as-directory org-roam-directory))
-          (file-name-directory buffer-file-name))))
-
-  (defun vulpea-project-p ()
+  :config
+  (defun bmg/vulpea-project-p ()
     "Return non-nil if current buffer has any todo entry.
 TODO entries marked as done are ignored, meaning the this
 function returns nil if current buffer contains only completed
@@ -1444,18 +1444,17 @@ tasks."
        (lambda (h)
          (org-element-property :todo-type h)))))
 
-  (defun vulpea-project-update-tag (&optional arg)
+  (defun bmg/vulpea-project-update-tag ()
     "Update PROJECT tag in the current buffer."
-    (interactive "P")
     (when (and (not (active-minibuffer-window))
-               (vulpea-buffer-p))
+               (bmg/vulpea-buffer-p))
       (save-excursion
         (goto-char (point-min))
         (let* ((tags (vulpea-buffer-tags-get))
                (original-tags tags))
-          (if (vulpea-project-p)
-              (setq tags (cons "roam-agenda" tags))
-            (setq tags (remove "roam-agenda" tags)))
+          (if (bmg/vulpea-project-p)
+              (setq tags (cons "org-roam-agenda" tags))
+            (setq tags (remove "org-roam-agenda" tags)))
 
           ;; cleanup duplicates
           (setq tags (seq-uniq tags))
@@ -1465,24 +1464,65 @@ tasks."
                     (seq-difference original-tags tags))
             (apply #'vulpea-buffer-tags-set tags))))))
 
-  ;; https://systemcrafters.net/build-a-second-brain-in-emacs/5-org-roam-hacks/
-  (defun my/org-roam-filter-by-tag (tag-name)
-    (lambda (node)
-      (member tag-name (org-roam-node-tags node))))
+  (defun bmg/vulpea-buffer-p ()
+    "Return non-nil if the currently visited buffer is a note."
+    (and buffer-file-name
+         (string-prefix-p
+          (expand-file-name (file-name-as-directory org-roam-directory))
+          (file-name-directory buffer-file-name))))
 
-  (defun my/org-roam-list-notes-by-tag (tag-name)
-    (mapcar #'org-roam-node-file
-            (seq-filter
-             (my/org-roam-filter-by-tag tag-name)
-             (org-roam-node-list))))
+  (defun bmg/vulpea-project-files ()
+    "Return a list of note files containing 'project' tag." ;
+    (seq-uniq
+     (seq-map
+      #'car
+      (org-roam-db-query
+       [:select [nodes:file]
+        :from tags
+        :left-join nodes
+        :on (= tags:node-id nodes:id)
+        :where (like tag (quote "%\"org-roam-agenda\"%"))]))))
 
-  (defun dynamic-agenda-files-advice (orig-val)
-    (let ((roam-agenda-files (delete-dups (my/org-roam-list-notes-by-tag "roam-agenda"))))
-      (cl-union orig-val roam-agenda-files :test #'equal)))
+  (defun bmg/vulpea-agenda-files-update (&rest _)
+    "Update the value of `org-agenda-files'."
+    (setq org-agenda-files (bmg/vulpea-project-files)))
 
-  (add-hook 'before-save-hook #'vulpea-project-update-tag)
-  (advice-add 'org-agenda-files :filter-return #'dynamic-agenda-files-advice)
-)
+  (defun bmg/vulpea-agenda-category (&optional len)
+    "Get category of item at point for agenda.
+
+Category is defined by one of the following items:
+
+- CATEGORY property
+- TITLE keyword
+- TITLE property
+- filename without directory and extension
+
+When LEN is a number, resulting string is padded right with
+spaces and then truncated with ... on the right if result is
+longer than LEN.
+
+Usage example:
+
+  (setq org-agenda-prefix-format
+        '((agenda . \" %(vulpea-agenda-category) %?-12t %12s\")))
+
+Refer to `org-agenda-prefix-format' for more information."
+    (let* ((file-name (when buffer-file-name
+                        (file-name-sans-extension
+                         (file-name-nondirectory buffer-file-name))))
+           (title (vulpea-buffer-prop-get "title"))
+           (category (org-get-category))
+           (result
+            (or (if (and
+                     title
+                     (string-equal category file-name))
+                    title
+                  category)
+                "")))
+      (if (numberp len)
+          (s-truncate len (s-pad-right len " " result))
+        result))))
+
 
 ;;(use-package! org-roam-review
 ;; :commands (org-roam-review
@@ -1534,6 +1574,57 @@ tasks."
    ;;("C-c n l" . consult-org-roam-forward-links)
    ;;("C-c n r" . consult-org-roam-search)
    )
+
+
+
+
+(use-package org-roam-review
+  :commands (org-roam-review
+             org-roam-review-list-by-maturity
+             org-roam-review-list-recently-added)
+
+  ;; ;; Optional - tag all newly-created notes as seedlings.
+  ;; :hook (org-roam-capture-new-node . org-roam-review-set-seedling)
+
+  ;; ;; Optional - keybindings for applying Evergreen note properties.
+  ;; :general
+  ;; (:keymaps 'org-mode-map
+  ;; "C-c r r" '(org-roam-review-accept :wk "accept")
+  ;; "C-c r u" '(org-roam-review-bury :wk "bury")
+  ;; "C-c r x" '(org-roam-review-set-excluded :wk "set excluded")
+  ;; "C-c r b" '(org-roam-review-set-budding :wk "set budding")
+  ;; "C-c r s" '(org-roam-review-set-seedling :wk "set seedling")
+  ;; "C-c r e" '(org-roam-review-set-evergreen :wk "set evergreen"))
+
+  ;; ;; Optional - bindings for evil-mode compatability.
+  ;; :general
+  ;; (:states '(normal) :keymaps 'org-roam-review-mode-map
+  ;; "TAB" 'magit-section-cycle
+  ;; "g r" 'org-roam-review-refresh)
+  )
+
+(use-package org-roam-search
+  :commands (org-roam-search))
+
+(use-package org-roam-links
+  :commands (org-roam-links))
+
+(use-package org-roam-dblocks
+  :hook (org-mode . org-roam-dblocks-autoupdate-mode))
+
+(use-package org-roam-rewrite
+  :commands (org-roam-rewrite-rename
+             org-roam-rewrite-remove
+             org-roam-rewrite-inline
+             org-roam-rewrite-extract))
+
+(use-package org-roam-slipbox
+  :after org-roam
+  :demand t
+  :config
+  (org-roam-slipbox-buffer-identification-mode +1)
+  (org-roam-slipbox-tag-mode +1))
+
 #+end_src
 * Input Method
 ** smart input source

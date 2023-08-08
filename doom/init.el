@@ -243,3 +243,6 @@
        :config
        literate
        (default +bindings +smartparens))
+
+;;TODO remove add to list
+(add-to-list 'load-path (concat doom-emacs-dir ".local/straight/repos/nursery/lisp"))

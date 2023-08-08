@@ -90,6 +90,9 @@
 
 (package! vulpea)
 (package! consult-org-roam)
+;;TODO
+(package! nursery
+     :recipe (:host github :repo "chrisbarrett/nursery"))
 
 (package! sis)
 
