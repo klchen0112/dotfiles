@@ -27,7 +27,7 @@
   inputs =
     # All flake references used to build my NixOS setup. These are dependencies.
     {
-      nixpkgs.url = "github:klchen0112/nixpkgs/own"; # Nix Packages
+      nixpkgs.url = "github:klchen0112/nixpkgs/develop"; # Nix Packages
       systems.url = "github:nix-systems/default";
 
       nixos-hardware = {
@@ -50,7 +50,7 @@
 
       home-manager = {
         # User Package Management
-        url = "github:nix-community/home-manager/master";
+        url = "github:nix-community/home-manager/release-23.05";
         inputs.nixpkgs.follows = "nixpkgs";
       };
 
@@ -146,9 +146,9 @@
           inherit localSystem
             ;
           # This adds our overlays to pkgs
-          overlays = [
-            self.overlays.default
-          ];
+          # overlays = [
+          #   self.overlays.default
+          # ];
           # NOTE: Using `nixpkgs.config` in your NixOS config won't work
           # Instead, you should set nixpkgs configs here
           # (https://nixos.org/manual/nixpkgs/stable/#idm140737322551056)
