@@ -72,7 +72,7 @@
 
       emacs-overlay = {
         url = "github:nix-community/emacs-overlay/master";
-        inputs.nixpkgs-stable.follows = "nixpkgs";
+        inputs.nixpkgs.follows = "nixpkgs";
         inputs.flake-utils.follows = "flake-utils";
       };
 
@@ -106,6 +106,8 @@
       # fonts
       apple-fonts = {
         url = "github:Lyndeno/apple-fonts.nix";
+        inputs.flake-utils.follows = "flake-utils";
+        inputs.nixpkgs.follows = "nixpkgs";
       };
     };
 
