@@ -113,6 +113,9 @@
 
 (if IS-MAC (package! dash-at-point))
 
+(package! copilot
+  :recipe (:host github :repo "zerolfx/copilot.el" :files ("*.el" "dist")))
+
 (unpin! pdf-tools)
 
 ;;(package! org-noter :recipe (:host github :repo "org-noter/org-noter"))

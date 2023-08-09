@@ -63,6 +63,9 @@
         jnoortheen.nix-ide
         # csv
         mechatroner.rainbow-csv
+        # copilot
+        github.copilot
+
       ]
       ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
         {
