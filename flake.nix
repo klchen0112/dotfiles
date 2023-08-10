@@ -27,7 +27,7 @@
   inputs =
     # All flake references used to build my NixOS setup. These are dependencies.
     {
-      nixpkgs.url = "github:klchen0112/nixpkgs/develop"; # Nix Packages
+      nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable"; # Nix Packages
       systems.url = "github:nix-systems/default";
 
       nixos-hardware = {
@@ -129,7 +129,7 @@
     # Function that tells my flake which to use and what do what to do with the dependencies.
     let
       # Variables that can be used in the config files.
-      username = "chenkailong";
+
       location = "$HOME/.config";
       forAllSystems = nixpkgs.lib.genAttrs [
         "aarch64-linux"
@@ -159,7 +159,10 @@
           # config.allowUnsupportedSystem = true;
         });
 
-      nixosConfigurations = {
+      nixosConfigurations =
+      let
+      username = "klchen";
+      in {
         # NixOS configurations
         "wsl" = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
@@ -185,15 +188,16 @@
             inherit inputs username;
           };
           modules = [
-            hyprland.nixosModules.default
-            vscode-server.nixosModules.default
+            # hyprland.nixosModules.default
+            # vscode-server.nixosModules.default
             ./machines/i12500
             home-manager.nixosModules.home-manager
             ./modules/hosts/i12500
           ];
         };
       };
-      darwinConfigurations =
+      darwinConfigurations = let username = "chenkailong";
+      in
         {
           "macbook-pro-m1" = darwin.lib.darwinSystem {
             system = "aarch64-darwin";

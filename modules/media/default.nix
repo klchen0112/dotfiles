@@ -21,6 +21,7 @@
   home.packages = with pkgs; [
     # calibre
     plexamp
-    raycast
-  ];
+
+  ] ++ lib.optionals pkgs.stdenv.isDarwin
+        [raycast];
 }

@@ -2,5 +2,7 @@
 # fish configuration
 #
 { pkgs, ... }: {
-  home.packages = with pkgs; [ utm ];
+  home.packages = with pkgs; [
+   ] ;
+   # utm
 }

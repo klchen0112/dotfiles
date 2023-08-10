@@ -90,9 +90,9 @@
   users.users.${username} = {
     # macOS user
     isNormalUser = true;
-    home = "/Users/${username}";
+    home = "/home/${username}";
     extraGroups = [ "wheel" "networkmanager" ];
-    shell = pkgs.fish; # Default shell
+    # shell = pkgs.fish; # Default shell
   };
 
   security.sudo.wheelNeedsPassword = false; # User does not need to give password when using sudo.
@@ -102,7 +102,7 @@
   fonts = {
     # Fonts
     fontDir.enable = true;
-    fonts = with pkgs; [
+    packages = with pkgs; [
       # jetbrains-mono
       # cascadia-code
       # comic-mono
@@ -161,7 +161,6 @@
   nixpkgs.config.allowUnfree = true; # Allow proprietary software.
 
   services = {
-    activate-system.enable = true;
     # ariang.enable = true;
     openssh = {
       enable = true;
@@ -172,7 +171,6 @@
 
     };
 
-    nix-daemon.enable = true; # Auto upgrade daemon
     emacs = {
       enable = false;
       package = pkgs.emacs29;
@@ -183,31 +181,11 @@
       # };
     };
 
+  };
 
-    nix = {
-      package = pkgs.nix;
-      gc = {
-        # Garbage collection
-        automatic = true;
-        interval.Day = 7;
-        options = "--delete-older-than 7d";
-      };
-      extraOptions = ''
-        auto-optimise-store = true
-        experimental-features = nix-command flakes
-      '';
-
-      settings = {
-        auto-optimise-store = true;
-
-      };
-    };
-
-    system = {
-      autoUpgrade = {
-        # Allow auto update (not useful in flakes)
-        enable = true;
-        channel = "https://nixos.org/channels/nixos-unstable";
-      };
-    };
-  }
+  systemd.targets.sleep.enable = false;
+  systemd.targets.suspend.enable = false;
+  systemd.targets.hibernate.enable = false;
+  systemd.targets.hybrid-sleep.enable = false;
+  system.stateVersion = "23.11";
+}

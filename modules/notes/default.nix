@@ -5,8 +5,8 @@
   home.packages = with pkgs; [
     # anki
     zotero
-    tidgi
+    # tidgi
     logseq
-    marginnote
+    # marginnote
   ];
 }

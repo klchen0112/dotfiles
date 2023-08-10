@@ -111,8 +111,8 @@
           sha256 = "8FUVGnUohSCpBUc+4h8yJIH+ICOOhzfuEpGsp7t2Xh0=";
         }
 
-      ] ++ (lib.optionals pkgs.stdenv.isDarwin
-        pkgs.vscode-utils.extensionsFromVscodeMarketplace
+      ] ++ lib.optionals pkgs.stdenv.isDarwin
+        (pkgs.vscode-utils.extensionsFromVscodeMarketplace
         [{
           name = "vscode-dash";
           publisher = "deerawan";
