@@ -1,7 +1,7 @@
 #
 # fish configuration
 #
-{ lib,pkgs, ... }: {
+{ lib, pkgs, ... }: {
   programs = {
     git = {
       enable = true;
@@ -187,8 +187,8 @@
       '';
       # issue from https://github.com/LnL7/nix-darwin/issues/122
       loginShellInit =
-      if  pkgs.stdenv.hostPlatform.isDarwin then
-      ''fish_add_path --move --prepend --path $HOME/.nix-profile/bin /run/wrappers/bin /etc/profiles/per-user/$USER/bin /nix/var/nix/profiles/default/bin /run/current-system/sw/bin /opt/homebrew/bin
+        if pkgs.stdenv.hostPlatform.isDarwin then
+          ''fish_add_path --move --prepend --path $HOME/.nix-profile/bin /run/wrappers/bin /etc/profiles/per-user/$user/bin /nix/var/nix/profiles/default/bin /run/current-system/sw/bin /opt/homebrew/bin
                           #>>> conda initialize >>>
                           # !! Contents within this block are managed by 'conda init' !!
                           #  eval /opt/homebrew/bin/conda "shell.fish" "hook" $argv | source
@@ -200,7 +200,7 @@
                           $MAMBA_EXE shell hook --shell fish --prefix $MAMBA_ROOT_PREFIX | source
                           # <<< mamba initialize <<<
       ''
-      else "";
+        else "";
       plugins = with pkgs.fishPlugins; [
         {
           name = "z";
@@ -343,8 +343,80 @@
       };
     };
   };
-  home.packages = with pkgs; [ ripgrep inetutils nodePackages.prettier shfmt shellcheck];
+  home.packages = with pkgs; [ ripgrep inetutils nodePackages.prettier shfmt shellcheck ];
   # programs.ripgrep = {
   # enable = true;
   # };
+  programs.ssh = {
+    enable = true;
+    serverAliveInterval = 30;
+    serverAliveCountMax = 6;
+    compression = true;
+    matchBlocks = {
+      xiaomi = {
+        # hostkeyAlgorithms = "+ssh-rsa";
+        # pubkeyAcceptedAlgorithms = "+ssh-rsa";
+        hostname = "192.168.31.1";
+        port = 22;
+        user = "root";
+      };
+      ax5 = {
+        # hostkeyAlgorithms = "+ssh-rsa";
+        # pubkeyAcceptedAlgorithms = "+ssh-rsa";
+        hostname = "192.168.0.1";
+        port = 22;
+        user = "root";
+      };
+      cyd = {
+        hostname = "10.160.199.34";
+        port = 30614;
+        user = "root";
+        identityFile = "~/.ssh/ningbo";
+      };
+      cy = {
+        hostname = "10.160.199.103";
+        port = 30614;
+        user = "root";
+        identityFile = "~/.ssh/ningbo";
+      };
+      i12500 = {
+        hostname = "192.168.31.234";
+        port = 22;
+        user = "klchen";
+        identityFile = "~/.ssh/ningbo";
+      };
+      n1 = {
+        hostname = "192.168.0.254";
+      };
+      tower = {
+        hostname = "192.168.0.10";
+        user = "root";
+      };
+      ningbo40 = {
+        hostname = "10.82.68.40";
+        port = 18022;
+        user = "ckl";
+        identityFile = "~/.ssh/ningbo";
+      };
+      ningbo203 = {
+        hostname = "10.82.68.203";
+        port = 18022;
+        user = "ckl";
+        identityFile = "~/.ssh/ningbo";
+      };
+      ningbo214 = {
+        hostname = "10.82.1.214";
+        port = 18022;
+        user = "ckl";
+        identityFile = "~/.ssh/ningbo";
+      };
+      ningbo204 = {
+        hostname = "10.82.68.204";
+        port = 18022;
+        user = "ckl";
+        identityFile = "~/.ssh/ningbo";
+      };
+
+    };
+  };
 }
