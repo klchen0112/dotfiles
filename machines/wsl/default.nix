@@ -72,7 +72,7 @@
       # source-sans-pro
       # source-serif-pro
       # sarasa-gothic
-      iosevka
+      # iosevka
       cm_unicode
       hanazono
       lmodern

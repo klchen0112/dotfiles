@@ -163,8 +163,8 @@
         "strings" = true;
       };
       "files.autoSave" = "afterDelay";
-      "editor.codeLensFontFamily" = "'Iosevka','Overpass','CMU Typewriter Text','Noto Serif CJK SC','Noto Serif'";
-      "editor.fontFamily" = "'Iosevka','Overpass','CMU Typewriter Text','Noto Serif CJK SC','Noto Serif'";
+      "editor.codeLensFontFamily" = "'Jetbrains Mono','Overpass','CMU Typewriter Text','Noto Serif CJK SC','Noto Serif'";
+      "editor.fontFamily" = "'Jetbrains Mono','Overpass','CMU Typewriter Text','Noto Serif CJK SC','Noto Serif'";
       "editor.fontLigatures" = true;
       "editor.fontSize" = 16;
       "editor.formatOnPaste" = true;

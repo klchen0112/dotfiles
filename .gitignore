@@ -6,3 +6,13 @@ bat
 wezterm
 git
 sioyek
+fontconfig
+environment.d
+evolution
+Code
+dconf
+pulse
+.gsd-keyboard.settings-ported
+gnome-initial-setup-done
+user-dirs.*
+

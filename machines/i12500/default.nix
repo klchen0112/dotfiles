@@ -102,7 +102,7 @@
   fonts = {
     # Fonts
     fontDir.enable = true;
-    packages = with pkgs; [
+    fonts = with pkgs; [
       # jetbrains-mono
       # cascadia-code
       # comic-mono

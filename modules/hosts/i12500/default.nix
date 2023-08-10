@@ -15,27 +15,27 @@
       imports = [
         # inputs.nix-doom-emacs.hmModule
 
-        # ../../browser
+        ../../browser
         # ../../downloader
         # ../../editors/codeblocks
         # ../../editors/jetbrains
-        # ../../editors/emacs
+        ../../editors/emacs
         # ../../editors/vim
         # ../../editors/nvim
-        # ../../editors/vscode
+        ../../editors/vscode
         # ../../graphics
-        # ../../keyboard
-        # ../../lang/cpp
-        # ../../lang/go
-        # ../../lang/json
-        # ../../lang/julia
-        # ../../lang/lua
-        # ../../lang/latex
-        # ../../lang/markdown
-        # ../../lang/nix
-        # ../../lang/nodejs
-        # ../../lang/python
-        # ../../lang/rust
+        ../../keyboard
+        ../../lang/cpp
+        ../../lang/go
+        ../../lang/json
+        ../../lang/julia
+        ../../lang/lua
+        ../../lang/latex
+        ../../lang/markdown
+        ../../lang/nix
+        ../../lang/nodejs
+        ../../lang/python
+        ../../lang/rust
         # ../../media
         #   ../../notes
         ../../shells
