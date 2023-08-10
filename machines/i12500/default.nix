@@ -24,7 +24,7 @@
   boot.loader.efi.canTouchEfiVariables = true;
 
   networking.hostName = "nixos"; # Define your hostname.
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
+  # networking.wireless.enable = true; # Enables wireless support via wpa_supplicant.
 
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
@@ -86,13 +86,14 @@
 
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
+  programs.fish.enable = true;
 
   users.users.${username} = {
     # macOS user
     isNormalUser = true;
     home = "/home/${username}";
     extraGroups = [ "wheel" "networkmanager" ];
-    # shell = pkgs.fish; # Default shell
+    shell = pkgs.fish; # Default shell
   };
 
   security.sudo.wheelNeedsPassword = false; # User does not need to give password when using sudo.
@@ -135,7 +136,7 @@
   };
 
   environment = {
-    shells = with pkgs; [ bashInteractive fish ]; # Default shell
+    shells = with pkgs; [ fish ]; # Default shell
     variables = {
       # System variables
       # EDITOR = "nvim";

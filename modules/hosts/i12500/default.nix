@@ -40,7 +40,7 @@
         #   ../../notes
         ../../shells
         # ../../socialMedia
-        # ../../terminal
+        ../../terminal
         # ../../vm
       ];
     };
