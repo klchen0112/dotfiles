@@ -33,10 +33,20 @@
   # (the default) this is the recommended approach. When using systemd-networkd it's
   # still possible to use this option, but it's recommended to use it in conjunction
   # with explicit per-interface declarations with `networking.interfaces.<interface>.useDHCP`.
+  networking.hostName = "i12500"; # Define your hostname.
+  # networking.wireless.enable = true; # Enables wireless support via wpa_supplicant.
   networking.useDHCP = lib.mkDefault true;
+  networking.wireless.userControlled.enable = true;
+  # Enable networking
+  networking.networkmanager.enable = true;
+
+  services.blueman.enable = true;
+
   # networking.interfaces.enp2s0.useDHCP = lib.mkDefault true;
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
   hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
+
+
 }
