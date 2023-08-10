@@ -13,12 +13,12 @@
         stateVersion = "23.05";
       };
       imports = [
-        inputs.nix-doom-emacs.hmModule
+        # inputs.nix-doom-emacs.hmModule
 
         # ../../browser
         # ../../downloader
         # ../../editors/codeblocks
-        # ../../editors/jetbrains
+        ../../editors/jetbrains
         ../../editors/emacs
         # ../../editors/vim
         # ../../editors/nvim

@@ -186,6 +186,7 @@
           };
           modules = [
             hyprland.nixosModules.default
+            vscode-server.nixosModules.default
             ./machines/i12500
             home-manager.nixosModules.home-manager
             ./modules/hosts/i12500
