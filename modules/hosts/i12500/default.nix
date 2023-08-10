@@ -37,6 +37,7 @@
         ../../lang/python
         ../../lang/rust
         # ../../media
+        ../../network
         #   ../../notes
         ../../shells
         # ../../socialMedia

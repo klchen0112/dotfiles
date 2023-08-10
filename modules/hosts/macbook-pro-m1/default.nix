@@ -50,6 +50,7 @@
         ../../lang/rust
         ../../media
         ../../notes
+        ../../office
         ../../shells
         ../../socialMedia
         ../../terminal

@@ -4,9 +4,9 @@
 { pkgs, ... }: {
   home.packages = with pkgs; [
     # anki
-    zotero
+    # zotero
     # tidgi
-    logseq
+    # logseq
     # marginnote
   ];
 }
