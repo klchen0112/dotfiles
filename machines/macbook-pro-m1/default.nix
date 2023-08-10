@@ -462,7 +462,6 @@
       "homebrew/cask-fonts"
       "homebrew/services"
       "laishulu/macism"
-      "FelixKratz/formulae"
     ];
     brews = [
       "macism"
@@ -500,6 +499,8 @@
       # "openscad"
       "qmk-toolbox"
       "mathpix-snipping-tool"
+      # "sing-box"
+      "sfm"
     ];
   };
 

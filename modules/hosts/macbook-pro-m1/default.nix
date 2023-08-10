@@ -49,6 +49,7 @@
         ../../lang/python
         ../../lang/rust
         ../../media
+        ../../network
         ../../notes
         ../../office
         ../../shells
