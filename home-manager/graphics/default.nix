@@ -1,10 +1,9 @@
-{pkgs, ...}: {
+{ pkgs, ... }: {
   home.packages = with pkgs; [
-    # openscad
 
-    # xmake
-    # glib
-    # gcc
-    # julia
-  ];
+  ] ++ lib.optionals pkgs.stdenv.isLinux
+    [
+      vial
+      qmk
+    ];
 }
