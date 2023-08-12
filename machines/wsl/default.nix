@@ -99,13 +99,16 @@
       interval.Day = 7;
       options = "--delete-older-than 7d";
     };
-    extraOptions = ''
-      auto-optimise-store = true
-      experimental-features = nix-command flakes
-    '';
+    settings = {
+      # Enable flakes and new 'nix' command
+      experimental-features = "nix-command flakes";
+      # Deduplicate and optimize nix store
+      auto-optimise-store = true;
+    };
+
 
   };
-  system.stateVersion = "22.11";
+  system.stateVersion = "23.05";
   time.timeZone = "Asia/Shanghai";
   networking.hostName = "wsl";
 }

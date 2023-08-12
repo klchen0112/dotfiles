@@ -96,6 +96,10 @@
     home = "/home/${username}";
     extraGroups = [ "wheel" "networkmanager" ];
     shell = pkgs.fish; # Default shell
+    openssh.authorizedKeys.keys = [
+      
+    ];
+
   };
 
   security.sudo.wheelNeedsPassword = false; # User does not need to give password when using sudo.
@@ -106,7 +110,7 @@
     # Fonts
     fontDir.enable = true;
     fonts = with pkgs; [
-      # jetbrains-mono
+      jetbrains-mono
       # cascadia-code
       # comic-mono
       # fira-code
@@ -135,6 +139,13 @@
       lmodern
       # lmmath
     ];
+    fontconfig = {
+      defaultFonts = {
+        serif = [ "CMU Typewriter Text" ];
+        sansSerif = [ "IBM Plex Serif" ];
+        monospace = [ "jetbrains-mono" ];
+      };
+    };
   };
 
   environment = {
@@ -167,6 +178,9 @@
     # ariang.enable = true;
     openssh = {
       enable = true;
+      # Forbid root login through SSH.
+      permitRootLogin = "no";
+
       allowSFTP = true;
       extraConfig = ''
         HostKeyAlgorithms +ssh-rsa

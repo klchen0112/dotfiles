@@ -16,7 +16,7 @@
 {
   description = "My Personal NixOS and Darwin System Flake Configuration";
   nixConfig = {
-    extra-experimental-features = "flakes";
+    extra-experimental-features = "nix-command flakes";
     extra-substituters = [
       "https://nix-community.cachix.org"
     ];
@@ -115,22 +115,14 @@
     inputs @ { self
     , nixpkgs
     , home-manager
-    , flake-utils
     , darwin
-    , nur
-    , nixgl
-    , nixos-wsl
-    , emacs-overlay
-    , nix-doom-emacs
-    , hyprland
     , vscode-server
     , ...
     }:
     # Function that tells my flake which to use and what do what to do with the dependencies.
     let
       # Variables that can be used in the config files.
-
-      location = "$HOME/.config";
+      inherit (self) outputs;
       forAllSystems = nixpkgs.lib.genAttrs [
         "aarch64-linux"
         "i686-linux"
@@ -141,64 +133,98 @@
 
     in
     rec {
+      packages = forAllSystems (system:
+        let pkgs = nixpkgs.legacyPackages.${system};
+        in import ./pkgs { inherit pkgs; }
+      );
+
       # Accessible through 'nix develop' or 'nix-shell' (legacy)
-      overlays = import ./overlays/default.nix inputs;
-      pkgs = forAllSystems (localSystem:
-        import inputs.nixpkgs {
-          inherit localSystem
-            ;
-          # This adds our overlays to pkgs
-          # overlays = [
-          #   self.overlays.default
-          # ];
-          # NOTE: Using `nixpkgs.config` in your NixOS config won't work
-          # Instead, you should set nixpkgs configs here
-          # (https://nixos.org/manual/nixpkgs/stable/#idm140737322551056)
-          config.allowUnfree = true;
-          config.allowBroken = true;
-          # config.allowUnsupportedSystem = true;
-        });
+      overlays = import ./overlays { inherit inputs; };
+      # Devshell for bootstrapping
+      # Acessible through 'nix develop' or 'nix-shell' (legacy)
+      devShells = forAllSystems (system:
+        let pkgs = nixpkgs.legacyPackages.${ system};
+        in import ./shell.nix { inherit pkgs; }
+      );
+      # Reusable nixos modules you might want to export
+      # These are usually stuff you would upstream into nixpkgs
+      nixosModules = import ./modules/nixos;
+      # Reusable home-manager modules you might want to export
+      # These are usually stuff you would upstream into home-manager
+      homeManagerModules = import ./modules/home-manager;
+
 
       nixosConfigurations =
-      let
-      username = "klchen";
-      in {
-        # NixOS configurations
-        "wsl" = nixpkgs.lib.nixosSystem {
-          system = "x86_64-linux";
-          specialArgs = {
-            inherit inputs username;
+        let
+          username = "klchen";
+        in
+        {
+          # NixOS configurations
+          "wsl" = nixpkgs.lib.nixosSystem {
+            system = "x86_64-linux";
+            specialArgs = {
+              inherit inputs username;
+            };
+            modules = [
+              ./machines/wsl
+              vscode-server.nixosModule
+              ({ config
+               , pkgs
+               , ...
+               }: {
+                services.vscode-server.enable = true;
+              })
+              home-manager.darwinModules.home-manager
+              modules/hosts/wsl/default.nix
+            ];
           };
+          "i12500" = nixpkgs.lib.nixosSystem {
+            system = "x86_64-linux";
+            specialArgs = {
+              inherit inputs username outputs;
+
+            };
+            modules = [
+              # hyprland.nixosModules.default
+              vscode-server.nixosModules.default
+
+              ./machines/i12500
+              home-manager.nixosModules.home-manager
+              ./modules/hosts/i12500
+            ];
+          };
+        };
+      homeConfigurations = {
+        "klchen@i12500" = home-manager.lib.homeManagerConfiguration {
+          pkgs = nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
+          extraSpecialArgs = { inherit inputs outputs; };
           modules = [
-            ./machines/wsl
-            vscode-server.nixosModule
-            ({ config
-             , pkgs
-             , ...
-             }: {
-              services.vscode-server.enable = true;
-            })
-            home-manager.darwinModules.home-manager
-            modules/hosts/wsl/default.nix
+            # > Our main home-manager configuration file <
+            ./home-manager/hosts/i12500
           ];
         };
-        "i12500" = nixpkgs.lib.nixosSystem {
-          system = "x86_64-linux";
-          specialArgs = {
-            inherit inputs username;
-          };
+        "klchen@wsl" = home-manager.lib.homeManagerConfiguration {
+          pkgs = nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
+          extraSpecialArgs = { inherit inputs outputs; };
           modules = [
-            # hyprland.nixosModules.default
-            vscode-server.nixosModules.default
-            
-            ./machines/i12500
-            home-manager.nixosModules.home-manager
-            ./modules/hosts/i12500
+            # > Our main home-manager configuration file <
+            ./home-manager/hosts/wsl
           ];
         };
+        "chenkailong@macbook-pro-m1" = home-manager.lib.homeManagerConfiguration {
+          pkgs = nixpkgs.legacyPackages.aarch64-darwin; # Home-manager requires 'pkgs' instance
+          extraSpecialArgs = { inherit inputs outputs; };
+          modules = [
+            # > Our main home-manager configuration file <
+            ./modules/hosts/macbook-pro-m1/default.nix
+
+          ];
+        };
+
       };
-      darwinConfigurations = let username = "chenkailong";
-      in
+      darwinConfigurations =
+        let username = "chenkailong";
+        in
         {
           "macbook-pro-m1" = darwin.lib.darwinSystem {
             system = "aarch64-darwin";
@@ -209,8 +235,7 @@
             modules = [
               # Modules that are used
               ./machines/macbook-pro-m1
-              home-manager.darwinModules.home-manager
-              modules/hosts/macbook-pro-m1/default.nix
+
             ];
           };
         };
