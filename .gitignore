@@ -15,4 +15,6 @@ pulse
 .gsd-keyboard.settings-ported
 gnome-initial-setup-done
 user-dirs.*
-
+btop
+htop
+.vscode
