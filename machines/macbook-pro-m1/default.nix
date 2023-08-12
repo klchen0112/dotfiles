@@ -501,6 +501,8 @@
       "mathpix-snipping-tool"
       # "sing-box"
       "sfm"
+      "marginnote"
+      "zotero"
     ];
   };
 
