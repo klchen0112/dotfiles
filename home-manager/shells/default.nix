@@ -253,12 +253,12 @@
       enable = true;
       # defaultKeyMode = "emacs";
     };
-    direnv = {
-      enable = true;
-      nix-direnv.enable = true;
-      #  enableFishIntegration = true;
-      #  enableBashIntegration = true;
-    };
+    # direnv = {
+    #   enable = true;
+    #   nix-direnv.enable = true;
+    #   #  enableFishIntegration = true;
+    #   #  enableBashIntegration = true;
+    # };
     jq = {
       enable = true;
     };

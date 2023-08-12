@@ -6,11 +6,12 @@
 #       ├─ ./default.nix
 #       └─ ./configuration.nix *
 #
-{ config
+{ inputs
+, outputs
+, config
 , pkgs
 , username
 , system
-, inputs
 , ...
 }: {
   users.users.${username} = {
@@ -36,7 +37,7 @@
       roboto-mono
       twemoji-color-font
       # mononoki
-      symbola
+      # symbola
       # noto-fonts
       # noto-fonts-extra
       # noto-fonts-emoji
@@ -522,7 +523,27 @@
 
     };
   };
-  nixpkgs.config.allowUnfree = true; # Allow proprietary software.
+  nixpkgs = {
+    # You can add overlays here
+    overlays = [
+      # Add overlays your own flake exports (from overlays and pkgs dir):
+      outputs.overlays.additions
+      outputs.overlays.modifications
+      outputs.overlays.unstable-packages
+
+      # You can also add overlays exported from other flakes:
+      # neovim-nightly-overlay.overlays.default
+
+      # Or define it inline, for example:
+      # (final: prev: {
+      #   hi = final.hello.overrideAttrs (oldAttrs: {
+      #     patches = [ ./change-hello-to-hi.patch ];
+      #   });
+      # })
+    ];
+
+    config.allowUnfree = true; # Allow proprietary software.
+  };
 
   security.pam.enableSudoTouchIdAuth = true;
   system = {
