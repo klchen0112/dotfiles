@@ -188,14 +188,14 @@
       # issue from https://github.com/LnL7/nix-darwin/issues/122
       loginShellInit =
         if pkgs.stdenv.hostPlatform.isDarwin then
-          ''fish_add_path --move --prepend --path $HOME/.nix-profile/bin /run/wrappers/bin /etc/profiles/per-user/$user/bin /nix/var/nix/profiles/default/bin /run/current-system/sw/bin /opt/homebrew/bin
+          ''fish_add_path --move --prepend --path $HOME/.nix-profile/bin  /run/current-system/sw/bin /opt/homebrew/bin
                           #>>> conda initialize >>>
                           # !! Contents within this block are managed by 'conda init' !!
                           #  eval /opt/homebrew/bin/conda "shell.fish" "hook" $argv | source
                           # <<< conda initialize <<<
                           # >>> mamba initialize >>>
                           # !! Contents within this block are managed by 'mamba init' !!
-                          set -gx MAMBA_EXE "/etc/profiles/per-user/chenkailong/bin/micromamba"
+                          set -gx MAMBA_EXE "$HOME/.nix-profile/bin/micromamba"
                           set -gx MAMBA_ROOT_PREFIX $HOME/micromamba
                           $MAMBA_EXE shell hook --shell fish --prefix $MAMBA_ROOT_PREFIX | source
                           # <<< mamba initialize <<<
