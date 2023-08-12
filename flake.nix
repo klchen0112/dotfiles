@@ -195,22 +195,29 @@
           };
         };
       homeConfigurations = {
-        "klchen@i12500" = home-manager.lib.homeManagerConfiguration {
-          pkgs = nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
-          extraSpecialArgs = { inherit inputs outputs; };
-          modules = [
-            # > Our main home-manager configuration file <
-            ./home-manager/hosts/i12500
-          ];
-        };
-        "klchen@wsl" = home-manager.lib.homeManagerConfiguration {
-          pkgs = nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
-          extraSpecialArgs = { inherit inputs outputs; };
-          modules = [
-            # > Our main home-manager configuration file <
-            ./home-manager/hosts/wsl
-          ];
-        };
+        "klchen@i12500" =
+          let username = "klchen";
+          in
+          home-manager.lib.homeManagerConfiguration
+            {
+              pkgs = nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
+              extraSpecialArgs = { inherit inputs outputs username; };
+              modules = [
+                # > Our main home-manager configuration file <
+                ./home-manager/hosts/i12500
+              ];
+            };
+        "klchen@wsl" =
+          let username = "klchen";
+          in
+          home-manager.lib.homeManagerConfiguration {
+            pkgs = nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
+            extraSpecialArgs = { inherit inputs outputs username; };
+            modules = [
+              # > Our main home-manager configuration file <
+              ./home-manager/hosts/wsl
+            ];
+          };
         "chenkailong@macbook-pro-m1" = let username = "chenkailong"; in
           home-manager.lib.homeManagerConfiguration {
             pkgs = nixpkgs.legacyPackages.aarch64-darwin; # Home-manager requires 'pkgs' instance
