@@ -16,7 +16,7 @@
 {
   description = "My Personal NixOS and Darwin System Flake Configuration";
   nixConfig = {
-    extra-experimental-features = "nix-command flakes";
+    extra-experimental-features = "flakes";
     extra-substituters = [
       "https://nix-community.cachix.org"
     ];
@@ -189,7 +189,8 @@
           };
           modules = [
             # hyprland.nixosModules.default
-            # vscode-server.nixosModules.default
+            vscode-server.nixosModules.default
+            
             ./machines/i12500
             home-manager.nixosModules.home-manager
             ./modules/hosts/i12500

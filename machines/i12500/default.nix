@@ -30,7 +30,7 @@
   # networking.proxy.default = "http://user:password@proxy:port/";
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
-  
+
 
   # Set your time zone.
   time.timeZone = "Asia/Shanghai";
@@ -65,6 +65,9 @@
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
+
+
+  services.vscode-server.enable = true;
 
   # Enable sound with pipewire.
   sound.enable = true;
