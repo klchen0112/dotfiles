@@ -398,6 +398,10 @@
       interval.Day = 7;
       options = "--delete-older-than 7d";
     };
+    extraOptions = ''
+      experimental-features = nix-command flakes
+    '';
+
   };
 
   homebrew = {
