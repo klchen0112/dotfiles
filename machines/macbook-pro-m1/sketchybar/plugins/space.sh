@@ -1,6 +1,6 @@
 #!/usr/bin/env sh
 
-SKETCHBAR_BIN="/opt/homebrew/bin/sketchy_bottombar"
+SKETCHBAR_BIN="sketchybar"
 
 WIN=$(yabai -m query --spaces --space $SID | jq '.windows[0]')
 HAS_WINDOWS_OR_IS_SELECTED="true"
@@ -15,4 +15,4 @@ else
 fi
 
 
-$SKETCHBAR_BIN --set $NAME icon.highlight=$SELECTED icon.color=$iconcolor 
+$SKETCHBAR_BIN --set $NAME icon.highlight=$SELECTED icon.color=$iconcolor

@@ -1,6 +1,6 @@
 #!/usr/bin/env sh
 
-SKETCHBAR_BIN="/opt/homebrew/bin/sketchy_bottombar"
+SKETCHBAR_BIN="sketchybar"
 
 if $SKETCHBAR_BIN --query default_menu_items | grep "$NAME" >> /dev/null; then
   $SKETCHBAR_BIN --set "$NAME" alias.scale=1

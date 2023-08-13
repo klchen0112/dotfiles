@@ -1,4 +1,4 @@
-$SKETCHBAR_BIN --add item 微信 right                                             \
+$SKETCHBAR_BIN --add item 微信 left                                             \
                --set 微信 update_freq=10                                         \
                           icon=󰘑                                                 \
                           icon.color=0xff2fb608                                  \

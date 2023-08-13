@@ -1,25 +1,38 @@
 #!/bin/sh
 
-function setup_space {
-  local idx="$1"
-  local name="$2"
-  local space=
+DESIRED_SPACES_PER_DISPLAY=5
+CURRENT_SPACES="$(yabai -m query --displays | jq -r '.[].spaces | @sh')"
 
-  space=$(yabai -m query --spaces --space "$idx")
-  if [ -z "$space" ]; then
-    yabai -m space --create
+DELTA=0
+while read -r line
+do
+  LAST_SPACE="$(echo "${line##* }")"
+  LAST_SPACE=$(($LAST_SPACE+$DELTA))
+  EXISTING_SPACE_COUNT="$(echo "$line" | wc -w)"
+  MISSING_SPACES=$(($DESIRED_SPACES_PER_DISPLAY - $EXISTING_SPACE_COUNT))
+  if [ "$MISSING_SPACES" -gt 0 ]; then
+    for i in $(seq 1 $MISSING_SPACES)
+    do
+      yabai -m space --create "$LAST_SPACE"
+      LAST_SPACE=$(($LAST_SPACE+1))
+    done
+  elif [ "$MISSING_SPACES" -lt 0 ]; then
+    for i in $(seq 1 $((-$MISSING_SPACES)))
+    do
+      yabai -m space --destroy "$LAST_SPACE"
+      LAST_SPACE=$(($LAST_SPACE-1))
+    done
   fi
+  DELTA=$(($DELTA+$MISSING_SPACES))
+done <<< "$CURRENT_SPACES"
 
-  yabai -m space "$idx" --label "$name"
-}
-
-setup_space 1 code
-setup_space 2 browser
-setup_space 3 chat
-setup_space 4 work
-setup_space 5 mail
-setup_space 6 music
-setup_space 7 game
-setup_space 8 video
-setup_space 9 database
-setup_space 10 document
+yabai -m space 1  --label code
+yabai -m space 2  --label browser
+yabai -m space 3  --label chat
+yabai -m space 4  --label work
+yabai -m space 5  --label mail
+yabai -m space 6  --label music
+yabai -m space 7  --label game
+yabai -m space 8  --label video
+yabai -m space 9  --label database
+yabai -m space 10 --label document

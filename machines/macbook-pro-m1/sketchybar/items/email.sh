@@ -1,6 +1,6 @@
-EMAIL_CLICK_SCRIPT="open -a 'Mail'"
+EMAIL_CLICK_SCRIPT="open -a 'Spark'"
 
-$SKETCHBAR_BIN --add item email right                                            \
+$SKETCHBAR_BIN --add item email left                                            \
                --set email update_freq=10                                        \
                           icon=󰇮                                                 \
                           icon.color=0xff7aa2f7                                  \

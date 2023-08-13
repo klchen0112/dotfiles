@@ -122,7 +122,7 @@
     config = {
 
       layout = "bsp";
-      external_bar = "all:20:60";
+      external_bar = "all:20:0";
 
       top_padding = 50;
       bottom_padding = 10;
@@ -161,6 +161,8 @@
       mouse_drop_action = "swap";
     };
     extraConfig =
+      let yabai_script = ./yabai;
+      in
       ''
         #!/usr/bin/env sh
 
@@ -168,22 +170,47 @@
 
         yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
         yabai -m signal --add event=window_focused action="sketchybar --trigger window_focus"
-        yabai -m signal --add event=display_added action="sleep 2 && $HOME/.config/yabai/create_spaces.sh"
-        yabai -m signal --add event=display_removed action="sleep 1 && $HOME/.config/yabai/create_spaces.sh"
+        yabai -m signal --add event=display_added action="sleep 2 && ${yabai_script}/create_spaces.sh"
+        yabai -m signal --add event=display_removed action="sleep 1 && ${yabai_script}/yabai/create_spaces.sh"
         yabai -m signal --add event=window_created action="sketchybar --trigger windows_on_spaces"
         yabai -m signal --add event=window_destroyed action="sketchybar --trigger windows_on_spaces"
         ## auto create Display and move to window
-        $HOME/.config/yabai/create_spaces.sh
-        yabai -m config window_gap     5
-        yabai -m config window_opacity on
-        yabai -m config active_window_opacity 1.0
-        yabai -m config normal_window_opacity 0.95
-        # Space config
-        yabai -m config --space 5 layout float
-        yabai -m config --space 10 layout float
+        ${yabai_script}/create_spaces.sh
+
 
         # ===== Rules ==================================
-        yabai -m rule --add label="emacs" subrole!="^(AXFloatingWindow)$" app="Emacs" manage=on
+
+
+        # code
+        yabai - m rule - -add app="WezTerm" space=^1
+        yabai - m rule - -add label="emacs" subrole!="^(AXFloatingWindow)$" app="Emacs" manage=on
+        yabai - m rule - -add app="Dash" manage=off
+
+        # browser
+        yabai -m rule --add app="Google Chrome"
+        # chat
+        yabai - m rule - -add app="^(Spark)$" --toggle float space=3 manage=on
+        yabai -m rule --add app="^(微信|WeChat)$" --toggle float space=3 manage=off
+        yabai -m rule --add app="^(QQ)$" --toggle float space=3 manage=off
+
+        yabai -m rule --add app="^(Telegram)$" --toggle float space=3 manage=off
+        yabai -m rule --add app="^(Discord)$"--toggle float space=3 manage=off
+
+        # work
+        yabai - m rule - -add app="^(钉钉|DingTalk)$"--toggle float space=4 manage=off
+        yabai - m rule - -add app="飞书" space=^4 manage=off
+
+        # mail
+        yabai - m rule - -add app="Spark" space=^4 manage=off
+
+        # music
+        yabai - m rule - -add app="Plexamp" space=^6 manage=off
+
+        # video
+        yabai - m rule - -add label="mpv" app="^mpv$" manage=off space=^8
+
+
+        # system
         yabai -m rule --add label="Finder" app="^(Finder|访达)$" title="(Co(py|nnect)|Move|Info|Pref)" manage=off
         yabai -m rule --add label="Safari" app="^Safari$" title="^(General|(Tab|Password|Website|Extension)s|AutoFill|Se(arch|curity)|Privacy|Advance)$" manage=off
         yabai -m rule --add label="macfeh" app="^macfeh$" manage=off
@@ -191,24 +218,18 @@
         yabai -m rule --add label="Calendar" app="^(Calendar|日历)$" title=".*" manage=off
         yabai -m rule --add label="App Store" app="^App Store$" manage=off
         yabai -m rule --add label="Activity Monitor" app="^Activity Monitor$" manage=off
-        yabai -m rule --add label="KeePassXC" app="^KeePassXC$" manage=off
         yabai -m rule --add label="Calculator" app="^Calculator$" manage=off
         yabai -m rule --add label="Dictionary" app="^Dictionary$" manage=off
-        yabai -m rule --add label="mpv" app="^mpv$" manage=off
-        yabai -m rule --add label="Software Update" title="Software Update" manage=off
+        yabai - m rule - -add label="Software Update" title="Software Update" manage=off
+        yabai - m rule - -add label="About This Mac" app="System Information" title="About This Mac" manage=off
+
+
+
+
         yabai -m rule --add app="Raycast" manage=off
         yabai -m rule --add app="Bitwarden" manage=off
-        yabai -m rule --add label="About This Mac" app="System Information" title="About This Mac" manage=off
-        yabai -m rule --add app="Dash" manage=off
 
-        yabai -m rule --add label=musicapp app="Plexamp" space=10 manage=off
 
-        yabai -m rule --add app="^(Spark)$" --toggle float space=10 manage=on
-        yabai -m rule --add app="^(微信|WeChat)$" --toggle float space=10 manage=off
-        yabai -m rule --add app="^(QQ)$" --toggle float space=10 manage=off
-        yabai -m rule --add app="^(钉钉|DingTalk)$"--toggle float space=10 manage=off
-        yabai -m rule --add app="^(Telegram)$" --toggle float space=10 manage=off
-        yabai -m rule --add app="^(Discord)$"--toggle float space=10 manage=off
 
       '';
   };
@@ -308,23 +329,23 @@
         launchctl kickstart -k gui/''${UID}/org.nixos.yabai && launchctl kickstart -k gui/''${UID}/org.nixos.skhd
       '';
   };
-
+  #TODO fix plexamp and cava email
   services.sketchybar = {
     enable = true;
     extraPackages = [ pkgs.jq ];
-    # this code from https://github.com/FelixKratz/dotfiles
+    # this code from https://github.com/ColaMint/config.git
     config =
       let
         sketchybar_scripts = ./sketchybar;
       in
       ''
         #!/usr/bin/env sh
-        SKETCHBAR_BIN="/run/current-system/sw/bin/sketchybar"
+        SKETCHBAR_BIN="${pkgs.sketchybar}/bin/sketchybar"
 
-        PLUGIN_DIR="$HOME/.config/sketchybar/plugins"
-        ITEM_DIR="$HOME/.config/sketchybar/items"
+        PLUGIN_DIR="${sketchybar_scripts}/plugins"
+        ITEM_DIR="${sketchybar_scripts}/items"
 
-        LABEL_FONT_FAMILY="苹方-简"
+        LABEL_FONT_FAMILY="PingFang SC"
         LABEL_FONT_STYLE="Medium"
         LABEL_FONT_SIZE="14"
         LABEL_COLOR=0xffdfe1ea
@@ -373,14 +394,33 @@
 
         . "$ITEM_DIR/menu.sh"
         . "$ITEM_DIR/system.sh"
+
+        # . "$ITEM_DIR/cava.sh"
+        # . "$ITEM_DIR/feishu.sh"
+        . "$ITEM_DIR/wechat.sh"
+        . "$ITEM_DIR/email.sh"
+
+
+        . "$ITEM_DIR/spaces.sh"
         . "$ITEM_DIR/window_title.sh"
 
+        # add right right to left
+        . "$ITEM_DIR/tray.sh"
         . "$ITEM_DIR/time.sh"
         . "$ITEM_DIR/battery.sh"
 
+        . "$ITEM_DIR/mic.sh"
+        . "$ITEM_DIR/sound.sh"
+        # . "$ITEM_DIR/music.sh"
+
+
+
         . "$ITEM_DIR/bluetooth.sh"
-        . "$ITEM_DIR/vpn.sh"
+        # . "$ITEM_DIR/vpn.sh"
         . "$ITEM_DIR/wifi.sh"
+
+
+
 
         $SKETCHBAR_BIN --update
 

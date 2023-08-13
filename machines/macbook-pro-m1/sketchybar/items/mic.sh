@@ -1,6 +1,6 @@
 MIC_CLICK_SCRIPT="open /System/Library/PreferencePanes/Sound.prefPane"
 
-$SKETCHBAR_BIN --add item mic left                                               \
+$SKETCHBAR_BIN --add item mic right                                               \
            --set mic update_freq=5                                               \
                        icon.padding_left=16                                      \
                        icon.padding_right=4                                      \

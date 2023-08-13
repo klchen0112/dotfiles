@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-SKETCHBAR_BIN="/opt/homebrew/bin/sketchy_bottombar"
+SKETCHBAR_BIN="sketchybar"
 
 # TODO
 # $INFO的内容不规范，title里面可能包含没有转义的双引号导致无法正常解析JSON
@@ -14,7 +14,7 @@ if [[ $INFO != "" ]]; then
       TITLE="$(echo "$TITLE" | cut -c 1-25 | iconv -c)..."
     fi
     $SKETCHBAR_BIN --set playing label="$TITLE"
-  else 
+  else
     $SKETCHBAR_BIN --set playing label="..."
   fi
 fi

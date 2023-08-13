@@ -1,4 +1,4 @@
-SKETCHBAR_BIN="/opt/homebrew/bin/sketchy_topbar"
+SKETCHBAR_BIN="sketchybar"
 
 BATT_PERCENT=$(pmset -g batt | grep -Eo "\d+%" | cut -d% -f1)
 # CHARGING=$(pmset -g batt | grep "AC Power")

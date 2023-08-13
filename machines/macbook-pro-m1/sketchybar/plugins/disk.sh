@@ -1,6 +1,6 @@
 #!/usr/bin/env sh
 
-SKETCHBAR_BIN="/opt/homebrew/bin/sketchy_topbar"
+SKETCHBAR_BIN="sketchybar"
 
 used_disk_percentage=$(df -H | grep -E '^(/dev/disk3s5).' | awk '{ printf ("%s\n", $5) }')
 

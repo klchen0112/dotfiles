@@ -3,8 +3,7 @@
 # brew install cava
 # brew install --cask background-music
 
-SKETCHBAR_BIN="/opt/homebrew/bin/sketchy_bottombar"
-PLUGIN_DIR="$HOME/.config/sketchybar/plugins"
+SKETCHBAR_BIN="sketchybar"
 
 while true
 do

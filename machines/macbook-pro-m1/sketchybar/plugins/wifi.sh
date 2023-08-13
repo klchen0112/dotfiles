@@ -1,6 +1,6 @@
 #!/bin/sh
 
-SKETCHBAR_BIN="/opt/homebrew/bin/sketchy_topbar"
+SKETCHBAR_BIN="sketchybar"
 
 SPEED=$(ifstat -i en0 1 1 | awk 'NR==3 {print $1}')
 

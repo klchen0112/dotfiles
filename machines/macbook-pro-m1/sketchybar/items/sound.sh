@@ -1,6 +1,6 @@
 SOUND_CLICK_SCRIPT="open /System/Library/PreferencePanes/Sound.prefPane"
 
-$SKETCHBAR_BIN --add item sound left                                             \
+$SKETCHBAR_BIN --add item sound right                                             \
            --set sound update_freq=0                                             \
                        icon.padding_left=16                                      \
                        icon.padding_right=4                                      \
