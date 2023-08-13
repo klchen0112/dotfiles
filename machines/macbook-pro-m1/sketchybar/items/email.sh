@@ -12,5 +12,5 @@ $SKETCHBAR_BIN --add item email left                                            
                           background.height=$BACKGROUND_HEIGHT                   \
                           background.corner_radius=$BACKGROUND_CORNER_RADIUS     \
                           background.padding_right=3                             \
-                          script="$PLUGIN_DIR/email.sh"                          \
+                          script="$PLUGIN_DIR/app_status_label.sh"                          \
                           click_script="$EMAIL_CLICK_SCRIPT"                     \
