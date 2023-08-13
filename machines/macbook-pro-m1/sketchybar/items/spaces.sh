@@ -22,7 +22,7 @@ $SKETCHBAR_BIN --add   space          space_template center                     
                                                                                              \
                --clone spaces.1       space_template                                         \
                --set   spaces.1       associated_space=1                                     \
-                                      icon=󰕷                                                 \
+                                      icon=                                                 \
                                       script="$PLUGIN_DIR/space.sh"                          \
                                       icon.padding_left=20                                   \
                                                                                              \
