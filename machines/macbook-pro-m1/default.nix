@@ -14,6 +14,29 @@
 , system
 , ...
 }: {
+
+  nixpkgs = {
+    # You can add overlays here
+    overlays = [
+      # Add overlays your own flake exports (from overlays and pkgs dir):
+      outputs.overlays.additions
+      outputs.overlays.modifications
+      outputs.overlays.unstable-packages
+
+      # You can also add overlays exported from other flakes:
+      # neovim-nightly-overlay.overlays.default
+
+      # Or define it inline, for example:
+      # (final: prev: {
+      #   hi = final.hello.overrideAttrs (oldAttrs: {
+      #     patches = [ ./change-hello-to-hi.patch ];
+      #   });
+      # })
+    ];
+
+    config.allowUnfree = true; # Allow proprietary software.
+  };
+
   users.users.${username} = {
     # macOS user
     home = "/Users/${username}";
@@ -28,8 +51,9 @@
       inputs.apple-fonts.packages.${pkgs.system}.sf-compact
       inputs.apple-fonts.packages.${pkgs.system}.sf-mono
       inputs.apple-fonts.packages.${pkgs.system}.sf-arabic
+      nerdfonts
 
-      # jetbrains-mono
+      jetbrains-mono
       # cascadia-code
       # comic-mono
       # fira-code
@@ -84,74 +108,60 @@
     ];
   };
 
-  services = {
-    activate-system.enable = true;
-    # ariang.enable = true;
-    nix-daemon.enable = true; # Auto upgrade daemon
-    emacs = {
-      enable = true;
-      package = pkgs.emacs29;
+  services.activate-system.enable = true;
+  services.nix-daemon.enable = true; # Auto upgrade daemon
+  services.emacs = {
+    enable = true;
+    package = pkgs.emacs29;
+  };
+
+
+  services.yabai = {
+    enable = true;
+    enableScriptingAddition = true;
+    config = {
+
+      layout = "bsp";
+      external_bar = "all:20:60";
+
+      top_padding = 50;
+      bottom_padding = 10;
+      left_padding = 10;
+      right_padding = 10;
+      window_gap = 10;
+
+      mouse_follows_focus = "off";
+      focus_follows_mouse = "off";
+      window_topmost = "off";
+
+      # active_window_border_color = color.focused;
+      # normal_window_border_color = color.normal;
+      # insert_feedback_color = color.preselect;
+      window_zoom_persist = "off";
+      window_placement = "second_child";
+      window_shadow = "float";
+
+      window_border = "on";
+      window_border_radius = 10;
+      window_border_width = 2;
+      window_border_blur = "off";
+      window_animation_duration = 0.0;
+
+      window_opacity = "off";
+      window_opacity_duration = 0.0;
+      active_window_opacity = 1.0;
+      normal_window_opacity = 0.90;
+      split_ratio = 0.50;
+
+      auto_balance = "off";
+
+      mouse_modifier = "fn";
+      mouse_action1 = "move";
+      mouse_action2 = "resize";
+      mouse_drop_action = "swap";
     };
-
-    yabai = {
-      enable = true;
-      enableScriptingAddition = true;
-      config =
-        let
-          gaps = {
-            top = 0;
-            bottom = 10;
-            left = 0;
-            right = 0;
-            inner = 0;
-          };
-          color = {
-            focused = "0xE0808080";
-            normal = "0x00010101";
-            preselect = "0xE02d74da";
-          };
-        in
-        {
-          debug_output = "on";
-          external_bar = "all:24:0";
-          layout = "bsp";
-          top_padding = gaps.top;
-          bottom_padding = gaps.bottom;
-          left_padding = gaps.left;
-          right_padding = gaps.right;
-          window_gap = gaps.inner;
-
-          mouse_follows_focus = "off";
-          focus_follows_mouse = "off";
-          window_topmost = "off";
-
-          active_window_border_color = color.focused;
-          normal_window_border_color = color.normal;
-          insert_feedback_color = color.preselect;
-          window_zoom_persist = "off";
-          window_placement = "second_child";
-          window_shadow = "float";
-
-          window_border = "on";
-          window_border_radius = 10;
-          window_border_width = 2;
-          window_border_blur = "off";
-          window_animation_duration = 0.0;
-
-          window_opacity = "off";
-          window_opacity_duration = 0.0;
-          active_window_opacity = 1.0;
-          normal_window_opacity = 0.90;
-          split_ratio = 0.50;
-
-          auto_balance = "off";
-
-          mouse_modifier = "fn";
-          mouse_action1 = "move";
-          mouse_action2 = "resize";
-          mouse_drop_action = "swap";
-        };
-      extraConfig = ''
+    extraConfig =
+      ''
         #!/usr/bin/env sh
 
         # Unload the macOS WindowManager process
@@ -201,195 +211,193 @@
         yabai -m rule --add app="^(Discord)$"--toggle float space=10 manage=off
 
       '';
+  };
+
+  services.skhd = {
+    enable = true;
+    skhdConfig =
+      let
+        keycodes = import ./keycodes.nix;
+        current_workspace_prefix = "ctrl + alt";
+        current_workspace_move_prefix = "ctrl + shift";
+        diffent_workspace_move_prefix = "shift + alt + ctrl";
+        size_chang_prefix = "cmd + ctrl";
+        insert_prefix = "shift + alt";
+        high_prefix = "shift + ctrl + cmd";
+      in
+      ''
+        #!/usr/bin/env sh
+        ## Current workspace move and focus
+        # focus window : current_workspace_prefix - {p, n, b, f}
+        ${current_workspace_prefix} - ${keycodes.B} : yabai -m window --focus west  || yabai -m display --focus west
+        ${current_workspace_prefix} - ${keycodes.N} : yabai -m window --focus south || yabai -m display --focus south
+        ${current_workspace_prefix} - ${keycodes.P} : yabai -m window --focus north || yabai -m display --focus north
+        ${current_workspace_prefix} - ${keycodes.F} : yabai -m window --focus east  || yabai -m display --focus east
+        ${current_workspace_prefix} - ${keycodes.A} : yabai -m window --focus first || yabai -m display --focus north
+        ${current_workspace_prefix} - ${keycodes.E} : yabai -m window --focus last  || yabai -m display --focus east
+
+        ## Current workspace window adjust use ${current_workspace_move_prefix} as prefix
+        # Make window zoom to fullscreen: current_workspace_prefix - ${keycodes.Z}
+        ${current_workspace_move_prefix} - ${keycodes.Z} : yabai -m window --toggle zoom-fullscreen;
+
+        # Mirror Space on X and Y Axis: current_workspace_move_prefix - {x, y,r}
+        ${current_workspace_move_prefix} - ${keycodes.X} : yabai -m space --mirror x-axis
+        ${current_workspace_move_prefix} - ${keycodes.Y} : yabai -m space --mirror y-axis
+        ${current_workspace_move_prefix} - ${keycodes.R} : yabai -m space --rotate 90
+
+
+        # Enable / Disable gaps in current workspace
+        ${current_workspace_move_prefix} - ${keycodes.G} : yabai -m space --toggle padding; yabai -m space --toggle gap
+
+        # toggle whether the focused window should have a border
+        ${current_workspace_move_prefix} - ${keycodes.W} : yabai -m window --toggle border
+        # toggle whether the focused window should be shown on all spaces
+        ${current_workspace_move_prefix} - ${keycodes.S} : yabai -m window --toggle sticky
+        # toggle whether the focused window should be tiled (only on bsp spaces)
+        ${current_workspace_move_prefix} - ${keycodes.Space} : yabai -m window --toggle float
+
+        ## Current workspace move
+        # Moving windows in spaces: current_workspace_move_prefix - {p, n, b, f}
+        ${current_workspace_move_prefix} - ${keycodes.B} : yabai -m window --warp west  || (yabai -m window --display west  ; yabai -m display --focus west )
+        ${current_workspace_move_prefix} - ${keycodes.N} : yabai -m window --warp south || (yabai -m window --display south ; yabai -m display --focus south)
+        ${current_workspace_move_prefix} - ${keycodes.P} : yabai -m window --warp north || (yabai -m window --display north ; yabai -m display --focus north)
+        ${current_workspace_move_prefix} - ${keycodes.F} : yabai -m window --warp east  || (yabai -m window --display east  ; yabai -m display --focus east )
+
+        ## Diffent Workspace Operation (size_chang_prefix - ...)
+        # Moving windows between spaces: diffent_workspace_move_prefix - {1, 2, 3, 4, p, n,r } (Assumes 4 Spaces Max per Display)
+        ${current_workspace_move_prefix} - 1 : yabai -m window --space 1; yabai -m space --focus 1;
+        ${current_workspace_move_prefix} - 2 : yabai -m window --space 2; yabai -m space --focus 2;
+        ${current_workspace_move_prefix} - 3 : yabai -m window --space 3; yabai -m space --focus 3;
+        ${current_workspace_move_prefix} - 4 : yabai -m window --space 4; yabai -m space --focus 4;
+        ${current_workspace_move_prefix} - 5 : yabai -m window --space 5; yabai -m space --focus 5;
+        ${current_workspace_move_prefix} - 6 : yabai -m window --space 6; yabai -m space --focus 6;
+        ${current_workspace_move_prefix} - 7 : yabai -m window --space 7; yabai -m space --focus 7;
+        ${current_workspace_move_prefix} - 8 : yabai -m window --space 8; yabai -m space --focus 8;
+        ${current_workspace_move_prefix} - 9 : yabai -m window --space 9; yabai -m space --focus 9;
+        ${current_workspace_move_prefix} - 0 : yabai -m window --space 10; yabai -m space --focus 10;
+        # ${diffent_workspace_move_prefix} - ${keycodes.P} : yabai -m window --space prev ; yabai -m space --focus prev;
+        # ${diffent_workspace_move_prefix} - ${keycodes.N} : yabai -m window --space next ; yabai -m space --focus next;
+        ${current_workspace_move_prefix} - ${keycodes.A} : yabai -m window --space first; yabai -m space --focus first;
+        ${current_workspace_move_prefix} - ${keycodes.E} : yabai -m window --space last ; yabai -m space --focus last;
+        ${current_workspace_move_prefix} - ${keycodes.R} : yabai -m window --space recent; yabai -m space --focus recent;
+
+        # toggle fullscreen or split
+        # ${diffent_workspace_move_prefix}  - ${keycodes.F} : yabai -m window --toggle native-fullscreen
+        # ${diffent_workspace_move_prefix}  - ${keycodes.S} : yabai -m window --toggle split && yabai -m space --balance
+
+        ## Resize (size_chang_prefix - ...)
+        # Resize windows: size_chang_prefix - {p, n, b, f}
+        ${size_chang_prefix} - ${keycodes.B} : yabai -m window --resize right:-100:0  || yabai -m window --resize left:-100:0
+        ${size_chang_prefix} - ${keycodes.N} : yabai -m window --resize bottom:0:100  || yabai -m window --resize top:0:100
+        ${size_chang_prefix} - ${keycodes.P} : yabai -m window --resize bottom:0:-100 || yabai -m window --resize top:0:-100
+        ${size_chang_prefix} - ${keycodes.F} : yabai -m window --resize right:100:0   || yabai -m window --resize left:100:0
+        # Equalize size of windows
+        ${size_chang_prefix} - ${keycodes.E} : yabai -m space --balance;
+
+        ## Insertion (insert_prefix - ...)
+        # Set insertion point for focused container: ${insert_prefix}  - {p,n,b,f,s}
+        # ${insert_prefix} - ${keycodes.B} : yabai -m window --insert west
+        # ${insert_prefix} - ${keycodes.N} : yabai -m window --insert south
+        # ${insert_prefix} - ${keycodes.P} : yabai -m window --insert north
+        # ${insert_prefix} - ${keycodes.F} : yabai -m window --insert east
+        # ${insert_prefix} - ${keycodes.S} : yabai -m window --insert stack
+        ## high (insert_prefix - ...)
+        ${high_prefix} - ${keycodes.X} :  \
+          /usr/bin/env osascript <<< \
+        "display notification \"Restarting Yabai\" with title \"Yabai\""; \
+        launchctl kickstart -k gui/''${UID}/org.nixos.yabai && launchctl kickstart -k gui/''${UID}/org.nixos.skhd
+      '';
+  };
+
+  services.sketchybar = {
+    enable = true;
+    extraPackages = [ pkgs.jq ];
+    # this code from https://github.com/FelixKratz/dotfiles
+    config =
+      let
+        sketchybar_scripts = ./sketchybar;
+      in
+      ''
+        #!/usr/bin/env sh
+        SKETCHBAR_BIN="/run/current-system/sw/bin/sketchybar"
+
+        PLUGIN_DIR="$HOME/.config/sketchybar/plugins"
+        ITEM_DIR="$HOME/.config/sketchybar/items"
+
+        LABEL_FONT_FAMILY="苹方-简"
+        LABEL_FONT_STYLE="Medium"
+        LABEL_FONT_SIZE="14"
+        LABEL_COLOR=0xffdfe1ea
+        ICON_FONT_FAMILY="Hack Nerd Font"
+        ICON_FONT_STYLE="Regular"
+        ICON_FONT_SIZE="16"
+        BAR_COLOR=0xee1a1c26
+        LABEL_COLOR=0xffdfe1ea
+        BACKGROUND_COLOR=0xff252731
+        BACKGROUND_HEIGHT=33
+        BACKGROUND_CORNER_RADIUS=20
+        PADDINGS=3
+
+        $SKETCHBAR_BIN --bar height=50                                                     \
+        corner_radius=14                                              \
+        border_width=0                                                \
+        margin=95                                                     \
+        blur_radius=0                                                 \
+        position=top                                                  \
+        padding_left=4                                                \
+        padding_right=4                                               \
+        color=$BAR_COLOR                                              \
+        topmost=off                                                   \
+        sticky=on                                                     \
+        font_smoothing=off                                            \
+        y_offset=10                                                   \
+        notch_width=0                                                 \
+        \
+        --default drawing=on                                                    \
+        updates=when_shown                                            \
+        label.font.family="$LABEL_FONT_FAMILY"                        \
+        label.font.style=$LABEL_FONT_STYLE                            \
+        label.font.size=$LABEL_FONT_SIZE                              \
+        label.padding_left=$PADDINGS                                  \
+        label.padding_right=$PADDINGS                                 \
+        icon.font.family="$ICON_FONT_FAMILY"                          \
+        icon.font.style=$ICON_FONT_STYLE                              \
+        icon.font.size=$ICON_FONT_SIZE                                \
+        icon.padding_left=$PADDINGS                                   \
+        icon.padding_right=$PADDINGS                                  \
+        background.padding_right=$PADDINGS                            \
+        background.padding_left=$PADDINGS                             \
+
+        $SKETCHBAR_BIN --add event window_focus
+        $SKETCHBAR_BIN --add event title_change
+
+        . "$ITEM_DIR/menu.sh"
+        . "$ITEM_DIR/system.sh"
+        . "$ITEM_DIR/window_title.sh"
+
+        . "$ITEM_DIR/time.sh"
+        . "$ITEM_DIR/battery.sh"
+
+        . "$ITEM_DIR/bluetooth.sh"
+        . "$ITEM_DIR/vpn.sh"
+        . "$ITEM_DIR/wifi.sh"
+
+        $SKETCHBAR_BIN --update
+
+
+      '';
+  };
+
+
+
+  nix = {
+    package = pkgs.nix;
+    gc = {
+      # Garbage collection
+      automatic = true;
+      interval.Day = 7;
+      options = "--delete-older-than 7d";
     };
-    skhd = {
-      enable = true;
-      skhdConfig =
-        let
-          keycodes = import ./keycodes.nix;
-          current_workspace_prefix = "ctrl + alt";
-          current_workspace_move_prefix = "ctrl + shift";
-          diffent_workspace_move_prefix = "shift + alt + ctrl";
-          size_chang_prefix = "cmd + ctrl";
-          insert_prefix = "shift + alt";
-          high_prefix = "shift + ctrl + cmd";
-        in
-        ''
-          #!/usr/bin/env sh
-          ## Current workspace move and focus
-          # focus window : current_workspace_prefix - {p, n, b, f}
-          ${current_workspace_prefix} - ${keycodes.B} : yabai -m window --focus west  || yabai -m display --focus west
-          ${current_workspace_prefix} - ${keycodes.N} : yabai -m window --focus south || yabai -m display --focus south
-          ${current_workspace_prefix} - ${keycodes.P} : yabai -m window --focus north || yabai -m display --focus north
-          ${current_workspace_prefix} - ${keycodes.F} : yabai -m window --focus east  || yabai -m display --focus east
-          ${current_workspace_prefix} - ${keycodes.A} : yabai -m window --focus first || yabai -m display --focus north
-          ${current_workspace_prefix} - ${keycodes.E} : yabai -m window --focus last  || yabai -m display --focus east
-
-          ## Current workspace window adjust use ${current_workspace_move_prefix} as prefix
-          # Make window zoom to fullscreen: current_workspace_prefix - ${keycodes.Z}
-          ${current_workspace_move_prefix} - ${keycodes.Z} : yabai -m window --toggle zoom-fullscreen;
-
-          # Mirror Space on X and Y Axis: current_workspace_move_prefix - {x, y,r}
-          ${current_workspace_move_prefix} - ${keycodes.X} : yabai -m space --mirror x-axis
-          ${current_workspace_move_prefix} - ${keycodes.Y} : yabai -m space --mirror y-axis
-          ${current_workspace_move_prefix} - ${keycodes.R} : yabai -m space --rotate 90
-
-
-          # Enable / Disable gaps in current workspace
-          ${current_workspace_move_prefix} - ${keycodes.G} : yabai -m space --toggle padding; yabai -m space --toggle gap
-
-          # toggle whether the focused window should have a border
-          ${current_workspace_move_prefix} - ${keycodes.W} : yabai -m window --toggle border
-          # toggle whether the focused window should be shown on all spaces
-          ${current_workspace_move_prefix} - ${keycodes.S} : yabai -m window --toggle sticky
-          # toggle whether the focused window should be tiled (only on bsp spaces)
-          ${current_workspace_move_prefix} - ${keycodes.Space} : yabai -m window --toggle float
-
-          ## Current workspace move
-          # Moving windows in spaces: current_workspace_move_prefix - {p, n, b, f}
-          ${current_workspace_move_prefix} - ${keycodes.B} : yabai -m window --warp west  || (yabai -m window --display west  ; yabai -m display --focus west )
-          ${current_workspace_move_prefix} - ${keycodes.N} : yabai -m window --warp south || (yabai -m window --display south ; yabai -m display --focus south)
-          ${current_workspace_move_prefix} - ${keycodes.P} : yabai -m window --warp north || (yabai -m window --display north ; yabai -m display --focus north)
-          ${current_workspace_move_prefix} - ${keycodes.F} : yabai -m window --warp east  || (yabai -m window --display east  ; yabai -m display --focus east )
-
-          ## Diffent Workspace Operation (size_chang_prefix - ...)
-          # Moving windows between spaces: diffent_workspace_move_prefix - {1, 2, 3, 4, p, n,r } (Assumes 4 Spaces Max per Display)
-          ${current_workspace_move_prefix} - 1 : yabai -m window --space 1; yabai -m space --focus 1;
-          ${current_workspace_move_prefix} - 2 : yabai -m window --space 2; yabai -m space --focus 2;
-          ${current_workspace_move_prefix} - 3 : yabai -m window --space 3; yabai -m space --focus 3;
-          ${current_workspace_move_prefix} - 4 : yabai -m window --space 4; yabai -m space --focus 4;
-          ${current_workspace_move_prefix} - 5 : yabai -m window --space 5; yabai -m space --focus 5;
-          ${current_workspace_move_prefix} - 6 : yabai -m window --space 6; yabai -m space --focus 6;
-          ${current_workspace_move_prefix} - 7 : yabai -m window --space 7; yabai -m space --focus 7;
-          ${current_workspace_move_prefix} - 8 : yabai -m window --space 8; yabai -m space --focus 8;
-          ${current_workspace_move_prefix} - 9 : yabai -m window --space 9; yabai -m space --focus 9;
-          ${current_workspace_move_prefix} - 0 : yabai -m window --space 10; yabai -m space --focus 10;
-          # ${diffent_workspace_move_prefix} - ${keycodes.P} : yabai -m window --space prev ; yabai -m space --focus prev;
-          # ${diffent_workspace_move_prefix} - ${keycodes.N} : yabai -m window --space next ; yabai -m space --focus next;
-          ${current_workspace_move_prefix} - ${keycodes.A} : yabai -m window --space first; yabai -m space --focus first;
-          ${current_workspace_move_prefix} - ${keycodes.E} : yabai -m window --space last ; yabai -m space --focus last;
-          ${current_workspace_move_prefix} - ${keycodes.R} : yabai -m window --space recent; yabai -m space --focus recent;
-
-          # toggle fullscreen or split
-          # ${diffent_workspace_move_prefix}  - ${keycodes.F} : yabai -m window --toggle native-fullscreen
-          # ${diffent_workspace_move_prefix}  - ${keycodes.S} : yabai -m window --toggle split && yabai -m space --balance
-
-          ## Resize (size_chang_prefix - ...)
-          # Resize windows: size_chang_prefix - {p, n, b, f}
-          ${size_chang_prefix} - ${keycodes.B} : yabai -m window --resize right:-100:0  || yabai -m window --resize left:-100:0
-          ${size_chang_prefix} - ${keycodes.N} : yabai -m window --resize bottom:0:100  || yabai -m window --resize top:0:100
-          ${size_chang_prefix} - ${keycodes.P} : yabai -m window --resize bottom:0:-100 || yabai -m window --resize top:0:-100
-          ${size_chang_prefix} - ${keycodes.F} : yabai -m window --resize right:100:0   || yabai -m window --resize left:100:0
-          # Equalize size of windows
-          ${size_chang_prefix} - ${keycodes.E} : yabai -m space --balance;
-
-          ## Insertion (insert_prefix - ...)
-          # Set insertion point for focused container: ${insert_prefix}  - {p,n,b,f,s}
-          # ${insert_prefix} - ${keycodes.B} : yabai -m window --insert west
-          # ${insert_prefix} - ${keycodes.N} : yabai -m window --insert south
-          # ${insert_prefix} - ${keycodes.P} : yabai -m window --insert north
-          # ${insert_prefix} - ${keycodes.F} : yabai -m window --insert east
-          # ${insert_prefix} - ${keycodes.S} : yabai -m window --insert stack
-          ## high (insert_prefix - ...)
-          ${high_prefix} - ${keycodes.X} :  \
-            /usr/bin/env osascript <<< \
-          "display notification \"Restarting Yabai\" with title \"Yabai\""; \
-          launchctl kickstart -k gui/''${UID}/org.nixos.yabai && launchctl kickstart -k gui/''${UID}/org.nixos.skhd
-        '';
-    };
-    sketchybar = {
-      enable = true;
-      extraPackages = [ pkgs.jq ];
-      # this code from https://github.com/FelixKratz/dotfiles
-      config =
-        let
-          sketchybar_scripts = ./sketchybar;
-        in
-        ''
-                    bar=(
-          color=0xff24273a
-          height=32
-          sticky=on
-          padding_left=7
-          padding_right=7
-          )
-
-          default=(
-          icon.drawing=off
-          label.padding_left=4
-          label.padding_right=4
-          label.color=0xffcad3f5
-          )
-
-          sketchybar \
-          --bar "$\{bar[@]}" \
-          --default "$\{default[@]}"
-
-          sketchybar \
-          --add item space left \
-          --set space script='sketchybar --set $NAME label="[$(echo "$INFO" | jq .[])]"'\
-          --subscribe space space_change
-
-
-          sketchybar \
-          --add item app_name left \
-          --set app_name script='sketchybar --set $NAME label="$USER::$INFO"' \
-          --subscribe app_name front_app_switched
-
-          sketchybar \
-          --add item time right \
-          --set time script='sketchybar --set $NAME label="$(date "+%H:%M")"' \
-          update_freq=30 \
-          --subscribe time system_woke
-
-          sketchybar \
-          --add item ip right \
-          --set ip script='sketchybar --set $NAME label="/$(ipconfig getifaddr en0)/"'\
-          --subscribe ip wifi_change
-
-          sketchybar --update
-        '';
-    };
-    # spacebar = {
-    #   enable = true;
-    #   package = pkgs.spacebar;
-    #   config = {
-    #     position = "top";
-    #     display = "main";
-    #     height = 26;
-    #     title = "on";
-    #     spaces = "on";
-    #     clock = "on";
-    #     power = "on";
-    #     padding_left = 20;
-    #     padding_right = 20;
-    #     spacing_left = 25;
-    #     spacing_right = 15;
-    #     text_font = ''"Menlo:Regular:12.0"'';
-    #     icon_font = ''"Font Awesome 5 Free:Solid:12.0"'';
-    #     background_color = "0xff202020";
-    #     foreground_color = "0xffa8a8a8";
-    #     power_icon_color = "0xffcd950c";
-    #     battery_icon_color = "0xffd75f5f";
-    #     dnd_icon_color = "0xffa8a8a8";
-    #     clock_icon_color = "0xffa8a8a8";
-    #     power_icon_strip = " ";
-    #     space_icon = "•";
-    #     space_icon_strip = "1 2 3 4 5 6 7 8 9 10";
-    #     spaces_for_all_displays = "on";
-    #     display_separator = "on";
-    #     display_separator_icon = "";
-    #     space_icon_color = "0xff458588";
-    #     space_icon_color_secondary = "0xff78c4d4";
-    #     space_icon_color_tertiary = "0xfffff9b0";
-    #     clock_icon = "";
-    #     dnd_icon = "";
-    #     clock_format = ''"%d/%m/%y %R"'';
-    #     right_shell = "on";
-    #     right_shell_icon = "";
-    #     right_shell_command = "whoami";
-    #   };
-    # };
   };
 
   homebrew = {
@@ -422,8 +430,12 @@
     brews = [
       "macism"
       "mas"
+      "blueutil"
+      "ifstat"
+      "cava"
     ];
     casks = [
+
       # "sunloginclient"
       "adrive"
       "snipaste"
@@ -459,46 +471,13 @@
       "sfm"
       "marginnote"
       "zotero"
+      "background-music"
     ];
   };
 
-  nix = {
-    package = pkgs.nix;
-    gc = {
-      # Garbage collection
-      automatic = true;
-      interval.Day = 7;
-      options = "--delete-older-than 7d";
-    };
 
 
-    settings = {
-      auto-optimise-store = true;
-      experimental-features = "nix-command flakes";
 
-    };
-  };
-  nixpkgs = {
-    # You can add overlays here
-    overlays = [
-      # Add overlays your own flake exports (from overlays and pkgs dir):
-      outputs.overlays.additions
-      outputs.overlays.modifications
-      outputs.overlays.unstable-packages
-
-      # You can also add overlays exported from other flakes:
-      # neovim-nightly-overlay.overlays.default
-
-      # Or define it inline, for example:
-      # (final: prev: {
-      #   hi = final.hello.overrideAttrs (oldAttrs: {
-      #     patches = [ ./change-hello-to-hi.patch ];
-      #   });
-      # })
-    ];
-
-    config.allowUnfree = true; # Allow proprietary software.
-  };
 
   security.pam.enableSudoTouchIdAuth = true;
   system = {

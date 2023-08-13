@@ -1,29 +1,25 @@
 #!/bin/sh
 
-DESIRED_SPACES_PER_DISPLAY=5
-CURRENT_SPACES="$(yabai -m query --displays | jq -r '.[].spaces | @sh')"
+function setup_space {
+  local idx="$1"
+  local name="$2"
+  local space=
 
-DELTA=0
-while read -r line
-do
-  LAST_SPACE="$(echo "${line##* }")"
-  LAST_SPACE=$(($LAST_SPACE+$DELTA))
-  EXISTING_SPACE_COUNT="$(echo "$line" | wc -w)"
-  MISSING_SPACES=$(($DESIRED_SPACES_PER_DISPLAY - $EXISTING_SPACE_COUNT))
-  if [ "$MISSING_SPACES" -gt 0 ]; then
-    for i in $(seq 1 $MISSING_SPACES)
-    do
-      yabai -m space --create "$LAST_SPACE"
-      LAST_SPACE=$(($LAST_SPACE+1))
-    done
-  elif [ "$MISSING_SPACES" -lt 0 ]; then
-    for i in $(seq 1 $((-$MISSING_SPACES)))
-    do
-      yabai -m space --destroy "$LAST_SPACE"
-      LAST_SPACE=$(($LAST_SPACE-1))
-    done
+  space=$(yabai -m query --spaces --space "$idx")
+  if [ -z "$space" ]; then
+    yabai -m space --create
   fi
-  DELTA=$(($DELTA+$MISSING_SPACES))
-done <<< "$CURRENT_SPACES"
 
-# sketchybar --trigger space_change --trigger windows_on_spaces
+  yabai -m space "$idx" --label "$name"
+}
+
+setup_space 1 code
+setup_space 2 browser
+setup_space 3 chat
+setup_space 4 work
+setup_space 5 mail
+setup_space 6 music
+setup_space 7 game
+setup_space 8 video
+setup_space 9 database
+setup_space 10 document
