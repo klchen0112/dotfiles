@@ -13,7 +13,9 @@
 #           └─ ./emacs
 #               └─ ./doom-emacs
 #
-{ config
+{ inputs
+, outputs
+, config
 , lib
 , pkgs
 , username
@@ -48,9 +50,11 @@
   ] ++ (lib.optionals pkgs.stdenv.isDarwin) [
     # pngpaste for org mode download clip
     pngpaste
-  ]
+  ];
 
-  ;
+  xdg.dataFile.emacs.source = inputs.doomemacs;
+  xdg.dataFile.doom.source = ./doom;
+
 
   programs.emacs = {
     enable = true;
