@@ -1,6 +1,0 @@
-*.db
-*.dat
-*.mmdb
-proxy_provider/*
-logs
-/*.yaml

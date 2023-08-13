@@ -1,6 +1,0 @@
-# -*- mode: snippet -*-
-# name: mathcal
-# key: mcal
-# uuid: mathcal
-# --
-\mathcal{$0}
