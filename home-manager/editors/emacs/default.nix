@@ -52,8 +52,8 @@
     pngpaste
   ];
 
-  xdg.dataFile.emacs.source = inputs.doomemacs;
-  xdg.dataFile.doom.source = ./doom;
+  # home.file.".config/emacs".source = inputs.doomemacs;
+  home.file.".config/doom".source = ./doom;
 
 
   programs.emacs = {

@@ -1,10 +1,13 @@
 #
 # Download client
 #
-{pkgs, ...}: {
+{ pkgs, ... }: {
   programs.yt-dlp = {
     enable = true;
   };
+  home.file.".config/aria2/clean.sh".source = ./aria2/clean.sh;
+  home.file.".config/aria2/delete.sh".source = ./aria2/delete.sh;
+
   programs.aria2 = {
     enable = true;
     settings = {
