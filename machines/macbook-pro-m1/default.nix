@@ -322,8 +322,8 @@
           )
 
           sketchybar \
-          --bar "${bar[@]}" \
-          --default "${default[@]}"
+          --bar "$\{bar[@]}" \
+          --default "$\{default[@]}"
 
           sketchybar \
           --add item space left \

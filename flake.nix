@@ -18,10 +18,17 @@
   nixConfig = {
     extra-experimental-features = "nix-command flakes";
     extra-substituters = [
+      "https://mirrors.ustc.edu.cn/nix-channels/store"
+      "https://mirrors.cernet.edu.cn/nix-channels/store"
+      "https://mirror.sjtu.edu.cn/nix-channels/store"
+      "https://mirrors.tuna.tsinghua.edu.cn/nix-channels/store"
       "https://nix-community.cachix.org"
+      "https://hyprland.cachix.org"
     ];
     extra-trusted-public-keys = [
       "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+      "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
+
     ];
   };
   inputs =
@@ -76,10 +83,16 @@
         inputs.flake-utils.follows = "flake-utils";
       };
 
+      doomemacs = {
+        url = "github:LuigiPiucco/doom-emacs";
+        flake = false;
+      };
+
+
       nix-doom-emacs = {
         # Nix-community Doom Emacs
         url = "github:nix-community/nix-doom-emacs";
-        # inputs.doom-emacs.url = "github:doomemacs/doomemacs/master";
+        # inputs.doom-emacs.url ="github:doomemacs/doomemacs/master";
         inputs.nixpkgs.follows = "nixpkgs";
         inputs.emacs-overlay.follows = "emacs-overlay";
         inputs.flake-utils.follows = "flake-utils";
@@ -249,3 +262,4 @@
       formatter = forAllSystems (system: nixpkgs.legacyPackages.${system}.nixpkgs-fmt);
     };
 }
+
