@@ -1,0 +1,65 @@
+SKETCHBAR_BIN="/opt/homebrew/bin/sketchybar_bottombar"
+
+PLUGIN_DIR="$HOME/.config/sketchybar/plugins"
+ITEM_DIR="$HOME/.config/sketchybar/items"
+
+LABEL_FONT_FAMILY="苹方-简"
+LABEL_FONT_STYLE="Medium"
+LABEL_FONT_SIZE="14"
+LABEL_COLOR=0xffdfe1ea
+ICON_FONT_FAMILY="Hack Nerd Font"
+ICON_FONT_STYLE="Regular"
+ICON_FONT_SIZE="16"
+BAR_COLOR=0xee1a1c26
+BACKGROUND_COLOR=0xff252731
+BACKGROUND_HEIGHT=33
+BACKGROUND_CORNER_RADIUS=20
+PADDINGS=3
+
+$SKETCHBAR_BIN --bar height=50                                                     \
+                     corner_radius=14                                              \
+                     border_width=0                                                \
+                     margin=95                                                     \
+                     blur_radius=0                                                 \
+                     position=bottom                                               \
+                     padding_left=4                                                \
+                     padding_right=4                                               \
+                     color=$BAR_COLOR                                              \
+                     topmost=off                                                   \
+                     sticky=on                                                     \
+                     font_smoothing=off                                            \
+                     y_offset=5                                                    \
+                     notch_width=0                                                 \
+                                                                                   \
+           --default drawing=on                                                    \
+                     updates=when_shown                                            \
+                     label.font.family="$LABEL_FONT_FAMILY"                        \
+                     label.font.style=$LABEL_FONT_STYLE                            \
+                     label.font.size=$LABEL_FONT_SIZE                              \
+                     label.padding_left=$PADDINGS                                  \
+                     label.padding_right=$PADDINGS                                 \
+                     icon.font.family="$ICON_FONT_FAMILY"                          \
+                     icon.font.style=$ICON_FONT_STYLE                              \
+                     icon.font.size=$ICON_FONT_SIZE                                \
+                     icon.padding_left=$PADDINGS                                   \
+                     icon.padding_right=$PADDINGS                                  \
+                     background.padding_right=$PADDINGS                            \
+                     background.padding_left=$PADDINGS                             \
+
+$SKETCHBAR_BIN --add event window_focus
+$SKETCHBAR_BIN --add event title_change
+
+. "$ITEM_DIR/mic.sh"
+. "$ITEM_DIR/sound.sh"
+. "$ITEM_DIR/cava.sh"
+. "$ITEM_DIR/music.sh"
+
+. "$ITEM_DIR/spaces.sh"
+
+. "$ITEM_DIR/tray.sh"
+. "$ITEM_DIR/feishu.sh"
+. "$ITEM_DIR/wechat.sh"
+. "$ITEM_DIR/email.sh"
+#. "$ITEM_DIR/playing.sh"
+
+$SKETCHBAR_BIN --update

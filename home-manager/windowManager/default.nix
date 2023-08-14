@@ -2,7 +2,7 @@
 # Download client
 #
 { pkgs, ... }: {
-  home.file.".config/sketchybar".source = ./sketchybar;
-  home.file.".config/yabai".source = ./yabai;
+  # home.file.".config/sketchybar".source = ../../machines/macbook-pro-m1/sketchybar;
+  # home.file.".config/yabai".source = ./yabai;
 }
 

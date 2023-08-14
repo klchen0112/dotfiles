@@ -413,12 +413,8 @@
         . "$ITEM_DIR/sound.sh"
         # . "$ITEM_DIR/music.sh"
 
-
-
         #. "$ITEM_DIR/bluetooth.sh"
         # . "$ITEM_DIR/vpn.sh"
-
-
 
         $SKETCHBAR_BIN --update
 
@@ -427,7 +423,7 @@
   };
 
   services.sketchybar-bottom = {
-    enable = true;
+    enable = false;
   };
 
 
@@ -471,6 +467,7 @@
       "homebrew/cask-fonts"
       "homebrew/services"
       "laishulu/macism"
+      # "FelixKratz/formulae"
     ];
     brews = [
       "macism"
@@ -479,7 +476,7 @@
       "ifstat"
     ];
     casks = [
-
+      # "sketchybar"
       # "sunloginclient"
       "adrive"
       "snipaste"
