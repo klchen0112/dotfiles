@@ -166,6 +166,7 @@
       # These are usually stuff you would upstream into home-manager
       homeManagerModules = import ./modules/home-manager;
 
+      darwinModules = import ./modules/darwin;
 
       nixosConfigurations =
         let
@@ -255,7 +256,7 @@
             modules = [
               # Modules that are used
               ./machines/macbook-pro-m1
-
+              darwinModules.sketchybar-bottom
             ];
           };
         };

@@ -362,7 +362,7 @@
         $SKETCHBAR_BIN --bar height=50                                                     \
         corner_radius=14                                              \
         border_width=0                                                \
-        margin=95                                                     \
+        margin=10                                                     \
         blur_radius=0                                                 \
         position=top                                                  \
         padding_left=4                                                \
@@ -373,7 +373,6 @@
         font_smoothing=off                                            \
         y_offset=10                                                   \
         notch_width=0                                                 \
-        \
         --default drawing=on                                                    \
         updates=when_shown                                            \
         label.font.family="$LABEL_FONT_FAMILY"                        \
@@ -407,6 +406,7 @@
         # add right right to left
         . "$ITEM_DIR/tray.sh"
         . "$ITEM_DIR/time.sh"
+        . "$ITEM_DIR/wifi.sh"
         . "$ITEM_DIR/battery.sh"
 
         . "$ITEM_DIR/mic.sh"
@@ -417,8 +417,6 @@
 
         #. "$ITEM_DIR/bluetooth.sh"
         # . "$ITEM_DIR/vpn.sh"
-        #. "$ITEM_DIR/wifi.sh"
-
 
 
 
@@ -428,6 +426,9 @@
       '';
   };
 
+  services.sketchybar-bottom = {
+    enable = true;
+  };
 
 
   nix = {
