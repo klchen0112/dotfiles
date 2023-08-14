@@ -38,7 +38,7 @@
     ../../socialMedia
     ../../terminal
     ../../vm
-    ../../windowManager
+    # ../../windowManager
     # ../../vpn
   ];
 
