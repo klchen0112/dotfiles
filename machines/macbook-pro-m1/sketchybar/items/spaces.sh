@@ -15,8 +15,8 @@ $SKETCHBAR_BIN --add   space          space_template center                     
                                       background.color=0xff252630                            \
                                       background.height=$BACKGROUND_HEIGHT                   \
                                       background.corner_radius=$BACKGROUND_CORNER_RADIUS     \
-                                      background.padding_right=-24                           \
-                                      background.padding_left=-24                            \
+                                      background.padding_right=-16                           \
+                                      background.padding_left=-16                           \
                                       click_script="$SPACE_CLICK_SCRIPT"                     \
                                       ignore_association=on                                  \
                                                                                              \
@@ -69,9 +69,9 @@ $SKETCHBAR_BIN --add   space          space_template center                     
                                                                                              \
                --clone spaces.10      space_template                                         \
                --set   spaces.10      associated_space=10                                    \
-                                      icon=󰈙                                                 \
+                                      icon=󰈙                                                \
                                       script="$PLUGIN_DIR/space.sh"                          \
-                                      icon.padding_right=0                                   \
+                                      icon.padding_right=16                                   \
                                                                                              \
                --add   bracket        spaces                                                 \
                                       spaces.1                                               \

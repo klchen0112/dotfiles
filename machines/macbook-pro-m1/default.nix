@@ -415,9 +415,9 @@
 
 
 
-        . "$ITEM_DIR/bluetooth.sh"
+        #. "$ITEM_DIR/bluetooth.sh"
         # . "$ITEM_DIR/vpn.sh"
-        . "$ITEM_DIR/wifi.sh"
+        #. "$ITEM_DIR/wifi.sh"
 
 
 
