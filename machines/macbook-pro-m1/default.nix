@@ -476,7 +476,6 @@
       "mas"
       "blueutil"
       "ifstat"
-      "cava"
     ];
     casks = [
 
@@ -515,7 +514,6 @@
       "sfm"
       "marginnote"
       "zotero"
-      "background-music"
     ];
   };
 
