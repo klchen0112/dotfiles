@@ -7,7 +7,7 @@ $SKETCHBAR_BIN --add item cpu right                                             
                           icon.color=0xfff6768e                                      \
                           icon.y_offset=-1                                           \
                           label="??%"                                                \
-                          label.padding_right=0                                     \
+                          label.padding_right=4                                     \
                           background.color=$BACKGROUND_COLOR                         \
                           background.height=$BACKGROUND_HEIGHT                       \
                           background.corner_radius=$BACKGROUND_CORNER_RADIUS         \
@@ -25,7 +25,7 @@ $SKETCHBAR_BIN --add item mem right                                             
                           icon.color=0xff4ed2e3                                      \
                           icon.y_offset=-1                                           \
                           label="??%"                                                \
-                          label.padding_right=0                                     \
+                          label.padding_right=4                                     \
                           background.color=$BACKGROUND_COLOR                         \
                           background.height=$BACKGROUND_HEIGHT                       \
                           background.corner_radius=$BACKGROUND_CORNER_RADIUS         \
@@ -41,7 +41,7 @@ $SKETCHBAR_BIN --add item disk right                                            
                           icon.padding_right=4                                       \
                           icon.color=0xfffbc02d                                      \
                           icon.y_offset=-1                                           \
-                          label.padding_right=0                                     \
+                          label.padding_right=4                                     \
                           background.color=$BACKGROUND_COLOR                         \
                           background.height=$BACKGROUND_HEIGHT                       \
                           background.corner_radius=$BACKGROUND_CORNER_RADIUS         \

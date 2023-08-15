@@ -356,7 +356,7 @@
         LABEL_COLOR=0xffdfe1ea
         BACKGROUND_COLOR=0xff252731
         BACKGROUND_HEIGHT=33
-        BACKGROUND_CORNER_RADIUS=20
+        BACKGROUND_CORNER_RADIUS=16
         PADDINGS=3
 
         $SKETCHBAR_BIN --bar height=50                                                     \
