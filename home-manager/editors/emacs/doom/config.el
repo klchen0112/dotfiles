@@ -136,12 +136,12 @@
 ;; (setq doom-theme 'doom-one)
 ;; (setq doom-theme 'doom-dracula)
 ;; (setq doom-theme 'doom-solarized-light)
-(setq doom-themes-dark '("doom-dracula" "doom-vibrant" "doom-city-lights" "doom-moonlight" "doom-horizon"
-                         "doom-one" "doom-solarized-dark" "doom-palenight" "doom-rouge" "doom-spacegrey"
-                         "doom-old-hope" "doom-oceanic-next" "doom-monokai-pro" "doom-material" "doom-henna"
-                         "doom-ephemeral" "chocolate" "doom-zenburn"))
+(setq doom-themes-dark '(doom-dracula doom-vibrant doom-city-lights doom-moonlight doom-horizon
+                         doom-one doom-solarized-dark doom-palenight doom-rouge doom-spacegrey
+                         doom-old-hope doom-oceanic-next doom-monokai-pro doom-material doom-henna
+                         doom-ephemeral chocolate doom-zenburn))
 
-(setq doom-themes-light '("doom-one-light" "doom-solarized-light" "doom-flatwhite" "doom-ayu-light" "doom-opera-light" "tsdh-light"))
+(setq doom-themes-light '(doom-one-light doom-solarized-light doom-flatwhite doom-ayu-light doom-opera-light))
 
 (defun random-choice (items)
   "Random choice a list"
@@ -157,10 +157,8 @@
     ('dark  (load-theme 'doom-one t))
 ))
 
-;;(if IS-MAC
-;;  (add-hook 'ns-system-appearance-change-functions #'my/apply-theme)
+;;(if IS-MAC (add-hook 'ns-system-appearance-change-functions #'my/apply-theme)
 (setq doom-theme (random-choice doom-themes-light))
-
 
 (use-package! doom-themes
   :config
