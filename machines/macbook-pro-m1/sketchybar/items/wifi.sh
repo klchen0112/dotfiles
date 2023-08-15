@@ -3,10 +3,10 @@ WIFI_CLICK_SCRIPT="open 'x-apple.systempreferences:com.apple.preference.network?
 $SKETCHBAR_BIN --add item wifi right                                             \
                --set wifi update_freq=1                                          \
                           icon=                                                 \
-                          icon.padding_left=16                                   \
+                          icon.padding_left=8                                   \
                           icon.padding_right=4                                   \
                           icon.color=0xff9ece6a                                  \
-                          label.padding_right=16                                 \
+                          label.padding_right=8                                 \
                           background.color=$BACKGROUND_COLOR                     \
                           background.height=$BACKGROUND_HEIGHT                   \
                           background.corner_radius=$BACKGROUND_CORNER_RADIUS     \

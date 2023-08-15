@@ -4,6 +4,7 @@ $SKETCHBAR_BIN --add item email left                                            
                --set email update_freq=10                                        \
                           icon=󰇮                                                 \
                           icon.color=0xff7aa2f7                                  \
+                          icon.font.size=20                                          \
                           icon.padding_left=16                                   \
                           icon.padding_right=4                                   \
                           label.padding_right=4                                  \

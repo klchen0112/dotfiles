@@ -1,4 +1,4 @@
-$SKETCHBAR_BIN --add item cpu left                                                   \
+$SKETCHBAR_BIN --add item cpu right                                                   \
                --set cpu  update_freq=10                                             \
                           icon=                                                     \
                           icon.padding_left=16                                       \
@@ -16,7 +16,7 @@ $SKETCHBAR_BIN --add item cpu left                                              
                           script="$PLUGIN_DIR/cpu.sh"                                \
                           click_script="open -a \"Activity Monitor\"; osascript -e 'tell application \"Activity Monitor\" to activate' -e 'tell application \"System Events\" to tell process \"Activity Monitor\" to click radio button 1 of radio group 1 of UI element 3'"
 
-$SKETCHBAR_BIN --add item mem left                                                   \
+$SKETCHBAR_BIN --add item mem right                                                   \
                --set mem  update_freq=10                                             \
                           icon=󰍛                                                     \
                           icon.font.size=20                                          \
@@ -33,7 +33,7 @@ $SKETCHBAR_BIN --add item mem left                                              
                           script="$PLUGIN_DIR/mem.sh"                                \
                           click_script="open -a \"Activity Monitor\"; osascript -e 'tell application \"Activity Monitor\" to activate' -e 'tell application \"System Events\" to tell process \"Activity Monitor\" to click radio button 2 of radio group 1 of UI element 3'"
 
-$SKETCHBAR_BIN --add item disk left                                                  \
+$SKETCHBAR_BIN --add item disk right                                                  \
                --set disk update_freq=10                                             \
                           icon=                                                     \
                           icon.font.size=20                                          \

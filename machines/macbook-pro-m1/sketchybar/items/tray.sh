@@ -7,7 +7,7 @@ $SKETCHBAR_BIN --add alias 'TextInputMenuAgent' right                 \
                      icon.padding_left=0                              \
                      icon.padding_right=0                             \
                      background.padding_right=0                       \
-                     background.padding_left=5            \
+                     background.padding_left=0            \
                      update_freq=$UPDATE_FREG                         \
                      script="$PLUGIN_DIR/tray.sh"                     \
 

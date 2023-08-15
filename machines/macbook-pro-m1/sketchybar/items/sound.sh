@@ -2,11 +2,11 @@ SOUND_CLICK_SCRIPT="open /System/Library/PreferencePanes/Sound.prefPane"
 
 $SKETCHBAR_BIN --add item sound right                                             \
            --set sound update_freq=0                                             \
-                       icon.padding_left=16                                      \
+                       icon.padding_left=0                                      \
                        icon.padding_right=4                                      \
                        icon.color=0xff6c77bb                                     \
                        icon.y_offset=0                                           \
-                       label.padding_right=16                                    \
+                       label.padding_right=3                                    \
                        background.color=$BACKGROUND_COLOR                        \
                        background.height=$BACKGROUND_HEIGHT                      \
                        background.corner_radius=$BACKGROUND_CORNER_RADIUS        \
