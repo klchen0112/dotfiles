@@ -188,8 +188,7 @@
                }: {
                 services.vscode-server.enable = true;
               })
-              home-manager.darwinModules.home-manager
-              modules/hosts/wsl/default.nix
+
             ];
           };
           "i12500" = nixpkgs.lib.nixosSystem {
@@ -201,10 +200,8 @@
             modules = [
               # hyprland.nixosModules.default
               vscode-server.nixosModules.default
-
               ./machines/i12500
-              home-manager.nixosModules.home-manager
-              ./modules/hosts/i12500
+
             ];
           };
         };
@@ -218,7 +215,7 @@
               extraSpecialArgs = { inherit inputs outputs username; };
               modules = [
                 # > Our main home-manager configuration file <
-                ./home-manager/hosts/i12500
+                ./hosts/i12500
               ];
             };
         "klchen@wsl" =
@@ -229,7 +226,7 @@
             extraSpecialArgs = { inherit inputs outputs username; };
             modules = [
               # > Our main home-manager configuration file <
-              ./home-manager/hosts/wsl
+              ./hosts/wsl
             ];
           };
         "chenkailong@macbook-pro-m1" = let username = "chenkailong"; in
@@ -238,7 +235,7 @@
             extraSpecialArgs = { inherit inputs outputs username; };
             modules = [
               # > Our main home-manager configuration file <
-              ./home-manager/hosts/macbook-pro-m1
+              ./hosts/macbook-pro-m1
             ];
           };
 

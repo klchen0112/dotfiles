@@ -9,37 +9,37 @@
   imports = [
     inputs.nix-doom-emacs.hmModule
 
-    ../../browser
-    ../../downloader
-    # ../../editors/codeblocks
-    ../../editors/jetbrains
-    ../../editors/emacs/default.nix
-    # ../../editors/vim
-    # ../../editors/nvim
-    ../../editors/vscode
-    ../../graphics
-    ../../keyboard
-    ../../lang/cpp
-    ../../lang/go
-    ../../lang/json
-    ../../lang/julia
-    ../../lang/lua
-    ../../lang/latex
-    ../../lang/markdown
-    ../../lang/nix
-    ../../lang/nodejs
-    ../../lang/python
-    ../../lang/rust
-    ../../media
-    ../../network
-    ../../notes
-    ../../office
-    ../../shells
-    ../../socialMedia
-    ../../terminal
-    ../../vm
-    # ../../windowManager
-    # ../../vpn
+    ../../home-manager/browser
+    ../../home-manager/downloader
+    # ../../home-manager/editors/codeblocks
+    ../../home-manager/editors/jetbrains
+    ../../home-manager/editors/emacs/default.nix
+    # ../../home-manager/editors/vim
+    # ../../home-manager/editors/nvim
+    ../../home-manager/editors/vscode
+    ../../home-manager/graphics
+    ../../home-manager/keyboard
+    ../../home-manager/lang/cpp
+    ../../home-manager/lang/go
+    ../../home-manager/lang/json
+    ../../home-manager/lang/julia
+    ../../home-manager/lang/lua
+    ../../home-manager/lang/latex
+    ../../home-manager/lang/markdown
+    ../../home-manager/lang/nix
+    ../../home-manager/lang/nodejs
+    ../../home-manager/lang/python
+    ../../home-manager/lang/rust
+    ../../home-manager/media
+    ../../home-manager/network
+    ../../home-manager/notes
+    ../../home-manager/office
+    ../../home-manager/shells
+    ../../home-manager/socialMedia
+    ../../home-manager/terminal
+    ../../home-manager/vm
+    # ../../home-manager/windowManager
+    # ../../home-manager/vpn
   ];
 
   nixpkgs = {
