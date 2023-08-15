@@ -392,7 +392,9 @@
         $SKETCHBAR_BIN --add event title_change
 
         . "$ITEM_DIR/menu.sh"
-        . "$ITEM_DIR/system.sh"
+        . "$ITEM_DIR/spaces.sh"
+        . "$ITEM_DIR/system.sh"`
+
 
         # . "$ITEM_DIR/cava.sh"
         # . "$ITEM_DIR/feishu.sh"
@@ -400,11 +402,12 @@
         . "$ITEM_DIR/email.sh"
 
 
-        . "$ITEM_DIR/spaces.sh"
+
         . "$ITEM_DIR/window_title.sh"
 
         # add right right to left
         . "$ITEM_DIR/tray.sh"
+        . "$ITEM_DIR/system.sh"`
         . "$ITEM_DIR/time.sh"
         . "$ITEM_DIR/wifi.sh"
         . "$ITEM_DIR/battery.sh"

@@ -2,7 +2,7 @@
 
 export SPACE_CLICK_SCRIPT="yabai -m space --focus \$SID 2>/dev/null"
 
-$SKETCHBAR_BIN --add   space          space_template center                                  \
+$SKETCHBAR_BIN --add   space          space_template left                                  \
                --set   space_template icon.color=0xff583794                                  \
                                       icon.highlight_color=0xffe0af68                        \
                                       label.drawing=off                                      \
@@ -10,7 +10,7 @@ $SKETCHBAR_BIN --add   space          space_template center                     
                                       updates=on                                             \
                                       associated_display=1                                   \
                                       icon.padding_left=0                                    \
-                                      icon.padding_right=64                                  \
+                                      icon.padding_right=48                                  \
                                       icon.font.size=18                                      \
                                       background.color=0xff252630                            \
                                       background.height=$BACKGROUND_HEIGHT                   \
@@ -24,7 +24,7 @@ $SKETCHBAR_BIN --add   space          space_template center                     
                --set   spaces.1       associated_space=1                                     \
                                       icon=                                                 \
                                       script="$PLUGIN_DIR/space.sh"                          \
-                                      icon.padding_left=8                                   \
+                                      icon.padding_left=4                                   \
                                                                                              \
                --clone spaces.2       space_template                                         \
                --set   spaces.2       associated_space=2                                     \
