@@ -33,8 +33,8 @@
        layout            ; auie,ctsrnm is the superior home row
 
        :completion
-       (corfu +icons +orderless) ; wait for doom merge
-       ;;(company +childframe)           ; the ultimate code completion backend
+       ;;(corfu +icons +orderless) ; wait for doom merge
+       (company +childframe)           ; the ultimate code completion backend
        ;;helm              ; the *other* search engine for love and life
        ;;ido               ; the other *other* search engine...
        ;;(ivy +fuzzy +prescient +childframe +icons)               ; a search engine for love and life
@@ -253,7 +253,7 @@
        ;;twitter           ; twitter client https://twitter.com/vnought
 
        :config
-       literate
+       ;;literate
        (default +bindings +smartparens))
 
 ;;TODO remove add to list
@@ -464,7 +464,7 @@
 
 ;;(if IS-MAC
 ;;  (add-hook 'ns-system-appearance-change-functions #'my/apply-theme)
-   (setq doom-theme 'doom-one-light)
+(setq doom-theme (random-choice doom-themes-light))
 
 
 (use-package! doom-themes

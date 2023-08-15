@@ -159,7 +159,7 @@
 
 ;;(if IS-MAC
 ;;  (add-hook 'ns-system-appearance-change-functions #'my/apply-theme)
-   (setq doom-theme 'doom-one-light)
+(setq doom-theme (random-choice doom-themes-light))
 
 
 (use-package! doom-themes
@@ -192,7 +192,7 @@
 ;;  :commands jieba-mode
 ;;  :init (jieba-mode))
 
-(defconst meow-cheatsheet-layout-engram
+ (defconst meow-cheatsheet-layout-engram
     '((<TLDE> "[" "{")
       (<AE01> "1" "|")
       (<AE02> "2" "=")

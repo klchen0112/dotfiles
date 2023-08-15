@@ -21,8 +21,8 @@
        layout            ; auie,ctsrnm is the superior home row
 
        :completion
-       (corfu +icons +orderless) ; wait for doom merge
-       ;;(company +childframe)           ; the ultimate code completion backend
+       ;;(corfu +icons +orderless) ; wait for doom merge
+       (company +childframe)           ; the ultimate code completion backend
        ;;helm              ; the *other* search engine for love and life
        ;;ido               ; the other *other* search engine...
        ;;(ivy +fuzzy +prescient +childframe +icons)               ; a search engine for love and life
@@ -241,7 +241,7 @@
        ;;twitter           ; twitter client https://twitter.com/vnought
 
        :config
-       literate
+       ;;literate
        (default +bindings +smartparens))
 
 ;;TODO remove add to list
