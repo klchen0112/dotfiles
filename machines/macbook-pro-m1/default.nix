@@ -40,6 +40,7 @@
   users.users.${username} = {
     # macOS user
     home = "/Users/${username}";
+    name = "${username}";
     shell = pkgs.fish; # Default shell
   };
 
@@ -83,9 +84,10 @@
       # lmmath
     ];
   };
+  programs.fish.enable = true;
 
   environment = {
-    shells = with pkgs; [ bashInteractive fish ]; # Default shell
+    shells = with pkgs; [ fish ]; # Default shell
     # variables = {
     #   # System variables
     #   EDITOR = "nvim";
@@ -432,13 +434,13 @@
       wechat = 836500024;
       qq = 451108668;
       dingtalk = 1435447041;
-      tencent-meeting = 1484048379;
+      #. tencent-meeting = 1484048379;
       "microsoft-word" = 462054704;
       "microsoft-powerpoint" = 462062816;
       "microsoft-excel" = 462058435;
       onedrive = 823766827;
       "goodnotes-5" = 1444383602;
-      xcode = 497799835;
+     # xcode = 497799835;
     };
 
     taps = [
@@ -473,7 +475,7 @@
       "todesk"
       # "marginnote"
       "vial"
-      "dash"
+      #"dash"
       # "nutstore"
       "omnidisksweeper"
       # "discord"
