@@ -46,7 +46,8 @@
     # mpvi required
     tesseract5
     ffmpeg_5
-
+    # email
+    # mu4e
   ] ++ (lib.optionals pkgs.stdenv.isDarwin) [
     # pngpaste for org mode download clip
     pngpaste

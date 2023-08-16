@@ -32,6 +32,7 @@
 ;;(package! citar-org-roam
 ;;     :recipe (:host github :repo "emacs-citar/citar-org-roam"
 ;;           :files ("*.el")))
+
 (unpin! org)
 (or (require 'doom (expand-file-name "lisp/doom.el"
                                      (or (bound-and-true-p doom-emacs-dir)

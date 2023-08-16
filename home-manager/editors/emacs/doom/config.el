@@ -160,6 +160,7 @@
 ;;(if IS-MAC (add-hook 'ns-system-appearance-change-functions #'my/apply-theme)
 (setq doom-theme (random-choice doom-themes-light))
 
+
 (use-package! doom-themes
   :config
   ;;Global settings (defaults)
