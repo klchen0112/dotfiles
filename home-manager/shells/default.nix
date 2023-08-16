@@ -9,6 +9,8 @@
       ignores = [ "*~" "*.swp" ];
       attributes = [ "*.pdf diff=pdf" ];
       lfs.enable = true;
+      userName = "klchen0112";
+      userEmail = "klchen0112@gmail.com";
       extraConfig = {
         init.defaultBranch = "master"; # https://srid.ca/unwoke
         core.editor = "emacsclient";
