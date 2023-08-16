@@ -229,7 +229,7 @@
               ./hosts/wsl
             ];
           };
-        "chenkailong@macbook-pro-m1" = let username = "chenkailong"; in
+        "klchen@macbook-pro-m1" = let username = "klchen"; in
           home-manager.lib.homeManagerConfiguration {
             pkgs = nixpkgs.legacyPackages.aarch64-darwin; # Home-manager requires 'pkgs' instance
             extraSpecialArgs = { inherit inputs outputs username; };
