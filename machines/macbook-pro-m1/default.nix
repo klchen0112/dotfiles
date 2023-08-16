@@ -236,98 +236,74 @@
 
   services.skhd = {
     enable = true;
-    skhdConfig =
-      let
-        keycodes = import ./keycodes.nix;
-        current_workspace_prefix = "ctrl + alt";
-        current_workspace_move_prefix = "ctrl + shift";
-        diffent_workspace_move_prefix = "shift + alt + ctrl";
-        size_chang_prefix = "cmd + ctrl";
-        insert_prefix = "shift + alt";
-        high_prefix = "shift + ctrl + cmd";
-      in
-      ''
-        #!/usr/bin/env sh
-        ## Current workspace move and focus
-        # focus window : current_workspace_prefix - {p, n, b, f}
-        ${current_workspace_prefix} - ${keycodes.B} : yabai -m window --focus west  || yabai -m display --focus west
-        ${current_workspace_prefix} - ${keycodes.N} : yabai -m window --focus south || yabai -m display --focus south
-        ${current_workspace_prefix} - ${keycodes.P} : yabai -m window --focus north || yabai -m display --focus north
-        ${current_workspace_prefix} - ${keycodes.F} : yabai -m window --focus east  || yabai -m display --focus east
-        ${current_workspace_prefix} - ${keycodes.A} : yabai -m window --focus first || yabai -m display --focus north
-        ${current_workspace_prefix} - ${keycodes.E} : yabai -m window --focus last  || yabai -m display --focus east
+    skhdConfig = ''
+      # add an on_enter command to the default mode
+      :: default : yabai -m config active_window_border_color 0xff352A28
+      #
+      # defines a new mode 'test' with an on_enter command, that captures keypresses
+      # :: default @ : yabai -m config active_window_border_color 0xff24ccaa
+      :: yabai_mode_focus @ : yabai -m config active_window_border_color 0xffF3F8F8
+      :: yabai_mode_move  @ : yabai -m config active_window_border_color 0xffFAE7A1
+      :: yabai_mode_size  @ : yabai -m config active_window_border_color 0xffA07265
+      # yabai mode
+      default, yabai_mode_focus, yabai_mode_move, yabai_mode_size < ctrl - 1 : yabai -m space --focus 1;
+      default, yabai_mode_focus, yabai_mode_move, yabai_mode_size < ctrl - 2 : yabai -m space --focus 2;
+      default, yabai_mode_focus, yabai_mode_move, yabai_mode_size < ctrl - 3 : yabai -m space --focus 3;
+      default, yabai_mode_focus, yabai_mode_move, yabai_mode_size < ctrl - 4 : yabai -m space --focus 4;
+      default, yabai_mode_focus, yabai_mode_move, yabai_mode_size < ctrl - 5 : yabai -m space --focus 5;
+      default, yabai_mode_focus, yabai_mode_move, yabai_mode_size < ctrl - 6 : yabai -m space --focus 6;
+      default, yabai_mode_focus, yabai_mode_move, yabai_mode_size < ctrl - 7 : yabai -m space --focus 7;
+      default, yabai_mode_focus, yabai_mode_move, yabai_mode_size < ctrl - 8 : yabai -m space --focus 8;
+      default, yabai_mode_focus, yabai_mode_move, yabai_mode_size < ctrl - 9 : yabai -m space --focus 9;
+      default, yabai_mode_focus, yabai_mode_move, yabai_mode_size < ctrl - 0 : yabai -m space --focus 10;
+      ## Current workspace focus
+      # focus window : current_workspace_prefix - {p, n, b, f}
+      ctrl + cmd - f ; yabai_mode_focus
+      yabai_mode_focus < ctrl + cmd - f ; default
 
-        ## Current workspace window adjust use ${current_workspace_move_prefix} as prefix
-        # Make window zoom to fullscreen: current_workspace_prefix - ${keycodes.Z}
-        ${current_workspace_move_prefix} - ${keycodes.Z} : yabai -m window --toggle zoom-fullscreen;
+      yabai_mode_focus < shift - b : yabai -m window --focus west  || yabai -m display --focus west
+      yabai_mode_focus < shift - n : yabai -m window --focus south || yabai -m display --focus south
+      yabai_mode_focus < shift - p : yabai -m window --focus north || yabai -m display --focus north
+      yabai_mode_focus < shift - f : yabai -m window --focus east  || yabai -m display --focus east
+      yabai_mode_focus < shift - a : yabai -m window --focus first || yabai -m display --focus north
+      yabai_mode_focus < shift - e : yabai -m window --focus last  || yabai -m display --focus east
 
-        # Mirror Space on X and Y Axis: current_workspace_move_prefix - {x, y,r}
-        ${current_workspace_move_prefix} - ${keycodes.X} : yabai -m space --mirror x-axis
-        ${current_workspace_move_prefix} - ${keycodes.Y} : yabai -m space --mirror y-axis
-        ${current_workspace_move_prefix} - ${keycodes.R} : yabai -m space --rotate 90
+      yabai_mode_focus < shift - z : yabai -m window --toggle zoom-fullscreen;
 
 
-        # Enable / Disable gaps in current workspace
-        ${current_workspace_move_prefix} - ${keycodes.G} : yabai -m space --toggle padding; yabai -m space --toggle gap
+      ## Current workspace move
+      ctrl + cmd - m ; yabai_mode_move
+      yabai_mode_move < ctrl + cmd - m ; default
 
-        # toggle whether the focused window should have a border
-        ${current_workspace_move_prefix} - ${keycodes.W} : yabai -m window --toggle border
-        # toggle whether the focused window should be shown on all spaces
-        ${current_workspace_move_prefix} - ${keycodes.S} : yabai -m window --toggle sticky
-        # toggle whether the focused window should be tiled (only on bsp spaces)
-        ${current_workspace_move_prefix} - ${keycodes.Space} : yabai -m window --toggle float
+      yabai_mode_move < shift - b : yabai -m window --swap west  || (yabai -m window --display west  ; yabai -m display --focus west )
+      yabai_mode_move < shift - n : yabai -m window --swap south || (yabai -m window --display south ; yabai -m display --focus south)
+      yabai_mode_move < shift - p : yabai -m window --swap north || (yabai -m window --display north ; yabai -m display --focus north)
+      yabai_mode_move < shift - f : yabai -m window --swap east  || (yabai -m window --display east  ; yabai -m display --focus east )
 
-        ## Current workspace move
-        # Moving windows in spaces: current_workspace_move_prefix - {p, n, b, f}
-        ${current_workspace_move_prefix} - ${keycodes.B} : yabai -m window --warp west  || (yabai -m window --display west  ; yabai -m display --focus west )
-        ${current_workspace_move_prefix} - ${keycodes.N} : yabai -m window --warp south || (yabai -m window --display south ; yabai -m display --focus south)
-        ${current_workspace_move_prefix} - ${keycodes.P} : yabai -m window --warp north || (yabai -m window --display north ; yabai -m display --focus north)
-        ${current_workspace_move_prefix} - ${keycodes.F} : yabai -m window --warp east  || (yabai -m window --display east  ; yabai -m display --focus east )
+      yabai_mode_move < shift - x : yabai -m space --mirror x-axis
+      yabai_mode_move < shift - y : yabai -m space --mirror y-axis
+      yabai_mode_move < shift - r : yabai -m space --rotate 90
 
-        ## Diffent Workspace Operation (size_chang_prefix - ...)
-        # Moving windows between spaces: diffent_workspace_move_prefix - {1, 2, 3, 4, p, n,r } (Assumes 4 Spaces Max per Display)
-        ${current_workspace_move_prefix} - 1 : yabai -m window --space 1; yabai -m space --focus 1;
-        ${current_workspace_move_prefix} - 2 : yabai -m window --space 2; yabai -m space --focus 2;
-        ${current_workspace_move_prefix} - 3 : yabai -m window --space 3; yabai -m space --focus 3;
-        ${current_workspace_move_prefix} - 4 : yabai -m window --space 4; yabai -m space --focus 4;
-        ${current_workspace_move_prefix} - 5 : yabai -m window --space 5; yabai -m space --focus 5;
-        ${current_workspace_move_prefix} - 6 : yabai -m window --space 6; yabai -m space --focus 6;
-        ${current_workspace_move_prefix} - 7 : yabai -m window --space 7; yabai -m space --focus 7;
-        ${current_workspace_move_prefix} - 8 : yabai -m window --space 8; yabai -m space --focus 8;
-        ${current_workspace_move_prefix} - 9 : yabai -m window --space 9; yabai -m space --focus 9;
-        ${current_workspace_move_prefix} - 0 : yabai -m window --space 10; yabai -m space --focus 10;
-        # ${diffent_workspace_move_prefix} - ${keycodes.P} : yabai -m window --space prev ; yabai -m space --focus prev;
-        # ${diffent_workspace_move_prefix} - ${keycodes.N} : yabai -m window --space next ; yabai -m space --focus next;
-        ${current_workspace_move_prefix} - ${keycodes.A} : yabai -m window --space first; yabai -m space --focus first;
-        ${current_workspace_move_prefix} - ${keycodes.E} : yabai -m window --space last ; yabai -m space --focus last;
-        ${current_workspace_move_prefix} - ${keycodes.R} : yabai -m window --space recent; yabai -m space --focus recent;
+      yabai_mode_move < ctrl - 1 : yabai -m window --space 1; yabai -m space --focus 1;
+      yabai_mode_move < ctrl - 2 : yabai -m window --space 2; yabai -m space --focus 2;
+      yabai_mode_move < ctrl - 3 : yabai -m window --space 3; yabai -m space --focus 3;
+      yabai_mode_move < ctrl - 4 : yabai -m window --space 4; yabai -m space --focus 4;
+      yabai_mode_move < ctrl - 5 : yabai -m window --space 5; yabai -m space --focus 5;
+      yabai_mode_move < ctrl - 6 : yabai -m window --space 6; yabai -m space --focus 6;
+      yabai_mode_move < ctrl - 7 : yabai -m window --space 7; yabai -m space --focus 7;
+      yabai_mode_move < ctrl - 8 : yabai -m window --space 8; yabai -m space --focus 8;
+      yabai_mode_move < ctrl - 9 : yabai -m window --space 9; yabai -m space --focus 9;
+      yabai_mode_move < ctrl - 0 : yabai -m window --space 10; yabai -m space --focus 10;
 
-        # toggle fullscreen or split
-        # ${diffent_workspace_move_prefix}  - ${keycodes.F} : yabai -m window --toggle native-fullscreen
-        # ${diffent_workspace_move_prefix}  - ${keycodes.S} : yabai -m window --toggle split && yabai -m space --balance
 
-        ## Resize (size_chang_prefix - ...)
-        # Resize windows: size_chang_prefix - {p, n, b, f}
-        ${size_chang_prefix} - ${keycodes.B} : yabai -m window --resize right:-100:0  || yabai -m window --resize left:-100:0
-        ${size_chang_prefix} - ${keycodes.N} : yabai -m window --resize bottom:0:100  || yabai -m window --resize top:0:100
-        ${size_chang_prefix} - ${keycodes.P} : yabai -m window --resize bottom:0:-100 || yabai -m window --resize top:0:-100
-        ${size_chang_prefix} - ${keycodes.F} : yabai -m window --resize right:100:0   || yabai -m window --resize left:100:0
-        # Equalize size of windows
-        ${size_chang_prefix} - ${keycodes.E} : yabai -m space --balance;
-
-        ## Insertion (insert_prefix - ...)
-        # Set insertion point for focused container: ${insert_prefix}  - {p,n,b,f,s}
-        # ${insert_prefix} - ${keycodes.B} : yabai -m window --insert west
-        # ${insert_prefix} - ${keycodes.N} : yabai -m window --insert south
-        # ${insert_prefix} - ${keycodes.P} : yabai -m window --insert north
-        # ${insert_prefix} - ${keycodes.F} : yabai -m window --insert east
-        # ${insert_prefix} - ${keycodes.S} : yabai -m window --insert stack
-        ## high (insert_prefix - ...)
-        ${high_prefix} - ${keycodes.X} :  \
-          /usr/bin/env osascript <<< \
-        "display notification \"Restarting Yabai\" with title \"Yabai\""; \
-        launchctl kickstart -k gui/''${UID}/org.nixos.yabai && launchctl kickstart -k gui/''${UID}/org.nixos.skhd
-      '';
+      ## Current workspace size change
+      ctrl + cmd - s ; yabai_mode_size
+      yabai_mode_size < ctrl + cmd - s ; default
+      yabai_mode_size < shift - b : yabai -m window --resize right:-100:0  || yabai -m window --resize left:-100:0
+      yabai_mode_size < shift - n : yabai -m window --resize bottom:0:100  || yabai -m window --resize top:0:100
+      yabai_mode_size < shift - p : yabai -m window --resize bottom:0:-100 || yabai -m window --resize top:0:-100
+      yabai_mode_size < shift - f : yabai -m window --resize right:100:0   || yabai -m window --resize left:100:0
+    '';
   };
   #TODO fix plexamp and cava email
   services.sketchybar = {
