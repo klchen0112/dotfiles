@@ -246,16 +246,16 @@
       :: yabai_mode_move  @ : yabai -m config active_window_border_color 0xffFAE7A1
       :: yabai_mode_size  @ : yabai -m config active_window_border_color 0xffA07265
       # yabai mode
-      default, yabai_mode_focus, yabai_mode_move, yabai_mode_size < ctrl - 1 : yabai -m space --focus 1;
-      default, yabai_mode_focus, yabai_mode_move, yabai_mode_size < ctrl - 2 : yabai -m space --focus 2;
-      default, yabai_mode_focus, yabai_mode_move, yabai_mode_size < ctrl - 3 : yabai -m space --focus 3;
-      default, yabai_mode_focus, yabai_mode_move, yabai_mode_size < ctrl - 4 : yabai -m space --focus 4;
-      default, yabai_mode_focus, yabai_mode_move, yabai_mode_size < ctrl - 5 : yabai -m space --focus 5;
-      default, yabai_mode_focus, yabai_mode_move, yabai_mode_size < ctrl - 6 : yabai -m space --focus 6;
-      default, yabai_mode_focus, yabai_mode_move, yabai_mode_size < ctrl - 7 : yabai -m space --focus 7;
-      default, yabai_mode_focus, yabai_mode_move, yabai_mode_size < ctrl - 8 : yabai -m space --focus 8;
-      default, yabai_mode_focus, yabai_mode_move, yabai_mode_size < ctrl - 9 : yabai -m space --focus 9;
-      default, yabai_mode_focus, yabai_mode_move, yabai_mode_size < ctrl - 0 : yabai -m space --focus 10;
+      yabai_mode_focus, yabai_mode_size < ctrl - 1 : yabai -m space --focus 1;
+      yabai_mode_focus, yabai_mode_size < ctrl - 2 : yabai -m space --focus 2;
+      yabai_mode_focus, yabai_mode_size < ctrl - 3 : yabai -m space --focus 3;
+      yabai_mode_focus, yabai_mode_size < ctrl - 4 : yabai -m space --focus 4;
+      yabai_mode_focus, yabai_mode_size < ctrl - 5 : yabai -m space --focus 5;
+      yabai_mode_focus, yabai_mode_size < ctrl - 6 : yabai -m space --focus 6;
+      yabai_mode_focus, yabai_mode_size < ctrl - 7 : yabai -m space --focus 7;
+      yabai_mode_focus, yabai_mode_size < ctrl - 8 : yabai -m space --focus 8;
+      yabai_mode_focus, yabai_mode_size < ctrl - 9 : yabai -m space --focus 9;
+      yabai_mode_focus, yabai_mode_size < ctrl - 0 : yabai -m space --focus 10;
       ## Current workspace focus
       # focus window : current_workspace_prefix - {p, n, b, f}
       ctrl + cmd - f ; yabai_mode_focus
