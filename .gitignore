@@ -18,3 +18,4 @@ user-dirs.*
 btop
 htop
 .vscode
+.DS_store
