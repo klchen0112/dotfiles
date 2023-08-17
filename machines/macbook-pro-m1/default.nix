@@ -99,13 +99,9 @@
       # bash
       fish
       # zsh
-      fontconfig
       home-manager
-      coreutils
       cachix
-      jq # for yabai json parser
       # sketchybar
-      gzip
       nixpkgs-fmt
     ];
   };
@@ -374,7 +370,7 @@
 
 
 
-        # . "$ITEM_DIR/cava.sh"
+        #. "$ITEM_DIR/cava.sh"
         # . "$ITEM_DIR/feishu.sh"
         . "$ITEM_DIR/wechat.sh"
         . "$ITEM_DIR/email.sh"
@@ -390,8 +386,8 @@
         . "$ITEM_DIR/wifi.sh"
         . "$ITEM_DIR/battery.sh"
 
-        . "$ITEM_DIR/mic.sh"
-        . "$ITEM_DIR/sound.sh"
+        #. "$ITEM_DIR/mic.sh"
+        #. "$ITEM_DIR/sound.sh"
         # . "$ITEM_DIR/music.sh"
 
         #. "$ITEM_DIR/bluetooth.sh"
@@ -440,7 +436,7 @@
       "microsoft-excel" = 462058435;
       onedrive = 823766827;
       "goodnotes-5" = 1444383602;
-     # xcode = 497799835;
+      # xcode = 497799835;
     };
 
     taps = [
@@ -472,7 +468,7 @@
       # "iterm2"
       "balenaetcher"
       "keyboardcleantool"
-      "todesk"
+      # "todesk"
       # "marginnote"
       "vial"
       #"dash"
@@ -490,6 +486,7 @@
       "qmk-toolbox"
       "mathpix-snipping-tool"
       # "sing-box"
+      "logi-options-plus"
       "sfm"
       #TODO remove
       "marginnote"
