@@ -113,19 +113,19 @@
 
       ] ++ lib.optionals pkgs.stdenv.isDarwin
         (pkgs.vscode-utils.extensionsFromVscodeMarketplace
-        [{
-          name = "vscode-dash";
-          publisher = "deerawan";
-          version = "2.4.0";
-          sha256 = "Yqn59ppNWQRMWGYVLLWofogds+4t/WRRtSSfomPWQy4=";
-        }
-          {
-            name = "vscode-micromamba";
-            publisher = "corker";
-            version = "0.1.18";
-            sha256 = "2lCr4+S/mYAC1b6hxwkuRbueFFoJDxo7L+CTvPmUnxk=";
-          }]
-      )
+          [{
+            name = "vscode-dash";
+            publisher = "deerawan";
+            version = "2.4.0";
+            sha256 = "Yqn59ppNWQRMWGYVLLWofogds+4t/WRRtSSfomPWQy4=";
+          }
+            {
+              name = "vscode-micromamba";
+              publisher = "corker";
+              version = "0.1.18";
+              sha256 = "2lCr4+S/mYAC1b6hxwkuRbueFFoJDxo7L+CTvPmUnxk=";
+            }]
+        )
     ;
     enableUpdateCheck = false;
     enableExtensionUpdateCheck = false;
@@ -163,8 +163,8 @@
         "strings" = true;
       };
       "files.autoSave" = "afterDelay";
-      "editor.codeLensFontFamily" = "'Jetbrains Mono','Overpass','CMU Typewriter Text','Noto Serif CJK SC','Noto Serif'";
-      "editor.fontFamily" = "'Jetbrains Mono','Overpass','CMU Typewriter Text','Noto Serif CJK SC','Noto Serif'";
+      "editor.codeLensFontFamily" = "'Jetbrains Mono','Overpass','CMU Typewriter Text','Noto Serif CJK SC','Noto Serif','Hack Nerd Font'";
+      "editor.fontFamily" = "'Jetbrains Mono','Overpass','CMU Typewriter Text','Noto Serif CJK SC','Noto Serif','Hack Nerd Font'";
       "editor.fontLigatures" = true;
       "editor.fontSize" = 16;
       "editor.formatOnPaste" = true;
