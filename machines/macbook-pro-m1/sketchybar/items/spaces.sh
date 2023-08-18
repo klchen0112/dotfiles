@@ -29,18 +29,18 @@ $SKETCHBAR_BIN --add   space          space_template left                       
                                                                                              \
                --clone spaces.2       space_template                                         \
                --set   spaces.2       associated_space=2                                     \
-                                      icon=󰊯                                                 \
+                                      icon=󰨞                                                \
                                       script="$PLUGIN_DIR/space.sh"                          \
                                                                                              \
                --clone spaces.3       space_template                                         \
                --set   spaces.3       associated_space=3                                     \
-                                      icon=󰘑                                                 \
+                                      icon=                                               \
                                       drawing=on                                             \
                                       script="$PLUGIN_DIR/space.sh"                          \
                                                                                              \
                --clone spaces.4       space_template                                         \
                --set   spaces.4       associated_space=4                                     \
-                                      icon=󱗆                                                 \
+                                      icon=󰆼                                                 \
                                       script="$PLUGIN_DIR/space.sh"                          \
                                                                                              \
                --clone spaces.5       space_template                                         \
@@ -50,27 +50,27 @@ $SKETCHBAR_BIN --add   space          space_template left                       
                                                                                              \
                --clone spaces.6       space_template                                         \
                --set   spaces.6       associated_space=6                                     \
-                                      icon=󰎆                                                 \
+                                      icon=󰈙                                                \                                               \
                                       script="$PLUGIN_DIR/space.sh"                          \
                                                                                              \
                --clone spaces.7       space_template                                         \
                --set   spaces.7       associated_space=7                                     \
-                                      icon=                                                 \
+                                      icon=                                                 \
                                       script="$PLUGIN_DIR/space.sh"                          \
                                                                                              \
                --clone spaces.8       space_template                                         \
                --set   spaces.8       associated_space=8                                     \
-                                      icon=                                                 \
+                                      icon=                                                \
                                       script="$PLUGIN_DIR/space.sh"                          \
                                                                                              \
                --clone spaces.9       space_template                                         \
                --set   spaces.9       associated_space=9                                     \
-                                      icon=󰆼                                                 \
+                                      icon=󰎆                                                 \
                                       script="$PLUGIN_DIR/space.sh"                          \
                                                                                              \
                --clone spaces.10      space_template                                         \
                --set   spaces.10      associated_space=10                                    \
-                                      icon=󰈙                                                \
+                                      icon=󰘑                                                \
                                       script="$PLUGIN_DIR/space.sh"                          \
                                       icon.padding_right=16                                   \
                                                                                              \
