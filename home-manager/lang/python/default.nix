@@ -5,5 +5,7 @@
     nodejs
     nodePackages.pyright
     micromamba
+    jetbrains.pycharm-professional
+
   ];
 }
