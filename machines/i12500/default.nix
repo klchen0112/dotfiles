@@ -160,6 +160,7 @@
       # sketchybar
       gzip
       nixpkgs-fmt
+      gitAndTools.gitFull
     ];
   };
   nixpkgs.config.allowUnfree = true; # Allow proprietary software.

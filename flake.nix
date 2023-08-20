@@ -130,6 +130,7 @@
     , home-manager
     , darwin
     , vscode-server
+    , hyprland
     , ...
     }:
     # Function that tells my flake which to use and what do what to do with the dependencies.
@@ -214,6 +215,7 @@
               pkgs = nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
               extraSpecialArgs = { inherit inputs outputs username; };
               modules = [
+                hyprland.homeManagerModules.default
                 # > Our main home-manager configuration file <
                 ./hosts/i12500
               ];

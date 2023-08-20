@@ -49,7 +49,7 @@
 
       xwayland = {
         enable = true;
-        hidpi = true;
+        # hidpi = true;
       };
 
       # nvidiaPatches = true;

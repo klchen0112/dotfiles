@@ -39,6 +39,7 @@
     ../../home-manager/terminal
     ../../home-manager/vm
     # ../../home-manager/vpn
+    ../../home-manager/desktop
   ];
 
   nixpkgs = {
