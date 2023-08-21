@@ -399,9 +399,9 @@
       '';
   };
 
-  services.sketchybar-bottom = {
-    enable = false;
-  };
+  # services.sketchybar-bottom = {
+  #   enable = false;
+  # };
 
 
   nix = {

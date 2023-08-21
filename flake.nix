@@ -255,7 +255,6 @@
             modules = [
               # Modules that are used
               ./machines/macbook-pro-m1
-              darwinModules.sketchybar-bottom
             ];
           };
         };

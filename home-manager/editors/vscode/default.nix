@@ -266,6 +266,7 @@
       "workbench.colorTheme" = "Atom One Light";
 
       "remote.SSH.remotePlatform" = {
+        "ningbo40" = "linux";
         "ningbo203" = "linux";
         "ningbo204" = "linux";
         "cy" = "linux";
