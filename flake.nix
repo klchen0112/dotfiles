@@ -231,30 +231,28 @@
               ./hosts/wsl
             ];
           };
-        "klchen@macbook-pro-m1" = let username = "klchen"; in
-          home-manager.lib.homeManagerConfiguration {
-            pkgs = nixpkgs.legacyPackages.aarch64-darwin; # Home-manager requires 'pkgs' instance
-            extraSpecialArgs = { inherit inputs outputs username; };
-            modules = [
-              # > Our main home-manager configuration file <
-              ./hosts/macbook-pro-m1
-            ];
-          };
-
       };
       darwinConfigurations =
-        let username = "chenkailong";
+        let username = "klchen";
         in
         {
           "macbook-pro-m1" = darwin.lib.darwinSystem {
             system = "aarch64-darwin";
             specialArgs = {
-              inherit username inputs;
+              inherit username inputs outputs;
             };
-            pkgs = nixpkgs.legacyPackages.aarch64-darwin;
+            # pkgs = nixpkgs.legacyPackages.aarch64-darwin;
             modules = [
               # Modules that are used
               ./machines/macbook-pro-m1
+              home-manager.darwinModules.home-manager
+              {
+                # Home-Manager module that is used
+                home-manager.useGlobalPkgs = true;
+                home-manager.useUserPackages = true;
+                home-manager.extraSpecialArgs = { inherit username outputs; }; # Pass flake variable
+                home-manager.users.${username} = import ./hosts/macbook-pro-m1/default.nix;
+              }
             ];
           };
         };

@@ -14,7 +14,6 @@
 #               └─ ./doom-emacs
 #
 { inputs
-, outputs
 , config
 , lib
 , pkgs

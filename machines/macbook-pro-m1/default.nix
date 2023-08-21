@@ -34,7 +34,10 @@
       # })
     ];
 
-    config.allowUnfree = true; # Allow proprietary software.
+    config = {
+      allowUnfree = true; # Allow proprietary software.
+      allowUnfreePredicate = (_: true);
+    };
   };
 
   users.users.${username} = {
