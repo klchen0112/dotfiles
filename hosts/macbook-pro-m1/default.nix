@@ -21,6 +21,7 @@
     ../../home-manager/keyboard
     ../../home-manager/lang/cpp
     ../../home-manager/lang/go
+    ../../home-manager/lang/java
     ../../home-manager/lang/json
     ../../home-manager/lang/julia
     ../../home-manager/lang/lua

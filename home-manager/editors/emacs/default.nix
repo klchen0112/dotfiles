@@ -47,6 +47,9 @@
     ffmpeg_5
     # email
     # mu4e
+    isync
+    mu
+
   ] ++ (lib.optionals pkgs.stdenv.isDarwin) [
     # pngpaste for org mode download clip
     pngpaste
