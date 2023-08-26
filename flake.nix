@@ -250,7 +250,7 @@
                 # Home-Manager module that is used
                 home-manager.useGlobalPkgs = true;
                 home-manager.useUserPackages = true;
-                home-manager.extraSpecialArgs = { inherit username outputs; }; # Pass flake variable
+                home-manager.extraSpecialArgs = { inherit username inputs outputs; }; # Pass flake variable
                 home-manager.users.${username} = import ./hosts/macbook-pro-m1/default.nix;
               }
             ];

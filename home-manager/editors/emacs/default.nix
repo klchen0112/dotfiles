@@ -65,47 +65,8 @@
   };
   # doom-emacs will enable programs.emacs
   # programs.doom-emacs = {
-  #   enable = true;
-  #   doomPrivateDir = ./doom;
-  #   # emacsPackagesOverlay = self: super: {
-  #   #   lsp-pyright = super.lsp-pyright.overrideAttrs (esuper: {
-  #   #     buildInputs = esuper.buildInputs ++ [
-  #   #       pkgs.nodePackages.pyright
-  #   #     ];
-  #   #   });
-  #   # };
-  #   extraConfig =
-  #     # this code from https://github.com/ckiee/nixfiles/blob/main/modules/doom-emacs/default.nix
-  #     ''
-  #       (setq exec-path (append exec-path      '("/run/wrappers/bin" "/etc/profiles/per-user/${username}/bin" "/nix/var/nix/profiles/default/bin" "/run/current-system/sw/bin" "/opt/homebrew/bin")))
-  #       (setenv "PATH" (concat (getenv "PATH") ":/run/wrappers/bin:/etc/profiles/per-user/${username}/bin:/nix/var/nix/profiles/default/bin:/run/current-system/sw/bin:/opt/homebrew/bin"))
-  #     '';
-  # emacsPackage = pkgs.emacs29;
-  # emacsPackagesOverlay = self: super: {
-  #   mpvi = self.trivialBuild {
-  #     pname = "mpvi";
-  #     ename = "mpvi";
-  #     version = "unstable-2023-06-08";
-  #     # buildInputs = [  ];
-  #     src = pkgs.fetchFromGitHub {
-  #       owner = "lorniu";
-  #       repo = "mpvi";
-  #       rev = "f633510686d7b974147592336fa21ce6df80a5da";
-  #       sha256 = "sha256-TxsGaG2fBRWWP9aas59kiNnUVD4ZdNlwwaFbM4+n81c=";
-  #     };
-  #   };
-  #   org-anki = self.trivialBuild {
-  #     pname = "org-anki";
-  #     ename = "org-anki";
-  #     version = "v3.1.1";
-  #     buildInputs = [ pkgs.ffmpeg_5 pkgs.tesseract5 ];
-  #     src = pkgs.fetchFromGitHub {
-  #       owner = "eyeinsky";
-  #       repo = "org-anki";
-  #       rev = "2a0f7b4a5527411e541997309afc7d5aab59d3e8";
-  #       sha256 = "sha256-TxsGaG2fBRWWP9aas59kiNnUVD4ZdNlwwaFbM4+n81c=";
-  #     };
-  #   };
-  # };
+    # enable = true;
+    # doomPrivateDir = ./doom;
+    # emacsPackage = pkgs.emacs29;
   # };
 }
