@@ -1,7 +1,14 @@
 #
 # Download client
 #
-{ pkgs, ... }: {
+{ inputs
+, outputs
+, lib
+, config
+, pkgs
+, username
+, ...
+}: {
   programs.yt-dlp = {
     enable = true;
   };
@@ -11,7 +18,7 @@
   programs.aria2 = {
     enable = true;
     settings = {
-      dir = "/Users/chenkailong/Downloads"; # 下载目录。可使用绝对路径或相对路径, 默认: 当前启动位置
+      dir = "$\{HOME\}/Downloads"; # 下载目录。可使用绝对路径或相对路径, 默认: 当前启动位置
       disk-cache = "64M";
       file-allocation = "none";
       no-file-allocation-limit = "64M";
@@ -19,8 +26,8 @@
       always-resume = false;
       max-resume-failure-tries = 0;
       remote-time = true;
-      input-file = "/Users/chenkailong/.config/aria2/aria2.session";
-      save-session = "/Users/chenkailong/.config/aria2/aria2.session";
+      input-file = "$\{HOME\}/.config/aria2/aria2.session";
+      save-session = "$\{HOME\}/.config/aria2/aria2.session";
       save-session-interval = 1;
       auto-save-interval = 20;
       force-save = false;
@@ -77,11 +84,11 @@
       # 使用场景：在家庭宽带没有公网 IP 的情况下可以把 BT 和 DHT 监听端口转发至具有公网 IP 的服务器，在此填写服务器的 IP ，可以提升 BT 下载速率。
       #bt-external-ip=
 
-      # IPv4 DHT 文件路径，默认：/Users/chenkailong/.aria2/dht.dat
-      dht-file-path = "/Users/chenkailong/.config/aria2/dht.dat";
+      # IPv4 DHT 文件路径，默认：$\{HOME\}/.aria2/dht.dat
+      dht-file-path = "$\{HOME\}/.config/aria2/dht.dat";
 
-      # IPv6 DHT 文件路径，默认：/Users/chenkailong/.aria2/dht6.dat
-      dht-file-path6 = "/Users/chenkailong/.config/aria2/dht6.dat";
+      # IPv6 DHT 文件路径，默认：$\{HOME\}/.aria2/dht6.dat
+      dht-file-path6 = "$\{HOME\}/.config/aria2/dht6.dat";
       # IPv4 DHT 网络引导节点
       dht-entry-point = "dht.transmissionbt.com:6881";
 
@@ -196,11 +203,11 @@
 
       # 下载停止后执行的命令
       # 从 正在下载 到 删除、错误、完成 时触发。暂停被标记为未开始下载，故与此项无关。
-      on-download-stop = "/Users/chenkailong/.config/aria2/delete.sh";
+      on-download-stop = "$\{HOME\}/.config/aria2/delete.sh";
 
       # 下载完成后执行的命令
       # 此项未定义则执行 下载停止后执行的命令 (on-download-stop)
-      on-download-complete = "/Users/chenkailong/.config/aria2/clean.sh";
+      on-download-complete = "$\{HOME\}/.config/aria2/clean.sh";
 
       # 下载错误后执行的命令
       # 此项未定义则执行 下载停止后执行的命令 (on-download-stop)
@@ -241,10 +248,10 @@
       #rpc-secure=false
 
       # 在 RPC 服务中启用 SSL/TLS 加密时的证书文件(.pem/.crt)
-      #rpc-certificate=/Users/chenkailong/.config/aria2/xxx.pem
+      #rpc-certificate=$\{HOME\}/.config/aria2/xxx.pem
 
       # 在 RPC 服务中启用 SSL/TLS 加密时的私钥文件(.key)
-      #rpc-private-key=/Users/chenkailong/.config/aria2/xxx.key
+      #rpc-private-key=$\{HOME\}/.config/aria2/xxx.key
 
       # 事件轮询方式, 可选：epoll, kqueue, port, poll, select, 不同系统默认值不同
       #event-poll=select
