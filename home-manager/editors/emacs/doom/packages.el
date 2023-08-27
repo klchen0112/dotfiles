@@ -107,8 +107,8 @@
 (package! vulpea)
 (package! consult-org-roam)
 ;;TODO
-(package! nursery
-     :recipe (:host github :repo "chrisbarrett/nursery"))
+;;(package! nursery
+;;     :recipe (:host github :repo "chrisbarrett/nursery"))
 
 (package! sis)
 
@@ -129,8 +129,8 @@
 
 (if IS-MAC (package! dash-at-point))
 
-(package! copilot
-  :recipe (:host github :repo "zerolfx/copilot.el" :files ("*.el" "dist")))
+;;(package! copilot
+;;  :recipe (:host github :repo "zerolfx/copilot.el" :files ("*.el" "dist")))
 
 (unpin! pdf-tools)
 
