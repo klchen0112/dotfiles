@@ -25,10 +25,8 @@ echo "experimental-features = nix-command flakes" >> ~/.config/nix/nix.conf
   nix-build https://github.com/LnL7/nix-darwin/archive/master.tar.gz -A installer
   ./result/bin/darwin-installer
   nix-env -iA nixpkgs.git
-  git clone https://github.com/klchen0112/dotfiles ~/.config
-  cd ~/.config
-  nix build ".#darwinConfigurations.macbook-pro-m1.system"
-  ./result/sw/bin/darwin-rebuild switch --flake ".#macbook-pro-m1"
+  git clone https://github.com/klchen0112/dotfiles path/to/config
+  cd path/to/config
   # for rebuild
   darwin-rebuild switch --flake ".#macbook-pro-m1"
 #+end_src
