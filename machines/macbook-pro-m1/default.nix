@@ -304,6 +304,8 @@
       yabai_mode_size < shift - n : yabai -m window --resize bottom:0:100  || yabai -m window --resize top:0:100
       yabai_mode_size < shift - p : yabai -m window --resize bottom:0:-100 || yabai -m window --resize top:0:-100
       yabai_mode_size < shift - f : yabai -m window --resize right:100:0   || yabai -m window --resize left:100:0
+      yabai_mode_size < shift - x : yabai -m space  --balance x-axis
+      yabai_mode_size < shift - y : yabai -m space  --balance y-axis
     '';
   };
   #TODO fix plexamp and cava email
