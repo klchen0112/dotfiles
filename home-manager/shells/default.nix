@@ -33,6 +33,10 @@
       enableCompletion = true;
       history.size = 100000;
     };
+    zoxide = {
+      enable = true;
+      enableFishIntegration = true;
+    };
     fish = {
       enable = true;
       shellAbbrs = {
@@ -204,10 +208,10 @@
       ''
         else "";
       plugins = with pkgs.fishPlugins; [
-        {
-          name = "z";
-          src = z.src;
-        }
+        # {
+        #   name = "z";
+        #   src = z.src;
+        # }
         {
           name = "fzf-fish";
           src = fzf-fish.src;
