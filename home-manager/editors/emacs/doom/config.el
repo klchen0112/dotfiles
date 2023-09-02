@@ -1370,12 +1370,12 @@ Refer to `org-agenda-prefix-format' for more information."
 
 (use-package! org-anki)
 
-;;(use-package! telega
-;;  :commands (telega)
-;;  :defer t
-;;  :config
-;;  (setq telega-server-libs-prefix)
-;;)
+(use-package! telega
+  :commands (telega)
+  :defer t
+  ;;:config
+  ;;(setq telega-server-libs-prefix)
+)
 
 ;;(use-package! wakatime-mode
 ;;  :config

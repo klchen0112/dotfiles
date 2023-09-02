@@ -65,7 +65,6 @@
         mechatroner.rainbow-csv
         # copilot
         github.copilot
-
       ]
       ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
         {
@@ -80,6 +79,13 @@
           version = "2.3.0";
           sha256 = "CTD0s2lRMCi/WCGr6dP1Utrvtsdcbg4srRcrZJSFDqU=";
         }
+        # {
+        #   name = "org-mode";
+        #   publisher = "vscode-org-mode";
+        #   version = "1.0.0";
+        #   sha256 = "CTD0s2lRMCi/WCGr6dP1Utrvtsdcbg4srRcrZJSFDqU=";
+        # }
+
         # {
         #   name = "vscode-micromamba";
         #   publisher = "corker";

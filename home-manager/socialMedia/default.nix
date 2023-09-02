@@ -1,7 +1,7 @@
 { pkgs, ... }: {
   home.packages = with pkgs; [
     discord
-    # tdlib
+    tdlib
 
 
   ];

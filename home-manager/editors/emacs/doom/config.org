@@ -2193,16 +2193,16 @@ use dash open app dash
 :ID:       c5312a82-9f24-4e4b-9f81-0660dbc3d380
 :END:
 #+begin_src emacs-lisp :tangle packages.el
-;;(package! telega :recipe (:host github :repo "zevlg/telega.el")  :pin "ac3634e2e7efe9c29c4311196e0ed67085d58f11")
+(package! telega :recipe (:host github :repo "zevlg/telega.el")  :pin "ac3634e2e7efe9c29c4311196e0ed67085d58f11")
 #+end_src
 
 #+begin_src emacs-lisp :tangle config.el
-;;(use-package! telega
-;;  :commands (telega)
-;;  :defer t
-;;  :config
-;;  (setq telega-server-libs-prefix)
-;;)
+(use-package! telega
+  :commands (telega)
+  :defer t
+  ;;:config
+  ;;(setq telega-server-libs-prefix)
+)
 #+end_src
 * Other module
 ** Git Module
