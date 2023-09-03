@@ -3,6 +3,10 @@
 #
 { lib, pkgs, username, ... }: {
   programs = {
+    gpg = {
+      enable = true;
+
+    };
     git = {
       enable = true;
       package = pkgs.gitAndTools.gitFull;

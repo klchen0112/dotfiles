@@ -1,5 +1,5 @@
-$SKETCHBAR_BIN --add item 微信 left                                             \
-               --set 微信 update_freq=10                                         \
+$SKETCHBAR_BIN --add item Wechat left                                             \
+               --set Wechat update_freq=10                                         \
                           icon=󰘑                                                 \
                           icon.color=0xff2fb608                                  \
                           icon.font.size=20                                          \

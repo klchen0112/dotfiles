@@ -210,7 +210,6 @@
         # video
         yabai -m rule --add label="mpv" app="^mpv$" manage=off space=^8
 
-
         # system
         yabai -m rule --add label="Finder" app="^(Finder|访达)$" title="(Co(py|nnect)|Move|Info|Pref)" manage=off
         yabai -m rule --add label="Safari" app="^Safari$" title="^(General|(Tab|Password|Website|Extension)s|AutoFill|Se(arch|curity)|Privacy|Advance)$" manage=off
@@ -224,14 +223,8 @@
         yabai -m rule --add label="Software Update" title="Software Update" manage=off
         yabai -m rule --add label="About This Mac" app="System Information" title="About This Mac" manage=off
 
-
-
-
         yabai -m rule --add app="Raycast" manage=off
         yabai -m rule --add app="Bitwarden" manage=off
-
-
-
       '';
   };
 
@@ -271,7 +264,6 @@
 
       yabai_mode_focus < shift - z : yabai -m window --toggle zoom-fullscreen;
 
-
       ## Current workspace move
       ctrl + cmd - m ; yabai_mode_move
       yabai_mode_move < ctrl + cmd - m ; default
@@ -295,7 +287,6 @@
       yabai_mode_move < ctrl - 8 : yabai -m window --space 8; yabai -m space --focus 8;
       yabai_mode_move < ctrl - 9 : yabai -m window --space 9; yabai -m space --focus 9;
       yabai_mode_move < ctrl - 0 : yabai -m window --space 10; yabai -m space --focus 10;
-
 
       ## Current workspace size change
       ctrl + cmd - s ; yabai_mode_size

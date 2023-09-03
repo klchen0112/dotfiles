@@ -64,7 +64,7 @@
         # csv
         mechatroner.rainbow-csv
         # copilot
-        github.copilot
+        # github.copilot
       ]
       ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
         {
