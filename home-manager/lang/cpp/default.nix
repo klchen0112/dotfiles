@@ -1,12 +1,12 @@
 { pkgs, ... }: {
   home.packages = with pkgs; [
-    # cmake
+    cmake
     # boost
-    # clang-tools
+    clang-tools
     # xmake
-    # glib
-    # gcc
+    glib
+    gcc
     # julia
-    # llvm_14
+    llvm
   ];
 }

@@ -491,6 +491,7 @@
       "marginnote"
       "zotero"
       "logseq"
+      "tencent-meeting"
     ];
   };
 
