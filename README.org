@@ -10,7 +10,9 @@
   - [[file:modules/hosts/macbook-pro-m1/default.nix][user]]
     - editors
     - [[file:modules/lang][lang]]
-    -
+
+[[./assets/mac-desktop.png]]
+
 * Installation
 ** Nix Darwin Installation
 *** Setup
