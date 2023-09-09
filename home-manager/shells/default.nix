@@ -44,9 +44,9 @@
     fish = {
       enable = true;
       shellAbbrs = {
-        ls = "exa";
-        ll = "exa -lha";
-        lt = "exa --tree";
+        # ls = "exa";
+        # ll = "exa -lha";
+        # lt = "exa --tree";
         psg = "ps aux | rg -v rg | rg -i -e VSZ -e";
         e = "emacsclient -nc";
         E = "sudoedit";
@@ -242,11 +242,11 @@
         }
       ];
     };
-    exa = {
-      enable = true;
-      icons = true;
-      git = true;
-    };
+    # exa = {
+    #   enable = true;
+    #   icons = true;
+    #   git = true;
+    # };
     bat = {
       enable = true;
       config = {
