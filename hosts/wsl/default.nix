@@ -6,7 +6,7 @@
 , ...
 }: {
   imports = [
-    inputs.nix-doom-emacs.hmModule
+    # inputs.nix-doom-emacs.hmModule
 
     ../../home-manager/browser
     ../../home-manager/downloader
