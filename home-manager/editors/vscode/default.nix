@@ -33,10 +33,11 @@
         ms-vscode-remote.remote-ssh
 
         # git
-        eamodio.gitlens
-        donjayamanne.githistory
-        mhutchie.git-graph
+        #eamodio.gitlens
+        #donjayamanne.githistory
+        #mhutchie.git-graph
         # waderyan.gitblame
+        kahole.magit
         # shell
         skyapps.fish-vscode
         # markdown
@@ -44,6 +45,7 @@
 
         # python
         ms-python.python
+        ms-python.isort
         ms-toolsai.jupyter
         ms-toolsai.vscode-jupyter-slideshow
         ms-toolsai.vscode-jupyter-cell-tags
@@ -70,7 +72,7 @@
         {
           name = "python-environment-manager";
           publisher = "donjayamanne";
-          version = "1.0.4";
+          version = "1.2.2";
           sha256 = "E7pbzPFKmHIOQzETjNkcrNbI2mwhpxHPpGBIk/iflpo=";
         }
         {
@@ -79,13 +81,12 @@
           version = "2.3.0";
           sha256 = "CTD0s2lRMCi/WCGr6dP1Utrvtsdcbg4srRcrZJSFDqU=";
         }
-        # {
-        #   name = "org-mode";
-        #   publisher = "vscode-org-mode";
-        #   version = "1.0.0";
-        #   sha256 = "CTD0s2lRMCi/WCGr6dP1Utrvtsdcbg4srRcrZJSFDqU=";
-        # }
-
+        {
+          name = "org-mode";
+          publisher = "vscode-org-mode";
+          version = "1.0.0";
+          sha256 = "o9CIjMlYQQVRdtTlOp9BAVjqrfFIhhdvzlyhlcOv5rY=";
+        }
         # {
         #   name = "vscode-micromamba";
         #   publisher = "corker";
@@ -107,14 +108,14 @@
         {
           name = "cpptools";
           publisher = "ms-vscode";
-          version = "1.16.3";
-          sha256 = "Y4OX7N4whaJroJ9XQVVnIg1ywzsyZCgebpGFqg8L0F4=";
+          version = "1.17.5";
+          sha256 = "LAAEw8goAw3x1MU/TkIdLgPYa0f5b6Hv4GkeiPTVbdY=";
         }
         {
           name = "vscode-yaml";
           publisher = "redhat";
-          version = "1.13.0";
-          sha256 = "8FUVGnUohSCpBUc+4h8yJIH+ICOOhzfuEpGsp7t2Xh0=";
+          version = "1.14.0";
+          sha256 = "hCRyDA6oZF7hJv0YmbNG3S2XPtNbyxX1j3qL1ixOnF8=";
         }
 
       ] ++ lib.optionals pkgs.stdenv.isDarwin

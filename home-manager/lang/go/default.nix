@@ -1,10 +1,10 @@
 {pkgs, ...}: {
   home.packages = with pkgs; [
-    # go
+    go
     # gopls
     # gomodifytags
     # gotests
     # gore
-    # gotools
+    gotools
   ];
 }

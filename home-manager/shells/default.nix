@@ -28,7 +28,9 @@
     btop = {
       enable = true;
     };
-    bash.enable = true;
+    bash = {
+      enable = true;
+    };
     zsh = {
       enable = false;
       enableAutosuggestions = true; # Auto suggest options and highlights syntax, searches in history for options
@@ -242,11 +244,11 @@
         }
       ];
     };
-    # exa = {
-    #   enable = true;
-    #   icons = true;
-    #   git = true;
-    # };
+    eza = {
+      enable = true;
+      icons = true;
+      git = true;
+    };
     bat = {
       enable = true;
       config = {
@@ -352,11 +354,14 @@
         };
       };
     };
+    ripgrep = {
+      enable = true;
+    };
+
   };
-  home.packages = with pkgs; [ ripgrep inetutils nodePackages.prettier shfmt shellcheck ];
-  # programs.ripgrep = {
-  # enable = true;
-  # };
+
+
+  home.packages = with pkgs; [ inetutils nodePackages.prettier shfmt shellcheck ];
   programs.ssh = {
     enable = true;
     serverAliveInterval = 30;
