@@ -1,5 +1,3 @@
-
-
 ;;; $DOOMDIR/config.el -*- lexical-binding: t; -*-
 ;; Place your private configuration here! Remember, you do not need to run 'doom
 ;; sync' after modifying this file!
@@ -88,7 +86,7 @@
 
 
 (cond
- (IS-MAC
+ ((or IS-MAC IS-LINUX)
   (setq doom-font (font-spec :family "JetBrains Mono"   :size 14)
         doom-big-font (font-spec :family "JetBrains Mono"  :size 28)
         doom-variable-pitch-font (font-spec :family "CMU Typewriter Text"  :size 17)
@@ -98,30 +96,30 @@
              :append
              (lambda ()
                ;; Emoji: 😄, 🤦, 🏴󠁧󠁢󠁳󠁣󠁴
-               (set-fontset-font "fontset-default" 'symbol (font-spec :family "Apple Color Emoji" )  )
-               (set-fontset-font "fontset-default" 'symbol (font-spec :family "Symbola" )            )
-               (set-fontset-font "fontset-default" 'symbol (font-spec :family "Noto Color Emoji" )   )
-               (set-fontset-font "fontset-default" 'symbol (font-spec :family "Liberation Mono" )    )
-               (set-fontset-font "fontset-default" 'symbol (font-spec :family "Noto Sans Symbols2" ) )
-               (set-fontset-font "fontset-default" 'symbol (font-spec :family "Segoe UI Emoji" )     )
-               (set-fontset-font "fontset-default" 'symbol (font-spec :family "FreeSerif" )         )
-               (set-fontset-font "fontset-default" 'symbol (font-spec :family "Twitter Color Emoji" ))
+               (set-fontset-font "fontset-default" 'symbol  "Apple Color Emoji"   nil 'prepend)
+               (set-fontset-font "fontset-default" 'symbol  "Symbola"             nil 'prepend)
+               (set-fontset-font "fontset-default" 'symbol  "Noto Color Emoji"    nil 'prepend)
+               (set-fontset-font "fontset-default" 'symbol  "Liberation Mono"     nil 'prepend)
+               (set-fontset-font "fontset-default" 'symbol  "Noto Sans Symbols2"  nil 'prepend)
+               (set-fontset-font "fontset-default" 'symbol  "Segoe UI Emoji"      nil 'prepend)
+               (set-fontset-font "fontset-default" 'symbol  "FreeSerif"           nil 'prepend)
+               (set-fontset-font "fontset-default" 'symbol  "Twitter Color Emoji" nil 'prepend)
                ;; East Asia: 你好, 早晨, こんにちは, 안녕하세요
-               (set-fontset-font "fontset-default" 'han      (font-spec :family "LXGW WenKai"))
-               (set-fontset-font "fontset-default" 'kana     (font-spec :family "LXGW WenKai"))
-               (set-fontset-font "fontset-default" 'hangul   (font-spec :family "LXGW WenKai"))
-               (set-fontset-font "fontset-default" 'cjk-misc (font-spec :family "Noto Serif CJK SC"))
+               (set-fontset-font "fontset-default" 'han      "TsangerJinKai02"   nil 'prepend )
+               (set-fontset-font "fontset-default" 'kana     "TsangerJinKai02"   nil 'prepend )
+               (set-fontset-font "fontset-default" 'hangul   "TsangerJinKai02"   nil 'prepend )
+               (set-fontset-font "fontset-default" 'cjk-misc "Noto Serif CJK SC" nil 'prepend )
                ;; Cyrillic: Привет, Здравствуйте, Здраво, Здравейте
-               (set-fontset-font "fontset-default" 'cyrillic (font-spec :family "Noto cmd_Serif"))
+               (set-fontset-font "fontset-default" 'cyrillic "Noto Serif" nil 'prepend)
                ))
-  )
-
+ )
  (IS-WINDOWS
   (setq doom-font (font-spec :family "Cascadia Code"  :size 23)
         doom-big-font (font-spec :family "Cascadia Code"  :size 25)
         doom-variable-pitch-font (font-spec :family "Cascadia Code" :size 23)
         doom-unicode-font (font-spec :family "霞鹜文楷等宽" :weight 'light :size 23)
         doom-serif-font (font-spec :family "Cascadia Code"  :size 23)))
+
  )
 
 ;; There are two ways to load a theme. Both assume the theme is installed and
