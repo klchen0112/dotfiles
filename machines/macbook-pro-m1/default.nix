@@ -113,7 +113,12 @@
   services.nix-daemon.enable = true; # Auto upgrade daemon
   services.emacs = {
     enable = true;
-    package = pkgs.emacs29;
+    package =
+      if pkgs.stdenv.hostPlatform.isDarwin then
+        pkgs.emacs29-macport
+      else
+        pkgs.emacs29;
+
   };
 
 

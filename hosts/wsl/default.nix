@@ -45,6 +45,6 @@
     username = "${username}";
     homeDirectory = "/home/${username}";
   };
-  home.stateVersion = "23.05";
+  home.stateVersion = "23.11";
 
 }
