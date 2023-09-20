@@ -5,12 +5,11 @@
   programs = {
     gpg = {
       enable = true;
-
     };
     git = {
       enable = true;
       package = pkgs.gitAndTools.gitFull;
-      ignores = [ "*~" "*.swp" ];
+      ignores = [ "*~" "*.swp" ".DS_Store" ];
       attributes = [ "*.pdf diff=pdf" ];
       lfs.enable = true;
       userName = "klchen0112";
@@ -46,9 +45,10 @@
     fish = {
       enable = true;
       shellAbbrs = {
-        # ls = "exa";
-        # ll = "exa -lha";
-        # lt = "exa --tree";
+        ls = "exa";
+        ll = "exa -lha";
+        lt = "exa --tree";
+        btop = "htop";
         psg = "ps aux | rg -v rg | rg -i -e VSZ -e";
         e = "emacsclient -nc";
         E = "sudoedit";
