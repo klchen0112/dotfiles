@@ -1,7 +1,9 @@
 #
 # ../../media
 #
-{ pkgs, ... }: {
+{ pkgs
+, ...
+}: {
   programs.mpv = {
     enable = true;
   };
@@ -17,6 +19,10 @@
         "screen_down" = [ "d" "<C-d>" ];
         "screen_up" = [ "u" "<C-u>" ];
       };
+  };
+  programs.skim = {
+    enable = true;
+    enableFishIntegration = true;
   };
   home.packages = with pkgs; [
     # calibre

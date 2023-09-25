@@ -1,8 +1,11 @@
 #
 # OpenVPN
 #
-{pkgs, ...}: {
+{ pkgs
+, ...
+}: {
   home.packages = with pkgs; [
     # openvpn
+    # zerotierone
   ];
 }
