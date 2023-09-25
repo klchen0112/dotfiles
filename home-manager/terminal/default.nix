@@ -1,9 +1,8 @@
 #
 # OpenVPN
 #
-{
-  pkgs,
-  #
+{ pkgs
+, #
   ...
 }: {
   # programs.alacritty = {

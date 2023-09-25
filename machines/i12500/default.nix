@@ -106,9 +106,9 @@
       experimental-features = nix-command flakes
     '';
     settings.trusted-users =
-    [
-      "${username}"
-    ];
+      [
+        "${username}"
+      ];
   };
 
 
@@ -166,6 +166,7 @@
       # Installed Nix packages
       # Terminal
       # bash
+      gnumake
       fish
       # zsh
       fontconfig

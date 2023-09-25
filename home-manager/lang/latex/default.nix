@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+{ pkgs, ... }: {
   # programs.texlive = {
   #   enable = true;
   #   extraPackages = tpkgs: { inherit (tpkgs) collection-xetex; };
@@ -18,5 +18,5 @@
   #   #   #(setq org-preview-latex-default-process 'dvisvgm)
   #   # };
   # };
-  home.packages = with pkgs; [texlive.combined.scheme-full];
+  home.packages = with pkgs; [ texlive.combined.scheme-full ];
 }

@@ -178,7 +178,7 @@
       formatter = forAllSystems (system: nixpkgs.legacyPackages.${system}.nixpkgs-fmt);
     };
 
-      inputs =
+  inputs =
     # All flake references used to build my NixOS setup. These are dependencies.
     {
       nixpkgs.url = "github:nixos/nixpkgs/master"; # Nix Packages
