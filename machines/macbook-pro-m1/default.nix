@@ -416,7 +416,10 @@
     extraOptions = ''
       experimental-features = nix-command flakes
     '';
-
+    settings.trusted-users =
+      [
+        "${username}"
+      ];
   };
 
   homebrew = {

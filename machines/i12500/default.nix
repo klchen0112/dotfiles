@@ -94,6 +94,22 @@
 
   security.sudo.wheelNeedsPassword = false; # User does not need to give password when using sudo.
 
+  nix = {
+    package = pkgs.nix;
+    gc = {
+      # Garbage collection
+      automatic = true;
+      interval.Day = 7;
+      options = "--delete-older-than 7d";
+    };
+    extraOptions = ''
+      experimental-features = nix-command flakes
+    '';
+    settings.trusted-users =
+      [
+        "${username}"
+      ];
+  };
 
 
   fonts = {
