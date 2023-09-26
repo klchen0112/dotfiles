@@ -398,7 +398,7 @@
         hostname = "192.168.31.234";
         port = 22;
         user = "klchen";
-        identityFile = "~/.ssh/id_ras";
+        identityFile = "~/.ssh/id_rsa";
       };
       n1 = {
         hostname = "192.168.0.254";
