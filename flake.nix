@@ -19,11 +19,10 @@
     extra-experimental-features = "nix-command flakes";
     substituters = [
       # replace official cache with a mirror located in China
-      "https://mirrors.ustc.edu.cn/nix-channels/store"
+      # "https://mirrors.ustc.edu.cn/nix-channels/store"
       "https://cache.nixos.org"
       "https://anyrun.cachix.org"
       "https://hyprland.cachix.org"
-      # "https://mirrors.ustc.edu.cn/nix-channels/store"
       "https://mirrors.cernet.edu.cn/nix-channels/store"
       "https://mirror.sjtu.edu.cn/nix-channels/store"
       "https://mirrors.tuna.tsinghua.edu.cn/nix-channels/store"
@@ -100,14 +99,6 @@
             };
             modules = [
               ./machines/wsl
-              vscode-server.nixosModule
-              ({ config
-               , pkgs
-               , ...
-               }: {
-                services.vscode-server.enable = true;
-              })
-
             ];
           };
           "i12500" = nixpkgs.lib.nixosSystem {
@@ -118,7 +109,6 @@
             };
             modules = [
               # hyprland.nixosModules.default
-              vscode-server.nixosModules.default
               ./machines/i12500
 
             ];
@@ -179,7 +169,7 @@
   inputs =
     # All flake references used to build my NixOS setup. These are dependencies.
     {
-      nixpkgs.url = "github:nixos/nixpkgs/release-23.05"; # Nix Packages
+      nixpkgs.url = "github:nixos/nixpkgs"; # Nix Packages
       systems.url = "github:nix-systems/default";
 
       nixos-hardware = {
@@ -202,7 +192,7 @@
 
       home-manager = {
         # User Package Management
-        url = "github:nix-community/home-manager/release-23.05";
+        url = "github:nix-community/home-manager";
         inputs.nixpkgs.follows = "nixpkgs";
       };
 
