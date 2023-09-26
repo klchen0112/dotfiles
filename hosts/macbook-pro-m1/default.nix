@@ -19,18 +19,7 @@
     ../../home-manager/editors/vscode
     ../../home-manager/graphics
     ../../home-manager/keyboard
-    ../../home-manager/lang/cpp
-    ../../home-manager/lang/go
-    ../../home-manager/lang/java
-    ../../home-manager/lang/json
-    ../../home-manager/lang/julia
-    ../../home-manager/lang/lua
-    ../../home-manager/lang/latex
-    ../../home-manager/lang/markdown
-    ../../home-manager/lang/nix
-    ../../home-manager/lang/nodejs
-    ../../home-manager/lang/python
-    ../../home-manager/lang/rust
+    ../../home-manager/lang
     ../../home-manager/media
     ../../home-manager/network
     ../../home-manager/notes

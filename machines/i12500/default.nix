@@ -15,6 +15,7 @@
 }: {
   imports =
     [
+      inputs.vscode-server.nixosModules.default
       # Include the results of the hardware scan.
       ./hardware-configuration.nix
       ./hyprland.nix
@@ -115,7 +116,7 @@
   fonts = {
     # Fonts
     fontDir.enable = true;
-    packages = with pkgs; [
+    fonts = with pkgs; [
       jetbrains-mono
       # cascadia-code
       # comic-mono

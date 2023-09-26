@@ -9,7 +9,20 @@
 #   └─ ./modules
 #       └─ ./editors
 #           └─ ./vscode
-{ config, lib, pkgs, ... }: {
+{ inputs
+, outputs
+, lib
+, config
+, pkgs
+, username,... }: {
+  imports = [
+
+  ];
+
+  services.vscode-server.enable =
+      if pkgs.stdenv.isLinux
+      then true
+      else false;
   programs.vscode = {
     enable = true;
     package = pkgs.vscode;

@@ -5,9 +5,9 @@
     recursive = true;
   };
   home.packages = with pkgs; [
-	    # hyprland
-      waybar # the status bar
-	];
+    # hyprland
+    waybar # the status bar
+  ];
   wayland.windowManager.hyprland = {
     enable = true;
     xwayland.enable = true;
