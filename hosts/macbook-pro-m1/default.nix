@@ -8,7 +8,7 @@
 }: {
   imports = [
     inputs.nix-doom-emacs.hmModule
-
+    inputs.vscode-server.homeModules.default
     ../../home-manager/browser
     ../../home-manager/downloader
     # ../../home-manager/editors/codeblocks

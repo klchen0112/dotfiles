@@ -85,7 +85,7 @@
         {
           name = "python-environment-manager";
           publisher = "donjayamanne";
-          version = "1.2.2";
+          version = "1.2.4";
           sha256 = "E7pbzPFKmHIOQzETjNkcrNbI2mwhpxHPpGBIk/iflpo=";
         }
         {
