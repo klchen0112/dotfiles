@@ -8,7 +8,8 @@
 }: {
   imports = [
     # inputs.nix-doom-emacs.hmModule
-
+    inputs.hyprland.homeManagerModules.default
+    ../../home-manager/desktop
     ../../home-manager/browser
     ../../home-manager/downloader
     # ../../home-manager/editors/codeblocks
@@ -39,7 +40,7 @@
     ../../home-manager/terminal
     ../../home-manager/vm
     # ../../home-manager/vpn
-    ../../home-manager/desktop
+
   ];
 
   nixpkgs = {

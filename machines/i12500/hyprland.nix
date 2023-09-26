@@ -1,4 +1,4 @@
-{ pkgs, hyprland, ... }: {
+{ pkgs, inputs, ... }: {
   ##########################################################################################################
   #
   #  NixOS's Configuration for Hyprland Window Manager
@@ -10,7 +10,7 @@
   ##########################################################################################################
 
   imports = [
-    # hyprland.nixosModules.default
+    inputs.hyprland.nixosModules.default
   ];
 
   xdg.portal = {
@@ -46,7 +46,7 @@
   programs = {
     hyprland = {
       enable = true;
-
+      package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.default;
       xwayland = {
         enable = true;
         # hidpi = true;
