@@ -14,17 +14,22 @@
 , lib
 , config
 , pkgs
-, username,... }: {
+, username
+, ...
+}: {
   imports = [
 
   ];
 
   services.vscode-server.enable =
-      if pkgs.stdenv.isLinux
+    if pkgs.stdenv.isLinux
+    then true
+    else false;
+  programs.vscode = {
+    enable =
+      if pkgs.stdenv.isDarwin
       then true
       else false;
-  programs.vscode = {
-    enable = true;
     package = pkgs.vscode;
 
     extensions = with pkgs.vscode-extensions;
