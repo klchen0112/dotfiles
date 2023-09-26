@@ -179,7 +179,7 @@
   inputs =
     # All flake references used to build my NixOS setup. These are dependencies.
     {
-      nixpkgs.url = "github:nixos/nixpkgs/master"; # Nix Packages
+      nixpkgs.url = "github:nixos/nixpkgs/release-23.05"; # Nix Packages
       systems.url = "github:nix-systems/default";
 
       nixos-hardware = {
@@ -202,7 +202,7 @@
 
       home-manager = {
         # User Package Management
-        url = "github:nix-community/home-manager";
+        url = "github:nix-community/home-manager/release-23.05";
         inputs.nixpkgs.follows = "nixpkgs";
       };
 
