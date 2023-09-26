@@ -20,10 +20,6 @@
         "screen_up" = [ "u" "<C-u>" ];
       };
   };
-  programs.skim = {
-    enable = true;
-    enableFishIntegration = true;
-  };
   home.packages = with pkgs; [
     # calibre
     # plexamp
