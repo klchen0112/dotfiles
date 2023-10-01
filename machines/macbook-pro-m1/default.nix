@@ -90,7 +90,7 @@
   programs.fish.enable = true;
 
   environment = {
-    shells = with pkgs; [ fish bash]; # Default shell
+    shells = with pkgs; [ fish bash ]; # Default shell
     # variables = {
     #   # System variables
     #   EDITOR = "nvim";
@@ -128,9 +128,9 @@
     config = {
 
       layout = "bsp";
-      external_bar = "all:20:0";
+      external_bar = "all:60:0";
 
-      top_padding = 30;
+      top_padding = 0;
       bottom_padding = 0;
       left_padding = 0;
       right_padding = 0;
@@ -335,9 +335,9 @@
         PADDINGS=3
 
         $SKETCHBAR_BIN --bar height=50                                                     \
-        corner_radius=0                                              \
+        corner_radius=10                                              \
         border_width=0                                                \
-        margin=0                                                     \
+        margin=5                                                     \
         blur_radius=0                                                 \
         position=top                                                  \
         padding_left=0                                                \
@@ -346,7 +346,7 @@
         topmost=off                                                   \
         sticky=on                                                     \
         font_smoothing=off                                            \
-        y_offset=0                                                   \
+        y_offset=5                                                   \
         notch_width=0                                                 \
         --default drawing=on                                                    \
         updates=when_shown                                            \
