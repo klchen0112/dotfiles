@@ -128,7 +128,7 @@
     config = {
 
       layout = "bsp";
-      external_bar = "all:60:0";
+      external_bar = "all:50:0";
 
       top_padding = 0;
       bottom_padding = 0;
@@ -334,8 +334,8 @@
         BACKGROUND_CORNER_RADIUS=16
         PADDINGS=3
 
-        $SKETCHBAR_BIN --bar height=50                                                     \
-        corner_radius=10                                              \
+        $SKETCHBAR_BIN --bar height=40                                                     \
+        corner_radius=16                                              \
         border_width=0                                                \
         margin=5                                                     \
         blur_radius=0                                                 \
