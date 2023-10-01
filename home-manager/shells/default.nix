@@ -404,7 +404,7 @@
         hostname = "192.168.0.254";
       };
       tower = {
-        hostname = "192.168.0.10";
+        hostname = "192.168.0.200";
         user = "root";
       };
       ningbo40 = {
