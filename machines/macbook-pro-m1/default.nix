@@ -90,7 +90,7 @@
   programs.fish.enable = true;
 
   environment = {
-    shells = with pkgs; [ fish ]; # Default shell
+    shells = with pkgs; [ fish bash]; # Default shell
     # variables = {
     #   # System variables
     #   EDITOR = "nvim";
@@ -130,11 +130,11 @@
       layout = "bsp";
       external_bar = "all:20:0";
 
-      top_padding = 50;
-      bottom_padding = 10;
-      left_padding = 10;
-      right_padding = 10;
-      window_gap = 10;
+      top_padding = 30;
+      bottom_padding = 0;
+      left_padding = 0;
+      right_padding = 0;
+      window_gap = 5;
 
       mouse_follows_focus = "off";
       focus_follows_mouse = "off";
@@ -335,18 +335,18 @@
         PADDINGS=3
 
         $SKETCHBAR_BIN --bar height=50                                                     \
-        corner_radius=14                                              \
+        corner_radius=0                                              \
         border_width=0                                                \
-        margin=10                                                     \
+        margin=0                                                     \
         blur_radius=0                                                 \
         position=top                                                  \
-        padding_left=4                                                \
-        padding_right=4                                               \
+        padding_left=0                                                \
+        padding_right=0                                               \
         color=$BAR_COLOR                                              \
         topmost=off                                                   \
         sticky=on                                                     \
         font_smoothing=off                                            \
-        y_offset=10                                                   \
+        y_offset=0                                                   \
         notch_width=0                                                 \
         --default drawing=on                                                    \
         updates=when_shown                                            \
@@ -467,6 +467,7 @@
       "google-chrome"
       "steam"
       "appcleaner"
+      "firefox"
       # "hammerspoon"
       # "authy"
       # "hiddenbar"
