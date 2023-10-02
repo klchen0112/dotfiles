@@ -13,8 +13,8 @@
     ../../home-manager/downloader
     # ../../home-manager/editors/codeblocks
     ../../home-manager/editors/jetbrains
-    ../../home-manager/editors/emacs/default.nix
-    # ../../home-manager/editors/vim
+    ../../home-manager/editors/emacs
+    ../../home-manager/editors/vim
     # ../../home-manager/editors/nvim
     ../../home-manager/editors/vscode
     ../../home-manager/graphics
