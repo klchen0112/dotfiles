@@ -501,6 +501,8 @@
       "zotero"
       "logseq"
       "tencent-meeting"
+      "telegram"
+      "resilio-sync"
     ];
   };
 

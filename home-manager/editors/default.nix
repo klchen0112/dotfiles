@@ -7,7 +7,9 @@
   imports = [
     ./vscode
     ./jetbrains
-    ./emacs 
+    ./emacs
   ];
-
+  home.packages = with pkgs; [
+    wakatime
+  ];
 }

@@ -46,6 +46,7 @@
         streetsidesoftware.code-spell-checker
         christian-kohler.path-intellisense
         tuttieee.emacs-mcx
+        wakatime.vscode-wakatime
 
         # ssh
         ms-vscode-remote.remote-ssh

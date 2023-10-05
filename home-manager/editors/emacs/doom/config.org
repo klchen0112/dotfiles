@@ -2209,11 +2209,13 @@ use dash open app dash
 #+end_src
 
 #+begin_src emacs-lisp :tangle config.el
-;;(use-package! wakatime-mode
-;;  :config
-;; (setq wakatime-cli-path       (cond (IS-MAC "~/.nix-profile/bin/wakatime-cli") (IS-WINDOWS "~/.wakatime/wakatime-cli")))
-;;  (global-wakatime-mode)
-;;)
+(use-package! wakatime-mode
+  :config
+  (setq wakatime-cli-path
+    (cond (IS-MAC "~/.nix-profile/bin/wakatime-cli")
+          (IS-WINDOWS "~/.wakatime/wakatime-cli")))
+  (global-wakatime-mode)
+)
 #+end_src
 ** Keyfreq
 :PROPERTIES:
@@ -2225,6 +2227,9 @@ use dash open app dash
 #+end_src
 
 #+begin_src emacs-lisp :tangle config.el
-(setq keyfreq-mode t
-      keyfreq-autosave-mode t)
+(use-package! keyfreq
+  :config
+  (setq keyfreq-mode t
+        keyfreq-autosave-mode t)
+)
 #+end_src
