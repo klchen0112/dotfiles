@@ -503,6 +503,8 @@
       "tencent-meeting"
       "telegram"
       "resilio-sync"
+      "via"
+      "zerotier-one"
     ];
   };
 

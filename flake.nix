@@ -253,7 +253,7 @@
       };
       # fonts
       apple-fonts = {
-        url = "github:Lyndeno/apple-fonts.nix";
+        url = "github:klchen0112/apple-fonts.nix";
         inputs.flake-utils.follows = "flake-utils";
         inputs.nixpkgs.follows = "nixpkgs";
       };
