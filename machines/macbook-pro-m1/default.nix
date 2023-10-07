@@ -189,7 +189,7 @@
 
         # code
         yabai -m rule --add app="WezTerm" space=^1
-        yabai -m rule --add label="emacs" subrole!="^(AXFloatingWindow)$" app="Emacs" manage=on
+        yabai -m rule --add label="emacs" subrole!="^(AXFloatingWindow)$" app="^Emacs$" manage=on
         yabai -m rule --add app="Dash" manage=off
 
         # browser
@@ -236,6 +236,12 @@
   services.skhd = {
     enable = true;
     skhdConfig = ''
+      # for this to work you must configure sudo such that
+      # it will be able to run the command without password
+      yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
+      sudo yabai --load-sa
+      # .. more yabai startup stuff
+
       # add an on_enter command to the default mode
       :: default : yabai -m config active_window_border_color 0xff352A28
       #
@@ -523,6 +529,10 @@
         NSAutomaticSpellingCorrectionEnabled = false;
         AppleShowAllExtensions = true;
         _HIHideMenuBar = true;
+
+      };
+      CustomSystemPreferences = {
+        NSGlobalDomain.AppleSpacesSwitchOnActivate = false;
       };
       dock = {
         # Dock settings
