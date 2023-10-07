@@ -86,46 +86,54 @@
 
 
 (cond
- ((or IS-MAC IS-LINUX)
-  (setq doom-font (font-spec :family "JetBrains Mono"   :size 14)
-        doom-big-font (font-spec :family "JetBrains Mono"  :size 28)
-        doom-variable-pitch-font (font-spec :family "CMU Typewriter Text"  :size 17)
-        ;;doom-unicode-font (font-spec :family "FZSongKeBenXiuKai-R-GBK" :weight 'light :slant 'italic :size 21)
-        doom-serif-font (font-spec :family "IBM Plex Serif"  :size 17))
-  (add-hook! 'after-init-hook
-             :append
-             (lambda ()
-               ;; Emoji: 😄, 🤦, 🏴󠁧󠁢󠁳󠁣󠁴
-               (set-fontset-font "fontset-default" 'symbol  "Apple Color Emoji"   nil 'prepend)
-               (set-fontset-font "fontset-default" 'symbol  "Symbola"             nil 'prepend)
-               (set-fontset-font "fontset-default" 'symbol  "Noto Color Emoji"    nil 'prepend)
-               (set-fontset-font "fontset-default" 'symbol  "Liberation Mono"     nil 'prepend)
-               (set-fontset-font "fontset-default" 'symbol  "Noto Sans Symbols2"  nil 'prepend)
-               (set-fontset-font "fontset-default" 'symbol  "Segoe UI Emoji"      nil 'prepend)
-               (set-fontset-font "fontset-default" 'symbol  "FreeSerif"           nil 'prepend)
-               (set-fontset-font "fontset-default" 'symbol  "Twitter Color Emoji" nil 'prepend)
-               ;; East Asia: 你好, 早晨, こんにちは, 안녕하세요
-               (set-fontset-font "fontset-default" 'han      "TsangerJinKai02"   nil 'prepend )
-               (set-fontset-font "fontset-default" 'kana     "TsangerJinKai02"   nil 'prepend )
-               (set-fontset-font "fontset-default" 'hangul   "TsangerJinKai02"   nil 'prepend )
-               (set-fontset-font "fontset-default" 'cjk-misc "Noto Serif CJK SC" nil 'prepend )
-               ;; Cyrillic: Привет, Здравствуйте, Здраво, Здравейте
-               (set-fontset-font "fontset-default" 'cyrillic "Noto Serif" nil 'prepend)
-               ))
- )
- (IS-WINDOWS
-  (setq doom-font (font-spec :family "Cascadia Code"  :size 23)
+ (
+  (or IS-MAC IS-LINUX)
+    (setq doom-font (font-spec :family "JetBrains Mono"   :size 14)
+          doom-big-font (font-spec :family "JetBrains Mono"  :size 28)
+          doom-variable-pitch-font (font-spec :family "CMU Typewriter Text"  :size 17)
+          ;;doom-unicode-font (font-spec :family "FZSongKeBenXiuKai-R-GBK" :weight 'light :slant 'italic :size 21)
+          doom-serif-font (font-spec :family "IBM Plex Serif"  :size 17))
+    (add-hook!  'after-init-hook
+        :append
+        (lambda ()
+          ;; Emoji: 😄, 🤦, 🏴󠁧󠁢󠁳󠁣󠁴
+          (set-fontset-font "fontset-default" 'symbol   (font-spec :family "Apple Color Emoji"  ) nil 'prepend)
+          (set-fontset-font "fontset-default" 'symbol   (font-spec :family "Symbola"            ) nil 'prepend)
+          (set-fontset-font "fontset-default" 'symbol   (font-spec :family "Noto Color Emoji"   ) nil 'prepend)
+          (set-fontset-font "fontset-default" 'symbol   (font-spec :family "Liberation Mono"    ) nil 'prepend)
+          (set-fontset-font "fontset-default" 'symbol   (font-spec :family "Noto Sans Symbols2" ) nil 'prepend)
+          (set-fontset-font "fontset-default" 'symbol   (font-spec :family "Segoe UI Emoji"     ) nil 'prepend)
+          (set-fontset-font "fontset-default" 'symbol   (font-spec :family "FreeSerif"          ) nil 'prepend)
+          (set-fontset-font "fontset-default" 'symbol   (font-spec :family "Twitter Color Emoji") nil 'prepend)
+          ;; East Asia: 你好, 早晨, こんにちは, 안녕하세요
+          (set-fontset-font "fontset-default" 'han      (font-spec :family "TsangerJinKai02"    ) nil 'prepend )
+          (set-fontset-font "fontset-default" 'kana     (font-spec :family "TsangerJinKai02"    ) nil 'prepend )
+          (set-fontset-font "fontset-default" 'hangul   (font-spec :family "TsangerJinKai02"    ) nil 'prepend )
+          (set-fontset-font "fontset-default" 'cjk-misc (font-spec :family "Noto Serif CJK SC"  ) nil 'prepend )
+          ;; Cyrillic: Привет, Здравствуйте, Здраво, Здравейте
+          (set-fontset-font "fontset-default" 'cyrillic (font-spec :family "Noto Serif"         ) nil 'prepend)))
+  )
+  ((:if IS-WINDOWS)
+    (setq doom-font (font-spec :family "Cascadia Code"  :size 23)
         doom-big-font (font-spec :family "Cascadia Code"  :size 25)
         doom-variable-pitch-font (font-spec :family "Cascadia Code" :size 23)
         doom-unicode-font (font-spec :family "霞鹜文楷等宽" :weight 'light :size 23)
         doom-serif-font (font-spec :family "Cascadia Code"  :size 23)))
-
- )
+)
 
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
 
+(use-package! doom-themes
+  :config
+  ;;Global settings (defaults)
+  (setq doom-themes-enable-bold t    ; if nil, bold is universally disabled
+        doom-themes-enable-italic t ; if nil, italics is universally disabled
+        doom-themes-padded-modeline t
+        doom-themes-treemacs-enable-variable-pitch nil)
+  (doom-themes-treemacs-config)
+  (doom-themes-org-config))
 
 
 ;; There are two ways to load a theme. Both assume the theme is installed and
@@ -139,7 +147,7 @@
                          doom-old-hope doom-oceanic-next doom-monokai-pro doom-material doom-henna
                          doom-ephemeral chocolate doom-zenburn))
 
-(setq doom-themes-light '(doom-one-light doom-solarized-light doom-ayu-light doom-opera-light))
+(setq doom-themes-light '(doom-one-light doom-solarized-light  doom-opera-light))
 
 (defun random-choice (items)
   "Random choice a list"
@@ -155,19 +163,16 @@
     ('dark  (load-theme 'doom-one t))
 ))
 
+
+
+(after! doom-themes
+  (setq doom-theme 'doom-nano-light))
 ;;(if IS-MAC (add-hook 'ns-system-appearance-change-functions #'my/apply-theme)
-(setq doom-theme (random-choice doom-themes-light))
+;;(setq doom-theme (random-choice doom-themes-light))
 
 
-(use-package! doom-themes
-  :config
-  ;;Global settings (defaults)
-  (setq doom-themes-enable-bold t    ; if nil, bold is universally disabled
-        doom-themes-enable-italic t ; if nil, italics is universally disabled
-        doom-themes-padded-modeline t
-        doom-themes-treemacs-enable-variable-pitch nil)
-  (doom-themes-treemacs-config)
-  (doom-themes-org-config))
+
+
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
 
@@ -1375,11 +1380,16 @@ Refer to `org-agenda-prefix-format' for more information."
   ;;(setq telega-server-libs-prefix)
 )
 
-;;(use-package! wakatime-mode
-;;  :config
-;; (setq wakatime-cli-path       (cond (IS-MAC "~/.nix-profile/bin/wakatime-cli") (IS-WINDOWS "~/.wakatime/wakatime-cli")))
-;;  (global-wakatime-mode)
-;;)
+(use-package! wakatime-mode
+  :config
+  (setq wakatime-cli-path
+    (cond (IS-MAC "~/.nix-profile/bin/wakatime-cli")
+          (IS-WINDOWS "~/.wakatime/wakatime-cli")))
+  (global-wakatime-mode)
+)
 
-(setq keyfreq-mode t
-      keyfreq-autosave-mode t)
+(use-package! keyfreq
+  :config
+  (setq keyfreq-mode t
+        keyfreq-autosave-mode t)
+)
