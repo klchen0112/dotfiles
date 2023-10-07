@@ -2212,7 +2212,7 @@ use dash open app dash
 :ID:       ea697417-3b23-406f-b821-7fd01c60d7e5
 :END:
 #+begin_src emacs-lisp :tangle packages.el
-;;(package! wakatime-mode)
+(package! wakatime-mode)
 #+end_src
 
 #+begin_src emacs-lisp :tangle config.el
