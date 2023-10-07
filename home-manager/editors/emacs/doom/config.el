@@ -1383,7 +1383,7 @@ Refer to `org-agenda-prefix-format' for more information."
 (use-package! wakatime-mode
   :config
   (setq wakatime-cli-path
-    (cond (IS-MAC "~/.nix-profile/bin/wakatime-cli")
+    (cond (IS-MAC "/etc/profiles/per-user/klchen/bin/wakatime-cli")
           (IS-WINDOWS "~/.wakatime/wakatime-cli")))
   (global-wakatime-mode)
 )

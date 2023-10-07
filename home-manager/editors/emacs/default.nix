@@ -56,7 +56,10 @@
   ];
 
   # home.file.".config/emacs".source = inputs.doomemacs;
-  home.file.".config/doom".source = ./doom;
+  home.file.".config/doom" = {
+    source = ./doom;
+    recursive = true;
+  };
 
 
   programs.emacs = {
