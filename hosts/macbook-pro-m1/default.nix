@@ -11,12 +11,8 @@
     inputs.vscode-server.homeModules.default
     ../../home-manager/browser
     ../../home-manager/downloader
-    # ../../home-manager/editors/codeblocks
-    ../../home-manager/editors/jetbrains
-    ../../home-manager/editors/emacs
-    ../../home-manager/editors/vim
-    # ../../home-manager/editors/nvim
-    ../../home-manager/editors/vscode
+    ../../home-manager/editors
+    ../../home-manager/editors
     ../../home-manager/graphics
     ../../home-manager/keyboard
     ../../home-manager/lang

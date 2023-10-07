@@ -242,6 +242,11 @@
           name = "sponge";
           src = sponge.src;
         }
+        {
+          name = "wakatime-fish";
+          src = wakatime-fish.src;
+        }
+
       ];
     };
     eza = {
