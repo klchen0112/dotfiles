@@ -83,43 +83,46 @@
 ;; DON'T use (`font-family-list'), it's unreliable on Linux
 ;; org mode table
 
-
-
-(cond
- (
-  (or IS-MAC IS-LINUX)
-    (setq doom-font (font-spec :family "JetBrains Mono"   :size 14)
-          doom-big-font (font-spec :family "JetBrains Mono"  :size 28)
-          doom-variable-pitch-font (font-spec :family "CMU Typewriter Text"  :size 17)
-          ;;doom-unicode-font (font-spec :family "FZSongKeBenXiuKai-R-GBK" :weight 'light :slant 'italic :size 21)
-          doom-serif-font (font-spec :family "IBM Plex Serif"  :size 17))
-    (add-hook!  'after-init-hook
-        :append
-        (lambda ()
-          ;; Emoji: 😄, 🤦, 🏴󠁧󠁢󠁳󠁣󠁴
-          (set-fontset-font "fontset-default" 'symbol   (font-spec :family "Apple Color Emoji"  ) nil 'prepend)
-          (set-fontset-font "fontset-default" 'symbol   (font-spec :family "Symbola"            ) nil 'prepend)
-          (set-fontset-font "fontset-default" 'symbol   (font-spec :family "Noto Color Emoji"   ) nil 'prepend)
-          (set-fontset-font "fontset-default" 'symbol   (font-spec :family "Liberation Mono"    ) nil 'prepend)
-          (set-fontset-font "fontset-default" 'symbol   (font-spec :family "Noto Sans Symbols2" ) nil 'prepend)
-          (set-fontset-font "fontset-default" 'symbol   (font-spec :family "Segoe UI Emoji"     ) nil 'prepend)
-          (set-fontset-font "fontset-default" 'symbol   (font-spec :family "FreeSerif"          ) nil 'prepend)
-          (set-fontset-font "fontset-default" 'symbol   (font-spec :family "Twitter Color Emoji") nil 'prepend)
-          ;; East Asia: 你好, 早晨, こんにちは, 안녕하세요
-          (set-fontset-font "fontset-default" 'han      (font-spec :family "TsangerJinKai02"    ) nil 'prepend )
-          (set-fontset-font "fontset-default" 'kana     (font-spec :family "TsangerJinKai02"    ) nil 'prepend )
-          (set-fontset-font "fontset-default" 'hangul   (font-spec :family "TsangerJinKai02"    ) nil 'prepend )
-          (set-fontset-font "fontset-default" 'cjk-misc (font-spec :family "Noto Serif CJK SC"  ) nil 'prepend )
-          ;; Cyrillic: Привет, Здравствуйте, Здраво, Здравейте
-          (set-fontset-font "fontset-default" 'cyrillic (font-spec :family "Noto Serif"         ) nil 'prepend)))
-  )
-  ((:if IS-WINDOWS)
-    (setq doom-font (font-spec :family "Cascadia Code"  :size 23)
-        doom-big-font (font-spec :family "Cascadia Code"  :size 25)
-        doom-variable-pitch-font (font-spec :family "Cascadia Code" :size 23)
-        doom-unicode-font (font-spec :family "霞鹜文楷等宽" :weight 'light :size 23)
-        doom-serif-font (font-spec :family "Cascadia Code"  :size 23)))
-)
+(setq doom-font (font-spec :family "SF Mono"   :size 14)
+      doom-variable-pitch-font (font-spec :family "TsangerJinKai02" :size 14)
+      doom-symbol-font (font-spec :family "Symbola" :size 14)
+      doom-serif-font (font-spec :family "IBM Plex Serif"  :size 17)
+      )
+;;(cond
+;; (
+;;  (or IS-MAC IS-LINUX)
+;;    (setq doom-font (font-spec :family "JetBrains Mono"   :size 14)
+;;          doom-big-font (font-spec :family "JetBrains Mono"  :size 28)
+;;          doom-variable-pitch-font (font-spec :family "CMU Typewriter Text"  :size 17)
+;;          ;;doom-unicode-font (font-spec :family "FZSongKeBenXiuKai-R-GBK" :weight 'light :slant 'italic :size 21)
+;;          doom-serif-font (font-spec :family "IBM Plex Serif"  :size 17))
+;;    (add-hook!  'after-init-hook
+;;        :append
+;;        (lambda ()
+;;          ;; Emoji: 😄, 🤦, 🏴󠁧󠁢󠁳󠁣󠁴
+;;          (set-fontset-font "fontset-default" 'symbol   (font-spec :family "Apple Color Emoji"  ) nil 'prepend)
+;;          (set-fontset-font "fontset-default" 'symbol   (font-spec :family "Symbola"            ) nil 'prepend)
+;;          (set-fontset-font "fontset-default" 'symbol   (font-spec :family "Noto Color Emoji"   ) nil 'prepend)
+;;          (set-fontset-font "fontset-default" 'symbol   (font-spec :family "Liberation Mono"    ) nil 'prepend)
+;;          (set-fontset-font "fontset-default" 'symbol   (font-spec :family "Noto Sans Symbols2" ) nil 'prepend)
+;;          (set-fontset-font "fontset-default" 'symbol   (font-spec :family "Segoe UI Emoji"     ) nil 'prepend)
+;;          (set-fontset-font "fontset-default" 'symbol   (font-spec :family "FreeSerif"          ) nil 'prepend)
+;;          (set-fontset-font "fontset-default" 'symbol   (font-spec :family "Twitter Color Emoji") nil 'prepend)
+;;          ;; East Asia: 你好, 早晨, こんにちは, 안녕하세요
+;;          (set-fontset-font "fontset-default" 'han      (font-spec :family "TsangerJinKai02"    ) nil 'prepend )
+;;          (set-fontset-font "fontset-default" 'kana     (font-spec :family "TsangerJinKai02"    ) nil 'prepend )
+;;          (set-fontset-font "fontset-default" 'hangul   (font-spec :family "TsangerJinKai02"    ) nil 'prepend )
+;;          (set-fontset-font "fontset-default" 'cjk-misc (font-spec :family "Noto Serif CJK SC"  ) nil 'prepend )
+;;          ;; Cyrillic: Привет, Здравствуйте, Здраво, Здравейте
+;;          (set-fontset-font "fontset-default" 'cyrillic (font-spec :family "Noto Serif"         ) nil 'prepend)))
+;;  )
+;;  ((:if IS-WINDOWS)
+;;    (setq doom-font (font-spec :family "Cascadia Code"  :size 23)
+;;        doom-big-font (font-spec :family "Cascadia Code"  :size 25)
+;;        doom-variable-pitch-font (font-spec :family "Cascadia Code" :size 23)
+;;        doom-unicode-font (font-spec :family "霞鹜文楷等宽" :weight 'light :size 23)
+;;        doom-serif-font (font-spec :family "Cascadia Code"  :size 23)))
+;;)
 
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
@@ -631,15 +634,6 @@
 ;;  )
 
 
-(use-package! org-superstar
-  :after org
-  :custom
-  (org-superstar-headline-bullets-list '("☰" "☱" "☲" "☳" "☴" "☵" "☶" "☷"))
-  (org-superstar-item-bullet-alist '((43 . "⬧") (45 . "⬨")))
-  :custom-face
-  (org-superstar-item ((t (:inherit 'fixed-pitch))))
-  (org-superstar-header-bullet ((t (:height 232 :inherit 'fixed-pitch)))))
-
 (use-package! visual-fill-column
   :after org
   :custom
@@ -647,67 +641,7 @@
 
 (use-package! org-modern
   :hook (org-mode . org-modern-mode)
-  :hook (org-agenda-finalize . org-modern-agenda)
-  :config
-  (setq org-modern-star ["◉" "✜" "✸" "✿" "✤" "○" "◆" "▶"]
-        org-modern-table-vertical 1
-        org-modern-table-horizontal 0.2
-        org-modern-list '((43 . "➤")
-                          (45 . "-")
-                          (42 . "•"))
-        org-modern-todo-faces
-        '(("TODO" :inverse-video t :inherit org-todo)
-          ("PROJ" :inverse-video t :inherit +org-todo-project)
-          ("STRT" :inverse-video t :inherit +org-todo-active)
-          ("[-]"  :inverse-video t :inherit +org-todo-active)
-          ("HOLD" :inverse-video t :inherit +org-todo-onhold)
-          ("WAIT" :inverse-video t :inherit +org-todo-onhold)
-          ("[?]"  :inverse-video t :inherit +org-todo-onhold)
-          ("KILL" :inverse-video t :inherit +org-todo-cancel)
-          ("NO"   :inverse-video t :inherit +org-todo-cancel))
-        org-modern-footnote
-        (cons nil (cadr org-script-display))
-        org-modern-progress nil
-        org-modern-priority nil
-        org-modern-keyword
-        '((t . t)
-          ("title" . "𝙏")
-          ("subtitle" . "𝙩")
-          ("author" . "𝘼")
-          ("email" . #("" 0 1 (display (raise -0.14))))
-          ("date" . "𝘿")
-          ("filetags" "")
-          ("property" . "☸")
-          ("options" . "⌥")
-          ("startup" . "⏻")
-          ("macro" . "𝓜")
-          ("bind" . #("" 0 1 (display (raise -0.1))))
-          ("bibliography" . "")
-          ("print_bibliography" . #("" 0 1 (display (raise -0.1))))
-          ("cite_export" . "⮭")
-          ("import" . "⇤")
-          ("setupfile" . "⇚")
-          ("html_head" . "🅷")
-          ("html" . "🅗")
-          ("latex_class" . "🄻")
-          ("latex_class_options" . #("🄻" 1 2 (display (raise -0.14))))
-          ("latex_header" . "🅻")
-          ("latex_header_extra" . "🅻⁺")
-          ("latex" . "🅛")
-          ("beamer_theme" . "🄱")
-          ("beamer_color_theme" . #("🄱" 1 2 (display (raise -0.12))))
-          ("beamer_font_theme" . "🄱𝐀")
-          ("beamer_header" . "🅱")
-          ("beamer" . "🅑")
-          ("attr_latex" . "🄛")
-          ("attr_html" . "🄗")
-          ("attr_org" . "⒪")
-          ("call" . #("" 0 1 (display (raise -0.15))))
-          ("name" . "⁍")
-          ("header" . "›")
-          ("caption" . "☰")
-          ("RESULTS" . "🠶")))
-  (custom-set-faces! '(org-modern-statistics :inherit org-checkbox-statistics-todo))
+        (org-agenda-finalize . org-modern-agenda)
 )
 
 ;;(use-package! valign

@@ -76,7 +76,7 @@
 
 (package! org-modern)
 ;;(package! valign :recipe (:host github :repo "casouri/valign"))
-(package! org-superstar)
+;;(package! org-superstar)
 
 ;;(package! org-visual-outline)
 
