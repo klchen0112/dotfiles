@@ -720,10 +720,12 @@
 
 ;; config org download
 (use-package! org-download
+  ;;:hook ((org-mode dired-mode) . org-download-enable)
   :after org
   :config
-  (setq org-download-method 'attach
-        org-download-image-dir "~/Documents/org-attach")
+  (setq-default org-download-method 'directory)
+  (setq-default org-download-image-dir "~/Documents/org-attach")
+  (setq-default org-download-heading-lvl 'nil)
 )
 
 ;; config org-mode
