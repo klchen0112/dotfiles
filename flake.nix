@@ -66,8 +66,9 @@
     rec {
       packages = forAllSystems (system:
         let pkgs = nixpkgs.legacyPackages.${system};
-        in import ./pkgs { inherit pkgs; }
+        in import ./pkgs { inherit pkgs inputs; }
       );
+      formatter = forAllSystems (system: nixpkgs.legacyPackages.${system}.nixpkgs-fmt);
 
       # Accessible through 'nix develop' or 'nix-shell' (legacy)
       overlays = import ./overlays { inherit inputs; };
@@ -163,7 +164,6 @@
             ];
           };
         };
-      formatter = forAllSystems (system: nixpkgs.legacyPackages.${system}.nixpkgs-fmt);
     };
 
   inputs =
@@ -257,6 +257,9 @@
         inputs.flake-utils.follows = "flake-utils";
         inputs.nixpkgs.follows = "nixpkgs";
       };
+
+
+      # AI
     };
 }
 

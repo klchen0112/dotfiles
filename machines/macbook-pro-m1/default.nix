@@ -51,11 +51,11 @@
     # Fonts
     fontDir.enable = true;
     fonts = with pkgs; [
-      inputs.apple-fonts.packages.${pkgs.system}.sf-pro
-      inputs.apple-fonts.packages.${pkgs.system}.sf-compact
-      inputs.apple-fonts.packages.${pkgs.system}.sf-mono
-      inputs.apple-fonts.packages.${pkgs.system}.sf-arabic
-      nerdfonts
+      sf-pro
+      sf-compact
+      sf-mono
+      sf-arabic
+      (nerdfonts.override { fonts = [ "JetBrainsMono"]; })
 
       jetbrains-mono
       # cascadia-code
