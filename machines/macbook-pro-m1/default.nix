@@ -55,7 +55,7 @@
       sf-compact
       sf-mono
       sf-arabic
-      (nerdfonts.override { fonts = [ "JetBrainsMono"]; })
+      (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
 
       jetbrains-mono
       # cascadia-code
@@ -114,10 +114,10 @@
   services.emacs = {
     enable = true;
     package =
-      if pkgs.stdenv.hostPlatform.isDarwin then
-        pkgs.emacs29-macport
-      else
-        pkgs.emacs29;
+      # if pkgs.stdenv.hostPlatform.isDarwin then
+      #   pkgs.emacs29-macport
+      # else
+      pkgs.emacs29;
 
   };
 
@@ -422,10 +422,13 @@
     extraOptions = ''
       experimental-features = nix-command flakes
     '';
-    settings.trusted-users =
-      [
-        "${username}"
-      ];
+    settings = {
+      auto-optimise-store = true;
+      trusted-users =
+        [
+          "${username}"
+        ];
+    };
   };
 
   homebrew = {
