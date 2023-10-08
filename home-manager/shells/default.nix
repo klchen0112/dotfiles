@@ -234,10 +234,10 @@
           name = "autopair";
           src = autopair-fish.src;
         }
-        {
-          name = "tide";
-          src = tide.src;
-        }
+        # {
+        #   name = "tide";
+        #   src = tide.src;
+        # }
         {
           name = "sponge";
           src = sponge.src;
