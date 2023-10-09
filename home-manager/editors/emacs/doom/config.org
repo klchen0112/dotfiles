@@ -256,7 +256,7 @@
        ;;twitter           ; twitter client https://twitter.com/vnought
 
        :config
-       ;;literate
+       literate
        (default +bindings +smartparens))
 
 ;;TODO remove add to list
@@ -272,6 +272,27 @@
 (disable-packages! evil-escape)
 ;;(unpin! lsp-mode)
 ;;(unpin! forge)
+#+end_src
+* start benchmark
+:PROPERTIES:
+:ID:       12e0119d-2f0b-4684-87c3-c596ade4d065
+:END:
+
+#+begin_src emacs-lisp :tangle pakcages.el
+(package! benchmark-init)
+#+end_src
+
+#+begin_src emacs-lisp
+(use-package benchmark-init
+  :ensure t
+  :commands
+  (
+   benchmark-init/show-durations-tabulated
+   benchmark-init/show-durations-tree
+   )
+  :config
+  (add-hook 'after-init-hook 'benchmark-init/deactivate)
+)
 #+end_src
 * Basic settings
 ** exec path
@@ -399,46 +420,46 @@
 ;; DON'T use (`font-family-list'), it's unreliable on Linux
 ;; org mode table
 
-(setq doom-font (font-spec :family "SF Mono"   :size 14)
-      doom-variable-pitch-font (font-spec :family "TsangerJinKai02" :size 14)
-      doom-symbol-font (font-spec :family "Symbola" :size 14)
-      doom-serif-font (font-spec :family "IBM Plex Serif"  :size 17)
-      )
-;;(cond
-;; (
-;;  (or IS-MAC IS-LINUX)
-;;    (setq doom-font (font-spec :family "JetBrains Mono"   :size 14)
-;;          doom-big-font (font-spec :family "JetBrains Mono"  :size 28)
-;;          doom-variable-pitch-font (font-spec :family "CMU Typewriter Text"  :size 17)
-;;          ;;doom-unicode-font (font-spec :family "FZSongKeBenXiuKai-R-GBK" :weight 'light :slant 'italic :size 21)
-;;          doom-serif-font (font-spec :family "IBM Plex Serif"  :size 17))
-;;    (add-hook!  'after-init-hook
-;;        :append
-;;        (lambda ()
-;;          ;; Emoji: 😄, 🤦, 🏴󠁧󠁢󠁳󠁣󠁴
-;;          (set-fontset-font "fontset-default" 'symbol   (font-spec :family "Apple Color Emoji"  ) nil 'prepend)
-;;          (set-fontset-font "fontset-default" 'symbol   (font-spec :family "Symbola"            ) nil 'prepend)
-;;          (set-fontset-font "fontset-default" 'symbol   (font-spec :family "Noto Color Emoji"   ) nil 'prepend)
-;;          (set-fontset-font "fontset-default" 'symbol   (font-spec :family "Liberation Mono"    ) nil 'prepend)
-;;          (set-fontset-font "fontset-default" 'symbol   (font-spec :family "Noto Sans Symbols2" ) nil 'prepend)
-;;          (set-fontset-font "fontset-default" 'symbol   (font-spec :family "Segoe UI Emoji"     ) nil 'prepend)
-;;          (set-fontset-font "fontset-default" 'symbol   (font-spec :family "FreeSerif"          ) nil 'prepend)
-;;          (set-fontset-font "fontset-default" 'symbol   (font-spec :family "Twitter Color Emoji") nil 'prepend)
-;;          ;; East Asia: 你好, 早晨, こんにちは, 안녕하세요
-;;          (set-fontset-font "fontset-default" 'han      (font-spec :family "TsangerJinKai02"    ) nil 'prepend )
-;;          (set-fontset-font "fontset-default" 'kana     (font-spec :family "TsangerJinKai02"    ) nil 'prepend )
-;;          (set-fontset-font "fontset-default" 'hangul   (font-spec :family "TsangerJinKai02"    ) nil 'prepend )
-;;          (set-fontset-font "fontset-default" 'cjk-misc (font-spec :family "Noto Serif CJK SC"  ) nil 'prepend )
-;;          ;; Cyrillic: Привет, Здравствуйте, Здраво, Здравейте
-;;          (set-fontset-font "fontset-default" 'cyrillic (font-spec :family "Noto Serif"         ) nil 'prepend)))
-;;  )
-;;  ((:if IS-WINDOWS)
-;;    (setq doom-font (font-spec :family "Cascadia Code"  :size 23)
-;;        doom-big-font (font-spec :family "Cascadia Code"  :size 25)
-;;        doom-variable-pitch-font (font-spec :family "Cascadia Code" :size 23)
-;;        doom-unicode-font (font-spec :family "霞鹜文楷等宽" :weight 'light :size 23)
-;;        doom-serif-font (font-spec :family "Cascadia Code"  :size 23)))
-;;)
+;;(setq doom-font (font-spec :family "SF Mono"   :size 14)
+;;      doom-variable-pitch-font (font-spec :family "TsangerJinKai02" :size 14)
+;;      doom-symbol-font (font-spec :family "Symbola" :size 14)
+;;      doom-serif-font (font-spec :family "IBM Plex Serif"  :size 17)
+;;      )
+(cond
+ (
+  (or IS-MAC IS-LINUX)
+    (setq doom-font (font-spec :family "JetBrains Mono"   :size 14)
+          doom-big-font (font-spec :family "JetBrains Mono"  :size 28)
+          doom-variable-pitch-font (font-spec :family "CMU Typewriter Text"  :size 17)
+          ;;doom-unicode-font (font-spec :family "FZSongKeBenXiuKai-R-GBK" :weight 'light :slant 'italic :size 21)
+          doom-serif-font (font-spec :family "IBM Plex Serif"  :size 17))
+    (add-hook!  'after-init-hook
+        :append
+        (lambda ()
+          ;; Emoji: 😄, 🤦, 🏴󠁧󠁢󠁳󠁣󠁴
+          (set-fontset-font "fontset-default" 'symbol   (font-spec :family "Apple Color Emoji"  ) nil 'prepend)
+          (set-fontset-font "fontset-default" 'symbol   (font-spec :family "Symbola"            ) nil 'prepend)
+          (set-fontset-font "fontset-default" 'symbol   (font-spec :family "Noto Color Emoji"   ) nil 'prepend)
+          (set-fontset-font "fontset-default" 'symbol   (font-spec :family "Liberation Mono"    ) nil 'prepend)
+          (set-fontset-font "fontset-default" 'symbol   (font-spec :family "Noto Sans Symbols2" ) nil 'prepend)
+          (set-fontset-font "fontset-default" 'symbol   (font-spec :family "Segoe UI Emoji"     ) nil 'prepend)
+          (set-fontset-font "fontset-default" 'symbol   (font-spec :family "FreeSerif"          ) nil 'prepend)
+          (set-fontset-font "fontset-default" 'symbol   (font-spec :family "Twitter Color Emoji") nil 'prepend)
+          ;; East Asia: 你好, 早晨, こんにちは, 안녕하세요
+          (set-fontset-font "fontset-default" 'han      (font-spec :family "TsangerJinKai02"    ) nil 'prepend )
+          (set-fontset-font "fontset-default" 'kana     (font-spec :family "TsangerJinKai02"    ) nil 'prepend )
+          (set-fontset-font "fontset-default" 'hangul   (font-spec :family "TsangerJinKai02"    ) nil 'prepend )
+          (set-fontset-font "fontset-default" 'cjk-misc (font-spec :family "Noto Serif CJK SC"  ) nil 'prepend )
+          ;; Cyrillic: Привет, Здравствуйте, Здраво, Здравейте
+          (set-fontset-font "fontset-default" 'cyrillic (font-spec :family "Noto Serif"         ) nil 'prepend)))
+  )
+  ((:if IS-WINDOWS)
+    (setq doom-font (font-spec :family "Cascadia Code"  :size 23)
+        doom-big-font (font-spec :family "Cascadia Code"  :size 25)
+        doom-variable-pitch-font (font-spec :family "Cascadia Code" :size 23)
+        doom-unicode-font (font-spec :family "霞鹜文楷等宽" :weight 'light :size 23)
+        doom-serif-font (font-spec :family "Cascadia Code"  :size 23)))
+)
 
 #+end_src
 ** theme
@@ -859,40 +880,40 @@
 :ID:       eca0c369-5074-473a-9a55-724e47bafc60
 :END:
 #+begin_src emacs-lisp :tangle packages.el
-(package! bibtex-completion)
+;;(package! bibtex-completion)
 #+end_src
 
 
 #+begin_src emacs-lisp :tangle config.el
-(use-package! bibtex-completion
-  :config
-  (setq
-  bibtex-completion-bibliography my/bib
-  bibtex-completion-pdf-field "file"
-  bibtex-completion-notes-path my/notes
-  bibtex-completion-additional-search-fields '(keywords)
-  bibtex-completion-display-formats
-	'((article       . "${=has-pdf=:1}${=has-note=:1} ${year:4} ${author:36} ${title:*} ${journal:40}")
-	  (inbook        . "${=has-pdf=:1}${=has-note=:1} ${year:4} ${author:36} ${title:*} Chapter ${chapter:32}")
-	  (incollection  . "${=has-pdf=:1}${=has-note=:1} ${year:4} ${author:36} ${title:*} ${booktitle:40}")
-	  (inproceedings . "${=has-pdf=:1}${=has-note=:1} ${year:4} ${author:36} ${title:*} ${booktitle:40}")
-	  (t             . "${=has-pdf=:1}${=has-note=:1} ${year:4} ${author:36} ${title:*}")))
-  bibtex-completion-notes-template-multiple-files
-    (concat
-    "#+TITLE: ${title}\n"
-    "#+filetags: ${keywords}\n"
-    "* TODO Notes\n"
-    ":PROPERTIES:\n"
-    ":ID: ${=key=}\n"
-    ":NOTER_DOCUMENT: %(orb-process-file-field \"${=key=}\")\n"
-    ":AUTHOR: ${author-abbrev}\n"
-    ":JOURNAL: ${journaltitle}\n"
-    ":DATE: ${date}\n"
-    ":YEAR: ${year}\n"
-    ":DOI: ${doi}\n"
-    ":URL: ${url}\n"
-    ":END:\n\n")
-)
+;;(use-package! bibtex-completion
+;;  :config
+;;  (setq
+;;  bibtex-completion-bibliography my/bib
+;;  bibtex-completion-pdf-field "file"
+;;  bibtex-completion-notes-path my/notes
+;;  bibtex-completion-additional-search-fields '(keywords)
+;;  bibtex-completion-display-formats
+;;	'((article       . "${=has-pdf=:1}${=has-note=:1} ${year:4} ${author:36} ${title:*} ${journal:40}")
+;;	  (inbook        . "${=has-pdf=:1}${=has-note=:1} ${year:4} ${author:36} ${title:*} Chapter ${chapter:32}")
+;;	  (incollection  . "${=has-pdf=:1}${=has-note=:1} ${year:4} ${author:36} ${title:*} ${booktitle:40}")
+;;	  (inproceedings . "${=has-pdf=:1}${=has-note=:1} ${year:4} ${author:36} ${title:*} ${booktitle:40}")
+;;	  (t             . "${=has-pdf=:1}${=has-note=:1} ${year:4} ${author:36} ${title:*}")))
+;;  bibtex-completion-notes-template-multiple-files
+;;    (concat
+;;    "#+TITLE: ${title}\n"
+;;    "#+filetags: ${keywords}\n"
+;;    "* TODO Notes\n"
+;;    ":PROPERTIES:\n"
+;;    ":ID: ${=key=}\n"
+;;    ":NOTER_DOCUMENT: %(orb-process-file-field \"${=key=}\")\n"
+;;    ":AUTHOR: ${author-abbrev}\n"
+;;    ":JOURNAL: ${journaltitle}\n"
+;;    ":DATE: ${date}\n"
+;;    ":YEAR: ${year}\n"
+;;    ":DOI: ${doi}\n"
+;;    ":URL: ${url}\n"
+;;    ":END:\n\n")
+;;)
 
 
 #+end_src
@@ -1354,38 +1375,200 @@ citar need vertico
 
 
 #+begin_src emacs-lisp conf :tangle config.el
+;; Heavily modified based on https://github.com/novoid/title-capitalization.el/blob/master/title-capitalization.el
+(defun title-capitalization (str)
+  "Convert str to title case"
+  (interactive)
+  (with-temp-buffer
+    (insert str)
+    (let* ((beg (point-min))
+           (end (point-max))
+	   ;; Basic list of words which don't get capitalized according to simplified rules
+	   ;; http://karl-voit.at/2015/05/25/elisp-title-capitalization/
+           (do-not-capitalize-basic-words '("a" "ago" "an" "and" "as" "at" "but" "by" "for"
+                                            "from" "in" "into" "it" "next" "nor" "of" "off"
+                                            "on" "onto" "or" "over" "past" "so" "the" "till"
+                                            "to" "up" "yet"
+                                            "n" "t" "es" "s"))
+	   ;; If user has defined 'my-do-not-capitalize-words, append to basic list
+           (do-not-capitalize-words (if (boundp 'my-do-not-capitalize-words)
+                                        (append do-not-capitalize-basic-words my-do-not-capitalize-words )
+                                      do-not-capitalize-basic-words)))
+      ;; Go to begin of first word
+      (goto-char beg)
+      (setq continue t)
+
+      ;; Go through the region, word by word
+      (while continue
+        (let ((last-point (point)))
+          (let ((word (thing-at-point 'word)))
+            (if (stringp word)
+                ;; Capitalize current word except when it is list member
+                (if (and (member (downcase word) do-not-capitalize-words)
+                         ;; Always capitalize first word
+                         (not (= (point) 1)))
+                    (downcase-word 1)
+
+                  ;; If it's an acronym, don't capitalize
+                  (if (string= word (upcase word))
+                      (progn
+                        (goto-char (+ (point) (length word) 1)))
+                    (capitalize-word 1)))))
+
+          (skip-syntax-forward "^w" end)
+
+          ;; Break if we are at the end of the buffer
+          (when (= (point) last-point)
+            (setq continue nil))))
+
+      ;; Always capitalize the last word
+      (backward-word 1)
+
+      (let ((word (thing-at-point 'word)))
+        (if (and (>= (point) 0)
+                 (not (member (or word "s")
+                              '("n" "t" "es" "s")))
+                 (not (string= word (upcase word))))
+            (capitalize-word 1))))
+
+    (buffer-string)))
+
+
 (use-package! org-roam
   :after org
   :commands (org-roam-buffer
              org-roam-setup
              org-roam-capture
              org-roam-node-find)
-  :bind (("C-c n a" . org-id-get-create)
-         ("C-c n l" . org-roam-buffer-toggle)
-         ("C-c n f" . org-roam-node-find)
-         ("C-c n g" . org-roam-graph)
-         ("C-c n i" . org-roam-node-insert)
-         ("C-c n c" . org-roam-capture)
-         ("C-c n r" . org-roam-ref-find)
-         ("C-c n R" . org-roam-ref-add)
-         ("C-c n s" . org-roam-db-sync)
-         ;; Dailies
-         ("C-c n j" . org-roam-dailies-capture-today))
+  ;;:bind (("C-c n r a" . org-id-get-create)
+  ;;       ("C-c n r l" . org-roam-buffer-toggle)
+  ;;       ("C-c n r f" . org-roam-node-find)
+  ;;       ("C-c n r g" . org-roam-graph)
+  ;;       ("C-c n r i" . org-roam-node-insert)
+  ;;       ("C-c n r c" . org-roam-capture)
+  ;;       ("C-c n r r" . org-roam-ref-find)
+  ;;       ("C-c n r R" . org-roam-ref-add)
+  ;;       ("C-c n r s" . org-roam-db-sync)
+  ;;       ("C-c n r e" . org-roam-to-hugo-md)
+  ;;       ;; Dailies
+  ;;       ("C-c n r j" . org-roam-dailies-capture-today))
+  :init
+  (defun my/org-roam--extract-note-body (file)
+  (with-temp-buffer
+    (insert-file-contents file)
+    (org-mode)
+    (message "Working on activate org mode" file)
+    (first (org-element-map (org-element-parse-buffer) 'paragraph
+             (lambda (paragraph)
+               (let ((begin (plist-get (first (cdr paragraph)) :begin))
+                     (end (plist-get (first (cdr paragraph)) :end)))
+                 (buffer-substring begin end)))))))
+
+;; Include backlinks in org exported notes not tagged as private or
+;; draft or section
+(defun my/org-roam--backlinks-list (id file)
+  (--reduce-from
+   (concat acc (format "- [[id:%s][%s]]\n  #+begin_quote\n  %s\n  #+end_quote\n"
+                       (car it)
+                       (title-capitalization (org-roam-node-title (org-roam-node-from-id (car it))))
+                       (my/org-roam--extract-note-body (org-roam-node-file (org-roam-node-from-id (car it))))))
+   ""
+   (org-roam-db-query
+    (format
+     ;; The percentage sign needs to be escaped twice because there
+     ;; is two format calls—once here and the other by emacsql
+     "SELECT id FROM (SELECT links.source AS id, group_concat(tags.tag) AS alltags FROM links LEFT OUTER JOIN tags ON links.source = tags.node_id WHERE links.type = '\"id\"' AND links.dest = '\"%s\"' GROUP BY links.source) Q WHERE alltags IS NULL OR (','||alltags||',' NOT LIKE '%%%%,\"private\",%%%%' AND ','||alltags||',' NOT LIKE '%%%%,\"draft\",%%%%' AND ','||alltags||',' NOT LIKE '%%%%,\"section\",%%%%' AND ','||alltags||',' NOT LIKE '%%%%,\"journal\",%%%%')"
+     id))))
+
+(defun file-path-to-md-file-name (path)
+  (let ((file-name (first (last (split-string path "/")))))
+    (concat (first (split-string file-name "\\.")) ".md")))
+
+(defun file-path-to-slug (path)
+  (let* ((file-name (file-name-nondirectory path))
+         (note-name (car (last (split-string file-name "--"))))
+         (title (first (split-string note-name "\\."))))
+    (replace-regexp-in-string (regexp-quote "_") "-" title nil 'literal)))
+;; Fetches all org-roam files and exports to hugo markdown
+;; files. Adds in necessary hugo properties
+;; e.g. HUGO_BASE_DIR. Ignores notes tagged as private or draft
+(defun org-roam-to-hugo-md ()
+  (interactive)
+  ;; Make sure the author is set
+  (setq user-full-name "klchen0112")
+
+  ;; Don't include any files tagged as private or
+  ;; draft. The way we filter tags doesn't work nicely
+  ;; with emacsql's DSL so just use a raw SQL query
+  ;; for clarity
+  (let ((notes (org-roam-db-query "SELECT id, file FROM (SELECT nodes.id, nodes.file, group_concat(tags.tag) AS alltags FROM nodes LEFT OUTER JOIN tags ON nodes.id = tags.node_id GROUP BY nodes.file) WHERE alltags is null or (','||alltags||',' not like '%%,\"private\",%%' and ','||alltags||',' not like '%%,\"draft\",%%'  and ','||alltags||',' not like '%%,\"journal\",%%')")))
+    (-map
+     (-lambda ((id file))
+       ;; Use temporary buffer to prevent a buffer being opened for
+       ;; each note file.
+       (with-temp-buffer
+         (message "Working on: %s" file)
+
+         (insert-file-contents file)
+
+         ;; Adding these tags must go after file content because it
+         ;; will include a :PROPERTIES: drawer as of org-roam v2
+         ;; which must be the first item on the page
+
+         ;; Add in hugo tags for export. This lets you write the
+         ;; notes without littering HUGO_* tags everywhere
+         ;; HACK:
+         ;; org-export-output-file-name doesn't play nicely with
+         ;; temp buffers since it attempts to get the file name from
+         ;; the buffer. Instead we explicitely add the name of the
+         ;; exported .md file otherwise you would get prompted for
+         ;; the output file name on every note.
+         (goto-char (point-min))
+         (re-search-forward ":END:")
+         (newline)
+         (insert
+          (format "#+HUGO_BASE_DIR: %s\n#+HUGO_SECTION: ./\n#+HUGO_SLUG: %s\n#+EXPORT_FILE_NAME: %s\n"
+                  org-roam-publish-path
+                  (file-path-to-slug file)
+                  (file-path-to-md-file-name file)))
+         (message "Working on insert : %s" file)
+         ;; If this is a placeholder note (no content in the
+         ;; body) then add default text. This makes it look ok when
+         ;; showing note previews in the index and avoids a headline
+         ;; followed by a headline in the note detail page.
+         (if (eq (my/org-roam--extract-note-body file) nil)
+              (progn
+               (goto-char (point-max))
+               (insert "\n/This note does not have a description yet./\n")))
+         (message "Working on extract notte body: %s" file)
+         ;; Add in backlinks (at the end of the file) because
+         ;; org-export-before-processing-hook won't be useful the
+         ;; way we are using a temp buffer
+         ;;(let ((links (my/org-roam--backlinks-list id file)))
+         ;;  (if (not (string= links ""))
+         ;;      (progn
+         ;;        (goto-char (point-max))
+         ;;        (insert (concat "\n* Links to this note\n") links))))
+         (message "Working on extract back links: %s" file)
+
+         (org-hugo-export-to-md)))
+     notes)))
   :config
   (setq ;;org-roam-database-connector 'sqlite-builtin
-        org-roam-directory (file-truename "~/org")
-        org-roam-dailies-directory (file-truename "~/org/journals/")
-        org-roam-file-extensions '("org"))
+   org-roam-directory (file-truename "~/org")
+   org-roam-publish-path "~/Projects/zettel"
+   org-roam-dailies-directory (file-truename "~/org/journals/")
+   org-roam-file-extensions '("org"))
   ;; 自动创建org roam 文件夹
   (unless (file-exists-p org-roam-directory) (make-directory org-roam-directory t))
   (unless (file-exists-p org-roam-directory) (make-directory org-roam-dailies-directory t))
   (setq org-id-link-to-org-use-id t)
   (setq org-roam-completion-everywhere t)
   (setq org-roam-capture-templates
-          '(("d" "default" plain "%?"
-                  :target
-            (file+head "pages/${slug}.org" "#+title: ${title}\n- tags :: \n")
-            :unnarrowed t)))
+        '(("d" "default" plain "%?"
+           :target
+           (file+head "pages/${slug}.org" "#+title: ${title}\n- tags :: \n")
+           :unnarrowed t)))
   (setq org-roam-dailies-capture-templates
         '(
           ("t" "tasks" entry "* TODO %?"
@@ -1393,14 +1576,14 @@ citar need vertico
           ("n" "notes" entry "* %?"
            :if-new (file+head+olp "%<%Y-%m-%d>.org" "#+title: %<%Y/%m/%d>\n#+filetags: :journal:\n" ("Notes :note:")))
           )
-  )
+        )
 
- (setq org-roam-mode-sections
-    (list #'org-roam-backlinks-section
-          #'org-roam-reflinks-section
-          #'org-roam-unlinked-references-section)
+  (setq org-roam-mode-sections
+        (list #'org-roam-backlinks-section
+              #'org-roam-reflinks-section
+              #'org-roam-unlinked-references-section)
+        )
   )
-)
 
 (use-package! websocket
   :after org-roam)
