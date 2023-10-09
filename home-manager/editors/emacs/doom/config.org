@@ -278,20 +278,15 @@
 :ID:       12e0119d-2f0b-4684-87c3-c596ade4d065
 :END:
 
-#+begin_src emacs-lisp :tangle pakcages.el
+#+begin_src emacs-lisp :tangle packages.el
 (package! benchmark-init)
 #+end_src
 
-#+begin_src emacs-lisp
-(use-package benchmark-init
+#+begin_src emacs-lisp :tangle config.el
+(use-package! benchmark-init
   :ensure t
-  :commands
-  (
-   benchmark-init/show-durations-tabulated
-   benchmark-init/show-durations-tree
-   )
-  :config
-  (add-hook 'after-init-hook 'benchmark-init/deactivate)
+  :hook
+  ('after-init-hook 'benchmark-init/deactivate)
 )
 #+end_src
 * Basic settings
