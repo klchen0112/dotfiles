@@ -105,7 +105,7 @@
       home-manager
       cachix
       # sketchybar
-      nixpkgs-fmt
+      fontconfig
     ];
   };
 
@@ -236,14 +236,7 @@
   services.skhd = {
     enable = true;
     skhdConfig = ''
-      # for this to work you must configure sudo such that
-      # it will be able to run the command without password
-      yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
-      sudo yabai --load-sa
-      # .. more yabai startup stuff
-
       # add an on_enter command to the default mode
-      :: default : yabai -m config active_window_border_color 0xff352A28
       #
       # defines a new mode 'test' with an on_enter command, that captures keypresses
       # :: default @ : yabai -m config active_window_border_color 0xff24ccaa
