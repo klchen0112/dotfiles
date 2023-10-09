@@ -301,7 +301,6 @@
           "$cmake"
           "$python"
           "$nix_shell"
-          "$directory"
           "$cmd_duration"
           "$sudo"
           "$line_break"
