@@ -236,71 +236,159 @@
   services.skhd = {
     enable = true;
     skhdConfig = ''
-      # add an on_enter command to the default mode
-      #
-      # defines a new mode 'test' with an on_enter command, that captures keypresses
-      # :: default @ : yabai -m config active_window_border_color 0xff24ccaa
-      :: yabai_mode_focus @ : yabai -m config active_window_border_color 0xffF3F8F8
-      :: yabai_mode_move  @ : yabai -m config active_window_border_color 0xffFAE7A1
-      :: yabai_mode_size  @ : yabai -m config active_window_border_color 0xffA07265
-      # yabai mode
-      # yabai_mode_focus, yabai_mode_size < ctrl - 1 : yabai -m space --focus 1;
-      # yabai_mode_focus, yabai_mode_size < ctrl - 2 : yabai -m space --focus 2;
-      # yabai_mode_focus, yabai_mode_size < ctrl - 3 : yabai -m space --focus 3;
-      # yabai_mode_focus, yabai_mode_size < ctrl - 4 : yabai -m space --focus 4;
-      # yabai_mode_focus, yabai_mode_size < ctrl - 5 : yabai -m space --focus 5;
-      # yabai_mode_focus, yabai_mode_size < ctrl - 6 : yabai -m space --focus 6;
-      # yabai_mode_focus, yabai_mode_size < ctrl - 7 : yabai -m space --focus 7;
-      # yabai_mode_focus, yabai_mode_size < ctrl - 8 : yabai -m space --focus 8;
-      # yabai_mode_focus, yabai_mode_size < ctrl - 9 : yabai -m space --focus 9;
-      # yabai_mode_focus, yabai_mode_size < ctrl - 0 : yabai -m space --focus 10;
-      ## Current workspace focus
-      # focus window : current_workspace_prefix - {p, n, b, f}
-      ctrl + cmd - y ; yabai_mode_focus
-      yabai_mode_focus < ctrl + cmd - y ; default
+    #!/usr/bin/env /bin/bash
+    alt - b [
+      *      : yabai -m window --focus west || yabai -m display --focus west
+      "Emacs" ~
+    ]
 
-      yabai_mode_focus < shift - b : yabai -m window --focus west  || yabai -m display --focus west
-      yabai_mode_focus < shift - n : yabai -m window --focus south || yabai -m display --focus south
-      yabai_mode_focus < shift - p : yabai -m window --focus north || yabai -m display --focus north
-      yabai_mode_focus < shift - f : yabai -m window --focus east  || yabai -m display --focus east
-      yabai_mode_focus < shift - a : yabai -m window --focus first || yabai -m display --focus north
-      yabai_mode_focus < shift - e : yabai -m window --focus last  || yabai -m display --focus east
+    alt - f  [
+      *      : yabai -m window --focus east || yabai -m display --focus east
+      "Emacs" ~
+    ]
 
-      yabai_mode_focus < shift - z : yabai -m window --toggle zoom-fullscreen;
+    alt - p  [
+      *      : yabai -m window --focus north || yabai -m display --focus north
+      "Emacs" ~
+    ]
 
-      ## Current workspace move
-      ctrl + cmd - m ; yabai_mode_move
-      yabai_mode_move < ctrl + cmd - m ; default
+    alt - n  [
+      *      : yabai -m window --focus south || yabai -m display --focus south
+      "Emacs" ~
+    ]
 
-      yabai_mode_move < shift - b : yabai -m window --swap west  || (yabai -m window --display west  ; yabai -m display --focus west )
-      yabai_mode_move < shift - n : yabai -m window --swap south || (yabai -m window --display south ; yabai -m display --focus south)
-      yabai_mode_move < shift - p : yabai -m window --swap north || (yabai -m window --display north ; yabai -m display --focus north)
-      yabai_mode_move < shift - f : yabai -m window --swap east  || (yabai -m window --display east  ; yabai -m display --focus east )
+    shift + alt - b [
+      *      : yabai -m window --warp west  || (yabai -m window --display west  ; yabai -m display --focus west )
+      "Emacs" ~
+    ]
 
-      yabai_mode_move < shift - x : yabai -m space --mirror x-axis
-      yabai_mode_move < shift - y : yabai -m space --mirror y-axis
-      yabai_mode_move < shift - r : yabai -m space --rotate 90
+    shift + alt - f  [
+      *      : yabai -m window --warp east || (yabai -m window --display east ; yabai -m display --focus east)
+      "Emacs" ~
+    ]
 
-      yabai_mode_move < ctrl - 1 : yabai -m window --space 1; yabai -m space --focus 1;
-      yabai_mode_move < ctrl - 2 : yabai -m window --space 2; yabai -m space --focus 2;
-      yabai_mode_move < ctrl - 3 : yabai -m window --space 3; yabai -m space --focus 3;
-      yabai_mode_move < ctrl - 4 : yabai -m window --space 4; yabai -m space --focus 4;
-      yabai_mode_move < ctrl - 5 : yabai -m window --space 5; yabai -m space --focus 5;
-      yabai_mode_move < ctrl - 6 : yabai -m window --space 6; yabai -m space --focus 6;
-      yabai_mode_move < ctrl - 7 : yabai -m window --space 7; yabai -m space --focus 7;
-      yabai_mode_move < ctrl - 8 : yabai -m window --space 8; yabai -m space --focus 8;
-      yabai_mode_move < ctrl - 9 : yabai -m window --space 9; yabai -m space --focus 9;
-      yabai_mode_move < ctrl - 0 : yabai -m window --space 10; yabai -m space --focus 10;
+    shift + alt - p  [
+      *      : yabai -m window --warp north || (yabai -m window --display north ; yabai -m display --focus north)
+      "Emacs" ~
+    ]
 
-      ## Current workspace size change
-      ctrl + cmd - s ; yabai_mode_size
-      yabai_mode_size < ctrl + cmd - s ; default
-      yabai_mode_size < shift - b : yabai -m window --resize right:-100:0  || yabai -m window --resize left:-100:0
-      yabai_mode_size < shift - n : yabai -m window --resize bottom:0:100  || yabai -m window --resize top:0:100
-      yabai_mode_size < shift - p : yabai -m window --resize bottom:0:-100 || yabai -m window --resize top:0:-100
-      yabai_mode_size < shift - f : yabai -m window --resize right:100:0   || yabai -m window --resize left:100:0
-      yabai_mode_size < shift - x : yabai -m space  --balance x-axis
-      yabai_mode_size < shift - y : yabai -m space  --balance y-axis
+    shift + alt - n  [
+      *      : yabai -m window --warp south  || (yabai -m window --display south  ; yabai -m display --focus south )
+      "Emacs" ~
+    ]
+
+    shift + alt - x  [
+      *      : yabai -m space --mirror x-axis
+      "Emacs" ~
+    ]
+
+    shift + alt - y  [
+      *      : yabai -m space --mirror y-axis
+      "Emacs" ~
+    ]
+
+    shift + alt - r  [
+      *      :  yabai -m space --rotate 90
+      "Emacs" ~
+    ]
+
+    shift + alt - 1  [
+      *      :  yabai -m window --space 1; yabai -m space --focus 1;
+      "Emacs" ~
+    ]
+
+    shift + alt - 2  [
+      *      :  yabai -m window --space 2; yabai -m space --focus 2;
+      "Emacs" ~
+    ]
+
+    shift + alt - 3  [
+      *      :  yabai -m window --space 3; yabai -m space --focus 3;
+      "Emacs" ~
+    ]
+
+    shift + alt - 4  [
+      *      :  yabai -m window --space 4; yabai -m space --focus 4;
+      "Emacs" ~
+    ]
+
+    shift + alt - 5  [
+      *      :  yabai -m window --space 5; yabai -m space --focus 5;
+      "Emacs" ~
+    ]
+
+    shift + alt - 6  [
+      *      :  yabai -m window --space 6; yabai -m space --focus 6;
+      "Emacs" ~
+    ]
+
+    shift + alt - 7  [
+      *      :  yabai -m window --space 7; yabai -m space --focus 7;
+      "Emacs" ~
+    ]
+
+    shift + alt - 8  [
+      *      :  yabai -m window --space 8; yabai -m space --focus 8;
+      "Emacs" ~
+    ]
+
+    shift + alt - 9  [
+      *      :  yabai -m window --space 9; yabai -m space --focus 9;
+      "Emacs" ~
+    ]
+
+    shift + alt - 0 [
+      *      :  yabai -m window --space 10; yabai -m space --focus ;
+      "Emacs" ~
+    ]
+
+    shift + alt - space [
+      *      :  yabai -m window --toggle float
+      "Emacs" ~
+    ]
+
+    # maximize
+
+    alt - m [
+      *      :  yabai -m window --toggle zoom-fullscreen
+      "Emacs" ~
+    ]
+
+    shift + alt - m [
+      *      :  yabai -m window --toggle native-fullscreen
+      "Emacs" ~
+    ]
+
+    # resize
+    lctrl + alt - b [
+      *      : yabai -m window --resize left:-50:0; \
+                  yabai -m window --resize right:-50:0
+      "Emacs" ~
+    ]
+
+    lctrl + alt - f  [
+      *      : yabai -m window --resize right:50:0; \
+                  yabai -m window --resize left:50:0
+      "Emacs" ~
+    ]
+
+    lctrl + alt - p  [
+      *      : yabai -m window --resize top:0:-50; \
+                  yabai -m window --resize bottom:0:-50
+      "Emacs" ~
+    ]
+
+    lctrl + alt - n  [
+      *      : yabai -m window --resize bottom:0:50; \
+                  yabai -m window --resize top:0:50
+      "Emacs" ~
+    ]
+
+    lctrl + alt - e  [
+      *      : yabai -m space --balance
+      "Emacs" ~
+    ]
+
     '';
   };
   #TODO fix plexamp and cava email
