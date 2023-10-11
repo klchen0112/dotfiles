@@ -236,44 +236,43 @@
   services.skhd = {
     enable = true;
     skhdConfig = ''
-    #!/usr/bin/env /bin/bash
     alt - b [
-      *      : yabai -m window --focus west || yabai -m display --focus west
+      *      : yabai -m window --focus west ; or yabai -m display --focus west
       "Emacs" ~
     ]
 
     alt - f  [
-      *      : yabai -m window --focus east || yabai -m display --focus east
+      *      : yabai -m window --focus east ; or yabai -m display --focus east
       "Emacs" ~
     ]
 
     alt - p  [
-      *      : yabai -m window --focus north || yabai -m display --focus north
+      *      : yabai -m window --focus north ; or yabai -m display --focus north
       "Emacs" ~
     ]
 
     alt - n  [
-      *      : yabai -m window --focus south || yabai -m display --focus south
+      *      : yabai -m window --focus south ; or yabai -m display --focus south
       "Emacs" ~
     ]
 
     shift + alt - b [
-      *      : yabai -m window --warp west  || (yabai -m window --display west  ; yabai -m display --focus west )
+      *      : yabai -m window --warp west; or yabai -m window --display west  ; and yabai -m display --focus west
       "Emacs" ~
     ]
 
     shift + alt - f  [
-      *      : yabai -m window --warp east || (yabai -m window --display east ; yabai -m display --focus east)
+      *      : yabai -m window --warp east ; or yabai -m window --display east ; and yabai -m display --focus east
       "Emacs" ~
     ]
 
     shift + alt - p  [
-      *      : yabai -m window --warp north || (yabai -m window --display north ; yabai -m display --focus north)
+      *      : yabai -m window --warp north ; or yabai -m window --display north ; and yabai -m display --focus north
       "Emacs" ~
     ]
 
     shift + alt - n  [
-      *      : yabai -m window --warp south  || (yabai -m window --display south  ; yabai -m display --focus south )
+      *      : yabai -m window --warp south  ; or yabai -m window --display south  ; and yabai -m display --focus south
       "Emacs" ~
     ]
 
