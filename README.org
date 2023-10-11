@@ -1,16 +1,68 @@
 * Overview
-- Mac
-  - [[file:modules/hosts/macbook-pro-m1/default.nix][system]]
-    - skhd
-    - yabai
-    - emacs service
-    - homebrew
-      - use macs install app store
-    - fonts
-  - [[file:modules/hosts/macbook-pro-m1/default.nix][user]]
-    - editors
-    - [[file:modules/lang][lang]]
 
+|                | Macbook |
+| Window Manager |         |
+|                |         |
+|                |         |
+|                |         |
+
+** Directory
+#+begin_src shell
+├── flake.lock
+├── flake.nix
+├── home-manager
+│  ├── browser
+│  ├── desktop
+│  ├── downloader
+│  ├── editors
+│  │  ├── codeblocks
+│  │  ├── default.nix
+│  │  ├── emacs
+│  │  │  ├── default.nix
+│  │  │  └── doom # my doom config
+│  │  ├── jetbrains
+│  │  ├── vim # vim and neovim
+│  │  └── vscode
+│  ├── graphics
+│  ├── keyboard
+│  ├── lang # for programming language
+│  ├── media
+│  ├── network
+│  ├── notes
+│  ├── office
+│  ├── shells
+│  ├── socialMedia # discord
+│  ├── terminal
+│  ├── vm
+│  ├── vpn
+│  └── windowManager # hyprland
+├── hosts # for home manager config
+│  ├── i12500
+│  ├── macbook-pro-m1
+│  └── wsl
+├── machines
+│  ├── i12500
+│  │  ├── default.nix
+│  │  ├── hardware-configuration.nix
+│  │  └── hyprland.nix
+│  ├── macbook-pro-m1
+│  │  ├── default.nix
+│  │  ├── sketchybar bar
+│  │  │  ├── items # item config
+│  │  │  └── plugins # item script
+│  │  └── yabai # yabai script
+│  └── wsl # wsl machine defines
+├── Makefile
+├── modules # own define moduels
+│  ├── darwin # for darwin
+│  ├── home-manager # for home-manager
+│  └── nixos # for nix os
+├── overlays # packages overlay
+├── pkgs # own packages
+└── shell.nix
+
+#+end_src
+** Mac Desktop
 [[./assets/mac-desktop.png]]
 
 * Installation
@@ -29,8 +81,10 @@ echo "experimental-features = nix-command flakes" >> ~/.config/nix/nix.conf
   nix-env -iA nixpkgs.git
   git clone https://github.com/klchen0112/dotfiles path/to/config
   cd path/to/config
+  # change your username in flake.nix
+
   # for rebuild
-  darwin-rebuild switch --flake ".#macbook-pro-m1"
+  make up
 #+end_src
 
 * Thanks
