@@ -114,10 +114,10 @@
   services.emacs = {
     enable = true;
     package =
-      # if pkgs.stdenv.hostPlatform.isDarwin then
-      #   pkgs.emacs29-macport
-      # else
-      pkgs.emacs29;
+      if pkgs.stdenv.hostPlatform.isDarwin then
+        pkgs.emacs-plus
+      else
+        pkgs.emacs29;
 
   };
 
