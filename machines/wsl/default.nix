@@ -6,18 +6,18 @@
 #       ├─ ./default.nix
 #       └─ ./configuration.nix *
 #
-{ config
+{
+  inputs
+,config
 , pkgs
-, user
+, username
 , ...
 }: {
+  imports = [
+    inputs.nixos-wsl.nixosModules.wsl
+  ];
   hardware.opengl.enable = true;
-  wsl = {
-    enable = true;
-    defaultUser = "${username}";
-    # 创建软件的桌面快捷方式
-    startMenuLaunchers = true;
-  };
+
   environment = {
     shells = with pkgs; [ bashInteractive fish ];
     systemPackages = with pkgs; [
@@ -30,16 +30,16 @@
   };
 
   services = {
-    nix-daemon.enable = true; # Auto upgrade daemon
+    # nix-daemon.enable = true; # Auto upgrade daemon
     emacs = {
       enable = true;
       package = pkgs.emacsGit;
     };
   };
 
-  users.users."${user}" = {
+  users.users."${username}" = {
     # macOS user
-    home = "/Users/${user}";
+    home = "/Users/${username}";
     shell = pkgs.fish; # Default shell
     isNormalUser = true;
     extraGroups = [ "whell" ];
@@ -79,24 +79,25 @@
       # lmmath
     ];
   };
-  wsl = {
-    enable = true;
-    wslConf.automount.root = "/mnt";
-    defaultUser = "nixos";
-    startMenuLaunchers = true;
 
-    # Enable native Docker support
-    # docker-native.enable = true;
+  # wsl = {
+  #   enable = true;
+  #   wslConf.automount.root = "/mnt";
+  #   defaultUser = "${username}";
+  #   startMenuLaunchers = true;
 
-    # Enable integration with Docker Desktop (needs to be installed)
-    # docker-desktop.enable = true;
-  };
+  #   # Enable native Docker support
+  #   # docker-native.enable = true;
+
+  #   # Enable integration with Docker Desktop (needs to be installed)
+  #   # docker-desktop.enable = true;
+  # };
   nix = {
     package = pkgs.nix;
     gc = {
       # Garbage collection
       automatic = true;
-      interval.Day = 7;
+      # interval.Day = 7;
       options = "--delete-older-than 7d";
     };
     settings = {

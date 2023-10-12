@@ -93,15 +93,16 @@
         in
         {
           # NixOS configurations
-          "wsl" = nixpkgs.lib.nixosSystem {
-            system = "x86_64-linux";
-            specialArgs = {
-              inherit inputs username;
-            };
-            modules = [
-              ./machines/wsl
-            ];
-          };
+          # "wsl" = nixpkgs.lib.nixosSystem {
+          #   system = "x86_64-linux";
+          #   specialArgs = {
+          #     inherit inputs username;
+          #   };
+          #   modules = [
+
+          #     ./machines/wsl
+          #   ];
+          # };
           "i12500" = nixpkgs.lib.nixosSystem {
             system = "x86_64-linux";
             specialArgs = {
@@ -128,17 +129,17 @@
                 ./hosts/i12500
               ];
             };
-        "klchen@wsl" =
-          let username = "klchen";
-          in
-          home-manager.lib.homeManagerConfiguration {
-            pkgs = nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
-            extraSpecialArgs = { inherit inputs outputs username; };
-            modules = [
-              # > Our main home-manager configuration file <
-              ./hosts/wsl
-            ];
-          };
+        # "klchen@wsl" =
+        #   let username = "klchen";
+        #   in
+        #   home-manager.lib.homeManagerConfiguration {
+        #     pkgs = nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
+        #     extraSpecialArgs = { inherit inputs outputs username; };
+        #     modules = [
+        #       # > Our main home-manager configuration file <
+        #       ./hosts/wsl
+        #     ];
+          # };
       };
       darwinConfigurations =
         let username = "klchen";
