@@ -1151,6 +1151,7 @@ citar need vertico
 :END:
 #+begin_src emacs-lisp conf :tangle packages.el
 (package! org-modern)
+(package! org-appear)
 ;;(package! valign :recipe (:host github :repo "casouri/valign"))
 ;;(package! org-superstar)
 
@@ -1176,6 +1177,18 @@ citar need vertico
 (use-package! org-modern
   :hook (org-mode . org-modern-mode)
         (org-agenda-finalize . org-modern-agenda)
+)
+
+(use-package! org-appear
+  :hook (org-mode . org-appear-mode)
+  :config
+  (setq org-appear-autoemphasis t
+        org-appear-autolinks t
+        org-appear-autosubmarkers t
+        org-appear-autoentities t
+        org-appear-autokeywords t
+        org-appear-inside-latex t
+        )
 )
 
 ;;(use-package! valign
