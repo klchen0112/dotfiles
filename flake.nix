@@ -72,12 +72,7 @@
 
       # Accessible through 'nix develop' or 'nix-shell' (legacy)
       overlays = import ./overlays { inherit inputs; };
-      # Devshell for bootstrapping
-      # Acessible through 'nix develop' or 'nix-shell' (legacy)
-      devShells = forAllSystems (system:
-        let pkgs = nixpkgs.legacyPackages.${ system};
-        in import ./shell.nix { inherit pkgs; }
-      );
+
       # Reusable nixos modules you might want to export
       # These are usually stuff you would upstream into nixpkgs
       nixosModules = import ./modules/nixos;
@@ -171,6 +166,7 @@
     # All flake references used to build my NixOS setup. These are dependencies.
     {
       nixpkgs.url = "github:nixos/nixpkgs"; # Nix Packages
+      nixpkgs-unstable.url = "github:nixos/nixpkgs/nixpkgs-unstable"; # Nix Packages
       systems.url = "github:nix-systems/default";
 
       nixos-hardware = {
