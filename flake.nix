@@ -134,7 +134,7 @@
         #       # > Our main home-manager configuration file <
         #       ./hosts/wsl
         #     ];
-          # };
+        # };
       };
       darwinConfigurations =
         let username = "klchen";

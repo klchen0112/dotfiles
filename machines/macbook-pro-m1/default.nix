@@ -236,157 +236,157 @@
   services.skhd = {
     enable = true;
     skhdConfig = ''
-    alt - b [
-      *      : yabai -m window --focus west ; or yabai -m display --focus west
-      "Emacs" ~
-    ]
+      alt - b [
+        *      : yabai -m window --focus west ; or yabai -m display --focus west
+        "Emacs" ~
+      ]
 
-    alt - f  [
-      *      : yabai -m window --focus east ; or yabai -m display --focus east
-      "Emacs" ~
-    ]
+      alt - f  [
+        *      : yabai -m window --focus east ; or yabai -m display --focus east
+        "Emacs" ~
+      ]
 
-    alt - p  [
-      *      : yabai -m window --focus north ; or yabai -m display --focus north
-      "Emacs" ~
-    ]
+      alt - p  [
+        *      : yabai -m window --focus north ; or yabai -m display --focus north
+        "Emacs" ~
+      ]
 
-    alt - n  [
-      *      : yabai -m window --focus south ; or yabai -m display --focus south
-      "Emacs" ~
-    ]
+      alt - n  [
+        *      : yabai -m window --focus south ; or yabai -m display --focus south
+        "Emacs" ~
+      ]
 
-    shift + alt - b [
-      *      : yabai -m window --warp west; or yabai -m window --display west  ; and yabai -m display --focus west
-      "Emacs" ~
-    ]
+      shift + alt - b [
+        *      : yabai -m window --warp west; or yabai -m window --display west  ; and yabai -m display --focus west
+        "Emacs" ~
+      ]
 
-    shift + alt - f  [
-      *      : yabai -m window --warp east ; or yabai -m window --display east ; and yabai -m display --focus east
-      "Emacs" ~
-    ]
+      shift + alt - f  [
+        *      : yabai -m window --warp east ; or yabai -m window --display east ; and yabai -m display --focus east
+        "Emacs" ~
+      ]
 
-    shift + alt - p  [
-      *      : yabai -m window --warp north ; or yabai -m window --display north ; and yabai -m display --focus north
-      "Emacs" ~
-    ]
+      shift + alt - p  [
+        *      : yabai -m window --warp north ; or yabai -m window --display north ; and yabai -m display --focus north
+        "Emacs" ~
+      ]
 
-    shift + alt - n  [
-      *      : yabai -m window --warp south  ; or yabai -m window --display south  ; and yabai -m display --focus south
-      "Emacs" ~
-    ]
+      shift + alt - n  [
+        *      : yabai -m window --warp south  ; or yabai -m window --display south  ; and yabai -m display --focus south
+        "Emacs" ~
+      ]
 
-    shift + alt - x  [
-      *      : yabai -m space --mirror x-axis
-      "Emacs" ~
-    ]
+      shift + alt - x  [
+        *      : yabai -m space --mirror x-axis
+        "Emacs" ~
+      ]
 
-    shift + alt - y  [
-      *      : yabai -m space --mirror y-axis
-      "Emacs" ~
-    ]
+      shift + alt - y  [
+        *      : yabai -m space --mirror y-axis
+        "Emacs" ~
+      ]
 
-    shift + alt - r  [
-      *      :  yabai -m space --rotate 90
-      "Emacs" ~
-    ]
+      shift + alt - r  [
+        *      :  yabai -m space --rotate 90
+        "Emacs" ~
+      ]
 
-    shift + alt - 1  [
-      *      :  yabai -m window --space 1; yabai -m space --focus 1;
-      "Emacs" ~
-    ]
+      shift + alt - 1  [
+        *      :  yabai -m window --space 1; yabai -m space --focus 1;
+        "Emacs" ~
+      ]
 
-    shift + alt - 2  [
-      *      :  yabai -m window --space 2; yabai -m space --focus 2;
-      "Emacs" ~
-    ]
+      shift + alt - 2  [
+        *      :  yabai -m window --space 2; yabai -m space --focus 2;
+        "Emacs" ~
+      ]
 
-    shift + alt - 3  [
-      *      :  yabai -m window --space 3; yabai -m space --focus 3;
-      "Emacs" ~
-    ]
+      shift + alt - 3  [
+        *      :  yabai -m window --space 3; yabai -m space --focus 3;
+        "Emacs" ~
+      ]
 
-    shift + alt - 4  [
-      *      :  yabai -m window --space 4; yabai -m space --focus 4;
-      "Emacs" ~
-    ]
+      shift + alt - 4  [
+        *      :  yabai -m window --space 4; yabai -m space --focus 4;
+        "Emacs" ~
+      ]
 
-    shift + alt - 5  [
-      *      :  yabai -m window --space 5; yabai -m space --focus 5;
-      "Emacs" ~
-    ]
+      shift + alt - 5  [
+        *      :  yabai -m window --space 5; yabai -m space --focus 5;
+        "Emacs" ~
+      ]
 
-    shift + alt - 6  [
-      *      :  yabai -m window --space 6; yabai -m space --focus 6;
-      "Emacs" ~
-    ]
+      shift + alt - 6  [
+        *      :  yabai -m window --space 6; yabai -m space --focus 6;
+        "Emacs" ~
+      ]
 
-    shift + alt - 7  [
-      *      :  yabai -m window --space 7; yabai -m space --focus 7;
-      "Emacs" ~
-    ]
+      shift + alt - 7  [
+        *      :  yabai -m window --space 7; yabai -m space --focus 7;
+        "Emacs" ~
+      ]
 
-    shift + alt - 8  [
-      *      :  yabai -m window --space 8; yabai -m space --focus 8;
-      "Emacs" ~
-    ]
+      shift + alt - 8  [
+        *      :  yabai -m window --space 8; yabai -m space --focus 8;
+        "Emacs" ~
+      ]
 
-    shift + alt - 9  [
-      *      :  yabai -m window --space 9; yabai -m space --focus 9;
-      "Emacs" ~
-    ]
+      shift + alt - 9  [
+        *      :  yabai -m window --space 9; yabai -m space --focus 9;
+        "Emacs" ~
+      ]
 
-    shift + alt - 0 [
-      *      :  yabai -m window --space 10; yabai -m space --focus ;
-      "Emacs" ~
-    ]
+      shift + alt - 0 [
+        *      :  yabai -m window --space 10; yabai -m space --focus ;
+        "Emacs" ~
+      ]
 
-    shift + alt - space [
-      *      :  yabai -m window --toggle float
-      "Emacs" ~
-    ]
+      shift + alt - space [
+        *      :  yabai -m window --toggle float
+        "Emacs" ~
+      ]
 
-    # maximize
+      # maximize
 
-    alt - m [
-      *      :  yabai -m window --toggle zoom-fullscreen
-      "Emacs" ~
-    ]
+      alt - m [
+        *      :  yabai -m window --toggle zoom-fullscreen
+        "Emacs" ~
+      ]
 
-    shift + alt - m [
-      *      :  yabai -m window --toggle native-fullscreen
-      "Emacs" ~
-    ]
+      shift + alt - m [
+        *      :  yabai -m window --toggle native-fullscreen
+        "Emacs" ~
+      ]
 
-    # resize
-    lctrl + alt - b [
-      *      : yabai -m window --resize left:-50:0; \
-                  yabai -m window --resize right:-50:0
-      "Emacs" ~
-    ]
+      # resize
+      lctrl + alt - b [
+        *      : yabai -m window --resize left:-50:0; \
+                    yabai -m window --resize right:-50:0
+        "Emacs" ~
+      ]
 
-    lctrl + alt - f  [
-      *      : yabai -m window --resize right:50:0; \
-                  yabai -m window --resize left:50:0
-      "Emacs" ~
-    ]
+      lctrl + alt - f  [
+        *      : yabai -m window --resize right:50:0; \
+                    yabai -m window --resize left:50:0
+        "Emacs" ~
+      ]
 
-    lctrl + alt - p  [
-      *      : yabai -m window --resize top:0:-50; \
-                  yabai -m window --resize bottom:0:-50
-      "Emacs" ~
-    ]
+      lctrl + alt - p  [
+        *      : yabai -m window --resize top:0:-50; \
+                    yabai -m window --resize bottom:0:-50
+        "Emacs" ~
+      ]
 
-    lctrl + alt - n  [
-      *      : yabai -m window --resize bottom:0:50; \
-                  yabai -m window --resize top:0:50
-      "Emacs" ~
-    ]
+      lctrl + alt - n  [
+        *      : yabai -m window --resize bottom:0:50; \
+                    yabai -m window --resize top:0:50
+        "Emacs" ~
+      ]
 
-    lctrl + alt - e  [
-      *      : yabai -m space --balance
-      "Emacs" ~
-    ]
+      lctrl + alt - e  [
+        *      : yabai -m space --balance
+        "Emacs" ~
+      ]
 
     '';
   };

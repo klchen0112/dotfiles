@@ -3,7 +3,9 @@
 , lib
 , config
 , pkgs
-, username,... }: {
+, username
+, ...
+}: {
   imports = [
     ./vscode
     ./jetbrains

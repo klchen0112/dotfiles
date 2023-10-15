@@ -6,9 +6,8 @@
 #       ├─ ./default.nix
 #       └─ ./configuration.nix *
 #
-{
-  inputs
-,config
+{ inputs
+, config
 , pkgs
 , username
 , ...
