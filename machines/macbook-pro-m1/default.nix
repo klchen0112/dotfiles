@@ -453,14 +453,13 @@
         $SKETCHBAR_BIN --add event title_change
 
         . "$ITEM_DIR/menu.sh"
+        . "$ITEM_DIR/indicator.sh"
         . "$ITEM_DIR/spaces.sh"
-
-
 
         #. "$ITEM_DIR/cava.sh"
         # . "$ITEM_DIR/feishu.sh"
-        . "$ITEM_DIR/wechat.sh"
-        . "$ITEM_DIR/email.sh"
+        #. "$ITEM_DIR/wechat.sh"
+        #. "$ITEM_DIR/email.sh"
 
 
 
