@@ -3,6 +3,9 @@
 up:
 	nix flake update
 
+check:
+	nix flake check
+
 fmt:
 	nix fmt
 
