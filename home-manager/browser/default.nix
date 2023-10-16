@@ -3,10 +3,7 @@
 #
 { pkgs, ... }: {
   programs.google-chrome = {
-    enable =
-      if pkgs.stdenv.isLinux
-      then true
-      else false;
+    enable = pkgs.stdenv.isLinux;
     package = pkgs.google-chrome;
   };
   programs.firefox = {

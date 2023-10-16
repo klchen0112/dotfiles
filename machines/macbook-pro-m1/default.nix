@@ -38,8 +38,8 @@
     config = {
       allowUnfree = true; # Allow proprietary software.
       allowUnfreePredicate = (_: true);
-      allowUnsupportedSystem = true;
-      allowBroken = true;
+      #  allowUnsupportedSystem = true;
+      #  allowBroken = true;
     };
   };
 
