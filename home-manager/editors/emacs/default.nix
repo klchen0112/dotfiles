@@ -22,12 +22,9 @@
 }:
 {
   home.packages = with pkgs; [
-    # python/default.nix install python
-    ripgrep
     fd
     curl
     sqlite
-    # emacsGit
 
     # for emacs sqlite
     gcc
@@ -35,25 +32,18 @@
     graphviz
     imagemagick
 
-    pandoc
-
-    # fonts
-    material-design-icons
-    weather-icons
-    emacs-all-the-icons-fonts
 
     # mpvi required
     tesseract5
     ffmpeg_5
     # email
     # mu4e
-    isync
-    mu
-
   ] ++ (lib.optionals pkgs.stdenv.isDarwin) [
     # pngpaste for org mode download clip
     pngpaste
   ];
+
+  programs.pandoc.enable = true;
 
   # home.file.".config/emacs".source = inputs.doomemacs;
   home.file.".config/doom" = {
