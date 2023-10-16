@@ -25,6 +25,7 @@
 
       # You can also add overlays exported from other flakes:
       # neovim-nightly-overlay.overlays.default
+      inputs.nixpkgs-firefox-darwin.overlay
 
       # Or define it inline, for example:
       # (final: prev: {
@@ -37,6 +38,8 @@
     config = {
       allowUnfree = true; # Allow proprietary software.
       allowUnfreePredicate = (_: true);
+      allowUnsupportedSystem = true;
+      allowBroken = true;
     };
   };
 
@@ -555,7 +558,7 @@
       "google-chrome"
       "steam"
       "appcleaner"
-      "firefox"
+      # "firefox"
       # "hammerspoon"
       # "authy"
       # "hiddenbar"

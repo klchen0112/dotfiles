@@ -255,6 +255,11 @@
         inputs.nixpkgs.follows = "nixpkgs";
       };
 
+      nixpkgs-mozilla = {
+        url = "github:mozilla/nixpkgs-mozilla";
+        # inputs.nixpkgs.follows = "nixpkgs";
+      };
+
 
       # AI
     };
