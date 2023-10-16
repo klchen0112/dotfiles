@@ -499,7 +499,7 @@
       # Garbage collection
       automatic = true;
       interval.Day = 7;
-      options = "--delete-older-than 7d";
+      options = "--max-freed $((64 * 1024**3))";
     };
     extraOptions = ''
       experimental-features = nix-command flakes
