@@ -14,7 +14,7 @@
   };
 
   fonts.fontconfig.enable = true;
-  
+
   programs.waybar = {
     enable = true;
     # settings = ''

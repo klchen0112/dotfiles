@@ -497,7 +497,7 @@
       "macism"
       "mas"
       "blueutil"
-      "ifstat"
+
     ];
     casks = [
       "squirrel"
