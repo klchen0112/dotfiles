@@ -91,13 +91,13 @@
       experimental-features = nix-command flakes
     '';
     settings = {
-    # Manual optimise storage: nix-store --optimise
-    # https://nixos.org/manual/nix/stable/command-ref/conf-file.html#conf-auto-optimise-store
-    auto-optimise-store = true;
-    builders-use-substitutes = true;
-    # enable flakes globally
-    experimental-features = ["nix-command" "flakes"];
-  };
+      # Manual optimise storage: nix-store --optimise
+      # https://nixos.org/manual/nix/stable/command-ref/conf-file.html#conf-auto-optimise-store
+      auto-optimise-store = true;
+      builders-use-substitutes = true;
+      # enable flakes globally
+      experimental-features = [ "nix-command" "flakes" ];
+    };
     settings.trusted-users =
       [
         "${username}"
@@ -186,9 +186,9 @@
 
 
   services.emacs = {
-      enable = true;
-      package = pkgs.emacs29;
-    };
+    enable = true;
+    package = pkgs.emacs29;
+  };
 
   systemd.targets.sleep.enable = false;
   systemd.targets.suspend.enable = false;
@@ -199,20 +199,21 @@
   i18n = {
 
     inputMethod =
-    {enabled = "fcitx5";
-    fcitx5.addons = with pkgs; [fcitx5-rime];
-    };
+      {
+        enabled = "fcitx5";
+        fcitx5.addons = with pkgs; [ fcitx5-rime ];
+      };
     defaultLocale = "en_US.UTF-8";
     extraLocaleSettings = {
-    LC_ADDRESS = "zh_CN.UTF-8";
-    LC_IDENTIFICATION = "zh_CN.UTF-8";
-    LC_MEASUREMENT = "zh_CN.UTF-8";
-    LC_MONETARY = "zh_CN.UTF-8";
-    LC_NAME = "zh_CN.UTF-8";
-    LC_NUMERIC = "zh_CN.UTF-8";
-    LC_PAPER = "zh_CN.UTF-8";
-    LC_TELEPHONE = "zh_CN.UTF-8";
-    LC_TIME = "zh_CN.UTF-8";
-  };
+      LC_ADDRESS = "zh_CN.UTF-8";
+      LC_IDENTIFICATION = "zh_CN.UTF-8";
+      LC_MEASUREMENT = "zh_CN.UTF-8";
+      LC_MONETARY = "zh_CN.UTF-8";
+      LC_NAME = "zh_CN.UTF-8";
+      LC_NUMERIC = "zh_CN.UTF-8";
+      LC_PAPER = "zh_CN.UTF-8";
+      LC_TELEPHONE = "zh_CN.UTF-8";
+      LC_TIME = "zh_CN.UTF-8";
+    };
   };
 }

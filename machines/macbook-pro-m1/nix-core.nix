@@ -7,7 +7,7 @@
 , ...
 }:
 {
-    services.nix-daemon.enable = true; # Auto upgrade daemon
+  services.nix-daemon.enable = true; # Auto upgrade daemon
   nix = {
     package = pkgs.nix;
     gc = {
@@ -27,7 +27,7 @@
         ];
     };
   };
-    nixpkgs = {
+  nixpkgs = {
     # You can add overlays here
     overlays = [
       # Add overlays your own flake exports (from overlays and pkgs dir):

@@ -78,7 +78,7 @@
       cachix
       # sketchybar
       fontconfig
-      gnugrep  # replacee macos's grep
+      gnugrep # replacee macos's grep
       gnutar # replacee macos's tar
     ];
   };
