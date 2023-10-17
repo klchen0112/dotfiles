@@ -1,5 +1,4 @@
-SKETCHBAR_BIN="sketchybar"
-
+#!/bin/sh
 BATT_PERCENT=$(pmset -g batt | grep -Eo "\d+%" | cut -d% -f1)
 # CHARGING=$(pmset -g batt | grep "AC Power")
 if [[ $CHARGING != "" ]]; then
