@@ -29,16 +29,15 @@
   swapDevices =
     [{ device = "/dev/disk/by-uuid/7c32372a-415e-4e8f-8478-b273b6544e03"; }];
 
-  # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
-  # (the default) this is the recommended approach. When using systemd-networkd it's
-  # still possible to use this option, but it's recommended to use it in conjunction
-  # with explicit per-interface declarations with `networking.interfaces.<interface>.useDHCP`.
-  networking.hostName = "i12500"; # Define your hostname.
-  # networking.wireless.enable = true; # Enables wireless support via wpa_supplicant.
-  networking.useDHCP = lib.mkDefault true;
-  networking.wireless.userControlled.enable = true;
+
   # Enable networking
-  networking.networkmanager.enable = true;
+  networking = {
+    hostName = "klchen@i21500";
+    wireless.enable = true;
+    wireless.userControlled.enable = true;
+    networkmanager.enable = true;
+    .useDHCP = lib.mkDefault true;
+  };
 
   services.blueman.enable = true;
 

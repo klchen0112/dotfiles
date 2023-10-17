@@ -155,6 +155,14 @@
     };
   };
 
+  programs.fish = {
+    enable = true;
+  };
+  
+  programs.bash = {
+    enable = True;
+  };
+
   environment = {
     shells = with pkgs; [ fish ]; # Default shell
     variables = {
@@ -165,56 +173,40 @@
     };
     systemPackages = with pkgs; [
       # Installed Nix packages
-      # Terminal
-      # bash
-      gnumake
-      fish
-      # zsh
-      fontconfig
-      home-manager
-      coreutils
-      cachix
-      jq # for yabai json parser
-      # sketchybar
-      gzip
-      nixpkgs-fmt
-      gitAndTools.gitFull
     ];
   };
   nixpkgs.config.allowUnfree = true; # Allow proprietary software.
 
-  services = {
-    # ariang.enable = true;
-    openssh = {
-      enable = true;
-      # Forbid root login through SSH.
-      settings = {
-        X11Forwarding = true;
-        PermitRootLogin = "no"; # disable root login
-        PasswordAuthentication = false; # disable password login
-      };
-      allowSFTP = true;
-      extraConfig = ''
-        HostKeyAlgorithms +ssh-rsa
-      ''; # Temporary extra config so ssh will work in guacamole
-
+  services.openssh = {
+    enable = true;
+    # Forbid root login through SSH.
+    settings = {
+      X11Forwarding = true;
+      PermitRootLogin = "no"; # disable root login
+      PasswordAuthentication = false; # disable password login
     };
-
-    emacs = {
-      enable = false;
-      package = pkgs.emacs29;
-      # https://github.com/nix-community/nix-doom-emacs/blob/master/docs/reference.md#emacs-daemon
-      # package = inputs.nix-doom-emacs.packages.${system}.doom-emacs.override {
-      #  doomPrivateDir = ../../doom;
-      #  emacsPackage = pkgs.emacs-unstable;
-      # };
-    };
+    allowSFTP = true;
+    extraConfig = ''
+      HostKeyAlgorithms +ssh-rsa
+    ''; # Temporary extra config so ssh will work in guacamole
 
   };
+
+
+  services.emacs = {
+      enable = true;
+      package = pkgs.emacs29;
+    };
 
   systemd.targets.sleep.enable = false;
   systemd.targets.suspend.enable = false;
   systemd.targets.hibernate.enable = false;
   systemd.targets.hybrid-sleep.enable = false;
   system.stateVersion = "23.11";
+
+  i18n = {
+    enabled = "fcitx5";
+    fcitx5.addons = [fcitx5-rime];
+
+  };
 }

@@ -59,5 +59,5 @@
     homeDirectory = "/home/${username}";
   };
   home.stateVersion = "23.11";
-
+  
 }

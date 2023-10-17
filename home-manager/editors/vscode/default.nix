@@ -20,7 +20,6 @@
   imports = [
 
   ];
-
   services.vscode-server.enable =
     if pkgs.stdenv.isLinux
     then true
