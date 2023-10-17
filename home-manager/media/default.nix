@@ -12,12 +12,32 @@
     #  package = pkgs.sioyek;
     bindings =
       {
-        "move_up" = "k";
-        "move_down" = "j";
-        "move_left" = "h";
-        "move_right" = "l";
-        "screen_down" = [ "d" "<C-d>" ];
-        "screen_up" = [ "u" "<C-u>" ];
+        "move_up" = "p";
+        "move_down" = "n";
+        "move_left" = "f";
+        "move_right" = "b";
+
+        "next_page" = "<S-n>";
+        "previous_page" = "<S-p>";
+
+
+        "zoom_in" = "=";
+        "zoom_out" = "-";
+
+        "fit_to_page_width" = "w";
+        "fit_to_page_width_smart" = "e";
+
+        # Other useful vim-bindings
+        "goto_begining" = "[b";
+        "goto_end" = "]b";
+        "goto_toc" = "<tab>";
+
+        "add_highlight" = "h";
+
+        "add_bookmark" = "b";
+        "delete_bookmark" = "db";
+        "goto_bookmark" = "gb";
+        "goto_bookmark_g" = "g<S-b>";
       };
   };
   home.packages = with pkgs; [
