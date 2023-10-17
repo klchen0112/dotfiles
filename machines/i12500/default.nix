@@ -37,20 +37,7 @@
   # Set your time zone.
   time.timeZone = "Asia/Shanghai";
 
-  # Select internationalisation properties.
-  i18n.defaultLocale = "en_US.UTF-8";
 
-  i18n.extraLocaleSettings = {
-    LC_ADDRESS = "zh_CN.UTF-8";
-    LC_IDENTIFICATION = "zh_CN.UTF-8";
-    LC_MEASUREMENT = "zh_CN.UTF-8";
-    LC_MONETARY = "zh_CN.UTF-8";
-    LC_NAME = "zh_CN.UTF-8";
-    LC_NUMERIC = "zh_CN.UTF-8";
-    LC_PAPER = "zh_CN.UTF-8";
-    LC_TELEPHONE = "zh_CN.UTF-8";
-    LC_TIME = "zh_CN.UTF-8";
-  };
 
 
 
@@ -79,10 +66,8 @@
 
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
-  programs.fish.enable = true;
 
   users.users.${username} = {
-    # macOS user
     isNormalUser = true;
     home = "/home/${username}";
     extraGroups = [ "wheel" "networkmanager" ];
@@ -90,22 +75,29 @@
     openssh.authorizedKeys.keys = [
       "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDA7ACzG1nepQnjjHqcVKY1QQjYLQbhDcODoMumPCKQheFNBBTfBOck3nLPBkDhIcDRivHabmogC/nf8AOowl7rRx1qYhLagsZD4fbPmyA97g1xZ9/yip8crGn8s5iCFWQ5o83aZ8GoFOYHJdQmyugX/zbK3Wev3Y2LoL7Tvi9z/tzDlYmZp4zL6XntGXUTe9l3PyU0VR+RdehnTE5/fNC0I5JH+9Vr4H7/b4F26/N5qHdH6k+c+rX9F2ckrd17rAxG1bfmh3CUwOoTdg/8V9OTwecXYPLA8lFKQXG/RMMZvBsVsvxGCG482PFeNoB3beVdHwb9gO3z/fPfS3JUVl19pbkSLmLSG25rTzdFpQgKblGkuQzN9QeeXA5G8FdS3ubZG6eafvnyXFALvaE6bFqIpg2h4UEyMSaJusUoJqhRRng4MchGWxCvCu0l4SmPyq5XUMDdmX4kQhYQ6F7QR9mvztPQ/N23iDH0FdO6oM7gNIF+6UGLp0sOm74KyTULU0c= klchen@chenkailongdeMacBook-Pro.local"
     ];
-
   };
 
   security.sudo.wheelNeedsPassword = false; # User does not need to give password when using sudo.
 
   nix = {
     package = pkgs.nix;
-    # gc = {
-    #   # Garbage collection
-    #   automatic = true;
-    #   interval.Day = 7;
-    #   options = "--delete-older-than 7d";
-    # };
+    gc = {
+      # Garbage collection
+      automatic = true;
+      dates = "weekly";
+      options = "--delete-older-than 7d";
+    };
     extraOptions = ''
       experimental-features = nix-command flakes
     '';
+    settings = {
+    # Manual optimise storage: nix-store --optimise
+    # https://nixos.org/manual/nix/stable/command-ref/conf-file.html#conf-auto-optimise-store
+    auto-optimise-store = true;
+    builders-use-substitutes = true;
+    # enable flakes globally
+    experimental-features = ["nix-command" "flakes"];
+  };
     settings.trusted-users =
       [
         "${username}"
@@ -116,7 +108,7 @@
   fonts = {
     # Fonts
     fontDir.enable = true;
-    fonts = with pkgs; [
+    packages = with pkgs; [
       jetbrains-mono
       # cascadia-code
       # comic-mono
@@ -158,10 +150,8 @@
   programs.fish = {
     enable = true;
   };
-  
-  programs.bash = {
-    enable = True;
-  };
+
+
 
   environment = {
     shells = with pkgs; [ fish ]; # Default shell
@@ -173,6 +163,8 @@
     };
     systemPackages = with pkgs; [
       # Installed Nix packages
+      gnumake
+      home-manager
     ];
   };
   nixpkgs.config.allowUnfree = true; # Allow proprietary software.
@@ -205,8 +197,22 @@
   system.stateVersion = "23.11";
 
   i18n = {
-    enabled = "fcitx5";
-    fcitx5.addons = [fcitx5-rime];
 
+    inputMethod =
+    {enabled = "fcitx5";
+    fcitx5.addons = with pkgs; [fcitx5-rime];
+    };
+    defaultLocale = "en_US.UTF-8";
+    extraLocaleSettings = {
+    LC_ADDRESS = "zh_CN.UTF-8";
+    LC_IDENTIFICATION = "zh_CN.UTF-8";
+    LC_MEASUREMENT = "zh_CN.UTF-8";
+    LC_MONETARY = "zh_CN.UTF-8";
+    LC_NAME = "zh_CN.UTF-8";
+    LC_NUMERIC = "zh_CN.UTF-8";
+    LC_PAPER = "zh_CN.UTF-8";
+    LC_TELEPHONE = "zh_CN.UTF-8";
+    LC_TIME = "zh_CN.UTF-8";
+  };
   };
 }

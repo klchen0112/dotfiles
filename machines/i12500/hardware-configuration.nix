@@ -32,11 +32,11 @@
 
   # Enable networking
   networking = {
-    hostName = "klchen@i21500";
-    wireless.enable = true;
+    hostName = "i12500";
+    # wireless.enable = true;
     wireless.userControlled.enable = true;
     networkmanager.enable = true;
-    .useDHCP = lib.mkDefault true;
+    useDHCP = lib.mkDefault true;
   };
 
   services.blueman.enable = true;
