@@ -1,11 +1,3 @@
-#
-#  Specific system configuration settings for MacBook
-#
-#  flake.nix
-#   └─ ./darwin
-#       ├─ ./default.nix
-#       └─ ./configuration.nix *
-#
 { inputs
 , outputs
 , config
@@ -15,33 +7,10 @@
 , ...
 }: {
 
-  nixpkgs = {
-    # You can add overlays here
-    overlays = [
-      # Add overlays your own flake exports (from overlays and pkgs dir):
-      outputs.overlays.additions
-      outputs.overlays.modifications
-      outputs.overlays.unstable-packages
-
-      # You can also add overlays exported from other flakes:
-      # neovim-nightly-overlay.overlays.default
-      # inputs.nixpkgs-firefox-darwin.overlay
-
-      # Or define it inline, for example:
-      # (final: prev: {
-      #   hi = final.hello.overrideAttrs (oldAttrs: {
-      #     patches = [ ./change-hello-to-hi.patch ];
-      #   });
-      # })
-    ];
-
-    config = {
-      allowUnfree = true; # Allow proprietary software.
-      allowUnfreePredicate = (_: true);
-      #  allowUnsupportedSystem = true;
-      #  allowBroken = true;
-    };
-  };
+  imports = [
+    ./nix-core.nix
+    ./system.nix
+  ];
 
   users.users.${username} = {
     # macOS user
@@ -109,11 +78,12 @@
       cachix
       # sketchybar
       fontconfig
+      gnugrep  # replacee macos's grep
+      gnutar # replacee macos's tar
     ];
   };
 
   services.activate-system.enable = true;
-  services.nix-daemon.enable = true; # Auto upgrade daemon
   services.emacs = {
     enable = true;
     package =
@@ -493,25 +463,7 @@
   # };
 
 
-  nix = {
-    package = pkgs.nix;
-    gc = {
-      # Garbage collection
-      automatic = true;
-      interval.Day = 7;
-      options = "--max-freed $((64 * 1024**3))";
-    };
-    extraOptions = ''
-      experimental-features = nix-command flakes
-    '';
-    settings = {
-      auto-optimise-store = true;
-      trusted-users =
-        [
-          "${username}"
-        ];
-    };
-  };
+
 
   homebrew = {
     # Declare Homebrew using Nix-Darwin
@@ -603,49 +555,5 @@
 
 
 
-  security.pam.enableSudoTouchIdAuth = true;
-  system = {
-    defaults = {
-      loginwindow.GuestEnabled = false;
-      NSGlobalDomain = {
-        # Global macOS system settings
-        KeyRepeat = 1;
-        NSAutomaticCapitalizationEnabled = false;
-        NSAutomaticSpellingCorrectionEnabled = false;
-        AppleShowAllExtensions = true;
-        _HIHideMenuBar = true;
-
-      };
-      CustomSystemPreferences = {
-        NSGlobalDomain.AppleSpacesSwitchOnActivate = false;
-      };
-      dock = {
-        # Dock settings
-        autohide = true;
-        orientation = "bottom";
-        showhidden = true;
-        tilesize = 40;
-        appswitcher-all-displays = true;
-      };
-      finder = {
-        # Finder settings
-        AppleShowAllExtensions = true;
-        FXEnableExtensionChangeWarning = false;
-        QuitMenuItem = false; # I believe this probably will need to be true if using spacebar
-      };
-      trackpad = {
-        # Trackpad settings
-        Clicking = true;
-        TrackpadRightClick = true;
-      };
-    };
-
-    keyboard = {
-      enableKeyMapping = true;
-      remapCapsLockToControl = true;
-    };
-    # activationScripts.postActivation.text = ''sudo chsh -s ${pkgs.fish}/bin/fish'' ;
-    stateVersion = 4;
-  };
 }
 
