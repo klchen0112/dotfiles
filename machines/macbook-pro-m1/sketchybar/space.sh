@@ -15,4 +15,4 @@ else
 fi
 
 
-$SKETCHBAR_BIN --set $NAME icon.highlight=$SELECTED icon.color=$iconcolor
+sketchybar --set $NAME icon.highlight=$SELECTED icon.color=$iconcolor

@@ -21,4 +21,4 @@ else
   COLOR=0xfff7768e
 fi
 
-$SKETCHBAR_BIN --set $NAME icon.color=$COLOR label="${SPEED} ${UNIT}"
+sketchybar --set $NAME icon.color=$COLOR label="${SPEED} ${UNIT}"

@@ -16,4 +16,4 @@ else
   LABEL="?"
 fi
 
-$SKETCHBAR_BIN --set $NAME label=$LABEL
+sketchybar --set $NAME label=$LABEL

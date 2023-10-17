@@ -331,7 +331,7 @@
 
         sketchybar --add event window_focus
         sketchybar --add event title_change
-
+        sketchybar --add event front_app_switched
         # for yabai_mode
         sketchybar --add event space_change
 
@@ -447,21 +447,138 @@
 
 
 
-        # . "$ITEM_DIR/window_title.sh"
+        sketchybar --add item window_title center                                    \
+                  --set window_title update_freq=0                                  \
+                              icon.padding_left=0                                    \
+                              icon.padding_right=0                                   \
+                              label.padding_left=16                                  \
+                              label.padding_right=16                                 \
+                              background.color=$BACKGROUND_COLOR                     \
+                              background.height=$BACKGROUND_HEIGHT                   \
+                              background.corner_radius=$BACKGROUND_CORNER_RADIUS     \
+                              background.padding_left=0                              \
+                              background.padding_right=0                             \
+                              script="${sketchybar_scripts}/window_title.sh"                   \
+                  --subscribe window_title front_app_switched                       \
+                  --subscribe window_title window_focus                             \
+                  --subscribe window_title title_change
+
 
         # add right right to left
-        #. "$ITEM_DIR/tray.sh"
-        #. "$ITEM_DIR/time.sh"
-        #. "$ITEM_DIR/system.sh"
-        #. "$ITEM_DIR/wifi.sh"
-        #. "$ITEM_DIR/battery.sh"
 
-        #. "$ITEM_DIR/mic.sh"
-        #. "$ITEM_DIR/sound.sh"
-        # . "$ITEM_DIR/music.sh"
+        sketchybar --add alias 'TextInputMenuAgent' right                 \
+               --set 'TextInputMenuAgent'                             \
+                     alias.color=0xffffffff                           \
+                     icon.padding_left=0                              \
+                     icon.padding_right=0                             \
+                     background.padding_right=0                       \
+                     background.padding_left=0            \
+                     update_freq=3                        \
+                     script="${sketchybar_scripts}/tray.sh"
 
-        #. "$ITEM_DIR/bluetooth.sh"
-        # . "$ITEM_DIR/vpn.sh"
+        sketchybar --add item clock right                                         \
+               --set clock update_freq=1                                      \
+                       icon=                                                 \
+                       icon.font.size=18                                      \
+                       icon.padding_left=8                                   \
+                       icon.padding_right=4                                   \
+                       icon.color=0xff6d8896                                  \
+                       label.padding_right=8                                 \
+                       background.color=$BACKGROUND_COLOR                     \
+                       background.height=$BACKGROUND_HEIGHT                   \
+                       background.corner_radius=$BACKGROUND_CORNER_RADIUS     \
+                       background.padding_left=4                             \
+                       background.padding_right=4                             \
+                       script="${sketchybar_scripts}/clock.sh"                          \
+                       click_script="open /Applications/万年历.app && osascript -e 'tell application \"System Events\" to tell process \"万年历\" to click menu bar item 1 of menu bar 2'"
+
+
+
+        sketchybar --add item disk right                                                  \
+               --set disk update_freq=10                                             \
+                          icon=                                                     \
+                          icon.font.size=20                                          \
+                          icon.padding_left=16                                       \
+                          icon.padding_right=4                                       \
+                          icon.color=0xfffbc02d                                      \
+                          icon.y_offset=-1                                           \
+                          label.padding_right=4                                     \
+                          background.color=$BACKGROUND_COLOR                         \
+                          background.height=$BACKGROUND_HEIGHT                       \
+                          background.corner_radius=$BACKGROUND_CORNER_RADIUS         \
+                          background.padding_right=0                                 \
+                          script="${sketchybar_scripts}/disk.sh"                               \
+                          click_script="open -a \"System Preferences\"; osascript -e 'tell application \"System Preferences\" to activate' -e 'tell application \"System Preferences\" to reveal pane id \"com.apple.settings.Storage\"'"
+
+        sketchybar --add item mem right                                                   \
+               --set mem  update_freq=10                                             \
+                          icon=󰍛                                                     \
+                          icon.font.size=20                                          \
+                          icon.padding_left=16                                       \
+                          icon.padding_right=4                                       \
+                          icon.color=0xff4ed2e3                                      \
+                          icon.y_offset=-1                                           \
+                          label="??%"                                                \
+                          label.padding_right=4                                     \
+                          background.color=$BACKGROUND_COLOR                         \
+                          background.height=$BACKGROUND_HEIGHT                       \
+                          background.corner_radius=$BACKGROUND_CORNER_RADIUS         \
+                          background.padding_right=0                                 \
+                          script="${sketchybar_scripts}/mem.sh"                                \
+                          click_script="open -a \"Activity Monitor\"; osascript -e 'tell application \"Activity Monitor\" to activate' -e 'tell application \"System Events\" to tell process \"Activity Monitor\" to click radio button 2 of radio group 1 of UI element 3'"
+
+
+          sketchybar --add item cpu right                                                   \
+               --set cpu  update_freq=10                                             \
+                          icon=                                                     \
+                          icon.padding_left=16                                       \
+                          icon.padding_right=4                                       \
+                          icon.font.size=20                                          \
+                          icon.color=0xfff6768e                                      \
+                          icon.y_offset=-1                                           \
+                          label="??%"                                                \
+                          label.padding_right=4                                     \
+                          background.color=$BACKGROUND_COLOR                         \
+                          background.height=$BACKGROUND_HEIGHT                       \
+                          background.corner_radius=$BACKGROUND_CORNER_RADIUS         \
+                          background.padding_left=0                                 \
+                          background.padding_right=0                                 \
+                          script="${sketchybar_scripts}/cpu.sh"                                \
+                          click_script="open -a \"Activity Monitor\"; osascript -e 'tell application \"Activity Monitor\" to activate' -e 'tell application \"System Events\" to tell process \"Activity Monitor\" to click radio button 1 of radio group 1 of UI element 3'"
+
+
+
+
+
+        sketchybar --add item wifi right                                             \
+                      --set wifi update_freq=1                                          \
+                                  icon=                                                 \
+                                  icon.padding_left=8                                   \
+                                  icon.padding_right=4                                   \
+                                  icon.color=0xff9ece6a                                  \
+                                  label.padding_right=8                                 \
+                                  background.color=$BACKGROUND_COLOR                     \
+                                  background.height=$BACKGROUND_HEIGHT                   \
+                                  background.corner_radius=$BACKGROUND_CORNER_RADIUS     \
+                                  background.padding_right=3                             \
+                                  script="${sketchybar_scripts}/wifi.sh"                           \
+                                  click_script="open 'x-apple.systempreferences:com.apple.preference.network?Wi-Fi'"
+
+
+        sketchybar --add item battery right                                       \
+               --set battery update_freq=10                                   \
+                       icon.padding_left=8                                   \
+                       icon.padding_right=4                                   \
+                       icon.color=0xff9ac868                                  \
+                       icon.y_offset=-1                                       \
+                       label.padding_right=8                                 \
+                       background.color=$BACKGROUND_COLOR                     \
+                       background.height=$BACKGROUND_HEIGHT                   \
+                       background.corner_radius=$BACKGROUND_CORNER_RADIUS     \
+                       background.padding_right=3                             \
+                       script="${sketchybar_scripts}/battery.sh"                        \
+                       click_script="open 'x-apple.systempreferences:com.apple.preference.battery'"
+
 
         sketchybar --update
 

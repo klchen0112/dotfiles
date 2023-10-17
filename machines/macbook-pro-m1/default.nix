@@ -96,7 +96,7 @@
   };
 
 
-  
+
 
   # services.sketchybar-bottom = {
   #   enable = false;
