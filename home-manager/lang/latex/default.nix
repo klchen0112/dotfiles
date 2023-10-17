@@ -5,6 +5,5 @@
       inherit (tpkgs)
         scheme-medium;
     };
-
   };
 }

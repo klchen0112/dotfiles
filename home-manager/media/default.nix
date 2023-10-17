@@ -33,6 +33,7 @@
         "goto_toc" = "<tab>";
 
         "add_highlight" = "h";
+        "delete_highlight" = "dh";
 
         "add_bookmark" = "b";
         "delete_bookmark" = "db";
