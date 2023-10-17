@@ -383,7 +383,7 @@
 
 
 
-  home.packages = with pkgs; [ inetutils nodePackages.prettier shfmt shellcheck ifstat-legacy ];
+  home.packages = with pkgs; [ inetutils nodePackages.prettier shfmt shellcheck ];
   programs.ssh = {
     enable = true;
     serverAliveInterval = 30;

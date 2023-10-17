@@ -136,8 +136,6 @@
     brews = [
       "macism"
       "mas"
-      "blueutil"
-
     ];
     casks = [
       "squirrel"

@@ -547,24 +547,6 @@
                           click_script="open -a \"Activity Monitor\"; osascript -e 'tell application \"Activity Monitor\" to activate' -e 'tell application \"System Events\" to tell process \"Activity Monitor\" to click radio button 1 of radio group 1 of UI element 3'"
 
 
-
-
-
-        sketchybar --add item wifi right                                             \
-                      --set wifi update_freq=1                                          \
-                                  icon=                                                 \
-                                  icon.padding_left=8                                   \
-                                  icon.padding_right=4                                   \
-                                  icon.color=0xff9ece6a                                  \
-                                  label.padding_right=8                                 \
-                                  background.color=$BACKGROUND_COLOR                     \
-                                  background.height=$BACKGROUND_HEIGHT                   \
-                                  background.corner_radius=$BACKGROUND_CORNER_RADIUS     \
-                                  background.padding_right=3                             \
-                                  script="${sketchybar_scripts}/wifi.sh"                           \
-                                  click_script="open 'x-apple.systempreferences:com.apple.preference.network?Wi-Fi'"
-
-
         sketchybar --add item battery right                                       \
                --set battery update_freq=10                                   \
                        icon.padding_left=8                                   \
