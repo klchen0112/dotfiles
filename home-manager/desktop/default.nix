@@ -12,6 +12,9 @@
     enable = true;
     xwayland.enable = true;
   };
+
+  fonts.fontconfig.enable = true;
+  
   programs.waybar = {
     enable = true;
     # settings = ''

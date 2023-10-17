@@ -8,6 +8,8 @@
   };
   programs.firefox = {
     enable = pkgs.stdenv.isLinux;
+    enableGnomeExtensions = false;
+    package = pkgs.firefox-wayland; # firefox with wayland support
     profiles = {
       "klchen" = {
         id = 0;
