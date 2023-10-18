@@ -132,7 +132,7 @@
         +forge)             ; interface with git forges
        make              ; run make tasks from Emacs
        ;;pass              ; password manager for nerds
-       pdf               ; pdf enhancements
+       ;;pdf               ; pdf enhancements
        ;;prodigy           ; FIXME managing external services & code builders
        rgb               ; creating color strings
        ;;taskrunner        ; taskrunner for all your projects
@@ -206,7 +206,7 @@
         ;;+gnuplot                    ; who doesn't like pretty pictures
         +hugo                     ; use Emacs for hugo blogging
         ;; +journal ;; use org roam dailyies
-        +noter ;; enhanced pdf notetaking
+        ;;+noter ;; enhanced pdf notetaking
         ;;+pretty                     ; yessss my pretties! (nice unicode symbols)
         ;;+jupyter                    ; ipython/jupyter support for babel
         +pandoc                     ; export-with-pandoc support
@@ -285,8 +285,8 @@
 #+begin_src emacs-lisp :tangle config.el
 (use-package! benchmark-init
   :ensure t
-  :hook
-  ('after-init-hook 'benchmark-init/deactivate)
+  :config
+  (add-hook! 'after-init-hook 'benchmark-init/deactivate)
 )
 #+end_src
 * Basic settings
@@ -2215,7 +2215,7 @@ use dash open app dash
 :ID:       0e9cc110-63ef-4e95-a389-173f48b658df
 :END:
 #+begin_src emacs-lisp :tangle packages.el
-(unpin! pdf-tools)
+;;(unpin! pdf-tools)
 #+end_src
 ** org noter and nov
 :PROPERTIES:
@@ -2229,37 +2229,43 @@ use dash open app dash
 
 
 #+begin_src emacs-lisp :tangle config.el
-(use-package! org-noter
-  :after org
-  :config
-  (setq org-noter-notes-search-path (concat org-directory "references"))
-  (setq org-noter-alway-create-frame t)
-  (setq org-noter-auto-save-last-location t)
-  (setq org-noter-doc-split-fraction '(0.52 0.48))
-)
+;;(use-package pdf-tools
+;;  :after org)
+
+;;(use-package pdf-view
+;;  :after (:all org pdf-tools))
+
+;;(use-package! org-noter
+;;  :after org
+;;  :config
+;;  (setq org-noter-notes-search-path (concat org-directory "references"))
+;;  (setq org-noter-alway-create-frame t)
+;;  (setq org-noter-auto-save-last-location t)
+;;  (setq org-noter-doc-split-fraction '(0.52 0.48))
+;;)
 
 
-(after! org-noter
-  (defun eli/org-noter-set-highlight (&rest _arg)
-    "Highlight current org-noter note."
-    (save-excursion
-      (with-current-buffer (org-noter--session-notes-buffer org-noter--session)
-        (remove-overlays (point-min) (point-max) 'org-noter-current-hl t)
-        (goto-char (org-entry-beginning-position))
-        (let* ((hl (org-element-context))
-               (hl-begin (plist-get  (plist-get hl 'headline) :begin))
-               (hl-end (1- (plist-get  (plist-get hl 'headline) :contents-begin)))
-               (hl-ov (make-overlay hl-begin hl-end)))
-          (overlay-put hl-ov 'face 'mindre-keyword)
-          (overlay-put hl-ov 'org-noter-current-hl t))
-        (org-cycle-hide-drawers 'all))))
-  (advice-add #'org-noter--focus-notes-region
-              :after #'eli/org-noter-set-highlight)
-  (advice-add #'org-noter-insert-note
-              :after #'eli/org-noter-set-highlight)
+;;(after! org-noter
+;;  (defun eli/org-noter-set-highlight (&rest _arg)
+;;    "Highlight current org-noter note."
+;;    (save-excursion
+;;      (with-current-buffer (org-noter--session-notes-buffer org-noter--session)
+;;        (remove-overlays (point-min) (point-max) 'org-noter-current-hl t)
+;;        (goto-char (org-entry-beginning-position))
+;;        (let* ((hl (org-element-context))
+;;               (hl-begin (plist-get  (plist-get hl 'headline) :begin))
+;;               (hl-end (1- (plist-get  (plist-get hl 'headline) :contents-begin)))
+;;               (hl-ov (make-overlay hl-begin hl-end)))
+;;          (overlay-put hl-ov 'face 'mindre-keyword)
+;;          (overlay-put hl-ov 'org-noter-current-hl t))
+;;        (org-cycle-hide-drawers 'all))))
+;;  (advice-add #'org-noter--focus-notes-region
+;;              :after #'eli/org-noter-set-highlight)
+;;  (advice-add #'org-noter-insert-note
+;;              :after #'eli/org-noter-set-highlight)
 
 
-)
+;;)
 
 ;;(use-package! org-noter-nov-overlay)
 
@@ -2302,11 +2308,11 @@ use dash open app dash
 :END:
 
 #+begin_src emacs-lisp :tangle packages.el
-(package! mpvi :recipe (:host github :repo "lorniu/mpvi"))
+;;(package! mpvi :recipe (:host github :repo "lorniu/mpvi"))
 #+end_src
 
 #+begin_src emacs-lisp :tangle config.el
-(use-package! mpvi)
+;;(use-package! mpvi)
 #+end_src
 ** anki
 :PROPERTIES:
