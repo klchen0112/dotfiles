@@ -1,7 +1,5 @@
 #!/bin/sh
 
-SKETCHBAR_BIN="sketchybar"
-
 APP=$(yabai -m query --windows --window | jq -r '.app')
 WINDOW_TITLE=$(yabai -m query --windows --window | jq -r '.title')
 

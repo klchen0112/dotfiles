@@ -522,7 +522,7 @@
 
         sketchybar --add item mem right                                                   \
                --set mem  update_freq=10                                             \
-                          icon=󰍛                                                     \
+                          icon=!a                                                    \
                           icon.font.size=20                                          \
                           icon.padding_left=16                                       \
                           icon.padding_right=4                                       \
