@@ -424,14 +424,10 @@
                --set   spaces.10      associated_space=10                                    \
                                       icon=󰘑                                                \
                                       script="${sketchybar_scripts}/space.sh"                          \
-                                      icon.padding_right=16                                   \
-                                                                                             \
                --clone spaces.11      space_template                                         \
                --set   spaces.11      associated_space=11                                    \
                                       icon=                                                \
                                       script="${sketchybar_scripts}/space.sh"                          \
-                                      icon.padding_right=16                                   \
-                                                                                             \
                --clone spaces.12      space_template                                         \
                --set   spaces.12      associated_space=12                                    \
                                       icon=                                                \
