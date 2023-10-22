@@ -200,7 +200,6 @@
 
       nur = {
         url = "github:nix-community/NUR"; # NUR Packages
-        inputs.nixpkgs.follows = "nixpkgs";
       };
 
       nixgl = {
@@ -244,6 +243,11 @@
       anyrun = {
         url = "github:Kirottu/anyrun";
         inputs.nixpkgs.follows = "nixpkgs";
+      };
+
+      catppuccin-hyprland = {
+        url = "github:catppuccin/hyprland";
+        flake = false;
       };
 
       vscode-server = {
