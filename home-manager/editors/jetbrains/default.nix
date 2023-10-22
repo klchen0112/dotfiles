@@ -5,6 +5,6 @@
   home.packages = with pkgs.jetbrains; [
     idea-ultimate
     clion
-    pycharm-professional
+    # pycharm-professional
   ];
 }
