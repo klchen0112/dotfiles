@@ -11,8 +11,6 @@
         height = 40;
         margin = "6";
         position = "top";
-      };
-      mainbar = {
         layer = "top";
         position = "top";
         modules-left = [ "sway/workspaces" "sway/mode" "wlr/taskbar" ];
@@ -23,6 +21,7 @@
           all-outputs = true;
         };
       };
+
 
     };
     style = ''
