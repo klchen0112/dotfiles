@@ -200,6 +200,7 @@
 
       nur = {
         url = "github:nix-community/NUR"; # NUR Packages
+        inputs.nixpkgs.follows = "nixpkgs";
       };
 
       nixgl = {
