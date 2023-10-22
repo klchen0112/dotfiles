@@ -237,6 +237,8 @@
         # Official Hyprland flake
         url = "github:vaxerski/Hyprland";
         inputs.nixpkgs.follows = "nixpkgs";
+        inputs.systems.follows = "systems";
+
       };
 
       # anyrun - a wayland launcher
