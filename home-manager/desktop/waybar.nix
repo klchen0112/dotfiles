@@ -7,10 +7,10 @@
     settings = {
       primary = {
         mode = "dock";
-        layer = "top";
+        # layer = "top";
         height = 40;
         margin = "6";
-        position = "top";
+        # position = "top";
         layer = "top";
         position = "top";
         modules-left = [ "sway/workspaces" "sway/mode" "wlr/taskbar" ];

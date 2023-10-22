@@ -232,9 +232,17 @@
         inputs.flake-compat.follows = "flake-compat";
       };
 
+
+      # hyprland
       hyprland = {
         # Official Hyprland flake
         url = "github:vaxerski/Hyprland";
+        inputs.nixpkgs.follows = "nixpkgs";
+      };
+
+      # anyrun - a wayland launcher
+      anyrun = {
+        url = "github:Kirottu/anyrun";
         inputs.nixpkgs.follows = "nixpkgs";
       };
 
@@ -263,6 +271,7 @@
 
 
       # AI
+
     };
 }
 
