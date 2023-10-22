@@ -75,7 +75,6 @@
       # bash
       fish
       # zsh
-      home-manager
       cachix
       # sketchybar
       fontconfig

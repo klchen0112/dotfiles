@@ -164,7 +164,6 @@
     systemPackages = with pkgs; [
       # Installed Nix packages
       gnumake
-      home-manager
     ];
   };
   nixpkgs.config.allowUnfree = true; # Allow proprietary software.
