@@ -1,9 +1,8 @@
-SKETCHBAR_BIN="sketchybar"
-
+#!/bin/sh
 BATT_PERCENT=$(pmset -g batt | grep -Eo "\d+%" | cut -d% -f1)
-# CHARGING=$(pmset -g batt | grep "AC Power")
+CHARGING=$(pmset -g batt | grep "AC Power")
 if [[ $CHARGING != "" ]]; then
-  $SKETCHBAR_BIN -m --set battery      \
+  sketchybar -m --set battery      \
     icon=""                           \
     label="${BATT_PERCENT}"
   exit 0
@@ -21,7 +20,6 @@ case ${BATT_PERCENT} in
     1[0-9]) ICON=""; COLOR="0xfff65e51" ;;
     *) ICON=""; COLOR="0xfff65e51"
 esac
-$SKETCHBAR_BIN -m --set battery             \
+sketchybar -m --set battery             \
   icon="$ICON"                          \
-  label="${BATT_PERCENT}%" \
-#  label.color="$COLOR"                    \
+  label="${BATT_PERCENT}%"

@@ -1,6 +1,6 @@
 #!/bin/sh
 
-SKETCHBAR_BIN="sketchybar"
+
 
 if lsappinfo -all list | grep $NAME >> /dev/null; then
   LABEL=$( lsappinfo -all list | grep $NAME | egrep -o "\"StatusLabel\"=\{ \"label\"=\"?(.*?)\"? \}" | sed 's/\"StatusLabel\"={ \"label\"=\(.*\) }/\1/g')
@@ -16,4 +16,4 @@ else
   LABEL="?"
 fi
 
-$SKETCHBAR_BIN --set $NAME label=$LABEL
+sketchybar --set $NAME label=$LABEL
