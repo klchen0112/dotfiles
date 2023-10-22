@@ -108,7 +108,7 @@
 
 
   };
-  system.stateVersion = "23.11";
+  system.stateVersion = "23.05";
   time.timeZone = "Asia/Shanghai";
   networking.hostName = "wsl";
 }

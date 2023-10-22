@@ -8,7 +8,7 @@
 }: {
   imports = [
     # inputs.nix-doom-emacs.hmModule
-    inputs.hyprland.homeManagerModules.default
+
     inputs.vscode-server.homeModules.default
     ../../home-manager/desktop
     ../../home-manager/browser
@@ -60,6 +60,6 @@
     username = "${username}";
     homeDirectory = "/home/${username}";
   };
-  home.stateVersion = "23.11";
+  home.stateVersion = "23.05";
 
 }

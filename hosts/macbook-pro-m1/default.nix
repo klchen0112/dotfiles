@@ -32,7 +32,7 @@
   home = {
     username = "${username}";
     homeDirectory = "/Users/${username}";
-    stateVersion = "23.11";
+    stateVersion = "23.05";
   };
   # nixpkgs = {
   #   # You can add overlays here
