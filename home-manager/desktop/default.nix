@@ -10,7 +10,7 @@
 
 
   programs.anyrun = {
-    enable = true;
+    enable = false;
     config = {
       plugins = with inputs.anyrun.packages.${pkgs.system}; [
         applications
@@ -93,18 +93,18 @@
 
   # the idle timeout
   services.swayidle = {
-    enable = true;
+    enable = false;
   };
 
   # locking the screen
   programs.swaylock = {
-    enable = true;
+    enable = false;
   };
 
   home.packages = with pkgs; [
-    swaybg # the wallpaper
-    wl-clipboard # logout menu
-    mako # notif
+    # swaybg # the wallpaper
+    # wl-clipboard # logout menu
+    # mako # notif
   ];
 
   programs.wlogout.enable = false;
@@ -115,128 +115,25 @@
     # package = pkgs.hyprland;
     # plugins=[];
     xwayland.enable = true;
-    # systemd.enable = true;
-    # settings = {
-
-    # };
     extraConfig =
-      let scripts = ./scripts;
-      in ''
-        #-- Output ----------------------------------------------------
-        # Configure your Display resolution, offset, scale and Monitors here, use `hyprctl monitors` to get the info.
-
-        # format:
-        #    monitor=name,resolution,position,scale
-        #  monitor=HDMI-A-2,3840x2160@60,0x0,1.6
-        #workspace=HDMI-A-2,1
-
-
-        #-- Input ----------------------------------------------------
-        # Configure mouse and touchpad here.
-        input {
-          kb_layout=us
-          kb_variant=
-          kb_model=
-          kb_options=
-          kb_rules=
-          follow_mouse=1
-          natural_scroll=0
-          force_no_accel=0
-          # repeat_rate=
-          # repeat_delay=
-          numlock_by_default=1
-        }
-
-
-        #-- General ----------------------------------------------------
-        # General settings like MOD key, Gaps, Colors, etc.
-        general {
-            sensitivity=2.0
-          apply_sens_to_raw=0
-
-            gaps_in=5
-            gaps_out=10
-
-            border_size=4
-            col.active_border=0xFFB4A1DB
-            col.inactive_border=0xFF343A40
-        }
-
-
-        #-- Decoration ----------------------------------------------------
-        # Decoration settings like Rounded Corners, Opacity, Blur, etc.
-        decoration {
-            rounding=8       # Original: rounding=-1
-            #multisample_edges=0
-
-            active_opacity=1.0
-            inactive_opacity=0.9
-            fullscreen_opacity=1.0
-
-            #blur=0
-            #blur_size=3 			# minimum 1
-            #blur_passes=1 			# minimum 1, more passes = more resource intensive.
-            # blur_ignore_opacity=0
-
-            # Your blur "amount" is blur_size * blur_passes, but high blur_size (over around 5-ish) will produce artifacts.
-            # if you want heavy blur, you need to up the blur_passes.
-            # the more passes, the more you can up the blur_size without noticing artifacts.
-        }
-
-        #-- Animations ----------------------------------------------------
-        animations {
-            enabled=1
-            animation=windows,1,8,default,popin 80%
-            animation=fadeOut,1,8,default
-            animation=fadeIn,1,8,default
-            animation=workspaces,1,8,default
-            #animation=workspaces,1,6,overshot
-        }
-
-        #-- Dwindle ----------------------------------------------------
-        dwindle {
-            pseudotile=0 			# enable pseudotiling on dwindle
-        }
-
-        #-- Keybindings ----------------------------------------------------
-
-
-        # -- Terminal --
-        bind=SUPER,Return,exec,wezterm
-
-
-        $app_launcher = ${scripts}/menu
-
-
-        # -- App Launcher --
-        bind=ALT,D,exec,$app_launcher
-
-        # Focus
-        bind=ALT,b,movefocus,l
-        bind=ALT,f,movefocus,r
-        bind=ALT,p,movefocus,u
-        bind=ALT,n,movefocus,d
-
-        # Move
-        bind=ALTSHIFT,b,movewindow,l
-        bind=ALTSHIFT,f,movewindow,r
-        bind=ALTSHIFT,p,movewindow,u
-        bind=ALTSHIFT,n,movewindow,d
-      '';
-
-
-
-
+    let scripts = ./hypr;
+    in
+    ''
+      source=${scripts}/monitors.conf
+      source=${scripts}/settings.conf
+      source=${scripts}/rules.conf
+      source=${scripts}/binds.conf
+      source=${scripts}/theme.conf
+      source=${scripts}/exec.conf
+    '';
   };
 
-  home.file.".config/hypr/themes".source = "${inputs.catppuccin-hyprland}/themes";
-
-
+  # home.file.".config/hypr/themes".source = "${inputs.catppuccin-hyprland}/themes";
 
   fonts.fontconfig.enable = true;
 
   programs.waybar = {
-    enable = true;
+    enable = false;
     systemd = {
       enable = true;
     };

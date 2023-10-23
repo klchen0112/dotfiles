@@ -19,6 +19,7 @@
       # Include the results of the hardware scan.
       ./hardware-configuration.nix
       ./hyprland.nix
+      ./gnome.nix
     ];
 
   # Bootloader.
@@ -31,19 +32,6 @@
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
-
-
-
-  # Set your time zone.
-  time.timeZone = "Asia/Shanghai";
-
-
-
-
-
-  # Enable CUPS to print documents.
-  services.printing.enable = true;
-
 
   services.vscode-server.enable = true;
 
@@ -187,6 +175,16 @@
   services.emacs = {
     enable = true;
     package = pkgs.emacs29;
+  };
+
+  # services
+  services = {
+    xserver = {
+      enable = true;
+      excludePackages = [ pkgs.xterm ];
+    };
+    printing.enable = true;
+    flatpak.enable = true;
   };
 
   systemd.targets.sleep.enable = false;
