@@ -36,8 +36,8 @@
        layout            ; auie,ctsrnm is the superior home row
 
        :completion
-       (corfu +icons +orderless +tng) ; wait for doom merge
-       ;;(company +childframe)           ; the ultimate code completion backend
+       ;;(corfu +icons +orderless +tng) ; wait for doom merge
+       (company +childframe)           ; the ultimate code completion backend
        ;;helm              ; the *other* search engine for love and life
        ;;ido               ; the other *other* search engine...
        ;;(ivy +fuzzy +prescient +childframe +icons)               ; a search engine for love and life
@@ -105,10 +105,10 @@
        vc                ; version-control and Emacs, sitting in a tree
 
        :term
-       ;;eshell            ; the elisp shell that works everywhere
+       eshell            ; the elisp shell that works everywhere
        ;;shell             ; simple shell REPL for Emacs
        ;;term              ; basic terminal emulator for Emacs
-       vterm             ; the best terminal emulation in Emacs
+       ;;vterm             ; the best terminal emulation in Emacs
 
        :checkers
        ;;(syntax +childframe)              ; tasing you for every semicolon you forget
@@ -132,7 +132,7 @@
         +forge)             ; interface with git forges
        make              ; run make tasks from Emacs
        ;;pass              ; password manager for nerds
-       ;;pdf               ; pdf enhancements
+       pdf               ; pdf enhancements
        ;;prodigy           ; FIXME managing external services & code builders
        rgb               ; creating color strings
        ;;taskrunner        ; taskrunner for all your projects
@@ -206,7 +206,7 @@
         ;;+gnuplot                    ; who doesn't like pretty pictures
         +hugo                     ; use Emacs for hugo blogging
         ;; +journal ;; use org roam dailyies
-        ;;+noter ;; enhanced pdf notetaking
+        +noter ;; enhanced pdf notetaking
         ;;+pretty                     ; yessss my pretties! (nice unicode symbols)
         ;;+jupyter                    ; ipython/jupyter support for babel
         +pandoc                     ; export-with-pandoc support
@@ -249,10 +249,10 @@
 
        :app
        ;;calendar
-       emms
+       ;;emms
        ;;everywhere           ; *leave* Emacs!? You must be joking
        ;;irc               ; how neckbeards socialize
-       ;;(rss +org)        ; emacs as an RSS reader
+       (rss +org)        ; emacs as an RSS reader
        ;;twitter           ; twitter client https://twitter.com/vnought
 
        :config
@@ -2229,43 +2229,41 @@ use dash open app dash
 
 
 #+begin_src emacs-lisp :tangle config.el
-;;(use-package pdf-tools
-;;  :after org)
+(use-package pdf-tools
+  :after org)
 
-;;(use-package pdf-view
-;;  :after (:all org pdf-tools))
+(use-package pdf-view
+  :after (:all org pdf-tools))
 
-;;(use-package! org-noter
-;;  :after org
-;;  :config
-;;  (setq org-noter-notes-search-path (concat org-directory "references"))
-;;  (setq org-noter-alway-create-frame t)
-;;  (setq org-noter-auto-save-last-location t)
-;;  (setq org-noter-doc-split-fraction '(0.52 0.48))
-;;)
-
-
-;;(after! org-noter
-;;  (defun eli/org-noter-set-highlight (&rest _arg)
-;;    "Highlight current org-noter note."
-;;    (save-excursion
-;;      (with-current-buffer (org-noter--session-notes-buffer org-noter--session)
-;;        (remove-overlays (point-min) (point-max) 'org-noter-current-hl t)
-;;        (goto-char (org-entry-beginning-position))
-;;        (let* ((hl (org-element-context))
-;;               (hl-begin (plist-get  (plist-get hl 'headline) :begin))
-;;               (hl-end (1- (plist-get  (plist-get hl 'headline) :contents-begin)))
-;;               (hl-ov (make-overlay hl-begin hl-end)))
-;;          (overlay-put hl-ov 'face 'mindre-keyword)
-;;          (overlay-put hl-ov 'org-noter-current-hl t))
-;;        (org-cycle-hide-drawers 'all))))
-;;  (advice-add #'org-noter--focus-notes-region
-;;              :after #'eli/org-noter-set-highlight)
-;;  (advice-add #'org-noter-insert-note
-;;              :after #'eli/org-noter-set-highlight)
+(use-package! org-noter
+  :after org
+  :config
+  (setq org-noter-notes-search-path (concat org-directory "references"))
+  (setq org-noter-alway-create-frame t)
+  (setq org-noter-auto-save-last-location t)
+  (setq org-noter-doc-split-fraction '(0.52 0.48))
+)
 
 
-;;)
+(after! org-noter
+  (defun eli/org-noter-set-highlight (&rest _arg)
+    "Highlight current org-noter note."
+    (save-excursion
+      (with-current-buffer (org-noter--session-notes-buffer org-noter--session)
+        (remove-overlays (point-min) (point-max) 'org-noter-current-hl t)
+        (goto-char (org-entry-beginning-position))
+        (let* ((hl (org-element-context))
+               (hl-begin (plist-get  (plist-get hl 'headline) :begin))
+               (hl-end (1- (plist-get  (plist-get hl 'headline) :contents-begin)))
+               (hl-ov (make-overlay hl-begin hl-end)))
+          (overlay-put hl-ov 'face 'mindre-keyword)
+          (overlay-put hl-ov 'org-noter-current-hl t))
+        (org-cycle-hide-drawers 'all))))
+  (advice-add #'org-noter--focus-notes-region
+              :after #'eli/org-noter-set-highlight)
+  (advice-add #'org-noter-insert-note
+              :after #'eli/org-noter-set-highlight)
+)
 
 ;;(use-package! org-noter-nov-overlay)
 
