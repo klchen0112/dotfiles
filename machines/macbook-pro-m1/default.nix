@@ -8,6 +8,7 @@
 }: {
 
   imports = [
+    ../base/fonts.nix
     ./nix-core.nix
     ./system.nix
     ./wm.nix
@@ -20,46 +21,7 @@
     shell = pkgs.fish; # Default shell
   };
 
-  fonts = {
-    # Fonts
-    fontDir.enable = true;
-    fonts = with pkgs; [
-      sf-pro
-      sf-compact
-      sf-mono
-      sf-arabic
-      (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
 
-      jetbrains-mono
-      # cascadia-code
-      # comic-mono
-      # fira-code
-      ibm-plex
-      roboto-mono
-      twemoji-color-font
-      # mononoki
-      # symbola
-      # noto-fonts
-      # noto-fonts-extra
-      # noto-fonts-emoji
-      noto-fonts-cjk-sans
-      noto-fonts-cjk-serif
-      # noto-fonts-lgc-plus
-      lxgw-wenkai
-      liberation_ttf
-      overpass
-      freefont_ttf
-      # source-code-pro
-      # source-sans-pro
-      # source-serif-pro
-      # sarasa-gothic
-      # iosevka
-      cm_unicode
-      hanazono
-      lmodern
-      # lmmath
-    ];
-  };
   programs.fish.enable = true;
 
   environment = {
