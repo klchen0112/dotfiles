@@ -91,7 +91,8 @@
   # };
   programs.wezterm = {
     enable = true;
-    extraConfig = let
+    extraConfig =
+      let
         fontsize = if pkgs.stdenv.isDarwin then "14.0" else "13.0";
       in
       ''

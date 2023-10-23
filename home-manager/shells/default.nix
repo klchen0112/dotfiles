@@ -1,7 +1,7 @@
 #
 # fish configuration
 #
-{ lib,inputs, pkgs, username, ... }: {
+{ lib, inputs, pkgs, username, ... }: {
   programs.gpg = {
     enable = true;
   };

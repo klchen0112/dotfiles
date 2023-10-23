@@ -19,7 +19,8 @@
       # Include the results of the hardware scan.
       ./hardware-configuration.nix
       ./hyprland.nix
-      ./gnome.nix
+      ./locale.nix
+      ./fonts.nix
     ];
 
   # Bootloader.
@@ -93,47 +94,7 @@
   };
 
 
-  fonts = {
-    # Fonts
-    fontDir.enable = true;
-    fonts = with pkgs; [
-      jetbrains-mono
-      # cascadia-code
-      # comic-mono
-      # fira-code
-      ibm-plex
-      roboto-mono
-      twemoji-color-font
-      # mononoki
-      symbola
-      # noto-fonts
-      # noto-fonts-extra
-      # noto-fonts-emoji
-      noto-fonts-cjk-sans
-      noto-fonts-cjk-serif
-      # noto-fonts-lgc-plus
-      lxgw-wenkai
-      liberation_ttf
-      overpass
-      freefont_ttf
-      # source-code-pro
-      # source-sans-pro
-      # source-serif-pro
-      # sarasa-gothic
-      iosevka
-      cm_unicode
-      hanazono
-      lmodern
-      # lmmath
-    ];
-    fontconfig = {
-      defaultFonts = {
-        serif = [ "CMU Typewriter Text" ];
-        sansSerif = [ "IBM Plex Serif" ];
-        monospace = [ "jetbrains-mono" ];
-      };
-    };
-  };
+
 
   programs.fish = {
     enable = true;
@@ -193,24 +154,5 @@
   systemd.targets.hybrid-sleep.enable = false;
   system.stateVersion = "23.05";
 
-  i18n = {
 
-    inputMethod =
-      {
-        enabled = "fcitx5";
-        fcitx5.addons = with pkgs; [ fcitx5-rime ];
-      };
-    defaultLocale = "en_US.UTF-8";
-    extraLocaleSettings = {
-      LC_ADDRESS = "zh_CN.UTF-8";
-      LC_IDENTIFICATION = "zh_CN.UTF-8";
-      LC_MEASUREMENT = "zh_CN.UTF-8";
-      LC_MONETARY = "zh_CN.UTF-8";
-      LC_NAME = "zh_CN.UTF-8";
-      LC_NUMERIC = "zh_CN.UTF-8";
-      LC_PAPER = "zh_CN.UTF-8";
-      LC_TELEPHONE = "zh_CN.UTF-8";
-      LC_TIME = "zh_CN.UTF-8";
-    };
-  };
 }
