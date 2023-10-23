@@ -287,9 +287,9 @@
       "remote.SSH.useLocalServer" = false;
 
       "window.autoDetectColorScheme" = true;
-      "workbench.preferredLightColorTheme" = "Catppuccin Lattue";
+      "workbench.preferredLightColorTheme" = "Catppuccin Latte";
       "workbench.preferredDarkColorTheme" = "Catppuccin Macchiato";
-      "workbench.iconTheme" =  "Catppuccin Macchiato";
+      "workbench.iconTheme" =  "Catppuccin Latte";
 
       "remote.SSH.remotePlatform" = {
         "ningbo40" = "linux";
