@@ -36,10 +36,11 @@
         #themes
         mechatroner.rainbow-csv
         gruntfuggly.todo-tree
-        johnpapa.vscode-peacock
-        github.github-vscode-theme
+        # johnpapa.vscode-peacock
+        # github.github-vscode-theme
         # akamud.vscode-theme-onelight
         # vscode-icons-team.vscode-icons
+        catppuccin.catppuccin-vsc
 
         # editor
         streetsidesoftware.code-spell-checker
@@ -62,15 +63,15 @@
         yzhang.markdown-all-in-one
 
         # python
-        ms-python.python
-        ms-python.isort
-        ms-toolsai.jupyter
-        ms-toolsai.vscode-jupyter-slideshow
-        ms-toolsai.vscode-jupyter-cell-tags
-        ms-toolsai.jupyter-renderers
-        ms-toolsai.jupyter-keymap
+        # ms-python.python
+        # ms-python.isort
+        # ms-toolsai.jupyter
+        # ms-toolsai.vscode-jupyter-slideshow
+        # ms-toolsai.vscode-jupyter-cell-tags
+        # ms-toolsai.jupyter-renderers
+        # ms-toolsai.jupyter-keymap
         # ms-python.vscode-pylance
-        ms-pyright.pyright
+        # ms-pyright.pyright
         # ms-pyright.pyright
         # cpp
         llvm-vs-code-extensions.vscode-clangd
@@ -82,7 +83,6 @@
         # kamadorueda.alejandra
         jnoortheen.nix-ide
         # csv
-        mechatroner.rainbow-csv
         # copilot
         # github.copilot
       ]
@@ -91,13 +91,13 @@
           name = "python-environment-manager";
           publisher = "donjayamanne";
           version = "1.2.4";
-          sha256 = "E7pbzPFKmHIOQzETjNkcrNbI2mwhpxHPpGBIk/iflpo=";
+          sha256 = "1jvuoaP+bn8uR7O7kIDZiBKuG3VwMTQMjCJbSlnC7Qo=";
         }
         {
-          name = "vscode-theme-onelight";
-          publisher = "akamud";
-          version = "2.3.0";
-          sha256 = "CTD0s2lRMCi/WCGr6dP1Utrvtsdcbg4srRcrZJSFDqU=";
+          name = "catppuccin-vsc-icons";
+          publisher = "Catppuccin";
+          version = "0.29.0";
+          sha256 = "bB4GrAljML5YdsRI6gU6q8tS8jXIXL5q2Kk3HDnI4RU=";
         }
         {
           name = "org-mode";
@@ -117,24 +117,24 @@
         #   version = "2.24.2";
         #   sha256 = "YNqWEIvlEI29mfPxOQVdd4db9G2qNodhz8B0MCAAWK8=";
         # }
-        {
-          name = "vsc-python-indent";
-          publisher = "KevinRose";
-          version = "1.18.0";
-          sha256 = "hiOMcHiW8KFmau7WYli0pFszBBkb6HphZsz+QT5vHv0=";
-        }
-        {
-          name = "cpptools";
-          publisher = "ms-vscode";
-          version = "1.17.5";
-          sha256 = "LAAEw8goAw3x1MU/TkIdLgPYa0f5b6Hv4GkeiPTVbdY=";
-        }
-        {
-          name = "vscode-yaml";
-          publisher = "redhat";
-          version = "1.14.0";
-          sha256 = "hCRyDA6oZF7hJv0YmbNG3S2XPtNbyxX1j3qL1ixOnF8=";
-        }
+        # {
+        #   name = "vsc-python-indent";
+        #   publisher = "KevinRose";
+        #   version = "1.18.0";
+        #   sha256 = "hiOMcHiW8KFmau7WYli0pFszBBkb6HphZsz+QT5vHv0=";
+        # }
+        # {
+        #   name = "cpptools";
+        #   publisher = "ms-vscode";
+        #   version = "1.17.5";
+        #   sha256 = "LAAEw8goAw3x1MU/TkIdLgPYa0f5b6Hv4GkeiPTVbdY=";
+        # }
+        # {
+        #   name = "vscode-yaml";
+        #   publisher = "redhat";
+        #   version = "1.14.0";
+        #   sha256 = "hCRyDA6oZF7hJv0YmbNG3S2XPtNbyxX1j3qL1ixOnF8=";
+        # }
 
       ] ++ lib.optionals pkgs.stdenv.isDarwin
         (pkgs.vscode-utils.extensionsFromVscodeMarketplace
@@ -285,10 +285,11 @@
       "editor.unicodeHighlight.ambiguousCharacters" = false;
       "editor.unicodeHighlight.nonBasicASCII" = false;
       "remote.SSH.useLocalServer" = false;
-      # "window.autoDetectColorScheme" = true;
-      # "workbench.preferredLightColorTheme" = "Atom One Light";
-      # "workbench.preferredDarkColorTheme" = "Dracula";
-      "workbench.colorTheme" = "Atom One Light";
+
+      "window.autoDetectColorScheme" = true;
+      "workbench.preferredLightColorTheme" = "Catppuccin Lattue";
+      "workbench.preferredDarkColorTheme" = "Catppuccin Macchiato";
+      "workbench.iconTheme" =  "Catppuccin Macchiato";
 
       "remote.SSH.remotePlatform" = {
         "ningbo40" = "linux";

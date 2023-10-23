@@ -1,7 +1,7 @@
 #
 # fish configuration
 #
-{ lib, pkgs, username, ... }: {
+{ lib,inputs, pkgs, username, ... }: {
   programs.gpg = {
     enable = true;
   };
@@ -24,9 +24,16 @@
       core.symlinks = true;
     };
   };
+
+  home.file.".config/btop/themes".source = "${inputs.catppuccin-btop}/themes";
   programs.btop = {
     enable = true;
+    settings = {
+      color_theme = "catppuccin_mocha";
+      theme_background = false; # make btop transparent
+    };
   };
+
   programs.bash = {
     enable = true;
   };

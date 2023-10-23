@@ -116,16 +116,16 @@
     # plugins=[];
     xwayland.enable = true;
     extraConfig =
-    let scripts = ./hypr;
-    in
-    ''
-      source=${scripts}/monitors.conf
-      source=${scripts}/settings.conf
-      source=${scripts}/rules.conf
-      source=${scripts}/binds.conf
-      source=${scripts}/theme.conf
-      source=${scripts}/exec.conf
-    '';
+      let scripts = ./hypr;
+      in
+      ''
+        source=${scripts}/monitors.conf
+        source=${scripts}/settings.conf
+        source=${scripts}/rules.conf
+        source=${scripts}/binds.conf
+        source=${scripts}/theme.conf
+        source=${scripts}/exec.conf
+      '';
   };
 
   # home.file.".config/hypr/themes".source = "${inputs.catppuccin-hyprland}/themes";
