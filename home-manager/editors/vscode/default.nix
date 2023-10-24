@@ -255,6 +255,7 @@
       "terminal.integrated.fontSize" = 15;
       "terminal.integrated.gpuAcceleration" = "on";
       "terminal.integrated.rightClickBehavior" = "selectWord";
+      "terminal.integrated.minimumContrastRatio"= 1;
       "todo-tree.general.tags" = [
         "BUG"
         "HACK"
@@ -285,10 +286,14 @@
       "editor.unicodeHighlight.ambiguousCharacters" = false;
       "editor.unicodeHighlight.nonBasicASCII" = false;
       "remote.SSH.useLocalServer" = false;
+      # we try to make semantic highlighting look good
+      "editor.semanticHighlighting.enabled"= true;
 
       "window.autoDetectColorScheme" = true;
+       "window.titleBarStyle" = "custom";
       "workbench.preferredLightColorTheme" = "Catppuccin Latte";
       "workbench.preferredDarkColorTheme" = "Catppuccin Macchiato";
+      "workbench.colorTheme" = "Catppuccin Latte";
       "workbench.iconTheme" = "Catppuccin Latte";
 
       "remote.SSH.remotePlatform" = {
