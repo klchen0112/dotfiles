@@ -482,7 +482,7 @@
                      alias.color=0xffffffff                           \
                      icon.padding_left=0                              \
                      icon.padding_right=0                             \
-                     background.padding_right=0                       \
+                     background.padding_right=10                       \
                      background.padding_left=0            \
                      update_freq=3                        \
                      script="${sketchybar_scripts}/tray.sh"
@@ -523,7 +523,7 @@
 
         sketchybar --add item mem right                                                   \
                --set mem  update_freq=10                                             \
-                          icon=!a                                                    \
+                          icon=󰍛                                                   \
                           icon.font.size=20                                          \
                           icon.padding_left=16                                       \
                           icon.padding_right=4                                       \
