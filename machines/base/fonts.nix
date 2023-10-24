@@ -9,18 +9,25 @@
     # Fonts
     fontDir.enable = true;
     fonts = with pkgs; [
+
+      # mono fonts for coding
       jetbrains-mono
       iosevka
-
-      # cascadia-code
-      # comic-mono
-      # fira-code
-      ibm-plex
+      fira-code
+      cascadia-code
+      comic-mono
       roboto-mono
+      ibm-plex
+      mononoki
+
+      # emoji
       twemoji-color-font
-      # mononoki
+      #
+
+      # symbol font
       symbola
 
+      # chinese font
       lxgw-wenkai
       liberation_ttf
       overpass
@@ -57,7 +64,5 @@
       sf-compact
       sf-mono
       sf-arabic ];
-
-
   };
 }
