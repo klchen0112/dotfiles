@@ -273,6 +273,7 @@
         "Emacs" ~
       ]
 
+      shift + alt - space : yabai -m window --toggle float
     '';
   };
   #TODO fix plexamp and cava email
