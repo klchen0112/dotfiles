@@ -1,5 +1,6 @@
 { pkgs, ... }: {
   imports = [
+    ./bash
     ./cpp
     ./go
     ./java
@@ -12,5 +13,11 @@
     ./nodejs
     ./python
     ./rust
+  ];
+
+  home.packages = with pkgs;
+  [
+    tree-sitter
+
   ];
 }

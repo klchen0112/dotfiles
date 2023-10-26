@@ -1,7 +1,7 @@
 { pkgs, ... }: {
   home.packages = with pkgs; [
-    # libiconv
-    # libiconvReal
-    # rustup
+    rust-analyzer
+    cargo # rust package manager
+    rustfmt
   ];
 }
