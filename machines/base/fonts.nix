@@ -12,13 +12,16 @@
 
       # mono fonts for coding
       jetbrains-mono
-      iosevka
-      fira-code
-      cascadia-code
-      comic-mono
-      roboto-mono
+      # iosevka
+      # fira-code
+      # cascadia-code
+      # comic-mono
+      # roboto-mono
+
+      # mononoki
+
+      # Serif fonts
       ibm-plex
-      mononoki
 
       # emoji
       twemoji-color-font
@@ -57,6 +60,7 @@
       (nerdfonts.override {
         fonts = [
           "JetBrainsMono"
+          "NerdFontsSymbolsOnly"
         ];
       })
     ] ++ lib.optionals pkgs.stdenv.isDarwin

@@ -49,6 +49,7 @@
   home.file.".config/doom" = {
     source = ./doom;
     recursive = true;
+    # onChange = "~/.config/emacs/bin/doom sync";
   };
 
 

@@ -8,7 +8,7 @@
 
   programs.git = {
     enable = true;
-    package = pkgs.gitAndTools.gitFull;
+    package = pkgs.git;
     ignores = [ "*~" "*.swp" ".DS_Store" ];
     attributes = [ "*.pdf diff=pdf" ];
     lfs.enable = true;

@@ -8,7 +8,7 @@
     enable = true;
   };
   programs.sioyek = {
-    enable = true;
+    enable = false;
     #  package = pkgs.sioyek;
     bindings =
       {

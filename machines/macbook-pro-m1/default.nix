@@ -128,7 +128,7 @@
       # "xnviewmp"
       # "openvpn-connect"
       # "zotero"
-      # "skim"
+      "skim"
       # "via"
       #"miniconda"
       # "activitywatch"

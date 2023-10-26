@@ -212,6 +212,7 @@
       emacs-overlay = {
         url = "github:nix-community/emacs-overlay/master";
         inputs.nixpkgs.follows = "nixpkgs";
+        inputs.nixpkgs-stable.follows = "nixpkgs-unstable";
         inputs.flake-utils.follows = "flake-utils";
       };
 
