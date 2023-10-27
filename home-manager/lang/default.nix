@@ -16,8 +16,8 @@
   ];
 
   home.packages = with pkgs;
-  [
-    tree-sitter
+    [
+      tree-sitter
 
-  ];
+    ];
 }

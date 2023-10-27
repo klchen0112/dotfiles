@@ -64,9 +64,11 @@
         ];
       })
     ] ++ lib.optionals pkgs.stdenv.isDarwin
-    [ sf-pro
-      sf-compact
-      sf-mono
-      sf-arabic ];
+      [
+        sf-pro
+        sf-compact
+        sf-mono
+        sf-arabic
+      ];
   };
 }

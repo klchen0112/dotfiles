@@ -4,5 +4,6 @@
     # python3Full
     nodePackages.pyright # python language server
     python311Packages.black # python formatter
+    micromamba
   ];
 }
