@@ -4,6 +4,7 @@
   imports = [
     inputs.hyprland.homeManagerModules.default
     ./anyrun.nix
+    ./mako.nix # hyprland notification manager
   ];
 
 
@@ -66,7 +67,7 @@
         ];
 
         "temperature" = {
-          "format" = "\uf2c9 {temperatureC}\u00b0C";
+          "format" = "󰖐 {temperatureC}";
           "tooltip" = false;
         };
 
@@ -99,7 +100,7 @@
 
 
         memory = {
-          "format" = "\udb83\udee0 {percentage}%";
+          "format" = "󰍛 {percentage}%";
           "interval" = 1;
           "states" = {
             "warning" = 85;
@@ -107,7 +108,7 @@
         };
 
         cpu = {
-          format = "\udb80\udf5b {usage}%";
+          format = "  {usage}%";
           interval = 1;
         };
 
@@ -130,7 +131,7 @@
     };
     style = ''
       * {
-        font-family: "JetBrainsMono";
+        font-family: "JetBrainsMono Nerd Font";
         font-size: 12pt;
         font-weight: bold;
         border-radius: 8px;

@@ -10,6 +10,7 @@
     ./vscode
     ./jetbrains
     ./emacs
+    ./helix
   ];
   home.packages = with pkgs; [
     wakatime

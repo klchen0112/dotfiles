@@ -1,94 +1,90 @@
 #
 # OpenVPN
 #
-{ pkgs
+{ inputs
+, pkgs
 , #
   ...
 }: {
-  # programs.alacritty = {
-  #   enable = true;
-  #   settings = {
-  #     cursor = {
-  #       style = "Block";
-  #     };
 
-  #     window = {
-  #       opacity = 1.0;
-  #       padding = {
-  #         x = 24;
-  #         y = 24;
-  #       };
-  #     };
+  xdg.configFile."alacritty/theme_catppuccin.yml".source = "${inputs.catppuccin-alacritty}/catppuccin-mocha.yml";
+  programs.alacritty = {
+    enable = true;
+  };
+  xdg.configFile."alacritty/alacritty.yml".text =
+    ''
+      import:
+        # all alacritty themes can be found at
+        #    https://github.com/alacritty/alacritty-theme
+        - ~/.config/alacritty/theme_catppuccin.yml
 
-  #     font = {
-  #       normal = {
-  #         family = "Iosevka";
-  #         style = "Regular";
-  #       };
-  #       size = lib.mkMerge [
-  #         (lib.mkIf pkgs.stdenv.hostPlatform.isLinux 10)
-  #         (lib.mkIf pkgs.stdenv.hostPlatform.isDarwin 14)
-  #       ];
-  #     };
+      window:
+        # Background opacity
+        #
+        # Window opacity as a floating point number from `0.0` to `1.0`.
+        # The value `0.0` is completely transparent and `1.0` is opaque.
+        opacity: 0.93
 
-  #     dynamic_padding = true;
-  #     decorations = "full";
-  #     title = "Terminal";
-  #     class = {
-  #       instance = "Alacritty";
-  #       general = "Alacritty";
-  #     };
+        # Startup Mode (changes require restart)
+        #
+        # Values for `startup_mode`:
+        #   - Windowed
+        #   - Maximized
+        #   - Fullscreen
+        #
+        # Values for `startup_mode` (macOS only):
+        #   - SimpleFullscreen
+        startup_mode: Maximized
 
-  #     colors = {
-  #       primary = {
-  #         background = "0x1f2528";
-  #         foreground = "0xc0c5ce";
-  #       };
+        # Allow terminal applications to change Alacritty's window title.
+        dynamic_title: true
 
-  #       normal = {
-  #         black = "0x1f2528";
-  #         red = "0xec5f67";
-  #         green = "0x99c794";
-  #         yellow = "0xfac863";
-  #         blue = "0x6699cc";
-  #         magenta = "0xc594c5";
-  #         cyan = "0x5fb3b3";
-  #         white = "0xc0c5ce";
-  #       };
+        # Make `Option` key behave as `Alt` (macOS only):
+        #   - OnlyLeft
+        #   - OnlyRight
+        #   - Both
+        #   - None (default)
+        option_as_alt: Both
 
-  #       bright = {
-  #         black = "0x65737e";
-  #         red = "0xec5f67";
-  #         green = "0x99c794";
-  #         yellow = "0xfac863";
-  #         blue = "0x6699cc";
-  #         magenta = "0xc594c5";
-  #         cyan = "0x5fb3b3";
-  #         white = "0xd8dee9";
-  #       };
-  #     };
-  #   };
-  # };
-  # home.packages = [
-  #   pkgs-unstable.kitty-themes
-  # ];
-  # programs.kitty = {
-  #   enable = true;
-  #   font = {
-  #     name = "Iosevka";
-  #     size = 16;
-  #   };
-  #   # theme = "Doom One Light";
-  #   package = pkgs.kitty;
-  #   settings = {
-  #     remeber_window_size = true;
-  #     initial_window_width = 640;
-  #     initial_window_height = 400;
-  #     enable_audio_bell = false;
-  #     update_check_interval = 0;
-  #   };
-  #   environment = {LS_COLORS = "1";};
-  # };
+      scrolling:
+        # Maximum number of lines in the scrollback buffer.
+        # Specifying '0' will disable scrolling.
+        history: 10000
+
+        # Scrolling distance multiplier.
+        #multiplier: 3
+
+      # Font configuration
+      font:
+        # Normal (roman) font face
+        bold:
+          family: JetBrainsMono Nerd Font
+        italic:
+          family: JetBrainsMono Nerd Font
+        normal:
+          family: JetBrainsMono Nerd Font
+        bold_italic:
+          # Font family
+          #
+          # If the bold italic family is not specified, it will fall back to the
+          # value specified for the normal font.
+          family: JetBrainsMono Nerd Font
+    ''
+    + (
+      if pkgs.stdenv.isDarwin
+      then ''
+          # Point size
+          size: 14
+        shell:  # force nushell as default shell on macOS
+          program:  /run/current-system/sw/bin/nu
+      ''
+      else ''
+        # holder identation
+          # Point size
+          size: 13
+      ''
+    );
+
   programs.wezterm = {
     enable = true;
     extraConfig =
