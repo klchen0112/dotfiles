@@ -1,6 +1,6 @@
 { inputs, pkgs, lib, config, ... }:
 {
-  home.packages = with pkgs; [ swww  ];
+  home.packages = with pkgs; [ swww ];
   # this code from https://github.com/Ruixi-rebirth/melted-flakes
   systemd.user.services = {
     swww = {
