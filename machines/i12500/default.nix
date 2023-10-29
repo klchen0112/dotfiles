@@ -15,7 +15,7 @@
 }: {
   imports =
     [
-      inputs.vscode-server.nixosModules.default
+
       # Include the results of the hardware scan.
       ./hardware-configuration.nix
       ./hyprland.nix
@@ -34,7 +34,6 @@
   # networking.proxy.default = "http://user:password@proxy:port/";
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
-  services.vscode-server.enable = true;
 
   # Enable sound with pipewire.
   sound.enable = true;

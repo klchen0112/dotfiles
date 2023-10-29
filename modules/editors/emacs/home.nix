@@ -7,7 +7,7 @@
 , ...
 }: {
   # improts = [
-  #   inputs.nix-doom-emacs.hmModule
+  # inputs.nix-doom-emacs.hmModule.default
   # ];
   home.packages = with pkgs; [
     fd
