@@ -5,7 +5,16 @@
 , pkgs
 , username
 , ...
-}: {
+}:
+let
+  emacsPackage =
+    if pkgs.stdenv.hostPlatform.isDarwin then
+      pkgs.emacs-plus
+    else
+      pkgs.emacsPgtk;
+in
+
+{
   # improts = [
   # inputs.nix-doom-emacs.hmModule.default
   # ];
@@ -43,12 +52,10 @@
 
   programs.emacs = {
     enable = true;
-    package =
-      if pkgs.stdenv.hostPlatform.isDarwin then
-        pkgs.emacs-plus
-      else
-        pkgs.emacs29;
+    package = emacsPackage;
   };
+
+
   # doom-emacs will enable programs.emacs
   # programs.doom-emacs = {
   # enable = true;
