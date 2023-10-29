@@ -19,7 +19,7 @@
       # Include the results of the hardware scan.
       ./hardware-configuration.nix
       ../../modules/locale
-      ../../modules/desktop/hyprland
+      ../../modules/desktop/wayland
       ../../modules/fonts/fonts.nix
       ../../modules/nixpkgs
       ../../modules/editors

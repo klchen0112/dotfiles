@@ -11,7 +11,6 @@
     ../../modules/browser/home.nix
     ../../modules/downloader/home.nix
     ../../modules/editors/home.nix
-    ../../modules/editors/home.nix
     ../../modules/graphics/home.nix
     ../../modules/keyboard/home.nix
     ../../modules/lang/home.nix
