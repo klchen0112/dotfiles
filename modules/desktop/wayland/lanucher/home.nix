@@ -2,7 +2,6 @@
 {
   # app lanchuer
   imports = [
-
     inputs.anyrun.homeManagerModules.default
   ];
   programs.anyrun = {
@@ -83,4 +82,8 @@
       }
     '';
   };
+
+  home.packages = with pkgs; [
+    rofi-wayland
+  ];
 }

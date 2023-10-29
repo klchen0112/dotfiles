@@ -73,14 +73,6 @@
       # Accessible through 'nix develop' or 'nix-shell' (legacy)
       overlays = import ./overlays { inherit inputs; };
 
-      # Reusable nixos modules you might want to export
-      # These are usually stuff you would upstream into nixpkgs
-      nixosModules = import ./modules/nixos;
-      # Reusable home-manager modules you might want to export
-      # These are usually stuff you would upstream into home-manager
-      homeManagerModules = import ./modules/home-manager;
-
-      darwinModules = import ./modules/darwin;
 
       nixosConfigurations =
         let
@@ -112,7 +104,6 @@
               modules = [
                 # > Our main home-manager configuration file <
                 ./hosts/i12500
-                homeManagerModules
               ];
             };
       };
