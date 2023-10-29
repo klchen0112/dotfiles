@@ -18,9 +18,10 @@
 
       # Include the results of the hardware scan.
       ./hardware-configuration.nix
-      ./hyprland.nix
-      ./locale.nix
-      ./fonts.nix
+      ../../modules/locale
+      ../../modules/desktop/hyprland
+      ../../modules/fonts/fonts.nix
+      ../../modules/nixpkgs
     ];
 
   # Bootloader.
@@ -67,39 +68,9 @@
 
   security.sudo.wheelNeedsPassword = false; # User does not need to give password when using sudo.
 
-  nix = {
-    package = pkgs.nix;
-    gc = {
-      # Garbage collection
-      automatic = true;
-      dates = "weekly";
-      options = "--delete-older-than 7d";
-    };
-    extraOptions = ''
-      experimental-features = nix-command flakes
-    '';
-    settings = {
-      # Manual optimise storage: nix-store --optimise
-      # https://nixos.org/manual/nix/stable/command-ref/conf-file.html#conf-auto-optimise-store
-      auto-optimise-store = true;
-      builders-use-substitutes = true;
-      # enable flakes globally
-      experimental-features = [ "nix-command" "flakes" ];
-    };
-    settings.trusted-users =
-      [
-        "${username}"
-      ];
-  };
-
-
-
-
   programs.fish = {
     enable = true;
   };
-
-
 
   environment = {
     shells = with pkgs; [ fish ]; # Default shell
@@ -114,7 +85,6 @@
       gnumake
     ];
   };
-  nixpkgs.config.allowUnfree = true; # Allow proprietary software.
 
   services.openssh = {
     enable = true;

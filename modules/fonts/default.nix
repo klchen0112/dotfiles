@@ -6,7 +6,7 @@
 , ...
 }: {
   imports = [
-    ../base/fonts.nix
+    ./fonts.nix
   ];
 
   fonts = {
