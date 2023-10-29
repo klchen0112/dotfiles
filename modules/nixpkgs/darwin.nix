@@ -14,7 +14,7 @@
       # Garbage collection
       automatic = true;
       interval.Day = 7;
-      options = "--max-freed $((64 * 1024**3))";
+      # options = "--max-freed $((64 * 1024**3))";
     };
     extraOptions = ''
       experimental-features = nix-command flakes

@@ -9,7 +9,7 @@
 
   imports = [
     ../base/fonts.nix
-    ./nix-core.nix
+    ../../modules/nixpkgs/darwin.nix
     ./system.nix
     ../../modules/desktop/yabai
   ];
