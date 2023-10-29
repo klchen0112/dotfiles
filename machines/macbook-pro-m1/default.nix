@@ -11,7 +11,7 @@
     ../base/fonts.nix
     ./nix-core.nix
     ./system.nix
-    ./wm.nix
+    ../../modules/desktop/yabai
   ];
 
   users.users.${username} = {
