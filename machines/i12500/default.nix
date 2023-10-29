@@ -22,6 +22,7 @@
       ../../modules/desktop/hyprland
       ../../modules/fonts/fonts.nix
       ../../modules/nixpkgs
+      ../../modules/editors
     ];
 
   # Bootloader.
@@ -53,9 +54,7 @@
     #media-session.enable = true;
   };
 
-  # Enable touchpad support (enabled default in most desktopManager).
-  # services.xserver.libinput.enable = true;
-
+  
   users.users.${username} = {
     isNormalUser = true;
     home = "/home/${username}";
@@ -66,7 +65,7 @@
     ];
   };
 
-  security.sudo.wheelNeedsPassword = false; # User does not need to give password when using sudo.
+  security.sudo.wheelNeedsPassword = true ; # User does not need to give password when using sudo.
 
   programs.fish = {
     enable = true;
@@ -74,12 +73,6 @@
 
   environment = {
     shells = with pkgs; [ fish ]; # Default shell
-    variables = {
-      # System variables
-      # EDITOR = "nvim";
-      # VISUAL = "nvim";
-      TERMINAL = "wezterm";
-    };
     systemPackages = with pkgs; [
       # Installed Nix packages
       gnumake
@@ -99,22 +92,6 @@
       HostKeyAlgorithms +ssh-rsa
     ''; # Temporary extra config so ssh will work in guacamole
 
-  };
-
-
-  services.emacs = {
-    enable = true;
-    package = pkgs.emacs29;
-  };
-
-  # services
-  services = {
-    xserver = {
-      enable = true;
-      excludePackages = [ pkgs.xterm ];
-    };
-    printing.enable = true;
-    flatpak.enable = true;
   };
 
   systemd.targets.sleep.enable = false;
