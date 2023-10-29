@@ -10,7 +10,7 @@
     inputs.nix-doom-emacs.hmModule
     inputs.vscode-server.homeModules.default
     ../../home-manager/browser
-    ../../home-manager/downloader
+    ../../modules/downloader/home.nix
     ../../home-manager/editors
     ../../home-manager/editors
     ../../home-manager/graphics
