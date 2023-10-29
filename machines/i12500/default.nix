@@ -23,6 +23,8 @@
       ../../modules/fonts/fonts.nix
       ../../modules/nixpkgs
       ../../modules/editors
+      ../../modules/shells
+      ../../modules/network
     ];
 
   # Bootloader.
@@ -30,11 +32,6 @@
   boot.loader.efi.canTouchEfiVariables = true;
 
 
-  # networking.wireless.enable = true; # Enables wireless support via wpa_supplicant.
-
-  # Configure network proxy if necessary
-  # networking.proxy.default = "http://user:password@proxy:port/";
-  # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
 
   # Enable sound with pipewire.
@@ -54,7 +51,7 @@
     #media-session.enable = true;
   };
 
-  
+
   users.users.${username} = {
     isNormalUser = true;
     home = "/home/${username}";
@@ -65,34 +62,8 @@
     ];
   };
 
-  security.sudo.wheelNeedsPassword = true ; # User does not need to give password when using sudo.
+  security.sudo.wheelNeedsPassword = true; # User does not need to give password when using sudo.
 
-  programs.fish = {
-    enable = true;
-  };
-
-  environment = {
-    shells = with pkgs; [ fish ]; # Default shell
-    systemPackages = with pkgs; [
-      # Installed Nix packages
-      gnumake
-    ];
-  };
-
-  services.openssh = {
-    enable = true;
-    # Forbid root login through SSH.
-    settings = {
-      X11Forwarding = true;
-      PermitRootLogin = "no"; # disable root login
-      PasswordAuthentication = false; # disable password login
-    };
-    allowSFTP = true;
-    extraConfig = ''
-      HostKeyAlgorithms +ssh-rsa
-    ''; # Temporary extra config so ssh will work in guacamole
-
-  };
 
   systemd.targets.sleep.enable = false;
   systemd.targets.suspend.enable = false;

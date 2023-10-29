@@ -34,11 +34,6 @@
     #   VISUAL = "nvim";
     # };
     systemPackages = with pkgs; [
-      # Installed Nix packages
-      # Terminal
-      # bash
-      fish
-      # zsh
       cachix
       # sketchybar
       fontconfig
