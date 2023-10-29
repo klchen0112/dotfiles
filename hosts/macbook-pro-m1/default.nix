@@ -7,25 +7,21 @@
 , ...
 }: {
   imports = [
-    inputs.nix-doom-emacs.hmModule
-    inputs.vscode-server.homeModules.default
-    ../../home-manager/browser
+    ../../modules/browser/home.nix
     ../../modules/downloader/home.nix
-    ../../home-manager/editors
-    ../../home-manager/editors
-    ../../home-manager/graphics
-    ../../home-manager/keyboard
-    ../../home-manager/lang
-    ../../home-manager/media
-    ../../home-manager/network
-    ../../home-manager/notes
-    ../../home-manager/office
-    ../../home-manager/shells
-    ../../home-manager/socialMedia
-    ../../home-manager/terminal
-    ../../home-manager/vm
-    # ../../home-manager/windowManager
-    # ../../home-manager/vpn
+    ../../modules/editors/home.nix
+    ../../modules/editors/home.nix
+    ../../modules/graphics/home.nix
+    ../../modules/keyboard/home.nix
+    ../../modules/lang/home.nix
+    ../../modules/media/home.nix
+    ../../modules/network/home.nix
+    ../../modules/shells/home.nix
+    ../../modules/socialMedia/home.nix
+    ../../modules/terminal/home.nix
+    ../../modules/vm/home.nix
+    # ../../modules/windowManager
+    # ../../modules/vpn
   ];
 
 
