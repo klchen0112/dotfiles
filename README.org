@@ -1,10 +1,16 @@
 * Overview
 
-|                | Macbook |
-| Window Manager |         |
-|                |         |
-|                |         |
-|                |         |
+|                         | Mac               | Linux              |
+| Window Manager          | [[https://github.com/koekeishiya/yabai][yabai]]             | [[https://hyprland.org/][hyprland]]           |
+| Status Bar              | sketchybar        | waybar             |
+| Terminal Emulator       | Wezterm,alacritty | Wezterm, alacritty |
+| Application Runner      | raycast           | wofi               |
+| Notification Manager    |                   | Mako               |
+| Editors                 | Emacs,VSCode      | Emacs              |
+| Color scheme            | Catppuccin        | Catppuccin         |
+| Input method framework  | Squirrel          | fcitx5 with rime   |
+| System resource monitor | btop              |                    |
+| Shell                   | fish + starship   | fish + starship    |
 
 ** Directory
 #+begin_src shell
@@ -92,3 +98,7 @@ echo "experimental-features = nix-command flakes" >> ~/.config/nix/nix.conf
 - [[https://github.com/FelixKratz/dotfiles][FelixKratz/dotfiles]]
 - [[https://github.com/camspiers/dotfiles][camspiers/dotfiles]]
 - [[https://git.sr.ht/~gagbo/doom-config/tree/master/item/modules/completion/corfu][~gagbo/doom-config]]
+- [[https://github.com/Ruixi-rebirth/melted-flakes.git][Ruixi-rebirth/melted-flakes]]
+- [[https://github.com/Ruixi-rebirth/flakes.git][Ruixi-rebirth/flakes]]
+- [[https://github.com/ryan4yin/nix-config.git][ryan4yin/nix-config]]
+- [[https://github.com/Rashad-707/dotfiles][Rashad-707/dotfiles]]
