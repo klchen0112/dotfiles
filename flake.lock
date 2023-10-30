@@ -520,6 +520,46 @@
         "type": "github"
       }
     },
+    "hycov": {
+      "inputs": {
+        "hyprland": [
+          "hyprland"
+        ]
+      },
+      "locked": {
+        "lastModified": 1698656416,
+        "narHash": "sha256-RkdT1UdGCcglp93FVIM5nOfhlGJlOVPMcJxddmEfr2w=",
+        "owner": "DreamMaoMao",
+        "repo": "hycov",
+        "rev": "716859b818a2d3f5f86184bde703d5b83974c755",
+        "type": "github"
+      },
+      "original": {
+        "owner": "DreamMaoMao",
+        "repo": "hycov",
+        "type": "github"
+      }
+    },
+    "hyprcontrib": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1698409082,
+        "narHash": "sha256-Y9D2S63oV3aj+KS+qYZUBx48mrHN+wJC2WIVADmoCLM=",
+        "owner": "hyprwm",
+        "repo": "contrib",
+        "rev": "c0b2d2e2ad6568e58f9c7bd458a8a4baa5dd5e99",
+        "type": "github"
+      },
+      "original": {
+        "owner": "hyprwm",
+        "repo": "contrib",
+        "type": "github"
+      }
+    },
     "hyprland": {
       "inputs": {
         "hyprland-protocols": "hyprland-protocols",
@@ -568,6 +608,26 @@
       "original": {
         "owner": "hyprwm",
         "repo": "hyprland-protocols",
+        "type": "github"
+      }
+    },
+    "hyprpicker": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1698510678,
+        "narHash": "sha256-bys8S7wuY9FJRLD5WriktWED5Hi7nCKSiNbs1Rvfk4s=",
+        "owner": "hyprwm",
+        "repo": "hyprpicker",
+        "rev": "8a7799ae20f3e2e2e716271c21fc9213319ca2a4",
+        "type": "github"
+      },
+      "original": {
+        "owner": "hyprwm",
+        "repo": "hyprpicker",
         "type": "github"
       }
     },
@@ -929,7 +989,10 @@
         "flake-parts": "flake-parts_2",
         "flake-utils": "flake-utils",
         "home-manager": "home-manager",
+        "hycov": "hycov",
+        "hyprcontrib": "hyprcontrib",
         "hyprland": "hyprland",
+        "hyprpicker": "hyprpicker",
         "nix-doom-emacs": "nix-doom-emacs",
         "nixgl": "nixgl",
         "nixos-hardware": "nixos-hardware",

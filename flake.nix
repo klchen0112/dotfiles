@@ -216,6 +216,16 @@
 
       };
 
+      hyprpicker = {
+        url = "github:hyprwm/hyprpicker";
+        inputs.nixpkgs.follows = "nixpkgs";
+      };
+
+      hyprcontrib = {
+        url = "github:hyprwm/contrib";
+        inputs.nixpkgs.follows = "nixpkgs";
+      };
+
       # anyrun - a wayland launcher
       anyrun = {
         url = "github:Kirottu/anyrun";
@@ -230,6 +240,12 @@
         inputs.flake-compat.follows = "flake-compat";
         inputs.devshell.follows = "devshell";
       };
+
+      hycov = {
+        url = "github:DreamMaoMao/hycov";
+        inputs.hyprland.follows = "hyprland";
+      };
+
 
       vscode-server = {
         url = "github:msteen/nixos-vscode-server";

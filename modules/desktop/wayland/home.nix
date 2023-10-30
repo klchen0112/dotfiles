@@ -16,8 +16,7 @@
   wayland.windowManager.hyprland = {
     enable = true;
     package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.default;
-    # package = pkgs.hyprland;
-    # plugins=[];
+    plugins=[ inputs.hycov.packages.${pkgs.system}.hycov];
     xwayland.enable = true;
     settings = {
       input = {
