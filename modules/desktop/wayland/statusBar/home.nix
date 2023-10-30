@@ -6,6 +6,7 @@
     package = inputs.waybar.packages.${pkgs.system}.waybar;
     systemd = {
       enable = true;
+      target = "graphical-session.target";
     };
     settings = {
       mainBar = {
