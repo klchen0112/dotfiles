@@ -1,18 +1,3 @@
-#
-#  G'Day
-#  Behold is my personal Nix, NixOS and Darwin Flake.
-#  I'm not the sharpest tool in the shed, so this build might not be the best out there.
-#  I refer to the README and other org document on how to use these files.
-#  Currently and possibly forever a Work In Progress.
-#
-#  flake.nix *
-#   ├─ ./hosts
-#   │   └─ default.nix
-#   ├─ ./darwin
-#   │   └─ default.nix
-#   └─ ./nix
-#       └─ default.nix
-#
 {
   description = "My Personal NixOS and Darwin System Flake Configuration";
   nixConfig = {
@@ -152,8 +137,14 @@
         inputs.systems.follows = "systems";
       };
 
+      treefmt-nix = {
+        url = "github:numtide/treefmt-nix";
+        inputs.nixpkgs.follows = "nixpkgs";
+      };
+
       flake-parts = {
         url = "github:hercules-ci/flake-parts";
+        inputs.nixpkgs-lib.follows = "nixpkgs-lib";
       };
 
       flake-compat = {
@@ -165,6 +156,21 @@
         # User Package Management
         url = "github:nix-community/home-manager";
         inputs.nixpkgs.follows = "nixpkgs";
+      };
+      nixpkgs-lib.url = "github:nix-community/nixpkgs.lib";
+      lib-aggregate= {
+        # User Package Management
+        url = "github:nix-community/lib-aggregate";
+        inputs.flake-utils.follows = "flake-utils";
+        inputs.nixpkgs-lib.follows = "nixpkgs-lib";
+      };
+
+      nix-eval-jobs = {
+        # User Package Management
+        url = "github:nix-community/nix-eval-jobs";
+        inputs.nixpkgs.follows = "nixpkgs";
+        inputs.flake-parts.follows = "flake-parts";
+        inputs.treefmt-nix.follows = "treefmt-nix";
       };
 
       darwin = {
@@ -220,6 +226,8 @@
         url = "github:nix-community/nixpkgs-wayland";
         inputs.nixpkgs.follows = "nixpkgs";
         inputs.flake-compat.follows = "flake-compat";
+        inputs.nix-eval-jobs.follows = "nix-eval-jobs";
+        inputs.lib-aggregate.follows = "lib-aggregate";
       };
 
       hyprland = {
@@ -243,7 +251,7 @@
       anyrun = {
         url = "github:Kirottu/anyrun";
         inputs.nixpkgs.follows = "nixpkgs";
-
+        inputs.flake-parts.follows = "flake-parts";
       };
 
       hycov = {

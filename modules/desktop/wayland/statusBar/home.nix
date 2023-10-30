@@ -19,7 +19,7 @@
 
         "custom/launcher" = {
           "format" = " ";
-          "on-click" = "pkill anyrun || anyrun";
+          "on-click" = "$HOME/.config/hypr/scripts/menu";
           "tooltip" = false;
         };
 
@@ -94,7 +94,7 @@
         };
         "custom/powermenu" = {
           "format" = "";
-          "on-click" = "pkill rofi || ~/.config/rofi/powermenu.sh";
+          # "on-click" = "pkill rofi || ~/.config/rofi/powermenu.sh";
           "tooltip" = false;
         };
         "tray" = {
