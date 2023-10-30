@@ -11,13 +11,9 @@ let
     if pkgs.stdenv.hostPlatform.isDarwin then
       pkgs.emacs-plus
     else
-      pkgs.emacsPgtk;
+      pkgs.emacs-pgtk;
 in
-
 {
-  # improts = [
-  # inputs.nix-doom-emacs.hmModule.default
-  # ];
   home.packages = with pkgs; [
     fd
     curl
@@ -61,5 +57,12 @@ in
   # enable = true;
   # doomPrivateDir = ./doom;
   # emacsPackage = pkgs.emacs29;
+  # };
+  # services.emacs = {
+  #   enable = true;
+  #   client.enable = true;
+  #   socketActivation.enable =  true;
+  #   startWithUserSession = "graphical";
+  #   defaultEditor = true;
   # };
 }

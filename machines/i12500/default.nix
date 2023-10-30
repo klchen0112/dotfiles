@@ -22,7 +22,7 @@
       ../../modules/desktop/wayland
       ../../modules/fonts/fonts.nix
       ../../modules/nixpkgs
-      ../../modules/editors
+      # ../../modules/editors
       ../../modules/shells
       ../../modules/network
     ];
