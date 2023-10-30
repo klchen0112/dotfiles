@@ -87,5 +87,8 @@
     rofi-wayland
   ];
 
-  home.file.".config/rofi/launcher.sh".source = ./launcher.sh;
+  home.file.".config/rofi" = {
+    source = ./rofi;
+    recursive = true;
+  };
 }

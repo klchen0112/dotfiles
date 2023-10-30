@@ -4,11 +4,11 @@
 
   i18n = {
 
-    inputMethod =
-      {
-        enabled = "fcitx5";
-        fcitx5.addons = with pkgs; [ fcitx5-rime ];
-      };
+    # inputMethod =
+    #   {
+    #     enabled = "fcitx5";
+    #     fcitx5.addons = with pkgs; [ fcitx5-rime ];
+    #   };
     defaultLocale = "en_US.UTF-8";
     extraLocaleSettings = {
       LC_ADDRESS = "zh_CN.UTF-8";
