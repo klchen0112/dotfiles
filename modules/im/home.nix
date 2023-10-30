@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ inputs, pkgs, ... }:
 {
   i18n.inputMethod = {
     enabled = "fcitx5";
@@ -12,5 +12,10 @@
   home.file = {
     ".config/fcitx5/conf/classicui.conf".source = ./classicui.conf;
     ".local/share/fcitx5/themes/Nord/theme.conf".text = import ./theme.nix;
+  };
+
+  home.file.".local/share/fcitx5/rime" = {
+    source = "${inputs.rime-jd}";
+    recursive = true;
   };
 }

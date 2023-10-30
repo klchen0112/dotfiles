@@ -318,6 +318,15 @@
         url = "github:catppuccin/k9s";
         flake = false;
       };
+
+      # own package
+      rime-jd = {
+        url = "github:klchen0112/RIME_JD";
+        flake = false;
+      };
     };
+
+
+
 }
 

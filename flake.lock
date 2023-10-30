@@ -1002,6 +1002,22 @@
         "type": "github"
       }
     },
+    "rime-jd": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1698058390,
+        "narHash": "sha256-o/5Q7sa2cay+Hs5V8WK+K1B+ZVnB1yVugjgqPoJblm0=",
+        "owner": "klchen0112",
+        "repo": "RIME_JD",
+        "rev": "5e0290e0639d8670210c89f6e8514cefe3eafa7a",
+        "type": "github"
+      },
+      "original": {
+        "owner": "klchen0112",
+        "repo": "RIME_JD",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
         "apple-fonts": "apple-fonts",
@@ -1039,6 +1055,7 @@
         "nixpkgs-unstable": "nixpkgs-unstable",
         "nixpkgs-wayland": "nixpkgs-wayland",
         "nur": "nur",
+        "rime-jd": "rime-jd",
         "systems": "systems",
         "treefmt-nix": "treefmt-nix",
         "vscode-server": "vscode-server"
