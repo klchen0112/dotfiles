@@ -183,6 +183,13 @@
         inputs.flake-utils.follows = "flake-utils";
       };
 
+      nixos-wsl = {
+        url = "github:nix-community/NixOS-WSL";
+        inputs.nixpkgs.follows = "nixpkgs";
+        inputs.flake-utils.follows = "flake-utils";
+        inputs.flake-compat.follows = "flake-compat";
+      };
+
       emacs-overlay = {
         url = "github:nix-community/emacs-overlay/master";
         inputs.nixpkgs.follows = "nixpkgs";
@@ -208,12 +215,18 @@
 
 
       # hyprland
+
+      nixpkgs-wayland = {
+        url = "github:nix-community/nixpkgs-wayland";
+        inputs.nixpkgs.follows = "nixpkgs";
+        inputs.flake-compat.follows = "flake-compat";
+      };
+
       hyprland = {
         # Official Hyprland flake
         url = "github:vaxerski/Hyprland";
         inputs.nixpkgs.follows = "nixpkgs";
         inputs.systems.follows = "systems";
-
       };
 
       hyprpicker = {
@@ -233,31 +246,18 @@
 
       };
 
-      waybar = {
-        url = "github:Alexays/Waybar";
-        inputs.nixpkgs.follows = "nixpkgs";
-        inputs.flake-utils.follows = "flake-utils";
-        inputs.flake-compat.follows = "flake-compat";
-        inputs.devshell.follows = "devshell";
-      };
-
       hycov = {
         url = "github:DreamMaoMao/hycov";
         inputs.hyprland.follows = "hyprland";
       };
-
 
       vscode-server = {
         url = "github:msteen/nixos-vscode-server";
         inputs.nixpkgs.follows = "nixpkgs";
         inputs.flake-utils.follows = "flake-utils";
       };
-      nixos-wsl = {
-        url = "github:nix-community/NixOS-WSL";
-        inputs.nixpkgs.follows = "nixpkgs";
-        inputs.flake-utils.follows = "flake-utils";
-        inputs.flake-compat.follows = "flake-compat";
-      };
+
+
       # fonts
       apple-fonts = {
         url = "github:Lyndeno/apple-fonts.nix";

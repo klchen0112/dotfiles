@@ -3,10 +3,9 @@
 
   programs.waybar = {
     enable = true;
-    package = inputs.waybar.packages.${pkgs.system}.waybar;
     systemd = {
       enable = true;
-      target = "graphical-session.target";
+      # target = "graphical-session.target";
     };
     settings = {
       mainBar = {
@@ -20,7 +19,7 @@
 
         "custom/launcher" = {
           "format" = " ";
-          "on-click" = "pkill rofi || ~/.config/rofi/launcher.sh";
+          "on-click" = "pkill anyrun || anyrun";
           "tooltip" = false;
         };
 

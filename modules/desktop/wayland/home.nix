@@ -16,8 +16,9 @@
   wayland.windowManager.hyprland = {
     enable = true;
     package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.default;
-    plugins=[ inputs.hycov.packages.${pkgs.system}.hycov];
+    plugins = [ inputs.hycov.packages.${pkgs.system}.hycov ];
     xwayland.enable = true;
+    systemd.enable = true;
     settings = {
       input = {
         kb_layout = "us";
@@ -118,26 +119,44 @@
         focus_on_activate = true;
       };
       monitor = [
-        "HDMI-A-1, 3840x2160, 0x0, 2"
+        "HDMI-A-1, 3840x2160, 0x0, 1"
+      ];
+      workspace = [
+        "HDMI-A-1,10"
       ];
 
+      plugin = {
+        hycov = {
+          overview_gappo = 24; # gas width from screen
+          overview_gappi = 18; # gas width from clients
+          hotarea_size = 10; # hotarea size in bottom left,10x10
+          enable_hotarea = 1; # move cursor to bottom-left can toggle overview
+        };
+      };
+      "$mainMod" = "ALT";
       bind = [
-        "SUPER,Return,exec,wezterm"
-
+        "$mainMod      , Return, exec          , alacritty"
+        "$mainMod      , Space, exec          , anyrun"
+        "$mainMod SHIFT, P     , killactive    ,"
+        "$mainMod SHIFT, Q     , exit          ,"
+        "$mainMod SHIFT, Space , togglefloating,"
+        "$mainMod SHIFT, F     , fullscreen    ,"
+        "$mainMod      , P     , pseudo    ,"
+        "$mainMod      , J     , togglesplit    ,"
         # -- App Launcher --
-        "SUPER,D,exec,anyrun"
+        "$mainMod SUPER, F     ,exec            ,firefox"
 
         # Focus
-        "ALT,b,movefocus,l"
-        "ALT,f,movefocus,r"
-        "ALT,p,movefocus,u"
-        "ALT,n,movefocus,d"
+        "$mainMod,b,movefocus,l"
+        "$mainMod,f,movefocus,r"
+        "$mainMod,p,movefocus,u"
+        "$mainMod,n,movefocus,d"
 
         # Move
-        "ALTSHIFT,b,movewindow,l"
-        "ALTSHIFT,f,movewindow,r"
-        "ALTSHIFT,p,movewindow,u"
-        "ALTSHIFT,n,movewindow,d"
+        "$mainMod SHIFT,b,movewindow,l"
+        "$mainMod SHIFT,f,movewindow,r"
+        "$mainMod SHIFT,p,movewindow,u"
+        "$mainMod SHIFT,n,movewindow,d"
       ];
 
     };

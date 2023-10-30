@@ -5,7 +5,7 @@
     inputs.anyrun.homeManagerModules.default
   ];
   programs.anyrun = {
-    enable = false;
+    enable = true;
     config = {
       plugins = with inputs.anyrun.packages.${pkgs.system}; [
         applications
@@ -83,12 +83,14 @@
     '';
   };
 
-  home.packages = with pkgs; [
-    rofi-wayland
-  ];
+  # home.packages = with pkgs; [
+  #   rofi-wayland
+  # ];
 
-  home.file.".config/rofi" = {
-    source = ./rofi;
-    recursive = true;
-  };
+  # home.file.".config/rofi" = {
+  #   source = ./rofi;
+  #   recursive = true;
+  # };
+
+
 }
