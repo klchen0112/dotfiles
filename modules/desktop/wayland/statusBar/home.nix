@@ -19,7 +19,7 @@
 
         "custom/launcher" = {
           "format" = " ";
-          "on-click" = "$HOME/.config/hypr/scripts/menu";
+          "on-click" = "wofi --allow-images --hide-scroll --insensitive --no-actions --show drun";
           "tooltip" = false;
         };
 
