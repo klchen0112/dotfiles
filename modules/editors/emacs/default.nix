@@ -7,7 +7,7 @@
 }: {
 
   services.emacs = {
-    enable = true;
+    enable = false;
     package = pkgs.emacs-pgtk;
     defaultEditor = true;
     # client.enable = true;

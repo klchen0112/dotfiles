@@ -158,7 +158,7 @@
         inputs.nixpkgs.follows = "nixpkgs";
       };
       nixpkgs-lib.url = "github:nix-community/nixpkgs.lib";
-      lib-aggregate= {
+      lib-aggregate = {
         # User Package Management
         url = "github:nix-community/lib-aggregate";
         inputs.flake-utils.follows = "flake-utils";

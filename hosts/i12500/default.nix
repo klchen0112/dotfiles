@@ -22,6 +22,7 @@
     ../../modules/terminal/home.nix
     ../../modules/vm/home.nix
     ../../modules/nixpkgs/base.nix
+    ../../modules/im/home.nix
   ];
 
   programs.home-manager.enable = true;

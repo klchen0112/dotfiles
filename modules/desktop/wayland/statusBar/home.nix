@@ -53,7 +53,7 @@
           "memory"
           "cpu"
           "network"
-          "custom/powermenu"
+          # "custom/powermenu"
           "tray"
         ];
         "pulseaudio" = {
@@ -92,11 +92,11 @@
           "interval" = 1;
           "tooltip" = false;
         };
-        "custom/powermenu" = {
-          "format" = "";
-          # "on-click" = "pkill rofi || ~/.config/rofi/powermenu.sh";
-          "tooltip" = false;
-        };
+        # "custom/powermenu" = {
+        #   "format" = "";
+        #   # "on-click" = "pkill rofi || ~/.config/rofi/powermenu.sh";
+        #   "tooltip" = false;
+        # };
         "tray" = {
           "icon-size" = 15;
           "spacing" = 5;
