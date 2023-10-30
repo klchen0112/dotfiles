@@ -86,4 +86,6 @@
   home.packages = with pkgs; [
     rofi-wayland
   ];
+
+  home.file.".config/rofi/launcher.sh".source = ./launcher.sh;
 }

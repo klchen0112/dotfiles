@@ -141,6 +141,12 @@
         url = "github:NixOS/nixos-hardware";
       };
 
+      devshell = {
+        url = "github:numtide/devshell";
+        inputs.nixpkgs.follows = "nixpkgs";
+        inputs.systems.follows = "systems";
+      };
+
       flake-utils = {
         url = "github:numtide/flake-utils";
         inputs.systems.follows = "systems";
@@ -214,6 +220,15 @@
       anyrun = {
         url = "github:Kirottu/anyrun";
         inputs.nixpkgs.follows = "nixpkgs";
+
+      };
+
+      waybar = {
+        url = "github:Alexays/Waybar";
+        inputs.nixpkgs.follows = "nixpkgs";
+        inputs.systems.follows = "systems";
+          inputs.flake-utils.follows = "flake-utils";
+        inputs.flake-compat.follows = "flake-compat";
       };
 
       vscode-server = {
