@@ -1,5 +1,6 @@
 * Overview
 
+
 |                         | Mac               | Linux              |
 | Window Manager          | [[https://github.com/koekeishiya/yabai][yabai]]             | [[https://hyprland.org/][hyprland]]           |
 | Status Bar              | sketchybar        | waybar             |
@@ -13,60 +14,60 @@
 | Shell                   | fish + starship   | fish + starship    |
 
 ** Directory
+default.nix for nixos system-wide config
+darwin.nix for mac system-wide config
+home.nix for nixos and darwin user-wide config
 #+begin_src shell
+├── assets # pictures
 ├── flake.lock
 ├── flake.nix
-├── home-manager
+├── hosts # home-manager config
+│  ├── i12500
+│  └── macbook-pro-m1
+├── machines # system-wide
+│  ├── i12500
+│  └── macbook-pro-m1
+├── Makefile
+├── modules
 │  ├── browser
-│  ├── desktop
-│  ├── downloader
+│  ├── desktop # window manager
+│  │  ├── wayland # wayland with hyprland
+│  │  └── yabai
+│  ├── downloader #
 │  ├── editors
 │  │  ├── codeblocks
-│  │  ├── default.nix
 │  │  ├── emacs
-│  │  │  ├── default.nix
-│  │  │  └── doom # my doom config
+│  │  ├── helix
+│  │  ├── home.nix
 │  │  ├── jetbrains
-│  │  ├── vim # vim and neovim
+│  │  ├── vim
 │  │  └── vscode
+│  ├── fonts
+│  │  ├── default.nix # nixos special config
+│  │  └── fonts.nix # darwin and nixos use
 │  ├── graphics
+│  ├── hardware
+│  ├── homebrew
+│  ├── im
 │  ├── keyboard
-│  ├── lang # for programming language
+│  ├── lang
+│  ├── locale
 │  ├── media
 │  ├── network
-│  ├── notes
+│  ├── nixpkgs # home-manager nix-darwin nixos both use these pkgs
+│  │  ├── base.nix # nixpkgs config
+│  │  ├── darwin.nix
+│  │  ├── default.nix
+│  │  └── nix.nix
 │  ├── office
 │  ├── shells
-│  ├── socialMedia # discord
+│  ├── socialMedia
+│  ├── system
 │  ├── terminal
-│  ├── vm
-│  ├── vpn
-│  └── windowManager # hyprland
-├── hosts # for home manager config
-│  ├── i12500
-│  ├── macbook-pro-m1
-│  └── wsl
-├── machines
-│  ├── i12500
-│  │  ├── default.nix
-│  │  ├── hardware-configuration.nix
-│  │  └── hyprland.nix
-│  ├── macbook-pro-m1
-│  │  ├── default.nix
-│  │  ├── sketchybar bar
-│  │  │  ├── items # item config
-│  │  │  └── plugins # item script
-│  │  └── yabai # yabai script
-│  └── wsl # wsl machine defines
-├── Makefile
-├── modules # own define moduels
-│  ├── darwin # for darwin
-│  ├── home-manager # for home-manager
-│  └── nixos # for nix os
-├── overlays # packages overlay
-├── pkgs # own packages
-└── shell.nix
-
+│  └── vm
+├── overlays
+├── pkgs
+└── README.org
 #+end_src
 ** Mac Desktop
 [[./assets/mac-desktop.png]]
