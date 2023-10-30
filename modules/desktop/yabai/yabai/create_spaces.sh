@@ -1,6 +1,6 @@
 #!/bin/sh
 
-DESIRED_SPACES_PER_DISPLAY=6
+DESIRED_SPACES_PER_DISPLAY=5
 CURRENT_SPACES="$(yabai -m query --displays | jq -r '.[].spaces | @sh')"
 
 DELTA=0
@@ -36,5 +36,3 @@ yabai -m space 7  --label game
 yabai -m space 8  --label video
 yabai -m space 9  --label database
 yabai -m space 10 --label document
-yabai -m space 11 --label terminal
-yabai -m space 12 --label home

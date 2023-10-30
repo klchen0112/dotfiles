@@ -425,16 +425,6 @@
                --set   spaces.10      associated_space=10                                    \
                                       icon=󰘑                                                \
                                       script="${sketchybar_scripts}/space.sh"                          \
-               --clone spaces.11      space_template                                         \
-               --set   spaces.11      associated_space=11                                    \
-                                      icon=                                                \
-                                      script="${sketchybar_scripts}/space.sh"                          \
-               --clone spaces.12      space_template                                         \
-               --set   spaces.12      associated_space=12                                    \
-                                      icon=                                                \
-                                      script="${sketchybar_scripts}/space.sh"                          \
-                                      icon.padding_right=16                                   \
-                                                                                             \
                --add   bracket        spaces                                                 \
                                       spaces.1                                               \
                                       spaces.2                                               \
@@ -445,9 +435,7 @@
                                       spaces.7                                               \
                                       spaces.8                                               \
                                       spaces.9                                               \
-                                      spaces.10                                              \
-                                      spaces.11                                              \
-                                      spaces.12
+                                      spaces.10
 
 
 
