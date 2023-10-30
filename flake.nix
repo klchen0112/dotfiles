@@ -226,9 +226,9 @@
       waybar = {
         url = "github:Alexays/Waybar";
         inputs.nixpkgs.follows = "nixpkgs";
-        inputs.systems.follows = "systems";
-          inputs.flake-utils.follows = "flake-utils";
+        inputs.flake-utils.follows = "flake-utils";
         inputs.flake-compat.follows = "flake-compat";
+        inputs.devshell.follows = "devshell";
       };
 
       vscode-server = {
