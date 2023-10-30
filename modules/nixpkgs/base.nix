@@ -7,24 +7,7 @@
 , ...
 }:
 {
-  nix = {
-    package = pkgs.nix;
-    gc = {
-      # Garbage collection
-      automatic = true;
-      options = "--delete-older-than 7d";
 
-    };
-    settings = {
-      auto-optimise-store = true;
-      trusted-users =
-        [
-          "${username}"
-        ];
-      experimental-features = [ "nix-command" "flakes" ];
-      builders-use-substitutes = true;
-    };
-  };
   nixpkgs = {
     # You can add overlays here
     overlays = [
@@ -34,6 +17,7 @@
       outputs.overlays.unstable-packages
 
       # You can also add overlays exported from other flakes:
+      inputs.emacs-overlay.overlays.default
       # neovim-nightly-overlay.overlays.default
       # inputs.nixpkgs-firefox-darwin.overlay
 

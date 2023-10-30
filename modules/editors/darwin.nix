@@ -1,14 +1,13 @@
 { inputs
 , outputs
+, lib
 , config
 , pkgs
 , username
-, system
 , ...
 }: {
   imports = [
-    ./base.nix
-    ./nix.nix
+    ./emacs/darwin.nix
   ];
-  nix.gc.dates = "weekly";
+
 }

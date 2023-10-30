@@ -9,6 +9,7 @@
 {
   imports = [
     ./base.nix
+    ./nix.nix
   ];
   nix.gc.interval = {
     Hour = 3;

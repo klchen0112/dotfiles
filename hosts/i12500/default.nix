@@ -8,11 +8,10 @@
 }: {
   imports = [
     inputs.nix-doom-emacs.hmModule
-    inputs.vscode-server.homeModules.default
     ../../modules/browser/home.nix
     ../../modules/downloader/home.nix
     ../../modules/editors/home.nix
-    ../../modules/desktop/wayland
+    ../../modules/desktop/wayland/home.nix
     ../../modules/graphics/home.nix
     ../../modules/keyboard/home.nix
     ../../modules/lang/home.nix
@@ -22,6 +21,7 @@
     ../../modules/socialMedia/home.nix
     ../../modules/terminal/home.nix
     ../../modules/vm/home.nix
+    ../../modules/nixpkgs/base.nix
   ];
 
   programs.home-manager.enable = true;
