@@ -136,7 +136,7 @@
       "$mainMod" = "ALT";
       bind = [
         "$mainMod      , Return, exec          , alacritty"
-        "$mainMod      , Space, exec          , anyrun"
+        "$mainMod      , Space, exec          , wofi --allow-images --hide-scroll --insensitive --no-actions --show drun"
         "$mainMod SHIFT, P     , killactive    ,"
         "$mainMod SHIFT, Q     , exit          ,"
         "$mainMod SHIFT, Space , togglefloating,"
@@ -167,8 +167,4 @@
 
   fonts.fontconfig.enable = true;
 
-  home.file.".config/hypr/scripts" = {
-    source = ./scripts;
-    recursive = true;
-  };
 }

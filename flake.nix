@@ -247,13 +247,6 @@
         inputs.nixpkgs.follows = "nixpkgs";
       };
 
-      # anyrun - a wayland launcher
-      anyrun = {
-        url = "github:Kirottu/anyrun";
-        inputs.nixpkgs.follows = "nixpkgs";
-        inputs.flake-parts.follows = "flake-parts";
-      };
-
       hycov = {
         url = "github:DreamMaoMao/hycov";
         inputs.hyprland.follows = "hyprland";
