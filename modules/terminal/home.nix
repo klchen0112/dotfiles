@@ -7,7 +7,7 @@
   ...
 }: {
 
-  xdg.configFile."alacritty/theme_catppuccin.yml".source = "${inputs.catppuccin-alacritty}/catppuccin-mocha.yml";
+  xdg.configFile."alacritty/theme_catppuccin.yml".source = "${inputs.catppuccin-alacritty}/catppuccin-latte.yml";
   programs.alacritty = {
     enable = true;
   };
