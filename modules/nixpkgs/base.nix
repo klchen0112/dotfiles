@@ -23,7 +23,7 @@
       inputs.hyprcontrib.overlays.default
       # neovim-nightly-overlay.overlays.default
       # inputs.nixpkgs-firefox-darwin.overlay
-      inputs.nur-xddxdd.overlays.default
+      inputs.nur.overlay
       # Or define it inline, for example:
       # (final: prev: {
       #   hi = final.hello.overrideAttrs (oldAttrs: {

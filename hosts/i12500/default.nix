@@ -8,6 +8,7 @@
 }: {
   imports = [
     inputs.nix-doom-emacs.hmModule
+    inputs.nur.hmModules.nur
     ../../modules/browser/home.nix
     ../../modules/downloader/home.nix
     ../../modules/editors/home.nix

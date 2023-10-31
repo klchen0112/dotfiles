@@ -30,6 +30,7 @@
     , nixpkgs
     , home-manager
     , darwin
+    , nur
     , ...
     }:
     # Function that tells my flake which to use and what do what to do with the dependencies.
@@ -54,7 +55,6 @@
 
       # Accessible through 'nix develop' or 'nix-shell' (legacy)
       overlays = import ./overlays { inherit inputs; };
-
 
       nixosConfigurations =
         let
@@ -181,11 +181,7 @@
       nur = {
         url = "github:nix-community/NUR"; # NUR Packages
       };
-      nur-xddxdd = {
-      url = "github:xddxdd/nur-packages";
-      inputs.flake-utils.follows = "flake-utils";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+
       nixgl = {
         # OpenGL
         url = "github:guibou/nixGL";
