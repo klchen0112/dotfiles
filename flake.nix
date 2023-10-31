@@ -181,7 +181,11 @@
       nur = {
         url = "github:nix-community/NUR"; # NUR Packages
       };
-
+      nur-xddxdd = {
+      url = "github:xddxdd/nur-packages";
+      inputs.flake-utils.follows = "flake-utils";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
       nixgl = {
         # OpenGL
         url = "github:guibou/nixGL";

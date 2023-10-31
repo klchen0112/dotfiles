@@ -23,7 +23,7 @@
       inputs.hyprcontrib.overlays.default
       # neovim-nightly-overlay.overlays.default
       # inputs.nixpkgs-firefox-darwin.overlay
-
+      inputs.nur-xddxdd.overlays.default
       # Or define it inline, for example:
       # (final: prev: {
       #   hi = final.hello.overrideAttrs (oldAttrs: {
@@ -37,6 +37,11 @@
       allowUnfreePredicate = (_: true);
       #  allowUnsupportedSystem = true;
       #  allowBroken = true;
+      # for wechat uos
+      permittedInsecurePackages = [
+        "openssl-1.1.1w"
+        "electron-19.1.9"
+      ];
     };
   };
 }
