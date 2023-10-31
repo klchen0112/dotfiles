@@ -19,7 +19,7 @@
   };
 
   environment = {
-    shells = with pkgs; [ fish ]; # Default shell
+    shells = with pkgs; [ fish bash]; # Default shell
     systemPackages = with pkgs; [
       # Installed Nix packages
       gnumake

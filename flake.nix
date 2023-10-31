@@ -247,6 +247,11 @@
         inputs.nixpkgs.follows = "nixpkgs";
       };
 
+      anyrun = {
+        url = "github:Kirottu/anyrun";
+        inputs.nixpkgs.follows = "nixpkgs";
+      };
+
       hycov = {
         url = "github:DreamMaoMao/hycov";
         inputs.hyprland.follows = "hyprland";

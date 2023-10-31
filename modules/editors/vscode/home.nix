@@ -21,9 +21,8 @@
     else false;
   programs.vscode = {
     enable =
-      if pkgs.stdenv.isDarwin
-      then true
-      else false;
+      true;
+
     package = pkgs.vscode;
 
     extensions = with pkgs.vscode-extensions;
