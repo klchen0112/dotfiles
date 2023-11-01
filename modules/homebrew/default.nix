@@ -11,7 +11,7 @@
     enable = true;
     onActivation = {
       autoUpdate = true; # Auto update packages
-      upgrade = false;
+      upgrade = true;
       cleanup = "zap"; # Uninstall not listed packages and casks
     };
     masApps = {

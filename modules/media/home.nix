@@ -42,14 +42,12 @@
       };
   };
   home.packages = with pkgs; [
-    # calibre
-    # plexamp
     # anki
-    # zotero
     # tidgi
-    # logseq
     # marginnote
   ] ++ lib.optionals pkgs.stdenv.isDarwin
-    [ raycast ];
+    [ raycast ]
+  ++ lib.optionals pkgs.stdenv.isLinux
+    [ plexamp ];
 
 }

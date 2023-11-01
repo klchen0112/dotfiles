@@ -22,6 +22,7 @@
     ../../modules/vm/home.nix
     # ../../modules/windowManager
     # ../../modules/vpn
+    ../../modules/notes/home.nix
   ];
 
 
