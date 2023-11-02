@@ -187,10 +187,10 @@
         focus_on_activate = true;
       };
       monitor = [
-        "HDMI-A-1, 3840x2160, 0x0, 1"
+        "HDMI-A-2, 3840x2160@60,0x0,1.5"
       ];
       workspace = [
-        "HDMI-A-1,10"
+        "HDMI-A-2,10"
       ];
 
       plugin = {
