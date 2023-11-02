@@ -1,6 +1,7 @@
 # Custom packages, that can be defined similarly to ones from nixpkgs
 # You can build them using 'nix build .#example'
 { inputs, pkgs }: {
+  TsangerJinKai02 = pkgs.callPackage ./TsangerJinKai02.nix {};
   # example = pkgs.callPackage ./example { };
   sf-pro = inputs.apple-fonts.packages.${pkgs.system}.sf-pro;
   sf-pro-nerd = inputs.apple-fonts.packages.${pkgs.system}.sf-pro-nerd;
