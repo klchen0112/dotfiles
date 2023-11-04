@@ -1,4 +1,4 @@
-{ stdenv, lib, callPackage,fetchurl }:
+{ stdenv, lib, callPackage, fetchurl }:
 stdenv.mkDerivation rec {
   src = fetchurl {
     name = "TsangerJinKai02-W03.ttf";

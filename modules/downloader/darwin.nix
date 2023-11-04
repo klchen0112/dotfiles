@@ -1,6 +1,3 @@
-#
-# Download client
-#
 { inputs
 , outputs
 , lib
@@ -8,15 +5,11 @@
 , pkgs
 , username
 , ...
-}: {
-  programs.yt-dlp = {
+}:
+{
+  services.aria2 = {
     enable = true;
-  };
-  home.file.".config/aria2/clean.sh".source = ./aria2/clean.sh;
-  home.file.".config/aria2/delete.sh".source = ./aria2/delete.sh;
-
-  programs.aria2 = {
-    enable = false;
+    logFile = "/tmp/aria2.log";
     settings = {
       dir = "$\{HOME\}/Downloads"; # 下载目录。可使用绝对路径或相对路径, 默认: 当前启动位置
       disk-cache = "64M";

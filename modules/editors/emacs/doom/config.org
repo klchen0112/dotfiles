@@ -421,6 +421,7 @@
 ;;      doom-symbol-font (font-spec :family "Symbola" :size 14)
 ;;      doom-serif-font (font-spec :family "IBM Plex Serif"  :size 17)
 ;;      )
+(setq nerd-icons-font-names '("SymbolsNerdFontMono-Regular.ttf"))
 (setq use-default-font-for-symbols nil)
 (cond
   ((or IS-MAC IS-LINUX)
