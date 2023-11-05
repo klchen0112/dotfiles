@@ -613,6 +613,26 @@
         "type": "github"
       }
     },
+    "hyprpaper": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1698097178,
+        "narHash": "sha256-W4W3pAYNpXp0jLZwK0Bxw6R7n2/UYxp+lnT5mD2/xEM=",
+        "owner": "hyprwm",
+        "repo": "hyprpaper",
+        "rev": "d6856adaffb77a9cc1aac3d04d98276eaa5602a4",
+        "type": "github"
+      },
+      "original": {
+        "owner": "hyprwm",
+        "repo": "hyprpaper",
+        "type": "github"
+      }
+    },
     "hyprpicker": {
       "inputs": {
         "nixpkgs": [
@@ -1107,6 +1127,7 @@
         "hycov": "hycov",
         "hyprcontrib": "hyprcontrib",
         "hyprland": "hyprland",
+        "hyprpaper": "hyprpaper",
         "hyprpicker": "hyprpicker",
         "lib-aggregate": "lib-aggregate",
         "nix-doom-emacs": "nix-doom-emacs",

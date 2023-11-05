@@ -237,6 +237,11 @@
         inputs.systems.follows = "systems";
       };
 
+      hyprpaper = {
+        url = "github:hyprwm/hyprpaper";
+        inputs.nixpkgs.follows = "nixpkgs";
+      };
+
       hyprpicker = {
         url = "github:hyprwm/hyprpicker";
         inputs.nixpkgs.follows = "nixpkgs";
