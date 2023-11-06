@@ -1967,6 +1967,7 @@ Refer to `org-agenda-prefix-format' for more information."
 :END:
 #+begin_src emacs-lisp :tangle packages.el
 (package! rime)
+(package! rime-regexp :recipe (:host github :repo "colawithsauce/rime-regexp.el"))
 #+end_src
 *** rime init
 :PROPERTIES:
@@ -2002,6 +2003,9 @@ Refer to `org-agenda-prefix-format' for more information."
           meow-beacon-mode-p))
 )
 
+(use-package rime-regexp
+  :config
+  (rime-regexp-mode t))
 
 #+end_src
 * completion
