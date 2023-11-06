@@ -1973,28 +1973,35 @@ Refer to `org-agenda-prefix-format' for more information."
 :ID:       8b4d6475-ea71-47c9-8aef-ea466ea13b24
 :END:
 #+begin_src emacs-lisp conf :tangle config.el
+
+
+
 (use-package! rime
-    :custom
-    (rime-librime-root (expand-file-name "librime" doom-user-dir))
-    (rime-show-candidate 'posframe)
-    (rime-show-preedit 'inline)
-    (rime-user-data-dir (expand-file-name "Rime" doom-user-dir))
-    (rime-emacs-module-header-root
-     (if IS-MAC
-      (concat (shell-command-to-string "nix eval --raw ~/myOpenSource/dotfiles#emacs-plus") "/include")
-      (concat (shell-command-to-string "nix eval --raw ~/myOpenSource/dotfiles#emacs-unstable") "/include")
+  :config
+  (setq rime-librime-root (expand-file-name "librime" doom-user-dir))
+  (setq rime-show-candidate 'posframe)
+  (setq rime-show-preedit 'inline)
+  (setq rime-user-data-dir (expand-file-name "Rime" doom-user-dir))
+  (setq rime-emacs-module-header-root
+   (if IS-MAC
+       (concat
+        (car (last
+         (split-string (shell-command-to-string "nix eval --raw ~/myOpenSource/dotfiles#emacs-plus") "\n")
+         ))
+         "/include")
+     (concat (shell-command-to-string "nix eval --raw ~/myOpenSource/dotfiles#emacs-unstable") "/include")
      )
-    )
-    :config
-    (setq default-input-method "rime")
-    (setq rime-inline-ascii-trigger 'shift-r)
-    (setq rime-translate-keybindings '("C-f" "C-b" "C-n" "C-p" "C-g" "<left>" "<right>" "<up>" "<down>" "<prior>" "<next>" "<delete>"))
-    (setq rime-disable-predicates
-     '(meow-normal-mode-p
-       meow-motion-mode-p
-       meow-keypad-mode-p
-       meow-beacon-mode-p))
+  )
+  (setq default-input-method "rime")
+  (setq rime-inline-ascii-trigger 'shift-r)
+  (setq rime-translate-keybindings '("C-f" "C-b" "C-n" "C-p" "C-g" "<left>" "<right>" "<up>" "<down>" "<prior>" "<next>" "<delete>"))
+  (setq rime-disable-predicates
+        '(meow-normal-mode-p
+          meow-motion-mode-p
+          meow-keypad-mode-p
+          meow-beacon-mode-p))
 )
+
 
 #+end_src
 * completion
