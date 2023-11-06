@@ -20,6 +20,7 @@
     ../../modules/socialMedia/home.nix
     ../../modules/terminal/home.nix
     ../../modules/vm/home.nix
+    ../../modules/im/home.nix
     # ../../modules/windowManager
     # ../../modules/vpn
     ../../modules/notes/home.nix

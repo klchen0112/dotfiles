@@ -1,7 +1,15 @@
-{ inputs, pkgs, ... }:
+{ inputs, pkgs, lib, outputs, ... }:
 {
+  home.file.".config/emacs/Rime" = {
+    source = "${inputs.rime-jd}";
+    recursive = true;
+  };
   i18n.inputMethod = {
-    enabled = "fcitx5";
+    enabled =
+      if pkgs.stdenv.isLinux then
+        "fcitx5"
+      else
+        null;
     fcitx5.addons = with pkgs;
       [
         fcitx5-rime
@@ -19,3 +27,5 @@
     recursive = true;
   };
 }
+
+

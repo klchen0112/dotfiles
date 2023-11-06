@@ -1353,6 +1353,8 @@ citar need vertico
 #+begin_src elisp :tangle config.el
 (use-package! ox-hugo
   :after org-capture ox
+  :config
+  (setq org-hugo-default-static-subdirectory-for-externals "img")
 )
 #+end_src
 
@@ -1460,106 +1462,159 @@ citar need vertico
   ;;       ;; Dailies
   ;;       ("C-c n r j" . org-roam-dailies-capture-today))
   :init
-  (defun my/org-roam--extract-note-body (file)
-  (with-temp-buffer
-    (insert-file-contents file)
-    (org-mode)
-    (message "Working on activate org mode" file)
-    (first (org-element-map (org-element-parse-buffer) 'paragraph
-             (lambda (paragraph)
-               (let ((begin (plist-get (first (cdr paragraph)) :begin))
-                     (end (plist-get (first (cdr paragraph)) :end)))
-                 (buffer-substring begin end)))))))
+   (defun my/org-roam--extract-note-body (file)
+    (with-temp-buffer
+      (insert-file-contents file)
+      (org-mode)
+      (first (org-element-map (org-element-parse-buffer) 'paragraph
+               (lambda (paragraph)
+                 (let ((begin (plist-get (first (cdr paragraph)) :begin))
+                       (end (plist-get (first (cdr paragraph)) :end)))
+                   (buffer-substring begin end)))))))
+  ;; Include backlinks in org exported notes not tagged as private or
+  ;; draft or section
+  (defun my/org-roam--backlinks-list (id file)
+    (--reduce-from
+     (concat acc (format "- [[id:%s][%s]]\n  #+begin_quote\n  %s\n  #+end_quote\n"
+                         (car it)
+                         (title-capitalization (org-roam-node-title (org-roam-node-from-id (car it))))
+                         (my/org-roam--extract-note-body (org-roam-node-file (org-roam-node-from-id (car it))))))
+     ""
+     (org-roam-db-query
+      (format
+       ;; The percentage sign needs to be escaped twice because there
+       ;; is two format calls—once here and the other by emacsql
+       "SELECT id FROM (SELECT links.source AS id, group_concat(tags.tag) AS alltags FROM links LEFT OUTER JOIN tags ON links.source = tags.node_id WHERE links.type = '\"id\"' AND links.dest = '\"%s\"' GROUP BY links.source) Q WHERE alltags IS NULL OR (','||alltags||',' NOT LIKE '%%%%,\"private\",%%%%' AND ','||alltags||',' NOT LIKE '%%%%,\"draft\",%%%%' AND ','||alltags||',' NOT LIKE '%%%%,\"section\",%%%%')"
+       id))))
 
-;; Include backlinks in org exported notes not tagged as private or
-;; draft or section
-(defun my/org-roam--backlinks-list (id file)
-  (--reduce-from
-   (concat acc (format "- [[id:%s][%s]]\n  #+begin_quote\n  %s\n  #+end_quote\n"
-                       (car it)
-                       (title-capitalization (org-roam-node-title (org-roam-node-from-id (car it))))
-                       (my/org-roam--extract-note-body (org-roam-node-file (org-roam-node-from-id (car it))))))
-   ""
-   (org-roam-db-query
-    (format
-     ;; The percentage sign needs to be escaped twice because there
-     ;; is two format calls—once here and the other by emacsql
-     "SELECT id FROM (SELECT links.source AS id, group_concat(tags.tag) AS alltags FROM links LEFT OUTER JOIN tags ON links.source = tags.node_id WHERE links.type = '\"id\"' AND links.dest = '\"%s\"' GROUP BY links.source) Q WHERE alltags IS NULL OR (','||alltags||',' NOT LIKE '%%%%,\"private\",%%%%' AND ','||alltags||',' NOT LIKE '%%%%,\"draft\",%%%%' AND ','||alltags||',' NOT LIKE '%%%%,\"section\",%%%%' AND ','||alltags||',' NOT LIKE '%%%%,\"journal\",%%%%')"
-     id))))
+  (defun file-path-to-md-file-name (path)
+    (let ((file-name (first (last (split-string path "/")))))
+      (concat (first (split-string file-name "\\.")) ".md")))
 
-(defun file-path-to-md-file-name (path)
-  (let ((file-name (first (last (split-string path "/")))))
-    (concat (first (split-string file-name "\\.")) ".md")))
+  (defun file-path-to-slug (path)
+    (let* ((file-name (file-name-nondirectory path))
+           (note-name (car (last (split-string file-name "--"))))
+           (title (first (split-string note-name "\\."))))
+      (replace-regexp-in-string (regexp-quote "_") "-" title nil 'literal)))
 
-(defun file-path-to-slug (path)
-  (let* ((file-name (file-name-nondirectory path))
-         (note-name (car (last (split-string file-name "--"))))
-         (title (first (split-string note-name "\\."))))
-    (replace-regexp-in-string (regexp-quote "_") "-" title nil 'literal)))
-;; Fetches all org-roam files and exports to hugo markdown
-;; files. Adds in necessary hugo properties
-;; e.g. HUGO_BASE_DIR. Ignores notes tagged as private or draft
-(defun org-roam-to-hugo-md ()
-  (interactive)
-  ;; Make sure the author is set
-  (setq user-full-name "klchen0112")
+  ;; Org export is very slow when processing org-id links. Override it
+  ;; to skip opening the file and loading all modes.
+  (defun my/org-export--collect-tree-properties (data info)
+    "Extract tree properties from parse tree.
 
-  ;; Don't include any files tagged as private or
-  ;; draft. The way we filter tags doesn't work nicely
-  ;; with emacsql's DSL so just use a raw SQL query
-  ;; for clarity
-  (let ((notes (org-roam-db-query "SELECT id, file FROM (SELECT nodes.id, nodes.file, group_concat(tags.tag) AS alltags FROM nodes LEFT OUTER JOIN tags ON nodes.id = tags.node_id GROUP BY nodes.file) WHERE alltags is null or (','||alltags||',' not like '%%,\"private\",%%' and ','||alltags||',' not like '%%,\"draft\",%%'  and ','||alltags||',' not like '%%,\"journal\",%%')")))
-    (-map
-     (-lambda ((id file))
-       ;; Use temporary buffer to prevent a buffer being opened for
-       ;; each note file.
-       (with-temp-buffer
-         (message "Working on: %s" file)
+    DATA is the parse tree from which information is retrieved.  INFO
+    is a list holding export options.
 
-         (insert-file-contents file)
+    Following tree properties are set or updated:
 
-         ;; Adding these tags must go after file content because it
-         ;; will include a :PROPERTIES: drawer as of org-roam v2
-         ;; which must be the first item on the page
+    `:headline-offset' Offset between true level of headlines and
+                       local level.  An offset of -1 means a headline
+                       of level 2 should be considered as a level
+                       1 headline in the context.
 
-         ;; Add in hugo tags for export. This lets you write the
-         ;; notes without littering HUGO_* tags everywhere
-         ;; HACK:
-         ;; org-export-output-file-name doesn't play nicely with
-         ;; temp buffers since it attempts to get the file name from
-         ;; the buffer. Instead we explicitely add the name of the
-         ;; exported .md file otherwise you would get prompted for
-         ;; the output file name on every note.
-         (goto-char (point-min))
-         (re-search-forward ":END:")
-         (newline)
-         (insert
-          (format "#+HUGO_BASE_DIR: %s\n#+HUGO_SECTION: ./\n#+HUGO_SLUG: %s\n#+EXPORT_FILE_NAME: %s\n"
-                  org-roam-publish-path
-                  (file-path-to-slug file)
-                  (file-path-to-md-file-name file)))
-         (message "Working on insert : %s" file)
-         ;; If this is a placeholder note (no content in the
-         ;; body) then add default text. This makes it look ok when
-         ;; showing note previews in the index and avoids a headline
-         ;; followed by a headline in the note detail page.
-         (if (eq (my/org-roam--extract-note-body file) nil)
-              (progn
-               (goto-char (point-max))
-               (insert "\n/This note does not have a description yet./\n")))
-         (message "Working on extract notte body: %s" file)
-         ;; Add in backlinks (at the end of the file) because
-         ;; org-export-before-processing-hook won't be useful the
-         ;; way we are using a temp buffer
-         ;;(let ((links (my/org-roam--backlinks-list id file)))
-         ;;  (if (not (string= links ""))
-         ;;      (progn
-         ;;        (goto-char (point-max))
-         ;;        (insert (concat "\n* Links to this note\n") links))))
-         (message "Working on extract back links: %s" file)
+    `:headline-numbering' Alist of all headlines as key and the
+                          associated numbering as value.
 
-         (org-hugo-export-to-md)))
-     notes)))
+    `:id-alist' Alist of all ID references as key and associated file
+                as value.
+
+    Return updated plist."
+    ;; Install the parse tree in the communication channel.
+    (setq info (plist-put info :parse-tree data))
+    ;; Compute `:headline-offset' in order to be able to use
+    ;; `org-export-get-relative-level'.
+    (setq info
+          (plist-put info
+                     :headline-offset
+                     (- 1 (org-export--get-min-level data info))))
+    ;; From now on, properties order doesn't matter: get the rest of the
+    ;; tree properties.
+    (org-combine-plists
+     info
+     (list :headline-numbering (org-export--collect-headline-numbering data info)
+           :id-alist
+           (org-element-map data 'link
+             (lambda (l)
+               (and (string= (org-element-property :type l) "id")
+                    (let* ((id (org-element-property :path l))
+                           (file (org-id-find-id-file id)))
+                      (and file (cons id (file-relative-name file))))))))))
+
+  (advice-add 'org-export--collect-tree-properties :override #'my/org-export--collect-tree-properties)
+
+  ;; No notes use anchor links so ignore this to speed it up
+  (defun my/org-hugo-link--headline-anchor-maybe (link)
+    "")
+  (advice-add 'org-hugo-link--headline-anchor-maybe :override #'my/org-hugo-link--headline-anchor-maybe)
+
+  ;; ox-hugo doesn't set the `relref` path correctly so we need to
+  ;; tell it how to do it
+  (defun my/org-id-path-fix (strlist)
+    (file-name-nondirectory strlist))
+
+  (advice-add 'org-export-resolve-id-link :filter-return #'my/org-id-path-fix)
+
+  ;; Fetches all org-roam files and exports to hugo markdown
+  ;; files. Adds in necessary hugo properties
+  ;; e.g. HUGO_BASE_DIR. Ignores notes tagged as private or draft
+  (defun org-roam-to-hugo-md ()
+    (interactive)
+    ;; Make sure the author is set
+    (setq user-full-name "Alex Kehayias")
+
+    ;; Don't include any files tagged as private or
+    ;; draft. The way we filter tags doesn't work nicely
+    ;; with emacsql's DSL so just use a raw SQL query
+    ;; for clarity
+    (let ((notes (org-roam-db-query "SELECT id, file FROM (SELECT nodes.id, nodes.file, group_concat(tags.tag) AS alltags FROM nodes LEFT OUTER JOIN tags ON nodes.id = tags.node_id GROUP BY nodes.file) WHERE alltags is null or (','||alltags||',' not like '%%,\"private\",%%' and ','||alltags||',' not like '%%,\"draft\",%%')")))
+      (-map
+       (-lambda ((id file))
+         ;; Use temporary buffer to prevent a buffer being opened for
+         ;; each note file.
+         (with-temp-buffer
+           (insert-file-contents file)
+
+           ;; Adding these tags must go after file content because it
+           ;; will include a :PROPERTIES: drawer as of org-roam v2
+           ;; which must be the first item on the page
+
+           ;; Add in hugo tags for export. This lets you write the
+           ;; notes without littering HUGO_* tags everywhere
+           ;; HACK:
+           ;; org-export-output-file-name doesn't play nicely with
+           ;; temp buffers since it attempts to get the file name from
+           ;; the buffer. Instead we explicitely add the name of the
+           ;; exported .md file otherwise you would get prompted for
+           ;; the output file name on every note.
+           (goto-char (point-min))
+           (re-search-forward ":END:")
+           (newline)
+           (insert
+            (format "#+HUGO_BASE_DIR: %s\n#+HUGO_SECTION: ./\n#+HUGO_SLUG: %s\n#+EXPORT_FILE_NAME: %s\n"
+                    org-roam-publish-path
+                    (file-path-to-slug file)
+                    (file-path-to-md-file-name file)))
+
+           ;; If this is a placeholder note (no content in the
+           ;; body) then add default text. This makes it look ok when
+           ;; showing note previews in the index and avoids a headline
+           ;; followed by a headline in the note detail page.
+           (if (eq (my/org-roam--extract-note-body file) nil)
+               (progn
+                 (goto-char (point-max))
+                 (insert "\n/This note does not have a description yet./\n")))
+
+           ;; Add in backlinks (at the end of the file) because
+           ;; org-export-before-processing-hook won't be useful the
+           ;; way we are using a temp buffer
+           (let ((links (my/org-roam--backlinks-list id file)))
+             (if (not (string= links ""))
+                 (progn
+                   (goto-char (point-max))
+                   (insert (concat "\n* Links to this note\n") links))))
+
+           (org-hugo-export-to-md)))
+       notes)))
   :config
   (setq ;;org-roam-database-connector 'sqlite-builtin
    org-roam-directory (file-truename "~/org")
@@ -1876,32 +1931,32 @@ Refer to `org-agenda-prefix-format' for more information."
 :ID:       8d800b39-c8e6-4423-9cc8-cae91df94f67
 :END:
 #+begin_src emacs-lisp :tangle packages.el
-(package! sis)
+;;(package! sis)
 #+end_src
 
 #+begin_src emacs-lisp :tangle config.el
-(use-package! sis
-  ;; :hook
-  ;; enable the /context/ and /inline region/ mode for specific buffers
-  ;; (((text-mode prog-mode) . sis-context-mode)
-  ;;  ((text-mode prog-mode) . sis-inline-mode))
-  :after meow
-  :config
-  ;; For MacOS
-  (sis-ism-lazyman-config
-   ;; English input source may be: "ABC", "US" or another one.
-   ;; "com.apple.keylayout.ABC"
-   "com.apple.keylayout.ABC"
-   ;; Other language input source: "rime", "sogou" or another one.
-   ;; "im.rime.inputmethod.Squirrel.Rime"
-   "im.rime.inputmethod.Squirrel.Hans")
-  (add-hook 'meow-insert-exit-hook #'sis-set-english)
-  (add-hook 'meow-insert-enter-hook #'sis-set-english)
-  (add-to-list 'sis-context-hooks 'meow-insert-exit-hook)
-  (add-to-list 'sis-context-hooks 'meow-insert-enter-hook)
-  (add-to-list 'sis-respect-minibuffer-triggers (cons 'org-roam-node-find (lambda () 'other)))
-  (add-to-list 'sis-respect-minibuffer-triggers (cons 'org-roam-node-insert (lambda () 'other)))
-)
+;;(use-package! sis
+;;  ;; :hook
+;;  ;; enable the /context/ and /inline region/ mode for specific buffers
+;;  ;; (((text-mode prog-mode) . sis-context-mode)
+;;  ;;  ((text-mode prog-mode) . sis-inline-mode))
+;;  :after meow
+;;  :config
+;;  ;; For MacOS
+;;  (sis-ism-lazyman-config
+;;   ;; English input source may be: "ABC", "US" or another one.
+;;   ;; "com.apple.keylayout.ABC"
+;;   "com.apple.keylayout.ABC"
+;;   ;; Other language input source: "rime", "sogou" or another one.
+;;   ;; "im.rime.inputmethod.Squirrel.Rime"
+;;   "im.rime.inputmethod.Squirrel.Hans")
+;;  (add-hook 'meow-insert-exit-hook #'sis-set-english)
+;;  (add-hook 'meow-insert-enter-hook #'sis-set-english)
+;;  (add-to-list 'sis-context-hooks 'meow-insert-exit-hook)
+;;  (add-to-list 'sis-context-hooks 'meow-insert-enter-hook)
+;;  (add-to-list 'sis-respect-minibuffer-triggers (cons 'org-roam-node-find (lambda () 'other)))
+;;  (add-to-list 'sis-respect-minibuffer-triggers (cons 'org-roam-node-insert (lambda () 'other)))
+;;)
 #+end_src
 ** Rime
 1. 使用rime作为输入法
@@ -1911,37 +1966,36 @@ Refer to `org-agenda-prefix-format' for more information."
 :ID:       e3d48ce3-a022-4f8e-8455-0f2c7856d579
 :END:
 #+begin_src emacs-lisp :tangle packages.el
-;;(package! rime)
+(package! rime)
 #+end_src
 *** rime init
 :PROPERTIES:
 :ID:       8b4d6475-ea71-47c9-8aef-ea466ea13b24
 :END:
 #+begin_src emacs-lisp conf :tangle config.el
-;;(cond
-;; (IS-MAC
-;;  (use-package! rime
-;;    :custom
-;;    (rime-librime-root (expand-file-name "librime" doom-user-dir))
-;;    (rime-show-candidate 'posframe)
-;;    (rime-show-preedit 'inline)
-;;    (rime-user-data-dir (expand-file-name "Rime" doom-user-dir))
-;;    (rime-emacs-module-header-root
-;;     "/opt/homebrew/opt/emacs-plus@29/include"
-;;     ;;"/opt/homebrew/Cellar/emacs-plus@28/28.2/include"
-;;     ;;"/opt/homebrew/Cellar/emacs-mac/emacs-28.2-mac-9.1/include"
-;;     )
-;;    :config
-;;    (setq default-input-method "rime")
-;;    (setq rime-inline-ascii-trigger 'shift-r)
-;;    (setq rime-translate-keybindings '("C-f" "C-b" "C-n" "C-p" "C-g" "<left>" "<right>" "<up>" "<down>" "<prior>" "<next>" "<delete>"))
-;;    (setq rime-disable-predicates
-;;     '(meow-normal-mode-p
-;;       meow-motion-mode-p
-;;       meow-keypad-mode-p
-;;       meow-beacon-mode-p
-;;    ))
-;;)))
+(use-package! rime
+    :custom
+    (rime-librime-root (expand-file-name "librime" doom-user-dir))
+    (rime-show-candidate 'posframe)
+    (rime-show-preedit 'inline)
+    (rime-user-data-dir (expand-file-name "Rime" doom-user-dir))
+    (rime-emacs-module-header-root
+     (if IS-MAC
+      (concat (shell-command-to-string "nix eval --raw ~/myOpenSource/dotfiles#emacs-plus") "/include")
+      (concat (shell-command-to-string "nix eval --raw ~/myOpenSource/dotfiles#emacs-unstable") "/include")
+     )
+    )
+    :config
+    (setq default-input-method "rime")
+    (setq rime-inline-ascii-trigger 'shift-r)
+    (setq rime-translate-keybindings '("C-f" "C-b" "C-n" "C-p" "C-g" "<left>" "<right>" "<up>" "<down>" "<prior>" "<next>" "<delete>"))
+    (setq rime-disable-predicates
+     '(meow-normal-mode-p
+       meow-motion-mode-p
+       meow-keypad-mode-p
+       meow-beacon-mode-p))
+)
+
 #+end_src
 * completion
 ** tempel
