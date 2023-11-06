@@ -57,15 +57,14 @@
         yzhang.markdown-all-in-one
 
         # python
-        # ms-python.python
-        # ms-python.isort
+        ms-python.python
+        ms-python.isort
         # ms-toolsai.jupyter
         # ms-toolsai.vscode-jupyter-slideshow
         # ms-toolsai.vscode-jupyter-cell-tags
         # ms-toolsai.jupyter-renderers
         # ms-toolsai.jupyter-keymap
-        # ms-python.vscode-pylance
-        # ms-pyright.pyright
+        ms-python.vscode-pylance
         # ms-pyright.pyright
         # cpp
         llvm-vs-code-extensions.vscode-clangd
@@ -81,6 +80,12 @@
         # github.copilot
       ]
       ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
+        {
+          name = "vscode-python-typehint";
+          publisher = "njqdev";
+          version = "1.5.1";
+          sha256 = "CCMsCK//DCuBjFB/2kOOGjJil5zusTG+1hsp3tGTQ2U=";
+        }
         {
           name = "python-environment-manager";
           publisher = "donjayamanne";
