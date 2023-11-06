@@ -1979,10 +1979,10 @@ Refer to `org-agenda-prefix-format' for more information."
 
 (use-package! rime
   :config
-  (setq rime-librime-root (expand-file-name "librime" doom-user-dir))
+  (setq rime-librime-root (expand-file-name "librime" doom-emacs-dir))
   (setq rime-show-candidate 'posframe)
   (setq rime-show-preedit 'inline)
-  (setq rime-user-data-dir (expand-file-name "Rime" doom-user-dir))
+  (setq rime-user-data-dir (expand-file-name "Rime" doom-emacs-dir))
   (setq rime-emacs-module-header-root
    (if IS-MAC
        (concat
