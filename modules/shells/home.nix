@@ -55,10 +55,10 @@
       ls = "exa";
       ll = "exa -lha";
       lt = "exa --tree";
-      btop = "htop";
+      htop = "btop";
       psg = "ps aux | rg -v rg | rg -i -e VSZ -e";
       e = "emacsclient -nc";
-      E = "sudoedit";
+      E = "emacs -nw";
       grep = "rg";
       cat = "bat";
       conda = "micromamba";
