@@ -31,6 +31,9 @@ in
     ffmpeg_5
     # email
     # mu4e
+
+    # for emacs rime
+    # librime
   ] ++ (lib.optionals pkgs.stdenv.isDarwin) [
     # pngpaste for org mode download clip
     pngpaste
@@ -58,11 +61,11 @@ in
   # doomPrivateDir = ./doom;
   # emacsPackage = pkgs.emacs29;
   # };
-  # services.emacs = {
-  #   enable = true;
-  #   client.enable = true;
-  #   socketActivation.enable =  true;
-  #   startWithUserSession = "graphical";
-  #   defaultEditor = true;
-  # };
+  services.emacs = {
+    enable = pkgs.stdenv.isLinux;
+    client.enable = true;
+    socketActivation.enable =  true;
+    startWithUserSession = "graphical";
+    defaultEditor = true;
+  };
 }

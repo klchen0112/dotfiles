@@ -13,7 +13,7 @@
     ../../modules/system/darwin.nix
     ../../modules/desktop/yabai
     ../../modules/homebrew
-    # ../../modules/editors/darwin.nix
+    ../../modules/editors/darwin.nix
     ../../modules/downloader/module.nix
     ../../modules/downloader/darwin.nix
   ];
