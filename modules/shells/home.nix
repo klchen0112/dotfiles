@@ -424,7 +424,7 @@
         identityFile = "~/.ssh/ningbo";
       };
       i12500 = {
-        hostname = "192.168.31.234";
+        hostname = "192.168.1.189";
         port = 22;
         user = "klchen";
         identityFile = "~/.ssh/id_rsa";
