@@ -33,7 +33,7 @@ in
     # mu4e
 
     # for emacs rime
-    # librime
+    librime
   ] ++ (lib.optionals pkgs.stdenv.isDarwin) [
     # pngpaste for org mode download clip
     pngpaste
