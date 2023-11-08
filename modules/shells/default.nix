@@ -35,10 +35,6 @@
       PasswordAuthentication = false; # disable password login
     };
     allowSFTP = true;
-    extraConfig = ''
-      HostKeyAlgorithms +ssh-rsa
-    ''; # Temporary extra config so ssh will work in guacamole
-
   };
 
 

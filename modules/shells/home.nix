@@ -415,20 +415,23 @@
         hostname = "10.160.199.34";
         port = 30614;
         user = "root";
-        identityFile = "~/.ssh/ningbo";
+        identityFile = "~/.ssh/id_ed25519";
+        identitiesOnly = true;
       };
       cy = {
         hostname = "10.160.199.103";
         port = 30614;
         user = "root";
-        identityFile = "~/.ssh/ningbo";
+        identityFile = "~/.ssh/id_ed25519";
+        identitiesOnly = true;
       };
-      i12500 = {
-        hostname = "192.168.1.189";
-        port = 22;
-        user = "klchen";
-        identityFile = "~/.ssh/id_rsa";
-      };
+      # i12500 = {
+      #   hostname = "192.168.1.189";
+      #   port = 22;
+      #   user = "klchen";
+      #   identityFile = "~/.ssh/id_ed25519";
+      #   identitiesOnly = true;
+      # };
       n1 = {
         hostname = "192.168.0.254";
       };
@@ -440,25 +443,32 @@
         hostname = "10.82.68.40";
         port = 18022;
         user = "ckl";
-        identityFile = "~/.ssh/ningbo";
+        identityFile = "~/.ssh/id_ed25519";
+        identitiesOnly = true;
       };
       ningbo203 = {
         hostname = "10.82.68.203";
         port = 18022;
         user = "ckl";
-        identityFile = "~/.ssh/ningbo";
+        identityFile = "~/.ssh/id_ed25519";
+        identitiesOnly = true;
       };
       ningbo214 = {
         hostname = "10.82.1.214";
         port = 18022;
         user = "ckl";
-        identityFile = "~/.ssh/ningbo";
+        identityFile = "~/.ssh/id_ed25519";
+        identitiesOnly = true;
       };
       ningbo204 = {
         hostname = "10.82.68.204";
         port = 18022;
         user = "ckl";
-        identityFile = "~/.ssh/ningbo";
+        identityFile =
+          # "~/.ssh/id_ed25519"
+          "~/.ssh/id_rsa";
+        # ];
+        # identitiesOnly = true;
       };
 
     };
