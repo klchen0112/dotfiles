@@ -7,6 +7,6 @@
 }: {
   services.emacs = {
     enable = true;
-    package =pkgs.emacs-plus;
+    package = pkgs.emacs-plus;
   };
 }

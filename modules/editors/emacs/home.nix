@@ -64,7 +64,7 @@ in
   services.emacs = {
     enable = pkgs.stdenv.isLinux;
     client.enable = true;
-    socketActivation.enable =  true;
+    socketActivation.enable = true;
     startWithUserSession = "graphical";
     defaultEditor = true;
   };

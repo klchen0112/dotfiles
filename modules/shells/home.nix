@@ -204,16 +204,17 @@
     #   set -Ux tide_virtual_env_icon \ue73c
     # '';
     # issue from https://github.com/LnL7/nix-darwin/issues/122
-    shellInit = if pkgs.stdenv.hostPlatform.isDarwin then ''
-      fish_add_path --move --prepend --path $HOME/.nix-profile/bin  /run/current-system/sw/bin /opt/homebrew/bin /etc/profiles/per-user/${username}/bin
-      # >>> mamba initialize >>>
-      # !! Contents within this block are managed by 'mamba init' !!
-      set -gx MAMBA_EXE "/etc/profiles/per-user/${username}/bin/micromamba"
-      set -gx MAMBA_ROOT_PREFIX $HOME/micromamba
-      $MAMBA_EXE shell hook --shell fish --prefix $MAMBA_ROOT_PREFIX | source
-      # <<< mamba initialize <<<
-    '' else
-      "";
+    shellInit =
+      if pkgs.stdenv.hostPlatform.isDarwin then ''
+        fish_add_path --move --prepend --path $HOME/.nix-profile/bin  /run/current-system/sw/bin /opt/homebrew/bin /etc/profiles/per-user/${username}/bin
+        # >>> mamba initialize >>>
+        # !! Contents within this block are managed by 'mamba init' !!
+        set -gx MAMBA_EXE "/etc/profiles/per-user/${username}/bin/micromamba"
+        set -gx MAMBA_ROOT_PREFIX $HOME/micromamba
+        $MAMBA_EXE shell hook --shell fish --prefix $MAMBA_ROOT_PREFIX | source
+        # <<< mamba initialize <<<
+      '' else
+        "";
     plugins = with pkgs.fishPlugins; [
       # {
       #   name = "z";
