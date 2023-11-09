@@ -288,10 +288,11 @@
       # we try to make semantic highlighting look good
       "editor.semanticHighlighting.enabled" = true;
 
-      "window.autoDetectColorScheme" = true;
+
       "window.titleBarStyle" = "custom";
-      "workbench.preferredLightColorTheme" = "Catppuccin Latte";
-      "workbench.preferredDarkColorTheme" = "Catppuccin Macchiato";
+      # "window.autoDetectColorScheme" = true;
+      # "workbench.preferredLightColorTheme" = "Catppuccin Latte";
+      # "workbench.preferredDarkColorTheme" = "Catppuccin Macchiato";
       "workbench.colorTheme" = "Catppuccin Latte";
       "workbench.iconTheme" = "Catppuccin Latte";
 

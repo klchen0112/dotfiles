@@ -1,10 +1,7 @@
-#
 # fish configuration
 #
 { lib, inputs, pkgs, username, ... }: {
-  programs.gpg = {
-    enable = true;
-  };
+  programs.gpg = { enable = true; };
 
   programs.git = {
     enable = true;
@@ -14,6 +11,9 @@
     lfs.enable = true;
     userName = "klchen0112";
     userEmail = "klchen0112@gmail.com";
+    aliases = {
+      co = "checkout";
+    };
     extraConfig = {
       init.defaultBranch = "master"; # https://srid.ca/unwoke
       core.editor = "emacsclient";
@@ -34,12 +34,11 @@
     };
   };
 
-  programs.bash = {
-    enable = true;
-  };
+  programs.bash = { enable = true; };
   programs.zsh = {
     enable = false;
-    enableAutosuggestions = true; # Auto suggest options and highlights syntax, searches in history for options
+    enableAutosuggestions =
+      true; # Auto suggest options and highlights syntax, searches in history for options
     # syntaxHighlighting.enable = true;
     defaultKeymap = "emacs";
     enableCompletion = true;
@@ -205,21 +204,16 @@
     #   set -Ux tide_virtual_env_icon \ue73c
     # '';
     # issue from https://github.com/LnL7/nix-darwin/issues/122
-    loginShellInit =
-      if pkgs.stdenv.hostPlatform.isDarwin then
-        ''fish_add_path --move --prepend --path $HOME/.nix-profile/bin  /run/current-system/sw/bin /opt/homebrew/bin /etc/profiles/per-user/${username}/bin
-                          #>>> conda initialize >>>
-                          # !! Contents within this block are managed by 'conda init' !!
-                          #  eval /opt/homebrew/bin/conda "shell.fish" "hook" $argv | source
-                          # <<< conda initialize <<<
-                          # >>> mamba initialize >>>
-                          # !! Contents within this block are managed by 'mamba init' !!
-                          set -gx MAMBA_EXE "/etc/profiles/per-user/${username}/bin/micromamba"
-                          set -gx MAMBA_ROOT_PREFIX $HOME/micromamba
-                          $MAMBA_EXE shell hook --shell fish --prefix $MAMBA_ROOT_PREFIX | source
-                          # <<< mamba initialize <<<
-      ''
-      else "";
+    shellInit = if pkgs.stdenv.hostPlatform.isDarwin then ''
+      fish_add_path --move --prepend --path $HOME/.nix-profile/bin  /run/current-system/sw/bin /opt/homebrew/bin /etc/profiles/per-user/${username}/bin
+      # >>> mamba initialize >>>
+      # !! Contents within this block are managed by 'mamba init' !!
+      set -gx MAMBA_EXE "/etc/profiles/per-user/${username}/bin/micromamba"
+      set -gx MAMBA_ROOT_PREFIX $HOME/micromamba
+      $MAMBA_EXE shell hook --shell fish --prefix $MAMBA_ROOT_PREFIX | source
+      # <<< mamba initialize <<<
+    '' else
+      "";
     plugins = with pkgs.fishPlugins; [
       # {
       #   name = "z";
@@ -267,7 +261,13 @@
       theme = "OneHalfLight";
       style = "numbers,header,grid,changes,snip";
     };
-    extraPackages = with pkgs.bat-extras; [ batdiff batman batgrep batwatch prettybat ];
+    extraPackages = with pkgs.bat-extras; [
+      batdiff
+      batman
+      batgrep
+      batwatch
+      prettybat
+    ];
   };
   programs.fzf = {
     enable = true;
@@ -283,12 +283,8 @@
     enableBashIntegration = true;
     nix-direnv.enable = true;
   };
-  programs.jq = {
-    enable = true;
-  };
-  programs.man = {
-    enable = true;
-  };
+  programs.jq = { enable = true; };
+  programs.man = { enable = true; };
   programs.starship = {
     enable = true;
     enableZshIntegration = false;
@@ -359,16 +355,14 @@
         disabled = false;
         style = "bright-purple bold";
       };
-      git_status = {
-        disabled = false;
-      };
+      git_status = { disabled = false; };
       sudo = {
         disabled = false;
         format = "as $symbol";
       };
       python = {
         disabled = false;
-        format = "[$pyenv_prefix]($version)(\($virtualenv\))";
+        format = "[$pyenv_prefix]($version)(($virtualenv))";
       };
       nix_shell = {
         disabled = false;
@@ -384,13 +378,14 @@
       };
     };
   };
-  programs.ripgrep = {
-    enable = true;
-  };
+  programs.ripgrep = { enable = true; };
 
-
-
-  home.packages = with pkgs; [ inetutils nodePackages.prettier shfmt shellcheck ];
+  home.packages = with pkgs; [
+    inetutils
+    nodePackages.prettier
+    shfmt
+    shellcheck
+  ];
   programs.ssh = {
     enable = true;
     serverAliveInterval = 30;
@@ -432,9 +427,7 @@
       #   identityFile = "~/.ssh/id_ed25519";
       #   identitiesOnly = true;
       # };
-      n1 = {
-        hostname = "192.168.0.254";
-      };
+      n1 = { hostname = "192.168.0.254"; };
       tower = {
         hostname = "192.168.0.200";
         user = "root";
