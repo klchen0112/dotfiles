@@ -32,6 +32,9 @@
 
       # chinese font
       lxgw-wenkai
+      wqy_microhei
+      wqy_zenhei
+
       liberation_ttf
       overpass
       freefont_ttf
