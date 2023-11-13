@@ -31,11 +31,11 @@
       "homebrew/cask"
       "homebrew/cask-fonts"
       "homebrew/services"
-      "laishulu/macism"
+      # "laishulu/macism"
       # "FelixKratz/formulae"
     ];
     brews = [
-      "macism"
+      # "macism"
       "mas"
     ];
     casks = [
@@ -70,6 +70,7 @@
       # "zotero"
       "skim"
       # "via"
+      "TidGi"
       #"miniconda"
       # "activitywatch"
       # "openscad"

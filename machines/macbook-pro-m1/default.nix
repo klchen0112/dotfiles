@@ -38,9 +38,10 @@
     systemPackages = with pkgs; [
       cachix
       # sketchybar
-      fontconfig
+      # fontconfig
       gnugrep # replacee macos's grep
       gnutar # replacee macos's tar
+      p7zip
     ];
   };
 
