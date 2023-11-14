@@ -458,11 +458,8 @@
         hostname = "10.82.68.204";
         port = 18022;
         user = "ckl";
-        identityFile =
-          # "~/.ssh/id_ed25519"
-          "~/.ssh/id_rsa";
-        # ];
-        # identitiesOnly = true;
+        identityFile = "~/.ssh/id_ed25519";
+        identitiesOnly = true;
       };
 
     };

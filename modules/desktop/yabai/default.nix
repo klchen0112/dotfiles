@@ -9,6 +9,7 @@
 
   services.yabai = {
     enable = true;
+    package = pkgs.unstable.yabai;
     enableScriptingAddition = true;
     config = {
 
@@ -120,6 +121,7 @@
 
   services.skhd = {
     enable = true;
+    package = pkgs.unstable.skhd;
     skhdConfig = ''
       alt - b [
         *      : yabai -m window --focus west ; or yabai -m display --focus west
@@ -279,6 +281,7 @@
   #TODO fix plexamp and cava email
   services.sketchybar = {
     enable = true;
+    package = pkgs.unstable.sketchybar;
     extraPackages = [ pkgs.jq ];
     # this code from https://github.com/ColaMint/config.git
     config =

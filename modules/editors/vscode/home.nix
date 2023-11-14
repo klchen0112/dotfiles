@@ -78,6 +78,7 @@
         # csv
         # copilot
         # github.copilot
+        james-yu.latex-workshop
       ]
       ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
         {
