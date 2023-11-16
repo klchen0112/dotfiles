@@ -17,7 +17,8 @@
         # all alacritty themes can be found at
         #    https://github.com/alacritty/alacritty-theme
         - ~/.config/alacritty/theme_catppuccin.yml
-
+      selection:
+        save_to_clipboard: true
       window:
         # Background opacity
         #
