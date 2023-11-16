@@ -187,7 +187,7 @@
        ;;      )
        ;;kotlin            ; a better, slicker Java(Script)
        (latex             ; writing papers in Emacs has never been so fun
-        ;; +lsp
+        +lsp
         +latexmk                    ; what else would you use?
         +cdlatex                    ; quick maths symbols
         +fold)                      ; fold the clutter away nicities
@@ -286,8 +286,8 @@
 #+begin_src emacs-lisp :tangle config.el
 (use-package! benchmark-init
   :ensure t
-  :config
-  (add-hook! 'after-init-hook 'benchmark-init/deactivate)
+  ;;:config
+  ;;(add-hook! 'after-init-hook 'benchmark-init/deactivate)
 )
 #+end_src
 * Basic settings
@@ -547,19 +547,25 @@
 (setq menu-bar-mode t)
 #+end_src
 * Editor
-** jieba
+** 分词
 :PROPERTIES:
 :ID:       5efa8c16-ea05-491e-b9c5-5dc20137bce0
 :END:
 
 #+begin_src emacs-lisp :tangle packages.el
 ;;(package! jieba :recipe (:host github :repo "cireu/jieba.el"))
+(package! emt :recipe (:host github :repo "roife/emt"))
 #+end_src
 
 #+begin_src emacs-lisp :tangle config.el
 ;;(use-package jieba
 ;;  :commands jieba-mode
 ;;  :init (jieba-mode))
+(use-package emt
+  :hook (after-init . emt-mode)
+  :config
+  (setq emt-lib-path (concat doom-emacs-dir "EMT/libEMT.dylib"))
+)
 #+end_src
 ** Meow
 :PROPERTIES:
@@ -2418,6 +2424,7 @@ use dash open app dash
 (use-package! org-ai
   ;;:commands (org-ai-mode org-ai-global-mode)
   :hook (org-mode . org-ai-mode)
+  :after org
   :init
   (org-ai-global-mode)
   :config
