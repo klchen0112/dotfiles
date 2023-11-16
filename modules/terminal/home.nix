@@ -10,6 +10,26 @@
   xdg.configFile."alacritty/theme_catppuccin.yml".source = "${inputs.catppuccin-alacritty}/catppuccin-latte.yml";
   programs.alacritty = {
     enable = true;
+    # settings = {
+    #   imports = ["~/.config/alacritty/theme_catppuccin.yml"];
+    #   selection.save_to_clipboard= true;
+    #   window = {
+    #     opacity = 0.93;
+    #     startup_mode= "Maximized";
+    #     dynamic_title= true;
+    #     option_as_alt= "Both";
+    #   };
+    #   scrolling = {
+    #     history = 10000;
+    #   };
+    #   font = {
+    #     bold.family = "JetBrainsMono Nerd Font";
+    #     italic.family = "JetBrainsMono Nerd Font";
+    #     normal.family = "JetBrainsMono Nerd Font";
+    #     bold_italic.family = "JetBrainsMono Nerd Font";
+    #     size = 14;
+    #   };
+    # };
   };
   xdg.configFile."alacritty/alacritty.yml".text =
     ''
