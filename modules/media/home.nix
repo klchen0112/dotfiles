@@ -46,7 +46,7 @@
     # tidgi
     # marginnote
   ] ++ lib.optionals pkgs.stdenv.isDarwin
-    [ raycast ]
+    [ ]
   ++ lib.optionals pkgs.stdenv.isLinux
     [ plexamp ];
 

@@ -88,6 +88,8 @@
       "resilio-sync"
       "via"
       "zerotier-one"
+      "raycast"
+      "plexamp"
     ];
   };
 
