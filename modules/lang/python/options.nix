@@ -39,21 +39,15 @@
     # Always add the configured `pyenv` package.
     home.packages = [ config.programs.micromamba.package ];
     programs.bash.initExtra = lib.mkIf config.programs.micromamba.enableBashIntegration ''
-      export MAMBA_ROOT_PREFIX="${config.programs.micromamba.rootDirectory}"
-      export MAMBA_EXE="${config.programs.micromamba.package}/bin/micromamba"
-      eval "$($MAMBA_EXE shell init -s zsh -p $MAMBA_ROOT_PREFIX)"
+      ${config.programs.micromamba.package}/bin/micromamba shell hook --shell bash --prefix  ${config.programs.micromamba.rootDirectory} | source
     '';
 
     programs.zsh.initExtra = lib.mkIf config.programs.micromamba.enableZshIntegration ''
-      export MAMBA_ROOT_PREFIX="${config.programs.micromamba.rootDirectory}"
-      export MAMBA_EXE="${config.programs.micromamba.package}/bin/micromamba"
-      eval "$($MAMBA_EXE shell init -s zsh -p $MAMBA_ROOT_PREFIX)"
+      ${config.programs.micromamba.package}/bin/micromamba shell hook --shell zsh --prefix  ${config.programs.micromamba.rootDirectory} | source
     '';
 
     programs.fish.interactiveShellInit = lib.mkIf config.programs.micromamba.enableFishIntegration ''
-      set -Ux MAMBA_ROOT_PREFIX "${config.programs.micromamba.rootDirectory}"
-      set -Ux MAMBA_EXE "${config.programs.micromamba.package}/bin/micromamba"
-      $MAMBA_EXE shell hook --shell fish --prefix $MAMBA_ROOT_PREFIX | source
+      ${config.programs.micromamba.package}/bin/micromamba shell hook --shell fish --prefix  ${config.programs.micromamba.rootDirectory} | source
     '';
   };
 }
