@@ -203,21 +203,21 @@
         inputs.flake-utils.follows = "flake-utils";
       };
 
-      doom-emacs = {
-        url = "github:LuigiPiucco/doom-emacs";
-        flake = false;
-      };
+      # doom-emacs = {
+      #   url = "github:LuigiPiucco/doom-emacs";
+      #   flake = false;
+      # };
 
 
-      nix-doom-emacs = {
-        # Nix-community Doom Emacs
-        url = "github:nix-community/nix-doom-emacs";
-        inputs.doom-emacs.follows = "doom-emacs";
-        inputs.nixpkgs.follows = "nixpkgs";
-        inputs.emacs-overlay.follows = "emacs-overlay";
-        inputs.flake-utils.follows = "flake-utils";
-        inputs.flake-compat.follows = "flake-compat";
-      };
+      # nix-doom-emacs = {
+      #   # Nix-community Doom Emacs
+      #   url = "github:nix-community/nix-doom-emacs";
+      #   inputs.doom-emacs.follows = "doom-emacs";
+      #   inputs.nixpkgs.follows = "nixpkgs";
+      #   inputs.emacs-overlay.follows = "emacs-overlay";
+      #   inputs.flake-utils.follows = "flake-utils";
+      #   inputs.flake-compat.follows = "flake-compat";
+      # };
 
 
       # hyprland
@@ -276,10 +276,10 @@
         inputs.nixpkgs.follows = "nixpkgs";
       };
 
-      nixpkgs-mozilla = {
-        url = "github:mozilla/nixpkgs-mozilla";
-        # inputs.nixpkgs.follows = "nixpkgs";
-      };
+      # nixpkgs-mozilla = {
+      #   url = "github:mozilla/nixpkgs-mozilla";
+      #   inputs.nixpkgs.follows = "nixpkgs";
+      # };
 
 
       # AI
@@ -322,10 +322,6 @@
       };
       catppuccin-cava = {
         url = "github:catppuccin/cava";
-        flake = false;
-      };
-      cattppuccin-k9s = {
-        url = "github:catppuccin/k9s";
         flake = false;
       };
 
