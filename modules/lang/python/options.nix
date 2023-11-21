@@ -13,20 +13,20 @@
       default = "${config.home.homeDirectory}/micromamba";
       defaultText = "\${config.home.homeDirectory}/micromamba";
     };
-    # enableBashIntegration = lib.mkOption {
-    #   type = lib.types.bool;
-    #   default = true;
-    #   description = ''
-    #     Whether to enable micromamba's Bash integration.
-    #   '';
-    # };
-    # enableZshIntegration = lib.mkOption {
-    #   type = lib.types.bool;
-    #   default = true;
-    #   description = ''
-    #     Whether to enable micromamba's Zsh integration.
-    #   '';
-    # };
+    enableBashIntegration = lib.mkOption {
+      type = lib.types.bool;
+      default = true;
+      description = ''
+        Whether to enable micromamba's Bash integration.
+      '';
+    };
+    enableZshIntegration = lib.mkOption {
+      type = lib.types.bool;
+      default = true;
+      description = ''
+        Whether to enable micromamba's Zsh integration.
+      '';
+    };
     enableFishIntegration = lib.mkOption {
       type = lib.types.bool;
       default = true;
@@ -38,15 +38,17 @@
   config = lib.mkIf config.programs.micromamba.enable {
     # Always add the configured `pyenv` package.
     home.packages = [ config.programs.micromamba.package ];
-    # programs.bash.initExtra = lib.mkIf cfg.enableBashIntegration ''
-    #   export MAMBA_ROOT_PREFIX="${cfg.rootDirectory}"
-    #   eval "$(${lib.getExe cfg.package} init - bash)"
-    # '';
+    programs.bash.initExtra = lib.mkIf config.programs.micromamba.enableBashIntegration ''
+      export MAMBA_ROOT_PREFIX="${config.programs.micromamba.rootDirectory}"
+      export MAMBA_EXE="${config.programs.micromamba.package}/bin/micromamba"
+      eval "$($MAMBA_EXE shell init -s zsh -p $MAMBA_ROOT_PREFIX)"
+    '';
 
-    # programs.zsh.initExtra = lib.mkIf cfg.enableZshIntegration ''
-    #   export MAMBA_ROOT_PREFIX="${cfg.rootDirectory}"
-    #   eval "$(${lib.getExe cfg.package} init - zsh)"
-    # '';
+    programs.zsh.initExtra = lib.mkIf config.programs.micromamba.enableZshIntegration ''
+      export MAMBA_ROOT_PREFIX="${config.programs.micromamba.rootDirectory}"
+      export MAMBA_EXE="${config.programs.micromamba.package}/bin/micromamba"
+      eval "$($MAMBA_EXE shell init -s zsh -p $MAMBA_ROOT_PREFIX)"
+    '';
 
     programs.fish.interactiveShellInit = lib.mkIf config.programs.micromamba.enableFishIntegration ''
       set -Ux MAMBA_ROOT_PREFIX "${config.programs.micromamba.rootDirectory}"
