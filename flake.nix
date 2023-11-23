@@ -118,8 +118,8 @@
   inputs =
     # All flake references used to build my NixOS setup. These are dependencies.
     {
-      nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable"; # Nix Packages
-      nixpkgs-unstable.url = "github:nixos/nixpkgs/master"; # Nix Packages
+      nixpkgs.url = "github:nixos/nixpkgs/release-23.11"; # Nix Packages
+      nixpkgs-unstable.url = "github:nixos/nixpkgs/nixpkgs-unstable"; # Nix Packages
       systems.url = "github:nix-systems/default";
 
       nixos-hardware = {
@@ -201,6 +201,11 @@
         inputs.nixpkgs.follows = "nixpkgs";
         inputs.nixpkgs-stable.follows = "nixpkgs-unstable";
         inputs.flake-utils.follows = "flake-utils";
+      };
+
+      nixvim = {
+        url = "github:nix-community/nixvim";
+        inputs.nixpkgs.follows = "nixpkgs";
       };
 
       # doom-emacs = {
