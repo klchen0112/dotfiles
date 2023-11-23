@@ -36,8 +36,8 @@
        layout            ; auie,ctsrnm is the superior home row
 
        :completion
-       ;;(corfu +icons +orderless +tng) ; wait for doom merge
-       (company +childframe)           ; the ultimate code completion backend
+       (corfu +icons +orderless +tng) ; wait for doom merge
+       ;;(company +childframe)           ; the ultimate code completion backend
        ;;helm              ; the *other* search engine for love and life
        ;;ido               ; the other *other* search engine...
        ;;(ivy +fuzzy +prescient +childframe +icons)               ; a search engine for love and life
@@ -1995,10 +1995,9 @@ Refer to `org-agenda-prefix-format' for more information."
         (if IS-MAC
             (concat
              (car (last
-                   (split-string (shell-command-to-string "nix eval --raw ~/#emacs-plus") "\n")
+                   (split-string (shell-command-to-string "nix eval --raw ~/myOpenSource/dotfiles#emacs-plus") "\n")
                    ))
              "/include")
-          (concat (shell-command-to-string "nix eval --raw ~/myOpenSource/dotfiles#emacs-unstable") "/include")
           )
         )
   (setq default-input-method "rime")
