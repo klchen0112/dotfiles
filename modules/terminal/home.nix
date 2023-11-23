@@ -55,7 +55,7 @@
         #
         # Values for `startup_mode` (macOS only):
         #   - SimpleFullscreen
-        startup_mode: Maximized
+        startup_mode: Windowed
 
         # Allow terminal applications to change Alacritty's window title.
         dynamic_title: true
