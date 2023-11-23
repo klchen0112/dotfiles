@@ -81,7 +81,7 @@
       "sfm"
       #TODO remove
       "marginnote"
-      "zotero"
+      # "zotero"
       "logseq"
       "tencent-meeting"
       "telegram"
