@@ -7,7 +7,7 @@
     [
       anki
       # calibre
-      logseq
+      # logseq
       zotero
     ];
 }
