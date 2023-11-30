@@ -338,6 +338,8 @@
         sketchybar --add event front_app_switched
         # for yabai_mode
         sketchybar --add event space_change
+        # for input method
+        sketchybar --add event input_change AppleSelectedInputSourcesChangedNotification
 
         sketchybar --add item arch left                                                         \
                    --set arch icon="󰀵"                                                              \
@@ -471,9 +473,11 @@
         sketchybar --add alias 'TextInputMenuAgent' right                 \
                --set 'TextInputMenuAgent'                             \
                      alias.color=0xffffffff                           \
-                     icon.padding_left=0                              \
+                     icon.font.size=18 \
+                     icon.padding_left=0                             \
                      icon.padding_right=0                             \
-                     background.padding_right=10                       \
+                     icon.color=0xff6d8896   \
+                     background.padding_right=4                       \
                      background.padding_left=0            \
                      update_freq=3                        \
                      script="${sketchybar_scripts}/tray.sh"
