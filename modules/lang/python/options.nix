@@ -1,7 +1,7 @@
-{ pkgs, config,lib, ... }: {
+{ pkgs, config, lib, ... }: {
   options.programs.micromamba = {
     enable = lib.mkEnableOption "micromamba";
-     package = lib.mkOption {
+    package = lib.mkOption {
       type = lib.types.package;
       default = pkgs.micromamba;
       defaultText = lib.literalExpression "pkgs.micromamba";

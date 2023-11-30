@@ -1,22 +1,9 @@
-{ inputs
-, outputs
-, lib
-, config
-, pkgs
-, username
-, ...
-}: {
-  imports = [
-    inputs.vscode-server.homeModules.default
-  ];
+{ inputs, outputs, lib, config, pkgs, username, ... }: {
+  imports = [ inputs.vscode-server.homeModules.default ];
 
-  services.vscode-server.enable =
-    if pkgs.stdenv.isLinux
-    then true
-    else false;
+  services.vscode-server.enable = if pkgs.stdenv.isLinux then true else false;
   programs.vscode = {
-    enable =
-      true;
+    enable = true;
 
     package = pkgs.vscode;
 
@@ -74,8 +61,7 @@
         # copilot
         # github.copilot
         james-yu.latex-workshop
-      ]
-      ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
+      ] ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
         {
           name = "vscode-python-typehint";
           publisher = "njqdev";
@@ -132,21 +118,20 @@
         # }
 
       ] ++ lib.optionals pkgs.stdenv.isDarwin
-        (pkgs.vscode-utils.extensionsFromVscodeMarketplace
-          [{
+        (pkgs.vscode-utils.extensionsFromVscodeMarketplace [
+          {
             name = "vscode-dash";
             publisher = "deerawan";
             version = "2.4.0";
             sha256 = "Yqn59ppNWQRMWGYVLLWofogds+4t/WRRtSSfomPWQy4=";
           }
-            {
-              name = "vscode-micromamba";
-              publisher = "corker";
-              version = "0.1.18";
-              sha256 = "2lCr4+S/mYAC1b6hxwkuRbueFFoJDxo7L+CTvPmUnxk=";
-            }]
-        )
-    ;
+          {
+            name = "vscode-micromamba";
+            publisher = "corker";
+            version = "0.1.18";
+            sha256 = "2lCr4+S/mYAC1b6hxwkuRbueFFoJDxo7L+CTvPmUnxk=";
+          }
+        ]);
     enableUpdateCheck = false;
     enableExtensionUpdateCheck = false;
     userSettings = {
@@ -157,9 +142,7 @@
       "C_Cpp.errorSquiggles" = "Enabled";
       "C_Cpp.intelliSenseEngine" = "Disabled";
       "C_Cpp.intelliSenseEngineFallback" = "Disabled";
-      "[Log]" = {
-        "editor.fontSize" = 13;
-      };
+      "[Log]" = { "editor.fontSize" = 13; };
       "[c]" = {
         "editor" = {
           "quickSuggestions" = {
@@ -183,8 +166,10 @@
         "strings" = true;
       };
       "files.autoSave" = "afterDelay";
-      "editor.codeLensFontFamily" = "'Jetbrains Mono','Overpass','CMU Typewriter Text','Noto Serif CJK SC','Noto Serif','Hack Nerd Font'";
-      "editor.fontFamily" = "'Jetbrains Mono','Overpass','CMU Typewriter Text','Noto Serif CJK SC','Noto Serif','Hack Nerd Font'";
+      "editor.codeLensFontFamily" =
+        "'Jetbrains Mono','Overpass','CMU Typewriter Text','Noto Serif CJK SC','Noto Serif','Hack Nerd Font'";
+      "editor.fontFamily" =
+        "'Jetbrains Mono','Overpass','CMU Typewriter Text','Noto Serif CJK SC','Noto Serif','Hack Nerd Font'";
       "editor.fontLigatures" = true;
       "editor.fontSize" = 16;
       "editor.formatOnPaste" = true;
@@ -244,23 +229,15 @@
       "terminal.external.osxExec" = "kitty.app";
       "terminal.integrated.automationProfile.osx" = "fish";
       "terminal.integrated.enableBell" = true;
-      "terminal.integrated.env.windows" = {
-        "LC_ALL" = "zh_CN.UTF-8";
-      };
+      "terminal.integrated.env.windows" = { "LC_ALL" = "zh_CN.UTF-8"; };
       "terminal.integrated.fontSize" = 15;
       "terminal.integrated.gpuAcceleration" = "on";
       "terminal.integrated.rightClickBehavior" = "selectWord";
       "terminal.integrated.minimumContrastRatio" = 1;
-      "todo-tree.general.tags" = [
-        "BUG"
-        "HACK"
-        "FIXME"
-        "TODO"
-        "XXX"
-        "[ ]"
-        "[x]"
-      ];
-      "todo-tree.regex.regex" = "(//|#|<!--|;|/\\*|^|^\\s*(-|\\d+.))\\s*($TAGS)";
+      "todo-tree.general.tags" =
+        [ "BUG" "HACK" "FIXME" "TODO" "XXX" "[ ]" "[x]" ];
+      "todo-tree.regex.regex" =
+        "(//|#|<!--|;|/\\*|^|^\\s*(-|\\d+.))\\s*($TAGS)";
       "workbench.editor.enablePreview" = false;
       "terminal.explorerKind" = "external";
       "editor.lineNumbers" = "relative";
@@ -284,7 +261,6 @@
       # we try to make semantic highlighting look good
       "editor.semanticHighlighting.enabled" = true;
 
-
       "window.titleBarStyle" = "custom";
       # "window.autoDetectColorScheme" = true;
       # "workbench.preferredLightColorTheme" = "Catppuccin Latte";
@@ -299,12 +275,8 @@
         "cy" = "linux";
         "i12500" = "linux";
       };
-      "[yaml]" = {
-        "editor.comments.insertSpace" = false;
-      };
-      "[python]" = {
-        "editor.formatOnType" = true;
-      };
+      "[yaml]" = { "editor.comments.insertSpace" = false; };
+      "[python]" = { "editor.formatOnType" = true; };
     };
   };
 }
