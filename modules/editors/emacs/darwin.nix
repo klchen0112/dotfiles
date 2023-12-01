@@ -3,6 +3,7 @@
 , lib
 , config
 , pkgs
+, username
 , ...
 }: {
   services.emacs = {

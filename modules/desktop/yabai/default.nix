@@ -276,6 +276,8 @@
       ]
 
       shift + alt - space : yabai -m window --toggle float
+
+      lctrl + alt + shift - e : emacsclient -c -n -a \'\'
     '';
   };
   #TODO fix plexamp and cava email

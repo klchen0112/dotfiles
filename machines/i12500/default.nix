@@ -69,7 +69,7 @@
   systemd.targets.suspend.enable = false;
   systemd.targets.hibernate.enable = false;
   systemd.targets.hybrid-sleep.enable = false;
-  system.stateVersion = "23.05";
+  system.stateVersion = "23.11";
 
 
 }
