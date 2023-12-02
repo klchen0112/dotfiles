@@ -7,10 +7,12 @@
 }: {
 
   services.emacs = {
-    enable = false;
-    package = pkgs.emacs-pgtk;
+    enable = true;
+    package = pkgs.emacs-unstable-pgtk;
     defaultEditor = true;
-    # client.enable = true;
+    client.enable = true;
+    install = true;
+    startWithGraphical = true;
   };
 
 }

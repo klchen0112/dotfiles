@@ -11,7 +11,7 @@ let
     if pkgs.stdenv.hostPlatform.isDarwin then
       pkgs.emacs-plus
     else
-      pkgs.emacs-pgtk;
+      pkgs.emacs-unstable-pgtk;
 in
 {
   home.packages = with pkgs; [
