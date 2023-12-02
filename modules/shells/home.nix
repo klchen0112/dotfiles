@@ -409,13 +409,13 @@
         identityFile = "~/.ssh/id_ed25519";
         identitiesOnly = true;
       };
-      # i12500 = {
-      #   hostname = "192.168.1.189";
-      #   port = 22;
-      #   user = "klchen";
-      #   identityFile = "~/.ssh/id_ed25519";
-      #   identitiesOnly = true;
-      # };
+      i12500 = {
+        hostname = "192.168.1.107";
+        port = 22;
+        user = "klchen";
+        identityFile = "~/.ssh/id_ed25519";
+        identitiesOnly = true;
+      };
       n1 = { hostname = "192.168.0.254"; };
       tower = {
         hostname = "192.168.0.200";
