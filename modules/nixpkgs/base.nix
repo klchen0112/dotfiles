@@ -40,9 +40,6 @@
       #  allowBroken = true;
       # for wechat uos
       permittedInsecurePackages = [
-        "openssl-1.1.1w"
-        "electron-19.1.9"
-        "electron-24.8.6"
         "zotero-6.0.27"
       ];
     };
