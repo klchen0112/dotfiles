@@ -1,7 +1,13 @@
 { inputs, outputs, lib, config, pkgs, username, ... }: {
   imports = [ inputs.vscode-server.homeModules.default ];
 
-  services.vscode-server.enable = if pkgs.stdenv.isLinux then true else false;
+  services.vscode-server = {
+    enable = if pkgs.stdenv.isLinux then true else false;
+    enableFHS = true;
+    extraRuntimeDependencies = pkgs: with pkgs; [
+      curl
+    ];
+  };
   programs.vscode = {
     enable = true;
 

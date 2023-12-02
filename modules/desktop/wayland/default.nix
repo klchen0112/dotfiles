@@ -12,7 +12,7 @@
         enable = true;
         # hidpi = true;
       };
-      enableNvidiaPatches = false;
+      # enableNvidiaPatches = false;
     };
     # monitor backlight control
     light.enable = true;
