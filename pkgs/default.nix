@@ -20,6 +20,7 @@
 
 
   emacs-plus = inputs.emacs-overlay.packages.${pkgs.system}.emacs-unstable.overrideAttrs (old: {
+    withXwidgets = true;
     patches =
       (old.patches or [ ])
       ++ [

@@ -1,11 +1,7 @@
 { pkgs, inputs, ... }: {
-  imports = [
-    inputs.nixvim.homeManagerModules.nixvim
-  ];
-
   programs = {
     vim = {
-      enable = false;
+      enable = true;
       settings = {
         background = "light";
         copyindent = true;

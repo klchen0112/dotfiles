@@ -10,7 +10,6 @@
     ./vscode/home.nix
     ./jetbrains/home.nix
     ./emacs/home.nix
-    ./helix/home.nix
     ./vim/home.nix
   ];
   home.packages = with pkgs; [

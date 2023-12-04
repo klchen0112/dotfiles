@@ -203,10 +203,6 @@
         inputs.flake-utils.follows = "flake-utils";
       };
 
-      nixvim = {
-        url = "github:nix-community/nixvim";
-        inputs.nixpkgs.follows = "nixpkgs";
-      };
 
       # doom-emacs = {
       #   url = "github:LuigiPiucco/doom-emacs";
@@ -267,25 +263,12 @@
         inputs.hyprland.follows = "hyprland";
       };
 
-      vscode-server = {
-        url = "github:msteen/nixos-vscode-server";
-        inputs.nixpkgs.follows = "nixpkgs";
-        inputs.flake-utils.follows = "flake-utils";
-      };
-
-
       # fonts
       apple-fonts = {
         url = "github:Lyndeno/apple-fonts.nix";
         inputs.flake-utils.follows = "flake-utils";
         inputs.nixpkgs.follows = "nixpkgs";
       };
-
-      # nixpkgs-mozilla = {
-      #   url = "github:mozilla/nixpkgs-mozilla";
-      #   inputs.nixpkgs.follows = "nixpkgs";
-      # };
-
 
       # AI
 
@@ -297,34 +280,37 @@
         url = "github:catppuccin/btop";
         flake = false;
       };
+
       catppuccin-fcitx5 = {
         url = "github:catppuccin/fcitx5";
         flake = false;
       };
+
       catppuccin-bat = {
         url = "github:catppuccin/bat";
         flake = false;
       };
+
       catppuccin-alacritty = {
         url = "github:catppuccin/alacritty";
         flake = false;
       };
+
       catppuccin-wezterm = {
         url = "github:catppuccin/wezterm";
         flake = false;
       };
-      catppuccin-helix = {
-        url = "github:catppuccin/helix";
-        flake = false;
-      };
+
       catppuccin-starship = {
         url = "github:catppuccin/starship";
         flake = false;
       };
+
       catppuccin-hyprland = {
         url = "github:catppuccin/hyprland";
         flake = false;
       };
+
       catppuccin-cava = {
         url = "github:catppuccin/cava";
         flake = false;
