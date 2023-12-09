@@ -68,7 +68,7 @@ in
       logFile = mkOption {
         type = types.nullOr types.path;
         default = null;
-        example = "/var/tmp/lorri.log";
+        example = "/var/tmp/aria2.log";
         description = lib.mdDoc ''
           The logfile to use for the ipfs service. Alternatively
           {command}`sudo launchctl debug system/org.nixos.ipfs --stderr`
