@@ -17,6 +17,7 @@
     ../../modules/lang/home.nix
     ../../modules/media/home.nix
     ../../modules/network/home.nix
+    ../../modules/sync/home.nix
     ../../modules/shells/home.nix
     ../../modules/socialMedia/home.nix
     ../../modules/terminal/home.nix

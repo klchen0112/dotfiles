@@ -49,7 +49,7 @@
       "google-chrome"
       "steam"
       "appcleaner"
-      # "firefox"
+      "firefox"
       # "hammerspoon"
       # "authy"
       # "hiddenbar"
@@ -85,11 +85,11 @@
       "logseq"
       "tencent-meeting"
       "telegram"
-      "resilio-sync"
       "via"
       "zerotier-one"
       "raycast"
       "plexamp"
+      "syncthing"
     ];
   };
 
