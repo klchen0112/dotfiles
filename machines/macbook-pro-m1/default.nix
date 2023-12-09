@@ -42,7 +42,7 @@
       gnugrep # replacee macos's grep
       gnutar # replacee macos's tar
       p7zip
-      inputs.agenix.packages.${system}.default
+      inputs.agenix.packages.${pkgs.stdenv.hostPlatform.system}.default
     ];
   };
 

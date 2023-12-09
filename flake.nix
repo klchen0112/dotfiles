@@ -122,7 +122,11 @@
       nixpkgs.url = "github:nixos/nixpkgs/release-23.11"; # Nix Packages
       nixpkgs-unstable.url = "github:nixos/nixpkgs/nixpkgs-unstable"; # Nix Packages
       systems.url = "github:nix-systems/default";
-      agenix.url = "github:ryantm/agenix";
+      agenix = {
+        url = "github:ryantm/agenix";
+        inputs.darwin.follows = "darwin";
+        inputs.home-manager.follows = "home-manager";
+      };
       nixos-hardware = {
         url = "github:NixOS/nixos-hardware";
       };
