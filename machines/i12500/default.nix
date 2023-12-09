@@ -71,5 +71,16 @@
   systemd.targets.hybrid-sleep.enable = false;
   system.stateVersion = "23.11";
 
+  environment = {
+    shells = with pkgs; [ fish bash ]; # Default shell
+    systemPackages = with pkgs; [
+      cachix
+      fontconfig
+      gnugrep # replacee macos's grep
+      gnutar # replacee macos's tar
+      p7zip
+      inputs.agenix.packages.${system}.default
+    ];
+  };
 
 }

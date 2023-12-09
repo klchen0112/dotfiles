@@ -6,13 +6,14 @@
       # replace official cache with a mirror located in China
       "https://mirror.sjtu.edu.cn/nix-channels/store"
       "https://cache.nixos.org"
-    ];
-    extra-substituters = [
       "https://anyrun.cachix.org"
       "https://hyprland.cachix.org"
+    ];
+    extra-substituters = [
       "https://nix-community.cachix.org"
       "https://nixpkgs-wayland.cachix.org"
       "https://ruixi-rebirth.cachix.org"
+      "https://ryan4yin.cachix.org"
     ];
     extra-trusted-public-keys = [
       "ryan4yin.cachix.org-1:Gbk27ZU5AYpGS9i3ssoLlwdvMIh0NxG0w8it/cv9kbU="
@@ -121,7 +122,7 @@
       nixpkgs.url = "github:nixos/nixpkgs/release-23.11"; # Nix Packages
       nixpkgs-unstable.url = "github:nixos/nixpkgs/nixpkgs-unstable"; # Nix Packages
       systems.url = "github:nix-systems/default";
-
+      agenix.url = "github:ryantm/agenix";
       nixos-hardware = {
         url = "github:NixOS/nixos-hardware";
       };
