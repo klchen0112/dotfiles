@@ -40,16 +40,16 @@ in
           {command}`sudo launchctl kickstart -k system/org.nixos.ipfs`.
         '';
       };
-  };
-  config = mkIf cfg.enable {
-    environment.systemPackages = [ pkgs.syncthing ];
-    launchd.user.agents.syncthing = {
-      command = "${pkgs.syncthing}/bin/syncthing -no-browser -no-restart -logflags=0";
-      serviceConfig = {
-        KeepAlive = true;
-        StandardOutPath = cfg.logFile;
-        StandardErrorPath = cfg.logFile;
+    };
+    config = mkIf cfg.enable {
+      environment.systemPackages = [ pkgs.syncthing ];
+      launchd.user.agents.syncthing = {
+        command = "${pkgs.syncthing}/bin/syncthing -no-browser -no-restart -logflags=0";
+        serviceConfig = {
+          KeepAlive = true;
+          StandardOutPath = cfg.logFile;
+          StandardErrorPath = cfg.logFile;
+        };
       };
     };
-  };
-}
+  }

@@ -4,6 +4,6 @@
     # tdlib
   ] ++ lib.optionals (pkgs.stdenv.isLinux)
     [
-  
+
     ];
 }

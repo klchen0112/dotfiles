@@ -3,6 +3,6 @@
 
   ] ++ lib.optionals (pkgs.stdenv.isLinux)
     [
-        
+
     ];
 }
