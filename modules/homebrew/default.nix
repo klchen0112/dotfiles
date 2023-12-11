@@ -78,7 +78,7 @@
       # "mathpix-snipping-tool"
       # "sing-box"
       "logi-options-plus"
-      "sfm"
+      # "sfm"
       #TODO remove
       "marginnote"
       # "zotero"

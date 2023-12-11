@@ -5,7 +5,6 @@
 , ...
 }: {
   home.packages = with pkgs; [
-    # openvpn
-    # zerotierone
+    # sing-box
   ];
 }

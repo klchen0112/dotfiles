@@ -374,6 +374,7 @@
     nodePackages.prettier
     shfmt
     shellcheck
+    fastfetch
   ];
   programs.ssh = {
     enable = true;
