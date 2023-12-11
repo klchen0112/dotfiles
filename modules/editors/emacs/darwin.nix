@@ -10,4 +10,5 @@
     enable = true;
     package = pkgs.emacs-plus;
   };
+  environment.variables.EDITOR = "emacs";
 }
