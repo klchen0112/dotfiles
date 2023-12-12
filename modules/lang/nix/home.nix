@@ -3,5 +3,6 @@
     # alejandra
     nixfmt
     # nix-du
+    nil
   ];
 }
