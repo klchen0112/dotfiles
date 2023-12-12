@@ -7,9 +7,13 @@
     package = pkgs.google-chrome;
   };
   programs.firefox = {
-    enable = pkgs.stdenv.isLinux;
+    enable = true;
     enableGnomeExtensions = false;
-    package = pkgs.firefox-wayland; # firefox with wayland support
+    package =
+      if pkgs.stdenv.isDarwin then
+        pkgs.nur.repos.toonn.apps.firefox
+      else
+        pkgs.firefox-wayland; # firefox with wayland support
     profiles = {
       "klchen" = {
         id = 0;

@@ -49,7 +49,7 @@
       "google-chrome"
       "steam"
       "appcleaner"
-      "firefox"
+      # "firefox"
       # "hammerspoon"
       # "authy"
       # "hiddenbar"

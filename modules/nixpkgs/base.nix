@@ -36,7 +36,7 @@
     config = {
       allowUnfree = true; # Allow proprietary software.
       allowUnfreePredicate = (_: true);
-      #  allowUnsupportedSystem = true;
+      allowUnsupportedSystem = true;
       #  allowBroken = true;
       # for wechat uos
       permittedInsecurePackages = [
