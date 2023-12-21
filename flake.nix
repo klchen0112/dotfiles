@@ -31,7 +31,6 @@
     , nixpkgs
     , home-manager
     , darwin
-    , nur
     , ...
     }:
     # Function that tells my flake which to use and what do what to do with the dependencies.

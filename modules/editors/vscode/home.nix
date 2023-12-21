@@ -74,8 +74,8 @@
         {
           name = "catppuccin-vsc-icons";
           publisher = "Catppuccin";
-          version = "0.29.0";
-          sha256 = "bB4GrAljML5YdsRI6gU6q8tS8jXIXL5q2Kk3HDnI4RU=";
+          version = "0.30.0";
+          sha256 = "D8pQ6qKjGLvAU59Q4X966RlxTb5AQNqBTrCY0meguQw=";
         }
         {
           name = "org-mode";
@@ -83,12 +83,7 @@
           version = "1.0.0";
           sha256 = "o9CIjMlYQQVRdtTlOp9BAVjqrfFIhhdvzlyhlcOv5rY=";
         }
-        # {
-        #   name = "vscode-micromamba";
-        #   publisher = "corker";
-        #   version = "0.1.15";
-        #   sha256 = "7m35bnGrgOt3uyRwSu93FCLYxeRiA6y97E8ypoi4Ouo=";
-        # }
+
         # {
         #   name = "theme-dracula";
         #   publisher = "dracula-theme";
@@ -125,8 +120,8 @@
           {
             name = "vscode-micromamba";
             publisher = "corker";
-            version = "0.1.18";
-            sha256 = "2lCr4+S/mYAC1b6hxwkuRbueFFoJDxo7L+CTvPmUnxk=";
+            version = "0.1.20";
+            sha256 = "/4Gc07cpif/coLSbaz3hg69PRtYOuWTf3zlY/7hAA3g=";
           }
         ]);
     enableUpdateCheck = false;

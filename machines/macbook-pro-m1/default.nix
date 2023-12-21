@@ -25,7 +25,7 @@
     shell = pkgs.fish; # Default shell
   };
 
-
+  programs.zsh.enable = true;
   programs.fish.enable = true;
 
   environment = {

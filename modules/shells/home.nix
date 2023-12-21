@@ -36,7 +36,7 @@
 
   programs.bash = { enable = true; };
   programs.zsh = {
-    enable = false;
+    enable = true;
     enableAutosuggestions =
       true; # Auto suggest options and highlights syntax, searches in history for options
     # syntaxHighlighting.enable = true;
@@ -276,7 +276,7 @@
   programs.man = { enable = true; };
   programs.starship = {
     enable = true;
-    enableZshIntegration = false;
+    enableZshIntegration = true;
     enableFishIntegration = true;
     settings = {
       add_newline = false;
