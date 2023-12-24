@@ -65,6 +65,7 @@
     shellAliases = {
       conda = "micromamba";
       "..." = "cd ../..";
+      "cd" = "z";
     };
     # interactiveShellInit = ''
     #   set -Ux _tide_left_items os pwd git newline character
