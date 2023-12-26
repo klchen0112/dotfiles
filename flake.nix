@@ -6,10 +6,10 @@
       # replace official cache with a mirror located in China
       "https://mirror.sjtu.edu.cn/nix-channels/store"
       "https://cache.nixos.org"
-      "https://anyrun.cachix.org"
-      "https://hyprland.cachix.org"
     ];
     extra-substituters = [
+      "https://hyprland.cachix.org"
+      "https://anyrun.cachix.org"
       "https://nix-community.cachix.org"
       "https://nixpkgs-wayland.cachix.org"
       "https://ruixi-rebirth.cachix.org"
