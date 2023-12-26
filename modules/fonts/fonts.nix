@@ -68,6 +68,8 @@
           "NerdFontsSymbolsOnly"
         ];
       })
+
+      Jigmo 
     ] ++ lib.optionals pkgs.stdenv.isDarwin
       [
         sf-pro

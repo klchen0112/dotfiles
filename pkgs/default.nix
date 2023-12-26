@@ -2,6 +2,7 @@
 # You can build them using 'nix build .#example'
 { inputs, pkgs }: {
   TsangerJinKai02 = pkgs.callPackage ./TsangerJinKai02.nix { };
+  Jigmo = pkgs.callPackage ./Jigmo.nix { };
   # example = pkgs.callPackage ./example { };
   sf-pro = inputs.apple-fonts.packages.${pkgs.system}.sf-pro;
   sf-pro-nerd = inputs.apple-fonts.packages.${pkgs.system}.sf-pro-nerd;
