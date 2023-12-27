@@ -23,111 +23,132 @@
       "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
       "ruixi-rebirth.cachix.org-1:sWs3V+BlPi67MpNmP8K4zlA3jhPCAvsnLKi4uXsiLI4="
     ];
-    trusted-users = [ "root" "@wheel" ];
+    trusted-users = ["root" "@wheel"];
   };
 
-  outputs =
-    inputs @ { self
-    , nixpkgs
-    , home-manager
-    , darwin
-    , ...
-    }:
-    # Function that tells my flake which to use and what do what to do with the dependencies.
-    let
-      # Variables that can be used in the config files.
-      inherit (self) outputs;
-      forAllSystems = nixpkgs.lib.genAttrs [
-        "aarch64-linux"
-        "i686-linux"
-        "x86_64-linux"
-        "aarch64-darwin"
-        "x86_64-darwin"
-      ];
+  outputs = inputs @ {
+    self,
+    nixpkgs,
+    home-manager,
+    darwin,
+    ...
+  }:
+  # Function that tells my flake which to use and what do what to do with the dependencies.
+  let
+    # Variables that can be used in the config files.
+    inherit (self) outputs;
+    forAllSystems = nixpkgs.lib.genAttrs [
+      "aarch64-linux"
+      "i686-linux"
+      "x86_64-linux"
+      "aarch64-darwin"
+      "x86_64-darwin"
+    ];
+    username = "klchen";
+    userEmail = "klchen0112@gmail.com";
+  in rec {
+    packages = forAllSystems (
+      system: let
+        pkgs = nixpkgs.legacyPackages.${system};
+      in
+        import ./pkgs {inherit pkgs inputs;}
+    );
+    formatter = forAllSystems (system: nixpkgs.legacyPackages.${system}.alejandra);
 
-    in
-    rec {
-      packages = forAllSystems (system:
-        let pkgs = nixpkgs.legacyPackages.${system};
-        in import ./pkgs { inherit pkgs inputs; }
-      );
-      formatter = forAllSystems (system: nixpkgs.legacyPackages.${system}.nixpkgs-fmt);
+    # Accessible through 'nix develop' or 'nix-shell' (legacy)
+    overlays = import ./overlays {inherit inputs;};
 
-      # Accessible through 'nix develop' or 'nix-shell' (legacy)
-      overlays = import ./overlays { inherit inputs; };
-
-      nixosConfigurations =
-        let
-          username = "klchen";
-        in
-        {
-          # NixOS configurations
-          "i12500" = nixpkgs.lib.nixosSystem {
-            system = "x86_64-linux";
-            specialArgs = {
-              inherit inputs username outputs;
-
-            };
-            modules = [
-              # hyprland.nixosModules.default
-              ./machines/i12500
-
-            ];
-          };
+    nixosConfigurations = let
+      username = "klchen";
+    in {
+      # NixOS configurations
+      "i12500" = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        specialArgs = {
+          inherit inputs username outputs;
         };
-      homeConfigurations = {
-        "klchen@i12500" =
-          let username = "klchen";
-          in
-          home-manager.lib.homeManagerConfiguration
-            {
-              pkgs = nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
-              extraSpecialArgs = { inherit inputs outputs username; };
-              modules = [
-                # > Our main home-manager configuration file <
-                ./hosts/i12500
-              ];
-            };
+        modules = [
+          # hyprland.nixosModules.default
+          ./machines/i12500
+        ];
       };
-      darwinConfigurations =
-        let username = "klchen";
-        in
+    };
+    homeConfigurations = {
+      "klchen@i12500" = let
+        username = "klchen";
+      in
+        home-manager.lib.homeManagerConfiguration
         {
-          "macbook-pro-m1" = darwin.lib.darwinSystem {
-            system = "aarch64-darwin";
-            specialArgs = {
-              inherit username inputs outputs;
-            };
-            # pkgs = nixpkgs.legacyPackages.aarch64-darwin;
-            modules = [
-              # Modules that are used
-              ./machines/macbook-pro-m1
-              home-manager.darwinModules.home-manager
-              {
-                # Home-Manager module that is used
-                home-manager.useGlobalPkgs = true;
-                home-manager.useUserPackages = true;
-                home-manager.extraSpecialArgs = { inherit username inputs outputs; }; # Pass flake variable
-                home-manager.users.${username} = import ./hosts/macbook-pro-m1/default.nix;
-              }
-            ];
-          };
+          pkgs = nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
+          extraSpecialArgs = {inherit inputs outputs username;};
+          modules = [
+            # > Our main home-manager configuration file <
+            ./hosts/i12500
+          ];
         };
     };
+    darwinConfigurations = let
+      username = "klchen";
+    in {
+      "macbook-pro-m1" = darwin.lib.darwinSystem {
+        system = "aarch64-darwin";
+        specialArgs = {
+          inherit username inputs outputs;
+        };
+        # pkgs = nixpkgs.legacyPackages.aarch64-darwin;
+        modules = [
+          # Modules that are used
+          ./machines/macbook-pro-m1
+          home-manager.darwinModules.home-manager
+          {
+            # Home-Manager module that is used
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.extraSpecialArgs = {inherit username inputs outputs;}; # Pass flake variable
+            home-manager.users.${username} = import ./hosts/macbook-pro-m1/default.nix;
+          }
+        ];
+      };
+    };
+  };
 
   inputs =
     # All flake references used to build my NixOS setup. These are dependencies.
     {
-      nixpkgs.url = "github:nixos/nixpkgs/release-23.11"; # Nix Packages
-      nixpkgs-unstable.url = "github:nixos/nixpkgs/nixpkgs-unstable"; # Nix Packages
+      nixpkgs.url = "github:nixos/nixpkgs/nixos-23.11"; # Nix Packages
+      nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable"; # Nix Packages
+
+      #  MacOS
+      nixpkgs-darwin.url = "github:nixos/nixpkgs/nixpkgs-23.11-darwin";
+      darwin = {
+        url = "github:lnl7/nix-darwin/master"; # MacOS Package Management
+        inputs.nixpkgs.follows = "nixpkgs-darwin";
+      };
+
+      # Home Manager
+      home-manager = {
+        # User Package Management
+        url = "github:nix-community/home-manager/release-23.11";
+        inputs.nixpkgs.follows = "nixpkgs";
+      };
+
+      nixos-hardware = {
+        url = "github:NixOS/nixos-hardware";
+      };
+
       systems.url = "github:nix-systems/default";
+
+      # secrets management
       agenix = {
         url = "github:ryantm/agenix";
         inputs.darwin.follows = "darwin";
         inputs.home-manager.follows = "home-manager";
       };
-      nixos-hardware = {
-        url = "github:NixOS/nixos-hardware";
+
+      # add git hooks to format nix code before commit
+      pre-commit-hooks = {
+        url = "github:cachix/pre-commit-hooks.nix";
+        inputs.nixpkgs.follows = "nixpkgs";
       };
 
       devshell = {
@@ -156,11 +177,6 @@
         flake = false;
       };
 
-      home-manager = {
-        # User Package Management
-        url = "github:nix-community/home-manager/release-23.11";
-        inputs.nixpkgs.follows = "nixpkgs";
-      };
       nixpkgs-lib.url = "github:nix-community/nixpkgs.lib";
       lib-aggregate = {
         # User Package Management
@@ -175,11 +191,6 @@
         inputs.nixpkgs.follows = "nixpkgs";
         inputs.flake-parts.follows = "flake-parts";
         inputs.treefmt-nix.follows = "treefmt-nix";
-      };
-
-      darwin = {
-        url = "github:lnl7/nix-darwin/master"; # MacOS Package Management
-        inputs.nixpkgs.follows = "nixpkgs";
       };
 
       nur = {
@@ -207,12 +218,10 @@
         inputs.flake-utils.follows = "flake-utils";
       };
 
-
       # doom-emacs = {
       #   url = "github:LuigiPiucco/doom-emacs";
       #   flake = false;
       # };
-
 
       # nix-doom-emacs = {
       #   # Nix-community Doom Emacs
@@ -223,7 +232,6 @@
       #   inputs.flake-utils.follows = "flake-utils";
       #   inputs.flake-compat.follows = "flake-compat";
       # };
-
 
       # hyprland
 
@@ -276,7 +284,6 @@
 
       # AI
 
-
       ########################  Color Schemes  #########################################
 
       # color scheme - catppuccin
@@ -326,8 +333,4 @@
         flake = false;
       };
     };
-
-
-
 }
-

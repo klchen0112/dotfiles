@@ -1,20 +1,23 @@
-{ config, lib, pkgs, ... }:
-
-with lib;
-
-let
-  cfg = config.services.aria2;
-  formatLine = n: v:
-    let
-      formatValue = v:
-        if builtins.isBool v then
-          (if v then "true" else "false")
-        else
-          toString v;
-    in
-    "${n}=${formatValue v}";
-in
 {
+  config,
+  lib,
+  pkgs,
+  ...
+}:
+with lib; let
+  cfg = config.services.aria2;
+  formatLine = n: v: let
+    formatValue = v:
+      if builtins.isBool v
+      then
+        (
+          if v
+          then "true"
+          else "false"
+        )
+      else toString v;
+  in "${n}=${formatValue v}";
+in {
   options = {
     services.aria2 = {
       enable = mkOption {
@@ -31,8 +34,8 @@ in
         '';
       };
       settings = mkOption {
-        type = with types; attrsOf (oneOf [ bool float int str ]);
-        default = { };
+        type = with types; attrsOf (oneOf [bool float int str]);
+        default = {};
         description = ''
           Options to add to {file}`aria2.conf` file.
           See
@@ -79,7 +82,7 @@ in
     };
   };
   config = mkIf cfg.enable {
-    environment.systemPackages = [ pkgs.aria2 ];
+    environment.systemPackages = [pkgs.aria2];
     launchd.user.agents.aria2 = {
       command = "${pkgs.aria2}/bin/aria2c --enable-rpc --conf-path=/etc/aria2.conf ${config.services.aria2.extraArguments}";
       serviceConfig = {
@@ -88,7 +91,7 @@ in
         StandardErrorPath = cfg.logFile;
       };
     };
-    environment.etc."aria2.conf".text = concatStringsSep "\n" ([ ]
+    environment.etc."aria2.conf".text = concatStringsSep "\n" ([]
       ++ mapAttrsToList formatLine cfg.settings
       ++ optional (cfg.extraConfig != "") cfg.extraConfig);
   };

@@ -1,7 +1,7 @@
 #
 # fish configuration
 #
-{ pkgs, ... }: {
+{pkgs, ...}: {
   home.packages = with pkgs; [
   ];
   # utm

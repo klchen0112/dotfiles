@@ -1,4 +1,9 @@
-{ pkgs, config, lib, ... }: {
+{
+  pkgs,
+  config,
+  lib,
+  ...
+}: {
   options.programs.micromamba = {
     enable = lib.mkEnableOption "micromamba";
     package = lib.mkOption {
@@ -37,7 +42,7 @@
   };
   config = lib.mkIf config.programs.micromamba.enable {
     # Always add the configured `pyenv` package.
-    home.packages = [ config.programs.micromamba.package ];
+    home.packages = [config.programs.micromamba.package];
     programs.bash.initExtra = lib.mkIf config.programs.micromamba.enableBashIntegration ''
       ${config.programs.micromamba.package}/bin/micromamba shell hook --shell bash --prefix  ${config.programs.micromamba.rootDirectory} | source
     '';

@@ -1,13 +1,12 @@
-{ inputs
-, outputs
-, config
-, pkgs
-, username
-, system
-, ...
-}:
 {
-
+  inputs,
+  outputs,
+  config,
+  pkgs,
+  username,
+  system,
+  ...
+}: {
   security.pam.enableSudoTouchIdAuth = true;
   system = {
     defaults = {
@@ -34,7 +33,6 @@
         NSAutomaticSpellingCorrectionEnabled = false; # disable auto spelling correction(自动拼写检查)
         NSNavPanelExpandedStateForSaveMode = true; # expand save panel by default(保存文件时的路径选择/文件名输入页)
         NSNavPanelExpandedStateForSaveMode2 = true;
-
       };
 
       dock = {
@@ -68,7 +66,6 @@
         TrackpadRightClick = true; # enable two finger right click
         TrackpadThreeFingerDrag = true; # enable three finger drag
       };
-
     };
     keyboard = {
       enableKeyMapping = true;
@@ -76,8 +73,4 @@
     };
     stateVersion = 4;
   };
-
-
 }
-
-

@@ -1,5 +1,12 @@
-{ config, pkgs, username, system, inputs, ... }: {
-  imports = [ ./fonts.nix ];
+{
+  config,
+  pkgs,
+  username,
+  system,
+  inputs,
+  ...
+}: {
+  imports = [./fonts.nix];
 
   fonts = {
     fontconfig = {
@@ -22,7 +29,7 @@
           "Sarasa Mono SC"
           "DejaVu Sans Mono"
         ];
-        emoji = [ "Noto Color Emoji" "Seagoe UI Emoji" "Twitter Color Emoji" ];
+        emoji = ["Noto Color Emoji" "Seagoe UI Emoji" "Twitter Color Emoji"];
       };
     };
   };

@@ -1,4 +1,12 @@
-{ inputs, outputs, lib, config, pkgs, username, ... }: {
+{
+  inputs,
+  outputs,
+  lib,
+  config,
+  pkgs,
+  username,
+  ...
+}: {
   programs.vscode = {
     enable = true;
 
@@ -58,7 +66,8 @@
         # copilot
         # github.copilot
         james-yu.latex-workshop
-      ] ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
+      ]
+      ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
         {
           name = "vscode-python-typehint";
           publisher = "njqdev";
@@ -108,22 +117,22 @@
         #   version = "1.14.0";
         #   sha256 = "hCRyDA6oZF7hJv0YmbNG3S2XPtNbyxX1j3qL1ixOnF8=";
         # }
-
-      ] ++ lib.optionals pkgs.stdenv.isDarwin
-        (pkgs.vscode-utils.extensionsFromVscodeMarketplace [
-          {
-            name = "vscode-dash";
-            publisher = "deerawan";
-            version = "2.4.0";
-            sha256 = "Yqn59ppNWQRMWGYVLLWofogds+4t/WRRtSSfomPWQy4=";
-          }
-          {
-            name = "vscode-micromamba";
-            publisher = "corker";
-            version = "0.1.20";
-            sha256 = "/4Gc07cpif/coLSbaz3hg69PRtYOuWTf3zlY/7hAA3g=";
-          }
-        ]);
+      ]
+      ++ lib.optionals pkgs.stdenv.isDarwin
+      (pkgs.vscode-utils.extensionsFromVscodeMarketplace [
+        {
+          name = "vscode-dash";
+          publisher = "deerawan";
+          version = "2.4.0";
+          sha256 = "Yqn59ppNWQRMWGYVLLWofogds+4t/WRRtSSfomPWQy4=";
+        }
+        {
+          name = "vscode-micromamba";
+          publisher = "corker";
+          version = "0.1.20";
+          sha256 = "/4Gc07cpif/coLSbaz3hg69PRtYOuWTf3zlY/7hAA3g=";
+        }
+      ]);
     enableUpdateCheck = false;
     enableExtensionUpdateCheck = false;
     userSettings = {
@@ -134,7 +143,7 @@
       "C_Cpp.errorSquiggles" = "Enabled";
       "C_Cpp.intelliSenseEngine" = "Disabled";
       "C_Cpp.intelliSenseEngineFallback" = "Disabled";
-      "[Log]" = { "editor.fontSize" = 13; };
+      "[Log]" = {"editor.fontSize" = 13;};
       "[c]" = {
         "editor" = {
           "quickSuggestions" = {
@@ -158,10 +167,8 @@
         "strings" = true;
       };
       "files.autoSave" = "afterDelay";
-      "editor.codeLensFontFamily" =
-        "'Jetbrains Mono','Overpass','CMU Typewriter Text','Noto Serif CJK SC','Noto Serif','Hack Nerd Font'";
-      "editor.fontFamily" =
-        "'Jetbrains Mono','Overpass','CMU Typewriter Text','Noto Serif CJK SC','Noto Serif','Hack Nerd Font'";
+      "editor.codeLensFontFamily" = "'Jetbrains Mono','Overpass','CMU Typewriter Text','Noto Serif CJK SC','Noto Serif','Hack Nerd Font'";
+      "editor.fontFamily" = "'Jetbrains Mono','Overpass','CMU Typewriter Text','Noto Serif CJK SC','Noto Serif','Hack Nerd Font'";
       "editor.fontLigatures" = true;
       "editor.fontSize" = 16;
       "editor.formatOnPaste" = true;
@@ -214,22 +221,20 @@
       "git.autofetch" = true;
       "json.maxItemsComputed" = 10000;
       "security.workspace.trust.untrustedFiles" = "open";
-      "search.exclude" = { };
+      "search.exclude" = {};
       "search.showLineNumbers" = true;
       "search.smartCase" = true;
       "terminal.integrated.defaultProfile.windows" = "PowerShell";
       "terminal.external.osxExec" = "kitty.app";
       "terminal.integrated.automationProfile.osx" = "fish";
       "terminal.integrated.enableBell" = true;
-      "terminal.integrated.env.windows" = { "LC_ALL" = "zh_CN.UTF-8"; };
+      "terminal.integrated.env.windows" = {"LC_ALL" = "zh_CN.UTF-8";};
       "terminal.integrated.fontSize" = 15;
       "terminal.integrated.gpuAcceleration" = "on";
       "terminal.integrated.rightClickBehavior" = "selectWord";
       "terminal.integrated.minimumContrastRatio" = 1;
-      "todo-tree.general.tags" =
-        [ "BUG" "HACK" "FIXME" "TODO" "XXX" "[ ]" "[x]" ];
-      "todo-tree.regex.regex" =
-        "(//|#|<!--|;|/\\*|^|^\\s*(-|\\d+.))\\s*($TAGS)";
+      "todo-tree.general.tags" = ["BUG" "HACK" "FIXME" "TODO" "XXX" "[ ]" "[x]"];
+      "todo-tree.regex.regex" = "(//|#|<!--|;|/\\*|^|^\\s*(-|\\d+.))\\s*($TAGS)";
       "workbench.editor.enablePreview" = false;
       "terminal.explorerKind" = "external";
       "editor.lineNumbers" = "relative";
@@ -267,8 +272,8 @@
         "cy" = "linux";
         "i12500" = "linux";
       };
-      "[yaml]" = { "editor.comments.insertSpace" = false; };
-      "[python]" = { "editor.formatOnType" = true; };
+      "[yaml]" = {"editor.comments.insertSpace" = false;};
+      "[python]" = {"editor.formatOnType" = true;};
     };
   };
 }

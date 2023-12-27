@@ -1,10 +1,11 @@
-{ inputs
-, outputs
-, lib
-, config
-, pkgs
-, username
-, ...
+{
+  inputs,
+  outputs,
+  lib,
+  config,
+  pkgs,
+  username,
+  ...
 }: {
   services.emacs = {
     enable = true;

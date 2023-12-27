@@ -1,13 +1,14 @@
 #
 # Download client
 #
-{ inputs
-, outputs
-, lib
-, config
-, pkgs
-, username
-, ...
+{
+  inputs,
+  outputs,
+  lib,
+  config,
+  pkgs,
+  username,
+  ...
 }: {
   programs.yt-dlp = {
     enable = true;

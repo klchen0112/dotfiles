@@ -1,4 +1,8 @@
-{ pkgs, inputs, ... }: {
+{
+  pkgs,
+  inputs,
+  ...
+}: {
   programs = {
     vim = {
       enable = true;
@@ -38,6 +42,5 @@
       viAlias = true;
       vimAlias = true;
     };
-
   };
 }

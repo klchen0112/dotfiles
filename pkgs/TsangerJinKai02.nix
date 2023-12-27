@@ -1,4 +1,9 @@
-{ stdenv, lib, callPackage, fetchurl }:
+{
+  stdenv,
+  lib,
+  callPackage,
+  fetchurl,
+}:
 stdenv.mkDerivation rec {
   src = fetchurl {
     name = "TsangerJinKai02-W03.ttf";
@@ -25,6 +30,5 @@ stdenv.mkDerivation rec {
     description = "TsangerJinKai02";
     homepage = "https://http://tsanger.cn/product/32";
     platforms = platforms.all;
-
   };
 }

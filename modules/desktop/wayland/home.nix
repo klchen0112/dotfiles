@@ -1,15 +1,17 @@
-{ inputs, pkgs, lib, config, ... }:
 {
-
+  inputs,
+  pkgs,
+  lib,
+  config,
+  ...
+}: {
   imports = [
-
     # inputs.hyprland.homeManagerModules.default
     ./launcher/home.nix
     ./notice/home.nix # hyprland notification manager
     ./statusBar/home.nix
     ./wallpaper/home.nix
   ];
-
 
   home.packages = with pkgs; [
     xdg-utils # provides cli tools such as `xdg-mime` `xdg-open`
@@ -29,49 +31,46 @@
     #  ls /etc/profiles/per-user/ryan/share/applications/
     mimeApps = {
       enable = true;
-      defaultApplications =
-        let
-          browser = [ "firefox.desktop" ];
-        in
-        {
-          "application/json" = browser;
-          "application/pdf" = browser; # TODO: pdf viewer
+      defaultApplications = let
+        browser = ["firefox.desktop"];
+      in {
+        "application/json" = browser;
+        "application/pdf" = browser; # TODO: pdf viewer
 
-          "text/html" = browser;
-          "text/xml" = browser;
-          "application/xml" = browser;
-          "application/xhtml+xml" = browser;
-          "application/xhtml_xml" = browser;
-          "application/rdf+xml" = browser;
-          "application/rss+xml" = browser;
-          "application/x-extension-htm" = browser;
-          "application/x-extension-html" = browser;
-          "application/x-extension-shtml" = browser;
-          "application/x-extension-xht" = browser;
-          "application/x-extension-xhtml" = browser;
+        "text/html" = browser;
+        "text/xml" = browser;
+        "application/xml" = browser;
+        "application/xhtml+xml" = browser;
+        "application/xhtml_xml" = browser;
+        "application/rdf+xml" = browser;
+        "application/rss+xml" = browser;
+        "application/x-extension-htm" = browser;
+        "application/x-extension-html" = browser;
+        "application/x-extension-shtml" = browser;
+        "application/x-extension-xht" = browser;
+        "application/x-extension-xhtml" = browser;
 
-          "x-scheme-handler/about" = browser;
-          "x-scheme-handler/ftp" = browser;
-          "x-scheme-handler/http" = browser;
-          "x-scheme-handler/https" = browser;
-          "x-scheme-handler/unknown" = browser;
+        "x-scheme-handler/about" = browser;
+        "x-scheme-handler/ftp" = browser;
+        "x-scheme-handler/http" = browser;
+        "x-scheme-handler/https" = browser;
+        "x-scheme-handler/unknown" = browser;
 
-          "x-scheme-handler/discord" = [ "discord.desktop" ];
-          "x-scheme-handler/tg" = [ "telegramdesktop.desktop" ];
+        "x-scheme-handler/discord" = ["discord.desktop"];
+        "x-scheme-handler/tg" = ["telegramdesktop.desktop"];
 
-          "audio/*" = [ "mpv.desktop" ];
-          "video/*" = [ "mpv.dekstop" ];
-          "image/*" = [ "imv.desktop" ];
-          "image/gif" = [ "imv.desktop" ];
-          "image/jpeg" = [ "imv.desktop" ];
-          "image/png" = [ "imv.desktop" ];
-          "image/webp" = [ "imv.desktop" ];
-        };
+        "audio/*" = ["mpv.desktop"];
+        "video/*" = ["mpv.dekstop"];
+        "image/*" = ["imv.desktop"];
+        "image/gif" = ["imv.desktop"];
+        "image/jpeg" = ["imv.desktop"];
+        "image/png" = ["imv.desktop"];
+        "image/webp" = ["imv.desktop"];
+      };
 
-      associations.removed =
-        {
-          # ......
-        };
+      associations.removed = {
+        # ......
+      };
     };
 
     userDirs = {
@@ -86,7 +85,7 @@
   wayland.windowManager.hyprland = {
     enable = true;
     package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.default;
-    plugins = [ inputs.hycov.packages.${pkgs.system}.hycov ];
+    plugins = [inputs.hycov.packages.${pkgs.system}.hycov];
     xwayland.enable = true;
     systemd.enable = true;
     settings = {
@@ -155,7 +154,6 @@
         # dim_strength = #0.0 ~ 1.0
         # col_shadow = "rgba(1a1a1aee)";
       };
-
 
       animations = {
         enabled = true;
@@ -230,13 +228,10 @@
         "$mainMod SHIFT,p,movewindow,u"
         "$mainMod SHIFT,n,movewindow,d"
       ];
-
     };
-
   };
 
   home.file.".config/hypr/scripts".source = ./scripts;
 
   fonts.fontconfig.enable = true;
-
 }

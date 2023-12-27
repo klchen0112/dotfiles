@@ -1,10 +1,11 @@
-{ inputs
-, outputs
-, lib
-, config
-, pkgs
-, username
-, ...
+{
+  inputs,
+  outputs,
+  lib,
+  config,
+  pkgs,
+  username,
+  ...
 }: {
   homebrew = {
     # Declare Homebrew using Nix-Darwin
@@ -92,6 +93,4 @@
       "syncthing"
     ];
   };
-
-
 }

@@ -1,12 +1,12 @@
-{ inputs
-, outputs
-, lib
-, config
-, pkgs
-, username
-, ...
-}:
 {
+  inputs,
+  outputs,
+  lib,
+  config,
+  pkgs,
+  username,
+  ...
+}: {
   services.aria2 = {
     enable = true;
     logFile = "/tmp/aria2.log";

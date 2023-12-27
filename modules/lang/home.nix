@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{pkgs, ...}: {
   imports = [
     ./bash/home.nix
     ./cpp/home.nix
@@ -15,9 +15,7 @@
     ./rust/home.nix
   ];
 
-  home.packages = with pkgs;
-    [
-      tree-sitter
-
-    ];
+  home.packages = with pkgs; [
+    tree-sitter
+  ];
 }

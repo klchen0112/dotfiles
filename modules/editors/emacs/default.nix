@@ -1,11 +1,11 @@
-{ inputs
-, outputs
-, lib
-, config
-, pkgs
-, ...
+{
+  inputs,
+  outputs,
+  lib,
+  config,
+  pkgs,
+  ...
 }: {
-
   services.emacs = {
     enable = true;
     package = pkgs.emacs-unstable-pgtk;
@@ -14,5 +14,4 @@
     install = true;
     startWithGraphical = true;
   };
-
 }

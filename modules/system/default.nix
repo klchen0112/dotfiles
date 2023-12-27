@@ -1,11 +1,14 @@
-{ config, pkgs, lib, inputs, username, ... }:
-
 {
+  config,
+  pkgs,
+  lib,
+  inputs,
+  username,
+  ...
+}: {
   nixpkgs.system = "x86_64-linux";
 
   nixpkgs.config.allowUnfree = true;
-
-
 
   security.rtkit.enable = true;
   services = {
@@ -15,7 +18,7 @@
   };
   environment = {
     binsh = "${pkgs.dash}/bin/dash";
-    shells = with pkgs; [ fish ];
+    shells = with pkgs; [fish];
     systemPackages = with pkgs; [
       git
       neovim

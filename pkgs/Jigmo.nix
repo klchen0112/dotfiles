@@ -1,4 +1,9 @@
-{ stdenv, lib, callPackage, fetchzip }:
+{
+  stdenv,
+  lib,
+  callPackage,
+  fetchzip,
+}:
 stdenv.mkDerivation rec {
   src = fetchzip {
     name = "Jigmo-20230816.zip";
@@ -28,6 +33,5 @@ stdenv.mkDerivation rec {
     description = "Jigmo";
     homepage = "https://kamichikoichi.github.io/jigmo";
     platforms = platforms.all;
-
   };
 }

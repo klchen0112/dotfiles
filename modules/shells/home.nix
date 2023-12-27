@@ -1,13 +1,19 @@
 # fish configuration
 #
-{ lib, inputs, pkgs, username, ... }: {
-  programs.gpg = { enable = true; };
+{
+  lib,
+  inputs,
+  pkgs,
+  username,
+  ...
+}: {
+  programs.gpg = {enable = true;};
 
   programs.git = {
     enable = true;
     package = pkgs.git;
-    ignores = [ "*~" "*.swp" ".DS_Store" ];
-    attributes = [ "*.pdf diff=pdf" ];
+    ignores = ["*~" "*.swp" ".DS_Store"];
+    attributes = ["*.pdf diff=pdf"];
     lfs.enable = true;
     userName = "klchen0112";
     userEmail = "klchen0112@gmail.com";
@@ -34,7 +40,7 @@
     };
   };
 
-  programs.bash = { enable = true; };
+  programs.bash = {enable = true;};
   programs.zsh = {
     enable = true;
     enableAutosuggestions =
@@ -237,7 +243,6 @@
       #   name = "wakatime-fish";
       #   src = wakatime-fish.src;
       # }
-
     ];
   };
   programs.eza = {
@@ -273,8 +278,8 @@
     enableBashIntegration = true;
     nix-direnv.enable = true;
   };
-  programs.jq = { enable = true; };
-  programs.man = { enable = true; };
+  programs.jq = {enable = true;};
+  programs.man = {enable = true;};
   programs.starship = {
     enable = true;
     enableZshIntegration = true;
@@ -345,7 +350,7 @@
         disabled = false;
         style = "bright-purple bold";
       };
-      git_status = { disabled = false; };
+      git_status = {disabled = false;};
       sudo = {
         disabled = false;
         format = "as $symbol";
@@ -368,7 +373,7 @@
       };
     };
   };
-  programs.ripgrep = { enable = true; };
+  programs.ripgrep = {enable = true;};
 
   home.packages = with pkgs; [
     inetutils
@@ -418,7 +423,7 @@
         identityFile = "~/.ssh/id_ed25519";
         identitiesOnly = true;
       };
-      n1 = { hostname = "192.168.0.254"; };
+      n1 = {hostname = "192.168.0.254";};
       tower = {
         hostname = "192.168.0.200";
         user = "root";
@@ -451,7 +456,6 @@
         identityFile = "~/.ssh/id_ed25519";
         identitiesOnly = true;
       };
-
     };
   };
 }

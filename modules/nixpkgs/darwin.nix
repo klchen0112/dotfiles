@@ -1,12 +1,12 @@
-{ inputs
-, outputs
-, config
-, pkgs
-, username
-, system
-, ...
-}:
 {
+  inputs,
+  outputs,
+  config,
+  pkgs,
+  username,
+  system,
+  ...
+}: {
   imports = [
     ./base.nix
     ./nix.nix
@@ -16,5 +16,4 @@
     Minute = 15;
   };
   services.nix-daemon.enable = true; # Auto upgrade daemon
-
 }

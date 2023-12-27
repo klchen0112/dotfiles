@@ -1,9 +1,13 @@
-{ inputs, pkgs, lib, config, ... }:
 {
+  inputs,
+  pkgs,
+  lib,
+  config,
+  ...
+}: {
   time.timeZone = "Asia/Shanghai";
 
   i18n = {
-
     # inputMethod =
     #   {
     #     enabled = "fcitx5";

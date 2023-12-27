@@ -6,20 +6,20 @@
 #       ├─ ./default.nix
 #       └─ ./configuration.nix *
 #
-{ config
-, pkgs
-, username
-, system
-, inputs
-, ...
+{
+  config,
+  pkgs,
+  username,
+  system,
+  inputs,
+  ...
 }: {
-
   programs.fish = {
     enable = true;
   };
 
   environment = {
-    shells = with pkgs; [ fish bash ]; # Default shell
+    shells = with pkgs; [fish bash]; # Default shell
     systemPackages = with pkgs; [
       # Installed Nix packages
       gnumake
@@ -36,6 +36,4 @@
     };
     allowSFTP = true;
   };
-
-
 }

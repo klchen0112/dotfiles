@@ -1,12 +1,12 @@
 #
 # OpenVPN
 #
-{ inputs
-, pkgs
-, #
+{
+  inputs,
+  pkgs,
+  #
   ...
 }: {
-
   xdg.configFile."alacritty/theme_catppuccin.yml".source = "${inputs.catppuccin-alacritty}/catppuccin-latte.yml";
   programs.alacritty = {
     enable = true;
@@ -108,10 +108,12 @@
 
   programs.wezterm = {
     enable = true;
-    extraConfig =
-      let
-        fontsize = if pkgs.stdenv.isDarwin then "14.0" else "13.0";
-      in
+    extraConfig = let
+      fontsize =
+        if pkgs.stdenv.isDarwin
+        then "14.0"
+        else "13.0";
+    in
       ''
         -- Pull in the wezterm API
         local wezterm = require 'wezterm'
@@ -178,10 +180,16 @@
         }
 
         config.font_size = ${fontsize}
-      '' + (if pkgs.stdenv.isDarwin then ''
-        -- Spawn a fish shell in login mod
-        config.default_prog = { '/run/current-system/sw/bin/fish', '-l' }
-      '' else "") + ''
+      ''
+      + (
+        if pkgs.stdenv.isDarwin
+        then ''
+          -- Spawn a fish shell in login mod
+          config.default_prog = { '/run/current-system/sw/bin/fish', '-l' }
+        ''
+        else ""
+      )
+      + ''
         return config
       '';
   };

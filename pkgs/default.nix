@@ -1,8 +1,11 @@
 # Custom packages, that can be defined similarly to ones from nixpkgs
 # You can build them using 'nix build .#example'
-{ inputs, pkgs }: {
-  TsangerJinKai02 = pkgs.callPackage ./TsangerJinKai02.nix { };
-  Jigmo = pkgs.callPackage ./Jigmo.nix { };
+{
+  inputs,
+  pkgs,
+}: {
+  TsangerJinKai02 = pkgs.callPackage ./TsangerJinKai02.nix {};
+  Jigmo = pkgs.callPackage ./Jigmo.nix {};
   # example = pkgs.callPackage ./example { };
   sf-pro = inputs.apple-fonts.packages.${pkgs.system}.sf-pro;
   sf-pro-nerd = inputs.apple-fonts.packages.${pkgs.system}.sf-pro-nerd;
@@ -19,11 +22,10 @@
   ny = inputs.apple-fonts.packages.${pkgs.system}.ny;
   ny-nerd = inputs.apple-fonts.packages.${pkgs.system}.ny-nerd;
 
-
   emacs-plus = inputs.emacs-overlay.packages.${pkgs.system}.emacs-unstable.overrideAttrs (old: {
     withXwidgets = true;
     patches =
-      (old.patches or [ ])
+      (old.patches or [])
       ++ [
         # Fix OS window role (needed for window managers like yabai)
         (pkgs.fetchpatch {

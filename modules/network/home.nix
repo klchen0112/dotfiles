@@ -1,9 +1,7 @@
 #
 # OpenVPN
 #
-{ pkgs
-, ...
-}: {
+{pkgs, ...}: {
   home.packages = with pkgs; [
     sing-box
   ];

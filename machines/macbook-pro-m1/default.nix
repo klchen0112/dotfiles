@@ -1,12 +1,12 @@
-{ inputs
-, outputs
-, config
-, pkgs
-, username
-, system
-, ...
+{
+  inputs,
+  outputs,
+  config,
+  pkgs,
+  username,
+  system,
+  ...
 }: {
-
   imports = [
     ../../modules/fonts/fonts.nix
     ../../modules/nixpkgs/darwin.nix
@@ -29,7 +29,7 @@
   programs.fish.enable = true;
 
   environment = {
-    shells = with pkgs; [ fish bash ]; # Default shell
+    shells = with pkgs; [fish bash]; # Default shell
     # variables = {
     #   # System variables
     #   EDITOR = "nvim";
@@ -47,7 +47,4 @@
   };
 
   services.activate-system.enable = true;
-
-
 }
-

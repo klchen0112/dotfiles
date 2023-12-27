@@ -1,13 +1,12 @@
-{ inputs
-, outputs
-, config
-, pkgs
-, username
-, system
-, ...
-}:
 {
-
+  inputs,
+  outputs,
+  config,
+  pkgs,
+  username,
+  system,
+  ...
+}: {
   nixpkgs = {
     # You can add overlays here
     overlays = [
@@ -35,7 +34,7 @@
 
     config = {
       allowUnfree = true; # Allow proprietary software.
-      allowUnfreePredicate = (_: true);
+      allowUnfreePredicate = _: true;
       allowUnsupportedSystem = true;
       #  allowBroken = true;
       # for wechat uos

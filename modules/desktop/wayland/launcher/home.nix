@@ -1,5 +1,10 @@
-{ inputs, pkgs, lib, config, ... }:
 {
+  inputs,
+  pkgs,
+  lib,
+  config,
+  ...
+}: {
   # programs.wofi.enable = true;
   # app lanchuer
   # programs.rofi = {
