@@ -4,5 +4,7 @@
     nixfmt
     # nix-du
     nil
-  ];
+    cachix
+    devenv
+    ];
 }

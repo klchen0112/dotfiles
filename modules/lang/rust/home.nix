@@ -3,5 +3,6 @@
     rust-analyzer
     cargo # rust package manager
     rustfmt
+    libiconvReal
   ];
 }

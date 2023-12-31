@@ -12,4 +12,5 @@
     ./nix.nix
   ];
   nix.gc.dates = "weekly";
+  nix.registry.nixpkgs.flake = pkgs;
 }

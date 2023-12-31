@@ -14,6 +14,7 @@
       "https://nixpkgs-wayland.cachix.org"
       "https://ruixi-rebirth.cachix.org"
       "https://ryan4yin.cachix.org"
+      "https://devenv.cachix.org"
     ];
     extra-trusted-public-keys = [
       "ryan4yin.cachix.org-1:Gbk27ZU5AYpGS9i3ssoLlwdvMIh0NxG0w8it/cv9kbU="
@@ -22,6 +23,7 @@
       "anyrun.cachix.org-1:pqBobmOjI7nKlsUMV25u9QHa9btJK65/C8vnO3p346s="
       "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
       "ruixi-rebirth.cachix.org-1:sWs3V+BlPi67MpNmP8K4zlA3jhPCAvsnLKi4uXsiLI4="
+      "devenv.cachix.org-1:w1cLUi8dv3hnoSPGAuibQv+f9TZLr6cv/Hm9XgU50cw="
     ];
     trusted-users = ["root" "@wheel"];
   };
@@ -148,7 +150,10 @@
       # add git hooks to format nix code before commit
       pre-commit-hooks = {
         url = "github:cachix/pre-commit-hooks.nix";
-        inputs.nixpkgs.follows = "nixpkgs";
+        inputs.nixpkgs.follows = "nixpkgs-unstable";
+        inputs.nixpkgs-stable.follows = "nixpkgs";
+        inputs.flake-compat.follows = "flake-compat";
+        inputs.flake-utils.follows = "flake-utils";
       };
 
       devshell = {
@@ -202,6 +207,13 @@
         url = "github:guibou/nixGL";
         inputs.nixpkgs.follows = "nixpkgs";
         inputs.flake-utils.follows = "flake-utils";
+      };
+
+      devenv = {
+        url = "github:cachix/devenv";
+        inputs.nixpkgs.follows = "nixpkgs";
+        inputs.flake-compat.follows = "flake-compat";
+        inputs.pre-commit-hooks.follows = "pre-commit-hooks";
       };
 
       nixos-wsl = {

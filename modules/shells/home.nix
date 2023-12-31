@@ -12,7 +12,7 @@
   programs.git = {
     enable = true;
     package = pkgs.git;
-    ignores = ["*~" "*.swp" ".DS_Store"];
+    ignores = ["*~" "*.swp" ".DS_Store" ".devenv"];
     attributes = ["*.pdf diff=pdf"];
     lfs.enable = true;
     userName = "klchen0112";
