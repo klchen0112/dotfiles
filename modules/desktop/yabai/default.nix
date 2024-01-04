@@ -9,7 +9,7 @@
 }: {
   services.yabai = {
     enable = true;
-    package = pkgs.yabai;
+    package = pkgs.unstable.yabai;
     enableScriptingAddition = true;
     config = {
       layout = "bsp";
@@ -119,7 +119,7 @@
 
   services.skhd = {
     enable = true;
-    package = pkgs.skhd;
+    package = pkgs.unstable.skhd;
     skhdConfig = ''
       alt - b [
         *      : yabai -m window --focus west ; or yabai -m display --focus west
