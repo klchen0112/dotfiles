@@ -83,10 +83,6 @@
         src = colored-man-pages.src;
       }
       {
-        name = "async-prompt";
-        src = async-prompt.src;
-      }
-      {
         name = "autopair";
         src = autopair-fish.src;
       }
@@ -94,10 +90,6 @@
         name = "sponge";
         src = sponge.src;
       }
-      # {
-      #   name = "wakatime-fish";
-      #   src = wakatime-fish.src;
-      # }
     ];
   };
   programs.eza = {
@@ -230,7 +222,6 @@
   };
   programs.ripgrep = {enable = true;};
 
-
   programs.ssh = {
     enable = true;
     serverAliveInterval = 30;
@@ -313,7 +304,6 @@
     keyScheme = "emacs";
     enableLightTheme = true;
   };
-
 
   home.packages = with pkgs; [
     inetutils

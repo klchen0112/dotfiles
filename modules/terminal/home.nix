@@ -7,17 +7,16 @@
   #
   ...
 }: {
-
   programs.alacritty = {
     enable = true;
     settings = {
       import = ["${inputs.catppuccin-alacritty}/catppuccin-mocha.yml"];
-      selection.save_to_clipboard= true;
+      selection.save_to_clipboard = true;
       window = {
         opacity = 0.93;
-        startup_mode= "Windowed";
-        dynamic_title= true;
-        option_as_alt= "Both";
+        startup_mode = "Windowed";
+        dynamic_title = true;
+        option_as_alt = "Both";
       };
       scrolling = {
         history = 10000;

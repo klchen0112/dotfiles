@@ -1,10 +1,12 @@
 {pkgs, ...}: {
   home.packages = with pkgs; [
-    # alejandra
+    alejandra
     nixfmt
     # nix-du
     nil
     cachix
     devenv
-    ];
+    statix
+    deadnix
+  ];
 }

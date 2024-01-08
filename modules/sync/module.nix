@@ -1,30 +1,25 @@
-{ config, lib, pkgs, ... }:
-
-with lib;
-
-let
-  cfg = config.services.aria2;
-in
 {
+  config,
+  lib,
+  pkgs,
+  ...
+}:
+with lib; let
+  cfg = config.services.syncthing;
+in {
   options = {
     services.syncthing = {
       enable = mkOption {
         type = types.bool;
         default = false;
         description = lib.mdDoc ''
-          Whether or not to enable the headless Aria2 daemon service.
-
-          Aria2 daemon can be controlled via the RPC interface using
-          one of many WebUI (http://localhost:6800/ by default).
-
-          Targets are downloaded to ${downloadDir} by default and are
-          accessible to users in the "aria2" group.
+          Whether or not to enable the headless syncthing daemon service.
         '';
       };
       extraOptions = mkOption {
         type = types.listOf types.str;
-        default = [ ];
-        example = [ "--gui-apikey=apiKey" ];
+        default = [];
+        example = ["--gui-apikey=apiKey"];
         description = ''
           Extra command-line arguments to pass to {command}`syncthing`.
         '';
@@ -42,7 +37,7 @@ in
       };
     };
     config = mkIf cfg.enable {
-      environment.systemPackages = [ pkgs.syncthing ];
+      environment.systemPackages = [pkgs.syncthing];
       launchd.user.agents.syncthing = {
         command = "${pkgs.syncthing}/bin/syncthing -no-browser -no-restart -logflags=0";
         serviceConfig = {
@@ -52,4 +47,5 @@ in
         };
       };
     };
-  }
+  };
+}

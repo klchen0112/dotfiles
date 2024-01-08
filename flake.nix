@@ -56,7 +56,22 @@
         import ./pkgs {inherit pkgs inputs;}
     );
     formatter = forAllSystems (system: nixpkgs.legacyPackages.${system}.alejandra);
-
+    checks = forAllSystems (
+      system: {
+        pre-commit-check = inputs.pre-commit-hooks.lib.${system}.run {
+          src = ./.;
+          hooks = {
+            alejandra.enable = true; # formatter
+            # deadnix.enable = true; # detect unused variable bindings in `*.nix`
+            statix.enable = true; # lints and suggestions for Nix code(auto suggestions)
+            prettier = {
+              enable = true;
+              excludes = [".js" ".md" ".ts"];
+            };
+          };
+        };
+      }
+    );
     # Accessible through 'nix develop' or 'nix-shell' (legacy)
     overlays = import ./overlays {inherit inputs;};
 
