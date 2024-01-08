@@ -315,7 +315,7 @@
       };
 
       catppuccin-alacritty = {
-        url = "github:catppuccin/alacritty";
+        url = "github:catppuccin/alacritty/3c808cbb4f9c87be43ba5241bc57373c793d2f17";
         flake = false;
       };
 

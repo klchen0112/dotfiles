@@ -11,7 +11,7 @@
   programs.alacritty = {
     enable = true;
     settings = {
-      # import = ["${inputs.catppuccin-alacritty}/catppuccin-mocha.toml"];
+      import = ["${inputs.catppuccin-alacritty}/catppuccin-mocha.yml"];
       selection.save_to_clipboard= true;
       window = {
         opacity = 0.93;
