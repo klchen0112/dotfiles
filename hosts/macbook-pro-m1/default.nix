@@ -22,7 +22,7 @@
     ../../modules/shells/home.nix
     ../../modules/socialMedia/home.nix
     ../../modules/terminal/home.nix
-    ../../modules/vm/home.nix
+    ../../modules/visualisation/home.nix
     ../../modules/im/home.nix
     # ../../modules/windowManager
     # ../../modules/vpn

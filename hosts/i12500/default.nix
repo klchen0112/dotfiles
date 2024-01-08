@@ -22,7 +22,7 @@
     ../../modules/shells/home.nix
     ../../modules/socialMedia/home.nix
     ../../modules/terminal/home.nix
-    ../../modules/vm/home.nix
+    ../../modules/visualisation/home.nix
     ../../modules/nixpkgs/base.nix
     ../../modules/im/home.nix
     ../../modules/notes/home.nix
