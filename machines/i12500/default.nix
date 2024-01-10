@@ -24,6 +24,7 @@
     # ../../modules/editors
     ../../modules/shells
     ../../modules/network
+    ../../modules/secrets
   ];
 
   # Bootloader.

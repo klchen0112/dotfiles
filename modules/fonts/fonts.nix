@@ -14,7 +14,7 @@
         # icon fonts
         material-design-icons
         font-awesome
-        
+
         # mono fonts for coding
         jetbrains-mono
         # iosevka

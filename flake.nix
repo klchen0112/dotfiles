@@ -87,6 +87,7 @@
         modules = [
           # hyprland.nixosModules.default
           ./machines/i12500
+          inputs.agenix.nixosModules.default
         ];
       };
     };
@@ -101,6 +102,7 @@
           modules = [
             # > Our main home-manager configuration file <
             ./hosts/i12500
+            inputs.agenix.homeManagerModules.default
           ];
         };
     };
@@ -124,6 +126,7 @@
             home-manager.extraSpecialArgs = {inherit username inputs outputs;}; # Pass flake variable
             home-manager.users.${username} = import ./hosts/macbook-pro-m1/default.nix;
           }
+          inputs.agenix.darwinModules.default
         ];
       };
     };
