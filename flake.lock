@@ -187,22 +187,6 @@
         "type": "github"
       }
     },
-    "catppuccin-wezterm": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1681259790,
-        "narHash": "sha256-McSWoZaJeK+oqdK/0vjiRxZGuLBpEB10Zg4+7p5dIGY=",
-        "owner": "catppuccin",
-        "repo": "wezterm",
-        "rev": "b1a81bae74d66eaae16457f2d8f151b5bd4fe5da",
-        "type": "github"
-      },
-      "original": {
-        "owner": "catppuccin",
-        "repo": "wezterm",
-        "type": "github"
-      }
-    },
     "darwin": {
       "inputs": {
         "nixpkgs": [
@@ -1020,7 +1004,6 @@
         "catppuccin-fcitx5": "catppuccin-fcitx5",
         "catppuccin-hyprland": "catppuccin-hyprland",
         "catppuccin-starship": "catppuccin-starship",
-        "catppuccin-wezterm": "catppuccin-wezterm",
         "darwin": "darwin",
         "devenv": "devenv",
         "devshell": "devshell",

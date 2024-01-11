@@ -317,13 +317,14 @@
       ########################  Color Schemes  #########################################
 
       # color scheme - catppuccin
-      catppuccin-btop = {
-        url = "github:catppuccin/btop";
-        flake = false;
-      };
 
       catppuccin-fcitx5 = {
         url = "github:catppuccin/fcitx5";
+        flake = false;
+      };
+
+      catppuccin-btop = {
+        url = "github:catppuccin/btop";
         flake = false;
       };
 
@@ -334,11 +335,6 @@
 
       catppuccin-alacritty = {
         url = "github:catppuccin/alacritty/3c808cbb4f9c87be43ba5241bc57373c793d2f17";
-        flake = false;
-      };
-
-      catppuccin-wezterm = {
-        url = "github:catppuccin/wezterm";
         flake = false;
       };
 
