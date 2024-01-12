@@ -139,10 +139,9 @@
       nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable"; # Nix Packages
 
       #  MacOS
-      nixpkgs-darwin.url = "github:nixos/nixpkgs/nixpkgs-23.11-darwin";
       darwin = {
         url = "github:lnl7/nix-darwin/master"; # MacOS Package Management
-        inputs.nixpkgs.follows = "nixpkgs-darwin";
+        inputs.nixpkgs.follows = "nixpkgs";
       };
 
       # Home Manager
@@ -243,8 +242,8 @@
 
       emacs-overlay = {
         url = "github:nix-community/emacs-overlay/master";
-        inputs.nixpkgs.follows = "nixpkgs";
-        inputs.nixpkgs-stable.follows = "nixpkgs-unstable";
+        inputs.nixpkgs.follows = "nixpkgs-unstable";
+        inputs.nixpkgs-stable.follows = "nixpkgs";
         inputs.flake-utils.follows = "flake-utils";
       };
 
