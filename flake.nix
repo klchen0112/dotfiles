@@ -49,12 +49,6 @@
     username = "klchen";
     userEmail = "klchen0112@gmail.com";
   in rec {
-    packages = forAllSystems (
-      system: let
-        pkgs = nixpkgs.legacyPackages.${system};
-      in
-        import ./pkgs {inherit pkgs inputs;}
-    );
     formatter = forAllSystems (system: nixpkgs.legacyPackages.${system}.alejandra);
     checks = forAllSystems (
       system: {
@@ -72,8 +66,6 @@
         };
       }
     );
-    # Accessible through 'nix develop' or 'nix-shell' (legacy)
-    overlays = import ./overlays {inherit inputs;};
 
     nixosConfigurations = let
       username = "klchen";
@@ -138,11 +130,14 @@
       nixpkgs.url = "github:nixos/nixpkgs/nixos-23.11"; # Nix Packages
       nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable"; # Nix Packages
 
-      #  MacOS
-      nixpkgs-darwin.url = "github:nixos/nixpkgs/nixpkgs-23.11-darwin";
       darwin = {
         url = "github:lnl7/nix-darwin/master"; # MacOS Package Management
-        inputs.nixpkgs.follows = "nixpkgs-darwin";
+        inputs.nixpkgs.follows = "nixpkgs";
+      };
+
+
+      nixos-hardware = {
+        url = "github:NixOS/nixos-hardware";
       };
 
       # Home Manager
@@ -152,9 +147,7 @@
         inputs.nixpkgs.follows = "nixpkgs";
       };
 
-      nixos-hardware = {
-        url = "github:NixOS/nixos-hardware";
-      };
+
 
       systems.url = "github:nix-systems/default";
 
@@ -243,8 +236,8 @@
 
       emacs-overlay = {
         url = "github:nix-community/emacs-overlay/master";
-        inputs.nixpkgs.follows = "nixpkgs";
-        inputs.nixpkgs-stable.follows = "nixpkgs-unstable";
+        inputs.nixpkgs.follows = "nixpkgs-unstable";
+        inputs.nixpkgs-stable.follows = "nixpkgs";
         inputs.flake-utils.follows = "flake-utils";
       };
 
@@ -265,13 +258,13 @@
 
       # hyprland
 
-      nixpkgs-wayland = {
-        url = "github:nix-community/nixpkgs-wayland";
-        inputs.nixpkgs.follows = "nixpkgs";
-        inputs.flake-compat.follows = "flake-compat";
-        inputs.nix-eval-jobs.follows = "nix-eval-jobs";
-        inputs.lib-aggregate.follows = "lib-aggregate";
-      };
+      # nixpkgs-wayland = {
+      #   url = "github:nix-community/nixpkgs-wayland";
+      #   inputs.nixpkgs.follows = "nixpkgs";
+      #   inputs.flake-compat.follows = "flake-compat";
+      #   inputs.nix-eval-jobs.follows = "nix-eval-jobs";
+      #   inputs.lib-aggregate.follows = "lib-aggregate";
+      # };
 
       hyprland = {
         # Official Hyprland flake
@@ -305,53 +298,12 @@
         inputs.hyprland.follows = "hyprland";
       };
 
-      # fonts
-      apple-fonts = {
-        url = "github:Lyndeno/apple-fonts.nix";
-        inputs.flake-utils.follows = "flake-utils";
-        inputs.nixpkgs.follows = "nixpkgs";
-      };
+
 
       # AI
 
-      ########################  Color Schemes  #########################################
+      ########################  Nur  #########################################
 
-      # color scheme - catppuccin
-
-      catppuccin-fcitx5 = {
-        url = "github:catppuccin/fcitx5";
-        flake = false;
-      };
-
-      catppuccin-btop = {
-        url = "github:catppuccin/btop";
-        flake = false;
-      };
-
-      catppuccin-bat = {
-        url = "github:catppuccin/bat";
-        flake = false;
-      };
-
-      catppuccin-alacritty = {
-        url = "github:catppuccin/alacritty/3c808cbb4f9c87be43ba5241bc57373c793d2f17";
-        flake = false;
-      };
-
-      catppuccin-starship = {
-        url = "github:catppuccin/starship";
-        flake = false;
-      };
-
-      catppuccin-hyprland = {
-        url = "github:catppuccin/hyprland";
-        flake = false;
-      };
-
-      catppuccin-cava = {
-        url = "github:catppuccin/cava";
-        flake = false;
-      };
 
       # own package
       rime-jd = {
