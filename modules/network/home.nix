@@ -3,6 +3,6 @@
 #
 {pkgs, ...}: {
   home.packages = with pkgs; [
-    sing-box
+    # sing-box
   ];
 }

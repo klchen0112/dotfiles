@@ -57,7 +57,7 @@
       in
         import ./pkgs {inherit pkgs inputs;}
     );
-    
+
     formatter = forAllSystems (system: nixpkgs.legacyPackages.${system}.alejandra);
 
     checks = forAllSystems (
@@ -276,7 +276,7 @@
 
       hyprland = {
         # Official Hyprland flake
-        url = "github:vaxerski/Hyprland";
+        url = "github:hyprwm/Hyprland/v0.33.1";
         inputs.nixpkgs.follows = "nixpkgs";
         inputs.systems.follows = "systems";
       };
