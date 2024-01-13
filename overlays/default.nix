@@ -1,30 +1,27 @@
 # This file defines overlays
 {inputs, ...}: {
-  emacs-plus = inputs.emacs-overlay.packages.${pkgs.system}.emacs-unstable.overrideAttrs (old: {
-    withXwidgets = true;
-    patches =
-      (old.patches or [])
-      ++ [
-        # Fix OS window role (needed for window managers like yabai)
-        (pkgs.fetchpatch {
-          url = "https://raw.githubusercontent.com/d12frosted/homebrew-emacs-plus/master/patches/emacs-28/fix-window-role.patch";
-          sha256 = "+z/KfsBm1lvZTZNiMbxzXQGRTjkCFO4QPlEK35upjsE=";
-        })
-        # Use poll instead of select to get file descriptors
-        (pkgs.fetchpatch {
-          url = "https://raw.githubusercontent.com/d12frosted/homebrew-emacs-plus/master/patches/emacs-29/poll.patch";
-          sha256 = "jN9MlD8/ZrnLuP2/HUXXEVVd6A+aRZNYFdZF8ReJGfY=";
-        })
-        # Enable rounded window with no decoration
-        (pkgs.fetchpatch {
-          url = "https://raw.githubusercontent.com/d12frosted/homebrew-emacs-plus/master/patches/emacs-29/round-undecorated-frame.patch";
-          sha256 = "uYIxNTyfbprx5mCqMNFVrBcLeo+8e21qmBE3lpcnd+4=";
-        })
-        # Make Emacs aware of OS-level light/dark mode
-        (pkgs.fetchpatch {
-          url = "https://raw.githubusercontent.com/d12frosted/homebrew-emacs-plus/master/patches/emacs-28/system-appearance.patch";
-          sha256 = "sha256-oM6fXdXCWVcBnNrzXmF0ZMdp8j0pzkLE66WteeCutv8=";
-        })
-      ];
-  });
+  # This one brings our custom packages from the 'pkgs' directory
+  additions = final: _prev:
+    import ../pkgs {
+      pkgs = final;
+      inherit inputs;
+    };
+
+  # This one contains whatever you want to overlay
+  # You can change versions, add patches, set compilation flags, anything really.
+  # https://nixos.wiki/wiki/Overlays
+  modifications = final: prev: {
+    # example = prev.example.overrideAttrs (oldAttrs: rec {
+    # ...
+    # });
+  };
+
+  # When applied, the unstable nixpkgs set (declared in the flake inputs) will
+  # be accessible through 'pkgs.unstable'
+  unstable-packages = final: _prev: {
+    unstable = import inputs.nixpkgs-unstable {
+      system = final.system;
+      config.allowUnfree = true;
+    };
+  };
 }

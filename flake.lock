@@ -46,50 +46,6 @@
         "type": "github"
       }
     },
-    "apple-fonts": {
-      "inputs": {
-        "flake-utils": [
-          "flake-utils"
-        ],
-        "nixpkgs": [
-          "nixpkgs"
-        ],
-        "ny": "ny",
-        "sf-arabic": "sf-arabic",
-        "sf-compact": "sf-compact",
-        "sf-mono": "sf-mono",
-        "sf-pro": "sf-pro"
-      },
-      "locked": {
-        "lastModified": 1696619802,
-        "narHash": "sha256-ashGtLl4PjsiTx8hrd7RkxvcDnvd7j6UI/maGlfJDhk=",
-        "owner": "Lyndeno",
-        "repo": "apple-fonts.nix",
-        "rev": "19f84a8367970efa8459892ddcf0c7b85eae823a",
-        "type": "github"
-      },
-      "original": {
-        "owner": "Lyndeno",
-        "repo": "apple-fonts.nix",
-        "type": "github"
-      }
-    },
-    "catppuccin-starship": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1689246850,
-        "narHash": "sha256-nsRuxQFKbQkyEI4TXgvAjcroVdG+heKX5Pauq/4Ota0=",
-        "owner": "catppuccin",
-        "repo": "starship",
-        "rev": "5629d2356f62a9f2f8efad3ff37476c19969bd4f",
-        "type": "github"
-      },
-      "original": {
-        "owner": "catppuccin",
-        "repo": "starship",
-        "type": "github"
-      }
-    },
     "darwin": {
       "inputs": {
         "nixpkgs": [
@@ -172,11 +128,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1705109607,
-        "narHash": "sha256-JCwZRYaef6io0R+SxDN9l2HnyqLSBRYIfaBk4uwjMqQ=",
+        "lastModified": 1705135842,
+        "narHash": "sha256-ua/7SiOdMzyM/0Avx8YOgc7K9m7zrOjIE2slEXP+Ecc=",
         "owner": "nix-community",
         "repo": "emacs-overlay",
-        "rev": "9e423719e0c85a4624813489080636f4d696fa3e",
+        "rev": "8363635cc3d70d8869e3ead707eb01e03a203f78",
         "type": "github"
       },
       "original": {
@@ -625,21 +581,6 @@
         "type": "github"
       }
     },
-    "nixos-hardware": {
-      "locked": {
-        "lastModified": 1704786394,
-        "narHash": "sha256-aJM0ln9fMGWw1+tjyl5JZWZ3ahxAA2gw2ZpZY/hkEMs=",
-        "owner": "NixOS",
-        "repo": "nixos-hardware",
-        "rev": "b34a6075e9e298c4124e35c3ccaf2210c1f3a43b",
-        "type": "github"
-      },
-      "original": {
-        "owner": "NixOS",
-        "repo": "nixos-hardware",
-        "type": "github"
-      }
-    },
     "nixos-wsl": {
       "inputs": {
         "flake-compat": [
@@ -729,35 +670,6 @@
         "type": "github"
       }
     },
-    "nixpkgs-wayland": {
-      "inputs": {
-        "flake-compat": [
-          "flake-compat"
-        ],
-        "lib-aggregate": [
-          "lib-aggregate"
-        ],
-        "nix-eval-jobs": [
-          "nix-eval-jobs"
-        ],
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1705080950,
-        "narHash": "sha256-ltAQAwwE6UyUcVh6PIf+RYpuxvMSLgc7Dqwfox6HwPg=",
-        "owner": "nix-community",
-        "repo": "nixpkgs-wayland",
-        "rev": "8621ab0a5a9953c719aa21d3d078532613accdcb",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nix-community",
-        "repo": "nixpkgs-wayland",
-        "type": "github"
-      }
-    },
     "nixpkgs_2": {
       "locked": {
         "lastModified": 1702645756,
@@ -824,11 +736,11 @@
     },
     "nur": {
       "locked": {
-        "lastModified": 1705128113,
-        "narHash": "sha256-jKqgtL2qKN7/9xdSrQemX6uwBqn1+GWh8fZ4nplnTbc=",
+        "lastModified": 1705142735,
+        "narHash": "sha256-RA4nC6WFaMj62bdJHLW9idSD18g78dNS94Jy0R2DpU4=",
         "owner": "nix-community",
         "repo": "NUR",
-        "rev": "3254e29ddcd7bb07b85630144200c1aaad73de33",
+        "rev": "eb257a2f64d88dd14eaaf112822160496f6a916f",
         "type": "github"
       },
       "original": {
@@ -853,18 +765,6 @@
         "owner": "ryan4yin",
         "repo": "nur-packages",
         "type": "github"
-      }
-    },
-    "ny": {
-      "flake": false,
-      "locked": {
-        "narHash": "sha256-tfiDSsgH2s11Vvm5qL+tYztErMqJ2RKCPbtLapiUyto=",
-        "type": "file",
-        "url": "https://devimages-cdn.apple.com/design/resources/download/NY.dmg"
-      },
-      "original": {
-        "type": "file",
-        "url": "https://devimages-cdn.apple.com/design/resources/download/NY.dmg"
       }
     },
     "own-nur": {
@@ -937,8 +837,6 @@
       "inputs": {
         "agenix": "agenix",
         "anyrun": "anyrun",
-        "apple-fonts": "apple-fonts",
-        "catppuccin-starship": "catppuccin-starship",
         "darwin": "darwin",
         "devenv": "devenv",
         "devshell": "devshell",
@@ -955,7 +853,6 @@
         "lib-aggregate": "lib-aggregate",
         "nix-eval-jobs": "nix-eval-jobs",
         "nixgl": "nixgl",
-        "nixos-hardware": "nixos-hardware",
         "nixos-wsl": "nixos-wsl",
         "nixpkgs": "nixpkgs_4",
         "nixpkgs-lib": "nixpkgs-lib",

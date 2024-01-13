@@ -5,6 +5,7 @@
   pkgs,
   username,
   system,
+  lib,
   ...
 }: {
   nixpkgs = {
@@ -31,7 +32,7 @@
       #     patches = [ ./change-hello-to-hi.patch ];
       #   });
       # })
-    ]  ++ lib.optionals pkgs.stdenv.isDarwin (import ../../overlays inputs); ;
+    ] ;
 
     config = {
       allowUnfree = true; # Allow proprietary software.

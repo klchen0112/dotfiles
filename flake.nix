@@ -51,7 +51,15 @@
     username = "klchen";
     userEmail = "klchen0112@gmail.com";
   in rec {
+    packages = forAllSystems (
+      system: let
+        pkgs = nixpkgs.legacyPackages.${system};
+      in
+        import ./pkgs {inherit pkgs inputs;}
+    );
+    
     formatter = forAllSystems (system: nixpkgs.legacyPackages.${system}.alejandra);
+
     checks = forAllSystems (
       system: {
         pre-commit-check = inputs.pre-commit-hooks.lib.${system}.run {
@@ -68,6 +76,8 @@
         };
       }
     );
+
+    overlays = import ./overlays {inherit inputs;};
 
     nixosConfigurations = let
       username = "klchen";
@@ -295,18 +305,6 @@
         url = "github:DreamMaoMao/hycov";
         inputs.hyprland.follows = "hyprland";
       };
-
-
-
-      # AI
-
-
-
-      catppuccin-starship = {
-        url = "github:catppuccin/starship";
-        flake = false;
-      };
-
 
       nur-ryan4yin = {
         url = "github:ryan4yin/nur-packages";
