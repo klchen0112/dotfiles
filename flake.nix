@@ -13,10 +13,12 @@
       "https://nix-community.cachix.org"
       "https://nixpkgs-wayland.cachix.org"
       "https://ruixi-rebirth.cachix.org"
+      "https://klchen0112.cachix.org"
       "https://ryan4yin.cachix.org"
       "https://devenv.cachix.org"
     ];
     extra-trusted-public-keys = [
+      "klchen0112.cachix.org-1:cO5Ek4gcvoWtHslHjWn9U5ymU8ZiN7+tJo0jifbtRz4="
       "ryan4yin.cachix.org-1:Gbk27ZU5AYpGS9i3ssoLlwdvMIh0NxG0w8it/cv9kbU="
       "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
       "nixpkgs-wayland.cachix.org-1:3lwxaILxMRkVhehr5StQprHdEo4IrE8sRho9R9HOLYA="
@@ -130,14 +132,10 @@
       nixpkgs.url = "github:nixos/nixpkgs/nixos-23.11"; # Nix Packages
       nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable"; # Nix Packages
 
+      #  MacOS
       darwin = {
         url = "github:lnl7/nix-darwin/master"; # MacOS Package Management
         inputs.nixpkgs.follows = "nixpkgs";
-      };
-
-
-      nixos-hardware = {
-        url = "github:NixOS/nixos-hardware";
       };
 
       # Home Manager
@@ -302,10 +300,24 @@
 
       # AI
 
-      ########################  Nur  #########################################
 
 
+      catppuccin-starship = {
+        url = "github:catppuccin/starship";
+        flake = false;
+      };
+
+
+      nur-ryan4yin = {
+        url = "github:ryan4yin/nur-packages";
+        # inputs.nixpkgs.follows = "nixpkgs";
+      };
       # own package
+      own-nur = {
+        url = "github:klchen0112/nur";
+        inputs.nixpkgs.follows = "nixpkgs";
+      };
+
       rime-jd = {
         url = "github:klchen0112/RIME_JD";
         flake = false;

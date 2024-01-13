@@ -22,7 +22,7 @@
   };
   home.file = {
     ".config/fcitx5/conf/classicui.conf".source = ./classicui.conf;
-    ".local/share/fcitx5/themes".source = "${inputs.catppuccin-fcitx5}/src";
+    ".local/share/fcitx5/themes".source = "${inputs.nur-ryan4yin.packages.${pkgs.system}.catppuccin-fcitx5}/src";
   };
 
   home.file.".local/share/fcitx5/rime" = {

@@ -31,7 +31,7 @@
     };
   };
 
-  home.file.".config/btop/themes".source = "${inputs.catppuccin-bat}/themes";
+  home.file.".config/btop/themes".source = "${inputs.nur-ryan4yin.packages.${pkgs.system}.catppuccin-btop}/themes";
   programs.btop = {
     enable = true;
     settings = {
@@ -97,7 +97,7 @@
     icons = true;
     git = true;
   };
-  home.file.".config/bat/themes".source = "${inputs.catppuccin-bat}";
+  home.file.".config/bat/themes".source = "${inputs.nur-ryan4yin.packages.${pkgs.system}.catppuccin-bat}";
   programs.bat = {
     enable = true;
     config = {
@@ -223,7 +223,7 @@
       }
       // builtins.fromTOML (
         builtins.readFile
-        "${inputs.catppuccin-starship}/palettes/mocha.toml"
+        "${inputs.nur-ryan4yin.packages.${pkgs.system}.catppuccin-starship}/palettes/mocha.toml"
       );
   };
   programs.ripgrep = {enable = true;};
