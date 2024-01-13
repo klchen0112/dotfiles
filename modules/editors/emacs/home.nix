@@ -10,7 +10,7 @@
   emacsPackage =
     if pkgs.stdenv.hostPlatform.isDarwin
     then pkgs.emacs-plus
-    else pkgs.emacs-unstable-pgtk;
+    else pkgs.emacs29-pgtk;
 in {
   home.packages = with pkgs;
     [

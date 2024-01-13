@@ -13,10 +13,12 @@
       "https://nix-community.cachix.org"
       "https://nixpkgs-wayland.cachix.org"
       "https://ruixi-rebirth.cachix.org"
+      "https://klchen0112.cachix.org"
       "https://ryan4yin.cachix.org"
       "https://devenv.cachix.org"
     ];
     extra-trusted-public-keys = [
+      "klchen0112.cachix.org-1:cO5Ek4gcvoWtHslHjWn9U5ymU8ZiN7+tJo0jifbtRz4="
       "ryan4yin.cachix.org-1:Gbk27ZU5AYpGS9i3ssoLlwdvMIh0NxG0w8it/cv9kbU="
       "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
       "nixpkgs-wayland.cachix.org-1:3lwxaILxMRkVhehr5StQprHdEo4IrE8sRho9R9HOLYA="
@@ -313,46 +315,24 @@
 
       # AI
 
-      ########################  Color Schemes  #########################################
 
-      # color scheme - catppuccin
-
-      catppuccin-fcitx5 = {
-        url = "github:catppuccin/fcitx5";
-        flake = false;
-      };
-
-      catppuccin-btop = {
-        url = "github:catppuccin/btop";
-        flake = false;
-      };
-
-      catppuccin-bat = {
-        url = "github:catppuccin/bat";
-        flake = false;
-      };
-
-      catppuccin-alacritty = {
-        url = "github:catppuccin/alacritty/3c808cbb4f9c87be43ba5241bc57373c793d2f17";
-        flake = false;
-      };
 
       catppuccin-starship = {
         url = "github:catppuccin/starship";
         flake = false;
       };
 
-      catppuccin-hyprland = {
-        url = "github:catppuccin/hyprland";
-        flake = false;
-      };
 
-      catppuccin-cava = {
-        url = "github:catppuccin/cava";
-        flake = false;
+      nur-ryan4yin = {
+        url = "github:ryan4yin/nur-packages";
+        # inputs.nixpkgs.follows = "nixpkgs";
       };
-
       # own package
+      own-nur = {
+        url = "github:klchen0112/nur";
+        inputs.nixpkgs.follows = "nixpkgs";
+      };
+
       rime-jd = {
         url = "github:klchen0112/RIME_JD";
         flake = false;

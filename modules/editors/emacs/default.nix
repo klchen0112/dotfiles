@@ -8,7 +8,7 @@
 }: {
   services.emacs = {
     enable = true;
-    package = pkgs.emacs-unstable-pgtk;
+    package = pkgs.emacs29-pgtk;
     defaultEditor = true;
     client.enable = true;
     install = true;
