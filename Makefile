@@ -23,7 +23,9 @@ darwin:
 	darwin-rebuild switch --flake .#macbook-pro-m1
 
 # Emacs
-emacsTest:
+emacs-test:
 	rm -rf "$$HOME/.config/doom"
 	rsync -avz --copy-links --chmod=Du+rwx,Dgo+rx,Fu+rw,Fgo+r modules/editors/emacs/doom/ "$$HOME/.config/doom"
 
+emacs-clean:
+	rm -rf "$$HOME/.config/doom"
