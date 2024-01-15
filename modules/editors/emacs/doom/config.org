@@ -164,7 +164,7 @@
        ;;elixir            ; erlang done right
        ;;elm               ; care for a cup of TEA?
        (emacs-lisp; drown in parentheses
-        ;;+tree-sitter
+        +ttree-sitter
         )
        ;;erlang            ; an elegant language for a more civilized age
        ;;ess               ; emacs speaks statistics
@@ -195,10 +195,10 @@
        ;;ledger            ; be audit you can be
        (lua +lsp +fennel +moonscript)              ; one-based indices? one-based indices
        (markdown
-       ;;+grip
+         +grip
        )          ; writing docs for people to ignore
        ;;nim               ; python + lisp at the speed of c
-       (nix +lsp)               ; I hereby declare "nix geht mehr!"
+       (nix +lsp +tree-sitter)               ; I hereby declare "nix geht mehr!"
        ;;ocaml             ; an objective camel
        (org              ; organize your plain life in plain text
         ;;+brain
@@ -219,11 +219,11 @@
        ;;purescript        ; javascript, but functional
        (python +lsp
                +pyright
-               ;;+pyenv
+               +pyenv
                +cpython
-               (if (not IS-MAC) +conda)
-               ;;+poetry
-               ;;+tree-sitter
+               ;; (if (not IS-MAC) +conda)
+               +poetry
+               +tree-sitter
                )            ; beautiful is better than ugly
        ;;qt                ; the 'cutest' gui framework ever
        ;;racket            ; a DSL for DSLs
@@ -240,7 +240,7 @@
        ;;swift             ; who asked for emoji variables?
        ;;terra             ; Earth and Moon in alignment for performance.
        ;;(web +lsp)              ; the tubes
-       (yaml )              ; JSON, but readable
+       (yaml +lsp +tree-sitter)              ; JSON, but readable
        ;;zig               ; C, but simpler
 
        :email
@@ -2077,7 +2077,7 @@ citar need vertico
   (defun org-roam-to-hugo-md ()
     (interactive)
     ;; Make sure the author is set
-    (setq user-full-name "Alex Kehayias")
+    (setq user-full-name "klchen0112")
 
     ;; Don't include any files tagged as private or
     ;; draft. The way we filter tags doesn't work nicely
