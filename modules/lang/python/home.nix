@@ -10,7 +10,7 @@
     # micromamba
   ];
   programs.micromamba = {
-    enable = pkgs.stdenv.isDarwin;
+    enable = false;
     enableFishIntegration = true;
   };
 }

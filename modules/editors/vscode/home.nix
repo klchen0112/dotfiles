@@ -126,12 +126,12 @@
           version = "2.4.0";
           sha256 = "Yqn59ppNWQRMWGYVLLWofogds+4t/WRRtSSfomPWQy4=";
         }
-        {
-          name = "vscode-micromamba";
-          publisher = "corker";
-          version = "0.1.20";
-          sha256 = "/4Gc07cpif/coLSbaz3hg69PRtYOuWTf3zlY/7hAA3g=";
-        }
+        # {
+        #   name = "vscode-micromamba";
+        #   publisher = "corker";
+        #   version = "0.1.20";
+        #   sha256 = "/4Gc07cpif/coLSbaz3hg69PRtYOuWTf3zlY/7hAA3g=";
+        # }
       ]);
     enableUpdateCheck = false;
     enableExtensionUpdateCheck = false;
