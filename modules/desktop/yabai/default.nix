@@ -281,7 +281,7 @@
   #TODO fix plexamp and cava email
   services.sketchybar = {
     enable = true;
-    package = pkgs.sketchybar;
+    package = pkgs.unstable.sketchybar;
     extraPackages = [pkgs.jq];
     # this code from https://github.com/ColaMint/config.git
     config = let

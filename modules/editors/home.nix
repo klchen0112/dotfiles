@@ -16,5 +16,6 @@
   home.packages = with pkgs; [
     wakatime
     hugo
+    copilot-cli
   ];
 }

@@ -70,7 +70,7 @@
       # "zotero"
       "skim"
       # "via"
-      "TidGi"
+      # "TidGi"
       #"miniconda"
       # "activitywatch"
       # "openscad"
@@ -82,7 +82,7 @@
       #TODO remove
       "marginnote"
       # "zotero"
-      "logseq"
+      # "logseq"
       "tencent-meeting"
       "telegram"
       "via"

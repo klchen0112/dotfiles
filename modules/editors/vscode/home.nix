@@ -64,8 +64,9 @@
         jnoortheen.nix-ide
         # csv
         # copilot
-        # github.copilot
         james-yu.latex-workshop
+
+        github.copilot
       ]
       ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
         {
