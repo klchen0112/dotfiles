@@ -5,10 +5,7 @@
   outputs,
   ...
 }: {
-  home.file.".config/emacs/Rime" = {
-    source = "${inputs.rime-jd}";
-    recursive = true;
-  };
+
   i18n.inputMethod = {
     enabled =
       if pkgs.stdenv.isLinux

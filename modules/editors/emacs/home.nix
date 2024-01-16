@@ -38,6 +38,11 @@ in {
       pngpaste
     ];
 
+  home.file.".config/emacs/Rime" = {
+    source = "${inputs.rime-jd}";
+    recursive = true;
+  };
+  
   programs.pandoc.enable = true;
 
   # home.file.".config/emacs".source = inputs.doomemacs;

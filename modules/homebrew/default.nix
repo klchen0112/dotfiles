@@ -85,7 +85,7 @@
       # "logseq"
       "tencent-meeting"
       "telegram"
-      "via"
+      # "via"
       "zerotier-one"
       "raycast"
       "plexamp"
