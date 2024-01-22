@@ -504,7 +504,7 @@
 (setq doom-themes-dark '(doom-dracula doom-vibrant doom-city-lights doom-moonlight doom-horizon
                          doom-one doom-solarized-dark doom-palenight doom-rouge doom-spacegrey
                          doom-old-hope doom-oceanic-next doom-monokai-pro doom-material doom-henna
-                         doom-ephemeral chocolate doom-zenburn))
+                         doom-ephemeral chocolate doom-zenburn doom-peacock))
 
 (setq doom-themes-light '(doom-one-light doom-solarized-light  doom-opera-light doom-ayu-light))
 
@@ -1323,7 +1323,14 @@
 #+begin_src emacs-lisp :tangle config.el
 (setq auto-save-default t)
 #+end_src
+** Directory/File
 
+#+begin_src emacs-lisp :tangle packages.el
+#+end_src
+
+
+#+begin_src emacs-lisp :tangle config.el
+#+end_src
 * Biblio
 ** init biblio
 :PROPERTIES:
