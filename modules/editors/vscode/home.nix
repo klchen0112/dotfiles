@@ -10,9 +10,9 @@
   programs.vscode = {
     enable = true;
 
-    package = pkgs.vscode;
+    package = pkgs.unstable.vscode;
 
-    extensions = with pkgs.vscode-extensions;
+    extensions = with pkgs.unstable.vscode-extensions;
       [
         #themes
         mechatroner.rainbow-csv
@@ -46,22 +46,23 @@
         # python
         ms-python.python
         ms-python.isort
+        ms-pyright.pyright
+        # ms-python.vscode-pylance
         # ms-toolsai.jupyter
         # ms-toolsai.vscode-jupyter-slideshow
         # ms-toolsai.vscode-jupyter-cell-tags
         # ms-toolsai.jupyter-renderers
         # ms-toolsai.jupyter-keymap
-        ms-python.vscode-pylance
         # ms-pyright.pyright
         # cpp
-        llvm-vs-code-extensions.vscode-clangd
-        ms-vscode.cmake-tools
+        # llvm-vs-code-extensions.vscode-clangd
+        # ms-vscode.cmake-tools
         # ms-vscode.cpptools
 
         # nix
-        bbenoist.nix
+        # bbenoist.nix
         # kamadorueda.alejandra
-        jnoortheen.nix-ide
+        # jnoortheen.nix-ide
         # csv
         # copilot
         james-yu.latex-workshop
