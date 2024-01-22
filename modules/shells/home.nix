@@ -1,25 +1,17 @@
 # fish configuration
 #
-{
-  lib,
-  inputs,
-  pkgs,
-  username,
-  ...
-}: {
-  programs.gpg = {enable = true;};
+{ lib, inputs, pkgs, username, ... }: {
+  programs.gpg = { enable = true; };
 
   programs.git = {
     enable = true;
     package = pkgs.git;
-    ignores = ["*~" "*.swp" ".DS_Store" ".devenv"];
-    attributes = ["*.pdf diff=pdf"];
+    ignores = [ "*~" "*.swp" ".DS_Store" ".devenv" ];
+    attributes = [ "*.pdf diff=pdf" ];
     lfs.enable = true;
     userName = "klchen0112";
     userEmail = "klchen0112@gmail.com";
-    aliases = {
-      co = "checkout";
-    };
+    aliases = { co = "checkout"; };
     extraConfig = {
       init.defaultBranch = "master"; # https://srid.ca/unwoke
       core.editor = "emacsclient";
@@ -31,7 +23,8 @@
     };
   };
 
-  home.file.".config/btop/themes".source = "${inputs.nur-ryan4yin.packages.${pkgs.system}.catppuccin-btop}/themes";
+  home.file.".config/btop/themes".source =
+    "${inputs.nur-ryan4yin.packages.${pkgs.system}.catppuccin-btop}/themes";
   programs.btop = {
     enable = true;
     settings = {
@@ -40,7 +33,7 @@
     };
   };
 
-  programs.bash = {enable = true;};
+  programs.bash = { enable = true; };
   programs.zsh = {
     enable = true;
     enableAutosuggestions =
@@ -97,7 +90,8 @@
     icons = true;
     git = true;
   };
-  home.file.".config/bat/themes".source = "${inputs.nur-ryan4yin.packages.${pkgs.system}.catppuccin-bat}";
+  home.file.".config/bat/themes".source =
+    "${inputs.nur-ryan4yin.packages.${pkgs.system}.catppuccin-bat}";
   programs.bat = {
     enable = true;
     config = {
@@ -126,107 +120,104 @@
     enableBashIntegration = true;
     nix-direnv.enable = true;
   };
-  programs.jq = {enable = true;};
-  programs.man = {enable = true;};
+  programs.jq = { enable = true; };
+  programs.man = { enable = true; };
   programs.starship = {
     enable = true;
     enableZshIntegration = true;
     enableFishIntegration = true;
-    settings =
-      {
-        add_newline = false;
-        format = lib.concatStrings [
-          "$shlvl"
-          "$shell"
-          "$username"
-          "$hostname"
-          "$directory"
-          "$git_branch"
-          "$git_commit"
-          "$git_state"
-          "$git_status"
-          "$cmake"
-          "$python"
-          "$nix_shell"
-          "$cmd_duration"
-          "$sudo"
-          "$line_break"
-          "$jobs"
-          "$character"
-        ];
-        shlvl = {
-          disabled = false;
-          style = "bright-red bold";
-        };
-        shell = {
-          disabled = false;
-          format = "$indicator";
-          fish_indicator = "";
-          bash_indicator = "[BASH](bright-black) ";
-          zsh_indicator = "[ZSH](bright-black) ";
-        };
-        username = {
-          disabled = false;
-          style_user = "bright-white bold";
-          style_root = "bright-red bold";
-        };
-        hostname = {
-          disabled = false;
-          style = "bright-green bold";
-          ssh_only = true;
-        };
-        cmd_duration = {
-          disabled = false;
-          format = "⏱ $duration";
-        };
-        git_branch = {
-          disabled = false;
-          format = "[$symbol $branch]($style) ";
-          symbol = "שׂ";
-          style = "bright-yellow bold";
-        };
-        conda = {
-          disabled = false;
-          format = "[$symbol$environment](dimmed green) ";
-        };
-        git_commit = {
-          disabled = false;
-          only_detached = true;
-          format = "[$hash]($style) ";
-          style = "bright-yellow bold";
-        };
-        git_state = {
-          disabled = false;
-          style = "bright-purple bold";
-        };
-        git_status = {disabled = false;};
-        sudo = {
-          disabled = false;
-          format = "as $symbol";
-        };
-        python = {
-          disabled = false;
-          format = "[$pyenv_prefix]($version)(($virtualenv))";
-        };
-        nix_shell = {
-          disabled = false;
-          format = "[$name]($style)";
-        };
-        nodejs = {
-          disabled = false;
-          format = "($version)";
-        };
-        cmake = {
-          disabled = false;
-          format = "($version)";
-        };
-      }
-      // builtins.fromTOML (
-        builtins.readFile
-        "${inputs.nur-ryan4yin.packages.${pkgs.system}.catppuccin-starship}/palettes/mocha.toml"
-      );
+    settings = {
+      add_newline = false;
+      format = lib.concatStrings [
+        "$shlvl"
+        "$shell"
+        "$username"
+        "$hostname"
+        "$directory"
+        "$git_branch"
+        "$git_commit"
+        "$git_state"
+        "$git_status"
+        "$cmake"
+        "$python"
+        "$nix_shell"
+        "$cmd_duration"
+        "$sudo"
+        "$line_break"
+        "$jobs"
+        "$character"
+      ];
+      shlvl = {
+        disabled = false;
+        style = "bright-red bold";
+      };
+      shell = {
+        disabled = false;
+        format = "$indicator";
+        fish_indicator = "";
+        bash_indicator = "[BASH](bright-black) ";
+        zsh_indicator = "[ZSH](bright-black) ";
+      };
+      username = {
+        disabled = false;
+        style_user = "bright-white bold";
+        style_root = "bright-red bold";
+      };
+      hostname = {
+        disabled = false;
+        style = "bright-green bold";
+        ssh_only = true;
+      };
+      cmd_duration = {
+        disabled = false;
+        format = "⏱ $duration";
+      };
+      git_branch = {
+        disabled = false;
+        format = "[$symbol $branch]($style) ";
+        symbol = "שׂ";
+        style = "bright-yellow bold";
+      };
+      conda = {
+        disabled = false;
+        format = "[$symbol$environment](dimmed green) ";
+      };
+      git_commit = {
+        disabled = false;
+        only_detached = true;
+        format = "[$hash]($style) ";
+        style = "bright-yellow bold";
+      };
+      git_state = {
+        disabled = false;
+        style = "bright-purple bold";
+      };
+      git_status = { disabled = false; };
+      sudo = {
+        disabled = false;
+        format = "as $symbol";
+      };
+      python = {
+        disabled = false;
+        format = "[$pyenv_prefix]($version)(($virtualenv))";
+      };
+      nix_shell = {
+        disabled = false;
+        format = "[$name]($style)";
+      };
+      nodejs = {
+        disabled = false;
+        format = "($version)";
+      };
+      cmake = {
+        disabled = false;
+        format = "($version)";
+      };
+    } // builtins.fromTOML (builtins.readFile "${
+        inputs.nur-ryan4yin.packages.${pkgs.system}.catppuccin-starship
+      }/palettes/mocha.toml");
   };
-  programs.ripgrep = {enable = true;};
+  programs.ripgrep = { enable = true; };
 
   programs.ssh = {
     enable = true;
@@ -269,7 +260,7 @@
         identityFile = "~/.ssh/id_ed25519";
         identitiesOnly = true;
       };
-      n1 = {hostname = "192.168.0.254";};
+      n1 = { hostname = "192.168.0.254"; };
       tower = {
         hostname = "192.168.0.200";
         user = "root";
@@ -321,5 +312,6 @@
     choose
     du-dust
     duf
+    just
   ];
 }
