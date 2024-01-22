@@ -103,7 +103,7 @@
 
        :emacs
        (dired
-        +ranger           ; make bringing the goodness of ranger to dired
+        ;; +ranger           ; make bringing the goodness of ranger to dired
         +icons           ; making dired pretty [functional]
         +dirvish)
        electric          ; smarter, keyword-based electric-indent

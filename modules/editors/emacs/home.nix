@@ -1,16 +1,9 @@
-{
-  inputs,
-  outputs,
-  lib,
-  config,
-  pkgs,
-  username,
-  ...
-}: let
-  emacsPackage =
-    if pkgs.stdenv.hostPlatform.isDarwin
-    then pkgs.emacs-plus
-    else pkgs.emacs29-pgtk;
+{ inputs, outputs, lib, config, pkgs, username, ... }:
+let
+  emacsPackage = if pkgs.stdenv.hostPlatform.isDarwin then
+    pkgs.emacs-plus
+  else
+    pkgs.emacs29-pgtk;
 in {
   home.packages = with pkgs;
     [
@@ -27,13 +20,14 @@ in {
       # mpvi required
       tesseract5
       ffmpeg_5
+      ffmpegthumbnailer
+      mediainfo
       # email
       # mu4e
 
       # for emacs rime
       librime
-    ]
-    ++ (lib.optionals pkgs.stdenv.isDarwin) [
+    ] ++ (lib.optionals pkgs.stdenv.isDarwin) [
       # pngpaste for org mode download clip
       pngpaste
     ];
@@ -42,7 +36,7 @@ in {
     source = "${inputs.rime-jd}";
     recursive = true;
   };
-  
+
   programs.pandoc.enable = true;
 
   # home.file.".config/emacs".source = inputs.doomemacs;
