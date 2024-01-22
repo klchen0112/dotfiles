@@ -2820,6 +2820,19 @@ use dash open app dash
 ;;              ("C-TAB" . 'copilot-accept-completion-by-word)
 ;;              ("C-<tab>" . 'copilot-accept-completion-by-word)))
 #+end_src
+** just
+#+begin_src emacs-lisp :tangle packages.el
+(package! just-mode)
+(package! justl)
+#+end_src
+
+#+begin_src emacs-lisp :tangle config.el
+(use-package! just-mode)
+
+(use-package! justl
+  :config
+  (map! :n "e" 'justl-exec-recipe))
+#+end_src
 * reader
 ** pdf tools
 :PROPERTIES:
