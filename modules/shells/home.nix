@@ -35,7 +35,7 @@
 
   programs.bash = { enable = true; };
   programs.zsh = {
-    enable = true;
+    enable = pkgs.stdenv.isDarwin;
     enableAutosuggestions =
       true; # Auto suggest options and highlights syntax, searches in history for options
     # syntaxHighlighting.enable = true;
@@ -83,6 +83,10 @@
         name = "sponge";
         src = sponge.src;
       }
+      {
+        name = "pure";
+        src = pure.src;
+      }
     ];
   };
   programs.eza = {
@@ -123,9 +127,9 @@
   programs.jq = { enable = true; };
   programs.man = { enable = true; };
   programs.starship = {
-    enable = true;
-    enableZshIntegration = true;
-    enableFishIntegration = true;
+    enable = false;
+    enableZshIntegration = pkgs.stdenv.isDarwin;
+    enableFishIntegration = false;
     settings = {
       add_newline = false;
       format = lib.concatStrings [
