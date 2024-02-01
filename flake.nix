@@ -178,7 +178,7 @@
       devshell = {
         url = "github:numtide/devshell";
         inputs.nixpkgs.follows = "nixpkgs";
-        inputs.systems.follows = "systems";
+        # inputs.systems.follows = "systems";
       };
 
       flake-utils = {
