@@ -37,6 +37,7 @@
     #   VISUAL = "nvim";
     # };
     systemPackages = with pkgs; [
+      coreutils # gnu ls 
       cachix
       # sketchybar
       # fontconfig
