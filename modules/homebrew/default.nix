@@ -1,12 +1,4 @@
-{
-  inputs,
-  outputs,
-  lib,
-  config,
-  pkgs,
-  username,
-  ...
-}: {
+{ inputs, outputs, lib, config, pkgs, username, ... }: {
   homebrew = {
     # Declare Homebrew using Nix-Darwin
     enable = true;
@@ -74,7 +66,7 @@
       #"miniconda"
       # "activitywatch"
       "openscad"
-      "qmk-toolbox"
+      # "qmk-toolbox"
       # "mathpix-snipping-tool"
       # "sing-box"
       "logi-options-plus"
@@ -90,6 +82,7 @@
       "raycast"
       "plexamp"
       "syncthing"
+      "mpv"
     ];
   };
 }
