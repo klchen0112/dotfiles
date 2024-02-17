@@ -133,7 +133,6 @@
        ;; editorconfig      ; let someone else argue about tabs vs spaces
        ;;ein               ; tame Jupyter notebooks with emacs
        (eval +overlay)     ; run code, run (also, repls)
-       gist              ; interacting with github gists
        (lookup +dictionary +docsets +offline)             ; navigate your code and its documentation
        (lsp +peek)              ; M-x vscode
        (magit             ; a git porcelain for Emacs
@@ -2769,6 +2768,19 @@ Refer to `org-agenda-prefix-format' for more information."
 #+end_src
 
 * Lang
+** Docstr
+#+begin_src emacs-lisp :tangle packages.el
+;;(package! ts-docstr
+;;  :recipe (:host github :repo "emacs-vs/ts-docstr" :files (:defaults "langs/*.el")))
+#+end_src
+
+
+#+begin_src emacs-lisp :tangle config.el
+;;(use-package! ts-docstr
+;;:config
+;;(setq ts-docstr-key-support t)
+;;(setq ts-docstr-ask-on-enable t))
+#+end_src
 ** LSP mode
 :PROPERTIES:
 :ID:       413e9af2-7f0f-47c7-9d3f-a27c919f3bfd
@@ -2927,6 +2939,7 @@ use dash open app dash
   :config
   (map! :n "e" 'justl-exec-recipe))
 #+end_src
+
 * reader
 ** pdf tools
 :PROPERTIES:
