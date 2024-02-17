@@ -82,7 +82,8 @@
       "raycast"
       "plexamp"
       "syncthing"
-      "mpv"
+      # "mpv"
+      "iina"
     ];
   };
 }
