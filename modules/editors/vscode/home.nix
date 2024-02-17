@@ -2,9 +2,9 @@
   programs.vscode = {
     enable = true;
 
-    package = pkgs.unstable.vscode;
+    package = pkgs.vscode;
 
-    extensions = with pkgs.unstable.vscode-extensions;
+    extensions = with pkgs.vscode-extensions;
       [
         #themes
         mechatroner.rainbow-csv
