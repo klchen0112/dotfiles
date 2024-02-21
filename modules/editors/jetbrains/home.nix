@@ -3,8 +3,8 @@
 #
 {pkgs, ...}: {
   home.packages = with pkgs.jetbrains; [
-    # idea-ultimate
+    idea-ultimate
     clion
-    # pycharm-professional
+    pycharm-professional
   ];
 }

@@ -9,7 +9,7 @@
 }: {
   imports = [
     ./vscode/home.nix
-    ./jetbrains/home.nix
+    # ./jetbrains/home.nix
     ./emacs/home.nix
     ./vim/home.nix
   ];
