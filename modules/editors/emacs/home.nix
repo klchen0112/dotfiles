@@ -24,6 +24,8 @@ in {
       mediainfo
       # email
       # mu4e
+      # spell check
+      aspell
 
       # for emacs rime
       librime
@@ -59,6 +61,7 @@ in {
   # };
   services.emacs = {
     enable = pkgs.stdenv.isLinux;
+    package = emacsPackage;
     client.enable = true;
     socketActivation.enable = true;
     startWithUserSession = "graphical";
