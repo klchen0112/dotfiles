@@ -22,14 +22,14 @@
       enable = pkgs.stdenv.isLinux;
       source = "${inputs.rime-jd}";
       recursive = true;
-      overwrite = true;
+      # overwrite = true;
     };
 
     "Libaray/Rime" = {
       enable = pkgs.stdenv.isDarwin;
       source = "${inputs.rime-jd}";
       recursive = true;
-      overwrite = true;
+      # overwrite = true;
     };
   };
 
