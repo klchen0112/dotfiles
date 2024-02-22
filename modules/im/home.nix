@@ -1,16 +1,7 @@
-{
-  inputs,
-  pkgs,
-  lib,
-  outputs,
-  ...
-}: {
+{ inputs, pkgs, lib, outputs, ... }: {
 
   i18n.inputMethod = {
-    enabled =
-      if pkgs.stdenv.isLinux
-      then "fcitx5"
-      else null;
+    enabled = if pkgs.stdenv.isLinux then "fcitx5" else null;
     fcitx5.addons = with pkgs; [
       fcitx5-rime
       fcitx5-configtool
@@ -18,12 +9,28 @@
     ];
   };
   home.file = {
-    ".config/fcitx5/conf/classicui.conf".source = ./classicui.conf;
-    ".local/share/fcitx5/themes".source = "${inputs.nur-ryan4yin.packages.${pkgs.system}.catppuccin-fcitx5}/src";
+    ".config/fcitx5/conf/classicui.conf" = {
+      enable = pkgs.stdenv.isLinux;
+      source = ./classicui.conf;
+    };
+    ".local/share/fcitx5/themes" = {
+      enable = pkgs.stdenv.isLinux;
+      source =
+        "${inputs.nur-ryan4yin.packages.${pkgs.system}.catppuccin-fcitx5}/src";
+    };
+    ".local/share/fcitx5/rime" = {
+      enable = pkgs.stdenv.isLinux;
+      source = "${inputs.rime-jd}";
+      recursive = true;
+      overwrite = true;
+    };
+
+    "Libaray/Rime" = {
+      enable = pkgs.stdenv.isDarwin;
+      source = "${inputs.rime-jd}";
+      recursive = true;
+      overwrite = true;
+    };
   };
 
-  home.file.".local/share/fcitx5/rime" = {
-    source = "${inputs.rime-jd}";
-    recursive = true;
-  };
 }
