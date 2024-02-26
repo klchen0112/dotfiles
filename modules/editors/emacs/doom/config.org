@@ -2533,7 +2533,7 @@ Refer to `org-agenda-prefix-format' for more information."
         (if IS-MAC
             (concat
              (car (last
-                   (split-string (shell-command-to-string "nix eval --raw ~/myOpenSource/dotfiles#emacs-plus") "\n")
+                   (split-string (shell-command-to-string "nix eval --raw ~/myOpenSource/dotfiles#emacsPlus29") "\n")
                    ))
              "/include")
           )
