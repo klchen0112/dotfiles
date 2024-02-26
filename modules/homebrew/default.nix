@@ -46,7 +46,7 @@
       # "authy"
       # "hiddenbar"
       # "telegram"
-      # "baidunetdisk"
+      "baidunetdisk"
       # "iterm2"
       "balenaetcher"
       "keyboardcleantool"
