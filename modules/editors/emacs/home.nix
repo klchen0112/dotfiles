@@ -1,7 +1,7 @@
 { inputs, outputs, lib, config, pkgs, username, ... }:
 let
   emacsPackage = if pkgs.stdenv.hostPlatform.isDarwin then
-    pkgs.emacs-plus
+    pkgs.emacsPlus29
   else
     pkgs.emacs29-pgtk;
 in {

@@ -9,7 +9,7 @@
 }: {
   services.emacs = {
     enable = true;
-    package = pkgs.emacs-plus;
+    package = pkgs.emacsPlus29;
   };
   environment.variables.EDITOR = "emacs";
 }
