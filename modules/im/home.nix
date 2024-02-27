@@ -32,7 +32,7 @@
       # overwrite = true;
     };
 
-    "Libaray/Rime" = {
+    "Library/Rime" = {
       enable = pkgs.stdenv.isDarwin;
       source = "${inputs.rime-jd}";
       recursive = true;
