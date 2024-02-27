@@ -1,19 +1,29 @@
-{ inputs, outputs, lib, config, pkgs, username, ... }: {
+{
+  inputs,
+  outputs,
+  lib,
+  config,
+  pkgs,
+  username,
+  ...
+}: {
   programs.vscode = {
     enable = true;
 
     package = pkgs.vscode;
 
-    extensions = with pkgs.vscode-extensions;
+    extensions = with pkgs.vscode-marketplace;
       [
         #themes
         mechatroner.rainbow-csv
         gruntfuggly.todo-tree
+        catppuccin.catppuccin-vsc
+        catppuccin.catppuccin-vsc-icons
         # johnpapa.vscode-peacock
         # github.github-vscode-theme
         # akamud.vscode-theme-onelight
         # vscode-icons-team.vscode-icons
-        catppuccin.catppuccin-vsc
+
 
         # editor
         streetsidesoftware.code-spell-checker
@@ -40,6 +50,7 @@
         ms-python.python
         ms-python.isort
         ms-pyright.pyright
+        donjayamanne.python-environment-manager
         # ms-python.vscode-pylance
         # ms-toolsai.jupyter
         # ms-toolsai.vscode-jupyter-slideshow
@@ -53,78 +64,19 @@
         # ms-vscode.cpptools
 
         # nix
-        # bbenoist.nix
-        # kamadorueda.alejandra
-        # jnoortheen.nix-ide
+        bbenoist.nix
+        kamadorueda.alejandra
+        jnoortheen.nix-ide
         # csv
         # copilot
         james-yu.latex-workshop
 
         github.copilot
-      ] ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
-        # {
-        #   name = "vscode-python-typehint";
-        #   publisher = "njqdev";
-        #   version = "1.5.1";
-        #   sha256 = "CCMsCK//DCuBjFB/2kOOGjJil5zusTG+1hsp3tGTQ2U=";
-        # }
-        {
-          name = "python-environment-manager";
-          publisher = "donjayamanne";
-          version = "1.2.4";
-          sha256 = "1jvuoaP+bn8uR7O7kIDZiBKuG3VwMTQMjCJbSlnC7Qo=";
-        }
-        {
-          name = "catppuccin-vsc-icons";
-          publisher = "Catppuccin";
-          version = "1.8.0";
-          sha256 = "H31UtqqiqGm2r60e44KWTI2rmPRVLQ53vbfaDYBLXIs=";
-        }
-        # {
-        #   name = "org-mode";
-        #   publisher = "vscode-org-mode";
-        #   version = "1.0.0";
-        #   sha256 = "o9CIjMlYQQVRdtTlOp9BAVjqrfFIhhdvzlyhlcOv5rY=";
-        # }
-
-        # {
-        #   name = "theme-dracula";
-        #   publisher = "dracula-theme";
-        #   version = "2.24.2";
-        #   sha256 = "YNqWEIvlEI29mfPxOQVdd4db9G2qNodhz8B0MCAAWK8=";
-        # }
-        # {
-        #   name = "vsc-python-indent";
-        #   publisher = "KevinRose";
-        #   version = "1.18.0";
-        #   sha256 = "hiOMcHiW8KFmau7WYli0pFszBBkb6HphZsz+QT5vHv0=";
-        # }
-        # {
-        #   name = "cpptools";
-        #   publisher = "ms-vscode";
-        #   version = "1.17.5";
-        #   sha256 = "LAAEw8goAw3x1MU/TkIdLgPYa0f5b6Hv4GkeiPTVbdY=";
-        # }
-        # {
-        #   name = "vscode-yaml";
-        #   publisher = "redhat";
-        #   version = "1.14.0";
-        #   sha256 = "hCRyDA6oZF7hJv0YmbNG3S2XPtNbyxX1j3qL1ixOnF8=";
-        # }
-      ] ++ lib.optionals pkgs.stdenv.isDarwin
-      (pkgs.vscode-utils.extensionsFromVscodeMarketplace [{
-        name = "vscode-dash";
-        publisher = "deerawan";
-        version = "2.4.0";
-        sha256 = "Yqn59ppNWQRMWGYVLLWofogds+4t/WRRtSSfomPWQy4=";
-      }
-      # {
-      #   name = "vscode-micromamba";
-      #   publisher = "corker";
-      #   version = "0.1.20";
-      #   sha256 = "/4Gc07cpif/coLSbaz3hg69PRtYOuWTf3zlY/7hAA3g=";
-      # }
-        ]);
+      ]
+      ++ lib.optionals pkgs.stdenv.isDarwin
+      (with pkgs.vscode-marketplace; [
+        deerawan.vscode-dash
+      ]);
     enableUpdateCheck = false;
     enableExtensionUpdateCheck = false;
     userSettings = {
@@ -135,7 +87,7 @@
       "C_Cpp.errorSquiggles" = "Enabled";
       "C_Cpp.intelliSenseEngine" = "Disabled";
       "C_Cpp.intelliSenseEngineFallback" = "Disabled";
-      "[Log]" = { "editor.fontSize" = 13; };
+      "[Log]" = {"editor.fontSize" = 13;};
       "[c]" = {
         "editor" = {
           "quickSuggestions" = {
@@ -159,10 +111,8 @@
         "strings" = true;
       };
       "files.autoSave" = "afterDelay";
-      "editor.codeLensFontFamily" =
-        "'Jetbrains Mono','Overpass','CMU Typewriter Text','Noto Serif CJK SC','Noto Serif','Hack Nerd Font'";
-      "editor.fontFamily" =
-        "'Jetbrains Mono','Overpass','CMU Typewriter Text','Noto Serif CJK SC','Noto Serif','Hack Nerd Font'";
+      "editor.codeLensFontFamily" = "'Jetbrains Mono','Overpass','CMU Typewriter Text','Noto Serif CJK SC','Noto Serif','Hack Nerd Font'";
+      "editor.fontFamily" = "'Jetbrains Mono','Overpass','CMU Typewriter Text','Noto Serif CJK SC','Noto Serif','Hack Nerd Font'";
       "editor.fontLigatures" = true;
       "editor.fontSize" = 16;
       "editor.formatOnPaste" = true;
@@ -215,22 +165,20 @@
       "git.autofetch" = true;
       "json.maxItemsComputed" = 10000;
       "security.workspace.trust.untrustedFiles" = "open";
-      "search.exclude" = { };
+      "search.exclude" = {};
       "search.showLineNumbers" = true;
       "search.smartCase" = true;
       "terminal.integrated.defaultProfile.windows" = "PowerShell";
       "terminal.external.osxExec" = "kitty.app";
       "terminal.integrated.automationProfile.osx" = "fish";
       "terminal.integrated.enableBell" = true;
-      "terminal.integrated.env.windows" = { "LC_ALL" = "zh_CN.UTF-8"; };
+      "terminal.integrated.env.windows" = {"LC_ALL" = "zh_CN.UTF-8";};
       "terminal.integrated.fontSize" = 15;
       "terminal.integrated.gpuAcceleration" = "on";
       "terminal.integrated.rightClickBehavior" = "selectWord";
       "terminal.integrated.minimumContrastRatio" = 1;
-      "todo-tree.general.tags" =
-        [ "BUG" "HACK" "FIXME" "TODO" "XXX" "[ ]" "[x]" ];
-      "todo-tree.regex.regex" =
-        "(//|#|<!--|;|/\\*|^|^\\s*(-|\\d+.))\\s*($TAGS)";
+      "todo-tree.general.tags" = ["BUG" "HACK" "FIXME" "TODO" "XXX" "[ ]" "[x]"];
+      "todo-tree.regex.regex" = "(//|#|<!--|;|/\\*|^|^\\s*(-|\\d+.))\\s*($TAGS)";
       "workbench.editor.enablePreview" = false;
       "terminal.explorerKind" = "external";
       "editor.lineNumbers" = "relative";
@@ -268,8 +216,8 @@
         "cy" = "linux";
         "i12500" = "linux";
       };
-      "[yaml]" = { "editor.comments.insertSpace" = false; };
-      "[python]" = { "editor.formatOnType" = true; };
+      "[yaml]" = {"editor.comments.insertSpace" = false;};
+      "[python]" = {"editor.formatOnType" = true;};
     };
   };
 }

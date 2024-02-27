@@ -23,6 +23,7 @@
       inputs.hyprpicker.overlays.default
       inputs.hyprcontrib.overlays.default
       inputs.devenv.overlays.default
+      inputs.nix-vscode-extensions.overlays.default
       # neovim-nightly-overlay.overlays.default
       # inputs.nixpkgs-firefox-darwin.overlay
       inputs.nur.overlay

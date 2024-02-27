@@ -242,6 +242,13 @@
         inputs.flake-compat.follows = "flake-compat";
       };
 
+      nix-vscode-extensions = {
+        url = "github:nix-community/nix-vscode-extensions";
+        inputs.nixpkgs.follows = "nixpkgs-unstable";
+        inputs.flake-utils.follows = "flake-utils";
+        inputs.flake-compat.follows = "flake-compat";
+      };
+
       emacs-overlay = {
         url = "github:nix-community/emacs-overlay/master";
         inputs.nixpkgs.follows = "nixpkgs-unstable";
