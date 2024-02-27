@@ -10,7 +10,7 @@
   programs.vscode = {
     enable = true;
 
-    package = pkgs.vscode;
+    package = pkgs.unstable.vscode;
 
     extensions = with pkgs.vscode-marketplace;
       [
@@ -35,11 +35,11 @@
         ms-vscode-remote.remote-ssh
 
         # git
-        #eamodio.gitlens
+        eamodio.gitlens
         #donjayamanne.githistory
         #mhutchie.git-graph
         # waderyan.gitblame
-        kahole.magit
+
         # shell
         skyapps.fish-vscode
         # markdown
@@ -67,10 +67,12 @@
         kamadorueda.alejandra
         jnoortheen.nix-ide
         # csv
-        # copilot
-        james-yu.latex-workshop
 
+        # copilot
         github.copilot
+        github.copilot-chat
+
+        james-yu.latex-workshop
       ]
       ++ lib.optionals pkgs.stdenv.isDarwin
       (with pkgs.vscode-marketplace; [
@@ -128,6 +130,8 @@
       "editor.suggestSelection" = "first";
       "editor.bracketPairColorization.enabled" = true;
       "editor.guides.bracketPairs" = "active";
+      "editor.wordWrap" = "on";
+
       "clangd.arguments" = [
         "--log=verbose"
         "--pretty"

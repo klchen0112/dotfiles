@@ -15,6 +15,7 @@
       upgrade = true;
       cleanup = "zap"; # Uninstall not listed packages and casks
     };
+    global.autoUpdate = false;
     masApps = {
       wechat = 836500024;
       qq = 451108668;
@@ -28,12 +29,7 @@
       # xcode = 497799835;
     };
 
-    taps = [
-      "homebrew/cask-fonts"
-      "homebrew/services"
-      # "laishulu/macism"
-      # "FelixKratz/formulae"
-    ];
+    taps = builtins.attrNames config.nix-homebrew.taps;
     brews = [
       # "macism"
       "mas"

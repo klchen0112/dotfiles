@@ -35,6 +35,7 @@
     nixpkgs,
     home-manager,
     darwin,
+    nix-homebrew,
     ...
   }:
   # Function that tells my flake which to use and what do what to do with the dependencies.
@@ -130,6 +131,30 @@
             home-manager.extraSpecialArgs = {inherit username inputs outputs;}; # Pass flake variable
             home-manager.users.${username} = import ./hosts/macbook-pro-m1/default.nix;
           }
+          nix-homebrew.darwinModules.nix-homebrew
+          {
+            nix-homebrew = {
+              # Install Homebrew under the default prefix
+              enable = true;
+
+              # Apple Silicon Only: Also install Homebrew under the default Intel prefix for Rosetta 2
+              enableRosetta = true;
+
+              # User owning the Homebrew prefix
+              user = "klchen";
+              taps = with inputs; {
+                "homebrew/homebrew-core" = homebrew-core;
+                "homebrew/homebrew-cask" = homebrew-cask;
+                "homebrew/homebrew-services" = homebrew-services;
+              };
+              # Optional: Enable fully-declarative tap management
+              #
+              # With mutableTaps disabled, taps can no longer be added imperatively with `brew tap`.
+              mutableTaps = true;
+              # Automatically migrate existing Homebrew installations
+              autoMigrate = true;
+            };
+          }
           inputs.agenix.darwinModules.default
         ];
       };
@@ -148,6 +173,26 @@
         inputs.nixpkgs.follows = "nixpkgs";
       };
 
+      nix-homebrew = {
+        url = "github:zhaofengli-wip/nix-homebrew";
+        inputs.nixpkgs.follows = "nixpkgs";
+        inputs.nix-darwin.follows = "darwin";
+        inputs.flake-utils.follows = "flake-utils";
+
+      };
+      # Optional: Declarative tap management
+      homebrew-core = {
+        url = "github:homebrew/homebrew-core";
+        flake = false;
+      };
+      homebrew-cask = {
+        url = "github:homebrew/homebrew-cask";
+        flake = false;
+      };
+      homebrew-services = {
+       url = "github:homebrew/homebrew-services";
+        flake = false;
+      };
       # Home Manager
       home-manager = {
         # User Package Management
