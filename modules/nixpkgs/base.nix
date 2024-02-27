@@ -33,7 +33,7 @@
       #     patches = [ ./change-hello-to-hi.patch ];
       #   });
       # })
-    ] ;
+    ];
 
     config = {
       allowUnfree = true; # Allow proprietary software.

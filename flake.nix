@@ -155,8 +155,6 @@
         inputs.nixpkgs.follows = "nixpkgs";
       };
 
-
-
       systems.url = "github:nix-systems/default";
 
       # secrets management

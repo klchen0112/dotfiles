@@ -1,4 +1,12 @@
-{ inputs, outputs, config, pkgs, username, system, ... }: {
+{
+  inputs,
+  outputs,
+  config,
+  pkgs,
+  username,
+  system,
+  ...
+}: {
   services.yabai = {
     enable = true;
     package = pkgs.unstable.yabai;
@@ -43,7 +51,8 @@
       mouse_action2 = "resize";
       mouse_drop_action = "swap";
     };
-    extraConfig = let yabai_script = ./yabai;
+    extraConfig = let
+      yabai_script = ./yabai;
     in ''
       #!/usr/bin/env sh
 
@@ -186,9 +195,10 @@
   services.sketchybar = {
     enable = true;
     package = pkgs.unstable.sketchybar;
-    extraPackages = [ pkgs.jq ];
+    extraPackages = [pkgs.jq];
     # this code from https://github.com/ColaMint/config.git
-    config = let sketchybar_scripts = ./sketchybar;
+    config = let
+      sketchybar_scripts = ./sketchybar;
     in ''
       #!/usr/bin/env sh
       LABEL_FONT_FAMILY="PingFang SC"

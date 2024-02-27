@@ -24,7 +24,6 @@
         # akamud.vscode-theme-onelight
         # vscode-icons-team.vscode-icons
 
-
         # editor
         streetsidesoftware.code-spell-checker
         christian-kohler.path-intellisense

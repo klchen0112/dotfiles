@@ -1,7 +1,15 @@
-{ inputs, pkgs, lib, outputs, ... }: {
-
+{
+  inputs,
+  pkgs,
+  lib,
+  outputs,
+  ...
+}: {
   i18n.inputMethod = {
-    enabled = if pkgs.stdenv.isLinux then "fcitx5" else null;
+    enabled =
+      if pkgs.stdenv.isLinux
+      then "fcitx5"
+      else null;
     fcitx5.addons = with pkgs; [
       fcitx5-rime
       fcitx5-configtool
@@ -15,8 +23,7 @@
     };
     ".local/share/fcitx5/themes" = {
       enable = pkgs.stdenv.isLinux;
-      source =
-        "${inputs.nur-ryan4yin.packages.${pkgs.system}.catppuccin-fcitx5}/src";
+      source = "${inputs.nur-ryan4yin.packages.${pkgs.system}.catppuccin-fcitx5}/src";
     };
     ".local/share/fcitx5/rime" = {
       enable = pkgs.stdenv.isLinux;
@@ -32,5 +39,4 @@
       # overwrite = true;
     };
   };
-
 }

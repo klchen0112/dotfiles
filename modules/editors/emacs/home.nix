@@ -1,9 +1,16 @@
-{ inputs, outputs, lib, config, pkgs, username, ... }:
-let
-  emacsPackage = if pkgs.stdenv.hostPlatform.isDarwin then
-    pkgs.emacsPlus29
-  else
-    pkgs.emacs29-pgtk;
+{
+  inputs,
+  outputs,
+  lib,
+  config,
+  pkgs,
+  username,
+  ...
+}: let
+  emacsPackage =
+    if pkgs.stdenv.hostPlatform.isDarwin
+    then pkgs.emacsPlus29
+    else pkgs.emacs29-pgtk;
 in {
   home.packages = with pkgs;
     [
@@ -29,7 +36,8 @@ in {
 
       # for emacs rime
       librime
-    ] ++ (lib.optionals pkgs.stdenv.isDarwin) [
+    ]
+    ++ (lib.optionals pkgs.stdenv.isDarwin) [
       # pngpaste for org mode download clip
       pngpaste
     ];
