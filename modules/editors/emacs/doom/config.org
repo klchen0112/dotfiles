@@ -3024,8 +3024,16 @@ use dash open app dash
     (setq alert-default-style 'libnotify))
 )
 #+end_src
+* Git
+#+begin_src emacs-lisp :tangle packages.el
+;; 获得当前的repo commit的连接
+(package! git-link)
+#+end_src
+
+#+begin_src emacs-lisp :tangle config.el
+(use-package git-link)
+#+end_src
 * Other module
-** Git Module
 ** Time tracking
 :PROPERTIES:
 :ID:       ea697417-3b23-406f-b821-7fd01c60d7e5
