@@ -34,6 +34,7 @@
       # "macism"
       "mas"
     ];
+    caskArgs = {no_quarantine = true;};
     casks = [
       "squirrel"
       "microsoft-remote-desktop"
