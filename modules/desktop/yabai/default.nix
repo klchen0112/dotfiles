@@ -121,21 +121,30 @@
     enable = true;
     package = pkgs.unstable.skhd;
     skhdConfig = ''
-      alt - h  : yabai -m window --focus west ; or yabai -m display --focus west
 
-      alt - l : yabai -m window --focus east ; or yabai -m display --focus east
+      alt - left  : yabai -m window --focus west ; or yabai -m display --focus west
 
-      alt - j  : yabai -m window --focus north ; or yabai -m display --focus north
+      alt - right : yabai -m window --focus east ; or yabai -m display --focus east
 
-      alt - k  : yabai -m window --focus south ; or yabai -m display --focus south
+      alt - up    : yabai -m window --focus north ; or yabai -m display --focus north
 
-      shift + alt - h  : yabai -m window --warp west; or yabai -m window --display west  ; and yabai -m display --focus west
+      alt - down  : yabai -m window --focus south ; or yabai -m display --focus south
 
-      shift + alt - l  : yabai -m window --warp east ; or yabai -m window --display east ; and yabai -m display --focus east
+      shift + alt - left  : yabai -m window --warp west   ; or yabai -m window --display west   ; and yabai -m display --focus west
 
-      shift + alt - k  : yabai -m window --warp north ; or yabai -m window --display north ; and yabai -m display --focus north
+      shift + alt - right : yabai -m window --warp east   ; or yabai -m window --display east   ; and yabai -m display --focus east
 
-      shift + alt - j  : yabai -m window --warp south  ; or yabai -m window --display south  ; and yabai -m display --focus south
+      shift + alt - down  : yabai -m window --warp north  ; or yabai -m window --display north  ; and yabai -m display --focus north
+
+      shift + alt - up    : yabai -m window --warp south  ; or yabai -m window --display south  ; and yabai -m display --focus south
+
+      ctrl + alt - left  : yabai -m window --insert west
+
+      ctrl + alt - right : yabai -m window --insert east
+
+      ctrl + alt - down  : yabai -m window --insert north
+
+      ctrl + alt - up    : yabai -m window --insert south
 
       shift + alt - x  : yabai -m space --mirror x-axis
 
@@ -161,9 +170,7 @@
 
       shift + alt - 9  :  yabai -m window --space 9; yabai -m space --focus 9;
 
-      shift + alt - 0 :  yabai -m window --space 10; yabai -m space --focus ;
-
-      shift + alt - space :  yabai -m window --toggle float
+      shift + alt - 0  :  yabai -m window --space 10; yabai -m space --focus ;
 
       # maximize
 
@@ -172,23 +179,23 @@
       shift + alt - m :  yabai -m window --toggle native-fullscreen
 
       # resize
-      lctrl + alt - h : yabai -m window --resize left:-50:0; \
-                    yabai -m window --resize right:-50:0
+      ctrl + alt - left : yabai -m window --resize left:-50:0; or yabai -m window --resize right:-50:0
 
-      lctrl + alt - l  : yabai -m window --resize right:50:0; \
-                    yabai -m window --resize left:50:0
+      ctrl + alt - right  : yabai -m window --resize right:50:0; or yabai -m window --resize left:50:0
 
-      lctrl + alt - k  : yabai -m window --resize top:0:-50; \
-                    yabai -m window --resize bottom:0:-50
+      ctrl + alt - down  : yabai -m window --resize top:0:-50; or yabai -m window --resize bottom:0:-50
 
-      lctrl + alt - j  : yabai -m window --resize bottom:0:50; \
-                    yabai -m window --resize top:0:50
+      ctrl + alt - up  : yabai -m window --resize bottom:0:50; or yabai -m window --resize top:0:50
 
-      lctrl + alt - e  : yabai -m space --balance
+      ctrl + alt - e  : yabai -m space --balance
 
-      shift + alt - space : yabai -m window --toggle float
+      shift + alt - space : yabai -m window --toggle float ; or yabai -m window --toggle float
 
-      lctrl + alt + shift - e : emacsclient -c -n -a \'\'
+      ctrl + alt + shift - e : emacsclient -c -n -a \'\'
+
+
+      ctrl + alt - b : yabai -m space --layout bsp
+      ctrl + alt - f : yabai -m space --layout float
     '';
   };
   #TODO fix plexamp and cava email
