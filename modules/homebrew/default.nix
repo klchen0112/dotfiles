@@ -59,7 +59,7 @@
       # "marginnote"
       "vial"
       #"dash"
-      # "nutstore"
+      "nutstore"
       "omnidisksweeper"
       # "discord"
       # "xnviewmp"
