@@ -21,11 +21,12 @@
     extraConfig = {
       init.defaultBranch = "master"; # https://srid.ca/unwoke
       core.editor = "emacsclient";
+      core.quotepath = false;
+      # For supercede
+      core.symlinks = true;
       #protocol.keybase.allow = "always";
       credential.helper = "store --file ~/.git-credentials";
       pull.rebase = "false";
-      # For supercede
-      core.symlinks = true;
     };
   };
 
@@ -130,6 +131,10 @@
   };
   programs.jq = {enable = true;};
   programs.man = {enable = true;};
+
+  programs.atuin = {
+    enable = true;
+  };
   programs.starship = {
     enable = false;
     enableZshIntegration = pkgs.stdenv.isDarwin;
