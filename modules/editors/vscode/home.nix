@@ -109,9 +109,9 @@
           "strings" = true;
         };
         "codeLensFontFamily" =
-          "Jetbrains Mono','Overpass','CMU Typewriter Text','Noto Serif CJK SC','Noto Serif','Hack Nerd Font'";
+          "JetBrains Mono','Overpass','CMU Typewriter Text','Noto Serif CJK SC','Noto Serif','Hack Nerd Font'";
         "fontFamily" =
-          "Jetbrains Mono','Overpass','CMU Typewriter Text','Noto Serif CJK SC','Noto Serif','Hack Nerd Font'";
+          "JetBrains Mono','Overpass','CMU Typewriter Text','Noto Serif CJK SC','Noto Serif','Hack Nerd Font'";
         "fontLigatures" = true;
         "fontSize" = 16;
         "formatOnPaste" = true;
@@ -187,7 +187,7 @@
 
       "terminal" = {
         "integrated.fontFamily" =
-          "Jetbrains Mono','Overpass','CMU Typewriter Text','Noto Serif CJK SC','Noto Serif','Hack Nerd Font'";
+          "JetBrains Mono','Overpass','CMU Typewriter Text','Noto Serif CJK SC','Noto Serif','Hack Nerd Font'";
         "integrated.defaultProfile.windows" = "PowerShell";
         "external.osxExec" = "Alacritty.app";
         "integrated.automationProfile.osx" = "fish";
