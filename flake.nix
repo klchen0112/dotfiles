@@ -4,7 +4,7 @@
     extra-experimental-features = "nix-command flakes";
     substituters = [
       # replace official cache with a mirror located in China
-      "https://mirror.sjtu.edu.cn/nix-channels/store"
+      # "https://mirror.sjtu.edu.cn/nix-channels/store"
       "https://cache.nixos.org"
     ];
     extra-substituters = [
@@ -178,7 +178,6 @@
         inputs.nixpkgs.follows = "nixpkgs";
         inputs.nix-darwin.follows = "darwin";
         inputs.flake-utils.follows = "flake-utils";
-
       };
       # Optional: Declarative tap management
       homebrew-core = {
@@ -190,7 +189,7 @@
         flake = false;
       };
       homebrew-services = {
-       url = "github:homebrew/homebrew-services";
+        url = "github:homebrew/homebrew-services";
         flake = false;
       };
       # Home Manager
