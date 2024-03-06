@@ -36,13 +36,13 @@
        layout            ; auie,ctsrnm is the superior home row
 
        :completion
-       ;;(corfu
-        ;;+icons ;; Display icons beside completion suggestions.
-        ;;+orderless
-        ;;+dabbrev ;; as a close-to-universal CAPF
-        ;;+dict ;; Enable and configure dictionary completion for text modes and related regions in ;;programming modes.
-        ;;+emoji ;; Enable and configure emoji completion via the emoji input method.
-        ;;) ; wait for doom merge
+       (corfu
+        +icons ;; Display icons beside completion suggestions.
+        +orderless
+        +dabbrev ;; as a close-to-universal CAPF
+        +dict ;; Enable and configure dictionary completion for text modes and related regions in ;;programming modes.
+        +emoji ;; Enable and configure emoji completion via the emoji input method.
+        ) ; wait for doom merge
        (company +childframe +tng)           ; the ultimate code completion backend
        ;;helm              ; the *other* search engine for love and life
        ;;ido               ; the other *other* search engine...
