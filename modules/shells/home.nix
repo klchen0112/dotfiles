@@ -328,5 +328,6 @@
     du-dust
     duf
     just
+    coreutils
   ];
 }
