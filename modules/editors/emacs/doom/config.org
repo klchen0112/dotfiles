@@ -42,6 +42,7 @@
         +dabbrev ;; as a close-to-universal CAPF
         +dict ;; Enable and configure dictionary completion for text modes and related regions in ;;programming modes.
         +emoji ;; Enable and configure emoji completion via the emoji input method.
+        +tng
         ) ; wait for doom merge
        ;;(company +childframe +tng)           ; the ultimate code completion backend
        ;;helm              ; the *other* search engine for love and life
@@ -375,6 +376,7 @@
 
 #+begin_src emacs-lisp :tangle config.el
 (use-package! benchmark-init
+  :defer t
   :ensure t
   ;;:config
   ;;(add-hook! 'after-init-hook 'benchmark-init/deactivate)
@@ -540,6 +542,7 @@
       +doom-dashboard-name "► Doom")
 
 (use-package! info-colors
+  :defer t
   :commands (info-colors-fontify-node))
 
 (add-hook! 'Info-selection-hook 'info-colors-fontify-node)
@@ -571,6 +574,7 @@
 ;;  :commands jieba-mode
 ;;  :init (jieba-mode))
 (use-package emt
+  :defer t
   :hook (after-init . emt-mode)
   :config
   (setq emt-lib-path (concat doom-emacs-dir "EMT/libEMT.dylib"))
@@ -768,6 +772,7 @@
 
 (use-package! meow
   :demand t
+  :hook (doom-after-modules-config . meow-global-mode)
   :config
   (meow/setup-engrammer)
   (setq meow-use-clipboard t)
@@ -780,8 +785,7 @@
   (meow/setup-leader)
   (meow/setup-keypad)
   (map! :map meow-keymap [remap describe-key] #'helpful-key)
-  (meow-global-mode 1)
-  )
+)
 #+end_src
 
 ** save
@@ -800,6 +804,7 @@
 
 #+begin_src emacs-lisp :tangle config.el
 (use-package! dirvish
+  :defer t
   :config
   (dirvish-override-dired-mode)
 )
@@ -811,7 +816,9 @@
 
 #+begin_src emacs-lisp :tangle yes
 (use-package! pangu-spacing
+  :defer t
   :config
+
   (setq pangu-spacing-real-insert-separtor t)
 )
 #+end_src
@@ -850,7 +857,8 @@
 #+end_src
 
 #+begin_src emacs-lisp :tangle config.el
-(use-package org-ref)
+(use-package! org-ref
+  :defer t)
 #+end_src
 
 ** bibtex-completion
@@ -908,6 +916,7 @@ citar need vertico
 
 #+begin_src emacs-lisp :tangle config.el
 (use-package! citar
+  :defer t
   :config
   (setq citar-bibliography my/bib
         citar-notes-paths '("~/org/references/")
@@ -944,6 +953,7 @@ citar need vertico
                 ))))
 
 (use-package! citar-embark
+  :defer t
   :after citar embark
   :config (citar-embark-mode)
   )
@@ -968,6 +978,7 @@ citar need vertico
 ;; Org-Roam-Bibtex
 (use-package! org-roam-bibtex
  :after org-roam
+ :defer t
  :hook
  (org-mode . org-roam-bibtex-mode)
  :custom
@@ -1004,6 +1015,7 @@ citar need vertico
 
 
 (use-package! citar-org-roam
+  :defer t
   :after citar org-roam
   :hook (org-roam-mode . citar-org-roam-mode)
   :config
@@ -1048,6 +1060,7 @@ citar need vertico
 *** config
 #+begin_src emacs-lisp
 (use-package org-latex-preview
+  :defer t
   :config
   ;; Increase preview width
   (plist-put org-latex-preview-appearance-options
@@ -1103,6 +1116,9 @@ citar need vertico
 (setq org_notes  "~/org/"
       org-directory org_notes)
 
+(setq ;;org-roam-database-connector 'sqlite-builtin
+ org-roam-directory "~/org"
+ org-roam-file-extensions '("org"))
 #+end_src
 ** 设置 org 常用设置
 :PROPERTIES:
@@ -1113,6 +1129,7 @@ citar need vertico
 ;; change `org-directory'. It must be set before org loads!
 
 (use-package! org
+  :defer t
   :config
   ;; pretty org files
   (setq org-auto-align-tags nil
@@ -1187,16 +1204,20 @@ citar need vertico
 
 (use-package! visual-fill-column
   :after org
+  :defer t
   :custom
   (visual-fill-column-width 80))
 
 (use-package! org-modern
+  :after org
+  :defer t
   :hook (org-mode . org-modern-mode)
         (org-agenda-finalize . org-modern-agenda)
 )
 
 (use-package! org-appear
   :hook (org-mode . org-appear-mode)
+  :defer t
   :config
   (setq org-appear-autoemphasis t
         org-appear-autolinks t
@@ -1230,6 +1251,7 @@ citar need vertico
 (use-package! org-download
   ;;:hook ((org-mode dired-mode) . org-download-enable)
   :after org
+  :defer t
   :config
   (setq-default org-download-method 'directory)
   (setq-default org-download-image-dir "~/Documents/org-attach")
@@ -1300,6 +1322,7 @@ citar need vertico
 #+begin_src emacs-lisp conf :tangle config.el
 (use-package! org-agenda
   :after org
+  :defer t
   :config
   (setq org-agenda-files '("~/org/pages/TODO.org"))
   ;; 时间前导0
@@ -1359,6 +1382,7 @@ citar need vertico
 #+begin_src elisp :tangle config.el
 (use-package! org-capture
   :after org
+  :defer t
   )
 #+end_src
 ** org hugo
@@ -1368,6 +1392,7 @@ citar need vertico
 #+begin_src elisp :tangle config.el
 (use-package! ox-hugo
   :after org-capture ox
+  :defer t
   :config
   (setq org-hugo-default-static-subdirectory-for-externals "img")
 )
@@ -1399,6 +1424,8 @@ citar need vertico
 
 
 #+begin_src emacs-lisp conf :tangle config.el
+
+
 (use-package! org-roam
   :after org
   :defer t
@@ -1419,6 +1446,8 @@ citar need vertico
   ;;       ;; Dailies
   ;;       ("C-c n r j" . org-roam-dailies-capture-today))
   :config
+  (unless (file-exists-p org-roam-directory) (make-directory org-roam-directory t))
+  (unless (file-exists-p org-roam-directory) (make-directory org-roam-dailies-directory t))
   ;; 自动创建org roam 文件夹
   (setq org-id-link-to-org-use-id t)
   (setq org-roam-completion-everywhere t)
@@ -1443,15 +1472,7 @@ citar need vertico
         )
   )
 
-(after! org-roam
-   (setq ;;org-roam-database-connector 'sqlite-builtin
-   org-roam-directory "~/org"
-   org-roam-file-extensions '("org")
 
-   )
-  (unless (file-exists-p org-roam-directory) (make-directory org-roam-directory t))
-  (unless (file-exists-p org-roam-directory) (make-directory org-roam-dailies-directory t))
-)
 (use-package! websocket
   :defer t
   :after org-roam)
@@ -1787,6 +1808,7 @@ Refer to `org-agenda-prefix-format' for more information."
 #+begin_src emacs-lisp conf :tangle config.el
 
 (use-package! rime
+  :defer t
   :bind
   (:map rime-mode-map
         ("S- " . 'rime-send-keybinding))
@@ -1816,6 +1838,7 @@ Refer to `org-agenda-prefix-format' for more information."
   )
 
 (use-package rime-regexp
+  :defer t
   :config
   (rime-regexp-mode t))
 
@@ -1884,6 +1907,7 @@ Refer to `org-agenda-prefix-format' for more information."
 #+begin_src emacs-lisp :tangle config.el
 ;; accept completion from copilot and fallback to company
 (use-package! copilot
+  :defer t
  :hook (prog-mode . copilot-mode)
  :bind (:map copilot-completion-map
              ("<tab>" . 'copilot-accept-completion)
@@ -2158,6 +2182,7 @@ use dash open app dash
 #+begin_src emacs-lisp conf :tangle config.el
 (if IS-MAC
 (use-package! dash-at-point
+  :defer t
   :config
  (add-to-list 'dash-at-point-mode-alist '(python-mode . "python3,django,twisted,sphinx,flask,tornado,sqlalchemy,numpy,scipy,saltcvp,torch,torchvision"))
 ))
@@ -2188,9 +2213,11 @@ use dash open app dash
 #+end_src
 
 #+begin_src emacs-lisp :tangle config.el
-(use-package! just-mode)
+(use-package! just-mode
+  :defer t)
 
 (use-package! justl
+  :defer t
   :config
   (map! :n "e" 'justl-exec-recipe))
 #+end_src
@@ -2216,13 +2243,16 @@ use dash open app dash
 
 #+begin_src emacs-lisp :tangle config.el
 (use-package pdf-tools
+  :defer t
   :after org)
 
 (use-package pdf-view
+  :defer t
   :after (:all org pdf-tools))
 
 (use-package! org-noter
   :after org
+  :defer t
   :config
   (setq org-noter-notes-search-path (concat org-directory "references"))
   (setq org-noter-alway-create-frame t)
@@ -2307,7 +2337,8 @@ use dash open app dash
 #+end_src
 
 #+begin_src emacs-lisp :tangle config.el
-(use-package! org-anki)
+(use-package! org-anki
+:defer t)
 #+end_src
 * APP
 :PROPERTIES:
@@ -2336,6 +2367,7 @@ use dash open app dash
   ;;:commands (org-ai-mode org-ai-global-mode)
   :hook (org-mode . org-ai-mode)
   :after org
+  :defer t
   :init
   (org-ai-global-mode)
   :config
@@ -2352,6 +2384,7 @@ use dash open app dash
 
 #+begin_src emacs-lisp :tangle config.el
 (use-package alert
+  :defer t
   :config
   (if IS-MAC
       (setq alert-default-style 'osx-notifier)
@@ -2365,7 +2398,7 @@ use dash open app dash
 #+end_src
 
 #+begin_src emacs-lisp :tangle config.el
-(use-package git-link)
+(use-package git-link :defer t)
 #+end_src
 * Other module
 ** Time tracking
@@ -2378,6 +2411,7 @@ use dash open app dash
 
 #+begin_src emacs-lisp :tangle config.el
 (use-package! wakatime-mode
+:defer t
   :config
   (setq wakatime-cli-path
     (cond (IS-MAC "/etc/profiles/per-user/klchen/bin/wakatime-cli")
@@ -2392,6 +2426,7 @@ use dash open app dash
 
 #+begin_src emacs-lisp :tangle config.el
 (use-package! openwith
+:defer t
   :hook (emacs-startup . openwith-mode)
   :init
   (setq +openwith-extensions '("pdf" "jpg" "png" "jpeg" "mp4"))
@@ -2421,6 +2456,7 @@ use dash open app dash
 
 #+begin_src emacs-lisp :tangle config.el
 (use-package! keyfreq
+:defer t
   :config
   (setq keyfreq-mode t
         keyfreq-autosave-mode t)
