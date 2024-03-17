@@ -1,4 +1,12 @@
-{ inputs, outputs, lib, config, pkgs, username, ... }: {
+{
+  inputs,
+  outputs,
+  lib,
+  config,
+  pkgs,
+  username,
+  ...
+}: {
   programs.vscode = {
     enable = true;
 
@@ -12,7 +20,8 @@
         # copilot
         github.copilot
         github.copilot-chat
-      ] ++ (with pkgs.vscode-marketplace; [
+      ]
+      ++ (with pkgs.vscode-marketplace; [
         #themes
         mechatroner.rainbow-csv
         gruntfuggly.todo-tree
@@ -64,8 +73,9 @@
         # csv
 
         james-yu.latex-workshop
-      ]) ++ lib.optionals pkgs.stdenv.isDarwin
-      (with pkgs.vscode-marketplace; [ deerawan.vscode-dash ]);
+      ])
+      ++ lib.optionals pkgs.stdenv.isDarwin
+      (with pkgs.vscode-marketplace; [deerawan.vscode-dash]);
     enableUpdateCheck = false;
     enableExtensionUpdateCheck = false;
     userSettings = {
@@ -82,7 +92,7 @@
         "clang_format_fallbackStyle" = "file";
         "autocompleteAddParentheses" = true;
       };
-      "[Log]" = { "editor.fontSize" = 13; };
+      "[Log]" = {"editor.fontSize" = 13;};
       "[c]" = {
         "editor" = {
           "quickSuggestions" = {
@@ -108,10 +118,8 @@
         };
         "inlineSuggest.enabled" = true;
         "semanticHighlighting.enabled" = true;
-        "codeLensFontFamily" =
-          "'JetBrains Mono','Overpass','CMU Typewriter Text','Noto Serif CJK SC','Noto Serif','Hack Nerd Font'";
-        "fontFamily" =
-          "'JetBrains Mono','Overpass','CMU Typewriter Text','Noto Serif CJK SC','Noto Serif','Hack Nerd Font'";
+        "codeLensFontFamily" = "'JetBrains Mono','Overpass','CMU Typewriter Text','Noto Serif CJK SC','Noto Serif','Hack Nerd Font'";
+        "fontFamily" = "'JetBrains Mono','Overpass','CMU Typewriter Text','Noto Serif CJK SC','Noto Serif','Hack Nerd Font'";
         "fontLigatures" = true;
         "fontSize" = 16;
         "formatOnPaste" = true;
@@ -180,19 +188,18 @@
       "json.maxItemsComputed" = 10000;
       "security.workspace.trust.untrustedFiles" = "open";
       "search" = {
-        "exclude" = { };
+        "exclude" = {};
         "showLineNumbers" = true;
         "smartCase" = true;
       };
 
       "terminal" = {
         "integrated" = {
-          "fontFamily" =
-            "'JetBrains Mono','Overpass','CMU Typewriter Text','Noto Serif CJK SC','Noto Serif','Hack Nerd Font'";
+          "fontFamily" = "'JetBrains Mono','Overpass','CMU Typewriter Text','Noto Serif CJK SC','Noto Serif','Hack Nerd Font'";
           "defaultProfile.windows" = "PowerShell";
           "automationProfile.osx" = "fish";
           "enableBell" = true;
-          "env.windows" = { "LC_ALL" = "zh_CN.UTF-8"; };
+          "env.windows" = {"LC_ALL" = "zh_CN.UTF-8";};
           "fontSize" = 15;
           "gpuAcceleration" = "on";
           "rightClickBehavior" = "selectWord";
@@ -203,7 +210,7 @@
         "explorerKind" = "external";
       };
       "todo-tree" = {
-        "general.tags" = [ "BUG" "HACK" "FIXME" "TODO" "XXX" "[ ]" "[x]" ];
+        "general.tags" = ["BUG" "HACK" "FIXME" "TODO" "XXX" "[ ]" "[x]"];
         "regex.regex" = "(//|#|<!--|;|/\\*|^|^\\s*(-|\\d+.))\\s*($TAGS)";
       };
       "workbench.editor.enablePreview" = false;
@@ -241,8 +248,8 @@
           "i12500" = "linux";
         };
       };
-      "[yaml]" = { "editor.comments.insertSpace" = false; };
-      "[python]" = { "editor.formatOnType" = true; };
+      "[yaml]" = {"editor.comments.insertSpace" = false;};
+      "[python]" = {"editor.formatOnType" = true;};
     };
   };
 }

@@ -7,6 +7,7 @@
   system,
   ...
 }: {
+  environment.systemPackages = [pkgs.unstable.jankyborders];
   services.yabai = {
     enable = true;
     package = pkgs.unstable.yabai;
@@ -114,6 +115,8 @@
 
       yabai -m rule --add app="Raycast" manage=off
       yabai -m rule --add app="Bitwarden" manage=off
+
+      borders active_color=0xffe1e3e4 inactive_color=0xff494d64 width=5.0 &
     '';
   };
 

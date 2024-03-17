@@ -52,31 +52,29 @@
     username = "klchen";
     userEmail = "klchen0112@gmail.com";
   in rec {
-    packages = forAllSystems (
-      system: let
-        pkgs = nixpkgs.legacyPackages.${system};
-      in
-        import ./pkgs {inherit pkgs inputs;}
-    );
+    packages = forAllSystems (system: let
+      pkgs = nixpkgs.legacyPackages.${system};
+    in
+      import ./pkgs {inherit pkgs inputs;});
 
-    formatter = forAllSystems (system: nixpkgs.legacyPackages.${system}.alejandra);
+    formatter =
+      forAllSystems (system: nixpkgs.legacyPackages.${system}.alejandra);
 
-    checks = forAllSystems (
-      system: {
-        pre-commit-check = inputs.pre-commit-hooks.lib.${system}.run {
-          src = ./.;
-          hooks = {
-            alejandra.enable = true; # formatter
-            # deadnix.enable = true; # detect unused variable bindings in `*.nix`
-            statix.enable = true; # lints and suggestions for Nix code(auto suggestions)
-            prettier = {
-              enable = true;
-              excludes = [".js" ".md" ".ts"];
-            };
+    checks = forAllSystems (system: {
+      pre-commit-check = inputs.pre-commit-hooks.lib.${system}.run {
+        src = ./.;
+        hooks = {
+          alejandra.enable = true; # formatter
+          # deadnix.enable = true; # detect unused variable bindings in `*.nix`
+          statix.enable =
+            true; # lints and suggestions for Nix code(auto suggestions)
+          prettier = {
+            enable = true;
+            excludes = [".js" ".md" ".ts"];
           };
         };
-      }
-    );
+      };
+    });
 
     overlays = import ./overlays {inherit inputs;};
 
@@ -86,9 +84,7 @@
       # NixOS configurations
       "i12500" = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
-        specialArgs = {
-          inherit inputs username outputs;
-        };
+        specialArgs = {inherit inputs username outputs;};
         modules = [
           # hyprland.nixosModules.default
           ./machines/i12500
@@ -100,9 +96,9 @@
       "klchen@i12500" = let
         username = "klchen";
       in
-        home-manager.lib.homeManagerConfiguration
-        {
-          pkgs = nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
+        home-manager.lib.homeManagerConfiguration {
+          pkgs =
+            nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
           extraSpecialArgs = {inherit inputs outputs username;};
           modules = [
             # > Our main home-manager configuration file <
@@ -116,9 +112,7 @@
     in {
       "macbook-pro-m1" = darwin.lib.darwinSystem {
         system = "aarch64-darwin";
-        specialArgs = {
-          inherit username inputs outputs;
-        };
+        specialArgs = {inherit username inputs outputs;};
         # pkgs = nixpkgs.legacyPackages.aarch64-darwin;
         modules = [
           # Modules that are used
@@ -128,8 +122,11 @@
             # Home-Manager module that is used
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
-            home-manager.extraSpecialArgs = {inherit username inputs outputs;}; # Pass flake variable
-            home-manager.users.${username} = import ./hosts/macbook-pro-m1/default.nix;
+            home-manager.extraSpecialArgs = {
+              inherit username inputs outputs;
+            }; # Pass flake variable
+            home-manager.users.${username} =
+              import ./hosts/macbook-pro-m1/default.nix;
           }
           nix-homebrew.darwinModules.nix-homebrew
           {
@@ -165,7 +162,7 @@
     # All flake references used to build my NixOS setup. These are dependencies.
     {
       nixpkgs.url = "github:nixos/nixpkgs/nixos-23.11"; # Nix Packages
-      nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable"; # Nix Packages
+      nixpkgs-unstable.url = "github:nixos/nixpkgs/nixpkgs-unstable"; # Nix Packages
 
       #  MacOS
       darwin = {

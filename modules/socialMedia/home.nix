@@ -4,11 +4,5 @@
   ...
 }: {
   home.packages = with pkgs;
-    [
-      discord
-      # tdlib
-    ]
-    ++ lib.optionals (pkgs.stdenv.isLinux)
-    [
-    ];
+    [discord tdlib] ++ lib.optionals (pkgs.stdenv.isLinux) [];
 }
