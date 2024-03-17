@@ -250,6 +250,9 @@
       };
       "[yaml]" = {"editor.comments.insertSpace" = false;};
       "[python]" = {"editor.formatOnType" = true;};
+      "accessibility.signals.terminalBell" = {
+        "sound" = "on";
+      };
     };
   };
 }
