@@ -205,6 +205,7 @@
           "rightClickBehavior" = "selectWord";
           "minimumContrastRatio" = 1;
           "copyOnSelection" = true;
+          "enableVisualBell" = true;
         };
         "external.osxExec" = "Alacritty.app";
         "explorerKind" = "external";

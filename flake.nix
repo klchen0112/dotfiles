@@ -362,8 +362,8 @@
         inputs.nixpkgs.follows = "nixpkgs";
       };
 
-      rime-jd = {
-        url = "github:klchen0112/RIME_JD";
+      own-rime = {
+        url = "github:klchen0112/rime-combo-ice-pinyin";
         flake = false;
       };
     };

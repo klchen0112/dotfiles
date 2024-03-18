@@ -43,7 +43,7 @@ in {
     ];
 
   home.file.".config/emacs/Rime" = {
-    source = "${inputs.rime-jd}";
+    source = "${inputs.own-rime}";
     recursive = true;
   };
 

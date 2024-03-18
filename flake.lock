@@ -872,6 +872,22 @@
         "type": "github"
       }
     },
+    "own-rime": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1710747208,
+        "narHash": "sha256-mXDQQL1x5L9oFR3lDwftCn3wrY18gAm1ItyZL8f4vX0=",
+        "owner": "klchen0112",
+        "repo": "rime-combo-ice-pinyin",
+        "rev": "e514f269c065fc30344bb9f37693f4d5a487b332",
+        "type": "github"
+      },
+      "original": {
+        "owner": "klchen0112",
+        "repo": "rime-combo-ice-pinyin",
+        "type": "github"
+      }
+    },
     "pre-commit-hooks": {
       "inputs": {
         "flake-compat": [
@@ -899,22 +915,6 @@
       "original": {
         "owner": "cachix",
         "repo": "pre-commit-hooks.nix",
-        "type": "github"
-      }
-    },
-    "rime-jd": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1709715703,
-        "narHash": "sha256-/sppm+RRK0zd0R7hdoavfYe9944jv/QGhN7dbw1TO+4=",
-        "owner": "klchen0112",
-        "repo": "RIME_JD",
-        "rev": "1df50dd947c99f99bed97508c7ddfdb9256429d6",
-        "type": "github"
-      },
-      "original": {
-        "owner": "klchen0112",
-        "repo": "RIME_JD",
         "type": "github"
       }
     },
@@ -950,8 +950,8 @@
         "nur": "nur",
         "nur-ryan4yin": "nur-ryan4yin",
         "own-nur": "own-nur",
+        "own-rime": "own-rime",
         "pre-commit-hooks": "pre-commit-hooks",
-        "rime-jd": "rime-jd",
         "systems": "systems_3",
         "treefmt-nix": "treefmt-nix"
       }
