@@ -102,6 +102,7 @@
 
       # system
       yabai -m rule --add label="Finder" app="^(Finder|访达)$" title="(Co(py|nnect)|Move|Info|Pref)" manage=off
+      yabai -m rule --add label="LICEcap" app="^(LICEcap)$" manage=off
       yabai -m rule --add label="Safari" app="^Safari$" title="^(General|(Tab|Password|Website|Extension)s|AutoFill|Se(arch|curity)|Privacy|Advance)$" manage=off
       yabai -m rule --add label="macfeh" app="^macfeh$" manage=off
       yabai -m rule --add label="System Settings" app="^(System Settings|系统偏好设置)$" title=".*" manage=off

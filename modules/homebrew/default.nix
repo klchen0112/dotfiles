@@ -89,6 +89,7 @@
       "syncthing"
       # "mpv"
       "iina"
+      "licecap"
     ];
   };
 }
