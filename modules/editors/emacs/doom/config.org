@@ -40,9 +40,6 @@
         +icons ;; Display icons beside completion suggestions.
         +orderless
         +dabbrev ;; as a close-to-universal CAPF
-        +dict ;; Enable and configure dictionary completion for text modes and related regions in ;;programming modes.
-        +emoji ;; Enable and configure emoji completion via the emoji input method.
-        +tng
         ) ; wait for doom merge
        ;;(company +childframe +tng)           ; the ultimate code completion backend
        ;;helm              ; the *other* search engine for love and life
@@ -137,7 +134,8 @@
        (lookup +dictionary +docsets +offline)             ; navigate your code and its documentation
        (lsp +peek)              ; M-x vscode
        (magit             ; a git porcelain for Emacs
-        +forge)             ; interface with git forges
+        ;;+forge             ; interface with git forges
+       )
        make              ; run make tasks from Emacs
        ;;pass              ; password manager for nerds
        pdf               ; pdf enhancements
@@ -772,7 +770,7 @@
 
 (use-package! meow
   :demand t
-  :hook (doom-after-modules-config . meow-global-mode)
+  :hook (doom-after-modules-config-hook . meow-global-mode)
   :config
   (meow/setup-engrammer)
   (setq meow-use-clipboard t)
