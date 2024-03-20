@@ -329,5 +329,9 @@
     duf
     just
     coreutils
+    gnugrep
   ];
+  home.sessionVariables = {
+    "EIDTOR" = "emacs";
+  };
 }
