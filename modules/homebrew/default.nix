@@ -69,7 +69,7 @@
       # "via"
       # "TidGi"
       #"miniconda"
-      # "activitywatch"
+      "activitywatch"
       "openscad"
       # "qmk-toolbox"
       # "mathpix-snipping-tool"
