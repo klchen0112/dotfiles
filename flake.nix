@@ -268,12 +268,12 @@
         inputs.flake-utils.follows = "flake-utils";
       };
 
-      devenv = {
-        url = "github:cachix/devenv";
-        inputs.nixpkgs.follows = "nixpkgs";
-        inputs.flake-compat.follows = "flake-compat";
-        inputs.pre-commit-hooks.follows = "pre-commit-hooks";
-      };
+      # devenv = {
+      #   url = "github:cachix/devenv";
+      #   # inputs.nixpkgs.follows = "nixpkgs";
+      #   # inputs.flake-compat.follows = "flake-compat";
+      #   # inputs.pre-commit-hooks.follows = "pre-commit-hooks";
+      # };
 
       nixos-wsl = {
         url = "github:nix-community/NixOS-WSL";

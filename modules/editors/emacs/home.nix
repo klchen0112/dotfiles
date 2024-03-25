@@ -36,6 +36,10 @@ in {
 
       # for emacs rime
       librime
+
+      libwebp
+      tdlib
+      pkg-config
     ]
     ++ (lib.optionals pkgs.stdenv.isDarwin) [
       # pngpaste for org mode download clip
