@@ -203,6 +203,7 @@
         url = "github:ryantm/agenix";
         inputs.darwin.follows = "darwin";
         inputs.home-manager.follows = "home-manager";
+        inputs.nixpkgs.follows = "nixpkgs";
       };
 
       # add git hooks to format nix code before commit
@@ -325,11 +326,21 @@
         url = "github:hyprwm/Hyprland/v0.33.1";
         inputs.nixpkgs.follows = "nixpkgs";
         inputs.systems.follows = "systems";
+        inputs.hyprland-protocols.follows = "hyprland-protocols";
+      };
+
+      hyprland-protocols = {
+        # Official Hyprland flake
+        url = "github:hyprwm/hyprland-protocols";
+        inputs.nixpkgs.follows = "nixpkgs";
+        inputs.systems.follows = "systems";
       };
 
       hyprpaper = {
         url = "github:hyprwm/hyprpaper";
         inputs.nixpkgs.follows = "nixpkgs";
+        inputs.systems.follows = "systems";
+        inputs.hyprlang.follows = "hyprlang";
       };
 
       hyprpicker = {
@@ -340,6 +351,12 @@
       hyprcontrib = {
         url = "github:hyprwm/contrib";
         inputs.nixpkgs.follows = "nixpkgs";
+      };
+
+      hyprlang = {
+        url = "github:hyprwm/hyprlang";
+        inputs.nixpkgs.follows = "nixpkgs";
+        inputs.systems.follows = "systems";
       };
 
       anyrun = {
@@ -354,7 +371,7 @@
 
       nur-ryan4yin = {
         url = "github:ryan4yin/nur-packages";
-        # inputs.nixpkgs.follows = "nixpkgs";
+        inputs.nixpkgs.follows = "nixpkgs";
       };
       # own package
       own-nur = {

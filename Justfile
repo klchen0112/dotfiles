@@ -33,8 +33,8 @@ darwin:
 
 # Emacs
 emacs-test:
-	rm -rf "$$HOME/.config/doom"
-	rsync -avz --copy-links --chmod=Du+rwx,Dgo+rx,Fu+rw,Fgo+r modules/editors/emacs/doom/ "{$HOME}/.config/doom"
+	rm -rf "$HOME/.config/doom"
+	rsync -avz --copy-links --chmod=Du+rwx,Dgo+rx,Fu+rw,Fgo+r modules/editors/emacs/doom/ "$HOME/.config/doom"
 
 emacs-clean:
 	rm -rf "${HOME}/.config/doom"
