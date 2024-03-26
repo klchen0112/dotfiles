@@ -75,6 +75,7 @@
       # code
       yabai -m rule --add app="WezTerm" space=^1
       yabai -m rule --add label="emacs" subrole!="^(AXFloatingWindow)$" app="^Emacs$" manage=on
+      yabai -m rule --add label="emacs29" app="emacs-29.2" manage = on
       yabai -m rule --add app="Dash" manage=off
 
       # browser
