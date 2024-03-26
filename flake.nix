@@ -36,6 +36,7 @@
     home-manager,
     darwin,
     nix-homebrew,
+    pre-commit-hooks,
     ...
   }:
   # Function that tells my flake which to use and what do what to do with the dependencies.
@@ -66,8 +67,7 @@
         hooks = {
           alejandra.enable = true; # formatter
           # deadnix.enable = true; # detect unused variable bindings in `*.nix`
-          statix.enable =
-            true; # lints and suggestions for Nix code(auto suggestions)
+          # statix.enable = true; # lints and suggestions for Nix code(auto suggestions)
           prettier = {
             enable = true;
             excludes = [".js" ".md" ".ts"];
@@ -75,6 +75,11 @@
         };
       };
     });
+    devShell = forAllSystems (system:
+      nixpkgs.legacyPackages.${system}.mkShell {
+        inherit (self.checks.${system}.pre-commit-check) shellHook;
+        buildInputs = self.checks.${system}.pre-commit-check.enabledPackages;
+      });
 
     overlays = import ./overlays {inherit inputs;};
 

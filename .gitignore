@@ -19,3 +19,4 @@ btop
 htop
 .vscode
 .DS_store
+.pre-commit-config.yaml
