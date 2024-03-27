@@ -83,9 +83,7 @@
 
     overlays = import ./overlays {inherit inputs;};
 
-    nixosConfigurations = let
-      username = "klchen";
-    in {
+    nixosConfigurations = {
       # NixOS configurations
       "i12500" = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
@@ -98,23 +96,18 @@
       };
     };
     homeConfigurations = {
-      "klchen@i12500" = let
-        username = "klchen";
-      in
-        home-manager.lib.homeManagerConfiguration {
-          pkgs =
-            nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
-          extraSpecialArgs = {inherit inputs outputs username;};
-          modules = [
-            # > Our main home-manager configuration file <
-            ./hosts/i12500
-            inputs.agenix.homeManagerModules.default
-          ];
-        };
+      "klchen@i12500" = home-manager.lib.homeManagerConfiguration {
+        pkgs =
+          nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
+        extraSpecialArgs = {inherit inputs outputs username;};
+        modules = [
+          # > Our main home-manager configuration file <
+          ./hosts/i12500
+          inputs.agenix.homeManagerModules.default
+        ];
+      };
     };
-    darwinConfigurations = let
-      username = "klchen";
-    in {
+    darwinConfigurations = {
       "macbook-pro-m1" = darwin.lib.darwinSystem {
         system = "aarch64-darwin";
         specialArgs = {inherit username inputs outputs;};
