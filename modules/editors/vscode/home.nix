@@ -84,6 +84,7 @@
       "extensions" = {
         "autoCheckUpdates" = false;
         "autoUpdate" = false;
+        "ignoreRecommendations" = true;
       };
       "C_Cpp" = {
         "errorSquiggles" = "Enabled";
@@ -91,6 +92,7 @@
         "intelliSenseEngineFallback" = "Disabled";
         "clang_format_fallbackStyle" = "file";
         "autocompleteAddParentheses" = true;
+        "inactiveRegionOpacity" = 0.55;
       };
       "[Log]" = {"editor.fontSize" = 13;};
       "[c]" = {
@@ -109,6 +111,11 @@
           "strings" = "on";
           "other" = "on";
         };
+      };
+      "cmake" = {
+        "autoSelectActiveFolder" = false;
+        "cmakeCommunicationMode" = "legacy";
+        "configureOnOpen" = false;
       };
       "editor" = {
         "quickSuggestions" = {
@@ -183,8 +190,7 @@
         "detectExtensionConflicts" = true;
         "onConfigChanged" = "restart";
       };
-      "extensions.ignoreRecommendations" = true;
-      "git.autofetch" = true;
+
       "json.maxItemsComputed" = 10000;
       "security.workspace.trust.untrustedFiles" = "open";
       "search" = {
@@ -214,18 +220,14 @@
         "general.tags" = ["BUG" "HACK" "FIXME" "TODO" "XXX" "[ ]" "[x]"];
         "regex.regex" = "(//|#|<!--|;|/\\*|^|^\\s*(-|\\d+.))\\s*($TAGS)";
       };
-      "workbench.editor.enablePreview" = false;
+
+      "git.autofetch" = true;
       "gitlens.advanced.messages" = {
         "suppressCreatePullRequestPrompt" = true;
       };
       "GitCommitPlugin.ShowEmoji" = true;
-      "cmake" = {
-        "autoSelectActiveFolder" = false;
-        "cmakeCommunicationMode" = "legacy";
-        "configureOnOpen" = false;
-      };
       "githubPullRequests.createOnPublishBranch" = "never";
-      "C_Cpp.inactiveRegionOpacity" = 0.55;
+
       # we try to make semantic highlighting look good
 
       "window" = {
@@ -237,6 +239,7 @@
       "workbench" = {
         "colorTheme" = "Catppuccin Latte";
         "iconTheme" = "Catppuccin Latte";
+        "editor.enablePreview" = false;
       };
 
       "remote.SSH" = {
@@ -251,9 +254,9 @@
       };
       "[yaml]" = {"editor.comments.insertSpace" = false;};
       "[python]" = {"editor.formatOnType" = true;};
-      "accessibility.signals.terminalBell" = {
-        "sound" = "on";
-      };
+      "accessibility.signals.terminalBell" = {"sound" = "on";};
+      "workbench.editor.enablePreview" = false;
+      "terminal.integrated.enableVisualBell" = true;
     };
   };
 }
