@@ -10,7 +10,7 @@
   programs.vscode = {
     enable = true;
 
-    package = pkgs.unstable.vscode;
+    package = pkgs.unstable.vscodium;
     mutableExtensionsDir =
       false; # Whether extensions can be installed or updated manually or by Visual Studio Code.
     extensions = with pkgs.vscode-extensions;
