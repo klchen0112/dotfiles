@@ -252,6 +252,8 @@
           "i12500" = "linux";
         };
       };
+      "remote.SSH.localServerDownload" = true;
+      "remote.SSH.useLocalServer" = true;
       "[yaml]" = {"editor.comments.insertSpace" = false;};
       "[python]" = {"editor.formatOnType" = true;};
       "accessibility.signals.terminalBell" = {"sound" = "on";};
