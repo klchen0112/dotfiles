@@ -13,12 +13,19 @@
       # Garbage collection
       automatic = true;
       options = "--delete-older-than 7d";
+
+      # interval = {
+      # Hour = 3;
+      # Minute = 15;
+      # };
+    };
+    optimise = {
+      automatic = true;
+      # options = "--delete-older-than 7d";
     };
     settings = {
       auto-optimise-store = true;
-      trusted-users = [
-        "${username}"
-      ];
+      trusted-users = ["${username}"];
       experimental-features = ["nix-command" "flakes"];
       builders-use-substitutes = true;
     };
