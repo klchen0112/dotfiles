@@ -10,16 +10,18 @@
   programs.vscode = {
     enable = true;
 
-    package = pkgs.unstable.vscodium;
+    package = pkgs.unstable.vscode;
     mutableExtensionsDir =
       false; # Whether extensions can be installed or updated manually or by Visual Studio Code.
-    extensions = with pkgs.vscode-marketplace;
+    extensions = with pkgs.vscode-extensions;
       [
         # ssh
         ms-vscode-remote.remote-ssh
         # copilot
         github.copilot
         github.copilot-chat
+      ]
+      ++ (with pkgs.vscode-marketplace; [
         #themes
         mechatroner.rainbow-csv
         gruntfuggly.todo-tree
@@ -71,7 +73,7 @@
         # csv
 
         james-yu.latex-workshop
-      ]
+      ])
       ++ lib.optionals pkgs.stdenv.isDarwin
       (with pkgs.vscode-marketplace; [deerawan.vscode-dash]);
     enableUpdateCheck = false;

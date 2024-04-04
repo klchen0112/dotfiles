@@ -2,6 +2,7 @@
   imports = [
     ./bash/home.nix
     ./cpp/home.nix
+    ./csharp/home.nix
     ./go/home.nix
     ./java/home.nix
     ./json/home.nix
@@ -15,8 +16,5 @@
     ./rust/home.nix
   ];
 
-  home.packages = with pkgs; [
-    tree-sitter
-    dockfmt
-  ];
+  home.packages = with pkgs; [tree-sitter dockfmt];
 }
