@@ -2186,6 +2186,14 @@ async latex view
   ;;:hook (org-mode . org-xlatex-mode)
 ;;)
 #+end_src
+** 大纲
+#+begin_src emacs-lisp :tangle config.el
+;; 为 latex 提供折叠大纲功能
+(use-package outline
+  :hook
+  (LaTeX-mode . outline-minor-mode)
+)
+#+end_src
 ** Doc
 :PROPERTIES:
 :ID:       e9453c1b-4a72-4978-8a8c-a3345b999566
