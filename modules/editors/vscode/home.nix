@@ -79,13 +79,10 @@
     enableUpdateCheck = false;
     enableExtensionUpdateCheck = false;
     userSettings = {
-      "settingsSync.keybindingsPerPlatform" = true;
       "update.mode" = "none";
-      "extensions" = {
-        "autoCheckUpdates" = false;
-        "autoUpdate" = false;
-        "ignoreRecommendations" = true;
-      };
+      "extensions.autoCheckUpdates" = false;
+      "extensions.autoUpdate" = false;
+      "extensions.ignoreRecommendations" = true;
       "C_Cpp" = {
         "errorSquiggles" = "Enabled";
         "intelliSenseEngine" = "Disabled";
@@ -94,81 +91,138 @@
         "autocompleteAddParentheses" = true;
         "inactiveRegionOpacity" = 0.55;
       };
-      "[Log]" = {"editor.fontSize" = 13;};
-      "[c]" = {
-        "editor" = {
-          "quickSuggestions" = {
-            "comments" = "on";
-            "strings" = "on";
-            "other" = "on";
-          };
-          "defaultFormatter" = "llvm-vs-code-extensions.vscode-clangd";
-        };
+      # --------------------------------------------
+      # Editor Settings
+      # --------------------------------------------
+      "editor.quickSuggestions" = {
+        "comments" = true;
+        "other" = true;
+        "strings" = true;
       };
-      "[cpp]" = {
-        "editor.quickSuggestions" = {
-          "comments" = "on";
-          "strings" = "on";
-          "other" = "on";
-        };
+
+      "editor.inlineSuggest.enabled" = true;
+      "editor.semanticHighlighting.enabled" = true;
+      "editor.codeLensFontFamily" = "'JetBrains Mono','Overpass','CMU Typewriter Text','Noto Serif CJK SC','Noto Serif','Hack Nerd Font'";
+      "editor.fontFamily" = "'JetBrains Mono','Overpass','CMU Typewriter Text','Noto Serif CJK SC','Noto Serif','Hack Nerd Font'";
+      "editor.fontLigatures" = true;
+      "editor.fontSize" = 16;
+      "editor.formatOnPaste" = true;
+      "editor.formatOnType" = true;
+      "editor.formatOnSave" = true;
+      "editor.minimap.enabled" = false;
+      "editor.quickSuggestionsDelay" = 0;
+      "editor.renderWhitespace" = "none";
+      "editor.snippetSuggestions" = "top";
+      "editor.stickyTabStops" = true;
+      "editor.suggest.localityBonus" = true;
+      "editor.suggest.shareSuggestSelections" = true;
+      "editor.suggest.snippetsPreventQuickSuggestions" = false;
+      "editor.suggestOnTriggerCharacters" = true;
+      "editor.suggestSelection" = "first";
+      "editor.bracketPairColorization.enabled" = true;
+      "editor.guides.bracketPairs" = "active";
+      "editor.wordWrap" = "off";
+      "editor.tabCompletion" = "off";
+      "editor.guides.indentation" = true;
+      "editor.unicodeHighlight.ambiguousCharacters" = false;
+      "editor.unicodeHighlight.nonBasicASCII" = false;
+      "editor.lineNumbers" = "relative";
+      # --------------------------------------------
+      # Explorer Settings
+      # --------------------------------------------
+      "explorer.confirmDelete" = false;
+      "explorer.confirmDragAndDrop" = false;
+      "explorer.incrementalNaming" = "smart";
+      # --------------------------------------------
+      # File Settings
+      # --------------------------------------------
+      "files.autoSave" = "afterDelay";
+      "files.insertFinalNewline" = true;
+      "files.trimTrailingWhitespace" = true;
+      "files.exclude" = {
+        "**/.classpath" = true;
+        "**/.factorypath" = true;
+        "**/.project" = true;
+        "**/.settings" = true;
       };
-      "cmake" = {
-        "autoSelectActiveFolder" = false;
-        "cmakeCommunicationMode" = "legacy";
-        "configureOnOpen" = false;
+
+      "json.maxItemsComputed" = 10000;
+      "security.workspace.trust.untrustedFiles" = "open";
+
+      # --------------------------------------------
+      # Search Settings
+      # --------------------------------------------
+      "search.exclude" = {};
+      "search.showLineNumbers" = true;
+      "search.smartCase" = true;
+
+      # --------------------------------------------
+      # Terminal Settings
+      # --------------------------------------------
+      "terminal.integrated.fontFamily" = "'JetBrains Mono','Overpass','CMU Typewriter Text','Noto Serif CJK SC','Noto Serif','Hack Nerd Font'";
+      "terminal.integrated.defaultProfile.windows" = "PowerShell";
+      # "terminal.integrated.automationProfile.osx" = "fish";
+      "terminal.integrated.enableVisualBell" = true;
+      "terminal.integrated.gpuAcceleration" = "on";
+      "terminal.integrated.env.windows" = {"LC_ALL" = "zh_CN.UTF-8";};
+      "terminal.integrated.fontSize" = 15;
+      "terminal.integrated.rightClickBehavior" = "selectWord";
+      "terminal.integrated.minimumContrastRatio" = 1;
+      "terminal.integrated.copyOnSelection" = true;
+      "terminal.external.osxExec" = "Alacritty.app";
+      "terminal.explorerKind" = "external";
+      "accessibility.signals.terminalBell" = {"sound" = "on";};
+      # --------------------------------------------
+      # Todo Settings
+      # --------------------------------------------
+      "todo-tree" = {
+        "general.tags" = ["BUG" "HACK" "FIXME" "TODO" "XXX" "[ ]" "[x]"];
+        "regex.regex" = "(//|#|<!--|;|/\\*|^|^\\s*(-|\\d+.))\\s*($TAGS)";
       };
-      "editor" = {
-        "quickSuggestions" = {
-          "comments" = true;
-          "other" = true;
-          "strings" = true;
-        };
-        "inlineSuggest.enabled" = true;
-        "semanticHighlighting.enabled" = true;
-        "codeLensFontFamily" = "'JetBrains Mono','Overpass','CMU Typewriter Text','Noto Serif CJK SC','Noto Serif','Hack Nerd Font'";
-        "fontFamily" = "'JetBrains Mono','Overpass','CMU Typewriter Text','Noto Serif CJK SC','Noto Serif','Hack Nerd Font'";
-        "fontLigatures" = true;
-        "fontSize" = 16;
-        "formatOnPaste" = true;
-        "formatOnType" = true;
-        "formatOnSave" = true;
-        "minimap.enabled" = false;
-        "quickSuggestionsDelay" = 0;
-        "renderWhitespace" = "none";
-        "snippetSuggestions" = "top";
-        "stickyTabStops" = true;
-        "suggest" = {
-          "localityBonus" = true;
-          "shareSuggestSelections" = true;
-          "snippetsPreventQuickSuggestions" = false;
-        };
-        "suggestOnTriggerCharacters" = true;
-        "suggestSelection" = "first";
-        "bracketPairColorization.enabled" = true;
-        "guides.bracketPairs" = "active";
-        "wordWrap" = "off";
-        "tabCompletion" = "off";
-        "guides.indentation" = true;
-        "unicodeHighlight.ambiguousCharacters" = false;
-        "unicodeHighlight.nonBasicASCII" = false;
-        "lineNumbers" = "relative";
+
+      # Git Settings
+      "git.autofetch" = true;
+      "gitlens.advanced.messages" = {
+        "suppressCreatePullRequestPrompt" = true;
       };
-      "explorer" = {
-        "confirmDelete" = false;
-        "confirmDragAndDrop" = false;
-        "incrementalNaming" = "smart";
+      "GitCommitPlugin.ShowEmoji" = true;
+      "githubPullRequests.createOnPublishBranch" = "never";
+
+      # --------------------------------------------
+      # Window settings
+      # --------------------------------------------
+      "window.titleBarStyle" = "custom";
+      # "window.autoDetectColorScheme" = true;
+      # "workbench.preferredLightColorTheme" = "Catppuccin Latte";
+      # "workbench.preferredDarkColorTheme" = "Catppuccin Macchiato";
+      "workbench.colorTheme" = "Catppuccin Latte";
+      "workbench.iconTheme" = "catppuccin-latte";
+      "workbench.editor.enablePreview" = false;
+
+      # --------------------------------------------
+      # Remote SSH
+      # --------------------------------------------
+      "remote.SSH.useLocalServer" = false;
+      "remote.SSH.remotePlatform" = {
+        "ningbo40" = "linux";
+        "ningbo203" = "linux";
+        "ningbo204" = "linux";
+        "cy" = "linux";
+        "i12500" = "linux";
       };
-      "files" = {
-        "autoSave" = "afterDelay";
-        "insertFinalNewline" = true;
-        "trimTrailingWhitespace" = true;
-        "exclude" = {
-          "**/.classpath" = true;
-          "**/.factorypath" = true;
-          "**/.project" = true;
-          "**/.settings" = true;
-        };
-      };
+      "remote.SSH.localServerDownload" = true;
+
+      # --------------------------------------------
+      # --------------------------------------------
+      # Language settings
+      # --------------------------------------------
+      # --------------------------------------------
+      "[yaml]" = {"editor.comments.insertSpace" = false;};
+      "[python]" = {"editor.formatOnType" = true;};
+
+      # --------------------------------------------
+      # C/C++ settings
+      # --------------------------------------------
       "clangd" = {
         "arguments" = [
           "--log=verbose"
@@ -190,75 +244,21 @@
         "detectExtensionConflicts" = true;
         "onConfigChanged" = "restart";
       };
-
-      "json.maxItemsComputed" = 10000;
-      "security.workspace.trust.untrustedFiles" = "open";
-      "search" = {
-        "exclude" = {};
-        "showLineNumbers" = true;
-        "smartCase" = true;
+      "[c]" = {
+        "editor.quickSuggestions.comments" = "on";
+        "editor.quickSuggestions.strings" = "on";
+        "editor.quickSuggestions.other" = "on";
+        # "editor.defaultFormatter" = "llvm-vs-code-extensions.vscode-clangd";
       };
-
-      "terminal" = {
-        "integrated" = {
-          "fontFamily" = "'JetBrains Mono','Overpass','CMU Typewriter Text','Noto Serif CJK SC','Noto Serif','Hack Nerd Font'";
-          "defaultProfile.windows" = "PowerShell";
-          "automationProfile.osx" = "fish";
-          "enableBell" = true;
-          "env.windows" = {"LC_ALL" = "zh_CN.UTF-8";};
-          "fontSize" = 15;
-          "gpuAcceleration" = "on";
-          "rightClickBehavior" = "selectWord";
-          "minimumContrastRatio" = 1;
-          "copyOnSelection" = true;
-          "enableVisualBell" = true;
-        };
-        "external.osxExec" = "Alacritty.app";
-        "explorerKind" = "external";
+      "[cpp]" = {
+        "editor.quickSuggestion.comments" = "on";
+        "editor.quickSuggestion.strings" = "on";
+        "editor.quickSuggestion.other" = "on";
       };
-      "todo-tree" = {
-        "general.tags" = ["BUG" "HACK" "FIXME" "TODO" "XXX" "[ ]" "[x]"];
-        "regex.regex" = "(//|#|<!--|;|/\\*|^|^\\s*(-|\\d+.))\\s*($TAGS)";
-      };
-
-      "git.autofetch" = true;
-      "gitlens.advanced.messages" = {
-        "suppressCreatePullRequestPrompt" = true;
-      };
-      "GitCommitPlugin.ShowEmoji" = true;
-      "githubPullRequests.createOnPublishBranch" = "never";
-
-      # we try to make semantic highlighting look good
-
-      "window" = {
-        "titleBarStyle" = "custom";
-        # "autoDetectColorScheme" = true;
-      };
-      # "workbench.preferredLightColorTheme" = "Catppuccin Latte";
-      # "workbench.preferredDarkColorTheme" = "Catppuccin Macchiato";
-      "workbench" = {
-        "colorTheme" = "Catppuccin Latte";
-        "iconTheme" = "Catppuccin Latte";
-        "editor.enablePreview" = false;
-      };
-
-      "remote.SSH" = {
-        "SSH.useLocalServer" = false;
-        "remotePlatform" = {
-          "ningbo40" = "linux";
-          "ningbo203" = "linux";
-          "ningbo204" = "linux";
-          "cy" = "linux";
-          "i12500" = "linux";
-        };
-      };
-      "remote.SSH.localServerDownload" = true;
-      "remote.SSH.useLocalServer" = true;
-      "[yaml]" = {"editor.comments.insertSpace" = false;};
-      "[python]" = {"editor.formatOnType" = true;};
-      "accessibility.signals.terminalBell" = {"sound" = "on";};
-      "workbench.editor.enablePreview" = false;
-      "terminal.integrated.enableVisualBell" = true;
+      "cmake.autoSelectActiveFolder" = false;
+      "cmake.cmakeCommunicationMode" = "legacy";
+      "cmake.configureOnOpen" = false;
+      "[Log]" = {"editor.fontSize" = 13;};
     };
   };
 }
