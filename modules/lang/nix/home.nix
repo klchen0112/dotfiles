@@ -1,7 +1,7 @@
 {pkgs, ...}: {
   home.packages = with pkgs; [
     alejandra
-    nixfmt
+    # nixfmt
     # nix-du
     nil
     cachix
