@@ -53,7 +53,7 @@
         # python
         ms-python.python
         ms-python.isort
-        ms-pyright.pyright
+        # ms-pyright.pyright
         donjayamanne.python-environment-manager
         # ms-python.vscode-pylance
         ms-toolsai.jupyter
