@@ -14,8 +14,8 @@
     ./vim/home.nix
   ];
   home.packages = with pkgs; [
-    wakatime
+    # wakatime
     hugo
-    copilot-cli
+    # copilot-cli
   ];
 }

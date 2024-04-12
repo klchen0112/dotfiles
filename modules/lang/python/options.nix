@@ -20,21 +20,21 @@
     };
     enableBashIntegration = lib.mkOption {
       type = lib.types.bool;
-      default = true;
+      default = config.programs.bash.enable;
       description = ''
         Whether to enable micromamba's Bash integration.
       '';
     };
     enableZshIntegration = lib.mkOption {
       type = lib.types.bool;
-      default = true;
+      default =config.programs.zsh.enable;
       description = ''
         Whether to enable micromamba's Zsh integration.
       '';
     };
     enableFishIntegration = lib.mkOption {
       type = lib.types.bool;
-      default = true;
+      default = config.programs.fish.enable;
       description = ''
         Whether to enable micromamba's Fish integration.
       '';

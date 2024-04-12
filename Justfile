@@ -17,7 +17,7 @@ gc:
 gitgc:
   git reflog expire --expire-unreachable=now --all
   git gc --prune=now
-  
+
 # i12500
 
 i12500:
@@ -31,6 +31,8 @@ klcheni12500:
 darwin:
 	darwin-rebuild switch --flake .#macbook-pro-m1
 
+mbp-m2-dxm:
+	darwin-rebuild switch --flake .#mbp-m2-dxm
 # Emacs
 emacs-test:
 	rm -rf "$HOME/.config/doom"

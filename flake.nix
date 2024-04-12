@@ -4,7 +4,7 @@
     extra-experimental-features = "nix-command flakes";
     substituters = [
       # replace official cache with a mirror located in China
-      # "https://mirror.sjtu.edu.cn/nix-channels/store"
+      "https://mirror.sjtu.edu.cn/nix-channels/store"
       "https://cache.nixos.org"
     ];
     extra-substituters = [
@@ -50,8 +50,6 @@
       "aarch64-darwin"
       "x86_64-darwin"
     ];
-    username = "klchen";
-    userEmail = "klchen0112@gmail.com";
   in rec {
     packages = forAllSystems (system: let
       pkgs = nixpkgs.legacyPackages.${system};
@@ -85,74 +83,136 @@
 
     nixosConfigurations = {
       # NixOS configurations
-      "i12500" = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-        specialArgs = {inherit inputs username outputs;};
-        modules = [
-          # hyprland.nixosModules.default
-          ./machines/i12500
-          inputs.agenix.nixosModules.default
-        ];
-      };
+
+      "i12500" = let
+        username = "klchen";
+        userEmail = "klchen0112@gmail.com";
+      in
+        nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          specialArgs = {inherit inputs username outputs;};
+          modules = [
+            # hyprland.nixosModules.default
+            ./machines/i12500
+            inputs.agenix.nixosModules.default
+          ];
+        };
     };
     homeConfigurations = {
-      "klchen@i12500" = home-manager.lib.homeManagerConfiguration {
-        pkgs =
-          nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
-        extraSpecialArgs = {inherit inputs outputs username;};
-        modules = [
-          # > Our main home-manager configuration file <
-          ./hosts/i12500
-          inputs.agenix.homeManagerModules.default
-        ];
-      };
+      "klchen@i12500" = let
+        username = "klchen";
+        userEmail = "klchen0112@gmail.com";
+      in
+        home-manager.lib.homeManagerConfiguration {
+          pkgs =
+            nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
+          extraSpecialArgs = {inherit inputs outputs username userEmail;};
+          modules = [
+            # > Our main home-manager configuration file <
+            ./hosts/i12500
+            inputs.agenix.homeManagerModules.default
+          ];
+        };
     };
     darwinConfigurations = {
-      "macbook-pro-m1" = darwin.lib.darwinSystem {
-        system = "aarch64-darwin";
-        specialArgs = {inherit username inputs outputs;};
-        # pkgs = nixpkgs.legacyPackages.aarch64-darwin;
-        modules = [
-          # Modules that are used
-          ./machines/macbook-pro-m1
-          home-manager.darwinModules.home-manager
-          {
-            # Home-Manager module that is used
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-            home-manager.extraSpecialArgs = {
-              inherit username inputs outputs;
-            }; # Pass flake variable
-            home-manager.users.${username} =
-              import ./hosts/macbook-pro-m1/default.nix;
-          }
-          nix-homebrew.darwinModules.nix-homebrew
-          {
-            nix-homebrew = {
-              # Install Homebrew under the default prefix
-              enable = true;
+      "macbook-pro-m1" = let
+        username = "klchen";
+        userEmail = "klchen0112@gmail.com";
+      in
+        darwin.lib.darwinSystem {
+          system = "aarch64-darwin";
+          specialArgs = {inherit username inputs outputs;};
+          # pkgs = nixpkgs.legacyPackages.aarch64-darwin;
+          modules = [
+            # Modules that are used
+            ./machines/macbook-pro-m1
+            home-manager.darwinModules.home-manager
+            {
+              # Home-Manager module that is used
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.extraSpecialArgs = {
+                inherit username userEmail inputs outputs;
+              }; # Pass flake variable
+              home-manager.users.${username} =
+                import ./hosts/macbook-pro-m1/default.nix;
+            }
+            nix-homebrew.darwinModules.nix-homebrew
+            {
+              nix-homebrew = {
+                # Install Homebrew under the default prefix
+                enable = true;
 
-              # Apple Silicon Only: Also install Homebrew under the default Intel prefix for Rosetta 2
-              enableRosetta = true;
+                # Apple Silicon Only: Also install Homebrew under the default Intel prefix for Rosetta 2
+                enableRosetta = true;
 
-              # User owning the Homebrew prefix
-              user = "klchen";
-              taps = with inputs; {
-                "homebrew/homebrew-core" = homebrew-core;
-                "homebrew/homebrew-cask" = homebrew-cask;
-                "homebrew/homebrew-services" = homebrew-services;
+                # User owning the Homebrew prefix
+                user = "klchen";
+                taps = with inputs; {
+                  "homebrew/homebrew-core" = homebrew-core;
+                  "homebrew/homebrew-cask" = homebrew-cask;
+                  "homebrew/homebrew-services" = homebrew-services;
+                };
+                # Optional: Enable fully-declarative tap management
+                #
+                # With mutableTaps disabled, taps can no longer be added imperatively with `brew tap`.
+                mutableTaps = true;
+                # Automatically migrate existing Homebrew installations
+                autoMigrate = true;
               };
-              # Optional: Enable fully-declarative tap management
-              #
-              # With mutableTaps disabled, taps can no longer be added imperatively with `brew tap`.
-              mutableTaps = true;
-              # Automatically migrate existing Homebrew installations
-              autoMigrate = true;
-            };
-          }
-          inputs.agenix.darwinModules.default
-        ];
-      };
+            }
+            inputs.agenix.darwinModules.default
+          ];
+        };`   
+      "mbp-m2-dxm" = let
+        username = "chenkailong_dxm";
+        userEmail = "chenkailong@duxiaoman.com";
+      in
+        darwin.lib.darwinSystem {
+          system = "aarch64-darwin";
+          specialArgs = {inherit username inputs outputs;};
+          # pkgs = nixpkgs.legacyPackages.aarch64-darwin;
+          modules = [
+            # Modules that are used
+            ./machines/mbp-m2-dxm
+            home-manager.darwinModules.home-manager
+            {
+              # Home-Manager module that is used
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.extraSpecialArgs = {
+                inherit username userEmail inputs outputs;
+              }; # Pass flake variable
+              home-manager.users.${username} =
+                import ./hosts/mbp-m2-dxm/default.nix;
+            }
+nix-homebrew.darwinModules.nix-homebrew
+            {
+              nix-homebrew = {
+                # Install Homebrew under the default prefix
+                enable = true;
+
+                # Apple Silicon Only: Also install Homebrew under the default Intel prefix for Rosetta 2
+                enableRosetta = true;
+
+                # User owning the Homebrew prefix
+                user = "chenkailong_dxm";
+                taps = with inputs; {
+                  "homebrew/homebrew-core" = homebrew-core;
+                  "homebrew/homebrew-cask" = homebrew-cask;
+                  "homebrew/homebrew-services" = homebrew-services;
+                };
+                # Optional: Enable fully-declarative tap management
+                #
+                # With mutableTaps disabled, taps can no longer be added imperatively with `brew tap`.
+                mutableTaps = true;
+                # Automatically migrate existing Homebrew installations
+                autoMigrate = true;
+              };
+            }
+            inputs.agenix.darwinModules.default
+          ];
+        };
     };
   };
 
