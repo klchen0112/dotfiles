@@ -68,6 +68,7 @@
         fonts = [
           "JetBrainsMono"
           "NerdFontsSymbolsOnly"
+          "Hack"
         ];
       })
 

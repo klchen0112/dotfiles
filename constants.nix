@@ -2,7 +2,7 @@ rec {
   # user information
   username = "klchen";
   userfullname = "klchen0112";
-  useremail = "klchen0112@gmail.com";
+  userEmail = "klchen0112@gmail.com";
 
   allSystemAttrs = {
     # linux systems

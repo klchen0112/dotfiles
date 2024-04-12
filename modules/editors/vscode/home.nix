@@ -18,8 +18,8 @@
         # ssh
         ms-vscode-remote.remote-ssh
         # copilot
-        github.copilot
-        github.copilot-chat
+        # github.copilot
+        # github.copilot-chat
       ]
       ++ (with pkgs.vscode-marketplace; [
         #themes
@@ -37,7 +37,7 @@
         christian-kohler.path-intellisense
         # tuttieee.emacs-mcx
         # vscodevim.vim
-        wakatime.vscode-wakatime
+        # wakatime.vscode-wakatime
 
         # git
         # eamodio.gitlens
@@ -54,6 +54,7 @@
         ms-python.python
         ms-python.isort
         # ms-pyright.pyright
+        ms-python.vscode-pylance
         donjayamanne.python-environment-manager
         # ms-python.vscode-pylance
         ms-toolsai.jupyter
@@ -61,6 +62,7 @@
         ms-toolsai.vscode-jupyter-cell-tags
         ms-toolsai.jupyter-renderers
         ms-toolsai.jupyter-keymap
+        corker.vscode-micromamba
         # cpp
         # llvm-vs-code-extensions.vscode-clangd
         # ms-vscode.cmake-tools

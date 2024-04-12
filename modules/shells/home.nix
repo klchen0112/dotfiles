@@ -5,6 +5,7 @@
   inputs,
   pkgs,
   username,
+  userEmail,
   ...
 }: {
   programs.gpg = {enable = true;};
@@ -15,8 +16,8 @@
     ignores = ["*~" "*.swp" ".DS_Store" ".devenv"];
     attributes = ["*.pdf diff=pdf"];
     lfs.enable = true;
-    userName = "klchen0112";
-    userEmail = "klchen0112@gmail.com";
+    userName = username;
+    userEmail = userEmail;
     aliases = {co = "checkout";};
     extraConfig = {
       init.defaultBranch = "master"; # https://srid.ca/unwoke
@@ -235,80 +236,80 @@
   programs.ripgrep = {enable = true;};
 
   programs.ssh = {
-    enable = true;
-    serverAliveInterval = 30;
-    serverAliveCountMax = 6;
-    compression = true;
-    matchBlocks = {
-      xiaomi = {
-        # hostkeyAlgorithms = "+ssh-rsa";
-        # pubkeyAcceptedAlgorithms = "+ssh-rsa";
-        hostname = "192.168.31.1";
-        port = 22;
-        user = "root";
-      };
-      ax5 = {
-        # hostkeyAlgorithms = "+ssh-rsa";
-        # pubkeyAcceptedAlgorithms = "+ssh-rsa";
-        hostname = "192.168.0.1";
-        port = 22;
-        user = "root";
-      };
-      cyd = {
-        hostname = "10.160.199.34";
-        port = 30614;
-        user = "root";
-        identityFile = "~/.ssh/id_ed25519";
-        identitiesOnly = true;
-      };
-      cy = {
-        hostname = "10.160.199.103";
-        port = 30614;
-        user = "root";
-        identityFile = "~/.ssh/id_ed25519";
-        identitiesOnly = true;
-      };
-      i12500 = {
-        hostname = "192.168.1.189";
-        port = 22;
-        user = "klchen";
-        identityFile = "~/.ssh/id_ed25519";
-        identitiesOnly = true;
-      };
-      n1 = {hostname = "192.168.0.254";};
-      tower = {
-        hostname = "192.168.0.200";
-        user = "root";
-      };
-      ningbo40 = {
-        hostname = "10.82.68.40";
-        port = 18022;
-        user = "ckl";
-        identityFile = "~/.ssh/id_ed25519";
-        identitiesOnly = true;
-      };
-      ningbo203 = {
-        hostname = "10.82.68.203";
-        port = 18022;
-        user = "ckl";
-        identityFile = "~/.ssh/id_ed25519";
-        identitiesOnly = true;
-      };
-      ningbo214 = {
-        hostname = "10.82.1.214";
-        port = 18022;
-        user = "ckl";
-        identityFile = "~/.ssh/id_ed25519";
-        identitiesOnly = true;
-      };
-      ningbo204 = {
-        hostname = "10.82.68.204";
-        port = 18022;
-        user = "ckl";
-        identityFile = "~/.ssh/id_ed25519";
-        identitiesOnly = true;
-      };
-    };
+    enable = false;
+    # serverAliveInterval = 30;
+    # serverAliveCountMax = 6;
+    # compression = true;
+    # matchBlocks = {
+    #   xiaomi = {
+    #     # hostkeyAlgorithms = "+ssh-rsa";
+    #     # pubkeyAcceptedAlgorithms = "+ssh-rsa";
+    #     hostname = "192.168.31.1";
+    #     port = 22;
+    #     user = "root";
+    #   };
+    #   ax5 = {
+    #     # hostkeyAlgorithms = "+ssh-rsa";
+    #     # pubkeyAcceptedAlgorithms = "+ssh-rsa";
+    #     hostname = "192.168.0.1";
+    #     port = 22;
+    #     user = "root";
+    #   };
+    #   cyd = {
+    #     hostname = "10.160.199.34";
+    #     port = 30614;
+    #     user = "root";
+    #     identityFile = "~/.ssh/id_ed25519";
+    #     identitiesOnly = true;
+    #   };
+    #   cy = {
+    #     hostname = "10.160.199.103";
+    #     port = 30614;
+    #     user = "root";
+    #     identityFile = "~/.ssh/id_ed25519";
+    #     identitiesOnly = true;
+    #   };
+    #   i12500 = {
+    #     hostname = "192.168.1.189";
+    #     port = 22;
+    #     user = "klchen";
+    #     identityFile = "~/.ssh/id_ed25519";
+    #     identitiesOnly = true;
+    #   };
+    #   n1 = {hostname = "192.168.0.254";};
+    #   tower = {
+    #     hostname = "192.168.0.200";
+    #     user = "root";
+    #   };
+    #   ningbo40 = {
+    #     hostname = "10.82.68.40";
+    #     port = 18022;
+    #     user = "ckl";
+    #     identityFile = "~/.ssh/id_ed25519";
+    #     identitiesOnly = true;
+    #   };
+    #   ningbo203 = {
+    #     hostname = "10.82.68.203";
+    #     port = 18022;
+    #     user = "ckl";
+    #     identityFile = "~/.ssh/id_ed25519";
+    #     identitiesOnly = true;
+    #   };
+    #   ningbo214 = {
+    #     hostname = "10.82.1.214";
+    #     port = 18022;
+    #     user = "ckl";
+    #     identityFile = "~/.ssh/id_ed25519";
+    #     identitiesOnly = true;
+    #   };
+    #   ningbo204 = {
+    #     hostname = "10.82.68.204";
+    #     port = 18022;
+    #     user = "ckl";
+    #     identityFile = "~/.ssh/id_ed25519";
+    #     identitiesOnly = true;
+    #   };
+    # };
   };
 
   programs.mcfly = {
@@ -331,6 +332,7 @@
     coreutils
     gnugrep
     python311Packages.editorconfig
+    lrzsz
   ];
   home.sessionVariables = {
     "EIDTOR" = "emacs";

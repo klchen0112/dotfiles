@@ -10,7 +10,8 @@
     # micromamba
   ];
   programs.micromamba = {
-    enable = false;
+    enable = true;
     enableFishIntegration = true;
+    enableZshIntegration = true;
   };
 }
