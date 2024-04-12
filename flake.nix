@@ -163,7 +163,7 @@
             }
             inputs.agenix.darwinModules.default
           ];
-        };`   
+        };
       "mbp-m2-dxm" = let
         username = "chenkailong_dxm";
         userEmail = "chenkailong@duxiaoman.com";
@@ -186,7 +186,7 @@
               home-manager.users.${username} =
                 import ./hosts/mbp-m2-dxm/default.nix;
             }
-nix-homebrew.darwinModules.nix-homebrew
+            nix-homebrew.darwinModules.nix-homebrew
             {
               nix-homebrew = {
                 # Install Homebrew under the default prefix

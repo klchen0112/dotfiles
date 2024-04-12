@@ -27,7 +27,7 @@
     };
     enableZshIntegration = lib.mkOption {
       type = lib.types.bool;
-      default =config.programs.zsh.enable;
+      default = config.programs.zsh.enable;
       description = ''
         Whether to enable micromamba's Zsh integration.
       '';
@@ -44,12 +44,12 @@
     # Always add the configured `pyenv` package.
     home.packages = [config.programs.micromamba.package];
     programs.bash.initExtra = lib.mkIf config.programs.micromamba.enableBashIntegration ''
-      ${config.programs.micromamba.package}/bin/micromamba shell hook --shell bash --prefix  ${config.programs.micromamba.rootDirectory} | source
+      eval $(/nix/store/629s7qzxlskxkfyzs5q26hnjj9jkxnzi-micromamba-1.4.4/bin/micromamba shell hook --shell zsh --prefix  /Users/chenkailong_dxm/micromamba)
     '';
 
-    programs.zsh.initExtra = lib.mkIf config.programs.micromamba.enableZshIntegration ''
-      ${config.programs.micromamba.package}/bin/micromamba shell hook --shell zsh --prefix  ${config.programs.micromamba.rootDirectory} | source
-    '';
+    programs.zsh.initExtra =
+      lib.mkIf config.programs.micromamba.enableZshIntegration ''
+        eval $(/nix/store/629s7qzxlskxkfyzs5q26hnjj9jkxnzi-micromamba-1.4.4/bin/micromamba shell hook --shell zsh --prefix  /Users/chenkailong_dxm/micromamba)'';
 
     programs.fish.interactiveShellInit = lib.mkIf config.programs.micromamba.enableFishIntegration ''
       ${config.programs.micromamba.package}/bin/micromamba shell hook --shell fish --prefix  ${config.programs.micromamba.rootDirectory} | source

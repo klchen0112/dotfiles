@@ -28,6 +28,9 @@
         bold_italic.family = "JetBrainsMono Nerd Font";
         size = 14;
       };
+      shell = {
+        program = "${pkgs.fish}/bin/fish";
+      };
     };
   };
 

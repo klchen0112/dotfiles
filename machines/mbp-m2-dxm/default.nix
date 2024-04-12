@@ -30,7 +30,7 @@
   programs.fish.enable = true;
 
   environment = {
-    shells = with pkgs; [fish bash]; # Default shell
+    shells = with pkgs; [fish bash zsh]; # Default shell
     # variables = {
     #   # System variables
     #   EDITOR = "nvim";
