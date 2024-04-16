@@ -102,6 +102,7 @@
       "klchen@i12500" = let
         username = "klchen";
         userEmail = "klchen0112@gmail.com";
+        isWork = false;
       in
         home-manager.lib.homeManagerConfiguration {
           pkgs =
@@ -115,27 +116,28 @@
         };
     };
     darwinConfigurations = {
-      "macbook-pro-m1" = let
+      "mbp-m1" = let
         username = "klchen";
         userEmail = "klchen0112@gmail.com";
+        isWork = false;
       in
         darwin.lib.darwinSystem {
           system = "aarch64-darwin";
-          specialArgs = {inherit username inputs outputs;};
+          specialArgs = {inherit username inputs outputs isWork;};
           # pkgs = nixpkgs.legacyPackages.aarch64-darwin;
           modules = [
             # Modules that are used
-            ./machines/macbook-pro-m1
+            ./machines/mbp-m1
             home-manager.darwinModules.home-manager
             {
               # Home-Manager module that is used
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
               home-manager.extraSpecialArgs = {
-                inherit username userEmail inputs outputs;
+                inherit username userEmail inputs outputs isWork;
               }; # Pass flake variable
               home-manager.users.${username} =
-                import ./hosts/macbook-pro-m1/default.nix;
+                import ./hosts/mbp-m1/default.nix;
             }
             nix-homebrew.darwinModules.nix-homebrew
             {

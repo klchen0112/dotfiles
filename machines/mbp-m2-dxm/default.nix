@@ -5,6 +5,7 @@
   pkgs,
   username,
   system,
+  isWork ? true,
   ...
 }: {
   imports = [
@@ -12,7 +13,7 @@
     ../../modules/nixpkgs/darwin.nix
     ../../modules/system/darwin.nix
     ../../modules/desktop/yabai
-    ../../modules/homebrew/dxm.nix
+    ../../modules/homebrew/default.nix
     ../../modules/editors/darwin.nix
     ../../modules/downloader/module.nix
     ../../modules/downloader/darwin.nix

@@ -28,8 +28,8 @@ klcheni12500:
 
 # macbook
 
-darwin:
-	darwin-rebuild switch --flake .#macbook-pro-m1
+mbp-m1:
+	darwin-rebuild switch --flake .#mbp-m1
 
 mbp-m2-dxm:
 	darwin-rebuild switch --flake .#mbp-m2-dxm

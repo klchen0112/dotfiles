@@ -5,6 +5,7 @@
   pkgs,
   username,
   system,
+  isWork ? true,
   ...
 }: {
   imports = [
