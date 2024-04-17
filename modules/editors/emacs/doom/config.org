@@ -1269,9 +1269,9 @@ citar need vertico
   :after org
   :defer t
   :config
-  (setq-default org-download-method 'directory)
-  (setq-default org-download-image-dir "~/Documents/org-attach")
-  (setq-default org-download-heading-lvl 'nil)
+  (setq org-download-method 'directory)
+  (setq org-download-image-dir "~/Library/Mobile Documents/com~apple~CloudDocs/Documents/org-attach")
+  (setq org-download-heading-lvl 'nil)
 )
 #+end_src
 
