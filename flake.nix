@@ -169,10 +169,11 @@
       "mbp-m2-dxm" = let
         username = "chenkailong_dxm";
         userEmail = "chenkailong@duxiaoman.com";
+        isWork = true;
       in
         darwin.lib.darwinSystem {
           system = "aarch64-darwin";
-          specialArgs = {inherit username inputs outputs;};
+          specialArgs = {inherit username inputs outputs isWork;};
           # pkgs = nixpkgs.legacyPackages.aarch64-darwin;
           modules = [
             # Modules that are used
@@ -183,7 +184,7 @@
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
               home-manager.extraSpecialArgs = {
-                inherit username userEmail inputs outputs;
+                inherit username userEmail inputs outputs isWork;
               }; # Pass flake variable
               home-manager.users.${username} =
                 import ./hosts/mbp-m2-dxm/default.nix;
