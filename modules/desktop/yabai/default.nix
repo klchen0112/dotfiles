@@ -81,9 +81,10 @@
       # browser
       yabai -m rule --add app="Google Chrome"
       # chat
-      yabai -m rule --add app="^(Spark)$" --toggle float space=3 manage=on
-      yabai -m rule --add app="^(微信|WeChat)$" --toggle float space=3 manage=off
-      yabai -m rule --add app="^(QQ)$" --toggle float space=3 manage=off
+      yabai -m rule --add app="^(Spark)$" --toggle float space=5 manage=on
+      yabai -m rule --add app="^(微信|WeChat)$" --toggle float space=5 manage=on
+      yabai -m rule --add app="^(QQ)$" --toggle float space=5 manage=on
+      yabai -m rule --add app="^(Duxiaomanchat)$" --toggle float space=5 manage=on
 
       yabai -m rule --add app="^(Telegram)$" --toggle float space=3 manage=off
       yabai -m rule --add app="^(Discord)$"--toggle float space=3 manage=off
@@ -114,6 +115,7 @@
       yabai -m rule --add label="Dictionary" app="^Dictionary$" manage=off
       yabai -m rule --add label="Software Update" title="Software Update" manage=off
       yabai -m rule --add label="About This Mac" app="System Information" title="About This Mac" manage=off
+
 
       yabai -m rule --add app="Raycast" manage=off
       yabai -m rule --add app="Bitwarden" manage=off
