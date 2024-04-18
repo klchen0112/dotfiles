@@ -46,6 +46,7 @@
     caskArgs = {no_quarantine = true;};
     casks =
       [
+        "sf-symbols"
         "squirrel"
         "anki"
         "snipaste"

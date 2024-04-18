@@ -421,7 +421,15 @@
                      script="${sketchybar_scripts}/clock.sh"                          \
                      click_script="open /Applications/万年历.app && osascript -e 'tell application \"System Events\" to tell process \"万年历\" to click menu bar item 1 of menu bar 2'"
 
-
+      sketchybar --add item net right            \
+                 --set net script="${sketchybar_scripts}/net.sh" \
+                            updates=on                  \
+                            background.color=$BACKGROUND_COLOR                         \
+                            background.height=$BACKGROUND_HEIGHT                       \
+                            background.corner_radius=$BACKGROUND_CORNER_RADIUS         \
+                            background.padding_right=0                                 \
+                            label.drawing=off           \
+                  --subscribe net wifi_change
 
       sketchybar --add item disk right                                                  \
              --set disk update_freq=10                                             \
