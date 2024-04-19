@@ -21,17 +21,17 @@
       {
         "goodnotes-5" = 1444383602;
         "Bitwarden" = 1352778147;
+        wechat = 836500024;
+        qq = 451108668;
+        dingtalk = 1435447041;
         # xcode = 497799835;
       }
       // (
         if isWork
         then {}
         else {
-          wechat = 836500024;
-          qq = 451108668;
           onedrive = 823766827;
-          dingtalk = 1435447041;
-          #. tencent-meeting = 1484048379;
+          tencent-meeting = 1484048379;
           "microsoft-word" = 462054704;
           "microsoft-powerpoint" = 462062816;
           "microsoft-excel" = 462058435;
@@ -42,6 +42,7 @@
     brews = [
       # "macism"
       "mas"
+      "sleepwatcher"
     ];
     caskArgs = {no_quarantine = true;};
     casks =
@@ -58,13 +59,18 @@
         "iterm2"
 
         "keyboardcleantool"
-
+        # keyboard
+        
         "vial"
+
+        # Coding 
         "dash"
 
         "omnidisksweeper"
 
         "xnviewmp"
+
+      
         "zotero"
         "skim"
 
@@ -96,8 +102,6 @@
         "activitywatch"
 
         # keyboard
-        "via"
-        "vial"
         "qmk-toolbox"
         "openscad"
         "zerotier-one"
