@@ -75,6 +75,8 @@
         # csv
 
         james-yu.latex-workshop
+        # keyboard
+        spadin.zmk-tools
       ])
       ++ lib.optionals pkgs.stdenv.isDarwin
       (with pkgs.vscode-marketplace; [deerawan.vscode-dash]);
