@@ -73,11 +73,11 @@
       
         "zotero"
         "skim"
+        "zerotier-one"
 
         # "TidGi"
         # "mathpix-snipping-tool"
         "logi-options-plus"
-        "sfm"
         "marginnote"
         "raycast"
         "plexamp"
@@ -100,11 +100,11 @@
         "discord"
         "openvpn-connect"
         "activitywatch"
+        "sfm"
 
         # keyboard
         "qmk-toolbox"
         "openscad"
-        "zerotier-one"
       ];
   };
 }
