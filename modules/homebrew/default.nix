@@ -61,17 +61,16 @@
 
         "keyboardcleantool"
         # keyboard
-        
+
         "vial"
 
-        # Coding 
+        # Coding
         "dash"
 
         "omnidisksweeper"
 
         "xnviewmp"
 
-      
         "zotero"
         "skim"
         "zerotier-one"
