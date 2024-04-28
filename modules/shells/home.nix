@@ -28,6 +28,10 @@
       #protocol.keybase.allow = "always";
       credential.helper = "store --file ~/.git-credentials";
       pull.rebase = "false";
+      "http" = {
+        "http://github.com.proxy" = "socks5://127.0.0.1:7890";
+        "https://github.com.proxy" = "socks5://127.0.0.1:7890";
+      };
     };
   };
 
