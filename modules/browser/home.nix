@@ -21,7 +21,7 @@
       # settings = {};
       search = {
         force = true;
-        default = "Bing";
+        default = "Google";
         order = ["Bing" "Baidu" "DuckDuckGo" "Google"];
       };
       settings = {
@@ -67,6 +67,11 @@
       };
       extensions = with pkgs.nur.repos.rycee.firefox-addons; [
         # see: https://github.com/nix-community/nur-combined/blob/master/repos/rycee/pkgs/firefox-addons/generated-firefox-addons.nix
+        # adblocker-ultimate
+        augmented-steam
+        auto-sort-bookmarks
+        auto-tab-discard
+        automatic-dark
         gopass-bridge
         # https-everywhere
         link-cleaner
@@ -78,6 +83,10 @@
         sidebery
         bitwarden
         omnivore
+        blocktube
+        rsshub-radar
+        brotab
+        onetab
       ];
     };
 

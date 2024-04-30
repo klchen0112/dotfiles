@@ -29,7 +29,7 @@
       credential.helper = "store --file ~/.git-credentials";
       pull.rebase = "false";
       "http \"github.com\"" = {
-         "proxy" = "socks5://127.0.0.1:7890";
+        "proxy" = "socks5://127.0.0.1:7890";
       };
     };
   };
@@ -93,10 +93,10 @@
         name = "sponge";
         src = sponge.src;
       }
-      {
-        name = "pure";
-        src = pure.src;
-      }
+      # {
+      #   name = "pure";
+      #   src = pure.src;
+      # }
     ];
   };
   programs.eza = {
@@ -140,9 +140,9 @@
     enable = true;
   };
   programs.starship = {
-    enable = false;
-    enableZshIntegration = pkgs.stdenv.isDarwin;
-    enableFishIntegration = false;
+    enable = true;
+    enableZshIntegration = true;
+    enableFishIntegration = true;
     settings =
       {
         add_newline = false;

@@ -84,6 +84,7 @@
         "syncthing"
         # "mpv"
         "iina"
+        "telegram"
         "licecap"
       ]
       ++ lib.optionals (!isWork) [
@@ -91,7 +92,6 @@
         "sunloginclient"
         "adrive"
         "steam"
-        "telegram"
         "balenaetcher"
         "todesk"
         "tencent-meeting"
