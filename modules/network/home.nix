@@ -2,7 +2,7 @@
 # OpenVPN
 #
 {pkgs, ...}: {
-  home.packages = with pkgs; [
-    # sing-box
+  home.packages = [
+    pkgs.unstable.sing-box
   ];
 }
