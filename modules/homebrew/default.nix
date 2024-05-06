@@ -86,6 +86,8 @@
         "iina"
         "telegram"
         "licecap"
+        # Keyboard
+        "hhkb-studio"
       ]
       ++ lib.optionals (!isWork) [
         "microsoft-remote-desktop"
