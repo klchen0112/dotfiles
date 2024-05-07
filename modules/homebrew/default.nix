@@ -57,7 +57,6 @@
         "appcleaner"
 
         "baidunetdisk"
-        "iterm2"
 
         "keyboardcleantool"
         # keyboard
@@ -88,6 +87,9 @@
         "licecap"
         # Keyboard
         "hhkb-studio"
+      ]
+      ++ lib.optionals isWork [
+        "iterm2"
       ]
       ++ lib.optionals (!isWork) [
         "microsoft-remote-desktop"
