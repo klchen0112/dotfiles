@@ -11,7 +11,7 @@
     enableGnomeExtensions = false;
     package =
       if pkgs.stdenv.isDarwin
-      then pkgs.nur.repos.toonn.apps.firefox
+      then pkgs.firefox-bin
       else pkgs.firefox-wayland; # firefox with wayland support
     profiles.default = {
       id = 0;

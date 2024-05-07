@@ -25,7 +25,7 @@
       # inputs.devenv.overlays.default
       inputs.nix-vscode-extensions.overlays.default
       # neovim-nightly-overlay.overlays.default
-      # inputs.nixpkgs-firefox-darwin.overlay
+      inputs.nixpkgs-firefox-darwin.overlay
       inputs.nur.overlay
       # Or define it inline, for example:
       # (final: prev: {

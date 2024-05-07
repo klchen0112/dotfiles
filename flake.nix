@@ -434,6 +434,11 @@
         url = "github:ryan4yin/nur-packages";
         inputs.nixpkgs.follows = "nixpkgs";
       };
+
+      nixpkgs-firefox-darwin = {
+        url = "github:bandithedoge/nixpkgs-firefox-darwin";
+        inputs.nixpkgs.follows = "nixpkgs";
+      };
       # own package
       own-nur = {
         url = "github:klchen0112/nur";
