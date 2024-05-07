@@ -37,6 +37,7 @@
     darwin,
     nix-homebrew,
     pre-commit-hooks,
+    nix-on-droid,
     ...
   }:
   # Function that tells my flake which to use and what do what to do with the dependencies.
@@ -217,6 +218,13 @@
           ];
         };
     };
+    nixOnDroidConfigurations = {
+      "redmi-12t-pro" = nix-on-droid.lib.nixOnDroidConfiguration {
+        modules = [
+          ./machines/redmi-12t-pro
+        ];
+      };
+    };
   };
 
   inputs =
@@ -255,6 +263,13 @@
         # User Package Management
         url = "github:nix-community/home-manager/release-23.11";
         inputs.nixpkgs.follows = "nixpkgs";
+      };
+
+      # Android
+      nix-on-droid = {
+        url = "github:nix-community/nix-on-droid/release-23.11";
+        inputs.nixpkgs.follows = "nixpkgs";
+        inputs.home-manager.follows = "home-manager";
       };
 
       systems.url = "github:nix-systems/default";
