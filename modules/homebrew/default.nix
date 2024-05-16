@@ -72,7 +72,7 @@
 
         "zotero"
         "skim"
-        "zerotier-one"
+        # "zerotier-one"
 
         # "TidGi"
         # "mathpix-snipping-tool"
@@ -93,11 +93,11 @@
       ]
       ++ lib.optionals (!isWork) [
         "microsoft-remote-desktop"
-        "sunloginclient"
+        # "sunloginclient"
         "adrive"
         "steam"
         "balenaetcher"
-        "todesk"
+        # "todesk"
         "tencent-meeting"
         "marginnote"
         "nutstore"
@@ -109,6 +109,9 @@
         # keyboard
         "qmk-toolbox"
         "openscad"
+
+        # vpn
+        "tailscale"
       ];
   };
 }
