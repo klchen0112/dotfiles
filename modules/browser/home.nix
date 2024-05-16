@@ -11,13 +11,12 @@
     enableGnomeExtensions = false;
     package =
       if pkgs.stdenv.isDarwin
-      then pkgs.firefox-bin
+      then pkgs.firefox-esr-bin
       else pkgs.firefox-wayland; # firefox with wayland support
     profiles.default = {
       id = 0;
       isDefault = true;
       name = "klchen";
-
       # settings = {};
       search = {
         force = true;
@@ -28,8 +27,9 @@
         "browser.tabs.loadInBackground" = true;
         #   "widget.gtk.rounded-bottom-corners.enabled" = true;
         #   "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
-        #   "svg.context-properties.content.enabled" = true;
+        "svg.context-properties.content.enabled" = true;
         bookmarks = [
+
           {
             name = "wikipedia";
             tags = ["wiki"];
@@ -42,6 +42,7 @@
           }
           {
             name = "Nix sites";
+            toolbar = true;
             bookmarks = [
               {
                 name = "Home Manager";
@@ -60,6 +61,22 @@
                 name = "mynixios";
                 tags = ["wiki" "nix"];
                 url = "https://mynixos.com/";
+              }
+            ];
+          }
+          {
+            name = "动画";
+            toolbar = true;
+            bookmarks = [
+              {
+                name = "bilibili";
+                tags = ["anime"];
+                url = "https://www.bilibili.com/";
+              }
+                {
+                name = "BGM";
+                tags = ["anime"];
+                url = "https://bgm.tv/";
               }
             ];
           }
@@ -87,6 +104,8 @@
         rsshub-radar
         brotab
         onetab
+
+        zotero-connector
       ];
     };
 
