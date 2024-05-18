@@ -93,7 +93,7 @@
       ]
       ++ lib.optionals (!isWork) [
         "microsoft-remote-desktop"
-        # "sunloginclient"
+        "sunloginclient"
         "adrive"
         "steam"
         "balenaetcher"
