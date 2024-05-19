@@ -11,7 +11,7 @@
     enableGnomeExtensions = false;
     package =
       if pkgs.stdenv.isDarwin
-      then pkgs.firefox-esr-bin
+      then pkgs.firefox-bin
       else pkgs.firefox-wayland; # firefox with wayland support
     profiles.default = {
       id = 0;
@@ -29,7 +29,6 @@
         #   "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
         "svg.context-properties.content.enabled" = true;
         bookmarks = [
-
           {
             name = "wikipedia";
             tags = ["wiki"];
@@ -73,7 +72,7 @@
                 tags = ["anime"];
                 url = "https://www.bilibili.com/";
               }
-                {
+              {
                 name = "BGM";
                 tags = ["anime"];
                 url = "https://bgm.tv/";

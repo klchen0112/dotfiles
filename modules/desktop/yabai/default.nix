@@ -7,10 +7,10 @@
   system,
   ...
 }: {
-  environment.systemPackages = [pkgs.unstable.jankyborders];
+  environment.systemPackages = [pkgs.jankyborders];
   services.yabai = {
     enable = true;
-    package = pkgs.unstable.yabai;
+    package = pkgs.yabai;
     enableScriptingAddition = true;
     config = {
       layout = "bsp";
@@ -126,7 +126,7 @@
 
   services.skhd = {
     enable = true;
-    package = pkgs.unstable.skhd;
+    package = pkgs.skhd;
     skhdConfig = ''
 
       alt - left  : yabai -m window --focus west ; or yabai -m display --focus west
@@ -208,7 +208,7 @@
   #TODO fix plexamp and cava email
   services.sketchybar = {
     enable = true;
-    package = pkgs.unstable.sketchybar;
+    package = pkgs.sketchybar;
     extraPackages = [pkgs.jq];
     # this code from https://github.com/ColaMint/config.git
     config = let

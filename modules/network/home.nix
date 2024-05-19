@@ -3,6 +3,6 @@
 #
 {pkgs, ...}: {
   home.packages = [
-    pkgs.unstable.sing-box
+    pkgs.sing-box
   ];
 }

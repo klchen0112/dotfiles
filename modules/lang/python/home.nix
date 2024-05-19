@@ -11,7 +11,7 @@
   ];
   programs.micromamba = {
     enable = true;
-    package = pkgs.unstable.micromamba;
+    package = pkgs.micromamba;
     enableFishIntegration = true;
     enableZshIntegration = true;
   };

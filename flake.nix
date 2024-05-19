@@ -5,7 +5,7 @@
     substituters = [
       # replace official cache with a mirror located in China
       "https://mirrors.tuna.tsinghua.edu.cn/nix-channels/store"
-      "https://mirror.sjtu.edu.cn/nix-channels/store"
+      # "https://mirror.sjtu.edu.cn/nix-channels/store"
       "https://cache.nixos.org"
     ];
     extra-substituters = [
@@ -231,7 +231,7 @@
   inputs =
     # All flake references used to build my NixOS setup. These are dependencies.
     {
-      nixpkgs.url = "github:nixos/nixpkgs/nixos-23.11"; # Nix Packages
+      nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable"; # Nix Packages
       nixpkgs-unstable.url = "github:nixos/nixpkgs/nixpkgs-unstable"; # Nix Packages
 
       #  MacOS
@@ -262,7 +262,7 @@
       # Home Manager
       home-manager = {
         # User Package Management
-        url = "github:nix-community/home-manager/release-23.11";
+        url = "github:nix-community/home-manager";
         inputs.nixpkgs.follows = "nixpkgs";
       };
 

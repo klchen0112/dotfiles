@@ -46,7 +46,7 @@
   programs.bash = {enable = true;};
   programs.zsh = {
     enable = pkgs.stdenv.isDarwin;
-    enableAutosuggestions =
+    autosuggestion.enable =
       true; # Auto suggest options and highlights syntax, searches in history for options
     # syntaxHighlighting.enable = true;
     defaultKeymap = "emacs";
