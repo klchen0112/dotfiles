@@ -15,7 +15,6 @@
       "https://nixpkgs-wayland.cachix.org"
       "https://ruixi-rebirth.cachix.org"
       "https://klchen0112.cachix.org"
-      "https://ryan4yin.cachix.org"
       "https://devenv.cachix.org"
     ];
     extra-trusted-public-keys = [
@@ -443,11 +442,6 @@
       hycov = {
         url = "github:DreamMaoMao/hycov";
         inputs.hyprland.follows = "hyprland";
-      };
-
-      nur-ryan4yin = {
-        url = "github:ryan4yin/nur-packages";
-        inputs.nixpkgs.follows = "nixpkgs";
       };
 
       nixpkgs-firefox-darwin = {

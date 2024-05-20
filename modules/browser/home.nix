@@ -94,7 +94,7 @@
         privacy-badger
         tree-style-tab
         multi-account-containers
-        # ublock-origin
+        ublock-origin
         # vimium
         sidebery
         bitwarden

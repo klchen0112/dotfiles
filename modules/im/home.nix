@@ -23,7 +23,7 @@
     };
     ".local/share/fcitx5/themes" = {
       enable = pkgs.stdenv.isLinux;
-      source = "${inputs.nur-ryan4yin.packages.${pkgs.system}.catppuccin-fcitx5}/src";
+      source = "${inputs.own-nur.packages.${pkgs.system}.catppuccin-fcitx5}/src";
     };
     ".local/share/fcitx5/rime" = {
       enable = pkgs.stdenv.isLinux;

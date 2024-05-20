@@ -34,7 +34,7 @@
     };
   };
 
-  home.file.".config/btop/themes".source = "${inputs.nur-ryan4yin.packages.${pkgs.system}.catppuccin-btop}/themes";
+  home.file.".config/btop/themes".source = "${inputs.own-nur.packages.${pkgs.system}.catppuccin-btop}/themes";
   programs.btop = {
     enable = true;
     settings = {
@@ -74,7 +74,7 @@
     shellAliases = {
       # conda = "micromamba";
       "..." = "cd ../..";
-      "cd" = "z";
+      # "cd" = "z";
     };
     plugins = with pkgs.fishPlugins; [
       {
@@ -104,7 +104,7 @@
     icons = true;
     git = true;
   };
-  home.file.".config/bat/themes".source = "${inputs.nur-ryan4yin.packages.${pkgs.system}.catppuccin-bat}";
+  home.file.".config/bat/themes".source = "${inputs.own-nur.packages.${pkgs.system}.catppuccin-bat}";
   programs.bat = {
     enable = true;
     config = {
@@ -233,7 +233,7 @@
         };
       }
       // builtins.fromTOML (builtins.readFile "${
-        inputs.nur-ryan4yin.packages.${pkgs.system}.catppuccin-starship
+        inputs.own-nur.packages.${pkgs.system}.catppuccin-starship
       }/palettes/mocha.toml");
   };
   programs.ripgrep = {enable = true;};

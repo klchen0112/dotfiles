@@ -10,7 +10,7 @@
   programs.alacritty = {
     enable = true;
     settings = {
-      import = ["${inputs.nur-ryan4yin.packages.${pkgs.system}.catppuccin-alacritty}/catppuccin-mocha.yml"];
+      import = ["${inputs.own-nur.packages.${pkgs.system}.catppuccin-alacritty}/catppuccin-mocha.toml"];
       selection.save_to_clipboard = true;
       window = {
         opacity = 0.93;
