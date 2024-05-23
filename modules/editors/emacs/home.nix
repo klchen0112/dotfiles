@@ -12,6 +12,7 @@
     then pkgs.emacsPlus29
     else pkgs.emacs29-pgtk;
 in {
+  imports = [inputs.nix-doom-emacs-unstraightened.hmModule];
   home.packages = with pkgs;
     [
       fd
@@ -60,17 +61,17 @@ in {
     # onChange = "~/.config/emacs/bin/doom sync";
   };
 
-  programs.emacs = {
-    enable = true;
-    package = emacsPackage;
-  };
+  # programs.emacs = {
+  # enable = true;
+  # package = emacsPackage;
+  # };
 
   # doom-emacs will enable programs.emacs
-  # programs.doom-emacs = {
-  # enable = true;
-  # doomPrivateDir = ./doom;
-  # emacsPackage = pkgs.emacs29;
-  # };
+  programs.doom-emacs = {
+    enable = true;
+    doomDir = ./doom;
+    emacs = emacsPackage;
+  };
   services.emacs = {
     enable = pkgs.stdenv.isLinux;
     package = emacsPackage;

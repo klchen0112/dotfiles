@@ -1,290 +1,3 @@
-:PROPERTIES:
-:ID:       1bf5e137-a333-43da-827f-c09885a402b8
-:END:
-#+TITLE: config
-#+AUTHOR: klchen0112
-#+EMAIL: klchen0112@gmail.com
-#+startup: fold
-#+property: header-args :emacs-lisp :tangle yes :comments link
-#+property: header-args :elisp :exports code
-#+property: header-args :tangle no :results silent :eval no-export
-* Init.el
-:PROPERTIES:
-:ID: d8d43fa6-0b7e-47c7-9c65-919b510c8202
-:END:
-#+begin_src emacs-lisp :tangle init.el
-;;; init.el -*- lexical-binding: t; -*-
-                                        ;   ;
-
-;; This file controls what jDoom modules are enabled and what order they load
-;; in. Remember to run 'doom sync' after modifying it!
-
-;; NOTE Press 'SPC h d h' (or 'C-h d h' for non-vim users) to access Doom's
-;;      documentation. There you'll find a link to Doom's Module Index where all
-;;      of our modules are listed, including what flags they support.
-
-;; ?OTE Move your cursor over a module's name (or its flags) and press 'K' (or
-;;      'C-c c k' for non-vim users) to view its documentation. This works on
-;;      flags as well (those symbols that start with a plus).
-;;
-;;      Alternatively, press 'gd' (or 'C-c c d') on a module to browse its
-;;      directory (for easy access to its source code).
-(doom! :input
-       ;;bidi              ; (tfel ot) thgir etirw uoy gnipleh
-       ;;chinese
-       ;;japanese
-       layout            ; auie,ctsrnm is the superior home row
-
-       :completion
-       (corfu
-        +icons ;; Display icons beside completion suggestions.
-        +orderless
-        +dabbrev ;; as a close-to-universal CAPF
-        ) ; wait for doom merge
-       ;;(company +childframe +tng)           ; the ultimate code completion backend
-       ;;helm              ; the *other* search engine for love and life
-       ;;ido               ; the other *other* search engine...
-       ;;(ivy +fuzzy +prescient +childframe +icons)               ; a search engine for love and life
-       (vertico +icons
-                +childframe ;; not for yabai
-                )         ; the search engine of the future
-
-       :ui
-       ;;deft              ; notational velocity for Emacs
-       doom              ; what makes DOOM look the way it does
-       doom-dashboard    ; a nifty splash screen for Emacs
-       doom-quit         ; DOOM quit-message prompts when you quit Emacs
-       ;;(emoji +unicode)  ; 🙂
-       hl-todo           ; highlight TODO/FIXME/NOTE/DEPRECATED/HACK/REVIEW
-       ;;hydra
-       indent-guides     ; highlighted indent columns
-       (ligatures
-        +extra
-        +fira ; fira font ligatures
-        +hasklig ; HaskLig font ligatures
-        +iosevka ; iosevka font ligatures
-        +pragmata-pro ; Pragmata-Pro font ligatures
-        )       ; ligatures and symbols to make your code pretty again
-       ;;minimap           ; show a map of the code on the side
-       modeline          ; snazzy, Atom-inspired modeline, plus API
-       nav-flash         ; blink cursor line after big motions
-       ;;neotree           ; a project drawer, like NERDTree for vim
-       ophints           ; highlight the region an operation acts on
-       (popup ; tame sudden yet inevitable temporary windows
-        +all
-        +defaults)          ;;
-       ;;tabs              ; a tab bar for Emacs
-       ;;(treemacs +lsp)       ; a project drawer, like neotree but cooler
-       unicode           ; extended unicode support for various language
-       (vc-gutter +pretty)         ; vcs diff in the fringe
-       vi-tilde-fringe   ; fringe tildes to mark beyond EOB
-       (window-select +numbers)     ; visually switch windows
-       workspaces        ; tab emulation, persistence & separate workspaces
-       zen               ; distraction-free coding or writing
-
-       :editor
-       ;;(meow  +qwerty +override +leader)
-       ;; (evil +everywhere); come to  dark side, we have cookies
-       file-templates    ; auto-snippets for files
-       fold              ; (nigh) universal code folding
-       (format ; automated prettiness
-        +onsave ; only-changes
-        )
-       ;;god               ; run Emacs commands without modifier keys
-       ;;lispy             ; vim for lisp, for people who don't like vim
-       ;;multiple-cursors  ; editing in many places at once
-       ;;objed             ; text object editing for the innocent
-       ;;parinfer          ; turn lisp into python, sort of
-       rotate-text       ; cycle region at point between text candidates
-       snippets          ; my elves. They type so I don't have to
-       word-wrap         ; soft wrapping with language-aware indent
-
-       :emacs
-       (dired
-        ;; +ranger           ; make bringing the goodness of ranger to dired
-        +icons           ; making dired pretty [functional]
-        +dirvish
-        )
-       electric          ; smarter, keyword-based electric-indent
-       (ibuffer +icons)        ; interactive buffer management
-       undo              ; persistent, smarter undo for your inevitable mistakes
-       vc                ; version-control and Emacs, sitting in a tree
-
-       :term
-       eshell            ; the elisp shell that works everywhere
-       ;;shell             ; simple shell REPL for Emacs
-       ;;term              ; basic terminal emulator for Emacs
-       ;;vterm             ; the best terminal emulation in Emacs
-
-       :checkers
-       (syntax +childframe)              ; tasing you for every semicolon you forget
-       (spell) ; tasing you for misspelling mispelling
-       grammar           ; tasing grammar mistake every you make
-
-       :tools
-       ;;ansible
-       biblio            ; Writes a PhD for you (citation needed)
-       ;;collab ; buffers with friends
-       debugger          ; FIXME stepping through code, to help you add bugs
-       direnv
-       (docker +lsp)
-       editorconfig      ; let someone else argue about tabs vs spaces
-       ;;ein               ; tame Jupyter notebooks with emacs
-       (eval +overlay)     ; run code, run (also, repls)
-       (lookup +dictionary +docsets +offline)             ; navigate your code and its documentation
-       (lsp +peek)              ; M-x vscode
-       (magit             ; a git porcelain for Emacs
-        ;;+forge             ; interface with git forges
-       )
-       make              ; run make tasks from Emacs
-       ;;pass              ; password manager for nerds
-       pdf               ; pdf enhancements
-       ;;prodigy           ; FIXME managing external services & code builders
-       rgb               ; creating color strings
-       taskrunner        ; taskrunner for all your projects
-       tree-sitter
-       ;;terraform         ; infrastructure as code
-       ;;tmux              ; an API for interacting with tmux
-       upload            ; map local to remote projects via ssh/ftp
-
-       :os
-       (:if IS-MAC macos)  ; improve compatibility with macOS
-       tty               ; improve the terminal Emacs experience
-
-       :lang
-       ;;agda              ; types of types of types of types...
-       ;;beancount         ; mind the GAAP
-       (cc +lsp
-           ;; C > C++ == 1
-           ;;+tree-sitter
-           )
-       ;;(clojure +lsp)           ; java with a lisp
-       ;;common-lisp       ; if you've seen one lisp, you've seen them all
-       ;;coq               ; proofs-as-programs
-       ;;crystal           ; ruby at the speed of c
-       ;;csharp            ; unity, .NET, and mono shenanigans
-       ;;data              ; config/data formats
-       ;;(dart +flutter)   ; paint ui and not much else
-       ;;dhall
-       ;;elixir            ; erlang done right
-       ;;elm               ; care for a cup of TEA?
-       (emacs-lisp; drown in parentheses
-        +ttree-sitter
-        )
-       ;;erlang            ; an elegant language for a more civilized age
-       ;;ess               ; emacs speaks statistics
-       ;;factor
-       ;;faust             ; dsp, but you get to keep your soul
-       ;;fortran           ; in FORTRAN, GOD is REAL (unless declared INTEGER)
-       ;;fsharp            ; ML stands for Microsoft's Language
-       ;;fstar             ; (dependent) types and (monadic) effects and Z3
-       ;;gdscript          ; the language you waited for
-       (go +lsp)         ; the hipster dialect
-       ;;(graphql +lsp)    ; Give queries a REST
-       ;;(haskell +lsp)    ; a language that's lazier than I am
-       ;;hy                ; readability of scheme w/ speed of python
-       ;;idris             ; a language you can depend on
-       (json  +lsp)            ; At least it ain't XML
-       ;;(java +lsp)       ; the poster child for carpal tunnel syndrome
-       (javascript +lsp)        ; all(hope(abandon(ye(who(enter(here))))))
-       ;;(julia +lsp ; a better, faster MATLAB
-       ;;+tree-sitter
-       ;;      )
-       ;;kotlin            ; a better, slicker Java(Script)
-       (latex             ; writing papers in Emacs has never been so fun
-        +lsp
-        +latexmk                    ; what else would you use?
-        +cdlatex                    ; quick maths symbols
-        +fold)                      ; fold the clutter away nicities
-       ;;lean              ; for folks with too much to prove
-       ;;ledger            ; be audit you can be
-       (lua +lsp +fennel +moonscript)              ; one-based indices? one-based indices
-       (markdown
-        +grip
-        )          ; writing docs for people to ignore
-       ;;nim               ; python + lisp at the speed of c
-       (nix +lsp +tree-sitter)               ; I hereby declare "nix geht mehr!"
-       ;;ocaml             ; an objective camel
-       (org              ; organize your plain life in plain text
-        ;;+brain
-        ;;+contacts ; Insert org-mode links to items selected in various Mac apps.
-        +dragndrop                  ; drag & drop files/images into org buffers
-        ;;+gnuplot                    ; who doesn't like pretty pictures
-        +hugo                     ; use Emacs for hugo blogging
-        ;; +journal ;; use org roam dailyies
-        +noter ;; enhanced pdf notetaking
-        ;;+pretty                     ; yessss my pretties! (nice unicode symbols)
-        ;;+jupyter                    ; ipython/jupyter support for babel
-        +pandoc                     ; export-with-pandoc support
-        ;;+pomodoro                 ; be fruitful with the tomato technique
-        ;;+present                    ; using org-mode for presentations
-        +roam2)                     ; wander around notes
-       ;;php               ; perl's insecure younger brother
-       ;;plantuml          ; diagrams for confusing people more
-       ;;purescript        ; javascript, but functional
-       (python +lsp
-               +pyright
-               +pyenv
-               +cpython
-               ;; (if (not IS-MAC) +conda)
-               +poetry
-               +tree-sitter
-               )            ; beautiful is better than ugly
-       ;;qt                ; the 'cutest' gui framework ever
-       ;;racket            ; a DSL for DSLs
-       ;;raku              ; the artist formerly known as perl6
-       ;;rest              ; Emacs as a REST client
-       ;;rst               ; ReST in peace
-       ;;(ruby +rails)     ; 1.step {|i| p "Ruby is #{i.even? ? 'love' : 'life'}"}
-       (rust +lsp)              ; Fe2O3.unwrap().unwrap().unwrap().unwrap()
-       ;;scala             ; java, but good
-       ;;(scheme +guile)   ; a fully conniving family of lisps
-       (sh  +fish)               ; she sells {ba,z,fi}sh shells on the C xor
-       ;;sml
-       ;;solidity          ; do you need a blockchain? No.
-       ;;swift             ; who asked for emoji variables?
-       ;;terra             ; Earth and Moon in alignment for performance.
-       ;;(web +lsp)              ; the tubes
-       (yaml +lsp +tree-sitter)              ; JSON, but readable
-       ;;zig               ; C, but simpler
-
-       :email
-       ;;(mu4e +org +gmail)
-       ;;notmuch
-       ;;(wanderlust +gmail)
-
-       :app
-       ;;calendar
-       ;;emms
-       ;;everywhere           ; *leave* Emacs!? You must be joking
-       ;;irc               ; how neckbeards socialize
-       (rss +org)        ; emacs as an RSS reader
-       ;;twitter           ; twitter client https://twitter.com/vnought
-
-       :config
-       literate
-       (default +bindings +smartparens))
-
-;;TODO remove add to list
-;;(add-to-list 'load-path (concat doom-emacs-dir ".local/straight/repos/nursery/lisp"))
-#+end_src
-* packages
-:PROPERTIES:
-:ID:       e970a14b-3bdc-45bf-af5c-f85727067773
-:END:
-#+begin_src emacs-lisp conf :tangle packages.el
-;; -*- no-byte-compile: t; -*-
-;;; $DOOMDIR/packages.el
-(disable-packages! evil-escape)
-;;(unpin! lsp-mode)
-;;(unpin! forge)
-#+end_src
-* Basic setting
-** Simple Settings
-:PROPERTIES:
-:ID:       0f38d9a6-c7d4-4370-bd44-839d77bc33a4
-:END:
-#+begin_src emacs-lisp conf :tangle config.el
 ;;; $DOOMDIR/config.el -*- lexical-binding: t; -*-
 ;; Place your private configuration here! Remember, you do not need to run 'doom
 ;; sync' after modifying this file!
@@ -329,29 +42,12 @@
 ;;(pixel-scroll-precision-mode 1)
 ;;(setq pixel-scroll-precision-large-scroll-height 60
 ;;     pixel-scroll-precision-interpolation-factor 30.0)
-#+end_src
-** exec path
-#+begin_src emacs-lisp :tangle config.el
+
 (setq shell-file-name (executable-find "bash"))
 (setq-default vterm-shell (executable-find "fish"))
 
 (setq-default explicit-shell-file-name (executable-find "fish"))
-#+end_src
-** workaround
-#+begin_src emacs-lisp config.el
-(setq native-comp-async-jobs-number 16)
-#+end_src
-** Global mode
-:PROPERTIES:
-:ID:       f610bfb5-ce6d-44fa-ae62-bcbf155ced56
-:END:
-#+begin_src emacs-lisp :tangle packages.el
 
-
-#+end_src
-
-
-#+begin_src emacs-lisp conf :tangle config.el
 ;; (display-time-mode 1)                             ; Enable time in the mode-line
 
 (global-subword-mode 1)                           ; Iterate through CamelCase words
@@ -360,37 +56,13 @@
 (scroll-bar-mode 1)
 ;;(+global-word-wrap-mode +1)
 
-
-
-#+end_src
-* start benchmark
-:PROPERTIES:
-:ID:       12e0119d-2f0b-4684-87c3-c596ade4d065
-:END:
-
-#+begin_src emacs-lisp :tangle packages.el
-(package! benchmark-init)
-#+end_src
-
-#+begin_src emacs-lisp :tangle config.el
 (use-package! benchmark-init
   :defer t
   :ensure t
   ;;:config
   ;;(add-hook! 'after-init-hook 'benchmark-init/deactivate)
 )
-#+end_src
 
-* UI settings
-** frame
-:PROPERTIES:
-:ID:       81059094-5346-4f65-b701-5abfbf89598f
-:END:
-#+begin_src emacs-lisp :tangle packages.el
-
-#+end_src
-
-#+begin_src emacs-lisp conf :tangle config.el
 ;; Framing Size
 ;; start the initial frame maximized
 ;;(add-hook 'window-setup-hook #'toggle-frame-maximized)
@@ -402,13 +74,7 @@
 (add-to-list 'default-frame-alist '(internal-border-width . 5))
 ;; no round corners
 ;; (add-to-list 'default-frame-alist '(undecorated-round . t))
-#+end_src
-** font
-*** font config
-:PROPERTIES:
-:ID:       06e0dce5-4f1f-4dc4-a8ea-920955909ac4
-:END:
-#+begin_src emacs-lisp conf :tangle config.el
+
 ;; Doom exposes five (optional) variables for controlling fonts in Doom:
 ;;
 ;; - `doom-font' -- the primary font to use
@@ -469,17 +135,6 @@
         doom-serif-font (font-spec :family "Cascadia Code"  :size 23)))
 )
 
-#+end_src
-** theme
-:PROPERTIES:
-:ID:       918efa68-0a34-4e90-ba5f-305b628bbb7b
-:END:
-#+begin_src emacs-lisp :tangle packages.el
-(package! info-colors)
-
-#+end_src
-
-#+begin_src emacs-lisp :tangle config.el
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
@@ -544,30 +199,11 @@
   :commands (info-colors-fontify-node))
 
 (add-hook! 'Info-selection-hook 'info-colors-fontify-node)
-#+end_src
-** dashboard
-:PROPERTIES:
-:ID:       24df29ee-b60d-4408-ac20-1c7c95da1918
-:END:
-#+begin_src emacs-lisp :tangle config.el
+
 ;; this code from https://randomgeekery.org/config/emacs/doom/
 
-#+end_src
-** global mode
-:PROPERTIES:
-:ID:       cd7500b9-220e-4c2d-9946-5f86248c1a7e
-:END:
-#+begin_src emacs-lisp :tangle config.el
 (setq menu-bar-mode t)
-#+end_src
-* Editor
-** 分词
-#+begin_src emacs-lisp :tangle packages.el
-;;(package! jieba :recipe (:host github :repo "cireu/jieba.el"))
-(package! emt :recipe (:host github :repo "roife/emt"))
-#+end_src
 
-#+begin_src emacs-lisp :tangle config.el
 ;;(use-package jieba
 ;;  :commands jieba-mode
 ;;  :init (jieba-mode))
@@ -577,18 +213,7 @@
   :config
   (setq emt-lib-path (concat doom-emacs-dir "EMT/libEMT.dylib"))
 )
-#+end_src
-** Meow
-:PROPERTIES:
-:ID:       ae971f56-8eff-42eb-a096-8a8a7febe736
-:END:
 
-#+begin_src emacs-lisp :tangle packages.el
-(package! meow)
-#+end_src
-
-
-#+begin_src emacs-lisp :tangle config.el
 (defconst meow-cheatsheet-layout-engrammer
   '((<TLDE> "[" "{")
     (<AE01> "1" "!")
@@ -785,23 +410,8 @@
   (meow/setup-keypad)
   (map! :map meow-keymap [remap describe-key] #'helpful-key)
 )
-#+end_src
 
-** save
-:PROPERTIES:
-:ID:       0e0c8caf-e9a6-43b4-b393-e502b9ef7511
-:END:
-#+begin_src emacs-lisp :tangle config.el
 (setq auto-save-default t)
-#+end_src
-** Directory/File
-
-#+begin_src emacs-lisp :tangle packages.el
-(package! dired-preview)
-#+end_src
-
-
-#+begin_src emacs-lisp :tangle config.el
 
 (use-package! dired-preview
   :defer t
@@ -818,69 +428,21 @@
   ;; Enable `dired-preview-mode' in a given Dired buffer or do it
   ;; globally:
   (dired-preview-global-mode 1))
-#+end_src
-** 自动在中英文间添加空格
-#+begin_src emacs-lisp :tangle packages.el
-(package! pangu-spacing)
-#+end_src
 
-#+begin_src emacs-lisp :tangle yes
 (use-package! pangu-spacing
   :defer t
   :config
 
   (setq pangu-spacing-real-insert-separtor t)
 )
-#+end_src
-* Biblio
-** init biblio
-:PROPERTIES:
-:ID:       6d187859-ed0e-4994-8651-0744708518c5
-:END:
-#+begin_src emacs-lisp :tangle config.el
 
 (setq my/bib (concat "~/org/" "academic.bib"))
 (setq my/notes (concat "~/org/" "references"))
 (setq my/library-files "~/Documents/org-pdfs")
-#+end_src
-** zotero
-:PROPERTIES:
-:ID:       7d0676d7-b53d-4d62-9a1b-bbb49f7a06a7
-:END:
 
-#+begin_src emacs-lisp :tangle packages.el
-;; (package! zotxt)
-#+end_src
-** ebib
-:PROPERTIES:
-:ID:       7836596d-a800-473d-9b3f-1479562dcbe4
-:END:
-#+begin_src emacs-lisp :tangle packages.el
-;;(package! ebib)
-#+end_src
-** org-ref
-:PROPERTIES:
-:ID:       169a5d75-2f84-407b-a18e-844701c58ddc
-:END:
-#+begin_src emacs-lisp :tangle packages.el
-(package! org-ref)
-#+end_src
-
-#+begin_src emacs-lisp :tangle config.el
 (use-package! org-ref
   :defer t)
-#+end_src
 
-** bibtex-completion
-:PROPERTIES:
-:ID:       eca0c369-5074-473a-9a55-724e47bafc60
-:END:
-#+begin_src emacs-lisp :tangle packages.el
-;;(package! bibtex-completion)
-#+end_src
-
-
-#+begin_src emacs-lisp :tangle config.el
 ;;(use-package! bibtex-completion
 ;;  :config
 ;;  (setq
@@ -911,20 +473,6 @@
 ;;    ":END:\n\n")
 ;;)
 
-
-#+end_src
-** citar
-:PROPERTIES:
-:ID:       108a861b-bfd8-4e47-b634-4ead3d291b4e
-:END:
-citar need vertico
-#+begin_src emacs-lisp conf :tangle packages.el
-
-(package! citar)
-(package! embark)
-#+end_src
-
-#+begin_src emacs-lisp :tangle config.el
 (use-package! citar
   :defer t
   :config
@@ -967,24 +515,7 @@ citar need vertico
   :after citar embark
   :config (citar-embark-mode)
   )
-#+end_src
-** org roam bibtex
-:PROPERTIES:
-:ID:       e6370510-1fce-426e-a6de-2930e7ed855f
-:END:
-#+begin_src emacs-lisp :tangle packages.el
-;; interact with org-roam and bibtex
-(package! org-roam-bibtex)
 
-;; doom support
-;;(package! citar-org-roam
-;;     :recipe (:host github :repo "emacs-citar/citar-org-roam"
-;;           :files ("*.el")))
-
-#+end_src
-
-
-#+begin_src emacs-lisp conf :tangle config.el
 ;; Org-Roam-Bibtex
 (use-package! org-roam-bibtex
  :after org-roam
@@ -1031,97 +562,6 @@ citar need vertico
   :config
   (setq citar-org-roam-note-title-template (cdr (assoc 'note citar-templates)))
 )
-#+end_src
-
-* org mode
-** org latex
-*** packages
-:PROPERTIES:
-:ID:       fda2f1d9-613c-4c98-a199-ed5c7663bc65
-:END:
-#+begin_src emacs-lisp :tangle packages.el
-
-;; (package! org :recipe
-;;   (:host nil :repo "https://git.tecosaur.net/mirrors/org-mode.git" :remote "mirror" :fork
-;;          (:host nil :repo "https://git.tecosaur.net/tec/org-mode.git" :branch "dev" :remote "tecosaur")
-;;          :files
-;;          (:defaults "etc")
-;;          :build t :pre-build
-;;          (with-temp-file "org-version.el"
-;;            (require 'lisp-mnt)
-;;            (let
-;;                ((version
-;;                  (with-temp-buffer
-;;                    (insert-file-contents "lisp/org.el")
-;;                    (lm-header "version")))
-;;                 (git-version
-;;                  (string-trim
-;;                   (with-temp-buffer
-;;                     (call-process "git" nil t nil "rev-parse" "--short" "HEAD")
-;;                     (buffer-string)))))
-;;              (insert
-;;               (format "(defun org-release () \"The release version of Org.\" %S)\n" version)
-;;               (format "(defun org-git-version () \"The truncate git commit hash of Org mode.\" %S)\n" git-version)
-;;               "(provide 'org-version)\n"))))
-;;   :pin nil)
-
-;; (unpin! org)
-#+end_src
-*** config
-#+begin_src emacs-lisp
-(use-package org-latex-preview
-  :defer t
-  :config
-  ;; Increase preview width
-  (plist-put org-latex-preview-appearance-options
-             :page-width 0.8)
-
-  ;; Use dvisvgm to generate previews
-  ;; You don't need this, it's the default:
-  (setq org-latex-preview-process-default 'dvisvgm)
-
-  ;; Turn on auto-mode, it's built into Org and much faster/more featured than
-  ;; org-fragtog. (Remember to turn off/uninstall org-fragtog.)
-  (add-hook 'org-mode-hook 'org-latex-preview-auto-mode)
-
-  ;; Block C-n and C-p from opening up previews when using auto-mode
-  (add-hook 'org-latex-preview-auto-ignored-commands 'next-line)
-  (add-hook 'org-latex-preview-auto-ignored-commands 'previous-line)
-
-  ;; Enable consistent equation numbering
-  (setq org-latex-preview-numbered t)
-
-  ;; Bonus: Turn on live previews.  This shows you a live preview of a LaTeX
-  ;; fragment and updates the preview in real-time as you edit it.
-  ;; To preview only environments, set it to '(block edit-special) instead
-  (setq org-latex-preview-live t)
-
-  (add-hook 'org-latex-preview-overlay-open-functions
-            (defun my/org-latex-preview-uncenter (ov)
-              (overlay-put ov 'before-string nil)))
-  (add-hook 'org-latex-preview-overlay-close-functions
-            (defun my/org-latex-preview-recenter (ov)
-              (overlay-put ov 'before-string (overlay-get ov 'justify))))
-  (defun my/org-latex-preview-center (ov)
-    (save-excursion
-      (goto-char (overlay-start ov))
-      (when-let* ((elem (org-element-context))
-                  ((or (eq (org-element-type elem) 'latex-environment)
-                       (string-match-p "^\\\\\\[" (org-element-property :value elem))))
-                  (img (overlay-get ov 'display))
-                  (prop `(space :align-to (- center (0.55 . ,img))))
-                  (justify (propertize " " 'display prop 'face 'default)))
-        (overlay-put ov 'justify justify)
-        (overlay-put ov 'before-string (overlay-get ov 'justify)))))
-
-  (add-hook 'org-latex-preview-overlay-update-functions
-            #'my/org-latex-preview-center))
-#+end_src
-** 设置 org-variable
-:PROPERTIES:
-:ID:       9d20983d-4b67-409e-a118-e8131012e989
-:END:
-#+begin_src emacs-lisp conf :tangle config.el
 
 (setq org_notes  "~/org/"
       org-directory org_notes)
@@ -1129,12 +569,7 @@ citar need vertico
 (setq ;;org-roam-database-connector 'sqlite-builtin
  org-roam-directory "~/org"
  org-roam-file-extensions '("org"))
-#+end_src
-** 设置 org 常用设置
-:PROPERTIES:
-:ID:       3fcd76df-a2bc-4291-9012-9ed3d1acc490
-:END:
-#+begin_src emacs-lisp :tangle config.el
+
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
 
@@ -1186,23 +621,6 @@ citar need vertico
   (org-special-keyword ((t (:inherit 'fixed-pitch))))
 )
 
-#+end_src
-
-** org 美化
-:PROPERTIES:
-:ID:       85728e6b-30dd-4781-b1f2-a0e7462f6f45
-:END:
-#+begin_src emacs-lisp conf :tangle packages.el
-(package! org-modern)
-(package! org-appear)
-;;(package! valign :recipe (:host github :repo "casouri/valign"))
-;;(package! org-superstar)
-
-;;(package! org-visual-outline)
-#+end_src
-
-
-#+begin_src emacs-lisp conf :tangle config.el
 ;;(use-package! org-visual-outline
 ;;  :after org
 ;;  :hook
@@ -1246,17 +664,6 @@ citar need vertico
 ;;  (setq valign-fancy-bar 1)
 ;;)
 
-#+end_src
-
-** org-download :ATTACH:
-:PROPERTIES:
-:ID:       1e1e87f9-323b-46b6-87b1-0748b585dac3
-:END:
-#+begin_src emacs-lisp conf :tangle packages.el
-(package! org-download)
-#+end_src
-
-#+begin_src emacs-lisp conf :tangle config.el
 ;; config org download
 (use-package! org-download
   ;;:hook ((org-mode dired-mode) . org-download-enable)
@@ -1267,38 +674,13 @@ citar need vertico
   (setq org-download-image-dir "~/Library/Mobile Documents/com~apple~CloudDocs/Documents/org-attach")
   (setq org-download-heading-lvl 'nil)
 )
-#+end_src
-
-
-
-** org babel
-** org mind map
-:PROPERTIES:
-:ID:       72e9d184-30da-46b7-a67a-ce1d3e796b10
-:END:
-#+begin_src emacs-lisp :tangle packages.el
-;;(package! org-mind-map :recipe (:host github :repo "the-ted/org-mind-map"
-;;                                :files ("*.el")))
-#+end_src
-
-#+begin_src emacs-lisp conf :tangle config.el
 
 ;; config org-mode
 ;;(use-package! org-mind-map
 ;;  :config
 ;;  (setq org-mind-map-engine "dot")
 ;;)
-#+end_src
-** org-brain
-:PROPERTIES:
-:ID:       4363bd88-37fd-448e-8b22-6a42e6f7c19e
-:END:
-#+begin_src emacs-lisp conf :tangle packages.el
-;;(package! org-brain)
-;;(package! polymode)
-#+end_src
 
-#+begin_src emacs-lisp :conf :tangle config.el
 ;; config org brain
 ;;(use-package! org-brain
 ;;  :after org
@@ -1322,14 +704,7 @@ citar need vertico
 ;;(use-package! polymode
 ;;  :config
 ;;  (add-hook 'org-brain-visualize-mode-hook #'org-brain-polymode))
-#+end_src
 
-** org-agenda
-:PROPERTIES:
-:ID:       ee84bfc0-3e42-4a8d-a9c2-2d8c3093d06d
-:END:
-
-#+begin_src emacs-lisp conf :tangle config.el
 (use-package! org-agenda
   :after org
   :defer t
@@ -1351,12 +726,7 @@ citar need vertico
    org-agenda-current-time-string
    "⭠ now ─────────────────────────────────────────────────")
 )
-#+end_src
-** org ppt
-:PROPERTIES:
-:ID:       06f8936a-d6b2-4e5e-b2e1-a1c8ff3ad6e0
-:END:
-#+begin_src emacs-lisp conf :tangle config.el
+
 ;;(use-package! org-re-reveal
 ;;  :after org
 ;;  :config
@@ -1371,70 +741,20 @@ citar need vertico
 ;;  (setq org-re-reveal-progress t)
 ;;  (setq org-re-reveal-history nil)
 ;;)
-#+end_src
-** org mode enhance
-:PROPERTIES:
-:ID:       10967870-52c8-4195-9b79-a1a929cb7969
-:END:
-#+begin_src emacs-lisp :conf :tangle config.el
-#+end_src
-** org capture
-:PROPERTIES:
-:ID:       990855ee-96c3-46f1-b16c-7105f6094ca0
-:END:
-#+begin_src emacs-lisp :tangle packages.el
-;;(package! doct
-;;  :recipe (:host github :repo "progfolio/doct"))
-#+end_src
 
-~doct~ (Declarative Org Capture Templates) seems to be a nicer way to set up org-capture.
 
-#+begin_src elisp :tangle config.el
+
 (use-package! org-capture
   :after org
   :defer t
   )
-#+end_src
-** org hugo
-:PROPERTIES:
-:ID:       a7fb163c-1d82-4670-ac10-a6180cac2cfb
-:END:
-#+begin_src elisp :tangle config.el
+
 (use-package! ox-hugo
   :after org-capture ox
   :defer t
   :config
   (setq org-hugo-default-static-subdirectory-for-externals "img")
 )
-#+end_src
-
-* org-roam
-:PROPERTIES:
-:ID:       466ca3d1-ca43-4265-9493-1177afe300ce
-:END:
-** org-roam settings
-:PROPERTIES:
-:ID: 3f6a8789-2cb1-45ec-ab57-063d22cceaf8
-:END:
-#+begin_src elisp :tangle packages.el
-;;(unpin! org-roam)
-(package! org-roam)
-
-;;(unpin! org-roam-ui)
-(package! org-roam-ui)
-
-(package! consult-org-roam)
-(package! emacsql-sqlite-builtin)
-
-#+end_src
-1. 设置org-roam templates 可以与 org-capture 混合使用
-2. 自动创建笔记的创建时间和修改时间
-3. 跨文件的引用，能够实现笔记的一处修改，处处修改
-   - 实现效果不太好
-
-
-#+begin_src emacs-lisp conf :tangle config.el
-
 
 (use-package! org-roam
   :after org
@@ -1499,18 +819,7 @@ citar need vertico
         org-roam-ui-follow t
         org-roam-ui-update-on-save t
         org-roam-ui-open-on-start nil))
-#+end_src
 
-** org roam timestamps
-:PROPERTIES:
-:ID:       09752942-9f28-4b04-b64e-867b2186dae1
-:END:
-自动记录包含 org-id 的节点的修改时间
-#+begin_src emacs-lisp conf :tangle packages.el
-(package! org-roam-timestamps)
-#+end_src
-
-#+begin_src emacs-lisp :tangle config.el
 ;;自动创建笔记的创建时间和修改时间
 (use-package! org-roam-timestamps
   :after org-roam
@@ -1519,16 +828,6 @@ citar need vertico
   (org-roam-timestamps-mode)
   (setq org-roam-timestamps-parent-file t))
 
-#+end_src
-** org transculsion
-:PROPERTIES:
-:ID:       5586b987-8479-49cf-be97-721142a74ac4
-:END:
-#+begin_src emacs-lisp :tangle packages.el
-(package! org-transclusion)
-#+end_src
-
-#+begin_src emacs-lisp :tangle config.el
 ;;跨文件的引用，能够实现笔记的一处修改，处处修改。
 (use-package! org-transclusion
   :after org
@@ -1540,24 +839,6 @@ citar need vertico
    :leader
    :prefix "n"
    :desc "Org Transclusion Mode" "t" #'org-transclusion-mode))
-#+end_src
-** org-roam-enhance
-:PROPERTIES:
-:ID:       773deaf6-f5cb-4d40-89de-b38bb67f47dd
-:END:
-1. use vulpea for auto add tag roam-agenda and add TODO file to org-todo
-2. use org-transclusion for insert block for org
-#+begin_src emacs-lisp conf :tangle packages.el
-(package! vulpea)
-(package! consult-org-roam)
-;;TODO
-;;(package! nursery
-;;     :recipe (:host github :repo "chrisbarrett/nursery"))
-
-#+end_src
-
-
-#+begin_src emacs-lisp conf :tangle config.el
 
 ;; this code from https://github.com/brianmcgillion/doomd/blob/master/config.org
 (use-package! vulpea
@@ -1766,17 +1047,6 @@ Refer to `org-agenda-prefix-format' for more information."
 ;;  (org-roam-slipbox-buffer-identification-mode +1)
 ;;  (org-roam-slipbox-tag-mode +1))
 
-#+end_src
-* Input Method
-** smart input source
-:PROPERTIES:
-:ID:       8d800b39-c8e6-4423-9cc8-cae91df94f67
-:END:
-#+begin_src emacs-lisp :tangle packages.el
-;;(package! sis)
-#+end_src
-
-#+begin_src emacs-lisp :tangle config.el
 ;;(use-package! sis
 ;;  ;; :hook
 ;;  ;; enable the /context/ and /inline region/ mode for specific buffers
@@ -1799,23 +1069,6 @@ Refer to `org-agenda-prefix-format' for more information."
 ;;  (add-to-list 'sis-respect-minibuffer-triggers (cons 'org-roam-node-find (lambda () 'other)))
 ;;  (add-to-list 'sis-respect-minibuffer-triggers (cons 'org-roam-node-insert (lambda () 'other)))
 ;;)
-#+end_src
-** Rime
-1. 使用rime作为输入法
-2. 加入了中英文自动检测
-*** Package
-:PROPERTIES:
-:ID:       e3d48ce3-a022-4f8e-8455-0f2c7856d579
-:END:
-#+begin_src emacs-lisp :tangle packages.el
-(package! rime)
-(package! rime-regexp :recipe (:host github :repo "colawithsauce/rime-regexp.el"))
-#+end_src
-*** rime init
-:PROPERTIES:
-:ID:       8b4d6475-ea71-47c9-8aef-ea466ea13b24
-:END:
-#+begin_src emacs-lisp conf :tangle config.el
 
 (use-package! rime
   :defer t
@@ -1852,18 +1105,6 @@ Refer to `org-agenda-prefix-format' for more information."
   :config
   (rime-regexp-mode t))
 
-#+end_src
-* completion
-** tempel
-:PROPERTIES:
-:ID:       53618ac2-2311-45bb-b4f3-40ffa5559db3
-:END:
-#+begin_src emacs-lisp :tangle packages.el
-;;(package! tempel)
-;;(package! tempel-collection)
-#+end_src
-
-#+begin_src emacs-lisp :tangle config.el
 ;; Configure Tempel
 ;;(use-package! tempel
 ;;  ;; Require trigger prefix before template name when completing.
@@ -1902,19 +1143,6 @@ Refer to `org-agenda-prefix-format' for more information."
 ;;(use-package! tempel-collection
 ;;   :after tempel)
 
-#+end_src
-** codeium/copilot
-:PROPERTIES:
-:ID:       a6b9d1b6-a420-4626-886b-059a727f0e0e
-:END:
-#+begin_src emacs-lisp :tangle packages.el
-;;(package! codeium :recipe (:host github :repo "Exafunction/codeium.el"))
-(package! copilot
-  :recipe (:host github :repo "copilot-emacs/copilot.el" :files ("*.el" "dist"))
-)
-#+end_src
-
-#+begin_src emacs-lisp :tangle config.el
 ;; accept completion from copilot and fallback to company
 (use-package! copilot
   :defer t
@@ -1987,41 +1215,16 @@ Refer to `org-agenda-prefix-format' for more information."
     ;; (setq codeium/document/text 'my-codeium/document/text)
     ;; (setq codeium/document/c
     ;;      ursor_offset 'my-codeium/document/cursor_offset))
-#+end_src
 
-* Lang
-** Docstr
-#+begin_src emacs-lisp :tangle packages.el
-;;(package! ts-docstr
-;;  :recipe (:host github :repo "emacs-vs/ts-docstr" :files (:defaults "langs/*.el")))
-#+end_src
-
-
-#+begin_src emacs-lisp :tangle config.el
 ;;(use-package! ts-docstr
 ;;:config
 ;;(setq ts-docstr-key-support t)
 ;;(setq ts-docstr-ask-on-enable t))
-#+end_src
-** LSP mode
-:PROPERTIES:
-:ID:       413e9af2-7f0f-47c7-9d3f-a27c919f3bfd
-:END:
-#+begin_src emacs-lisp :tangle config.el
+
 (after! lsp-mode
   (setq lsp-ui-doc-show-with-cursor t)
 )
-#+end_src
-** python
-*** conda and micromamba opt
-:PROPERTIES:
-:ID:       d4be558f-c96d-4107-a442-14fe7648ce6b
-:END:
-#+begin_src emacs-lisp :tangle packages.el
-;; (if IS-MAC (package! micromamba))
-#+end_src
 
-#+begin_src emacs-lisp conf :tangle config.el
 ;; (if IS-MAC
 ;;   (use-package! micromamba)
 ;;   (use-package! conda
@@ -2035,27 +1238,7 @@ Refer to `org-agenda-prefix-format' for more information."
 ;;     (setq conda-env-autoactivate-mode t)
 ;;   )
 ;; )
-#+end_src
-*
-** Latex mode
-*** Latex Preview
-**** xenops
-async latex view
-***** Package
-:PROPERTIES:
-:ID:       815a26d8-1c63-4443-909d-bb9de95bba7d
-:END:
-#+begin_src emacs-lisp conf :tangle packages.el
-;;(when (executable-find "xelatex")
-;;  (package! xenops)
-;;)
-#+end_src
 
-***** config
-:PROPERTIES:
-:ID:       adc082be-eeac-46ea-b23a-05294f26cb58
-:END:
-#+begin_src emacs-lisp conf :tangle config.el
 ;;(use-package! xenops
 ;;    :after org
 ;;    :hook
@@ -2094,9 +1277,7 @@ async latex view
 ;;                                  (:parser . xenops-math-parse-algorithm-at-point)
 ;;                                  (:handlers . block-math)))
 ;;  )
-#+end_src
-**** fontify
-#+begin_src emacs-lisp :tangle config.el
+
 (setq font-latex-match-reference-keywords
        '(;; BibLaTeX.
         ("printbibliography" "[{")
@@ -2161,60 +1342,24 @@ async latex view
         ("autoref" "{")
         ("Autoref" "{")))
 
-#+end_src
-**** org-xlatex
-***** package
-:PROPERTIES:
-:ID:       beb542d5-9260-4973-b108-c18423e1976d
-:END:
-#+begin_src emacs-lisp conf :tangle packages.el
-;;(package! org-xlatex :recipe (:host github :repo "ksqsf/org-xlatex"))
-#+end_src
-***** config
-:PROPERTIES:
-:ID:       a72eacbd-b4dc-4afd-8265-3c2b47091a6b
-:END:
-#+begin_src emacs-lisp conf :tangle config.el
 ;;(use-package org-xlatex
 ;;  :after org
   ;;:hook (org-mode . org-xlatex-mode)
 ;;)
-#+end_src
-** 大纲
-#+begin_src emacs-lisp :tangle config.el
+
 ;; 为 latex 提供折叠大纲功能
 (use-package outline
   :hook
   (LaTeX-mode . outline-minor-mode)
 )
-#+end_src
-** Doc
-:PROPERTIES:
-:ID:       e9453c1b-4a72-4978-8a8c-a3345b999566
-:END:
-use dash open app dash
-#+begin_src emacs-lisp :tangle packages.el
-(if IS-MAC (package! dash-at-point))
-#+end_src
 
-#+begin_src emacs-lisp conf :tangle config.el
 (if IS-MAC
 (use-package! dash-at-point
   :defer t
   :config
  (add-to-list 'dash-at-point-mode-alist '(python-mode . "python3,django,twisted,sphinx,flask,tornado,sqlalchemy,numpy,scipy,saltcvp,torch,torchvision"))
 ))
-#+END_SRC
-** Copilot
-:PROPERTIES:
-:ID:       54b794a2-a5f3-4ac9-a8ce-5526c340ea3d
-:END:
-#+begin_src emacs-lisp :tangle packages.el
-;;(package! copilot
-;;  :recipe (:host github :repo "zerolfx/copilot.el" :files ("*.el" "dist")))
-#+end_src
 
-#+begin_src emacs-lisp :tangle config.el
 ;; accept completion from copilot and fallback to company
 ;;(use-package! copilot
 ;;  :hook (prog-mode . copilot-mode)
@@ -2223,14 +1368,7 @@ use dash open app dash
 ;;              ("TAB" . 'copilot-accept-completion)
 ;;              ("C-TAB" . 'copilot-accept-completion-by-word)
 ;;              ("C-<tab>" . 'copilot-accept-completion-by-word)))
-#+end_src
-** just
-#+begin_src emacs-lisp :tangle packages.el
-(package! just-mode)
-(package! justl)
-#+end_src
 
-#+begin_src emacs-lisp :tangle config.el
 (use-package! just-mode
   :defer t)
 
@@ -2238,28 +1376,7 @@ use dash open app dash
   :defer t
   :config
   (map! :n "e" 'justl-exec-recipe))
-#+end_src
 
-* reader
-** pdf tools
-:PROPERTIES:
-:ID:       0e9cc110-63ef-4e95-a389-173f48b658df
-:END:
-#+begin_src emacs-lisp :tangle packages.el
-;;(unpin! pdf-tools)
-#+end_src
-** org noter and nov
-:PROPERTIES:
-:ID:       e8eadfe1-c054-4638-9a34-1da12bbe3ae3
-:END:
-#+begin_src emacs-lisp :tangle packages.el
-;;(package! org-noter :recipe (:host github :repo "org-noter/org-noter"))
-
-;;(package! org-noter-plus :recipe (:host github :repo "yuchen-lea/org-noter-plus"))
-#+end_src
-
-
-#+begin_src emacs-lisp :tangle config.el
 (use-package pdf-tools
   :defer t
   :after org)
@@ -2312,18 +1429,7 @@ use dash open app dash
 ;;                           ;; Replace the default nov link to work better with org-noter
 ;;                           :follow 'org-noter-plus--follow-nov-link)
 ;;  )
-#+end_src
-** org media note
-:PROPERTIES:
-:ID:       db750490-5187-4e2f-bb38-b1ac885298b7
-:END:
-#+begin_src emacs-lisp :tangle packages.el
-;;(package! pretty-hydra)  ;; dependency
-;;(package! org-media-note :recipe (:host github :repo "yuchen-lea/org-media-note"))
-#+end_src
 
-
-#+begin_src emacs-lisp :tangle config.el
 ;;(use-package! org-media-note
 ;;  :init (setq org-media-note-use-org-ref t)
 ;;  :hook (org-mode .  org-media-note-mode)
@@ -2333,54 +1439,19 @@ use dash open app dash
 ;;  (setq org-media-note-screenshot-image-dir "~/org/.attach/")  ;; Folder to save screenshot
 ;;  (setq org-media-note-use-refcite-first t)  ;; use videocite link instead of video link if possible
 ;;  )
-#+end_src
-** mpvi
-:PROPERTIES:
-:ID:       36d364ad-6e8d-4596-8fca-e4899d1311f3
-:END:
 
-#+begin_src emacs-lisp :tangle packages.el
-;;(package! mpvi :recipe (:host github :repo "lorniu/mpvi"))
-#+end_src
-
-#+begin_src emacs-lisp :tangle config.el
 ;;(use-package! mpvi)
-#+end_src
-** anki
-:PROPERTIES:
-:ID:       abe7ac7e-f756-454e-bfe5-68b42efe8045
-:END:
-#+begin_src emacs-lisp :tangle packages.el
-(package! org-anki :recipe (:host github :repo "eyeinsky/org-anki"))
-#+end_src
 
-#+begin_src emacs-lisp :tangle config.el
 (use-package! org-anki
 :defer t)
-#+end_src
-* APP
-:PROPERTIES:
-:ID:       c5312a82-9f24-4e4b-9f81-0660dbc3d380
-:END:
-#+begin_src emacs-lisp :tangle packages.el
-(package! telega :recipe (:host github :repo "zevlg/telega.el") )
-#+end_src
 
-#+begin_src emacs-lisp :tangle config.el
 (use-package! telega
   :commands (telega)
   :defer t
   ;;:config
   ;;(setq telega-server-libs-prefix)
 )
-#+end_src
-* AI+X
-** org ai
-#+begin_src emacs-lisp :tangle packages.el
-(package! org-ai)
-#+end_src
 
-#+begin_src emacs-lisp :tangle config.el
 (use-package! org-ai
   ;;:commands (org-ai-mode org-ai-global-mode)
   :hook (org-mode . org-ai-mode)
@@ -2392,15 +1463,7 @@ use dash open app dash
   ;;(setq org-ai-default-chat-model "gpt-4") ; if you are on the gpt-4 beta:
   (org-ai-install-yasnippets)
 )
-#+end_src
 
-* Alter/Message
-#+begin_src emacs-lisp :tangle packages.el
-(package! alert)
-#+end_src
-
-
-#+begin_src emacs-lisp :tangle config.el
 (use-package alert
   :defer t
   :config
@@ -2408,16 +1471,7 @@ use dash open app dash
       (setq alert-default-style 'osx-notifier)
     (setq alert-default-style 'libnotify))
 )
-#+end_src
-* Git
-#+begin_src emacs-lisp :tangle packages.el
-;; 获得当前的repo commit的连接
-(package! git-link)
-;; magti file icons
-(package! magit-file-icons)
-#+end_src
 
-#+begin_src emacs-lisp :tangle config.el
 (use-package git-link :defer t)
 
 (use-package magit-file-icons
@@ -2429,32 +1483,7 @@ use dash open app dash
   (magit-file-icons-enable-diff-file-section-icons t)
   (magit-file-icons-enable-untracked-icons t)
   (magit-file-icons-enable-diffstat-icons t))
-#+end_src
-* Other module
-** Time tracking
-:PROPERTIES:
-:ID:       ea697417-3b23-406f-b821-7fd01c60d7e5
-:END:
-#+begin_src emacs-lisp :tangle no
-(package! wakatime-mode)
-#+end_src
 
-#+begin_src emacs-lisp :tangle no
-(use-package! wakatime-mode
-:defer t
-  :config
-  (setq wakatime-cli-path
-    (cond (IS-MAC "/etc/profiles/per-user/klchen/bin/wakatime-cli")
-          (IS-WINDOWS "~/.wakatime/wakatime-cli")))
-  (global-wakatime-mode)
-)
-#+end_src
-** openwith
-#+begin_src emacs-lisp :tangle packages.el
-(package! openwith)
-#+end_src
-
-#+begin_src emacs-lisp :tangle config.el
 (use-package! openwith
 :defer t
   :hook (emacs-startup . openwith-mode)
@@ -2471,36 +1500,9 @@ use dash open app dash
               (lambda (fn &rest args)
                 (let ((process-connection-type nil))
                   (apply fn args)))))
-#+end_src
 
-
-
-** Keyfreq
-:PROPERTIES:
-:ID:       82dfd063-35af-436e-8453-c1351c96e768
-:END:
-
-#+begin_src emacs-lisp :tangle no
-(package! keyfreq)
-#+end_src
-
-#+begin_src emacs-lisp :tangle no
-(use-package! keyfreq
-  :defer t
-  :config
-  (setq keyfreq-mode t
-        keyfreq-autosave-mode t)
-)
-#+end_src
-** activitywatch
-#+begin_src emacs-lisp :tangle packages.el
-(package! activity-watch-mode)
-#+end_src
-
-#+begin_src emacs-lisp :tangle config.el
 (use-package! activity-watch-mode
 :defer t
 :init
 (global-activity-watch-mode)
 )
-#+end_src

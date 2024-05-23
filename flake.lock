@@ -95,6 +95,22 @@
         "type": "github"
       }
     },
+    "doomemacs": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1713464448,
+        "narHash": "sha256-Fhir4WlcfEh70V8+oNS1LVAGBftiqtD2qaHzOC8BJUI=",
+        "owner": "doomemacs",
+        "repo": "doomemacs",
+        "rev": "9620bb45ac4cd7b0274c497b2d9d93c4ad9364ee",
+        "type": "github"
+      },
+      "original": {
+        "owner": "doomemacs",
+        "repo": "doomemacs",
+        "type": "github"
+      }
+    },
     "emacs-overlay": {
       "inputs": {
         "flake-utils": ["flake-utils"],
@@ -439,6 +455,27 @@
       "original": {
         "owner": "nix-community",
         "repo": "lib-aggregate",
+        "type": "github"
+      }
+    },
+    "nix-doom-emacs-unstraightened": {
+      "inputs": {
+        "doomemacs": "doomemacs",
+        "emacs-overlay": ["emacs-overlay"],
+        "nixpkgs": ["nixpkgs"],
+        "systems": ["systems"]
+      },
+      "locked": {
+        "lastModified": 1716193901,
+        "narHash": "sha256-nbuwuWKPrZoKXfSrybSZWm0UqMVQEuYTgO85y+ThKD0=",
+        "owner": "marienz",
+        "repo": "nix-doom-emacs-unstraightened",
+        "rev": "f94c5e658cc34ee73441fdaa8bc98b0bcb66b34e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "marienz",
+        "repo": "nix-doom-emacs-unstraightened",
         "type": "github"
       }
     },
@@ -845,6 +882,7 @@
         "hyprpaper": "hyprpaper",
         "hyprpicker": "hyprpicker",
         "lib-aggregate": "lib-aggregate",
+        "nix-doom-emacs-unstraightened": "nix-doom-emacs-unstraightened",
         "nix-eval-jobs": "nix-eval-jobs",
         "nix-homebrew": "nix-homebrew",
         "nix-on-droid": "nix-on-droid",

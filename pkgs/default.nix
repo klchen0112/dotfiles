@@ -8,7 +8,7 @@
   TsangerJinKai02 = inputs.own-nur.packages.${pkgs.system}.TsangerJinKai02;
   Jigmo = inputs.own-nur.packages.${pkgs.system}.Jigmo;
 
-  emacsPlus29 = pkgs.emacs29.overrideAttrs (old: {
+  emacsPlus29 = inputs.emacs-overlay.packages.${pkgs.system}.emacs-unstable.overrideAttrs (old: {
     patches =
       (old.patches or [])
       ++ [
@@ -34,5 +34,6 @@
         })
       ];
     meta.platforms = pkgs.lib.platforms.darwin;
+    meta.mainProgram = "emacs";
   });
 }

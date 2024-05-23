@@ -385,6 +385,13 @@
       #   inputs.flake-utils.follows = "flake-utils";
       #   inputs.flake-compat.follows = "flake-compat";
       # };
+      nix-doom-emacs-unstraightened = {
+        url = "github:marienz/nix-doom-emacs-unstraightened";
+        # Optional, to download less. Neither the module nor the overlay uses this input.
+        inputs.nixpkgs.follows = "nixpkgs";
+        inputs.systems.follows = "systems";
+        inputs.emacs-overlay.follows = "emacs-overlay";
+      };
 
       # hyprland
 
