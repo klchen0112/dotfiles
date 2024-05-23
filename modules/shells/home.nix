@@ -23,6 +23,7 @@
       init.defaultBranch = "master"; # https://srid.ca/unwoke
       core.editor = "emacsclient";
       core.quotepath = false;
+      core.autocrlf = false;
       # For supercede
       core.symlinks = true;
       #protocol.keybase.allow = "always";

@@ -207,12 +207,12 @@
 ;;(use-package jieba
 ;;  :commands jieba-mode
 ;;  :init (jieba-mode))
-(use-package emt
-  :defer t
-  :hook (after-init . emt-mode)
-  :config
-  (setq emt-lib-path (concat doom-emacs-dir "EMT/libEMT.dylib"))
-)
+;; (use-package emt
+  ;; :defer t
+  ;; :hook (after-init . emt-mode)
+  ;; :config
+  ;; (setq emt-lib-path (concat doom-emacs-dir "EMT/libEMT.dylib"))
+;; )
 
 (defconst meow-cheatsheet-layout-engrammer
   '((<TLDE> "[" "{")
@@ -1070,40 +1070,40 @@ Refer to `org-agenda-prefix-format' for more information."
 ;;  (add-to-list 'sis-respect-minibuffer-triggers (cons 'org-roam-node-insert (lambda () 'other)))
 ;;)
 
-(use-package! rime
-  :defer t
-  :bind
-  (:map rime-mode-map
-        ("S- " . 'rime-send-keybinding))
-  :config
-  (setq rime-librime-root
-        (car (last (split-string (shell-command-to-string "nix eval --raw nixpkgs#librime") "\n"))))
-  (setq rime-show-candidate 'posframe)
-  (setq rime-show-preedit 'inline)
-  (setq rime-user-data-dir (expand-file-name "Rime" doom-emacs-dir))
-  (setq rime-emacs-module-header-root
-        (if IS-MAC
-            (concat
-             (car (last
-                   (split-string (shell-command-to-string "nix eval --raw ~/my/dotfiles#emacsPlus29") "\n")
-                   ))
-             "/include")
-          )
-        )
-  (setq default-input-method "rime")
-  (setq rime-inline-ascii-trigger 'shift-r)
-  (setq rime-translate-keybindings '("C-f" "C-b" "C-n" "C-p" "C-g" "<left>" "<right>" "<up>" "<down>" "<prior>" "<next>" "<delete>"))
-  (setq rime-disable-predicates
-        '(meow-normal-mode-p
-          meow-motion-mode-p
-          meow-keypad-mode-p
-          meow-beacon-mode-p))
-  )
+;; (use-package! rime
+;;   :defer t
+;;   :bind
+;;   (:map rime-mode-map
+;;         ("S- " . 'rime-send-keybinding))
+;;   :config
+;;   (setq rime-librime-root
+;;         (car (last (split-string (shell-command-to-string "nix eval --raw nixpkgs#librime") "\n"))))
+;;   (setq rime-show-candidate 'posframe)
+;;   (setq rime-show-preedit 'inline)
+;;   (setq rime-user-data-dir (expand-file-name "Rime" doom-emacs-dir))
+;;   (setq rime-emacs-module-header-root
+;;         (if IS-MAC
+;;             (concat
+;;              (car (last
+;;                    (split-string (shell-command-to-string "nix eval --raw ~/my/dotfiles#emacsPlus29") "\n")
+;;                    ))
+;;              "/include")
+;;           )
+;;         )
+;;   (setq default-input-method "rime")
+;;   (setq rime-inline-ascii-trigger 'shift-r)
+;;   (setq rime-translate-keybindings '("C-f" "C-b" "C-n" "C-p" "C-g" "<left>" "<right>" "<up>" "<down>" "<prior>" "<next>" "<delete>"))
+;;   (setq rime-disable-predicates
+;;         '(meow-normal-mode-p
+;;           meow-motion-mode-p
+;;           meow-keypad-mode-p
+;;           meow-beacon-mode-p))
+;;   )
 
-(use-package rime-regexp
-  :defer t
-  :config
-  (rime-regexp-mode t))
+;; (use-package rime-regexp
+;;   :defer t
+;;   :config
+;;   (rime-regexp-mode t))
 
 ;; Configure Tempel
 ;;(use-package! tempel

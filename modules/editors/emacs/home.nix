@@ -47,19 +47,19 @@ in {
       pngpaste
     ];
 
-  home.file.".config/emacs/Rime" = {
-    source = "${inputs.own-rime}";
-    recursive = true;
-  };
+  # home.file.".config/emacs/Rime" = {
+  # source = "${inputs.own-rime}";
+  # recursive = true;
+  # };
 
   programs.pandoc.enable = true;
 
   # home.file.".config/emacs".source = inputs.doomemacs;
-  home.file.".config/doom" = {
-    source = ./doom;
-    recursive = true;
-    # onChange = "~/.config/emacs/bin/doom sync";
-  };
+  # home.file.".config/doom" = {
+  # source = ./doom;
+  # recursive = true;
+  # onChange = "~/.config/emacs/bin/doom sync";
+  # };
 
   # programs.emacs = {
   # enable = true;

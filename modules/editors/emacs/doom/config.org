@@ -198,7 +198,10 @@
         +fold)                      ; fold the clutter away nicities
        ;;lean              ; for folks with too much to prove
        ;;ledger            ; be audit you can be
-       (lua +lsp +fennel +moonscript)              ; one-based indices? one-based indices
+       (lua
+           +lsp
+           ;;+fennel +moonscript
+           )              ; one-based indices? one-based indices
        (markdown
         +grip
         )          ; writing docs for people to ignore
@@ -564,19 +567,21 @@
 ** 分词
 #+begin_src emacs-lisp :tangle packages.el
 ;;(package! jieba :recipe (:host github :repo "cireu/jieba.el"))
-(package! emt :recipe (:host github :repo "roife/emt"))
+;; (if IS-MAC
+  ;; (package! emt :recipe (:host github :repo "roife/emt") :pin "7bea66de1b26d3f3f1cf9e940b269809c0c531b9")
+;; )
 #+end_src
 
 #+begin_src emacs-lisp :tangle config.el
 ;;(use-package jieba
 ;;  :commands jieba-mode
 ;;  :init (jieba-mode))
-(use-package emt
-  :defer t
-  :hook (after-init . emt-mode)
-  :config
-  (setq emt-lib-path (concat doom-emacs-dir "EMT/libEMT.dylib"))
-)
+;; (use-package emt
+  ;; :defer t
+  ;; :hook (after-init . emt-mode)
+  ;; :config
+  ;; (setq emt-lib-path (concat doom-emacs-dir "EMT/libEMT.dylib"))
+;; )
 #+end_src
 ** Meow
 :PROPERTIES:
@@ -1808,8 +1813,8 @@ Refer to `org-agenda-prefix-format' for more information."
 :ID:       e3d48ce3-a022-4f8e-8455-0f2c7856d579
 :END:
 #+begin_src emacs-lisp :tangle packages.el
-(package! rime)
-(package! rime-regexp :recipe (:host github :repo "colawithsauce/rime-regexp.el"))
+;; (package! rime :pin "ca02a6b8035aa4dec186a2e9d818e28bc8c55a79")
+;; (package! rime-regexp :recipe (:host github :repo "colawithsauce/rime-regexp.el") :pin "99558c033d5c8d4cc4d452959445a099fc71f898")
 #+end_src
 *** rime init
 :PROPERTIES:
@@ -1817,40 +1822,40 @@ Refer to `org-agenda-prefix-format' for more information."
 :END:
 #+begin_src emacs-lisp conf :tangle config.el
 
-(use-package! rime
-  :defer t
-  :bind
-  (:map rime-mode-map
-        ("S- " . 'rime-send-keybinding))
-  :config
-  (setq rime-librime-root
-        (car (last (split-string (shell-command-to-string "nix eval --raw nixpkgs#librime") "\n"))))
-  (setq rime-show-candidate 'posframe)
-  (setq rime-show-preedit 'inline)
-  (setq rime-user-data-dir (expand-file-name "Rime" doom-emacs-dir))
-  (setq rime-emacs-module-header-root
-        (if IS-MAC
-            (concat
-             (car (last
-                   (split-string (shell-command-to-string "nix eval --raw ~/my/dotfiles#emacsPlus29") "\n")
-                   ))
-             "/include")
-          )
-        )
-  (setq default-input-method "rime")
-  (setq rime-inline-ascii-trigger 'shift-r)
-  (setq rime-translate-keybindings '("C-f" "C-b" "C-n" "C-p" "C-g" "<left>" "<right>" "<up>" "<down>" "<prior>" "<next>" "<delete>"))
-  (setq rime-disable-predicates
-        '(meow-normal-mode-p
-          meow-motion-mode-p
-          meow-keypad-mode-p
-          meow-beacon-mode-p))
-  )
+;; (use-package! rime
+;;   :defer t
+;;   :bind
+;;   (:map rime-mode-map
+;;         ("S- " . 'rime-send-keybinding))
+;;   :config
+;;   (setq rime-librime-root
+;;         (car (last (split-string (shell-command-to-string "nix eval --raw nixpkgs#librime") "\n"))))
+;;   (setq rime-show-candidate 'posframe)
+;;   (setq rime-show-preedit 'inline)
+;;   (setq rime-user-data-dir (expand-file-name "Rime" doom-emacs-dir))
+;;   (setq rime-emacs-module-header-root
+;;         (if IS-MAC
+;;             (concat
+;;              (car (last
+;;                    (split-string (shell-command-to-string "nix eval --raw ~/my/dotfiles#emacsPlus29") "\n")
+;;                    ))
+;;              "/include")
+;;           )
+;;         )
+;;   (setq default-input-method "rime")
+;;   (setq rime-inline-ascii-trigger 'shift-r)
+;;   (setq rime-translate-keybindings '("C-f" "C-b" "C-n" "C-p" "C-g" "<left>" "<right>" "<up>" "<down>" "<prior>" "<next>" "<delete>"))
+;;   (setq rime-disable-predicates
+;;         '(meow-normal-mode-p
+;;           meow-motion-mode-p
+;;           meow-keypad-mode-p
+;;           meow-beacon-mode-p))
+;;   )
 
-(use-package rime-regexp
-  :defer t
-  :config
-  (rime-regexp-mode t))
+;; (use-package rime-regexp
+;;   :defer t
+;;   :config
+;;   (rime-regexp-mode t))
 
 #+end_src
 * completion
@@ -2436,18 +2441,18 @@ use dash open app dash
 :ID:       ea697417-3b23-406f-b821-7fd01c60d7e5
 :END:
 #+begin_src emacs-lisp :tangle no
-(package! wakatime-mode)
+;; (package! wakatime-mode)
 #+end_src
 
 #+begin_src emacs-lisp :tangle no
-(use-package! wakatime-mode
-:defer t
-  :config
-  (setq wakatime-cli-path
-    (cond (IS-MAC "/etc/profiles/per-user/klchen/bin/wakatime-cli")
-          (IS-WINDOWS "~/.wakatime/wakatime-cli")))
-  (global-wakatime-mode)
-)
+;; (use-package! wakatime-mode
+;; :defer t
+;;   :config
+;;   (setq wakatime-cli-path
+;;     (cond (IS-MAC "/etc/profiles/per-user/klchen/bin/wakatime-cli")
+;;           (IS-WINDOWS "~/.wakatime/wakatime-cli")))
+;;   (global-wakatime-mode)
+;; )
 #+end_src
 ** openwith
 #+begin_src emacs-lisp :tangle packages.el

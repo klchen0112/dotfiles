@@ -183,7 +183,10 @@
         +fold)                      ; fold the clutter away nicities
        ;;lean              ; for folks with too much to prove
        ;;ledger            ; be audit you can be
-       (lua +lsp +fennel +moonscript)              ; one-based indices? one-based indices
+       (lua
+           +lsp
+           ;;+fennel +moonscript
+           )              ; one-based indices? one-based indices
        (markdown
         +grip
         )          ; writing docs for people to ignore

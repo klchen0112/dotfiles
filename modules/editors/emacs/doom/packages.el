@@ -13,7 +13,9 @@
 (package! info-colors)
 
 ;;(package! jieba :recipe (:host github :repo "cireu/jieba.el"))
-(package! emt :recipe (:host github :repo "roife/emt"))
+;; (if IS-MAC
+  ;; (package! emt :recipe (:host github :repo "roife/emt") :pin "7bea66de1b26d3f3f1cf9e940b269809c0c531b9")
+;; )
 
 (package! meow)
 
@@ -105,8 +107,8 @@
 
 ;;(package! sis)
 
-(package! rime)
-(package! rime-regexp :recipe (:host github :repo "colawithsauce/rime-regexp.el"))
+;; (package! rime :pin "ca02a6b8035aa4dec186a2e9d818e28bc8c55a79")
+;; (package! rime-regexp :recipe (:host github :repo "colawithsauce/rime-regexp.el") :pin "99558c033d5c8d4cc4d452959445a099fc71f898")
 
 ;;(package! tempel)
 ;;(package! tempel-collection)
