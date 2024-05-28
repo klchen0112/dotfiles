@@ -70,7 +70,8 @@
 
 
       # ===== Rules ==================================
-
+      # Monitor
+      yabai -m rule --add app="Nebula for Mac" manage=off
 
       # code
       yabai -m rule --add app="WezTerm" space=^1
