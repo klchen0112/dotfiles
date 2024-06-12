@@ -83,7 +83,7 @@
       };
       extensions = with pkgs.nur.repos.rycee.firefox-addons; [
         # see: https://github.com/nix-community/nur-combined/blob/master/repos/rycee/pkgs/firefox-addons/generated-firefox-addons.nix
-        # adblocker-ultimate
+        ublock-origin
         augmented-steam
         auto-sort-bookmarks
         auto-tab-discard
