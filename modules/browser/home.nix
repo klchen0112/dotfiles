@@ -83,7 +83,6 @@
       };
       extensions = with pkgs.nur.repos.rycee.firefox-addons; [
         # see: https://github.com/nix-community/nur-combined/blob/master/repos/rycee/pkgs/firefox-addons/generated-firefox-addons.nix
-        ublock-origin
         augmented-steam
         auto-sort-bookmarks
         auto-tab-discard
@@ -94,7 +93,7 @@
         privacy-badger
         tree-style-tab
         multi-account-containers
-        ublock-origin
+        # ublock-origin
         # vimium
         sidebery
         bitwarden

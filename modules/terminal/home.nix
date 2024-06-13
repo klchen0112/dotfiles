@@ -11,29 +11,40 @@
     enable = true;
     settings = {
       import = ["${inputs.own-nur.packages.${pkgs.system}.catppuccin-alacritty}/catppuccin-mocha.toml"];
-      selection.save_to_clipboard = true;
       window = {
         opacity = 0.93;
         startup_mode = "Windowed";
         dynamic_title = true;
         option_as_alt = "Both";
+        decorations = "buttonless";
       };
       scrolling = {
         history = 10000;
       };
       font = {
-        bold.family = "JetBrainsMono Nerd Font";
-        italic.family = "JetBrainsMono Nerd Font";
-        normal.family = "JetBrainsMono Nerd Font";
-        bold_italic.family = "JetBrainsMono Nerd Font";
+        bold = {
+          family = "JetBrainsMono Nerd Font";
+        };
+        italic = {
+          family = "JetBrainsMono Nerd Font";
+        };
+        normal = {
+          family = "JetBrainsMono Nerd Font";
+        };
+        bold_italic = {
+          family = "JetBrainsMono Nerd Font";
+        };
         size = 14;
       };
       shell = {
         program = "${pkgs.fish}/bin/fish";
       };
       env = {
-        "LANG" = "en_US.UTF-8";
-        "LC_ALL" = "en_US.UTF-8";
+        LANG = "en_US.UTF-8";
+        LC_ALL = "en_US.UTF-8";
+      };
+      selection = {
+        save_to_clipboard = true;
       };
     };
   };
