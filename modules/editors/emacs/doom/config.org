@@ -2025,23 +2025,13 @@ Refer to `org-agenda-prefix-format' for more information."
 :ID:       d4be558f-c96d-4107-a442-14fe7648ce6b
 :END:
 #+begin_src emacs-lisp :tangle packages.el
-;; (if IS-MAC (package! micromamba))
+(if IS-MAC (package! micromamba))
 #+end_src
 
 #+begin_src emacs-lisp conf :tangle config.el
-;; (if IS-MAC
-;;   (use-package! micromamba)
-;;   (use-package! conda
-;;   ;; :init
-;;     ;;:hook
-;;     ;;(find-file (lambda () (when (bound-and-true-p conda-project-env-path)  (conda-env-activate-for-buffer))))
-;;     :custom
-;;     (conda-anaconda-home "/opt/homebrew/Caskroom/miniconda")
-;;     :config
-;;     (conda-env-initialize-interactive-shells)
-;;     (setq conda-env-autoactivate-mode t)
-;;   )
-;; )
+(if IS-MAC
+  (use-package! micromamba)
+)
 #+end_src
 *
 ** Latex mode
