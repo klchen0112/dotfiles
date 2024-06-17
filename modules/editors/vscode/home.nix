@@ -38,7 +38,11 @@
         # tuttieee.emacs-mcx
         # vscodevim.vim
         # wakatime.vscode-wakatime
+        oderwat.indent-rainbow
+        njqdev.vscode-python-typehint
+        # docstring
 
+        njpwerner.autodocstring
         # git
         # eamodio.gitlens
         #donjayamanne.githistory
@@ -53,10 +57,11 @@
         # python
         ms-python.python
         ms-python.isort
-        # ms-pyright.pyright
-        ms-python.vscode-pylance
-        donjayamanne.python-environment-manager
+        ms-pyright.pyright
         # ms-python.vscode-pylance
+        kevinrose.vsc-python-indent
+        donjayamanne.python-environment-manager
+        cstrap.python-snippets
         ms-toolsai.jupyter
         ms-toolsai.vscode-jupyter-slideshow
         ms-toolsai.vscode-jupyter-cell-tags
