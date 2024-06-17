@@ -10,13 +10,14 @@
   programs.alacritty = {
     enable = true;
     settings = {
-      import = ["${inputs.own-nur.packages.${pkgs.system}.catppuccin-alacritty}/catppuccin-mocha.toml"];
+      import = ["${inputs.own-nur.packages.${pkgs.system}.catppuccin-alacritty}/catppuccin-latte.toml"];
       window = {
         opacity = 0.93;
         startup_mode = "Windowed";
         dynamic_title = true;
         option_as_alt = "Both";
         decorations = "buttonless";
+        blur = true;
       };
       scrolling = {
         history = 10000;
@@ -38,6 +39,7 @@
       };
       shell = {
         program = "${pkgs.fish}/bin/fish";
+        args = ["-l"];
       };
       env = {
         LANG = "en_US.UTF-8";

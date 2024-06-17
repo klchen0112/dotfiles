@@ -39,8 +39,8 @@
   programs.btop = {
     enable = true;
     settings = {
-      color_theme = "catppuccin_mocha";
-      theme_background = false; # make btop transparent
+      color_theme = "catppuccin_latte";
+      theme_background = true; # make btop transparent
     };
   };
 
@@ -109,7 +109,7 @@
   programs.bat = {
     enable = true;
     config = {
-      theme = "Catppuccin-mocha";
+      theme = "Catppuccin-latte";
       style = "numbers,header,grid,changes,snip";
     };
     extraPackages = with pkgs.bat-extras; [
@@ -235,7 +235,7 @@
       }
       // builtins.fromTOML (builtins.readFile "${
         inputs.own-nur.packages.${pkgs.system}.catppuccin-starship
-      }/palettes/mocha.toml");
+      }/palettes/latte.toml");
   };
   programs.ripgrep = {enable = true;};
 
