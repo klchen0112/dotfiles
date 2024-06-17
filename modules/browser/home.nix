@@ -104,6 +104,7 @@
         onetab
 
         zotero-connector
+        blocktube
       ];
     };
 
