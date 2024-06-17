@@ -114,9 +114,9 @@
 ;;(package! tempel-collection)
 
 ;;(package! codeium :recipe (:host github :repo "Exafunction/codeium.el"))
-(package! copilot
-  :recipe (:host github :repo "copilot-emacs/copilot.el" :files ("*.el" "dist"))
-)
+;; (package! copilot
+;;   :recipe (:host github :repo "copilot-emacs/copilot.el" :files ("*.el" "dist"))
+;; )
 
 ;;(package! ts-docstr
 ;;  :recipe (:host github :repo "emacs-vs/ts-docstr" :files (:defaults "langs/*.el")))
