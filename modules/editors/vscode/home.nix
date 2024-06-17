@@ -170,7 +170,28 @@
       # --------------------------------------------
       "terminal.integrated.fontFamily" = "'JetBrains Mono','Overpass','CMU Typewriter Text','Noto Serif CJK SC','Noto Serif','Hack Nerd Font'";
       "terminal.integrated.defaultProfile.windows" = "PowerShell";
-      # "terminal.integrated.automationProfile.osx" = "fish";
+      "terminal.integrated.defaultProfile.osx" = "fish";
+      "terminal.integrated.profiles.osx" = {
+        "bash" = {
+          "path" = "${pkgs.bash}";
+          "args" = [
+            "-l"
+          ];
+          "icon" = "terminal-bash";
+        };
+        "zsh" = {
+          "path" = "${pkgs.zsh}";
+          "args" = [
+            "-l"
+          ];
+        };
+        "fish" = {
+          "path" = "${pkgs.fish}";
+          "args" = [
+            "-l"
+          ];
+        };
+      };
       "terminal.integrated.enableVisualBell" = true;
       "terminal.integrated.gpuAcceleration" = "on";
       "terminal.integrated.env.windows" = {"LC_ALL" = "zh_CN.UTF-8";};
