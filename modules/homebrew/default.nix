@@ -97,7 +97,7 @@
         "sunloginclient"
         "adrive"
         "steam"
-        "balenaetcher"
+        # "balenaetcher"
         # "todesk"
         "tencent-meeting"
         "marginnote"
