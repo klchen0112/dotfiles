@@ -4,6 +4,7 @@
 {
   inputs,
   pkgs,
+  username,
   #
   ...
 }: {
@@ -70,8 +71,8 @@
       copy_on_select = true;
       shell =
         if pkgs.stdenv.isDarwin
-        then "${pkgs.fish} --login --interactive"
-        else "${pkgs.fish}";
+        then "/etc/profiles/per-user/${username}/bin/fish --login --interactive"
+        else "/etc/profiles/per-user/${username}/bin/fish";
     };
   };
 
