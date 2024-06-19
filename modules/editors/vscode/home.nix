@@ -289,6 +289,11 @@
       "cmake.cmakeCommunicationMode" = "legacy";
       "cmake.configureOnOpen" = false;
       "[Log]" = {"editor.fontSize" = 13;};
+
+      # Nix
+
+      "nix.enableLanguageServer" = true;
+      "nix.serverPath" = "nil";
     };
   };
 }
