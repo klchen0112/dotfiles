@@ -24,6 +24,7 @@
     ../../modules/terminal/home.nix
     ../../modules/visualisation/home.nix
     ../../modules/im/home.nix
+    ../../modules/nixpkgs/home.nix
     # ../../modules/windowManager
     # ../../modules/vpn
     ../../modules/notes/home.nix
