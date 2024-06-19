@@ -8,7 +8,7 @@
   ...
 }: {
   programs.alacritty = {
-    enable = true;
+    enable = false;
     settings = {
       import = ["${inputs.own-nur.packages.${pkgs.system}.catppuccin-alacritty}/catppuccin-latte.toml"];
       window = {
@@ -48,6 +48,30 @@
       selection = {
         save_to_clipboard = true;
       };
+    };
+  };
+
+  programs.kitty = {
+    enable = true;
+    environment = {
+      LANG = "en_US.UTF-8";
+      LC_ALL = "en_US.UTF-8";
+    };
+    theme = "Catppuccin-Latte";
+    shellIntegration = {
+      enableFishIntegration = true;
+    };
+    settings = {
+      font_size = 13;
+      hide_window_decorations =
+        if pkgs.stdenv.isDarwin
+        then "titlebar-only "
+        else true;
+      copy_on_select = true;
+      shell =
+        if pkgs.stdenv.isDarwin
+        then "${pkgs.fish} --login --interactive"
+        else "${pkgs.fish}";
     };
   };
 
