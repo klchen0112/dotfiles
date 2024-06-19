@@ -8,7 +8,7 @@
   ...
 }: {
   services.emacs = {
-    enable = true;
+    enable = false;
     package = pkgs.emacsPlus29;
     additionalPath = ["/Users/${username}"];
   };

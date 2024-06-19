@@ -71,6 +71,7 @@ in {
     enable = true;
     doomDir = ./doom;
     emacs = emacsPackage;
+    provideEmacs = false;
   };
   services.emacs = {
     enable = pkgs.stdenv.isLinux;
