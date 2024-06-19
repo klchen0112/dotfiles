@@ -441,8 +441,8 @@
 (setq use-default-font-for-symbols nil)
 (cond
   ((or IS-MAC IS-LINUX)
-    (setq doom-font (font-spec :family "iosevka"   :size 14)
-          ;; doom-big-font (font-spec :family "iosevka"  :size 28)
+    (setq doom-font (font-spec :family "Iosevka"   :size 14)
+          ;; doom-big-font (font-spec :family "Iosevka"  :size 28)
           doom-variable-pitch-font (font-spec :family "CMU Typewriter Text"  :size 17)
           ;;doom-unicode-font (font-spec :family "FZSongKeBenXiuKai-R-GBK" :weight 'light :slant 'italic :size 21)
           doom-serif-font (font-spec :family "IBM Plex Serif"  :size 17))
