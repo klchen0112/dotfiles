@@ -84,7 +84,7 @@
         "syncthing"
         # "mpv"
         "iina"
-        "telegram"
+
         "licecap"
         # Keyboard
         "hhkb-studio"
@@ -113,6 +113,8 @@
 
         # vpn
         "tailscale"
+
+        "telegram"
       ];
   };
 }
