@@ -14,8 +14,8 @@
       font-awesome
 
       # mono fonts for coding
-      jetbrains-mono
-      # iosevka
+      # jetbrains-mono
+      iosevka
       # fira-code
       # cascadia-code
       # comic-mono

@@ -111,8 +111,8 @@
 
       "editor.inlineSuggest.enabled" = true;
       "editor.semanticHighlighting.enabled" = true;
-      "editor.codeLensFontFamily" = "'JetBrains Mono','Overpass','CMU Typewriter Text','Noto Serif CJK SC','Noto Serif','Hack Nerd Font'";
-      "editor.fontFamily" = "'JetBrains Mono','Overpass','CMU Typewriter Text','Noto Serif CJK SC','Noto Serif','Hack Nerd Font'";
+      "editor.codeLensFontFamily" = "'iosevka','Overpass','CMU Typewriter Text','Noto Serif CJK SC','Noto Serif','Hack Nerd Font'";
+      "editor.fontFamily" = "'iosevka','Overpass','CMU Typewriter Text','Noto Serif CJK SC','Noto Serif','Hack Nerd Font'";
       "editor.fontLigatures" = true;
       "editor.fontSize" = 16;
       "editor.formatOnPaste" = true;
@@ -168,7 +168,7 @@
       # --------------------------------------------
       # Terminal Settings
       # --------------------------------------------
-      "terminal.integrated.fontFamily" = "'JetBrains Mono','Overpass','CMU Typewriter Text','Noto Serif CJK SC','Noto Serif','Hack Nerd Font'";
+      "terminal.integrated.fontFamily" = "'iosevka','Overpass','CMU Typewriter Text','Noto Serif CJK SC','Noto Serif','Hack Nerd Font'";
       "terminal.integrated.defaultProfile.windows" = "PowerShell";
       "terminal.integrated.defaultProfile.osx" = "fish";
       "terminal.integrated.profiles.osx" = {
