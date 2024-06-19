@@ -87,7 +87,6 @@
 
       "i12500" = let
         username = "klchen";
-        userEmail = "klchen0112@gmail.com";
       in
         nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
@@ -102,13 +101,12 @@
     homeConfigurations = {
       "klchen@i12500" = let
         username = "klchen";
-        userEmail = "klchen0112@gmail.com";
         isWork = false;
       in
         home-manager.lib.homeManagerConfiguration {
           pkgs =
             nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
-          extraSpecialArgs = {inherit inputs outputs username userEmail;};
+          extraSpecialArgs = {inherit inputs outputs username;};
           modules = [
             # > Our main home-manager configuration file <
             ./hosts/i12500

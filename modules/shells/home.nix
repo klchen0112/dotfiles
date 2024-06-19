@@ -4,8 +4,6 @@
   lib,
   inputs,
   pkgs,
-  username,
-  userEmail,
   ...
 }: {
   programs.gpg = {enable = true;};
@@ -16,8 +14,8 @@
     ignores = ["*~" "*.swp" ".DS_Store" ".devenv"];
     attributes = ["*.pdf diff=pdf"];
     lfs.enable = true;
-    userName = username;
-    userEmail = userEmail;
+    userName = "klchen0112";
+    userEmail = "klchen0112@gmail.com";
     aliases = {co = "checkout";};
     extraConfig = {
       init.defaultBranch = "master"; # https://srid.ca/unwoke
