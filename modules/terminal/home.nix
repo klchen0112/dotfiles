@@ -54,6 +54,7 @@
 
   programs.kitty = {
     enable = true;
+
     environment = {
       LANG = "en_US.UTF-8";
       LC_ALL = "en_US.UTF-8";
@@ -63,16 +64,36 @@
       enableFishIntegration = true;
     };
     settings = {
+      #-------------------------------------------- Font --------------------------------------------
+      font_family = "Iosevka";
       font_size = 13;
+
+      #-------------------------------------------- Window --------------------------------------------
       hide_window_decorations =
         if pkgs.stdenv.isDarwin
         then "titlebar-only "
         else true;
+
+      #-------------------------------------------- Mouse --------------------------------------------
+      url_prefixes = "http https file ftp";
       copy_on_select = true;
+
+      detect_urls = true;
+
+      #-------------------------------------------- Shell --------------------------------------------
       shell =
         if pkgs.stdenv.isDarwin
         then "/etc/profiles/per-user/${username}/bin/fish --login --interactive"
         else "/etc/profiles/per-user/${username}/bin/fish";
+      #-------------------------------------------- Macos Settings --------------------------------------------
+      macos_titlebar_color = "system";
+      macos_option_as_alt = false;
+      macos_hide_from_tasks = false;
+      macos_quit_when_last_window_closed = false;
+      macos_window_resizable = true;
+      macos_thicken_font = 0;
+      macos_traditional_fullscreen = false;
+      macos_show_window_title_in = "all";
     };
   };
 
