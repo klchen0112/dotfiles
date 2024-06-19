@@ -106,7 +106,7 @@
         home-manager.lib.homeManagerConfiguration {
           pkgs =
             nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
-          extraSpecialArgs = {inherit inputs outputs username;};
+          extraSpecialArgs = {inherit inputs outputs username isWork;};
           modules = [
             # > Our main home-manager configuration file <
             ./hosts/i12500
@@ -207,7 +207,7 @@
                 # Optional: Enable fully-declarative tap management
                 #
                 # With mutableTaps disabled, taps can no longer be added imperatively with `brew tap`.
-                mutableTaps = false;
+                mutableTaps = true;
                 # Automatically migrate existing Homebrew installations
                 autoMigrate = false;
               };
