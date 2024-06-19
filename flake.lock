@@ -289,6 +289,22 @@
         "type": "github"
       }
     },
+    "homebrew-services": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1718695131,
+        "narHash": "sha256-q8j2jelIakb5RNUBgYPjVuO+2LRQnw4Q+R8tEYDZZcI=",
+        "owner": "homebrew",
+        "repo": "homebrew-services",
+        "rev": "1e152b2b50b314bbae503f1ee44947dc73cdc1c7",
+        "type": "github"
+      },
+      "original": {
+        "owner": "homebrew",
+        "repo": "homebrew-services",
+        "type": "github"
+      }
+    },
     "hycov": {
       "inputs": {
         "hyprland": ["hyprland"]
@@ -878,6 +894,7 @@
         "home-manager": "home-manager",
         "homebrew-cask": "homebrew-cask",
         "homebrew-core": "homebrew-core",
+        "homebrew-services": "homebrew-services",
         "hycov": "hycov",
         "hyprcontrib": "hyprcontrib",
         "hyprland": "hyprland",

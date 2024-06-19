@@ -154,11 +154,12 @@
                 taps = with inputs; {
                   "homebrew/homebrew-core" = homebrew-core;
                   "homebrew/homebrew-cask" = homebrew-cask;
+                  "homebrew/homebrew-services" = homebrew-services;
                 };
                 # Optional: Enable fully-declarative tap management
                 #
                 # With mutableTaps disabled, taps can no longer be added imperatively with `brew tap`.
-                mutableTaps = false;
+                mutableTaps = true;
                 # Automatically migrate existing Homebrew installations
                 autoMigrate = false;
               };
@@ -203,6 +204,7 @@
                 taps = with inputs; {
                   "homebrew/homebrew-core" = homebrew-core;
                   "homebrew/homebrew-cask" = homebrew-cask;
+                  "homebrew/homebrew-services" = homebrew-services;
                 };
                 # Optional: Enable fully-declarative tap management
                 #
@@ -250,6 +252,10 @@
       };
       homebrew-cask = {
         url = "github:homebrew/homebrew-cask";
+        flake = false;
+      };
+      homebrew-services = {
+        url = "github:homebrew/homebrew-services";
         flake = false;
       };
 
