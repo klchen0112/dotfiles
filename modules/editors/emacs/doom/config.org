@@ -84,7 +84,7 @@
 
        :editor
        ;;(meow  +qwerty +override +leader)
-       ;; (evil +everywhere); come to  dark side, we have cookies
+       (evil +everywhere); come to  dark side, we have cookies
        file-templates    ; auto-snippets for files
        fold              ; (nigh) universal code folding
        (format ; automated prettiness
@@ -588,12 +588,12 @@
 :ID:       ae971f56-8eff-42eb-a096-8a8a7febe736
 :END:
 
-#+begin_src emacs-lisp :tangle packages.el
+#+begin_src emacs-lisp :tangle no
 (package! meow)
 #+end_src
 
 
-#+begin_src emacs-lisp :tangle config.el
+#+begin_src emacs-lisp :tangle no
 (defconst meow-cheatsheet-layout-engrammer
   '((<TLDE> "[" "{")
     (<AE01> "1" "!")

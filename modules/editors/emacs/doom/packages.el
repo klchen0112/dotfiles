@@ -17,8 +17,6 @@
   ;; (package! emt :recipe (:host github :repo "roife/emt") :pin "7bea66de1b26d3f3f1cf9e940b269809c0c531b9")
 ;; )
 
-(package! meow)
-
 (package! dired-preview)
 
 (package! pangu-spacing)
@@ -117,11 +115,12 @@
 ;; (package! copilot
 ;;   :recipe (:host github :repo "copilot-emacs/copilot.el" :files ("*.el" "dist"))
 ;; )
+(package! gptel)
 
 ;;(package! ts-docstr
 ;;  :recipe (:host github :repo "emacs-vs/ts-docstr" :files (:defaults "langs/*.el")))
 
-;; (if IS-MAC (package! micromamba))
+(if IS-MAC (package! micromamba))
 
 ;;(when (executable-find "xelatex")
 ;;  (package! xenops)

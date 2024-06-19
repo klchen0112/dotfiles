@@ -69,7 +69,7 @@
 
        :editor
        ;;(meow  +qwerty +override +leader)
-       ;; (evil +everywhere); come to  dark side, we have cookies
+       (evil +everywhere); come to  dark side, we have cookies
        file-templates    ; auto-snippets for files
        fold              ; (nigh) universal code folding
        (format ; automated prettiness
