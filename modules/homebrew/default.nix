@@ -32,7 +32,7 @@
         then {}
         else {
           onedrive = 823766827;
-          tencent-meeting = 1484048379;
+          # tencent-meeting = 1484048379;
           "microsoft-word" = 462054704;
           "microsoft-powerpoint" = 462062816;
           "microsoft-excel" = 462058435;
@@ -99,7 +99,6 @@
         "steam"
         # "balenaetcher"
         # "todesk"
-        "tencent-meeting"
         "marginnote"
         "nutstore"
         "discord"
