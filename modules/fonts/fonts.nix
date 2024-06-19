@@ -65,7 +65,7 @@
       # nerdfonts
       (nerdfonts.override {
         fonts = [
-          "JetBrainsMono"
+          # "JetBrainsMono"
           "NerdFontsSymbolsOnly"
           "Hack"
         ];
