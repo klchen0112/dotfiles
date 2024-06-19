@@ -163,4 +163,4 @@
 
 (package! openwith)
 
-(package! activity-watch-mode)
+;;(package! activity-watch-mode)

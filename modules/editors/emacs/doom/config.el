@@ -1501,8 +1501,8 @@ Refer to `org-agenda-prefix-format' for more information."
                 (let ((process-connection-type nil))
                   (apply fn args)))))
 
-(use-package! activity-watch-mode
-:defer t
-:init
-(global-activity-watch-mode)
-)
+;;(use-package! activity-watch-mode
+;;:defer t
+;;:init
+;;(global-activity-watch-mode)
+;;)

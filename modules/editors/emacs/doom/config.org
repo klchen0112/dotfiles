@@ -2491,13 +2491,13 @@ use dash open app dash
 #+end_src
 ** activitywatch
 #+begin_src emacs-lisp :tangle packages.el
-(package! activity-watch-mode)
+;;(package! activity-watch-mode)
 #+end_src
 
 #+begin_src emacs-lisp :tangle config.el
-(use-package! activity-watch-mode
-:defer t
-:init
-(global-activity-watch-mode)
-)
+;;(use-package! activity-watch-mode
+;;:defer t
+;;:init
+;;(global-activity-watch-mode)
+;;)
 #+end_src
