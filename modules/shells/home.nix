@@ -103,13 +103,13 @@
     icons = true;
     git = true;
   };
-  home.file.".config/bat/themes".source = "${inputs.own-nur.packages.${pkgs.system}.catppuccin-bat}";
   programs.bat = {
     enable = true;
     config = {
-      theme = "Catppuccin-latte";
+      theme = "Monokai Extended Light";
       style = "numbers,header,grid,changes,snip";
     };
+
     extraPackages = with pkgs.bat-extras; [
       batdiff
       batman
