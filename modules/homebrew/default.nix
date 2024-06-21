@@ -88,12 +88,12 @@
         "licecap"
         # Keyboard
         "hhkb-studio"
+        "microsoft-remote-desktop"
       ]
       ++ lib.optionals isWork [
         "iterm2"
       ]
       ++ lib.optionals (!isWork) [
-        "microsoft-remote-desktop"
         "sunloginclient"
         "adrive"
         "steam"
