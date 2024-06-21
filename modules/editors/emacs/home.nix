@@ -47,10 +47,10 @@ in {
       pngpaste
     ];
 
-  # home.file.".config/emacs/Rime" = {
-  # source = "${inputs.own-rime}";
-  # recursive = true;
-  # };
+  home.file.".config/emacs/Rime" = {
+    source = "${inputs.own-rime}";
+    recursive = true;
+  };
 
   programs.pandoc.enable = true;
 
@@ -71,6 +71,7 @@ in {
     enable = true;
     doomDir = ./doom;
     emacs = emacsPackage;
+    extraPackages = epkgs: [epkgs.vterm epkgs.treesit-grammars.with-all-grammars];
     provideEmacs = true;
   };
   services.emacs = {

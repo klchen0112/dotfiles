@@ -101,8 +101,7 @@
 ;;      doom-serif-font (font-spec :family "IBM Plex Serif"  :size 17)
 ;;      )
 (setq nerd-icons-font-names '("SymbolsNerdFontMono-Regular.ttf"))
-(setq use-default-font-for-symbols nil)
-(cond
+(setq use-default-font-for-symbols nil)(cond
   ((or IS-MAC IS-LINUX)
     (setq doom-font (font-spec :family "Iosevka"   :size 14)
           ;; doom-big-font (font-spec :family "Iosevka"  :size 28)
@@ -878,12 +877,14 @@ Refer to `org-agenda-prefix-format' for more information."
 ;;   :bind
 ;;   (:map rime-mode-map
 ;;         ("S- " . 'rime-send-keybinding))
-;;   :config
-;;   (setq rime-librime-root
-;;         (car (last (split-string (shell-command-to-string "nix eval --raw nixpkgs#librime") "\n"))))
-;;   (setq rime-show-candidate 'posframe)
-;;   (setq rime-show-preedit 'inline)
-;;   (setq rime-user-data-dir (expand-file-name "Rime" doom-emacs-dir))
+  ;; :config
+  ;; (setq  rime-emacs-module-header-root "~/.nix-profile/include"
+  ;;        rime-librime-root
+  ;;         "~/.nix-profile")
+  ;; (setq rime-show-candidate 'posframe)
+  ;; (setq rime-sh
+        ;; ow-preedit 'inline)
+;;   (setq rime-user-data-dir (expand-file-name "Rime" doom-data-dir))
 ;;   (setq rime-emacs-module-header-root
 ;;         (if IS-MAC
 ;;             (concat
@@ -896,12 +897,7 @@ Refer to `org-agenda-prefix-format' for more information."
 ;;   (setq default-input-method "rime")
 ;;   (setq rime-inline-ascii-trigger 'shift-r)
 ;;   (setq rime-translate-keybindings '("C-f" "C-b" "C-n" "C-p" "C-g" "<left>" "<right>" "<up>" "<down>" "<prior>" "<next>" "<delete>"))
-;;   (setq rime-disable-predicates
-;;         '(meow-normal-mode-p
-;;           meow-motion-mode-p
-;;           meow-keypad-mode-p
-;;           meow-beacon-mode-p))
-;;   )
+;; )
 
 ;; (use-package rime-regexp
 ;;   :defer t
