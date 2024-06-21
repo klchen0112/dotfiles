@@ -199,7 +199,7 @@
       "terminal.integrated.rightClickBehavior" = "selectWord";
       "terminal.integrated.minimumContrastRatio" = 1;
       "terminal.integrated.copyOnSelection" = true;
-      "terminal.external.osxExec" = "Alacritty.app";
+      "terminal.external.osxExec" = "kitty.app";
       "terminal.explorerKind" = "external";
       "accessibility.signals.terminalBell" = {"sound" = "on";};
       # --------------------------------------------
