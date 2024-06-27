@@ -872,32 +872,18 @@ Refer to `org-agenda-prefix-format' for more information."
 ;;  (add-to-list 'sis-respect-minibuffer-triggers (cons 'org-roam-node-insert (lambda () 'other)))
 ;;)
 
-;; (use-package! rime
-;;   :defer t
-;;   :bind
-;;   (:map rime-mode-map
-;;         ("S- " . 'rime-send-keybinding))
-  ;; :config
-  ;; (setq  rime-emacs-module-header-root "~/.nix-profile/include"
-  ;;        rime-librime-root
-  ;;         "~/.nix-profile")
-  ;; (setq rime-show-candidate 'posframe)
-  ;; (setq rime-sh
-        ;; ow-preedit 'inline)
-;;   (setq rime-user-data-dir (expand-file-name "Rime" doom-data-dir))
-;;   (setq rime-emacs-module-header-root
-;;         (if IS-MAC
-;;             (concat
-;;              (car (last
-;;                    (split-string (shell-command-to-string "nix eval --raw ~/my/dotfiles#emacsPlus29") "\n")
-;;                    ))
-;;              "/include")
-;;           )
-;;         )
-;;   (setq default-input-method "rime")
-;;   (setq rime-inline-ascii-trigger 'shift-r)
-;;   (setq rime-translate-keybindings '("C-f" "C-b" "C-n" "C-p" "C-g" "<left>" "<right>" "<up>" "<down>" "<prior>" "<next>" "<delete>"))
-;; )
+(use-package! rime
+  :defer t
+  :bind
+  (:map rime-mode-map
+        ("S- " . 'rime-send-keybinding))
+  :config
+  (setq rime-show-candidate 'posframe)
+  (setq rime-show-preedit 'inline)
+  (setq default-input-method "rime")
+  (setq rime-inline-ascii-trigger 'shift-r)
+  (setq rime-translate-keybindings '("C-f" "C-b" "C-n" "C-p" "C-g" "<left>" "<right>" "<up>" "<down>" "<prior>" "<next>" "<delete>"))
+)
 
 ;; (use-package rime-regexp
 ;;   :defer t
