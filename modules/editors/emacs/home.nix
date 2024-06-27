@@ -14,7 +14,7 @@
 in {
   imports = [inputs.nix-doom-emacs-unstraightened.hmModule];
 
-  home.file.".cache/doom/Rime" = {
+  home.file.".cache/doom/nix/rime" = {
     source = "${inputs.own-rime}";
     recursive = true;
   };
