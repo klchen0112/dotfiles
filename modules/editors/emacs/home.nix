@@ -14,7 +14,7 @@
 in {
   imports = [inputs.nix-doom-emacs-unstraightened.hmModule];
 
-  home.file.".config/emacs/Rime" = {
+  home.file.".cache/doom/Rime" = {
     source = "${inputs.own-rime}";
     recursive = true;
   };
@@ -74,7 +74,7 @@ in {
       with epkgs; [
         vterm
         treesit-grammars.with-all-grammars
-        # rime
+        rime
       ];
     provideEmacs = true;
   };
