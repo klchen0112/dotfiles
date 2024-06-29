@@ -5,7 +5,7 @@
     # nix-du
     nil
     cachix
-    unstable.devenv
+    devenv
     statix
     deadnix
   ];
