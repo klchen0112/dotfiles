@@ -42,7 +42,6 @@ in {
       [
         ripgrep
         fd
-        tdlib
         curl
         # for emacs sqlite
         gcc
@@ -59,11 +58,6 @@ in {
         # spell check
         aspell
 
-        # for emacs rime
-        librime
-
-        libwebp
-        tdlib
         pkg-config
       ]
       ++ (lib.optionals pkgs.stdenv.isDarwin) [
@@ -75,6 +69,7 @@ in {
         vterm
         treesit-grammars.with-all-grammars
         rime
+        telega
       ];
     provideEmacs = true;
   };

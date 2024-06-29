@@ -160,6 +160,8 @@
 ;; magti file icons
 (package! magit-file-icons)
 
+(package! telga :built-in t)
+
 (package! openwith)
 
 ;;(package! activity-watch-mode)
