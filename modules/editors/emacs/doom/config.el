@@ -1260,7 +1260,7 @@ Refer to `org-agenda-prefix-format' for more information."
   (magit-file-icons-enable-untracked-icons t)
   (magit-file-icons-enable-diffstat-icons t))
 
-(use-package telga)
+(use-package telega)
 
 (use-package! openwith
 :defer t

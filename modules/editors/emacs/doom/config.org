@@ -2417,7 +2417,7 @@ use dash open app dash
 #+end_src
 
 #+begin_src emacs-lisp :tangle config.el
-(use-package telga)
+(use-package telega)
 #+end_src
 * Other module
 ** Time tracking
