@@ -87,13 +87,17 @@
         else "/etc/profiles/per-user/${username}/bin/fish";
       #-------------------------------------------- Macos Settings --------------------------------------------
       macos_titlebar_color = "system";
-      macos_option_as_alt = false;
+      macos_option_as_alt = true;
       macos_hide_from_tasks = false;
       macos_quit_when_last_window_closed = false;
       macos_window_resizable = true;
       macos_thicken_font = 0;
       macos_traditional_fullscreen = false;
       macos_show_window_title_in = "all";
+      macos_colorspace =
+        if pkgs.stdenv.isDarwin
+        then "displayp3"
+        else "srgb";
     };
   };
 
