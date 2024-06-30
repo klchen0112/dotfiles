@@ -9,7 +9,7 @@
 }: let
   emacsPackage =
     if pkgs.stdenv.hostPlatform.isDarwin
-    then pkgs.emacsPlus29
+    then pkgs.emacsPlus30
     else pkgs.emacs29-pgtk;
 in {
   imports = [inputs.nix-doom-emacs-unstraightened.hmModule];

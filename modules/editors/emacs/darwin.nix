@@ -9,7 +9,7 @@
 }: {
   services.emacs = {
     enable = false;
-    package = pkgs.emacsPlus29;
+    package = pkgs.emacsPlus30;
     additionalPath = ["/Users/${username}"];
   };
   environment.variables.EDITOR = "emacs";
