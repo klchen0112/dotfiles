@@ -148,7 +148,7 @@
                 enableRosetta = false;
 
                 # User owning the Homebrew prefix
-                user = "klchen";
+                user = username;
                 taps = with inputs; {
                   "homebrew/homebrew-core" = homebrew-core;
                   "homebrew/homebrew-cask" = homebrew-cask;
@@ -198,7 +198,7 @@
                 enableRosetta = false;
 
                 # User owning the Homebrew prefix
-                user = "chenkailong_dxm";
+                user = username;
                 taps = with inputs; {
                   "homebrew/homebrew-core" = homebrew-core;
                   "homebrew/homebrew-cask" = homebrew-cask;
@@ -207,7 +207,7 @@
                 # Optional: Enable fully-declarative tap management
                 #
                 # With mutableTaps disabled, taps can no longer be added imperatively with `brew tap`.
-                mutableTaps = true;
+                mutableTaps = false;
                 # Automatically migrate existing Homebrew installations
                 autoMigrate = false;
               };
