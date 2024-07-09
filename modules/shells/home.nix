@@ -30,6 +30,9 @@
       "http \"github.com\"" = {
         "proxy" = "socks5://127.0.0.1:7890";
       };
+      "http \"https://github.com\"" = {
+        "proxy" = "socks5://127.0.0.1:7890";
+      };
     };
   };
 
@@ -333,24 +336,24 @@
     just
     coreutils
     gnugrep
-    python311Packages.editorconfig
     lrzsz
+    python312Packages.editorconfig
   ];
   home.sessionVariables = {
     "EIDTOR" = "emacs";
   };
-  # programs.editorconfig = {
-  #   enable = true;
-  #   settings = {
-  #     "*" = {
-  #       charset = "utf-8";
-  #       end_of_line = "lf";
-  #       trim_trailing_whitespace = true;
-  #       insert_final_newline = true;
-  #       max_line_width = 80;
-  #       indent_style = "space";
-  #       indent_size = 4;
-  #     };
-  #   };
-  # };
+  editorconfig = {
+    enable = true;
+    settings = {
+      "*" = {
+        charset = "utf-8";
+        end_of_line = "lf";
+        trim_trailing_whitespace = true;
+        insert_final_newline = true;
+        max_line_width = 80;
+        indent_style = "space";
+        indent_size = 4;
+      };
+    };
+  };
 }
