@@ -1007,6 +1007,10 @@ Refer to `org-agenda-prefix-format' for more information."
     ;; (setq codeium/document/c
     ;;      ursor_offset 'my-codeium/document/cursor_offset))
 
+(use-package treesit-auto
+  :config
+  (global-treesit-auto-mode))
+
 ;;(use-package! ts-docstr
 ;;:config
 ;;(setq ts-docstr-key-support t)

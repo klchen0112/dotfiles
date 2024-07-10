@@ -12,6 +12,8 @@
 
 (package! info-colors)
 
+(package! transwin)
+
 ;;(package! jieba :recipe (:host github :repo "cireu/jieba.el"))
 ;; (if IS-MAC
   ;; (package! emt :recipe (:host github :repo "roife/emt") :pin "7bea66de1b26d3f3f1cf9e940b269809c0c531b9")
@@ -116,6 +118,8 @@
 ;;   :recipe (:host github :repo "copilot-emacs/copilot.el" :files ("*.el" "dist"))
 ;; )
 (package! gptel)
+
+(package! treesit-auto)
 
 ;;(package! ts-docstr
 ;;  :recipe (:host github :repo "emacs-vs/ts-docstr" :files (:defaults "langs/*.el")))

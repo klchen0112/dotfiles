@@ -563,6 +563,9 @@
 (setq menu-bar-mode t)
 #+end_src
 ** alpha
+#+begin_src emacs-lisp :tangle packages.el
+(package! transwin)
+#+end_src
 #+begin_src emacs-lisp :tangle config.el
 (use-package transwin
   :config
@@ -1987,6 +1990,16 @@ Refer to `org-agenda-prefix-format' for more information."
 #+end_src
 
 * Lang
+** TreeSitter
+#+begin_src emacs-lisp :tangle packages.el
+(package! treesit-auto)
+#+end_src
+
+#+begin_src emacs-lisp :tangle config.el
+(use-package treesit-auto
+  :config
+  (global-treesit-auto-mode))
+#+end_src
 ** Docstr
 #+begin_src emacs-lisp :tangle packages.el
 ;;(package! ts-docstr
