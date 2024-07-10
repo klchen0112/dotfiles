@@ -562,6 +562,14 @@
 #+begin_src emacs-lisp :tangle config.el
 (setq menu-bar-mode t)
 #+end_src
+** alpha
+#+begin_src emacs-lisp :tangle config.el
+(use-package transwin
+  :config
+  (setq transwin-delta-alpha 5)
+  (setq transwin-parameter-alpha 'alpha-background)
+)
+#+end_src
 * Editor
 ** 分词
 #+begin_src emacs-lisp :tangle packages.el

@@ -32,6 +32,16 @@
           url = "https://raw.githubusercontent.com/d12frosted/homebrew-emacs-plus/master/patches/emacs-30/system-appearance.patch";
           sha256 = "sha256-3QLq91AQ6E921/W9nfDjdOUWR8YVsqBAT/W9c1woqAw=";
         })
+        # Cursor animation
+        (pkgs.fetchpatch {
+          url = "https://raw.githubusercontent.com/sincebyte/neo-emacs/master/patches/cursor-animation.patch";
+          sha256 = "sha256-E/J2Jb9d7M4eb67G8kwDAIEswLoa4mCKuplaHghHQDc=";
+        })
+        # alpha-background
+        (pkgs.fetchpatch {
+          url = "https://raw.githubusercontent.com/sincebyte/neo-emacs/master/patches/ns-alpha-background.patch";
+          sha256 = "sha256-3OG1tMpg/1jrP/gsnFCkqJ22OkS/d8voOUqiOk7iUkE=";
+        })
       ];
     meta.platforms = pkgs.lib.platforms.darwin;
     meta.mainProgram = "emacs";

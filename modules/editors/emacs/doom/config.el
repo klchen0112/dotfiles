@@ -203,6 +203,12 @@
 
 (setq menu-bar-mode t)
 
+(use-package transwin
+  :config
+  (setq transwin-delta-alpha 5)
+  (setq transwin-parameter-alpha 'alpha-background)
+)
+
 ;;(use-package jieba
 ;;  :commands jieba-mode
 ;;  :init (jieba-mode))
