@@ -1,7 +1,12 @@
 #
 # ../../browser
 #
-{pkgs, ...}: {
+{
+  pkgs,
+  lib,
+  isWork,
+  ...
+}: {
   programs.google-chrome = {
     enable = pkgs.stdenv.isLinux;
     package = pkgs.google-chrome;
@@ -81,31 +86,36 @@
           }
         ];
       };
-      extensions = with pkgs.nur.repos.rycee.firefox-addons; [
-        # see: https://github.com/nix-community/nur-combined/blob/master/repos/rycee/pkgs/firefox-addons/generated-firefox-addons.nix
-        augmented-steam
-        auto-sort-bookmarks
-        auto-tab-discard
-        automatic-dark
-        gopass-bridge
-        # https-everywhere
-        link-cleaner
-        privacy-badger
-        tree-style-tab
-        multi-account-containers
-        # ublock-origin
-        # vimium
-        sidebery
-        bitwarden
-        omnivore
-        blocktube
-        rsshub-radar
-        brotab
-        onetab
+      extensions = with pkgs.nur.repos.rycee.firefox-addons;
+        [
+          # see: https://github.com/nix-community/nur-combined/blob/master/repos/rycee/pkgs/firefox-addons/generated-firefox-addons.nix
+          augmented-steam
+          auto-sort-bookmarks
+          auto-tab-discard
+          automatic-dark
+          gopass-bridge
+          # https-everywhere
+          link-cleaner
+          privacy-badger
+          tree-style-tab
+          multi-account-containers
 
-        zotero-connector
-        blocktube
-      ];
+          # vimium
+          sidebery
+          bitwarden
+          omnivore
+          blocktube
+          rsshub-radar
+          brotab
+          onetab
+
+          zotero-connector
+          blocktube
+        ]
+        ++ lib.optionals (!isWork)
+        [
+          ublock-origin
+        ];
     };
 
     # home.packages = with pkgs; [tor];
