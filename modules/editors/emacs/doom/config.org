@@ -504,9 +504,9 @@
 ;; (setq doom-theme 'doom-dracula)
 ;; (setq doom-theme 'doom-solarized-light)
 (setq doom-themes-dark '(doom-dracula doom-vibrant doom-city-lights doom-moonlight doom-horizon
-                         doom-one doom-solarized-dark doom-palenight doom-rouge doom-spacegrey
+                         doom-one doom-solarized-dark doom-palenight doom-spacegrey
                          doom-old-hope doom-oceanic-next doom-monokai-pro doom-material doom-henna
-                         doom-ephemeral chocolate doom-zenburn doom-peacock))
+                         doom-ephemeral chocolate doom-zenburn doom-peacock doom-1337))
 
 (setq doom-themes-light '(doom-one-light doom-solarized-light  doom-opera-light))
 
@@ -2363,7 +2363,7 @@ use dash open app dash
 :ID:       c5312a82-9f24-4e4b-9f81-0660dbc3d380
 :END:
 #+begin_src emacs-lisp :tangle packages.el
-(package! telega :recipe (:host github :repo "zevlg/telega.el") )
+(package! telega :built-in t)
 #+end_src
 
 #+begin_src emacs-lisp :tangle config.el
@@ -2432,14 +2432,6 @@ use dash open app dash
   (magit-file-icons-enable-diffstat-icons t))
 #+end_src
 
-* IM
-#+begin_src emacs-lisp :tangle packages.el
-(package! telga :built-in t)
-#+end_src
-
-#+begin_src emacs-lisp :tangle config.el
-(use-package telega)
-#+end_src
 * Other module
 ** Time tracking
 :PROPERTIES:

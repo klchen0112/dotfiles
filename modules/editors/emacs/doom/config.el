@@ -156,9 +156,9 @@
 ;; (setq doom-theme 'doom-dracula)
 ;; (setq doom-theme 'doom-solarized-light)
 (setq doom-themes-dark '(doom-dracula doom-vibrant doom-city-lights doom-moonlight doom-horizon
-                         doom-one doom-solarized-dark doom-palenight doom-rouge doom-spacegrey
+                         doom-one doom-solarized-dark doom-palenight doom-spacegrey
                          doom-old-hope doom-oceanic-next doom-monokai-pro doom-material doom-henna
-                         doom-ephemeral chocolate doom-zenburn doom-peacock))
+                         doom-ephemeral chocolate doom-zenburn doom-peacock doom-1337))
 
 (setq doom-themes-light '(doom-one-light doom-solarized-light  doom-opera-light))
 
@@ -1269,8 +1269,6 @@ Refer to `org-agenda-prefix-format' for more information."
   (magit-file-icons-enable-diff-file-section-icons t)
   (magit-file-icons-enable-untracked-icons t)
   (magit-file-icons-enable-diffstat-icons t))
-
-(use-package telega)
 
 (use-package! openwith
 :defer t

@@ -153,7 +153,7 @@
 
 (package! org-anki :recipe (:host github :repo "eyeinsky/org-anki"))
 
-(package! telega :recipe (:host github :repo "zevlg/telega.el") )
+(package! telega :built-in t)
 
 (package! org-ai)
 
@@ -163,8 +163,6 @@
 (package! git-link)
 ;; magti file icons
 (package! magit-file-icons)
-
-(package! telga :built-in t)
 
 (package! openwith)
 
