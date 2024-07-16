@@ -115,9 +115,9 @@
       "editor.fontFamily" = "'Iosevka','Overpass','CMU Typewriter Text','Noto Serif CJK SC','Noto Serif','Hack Nerd Font'";
       "editor.fontLigatures" = true;
       "editor.fontSize" = 16;
-      "editor.formatOnPaste" = true;
-      "editor.formatOnType" = true;
-      "editor.formatOnSave" = true;
+      "editor.formatOnPaste" = false;
+      "editor.formatOnType" = false;
+      "editor.formatOnSave" = false;
       "editor.minimap.enabled" = false;
       "editor.quickSuggestionsDelay" = 0;
       "editor.renderWhitespace" = "none";
