@@ -248,7 +248,7 @@
       # --------------------------------------------
       # --------------------------------------------
       "[yaml]" = {"editor.comments.insertSpace" = false;};
-      "[python]" = {"editor.formatOnType" = true;};
+      "[python]" = {"editor.formatOnType" = false;};
 
       # --------------------------------------------
       # C/C++ settings
