@@ -140,6 +140,9 @@
 (package! just-mode)
 (package! justl)
 
+(package! graphviz-dot-mode)
+(package! ob-blockdiag)
+
 ;;(unpin! pdf-tools)
 
 ;;(package! org-noter :recipe (:host github :repo "org-noter/org-noter"))

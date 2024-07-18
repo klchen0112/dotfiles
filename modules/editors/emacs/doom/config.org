@@ -2240,6 +2240,50 @@ use dash open app dash
   (map! :n "e" 'justl-exec-recipe))
 #+end_src
 
+** Graphviz
+#+begin_src emacs-lisp :tangle packages.el
+(package! graphviz-dot-mode)
+(package! ob-blockdiag)
+#+end_src
+
+#+begin_src emacs-lisp :tangle config.el
+(use-package! graphviz-dot-mode
+  :mode "\\.\\(diag\\|dot\\|nwdiag\\|rackdiag\\)\\'"
+  :init
+  (after! org
+    (add-to-list 'org-src-lang-modes
+                  '("dot" . graphviz-dot)))
+  :config
+  (cl-defun +format-graphviz (&key buffer scratch callback &allow-other-keys)
+    "Format graphviz graphs."
+    (with-current-buffer scratch
+      (let ((inhibit-message t)
+            (message-log-max nil))
+        (goto-char (point-min))
+        (graphviz-dot-indent-graph))
+      (funcall callback)))
+
+  (when (and (not (treesit-available-p))
+              (modulep! :lang graphviz +tree-sitter))
+    (add-hook 'graphviz-dot-mode-hook #'tree-sitter! 'append))
+  (after! tree-sitter
+    (set-tree-sitter-lang! 'graphviz-dot-mode 'dot))
+  (when (modulep! :completion company)
+    (set-company-backend! 'graphviz-dot-mode 'company-graphviz-dot-backend))
+  (setq graphviz-dot-view-command "kde-open5 %s") ;; doesn't work, need a proper viewer
+
+  (enable-auto-formatter! 'graphviz-dot-mode)
+  (set-formatter! 'graphviz-dot-mode #'+format-graphviz :modes '(graphviz-dot-mode))
+
+  (map! :map graphviz-dot-mode-map
+        :localleader
+        :desc "External view" :nv "e" #'graphviz-dot-view
+        :desc "Preview"       :nv "p" #'graphviz-dot-preview
+        :prefix ("t" . "toggle")
+        :desc "Preview"       :nv "p" (cmd! (if graphviz-dot-auto-preview-on-save
+                                                (graphviz-turn-off-live-preview)
+                                              (graphviz-turn-on-live-preview)))))
+#+end_src
 * reader
 ** pdf tools
 :PROPERTIES:
