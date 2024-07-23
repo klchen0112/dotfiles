@@ -6,6 +6,7 @@
     nil
     cachix
     devenv
+    devbox
     statix
     deadnix
   ];

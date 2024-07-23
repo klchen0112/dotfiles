@@ -7,5 +7,5 @@
     # gore
     # gotools
   ];
-  programs.go.enable = true;
+  # programs.go.enable = true;
 }
