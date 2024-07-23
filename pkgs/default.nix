@@ -35,7 +35,7 @@
         # Cursor animation
         (pkgs.fetchpatch {
           url = "https://raw.githubusercontent.com/sincebyte/neo-emacs/master/patches/cursor-animation.patch";
-          sha256 = "sha256-E/J2Jb9d7M4eb67G8kwDAIEswLoa4mCKuplaHghHQDc=";
+          sha256 = "sha256-/WPLjmjk3+yRaiAjnH3b7tj2imJTxW87bd5pfgh1j4k=";
         })
         # alpha-background
         (pkgs.fetchpatch {
