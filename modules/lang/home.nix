@@ -14,6 +14,7 @@
     ./nodejs/home.nix
     ./python/home.nix
     ./rust/home.nix
+    ./web/home.nix
   ];
 
   home.packages = with pkgs; [tree-sitter dockfmt];
