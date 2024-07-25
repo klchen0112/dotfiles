@@ -44,6 +44,7 @@
       # "macism"
       "mas"
       "sleepwatcher"
+      "musl-cross"
     ];
     caskArgs = {no_quarantine = true;};
     casks =

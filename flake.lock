@@ -289,6 +289,22 @@
         "type": "github"
       }
     },
+    "homebrew-musl-cross": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1702231783,
+        "narHash": "sha256-TAi5NCzuX8d4bJirdyazm5zNGw95SHY9IcFduA6JAD0=",
+        "owner": "filosottile",
+        "repo": "homebrew-musl-cross",
+        "rev": "50387b9c39df55c7e08039030b1262bfdb916605",
+        "type": "github"
+      },
+      "original": {
+        "owner": "filosottile",
+        "repo": "homebrew-musl-cross",
+        "type": "github"
+      }
+    },
     "homebrew-services": {
       "flake": false,
       "locked": {
@@ -957,6 +973,7 @@
         "home-manager": "home-manager",
         "homebrew-cask": "homebrew-cask",
         "homebrew-core": "homebrew-core",
+        "homebrew-musl-cross": "homebrew-musl-cross",
         "homebrew-services": "homebrew-services",
         "hycov": "hycov",
         "hyprcontrib": "hyprcontrib",

@@ -153,6 +153,7 @@
                   "homebrew/homebrew-core" = homebrew-core;
                   "homebrew/homebrew-cask" = homebrew-cask;
                   "homebrew/homebrew-services" = homebrew-services;
+                  "filosottile/musl-cross" = homebrew-musl-cross;
                 };
                 # Optional: Enable fully-declarative tap management
                 #
@@ -203,6 +204,7 @@
                   "homebrew/homebrew-core" = homebrew-core;
                   "homebrew/homebrew-cask" = homebrew-cask;
                   "homebrew/homebrew-services" = homebrew-services;
+                  "filosottile/musl-cross" = homebrew-musl-cross;
                 };
                 # Optional: Enable fully-declarative tap management
                 #
@@ -254,6 +256,10 @@
       };
       homebrew-services = {
         url = "github:homebrew/homebrew-services";
+        flake = false;
+      };
+      homebrew-musl-cross = {
+        url = "github:filosottile/homebrew-musl-cross";
         flake = false;
       };
 
