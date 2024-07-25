@@ -120,14 +120,14 @@
        (lsp +peek)              ; M-x vscode
        (magit             ; a git porcelain for Emacs
         ;;+forge             ; interface with git forges
-       )
+        )
        make              ; run make tasks from Emacs
        ;;pass              ; password manager for nerds
        pdf               ; pdf enhancements
        ;;prodigy           ; FIXME managing external services & code builders
        rgb               ; creating color strings
        taskrunner        ; taskrunner for all your projects
-       tree-sitter
+       ;;tree-sitter
        ;;terraform         ; infrastructure as code
        ;;tmux              ; an API for interacting with tmux
        upload            ; map local to remote projects via ssh/ftp
@@ -154,7 +154,7 @@
        ;;elixir            ; erlang done right
        ;;elm               ; care for a cup of TEA?
        (emacs-lisp; drown in parentheses
-        +ttree-sitter
+        ;;+tree-sitter
         )
        ;;erlang            ; an elegant language for a more civilized age
        ;;ess               ; emacs speaks statistics
@@ -184,14 +184,16 @@
        ;;lean              ; for folks with too much to prove
        ;;ledger            ; be audit you can be
        (lua
-           +lsp
-           ;;+fennel +moonscript
-           )              ; one-based indices? one-based indices
+        +lsp
+        ;;+fennel +moonscript
+        )              ; one-based indices? one-based indices
        (markdown
         +grip
         )          ; writing docs for people to ignore
        ;;nim               ; python + lisp at the speed of c
-       (nix +lsp +tree-sitter)               ; I hereby declare "nix geht mehr!"
+       (nix +lsp
+            ;;+tree-sitter
+            )               ; I hereby declare "nix geht mehr!"
        ;;ocaml             ; an objective camel
        (org              ; organize your plain life in plain text
         ;;+brain
@@ -233,7 +235,9 @@
        ;;swift             ; who asked for emoji variables?
        ;;terra             ; Earth and Moon in alignment for performance.
        ;;(web +lsp)              ; the tubes
-       (yaml +lsp +tree-sitter)              ; JSON, but readable
+       (yaml +lsp
+             ;;+tree-sitter
+       )              ; JSON, but readable
        ;;zig               ; C, but simpler
 
        :email
