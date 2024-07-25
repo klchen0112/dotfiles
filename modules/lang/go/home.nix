@@ -1,7 +1,7 @@
 {pkgs, ...}: {
   home.packages = with pkgs; [
     # go
-    # gopls
+    gopls
     # gomodifytags
     # gotests
     # gore
