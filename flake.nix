@@ -16,6 +16,7 @@
       "https://ruixi-rebirth.cachix.org"
       "https://klchen0112.cachix.org"
       "https://devenv.cachix.org"
+      "https://rycee.cachix.org"
     ];
     extra-trusted-public-keys = [
       "klchen0112.cachix.org-1:cO5Ek4gcvoWtHslHjWn9U5ymU8ZiN7+tJo0jifbtRz4="
@@ -26,6 +27,7 @@
       "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
       "ruixi-rebirth.cachix.org-1:sWs3V+BlPi67MpNmP8K4zlA3jhPCAvsnLKi4uXsiLI4="
       "devenv.cachix.org-1:w1cLUi8dv3hnoSPGAuibQv+f9TZLr6cv/Hm9XgU50cw="
+      "rycee.cachix.org-1:TiiXyeSk0iRlzlys4c7HiXLkP3idRf20oQ/roEUAh/A="
     ];
     trusted-users = ["root" "@wheel"];
   };
