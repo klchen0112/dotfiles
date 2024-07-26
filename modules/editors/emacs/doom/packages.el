@@ -170,3 +170,5 @@
 (package! openwith)
 
 ;;(package! activity-watch-mode)
+
+(package! exec-path-from-shell)

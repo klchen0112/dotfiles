@@ -1329,3 +1329,5 @@ Refer to `org-agenda-prefix-format' for more information."
 ;;:init
 ;;(global-activity-watch-mode)
 ;;)
+
+(use-package! exec-path-from-shell)
