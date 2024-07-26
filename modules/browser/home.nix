@@ -22,10 +22,9 @@
       id = 0;
       isDefault = true;
       name = "klchen";
-      # settings = {};
       search = {
         force = true;
-        default = "Google";
+        default = "DuckDuckGo";
         order = ["Bing" "Baidu" "DuckDuckGo" "Google"];
       };
       settings = {
@@ -86,36 +85,32 @@
           }
         ];
       };
-      extensions = with pkgs.nur.repos.rycee.firefox-addons;
-        [
-          # see: https://github.com/nix-community/nur-combined/blob/master/repos/rycee/pkgs/firefox-addons/generated-firefox-addons.nix
-          augmented-steam
-          auto-sort-bookmarks
-          auto-tab-discard
-          automatic-dark
-          gopass-bridge
-          # https-everywhere
-          link-cleaner
-          privacy-badger
-          tree-style-tab
-          multi-account-containers
-
-          # vimium
-          sidebery
-          bitwarden
-          omnivore
-          blocktube
-          rsshub-radar
-          brotab
-          onetab
-
-          zotero-connector
-          blocktube
-        ]
-        ++ lib.optionals (!isWork)
-        [
-          ublock-origin
-        ];
+      extensions = with pkgs.nur.repos.rycee.firefox-addons; [
+        # see: https://github.com/nix-community/nur-combined/blob/master/repos/rycee/pkgs/firefox-addons/generated-firefox-addons.nix
+        augmented-steam
+        auto-sort-bookmarks
+        auto-tab-discard
+        automatic-dark
+        gopass-bridge
+        # https-everywhere
+        link-cleaner
+        privacy-badger
+        tree-style-tab
+        multi-account-containers
+        # firefox-translations # translation
+        immersive-translate
+        tridactyl # vimum
+        sidebery
+        bitwarden
+        omnivore
+        blocktube
+        rsshub-radar
+        brotab
+        onetab
+        ublock-origin-lite
+        zotero-connector
+        blocktube
+      ];
     };
 
     # home.packages = with pkgs; [tor];
