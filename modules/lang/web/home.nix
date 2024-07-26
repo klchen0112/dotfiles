@@ -1,5 +1,5 @@
 {pkgs, ...}: {
   home.packages = with pkgs; [
-    nodePackages.eslint
+    # nodePackages_latest.eslint
   ];
 }
