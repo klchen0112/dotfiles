@@ -2,6 +2,7 @@
 # nix
 
 up:
+	git pull
 	nix flake update
 
 check:
