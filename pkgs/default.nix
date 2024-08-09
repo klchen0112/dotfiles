@@ -20,7 +20,7 @@
         # Use poll instead of select to get file descriptors
         (pkgs.fetchpatch {
           url = "https://raw.githubusercontent.com/d12frosted/homebrew-emacs-plus/master/patches/emacs-30/poll.patch";
-          sha256 = "HPuHrsKq17ko8xP8My+IYcJV+PKio4jK41qID6QFXFs=";
+          sha256 = "bQW9LPmJhMAtP2rftndTdjw0uipPyOp5oXqtIcs7i/Q=";
         })
         # Enable rounded window with no decoration
         (pkgs.fetchpatch {
@@ -33,15 +33,15 @@
           sha256 = "sha256-3QLq91AQ6E921/W9nfDjdOUWR8YVsqBAT/W9c1woqAw=";
         })
         # Cursor animation
-        (pkgs.fetchpatch {
-          url = "https://raw.githubusercontent.com/sincebyte/neo-emacs/master/patches/cursor-animation.patch";
-          sha256 = "sha256-/WPLjmjk3+yRaiAjnH3b7tj2imJTxW87bd5pfgh1j4k=";
-        })
+        # (pkgs.fetchpatch {
+        #   url = "https://raw.githubusercontent.com/sincebyte/neo-emacs/master/patches/cursor-animation.patch";
+        #   sha256 = "sha256-/WPLjmjk3+yRaiAjnH3b7tj2imJTxW87bd5pfgh1j4k=";
+        # })
         # alpha-background
-        (pkgs.fetchpatch {
-          url = "https://raw.githubusercontent.com/sincebyte/neo-emacs/master/patches/ns-alpha-background.patch";
-          sha256 = "sha256-3OG1tMpg/1jrP/gsnFCkqJ22OkS/d8voOUqiOk7iUkE=";
-        })
+        # (pkgs.fetchpatch {
+        # url = "https://raw.githubusercontent.com/sincebyte/neo-emacs/master/patches/ns-alpha-background.patch";
+        # sha256 = "sha256-3OG1tMpg/1jrP/gsnFCkqJ22OkS/d8voOUqiOk7iUkE=";
+        # })
       ];
     meta.platforms = pkgs.lib.platforms.darwin;
     meta.mainProgram = "emacs";
