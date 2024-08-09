@@ -68,7 +68,7 @@ in {
       with epkgs; [
         vterm
         treesit-grammars.with-all-grammars
-        rime
+        # rime
         telega
       ];
     provideEmacs = true;

@@ -878,18 +878,18 @@ Refer to `org-agenda-prefix-format' for more information."
 ;;  (add-to-list 'sis-respect-minibuffer-triggers (cons 'org-roam-node-insert (lambda () 'other)))
 ;;)
 
-(use-package! rime
-  :defer t
-  :bind
-  (:map rime-mode-map
-        ("S- " . 'rime-send-keybinding))
-  :config
-  (setq rime-show-candidate 'posframe)
-  (setq rime-show-preedit 'inline)
-  (setq default-input-method "rime")
-  (setq rime-inline-ascii-trigger 'shift-r)
-  (setq rime-translate-keybindings '("C-f" "C-b" "C-n" "C-p" "C-g" "<left>" "<right>" "<up>" "<down>" "<prior>" "<next>" "<delete>"))
-)
+;;(use-package! rime
+;;  :defer t
+;;  :bind
+;;  (:map rime-mode-map
+;;        ("S- " . 'rime-send-keybinding))
+;;  :config
+;;  (setq rime-show-candidate 'posframe)
+;;  (setq rime-show-preedit 'inline)
+;;  (setq default-input-method "rime")
+;;  (setq rime-inline-ascii-trigger 'shift-r)
+;;  (setq rime-translate-keybindings '("C-f" "C-b" "C-n" "C-p" "C-g" "<left>" "<right>" "<up>" "<down>" "<prior>" "<next>" "<delete>"))
+;;)
 
 ;; (use-package rime-regexp
 ;;   :defer t
