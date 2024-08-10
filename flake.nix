@@ -116,7 +116,14 @@
           ];
         };
     };
-    darwinConfigurations = {
+    darwinConfigurations = let
+      hombrew-taps = with inputs; {
+        "homebrew/homebrew-core" = homebrew-core;
+        "homebrew/homebrew-cask" = homebrew-cask;
+        "homebrew/homebrew-services" = homebrew-services;
+        "filosottile/musl-cross" = homebrew-musl-cross;
+      };
+    in {
       "mbp-m1" = let
         username = "klchen";
         userEmail = "klchen0112@gmail.com";
@@ -151,12 +158,7 @@
 
                 # User owning the Homebrew prefix
                 user = username;
-                taps = with inputs; {
-                  "homebrew/homebrew-core" = homebrew-core;
-                  "homebrew/homebrew-cask" = homebrew-cask;
-                  "homebrew/homebrew-services" = homebrew-services;
-                  "filosottile/musl-cross" = homebrew-musl-cross;
-                };
+                taps = hombrew-taps;
                 # Optional: Enable fully-declarative tap management
                 #
                 # With mutableTaps disabled, taps can no longer be added imperatively with `brew tap`.
@@ -202,12 +204,7 @@
 
                 # User owning the Homebrew prefix
                 user = username;
-                taps = with inputs; {
-                  "homebrew/homebrew-core" = homebrew-core;
-                  "homebrew/homebrew-cask" = homebrew-cask;
-                  "homebrew/homebrew-services" = homebrew-services;
-                  "filosottile/musl-cross" = homebrew-musl-cross;
-                };
+                taps = hombrew-taps;
                 # Optional: Enable fully-declarative tap management
                 #
                 # With mutableTaps disabled, taps can no longer be added imperatively with `brew tap`.
