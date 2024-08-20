@@ -12,7 +12,7 @@
     package = pkgs.google-chrome;
   };
   programs.firefox = {
-    enable = true;
+    enable = pkgs.stdenv.isLinux;
     enableGnomeExtensions = false;
     package =
       if pkgs.stdenv.isDarwin

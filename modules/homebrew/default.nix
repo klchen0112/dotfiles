@@ -54,6 +54,7 @@
         "anki"
         "snipaste"
         "google-chrome"
+        "firefox"
 
         "appcleaner"
 
