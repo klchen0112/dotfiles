@@ -53,6 +53,7 @@
         skyapps.fish-vscode
         # markdown
         yzhang.markdown-all-in-one
+        mirone.milkdown
 
         # python
         ms-python.python
@@ -294,6 +295,10 @@
 
       "nix.enableLanguageServer" = true;
       "nix.serverPath" = "nil";
+
+      "workbench.editorAssociations" = {
+        "*.md" = "milkdown.editor";
+      };
     };
   };
 }
