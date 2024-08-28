@@ -50,7 +50,7 @@ in {
         imagemagick
         # mpvi required
         tesseract5
-        ffmpeg_5
+        ffmpeg
         ffmpegthumbnailer
         mediainfo
         # email
