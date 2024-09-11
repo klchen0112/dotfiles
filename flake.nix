@@ -121,6 +121,7 @@
         "homebrew/homebrew-core" = homebrew-core;
         "homebrew/homebrew-cask" = homebrew-cask;
         "homebrew/homebrew-services" = homebrew-services;
+        "homebrew-bundle" = homebrew-bundle;
         "filosottile/musl-cross" = homebrew-musl-cross;
       };
     in {
@@ -162,7 +163,7 @@
                 # Optional: Enable fully-declarative tap management
                 #
                 # With mutableTaps disabled, taps can no longer be added imperatively with `brew tap`.
-                mutableTaps = true;
+                mutableTaps = false;
                 # Automatically migrate existing Homebrew installations
                 autoMigrate = false;
               };
@@ -255,6 +256,10 @@
       };
       homebrew-services = {
         url = "github:homebrew/homebrew-services";
+        flake = false;
+      };
+      homebrew-bundle = {
+        url = "github:homebrew/homebrew-bundle";
         flake = false;
       };
       homebrew-musl-cross = {

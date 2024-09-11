@@ -31,7 +31,7 @@
       #
 
       # symbol font
-      symbola
+      # symbola
 
       # chinese font
       lxgw-wenkai
@@ -71,7 +71,7 @@
         ];
       })
 
-      Jigmo
+      # Jigmo
     ];
   };
 }
