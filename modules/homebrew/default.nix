@@ -102,9 +102,9 @@
         # "balenaetcher"
         # "todesk"
         "marginnote"
-        "nutstore"
+        # "nutstore"
         "discord"
-        "openvpn-connect"
+        # "openvpn-connect"
         "activitywatch"
         "sfm"
 
