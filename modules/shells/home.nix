@@ -32,10 +32,10 @@
       };
       work_config = {
         "http \"github.com\"" = {
-          "proxy" = "socks5://127.0.0.1:7890";
+          "proxy" = "socks5h://127.0.0.1:7890";
         };
         "http \"https://github.com\"" = {
-          "proxy" = "socks5://127.0.0.1:7890";
+          "proxy" = "socks5h://127.0.0.1:7890";
         };
       };
     in
