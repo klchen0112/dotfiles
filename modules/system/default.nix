@@ -63,7 +63,7 @@
       dates = "weekly";
       options = "--delete-older-than 2d";
     };
-    package = pkgs.nix;
+    package = pkgs.nixVersions.latest;
     registry.nixpkgs.flake = inputs.nixpkgs;
     extraOptions = ''
       experimental-features = nix-command flakes
@@ -74,7 +74,7 @@
 
   system = {
     autoUpgrade = {
-      enable = false;
+      enable = true;
       channel = "https://nixos.org/channels/nixos-unstable";
     };
     stateVersion = "22.11";

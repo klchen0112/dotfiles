@@ -27,7 +27,7 @@
         # For supercede
         core.symlinks = true;
         #protocol.keybase.allow = "always";
-        credential.helper = "store --file ~/.git-credentials";
+        credential.helper = "store --file ~/.config/git/git-credentials";
         pull.rebase = "false";
       };
       work_config = {

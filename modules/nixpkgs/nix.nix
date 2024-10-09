@@ -8,7 +8,7 @@
   ...
 }: {
   nix = {
-    package = pkgs.nix;
+    package = pkgs.nixVersions.latest;
     gc = {
       # Garbage collection
       automatic = true;

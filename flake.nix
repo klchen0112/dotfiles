@@ -29,7 +29,7 @@
       "devenv.cachix.org-1:w1cLUi8dv3hnoSPGAuibQv+f9TZLr6cv/Hm9XgU50cw="
       "rycee.cachix.org-1:TiiXyeSk0iRlzlys4c7HiXLkP3idRf20oQ/roEUAh/A="
     ];
-    trusted-users = ["root" "@wheel"];
+    trusted-users = ["root" "@wheel" "chenkailong_dxm" "klchen"];
   };
 
   outputs = inputs @ {
@@ -37,7 +37,6 @@
     nixpkgs,
     home-manager,
     darwin,
-    nix-homebrew,
     pre-commit-hooks,
     nix-on-droid,
     ...
@@ -116,15 +115,7 @@
           ];
         };
     };
-    darwinConfigurations = let
-      hombrew-taps = with inputs; {
-        "homebrew/homebrew-core" = homebrew-core;
-        "homebrew/homebrew-cask" = homebrew-cask;
-        "homebrew/homebrew-services" = homebrew-services;
-        "homebrew-bundle" = homebrew-bundle;
-        "filosottile/musl-cross" = homebrew-musl-cross;
-      };
-    in {
+    darwinConfigurations = {
       "mbp-m1" = let
         username = "klchen";
         userEmail = "klchen0112@gmail.com";
@@ -148,26 +139,7 @@
               home-manager.users.${username} =
                 import ./hosts/mbp-m1/default.nix;
             }
-            nix-homebrew.darwinModules.nix-homebrew
-            {
-              nix-homebrew = {
-                # Install Homebrew under the default prefix
-                enable = true;
-
-                # Apple Silicon Only: Also install Homebrew under the default Intel prefix for Rosetta 2
-                enableRosetta = false;
-
-                # User owning the Homebrew prefix
-                user = username;
-                taps = hombrew-taps;
-                # Optional: Enable fully-declarative tap management
-                #
-                # With mutableTaps disabled, taps can no longer be added imperatively with `brew tap`.
-                mutableTaps = false;
-                # Automatically migrate existing Homebrew installations
-                autoMigrate = false;
-              };
-            }
+            inputs.brew-nix.darwinModules.default
             inputs.agenix.darwinModules.default
           ];
         };
@@ -194,26 +166,7 @@
               home-manager.users.${username} =
                 import ./hosts/mbp-m2-dxm/default.nix;
             }
-            nix-homebrew.darwinModules.nix-homebrew
-            {
-              nix-homebrew = {
-                # Install Homebrew under the default prefix
-                enable = true;
-
-                # Apple Silicon Only: Also install Homebrew under the default Intel prefix for Rosetta 2
-                enableRosetta = false;
-
-                # User owning the Homebrew prefix
-                user = username;
-                taps = hombrew-taps;
-                # Optional: Enable fully-declarative tap management
-                #
-                # With mutableTaps disabled, taps can no longer be added imperatively with `brew tap`.
-                mutableTaps = true;
-                # Automatically migrate existing Homebrew installations
-                autoMigrate = false;
-              };
-            }
+            inputs.brew-nix.darwinModules.default
             inputs.agenix.darwinModules.default
           ];
         };
@@ -239,31 +192,18 @@
         inputs.nixpkgs.follows = "nixpkgs";
       };
 
-      nix-homebrew = {
-        url = "github:zhaofengli-wip/nix-homebrew";
-        inputs.nixpkgs.follows = "nixpkgs";
-        inputs.nix-darwin.follows = "darwin";
-        inputs.flake-utils.follows = "flake-utils";
-      };
       # Optional: Declarative tap management
-      homebrew-core = {
-        url = "github:homebrew/homebrew-core";
-        flake = false;
+      brew-nix = {
+        # for local testing via `nix flake check` while developing
+        #url = "path:../";
+        url = "github:BatteredBunny/brew-nix";
+        inputs.nix-darwin.follows = "darwin";
+        inputs.brew-api.follows = "brew-api";
+        inputs.flake-utils.follows = "flake-utils";
+        inputs.nixpkgs.follows = "nixpkgs";
       };
-      homebrew-cask = {
-        url = "github:homebrew/homebrew-cask";
-        flake = false;
-      };
-      homebrew-services = {
-        url = "github:homebrew/homebrew-services";
-        flake = false;
-      };
-      homebrew-bundle = {
-        url = "github:homebrew/homebrew-bundle";
-        flake = false;
-      };
-      homebrew-musl-cross = {
-        url = "github:filosottile/homebrew-musl-cross";
+      brew-api = {
+        url = "github:BatteredBunny/brew-api";
         flake = false;
       };
 

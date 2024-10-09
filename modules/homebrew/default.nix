@@ -8,6 +8,75 @@
   isWork ? true,
   ...
 }: {
+  brew-nix.enable = true;
+  environment.systemPackages = with pkgs.brewCasks;
+    [
+      # sf-symbols
+      # squirrel
+      #anki
+      snipaste
+      # google-chrome
+      firefox
+
+      appcleaner
+
+      #baidunetdisk
+
+      # keyboardcleantool
+      ## keyboard
+
+      #vial
+      ## Coding
+      dash
+
+      omnidisksweeper
+
+      # xnviewmp
+
+      zotero
+      skim
+      # zerotier-one
+      # TidGi
+      # mathpix-snipping-tool
+      # "logi-options-plus"
+      # marginnote
+      raycast
+      # sol
+      plexamp
+      syncthing
+      # mpv
+      iina
+
+      licecap
+      # Keyboard
+      # hhkbStudio
+      # "microsoft-remote-desktop"
+    ]
+    ++ lib.optionals isWork [
+      iterm2
+    ]
+    ++ lib.optionals (!isWork) [
+      sunloginclient
+      adrive
+      steam
+      # balenaetcher
+      # todesk
+      marginnote
+      # nutstore
+      discord
+      # openvpn-connect
+      activitywatch
+      sfm
+
+      # keyboard
+      qmk-toolbox
+      openscad
+
+      # vpn
+      tailscale
+
+      telegram
+    ];
   homebrew = {
     # Declare Homebrew using Nix-Darwin
     enable = true;
@@ -23,7 +92,7 @@
         "Bitwarden" = 1352778147;
         wechat = 836500024;
         qq = 451108668;
-        dingtalk = 1435447041;
+        # dingtalk = 1435447041;
         xcode = 497799835;
         spark = 1176895641;
       }
@@ -39,83 +108,11 @@
         }
       );
 
-    taps = builtins.attrNames config.nix-homebrew.taps;
     brews = [
       # "macism"
       "mas"
-      "sleepwatcher"
-      "musl-cross"
+      #"sleepwatcher"
+      #"musl-cross"
     ];
-    caskArgs = {no_quarantine = true;};
-    casks =
-      [
-        "sf-symbols"
-        "squirrel"
-        "anki"
-        "snipaste"
-        "google-chrome"
-        "firefox"
-
-        "appcleaner"
-
-        "baidunetdisk"
-
-        "keyboardcleantool"
-        # keyboard
-
-        "vial"
-
-        # Coding
-        "dash"
-
-        "omnidisksweeper"
-
-        "xnviewmp"
-
-        "zotero"
-        "skim"
-        # "zerotier-one"
-
-        # "TidGi"
-        # "mathpix-snipping-tool"
-        "logi-options-plus"
-        "marginnote"
-        "raycast"
-        # "sol"
-        "plexamp"
-        "syncthing"
-        # "mpv"
-        "iina"
-
-        "licecap"
-        # Keyboard
-        "hhkb-studio"
-        "microsoft-remote-desktop"
-      ]
-      ++ lib.optionals isWork [
-        "iterm2"
-      ]
-      ++ lib.optionals (!isWork) [
-        "sunloginclient"
-        "adrive"
-        "steam"
-        # "balenaetcher"
-        # "todesk"
-        "marginnote"
-        # "nutstore"
-        "discord"
-        # "openvpn-connect"
-        "activitywatch"
-        "sfm"
-
-        # keyboard
-        "qmk-toolbox"
-        "openscad"
-
-        # vpn
-        "tailscale"
-
-        "telegram"
-      ];
   };
 }
