@@ -13,7 +13,7 @@
     [
       # sf-symbols
       # squirrel
-      #anki
+      anki
       snipaste
       # google-chrome
       firefox
@@ -23,9 +23,7 @@
       #baidunetdisk
 
       # keyboardcleantool
-      ## keyboard
 
-      #vial
       ## Coding
       dash
 
@@ -50,7 +48,7 @@
       licecap
       # Keyboard
       # hhkbStudio
-      # "microsoft-remote-desktop"
+      # microsoft-remote-desktop
     ]
     ++ lib.optionals isWork [
       iterm2
@@ -61,7 +59,7 @@
       steam
       # balenaetcher
       # todesk
-      marginnote
+      # marginnote
       # nutstore
       discord
       # openvpn-connect
@@ -71,6 +69,7 @@
       # keyboard
       qmk-toolbox
       openscad
+      vial
 
       # vpn
       tailscale
@@ -113,6 +112,13 @@
       "mas"
       #"sleepwatcher"
       #"musl-cross"
+    ];
+    taps = [
+      "homebrew/cask"
+    ];
+    casks = [
+      "microsoft-remote-desktop"
+      "google-chrome"
     ];
   };
 }
