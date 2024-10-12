@@ -19,9 +19,6 @@
       # You can also add overlays exported from other flakes:
       inputs.emacs-overlay.overlays.default
       # inputs.nixpkgs-wayland.overlay
-      inputs.hyprpaper.overlays.default
-      inputs.hyprpicker.overlays.default
-      inputs.hyprcontrib.overlays.default
       # inputs.devenv.overlays.default
       inputs.nix-vscode-extensions.overlays.default
       # neovim-nightly-overlay.overlays.default

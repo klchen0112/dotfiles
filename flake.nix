@@ -7,9 +7,9 @@
       "https://mirrors.tuna.tsinghua.edu.cn/nix-channels/store"
       # "https://mirror.sjtu.edu.cn/nix-channels/store"
       "https://cache.nixos.org"
+      "https://cosmic.cachix.org/"
     ];
     extra-substituters = [
-      "https://hyprland.cachix.org"
       "https://anyrun.cachix.org"
       "https://nix-community.cachix.org"
       "https://nixpkgs-wayland.cachix.org"
@@ -24,10 +24,10 @@
       "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
       "nixpkgs-wayland.cachix.org-1:3lwxaILxMRkVhehr5StQprHdEo4IrE8sRho9R9HOLYA="
       "anyrun.cachix.org-1:pqBobmOjI7nKlsUMV25u9QHa9btJK65/C8vnO3p346s="
-      "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
       "ruixi-rebirth.cachix.org-1:sWs3V+BlPi67MpNmP8K4zlA3jhPCAvsnLKi4uXsiLI4="
       "devenv.cachix.org-1:w1cLUi8dv3hnoSPGAuibQv+f9TZLr6cv/Hm9XgU50cw="
       "rycee.cachix.org-1:TiiXyeSk0iRlzlys4c7HiXLkP3idRf20oQ/roEUAh/A="
+      "cosmic.cachix.org-1:Dya9IyXD4xdBehWjrkPv6rtxpmMdRel02smYzA85dPE="
     ];
     trusted-users = ["root" "@wheel" "chenkailong_dxm" "klchen"];
   };
@@ -93,9 +93,9 @@
           system = "x86_64-linux";
           specialArgs = {inherit inputs username outputs;};
           modules = [
-            # hyprland.nixosModules.default
             ./machines/i12500
             inputs.agenix.nixosModules.default
+            inputs.nixos-cosmic.nixosModules.default
           ];
         };
     };
@@ -229,6 +229,7 @@
         inputs.darwin.follows = "darwin";
         inputs.home-manager.follows = "home-manager";
         inputs.nixpkgs.follows = "nixpkgs";
+        inputs.systems.follows = "systems";
       };
 
       # add git hooks to format nix code before commit
@@ -342,62 +343,17 @@
         inputs.emacs-overlay.follows = "emacs-overlay";
       };
 
-      # hyprland
-
-      # nixpkgs-wayland = {
-      #   url = "github:nix-community/nixpkgs-wayland";
-      #   inputs.nixpkgs.follows = "nixpkgs";
-      #   inputs.flake-compat.follows = "flake-compat";
-      #   inputs.nix-eval-jobs.follows = "nix-eval-jobs";
-      #   inputs.lib-aggregate.follows = "lib-aggregate";
-      # };
-
-      hyprland = {
-        # Official Hyprland flake
-        url = "github:hyprwm/Hyprland/v0.33.1";
+      nixos-cosmic = {
+        url = "github:lilyinstarlight/nixos-cosmic";
         inputs.nixpkgs.follows = "nixpkgs";
-        inputs.systems.follows = "systems";
-        inputs.hyprland-protocols.follows = "hyprland-protocols";
-      };
-
-      hyprland-protocols = {
-        # Official Hyprland flake
-        url = "github:hyprwm/hyprland-protocols";
-        inputs.nixpkgs.follows = "nixpkgs";
-        inputs.systems.follows = "systems";
-      };
-
-      hyprpaper = {
-        url = "github:hyprwm/hyprpaper";
-        inputs.nixpkgs.follows = "nixpkgs";
-        inputs.systems.follows = "systems";
-        inputs.hyprlang.follows = "hyprlang";
-      };
-
-      hyprpicker = {
-        url = "github:hyprwm/hyprpicker";
-        inputs.nixpkgs.follows = "nixpkgs";
-      };
-
-      hyprcontrib = {
-        url = "github:hyprwm/contrib";
-        inputs.nixpkgs.follows = "nixpkgs";
-      };
-
-      hyprlang = {
-        url = "github:hyprwm/hyprlang";
-        inputs.nixpkgs.follows = "nixpkgs";
-        inputs.systems.follows = "systems";
+        inputs.flake-compat.follows = "flake-compat";
       };
 
       anyrun = {
         url = "github:Kirottu/anyrun";
         inputs.nixpkgs.follows = "nixpkgs";
-      };
-
-      hycov = {
-        url = "github:DreamMaoMao/hycov";
-        inputs.hyprland.follows = "hyprland";
+        inputs.flake-parts.follows = "flake-parts";
+        inputs.systems.follows = "systems";
       };
 
       nixpkgs-firefox-darwin = {

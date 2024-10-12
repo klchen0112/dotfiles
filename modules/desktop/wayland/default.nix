@@ -11,7 +11,7 @@
   programs = {
     hyprland = {
       enable = true;
-      package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.default;
+      # package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.default;
       xwayland = {
         enable = true;
         # hidpi = true;
