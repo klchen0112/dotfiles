@@ -205,6 +205,7 @@
 
 (use-package transwin
   :config
+  (setq transwin--current-alpha 80)
   (setq transwin-delta-alpha 5)
   (setq transwin-parameter-alpha 'alpha-background)
 )
