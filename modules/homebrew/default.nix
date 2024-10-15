@@ -40,7 +40,7 @@
       # marginnote
       raycast
       # sol
-      plexamp
+
       syncthing
       # mpv
       iina
@@ -65,7 +65,7 @@
       # openvpn-connect
       activitywatch
       sfm
-
+      plexamp
       # keyboard
       qmk-toolbox
       openscad
