@@ -4,8 +4,8 @@
     extra-experimental-features = "nix-command flakes";
     substituters = [
       # replace official cache with a mirror located in China
-      "https://mirrors.tuna.tsinghua.edu.cn/nix-channels/store"
-      # "https://mirror.sjtu.edu.cn/nix-channels/store"
+      # "https://mirrors.tuna.tsinghua.edu.cn/nix-channels/store"
+      "https://mirror.sjtu.edu.cn/nix-channels/store"
       "https://cache.nixos.org"
       "https://cosmic.cachix.org/"
     ];
@@ -139,7 +139,7 @@
               home-manager.users.${username} =
                 import ./hosts/mbp-m1/default.nix;
             }
-            inputs.brew-nix.darwinModules.default
+            # inputs.brew-nix.darwinModules.default
             inputs.agenix.darwinModules.default
           ];
         };
