@@ -139,7 +139,7 @@
               home-manager.users.${username} =
                 import ./hosts/mbp-m1/default.nix;
             }
-            # inputs.brew-nix.darwinModules.default
+            inputs.brew-nix.darwinModules.default
             inputs.agenix.darwinModules.default
           ];
         };

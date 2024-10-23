@@ -54,9 +54,9 @@
       iterm2
     ]
     ++ lib.optionals (!isWork) [
-      sunloginclient
-      adrive
-      steam
+      # sunloginclient
+      # adrive
+      # steam
       # balenaetcher
       # todesk
       # marginnote
@@ -72,7 +72,7 @@
       vial
 
       # vpn
-      tailscale
+      # tailscale
 
       telegram
     ];
@@ -119,6 +119,8 @@
     casks = [
       "microsoft-remote-desktop"
       "google-chrome"
+      "adrive"
+      "steam"
     ];
   };
 }
