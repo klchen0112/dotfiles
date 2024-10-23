@@ -9,15 +9,15 @@
 }: let
   emacsPackage =
     if pkgs.stdenv.hostPlatform.isDarwin
-    then pkgs.emacsPlus30
+    then pkgs.emacsPlus31
     else pkgs.emacs29-pgtk;
 in {
   imports = [inputs.nix-doom-emacs-unstraightened.hmModule];
 
-  home.file.".cache/doom/nix/rime" = {
-    source = "${inputs.own-rime}";
-    recursive = true;
-  };
+  # home.file.".cache/doom/nix/rime" = {
+  #   source = "${inputs.own-rime}";
+  #   recursive = true;
+  # };
 
   programs.pandoc.enable = true;
 
@@ -66,7 +66,7 @@ in {
       ];
     extraPackages = epkgs:
       with epkgs; [
-        vterm
+        # vterm
         treesit-grammars.with-all-grammars
         # rime
         telega

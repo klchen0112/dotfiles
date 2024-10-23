@@ -8,7 +8,7 @@
   TsangerJinKai02 = inputs.own-nur.packages.${pkgs.system}.TsangerJinKai02;
   Jigmo = inputs.own-nur.packages.${pkgs.system}.Jigmo;
 
-  emacsPlus30 = inputs.emacs-overlay.packages.${pkgs.system}.emacs-git.overrideAttrs (old: {
+  emacsPlus31 = inputs.emacs-overlay.packages.${pkgs.system}.emacs-git.overrideAttrs (old: {
     patches =
       (old.patches or [])
       ++ [
