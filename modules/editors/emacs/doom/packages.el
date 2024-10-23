@@ -11,9 +11,9 @@
 
 (package! transwin)
 
-;;(if IS-MAC
-;;    (package! emt :recipe (:host github :repo "roife/emt") :pin ;; "7bea66de1b26d3f3f1cf9e940b269809c0c531b9")
-;;)
+(if IS-MAC
+   (package! emt :recipe (:host github :repo "roife/emt"))
+)
 
 (package! dired-preview)
 
@@ -25,14 +25,9 @@
 (package! org-modern)
 (package! org-appear)
 
-;;(package! doct
-;;  :recipe (:host github :repo "progfolio/doct"))
-
 ;;(unpin! org-roam)
-(package! org-roam)
 
 ;;(unpin! org-roam-ui)
-(package! org-roam-ui)
 
 (package! consult-org-roam)
 (package! emacsql-sqlite-builtin)
@@ -59,25 +54,14 @@
 ;; (package! copilot
 ;;   :recipe (:host github :repo "copilot-emacs/copilot.el" :files ("*.el" "dist"))
 ;; )
-(package! gptel)
-
-(package! treesit-auto)
+;; (package! gptel)
 
 ;;(package! ts-docstr
 ;;  :recipe (:host github :repo "emacs-vs/ts-docstr" :files (:defaults "langs/*.el")))
 
 (if IS-MAC (package! micromamba))
 
-;;(when (executable-find "xelatex")
-;;  (package! xenops)
-;;)
-
-;;(package! org-xlatex :recipe (:host github :repo "ksqsf/org-xlatex"))
-
 (if IS-MAC (package! dash-at-point))
-
-;;(package! copilot
-;;  :recipe (:host github :repo "zerolfx/copilot.el" :files ("*.el" "dist")))
 
 (package! just-mode)
 (package! justl)

@@ -479,13 +479,12 @@
 :END:
 #+begin_src emacs-lisp :tangle packages.el
 (package! info-colors)
-
 #+end_src
 
 #+begin_src emacs-lisp :tangle config.el
 (use-package! info-colors
-:hook (Info-selection-hook . info-colors-fontify-node)
-)
+  :hook (Info-selection-hook . info-colors-fontify-node)
+  )
 
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
@@ -527,24 +526,18 @@
   (pcase appearance
     ('light (load-theme (random-choice doom-themes-light) t))
     ('dark  (load-theme (random-choice doom-themes-dark) t))
-))
+    ))
 
 
 
 (after! doom-themes
   (if IS-MAC (add-hook 'ns-system-appearance-change-functions #'my/apply-theme)
-  (setq doom-theme 'doom-nano-light)))
-
-
-
+    (setq doom-theme 'doom-nano-light)))
 
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
 
 (setq display-line-numbers-type 'relative)
-
-(setq doom-fallback-buffer-name "► Doom"
-      +doom-dashboard-name "► Doom")
 
 #+end_src
 ** dashboard
@@ -577,18 +570,18 @@
 * Editor
 ** 分词
 #+begin_src emacs-lisp :tangle packages.el
-;;(if IS-MAC
-;;    (package! emt :recipe (:host github :repo "roife/emt") :pin ;; "7bea66de1b26d3f3f1cf9e940b269809c0c531b9")
-;;)
+(if IS-MAC
+   (package! emt :recipe (:host github :repo "roife/emt"))
+)
 #+end_src
 
 #+begin_src emacs-lisp :tangle config.el
-;; (use-package emt
-  ;; :defer t
-  ;; :hook (after-init . emt-mode)
-  ;; :config
-  ;; (setq emt-lib-path (concat doom-emacs-dir "EMT/libEMT.dylib"))
-;; )
+(use-package emt
+  :defer t
+  :hook (after-init . emt-mode)
+  :config
+  (setq emacs-macos-tokenizer-lib-path (concat user-emacs-directory "EMT/libEMT.dylib"))
+)
 #+end_src
 ** Meow
 :PROPERTIES:
@@ -840,7 +833,6 @@
 (use-package! pangu-spacing
   :defer t
   :config
-
   (setq pangu-spacing-real-insert-separtor t)
 )
 #+end_src
@@ -850,7 +842,6 @@
 :ID:       6d187859-ed0e-4994-8651-0744708518c5
 :END:
 #+begin_src emacs-lisp :tangle config.el
-
 (setq my/bib (concat "~/org/" "academic.bib"))
 (setq my/notes (concat "~/org/" "references"))
 (setq my/library-files "~/Documents/org-pdfs")
@@ -1073,10 +1064,7 @@ citar need vertico
 
 #+end_src
 
-** org-download :ATTACH:
-:PROPERTIES:
-:ID:       1e1e87f9-323b-46b6-87b1-0748b585dac3
-:END:
+** org-download
 #+begin_src emacs-lisp conf :tangle config.el
 ;; config org download
 (use-package! org-download
@@ -1088,11 +1076,6 @@ citar need vertico
   (setq org-download-heading-lvl 'nil)
 )
 #+end_src
-
-
-
-** org babel
-
 ** org-agenda
 :PROPERTIES:
 :ID:       ee84bfc0-3e42-4a8d-a9c2-2d8c3093d06d
@@ -1121,49 +1104,6 @@ citar need vertico
    "⭠ now ─────────────────────────────────────────────────")
 )
 #+end_src
-** org ppt
-:PROPERTIES:
-:ID:       06f8936a-d6b2-4e5e-b2e1-a1c8ff3ad6e0
-:END:
-#+begin_src emacs-lisp conf :tangle config.el
-;;(use-package! org-re-reveal
-;;  :after org
-;;  :config
-;;  (setq org-re-reveal-width 1200)
-;;  (setq org-re-reveal-height 1000)
-;;  (setq org-re-reveal-margin "0.1")
-;;  (setq org-re-reveal-min-scale "0.5")
-;;  (setq org-re-reveal-max-scale "2.5")
-;;  (setq org-re-reveal-transition "cube")
-;;  (setq org-re-reveal-control t)
-;;  (setq org-re-reveal-center t)
-;;  (setq org-re-reveal-progress t)
-;;  (setq org-re-reveal-history nil)
-;;)
-#+end_src
-** org mode enhance
-:PROPERTIES:
-:ID:       10967870-52c8-4195-9b79-a1a929cb7969
-:END:
-#+begin_src emacs-lisp :conf :tangle config.el
-#+end_src
-** org capture
-:PROPERTIES:
-:ID:       990855ee-96c3-46f1-b16c-7105f6094ca0
-:END:
-#+begin_src emacs-lisp :tangle packages.el
-;;(package! doct
-;;  :recipe (:host github :repo "progfolio/doct"))
-#+end_src
-
-~doct~ (Declarative Org Capture Templates) seems to be a nicer way to set up org-capture.
-
-#+begin_src elisp :tangle config.el
-(use-package! org-capture
-  :after org
-  :defer t
-  )
-#+end_src
 ** org hugo
 :PROPERTIES:
 :ID:       a7fb163c-1d82-4670-ac10-a6180cac2cfb
@@ -1187,10 +1127,8 @@ citar need vertico
 :END:
 #+begin_src elisp :tangle packages.el
 ;;(unpin! org-roam)
-(package! org-roam)
 
 ;;(unpin! org-roam-ui)
-(package! org-roam-ui)
 
 (package! consult-org-roam)
 (package! emacsql-sqlite-builtin)
@@ -1664,7 +1602,7 @@ Refer to `org-agenda-prefix-format' for more information."
 ;; (package! copilot
 ;;   :recipe (:host github :repo "copilot-emacs/copilot.el" :files ("*.el" "dist"))
 ;; )
-(package! gptel)
+;; (package! gptel)
 #+end_src
 
 #+begin_src emacs-lisp :tangle config.el
@@ -1744,16 +1682,6 @@ Refer to `org-agenda-prefix-format' for more information."
 #+end_src
 
 * Lang
-** TreeSitter
-#+begin_src emacs-lisp :tangle packages.el
-(package! treesit-auto)
-#+end_src
-
-#+begin_src emacs-lisp :tangle config.el
-(use-package treesit-auto
-  :config
-  (global-treesit-auto-mode))
-#+end_src
 ** Docstr
 #+begin_src emacs-lisp :tangle packages.el
 ;;(package! ts-docstr
@@ -1790,65 +1718,8 @@ Refer to `org-agenda-prefix-format' for more information."
   (use-package! micromamba)
 )
 #+end_src
-*
 ** Latex mode
 *** Latex Preview
-**** xenops
-async latex view
-***** Package
-:PROPERTIES:
-:ID:       815a26d8-1c63-4443-909d-bb9de95bba7d
-:END:
-#+begin_src emacs-lisp conf :tangle packages.el
-;;(when (executable-find "xelatex")
-;;  (package! xenops)
-;;)
-#+end_src
-
-***** config
-:PROPERTIES:
-:ID:       adc082be-eeac-46ea-b23a-05294f26cb58
-:END:
-#+begin_src emacs-lisp conf :tangle config.el
-;;(use-package! xenops
-;;    :after org
-;;    :hook
-;;    (org-mode . xenops-mode)
-;;    (latex-mode . xenops-mode)
-;;    (LaTex-mode . xenops-mode)
-;;    :config
-;;    (setq xenops-reveal-on-entry t
-;;          ;;xenops-image-directory (expand-file-name "xenops/image" doom-cache-dir)
-;;          xenops-math-latex-process 'xelatex)
-;;)
-
-
-;;(after! xenops
-;;  (defun xenops-math-block-delimiter-lines-regexp ()
-;;    "A regexp matching the start or end line of any block math element."
-;;    (format "\\(%s\\)"
-;;            (s-join "\\|"
-;;                    (apply #'append (xenops-elements-get-for-types '(block-math table algorithm) :delimiters)))))
-;;  (defun xenops-math-parse-element-at-point ()
-;;    "Parse any math element at point."
-;;    (or (xenops-math-parse-inline-element-at-point)
-;;        (xenops-math-parse-block-element-at-point)
-;;        (xenops-math-parse-table-at-point)
-;;        (xenops-math-parse-algorithm-at-point)))
-;;
-;;  (defun xenops-math-parse-algorithm-at-point ()
-;;    "Parse algorithm element at point."
-;;    (xenops-parse-element-at-point 'algorithm))
-;;
-;;
-;;  (add-to-list 'xenops-elements '(algorithm
-;;                                  (:delimiters
-;;                                   ("^[ 	]*\\\\begin{algorithm}"
-;;                                    "^[ 	]*\\\\end{algorithm}"))
-;;                                  (:parser . xenops-math-parse-algorithm-at-point)
-;;                                  (:handlers . block-math)))
-;;  )
-#+end_src
 **** fontify
 #+begin_src emacs-lisp :tangle config.el
 (setq font-latex-match-reference-keywords
@@ -1916,24 +1787,6 @@ async latex view
         ("Autoref" "{")))
 
 #+end_src
-**** org-xlatex
-***** package
-:PROPERTIES:
-:ID:       beb542d5-9260-4973-b108-c18423e1976d
-:END:
-#+begin_src emacs-lisp conf :tangle packages.el
-;;(package! org-xlatex :recipe (:host github :repo "ksqsf/org-xlatex"))
-#+end_src
-***** config
-:PROPERTIES:
-:ID:       a72eacbd-b4dc-4afd-8265-3c2b47091a6b
-:END:
-#+begin_src emacs-lisp conf :tangle config.el
-;;(use-package org-xlatex
-;;  :after org
-  ;;:hook (org-mode . org-xlatex-mode)
-;;)
-#+end_src
 ** 大纲
 #+begin_src emacs-lisp :tangle config.el
 ;; 为 latex 提供折叠大纲功能
@@ -1959,25 +1812,6 @@ use dash open app dash
  (add-to-list 'dash-at-point-mode-alist '(python-mode . "python3,django,twisted,sphinx,flask,tornado,sqlalchemy,numpy,scipy,saltcvp,torch,torchvision"))
 ))
 #+END_SRC
-** Copilot
-:PROPERTIES:
-:ID:       54b794a2-a5f3-4ac9-a8ce-5526c340ea3d
-:END:
-#+begin_src emacs-lisp :tangle packages.el
-;;(package! copilot
-;;  :recipe (:host github :repo "zerolfx/copilot.el" :files ("*.el" "dist")))
-#+end_src
-
-#+begin_src emacs-lisp :tangle config.el
-;; accept completion from copilot and fallback to company
-;;(use-package! copilot
-;;  :hook (prog-mode . copilot-mode)
-;;  :bind (:map copilot-completion-map
-;;              ("<tab>" . 'copilot-accept-completion)
-;;              ("TAB" . 'copilot-accept-completion)
-;;              ("C-TAB" . 'copilot-accept-completion-by-word)
-;;              ("C-<tab>" . 'copilot-accept-completion-by-word)))
-#+end_src
 ** just
 #+begin_src emacs-lisp :tangle packages.el
 (package! just-mode)
@@ -2181,11 +2015,11 @@ use dash open app dash
 #+begin_src emacs-lisp :tangle no
 (use-package! org-ai
   ;;:commands (org-ai-mode org-ai-global-mode)
-  :hook (org-mode . org-ai-mode)
+  ;; :hook (org-mode . org-ai-mode)
   :after org
   :defer t
-  :init
-  (org-ai-global-mode)
+  ;; :init
+  ;; (org-ai-global-mode)
   :config
   ;;(setq org-ai-default-chat-model "gpt-4") ; if you are on the gpt-4 beta:
   (org-ai-install-yasnippets)
@@ -2199,7 +2033,7 @@ use dash open app dash
 
 
 #+begin_src emacs-lisp :tangle config.el
-(use-package alert
+(use-package! alert
   :defer t
   :config
   (if IS-MAC
@@ -2231,24 +2065,6 @@ use dash open app dash
 #+end_src
 
 * Other module
-** Time tracking
-:PROPERTIES:
-:ID:       ea697417-3b23-406f-b821-7fd01c60d7e5
-:END:
-#+begin_src emacs-lisp :tangle no
-;; (package! wakatime-mode)
-#+end_src
-
-#+begin_src emacs-lisp :tangle no
-;; (use-package! wakatime-mode
-;; :defer t
-;;   :config
-;;   (setq wakatime-cli-path
-;;     (cond (IS-MAC "/etc/profiles/per-user/klchen/bin/wakatime-cli")
-;;           (IS-WINDOWS "~/.wakatime/wakatime-cli")))
-;;   (global-wakatime-mode)
-;; )
-#+end_src
 ** openwith
 #+begin_src emacs-lisp :tangle packages.el
 (package! openwith)
@@ -2274,24 +2090,6 @@ use dash open app dash
 #+end_src
 
 
-
-** Keyfreq
-:PROPERTIES:
-:ID:       82dfd063-35af-436e-8453-c1351c96e768
-:END:
-
-#+begin_src emacs-lisp :tangle no
-(package! keyfreq)
-#+end_src
-
-#+begin_src emacs-lisp :tangle no
-(use-package! keyfreq
-  :defer t
-  :config
-  (setq keyfreq-mode t
-        keyfreq-autosave-mode t)
-)
-#+end_src
 ** activitywatch
 #+begin_src emacs-lisp :tangle packages.el
 ;;(package! activity-watch-mode)

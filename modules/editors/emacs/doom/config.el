@@ -135,8 +135,8 @@
 )
 
 (use-package! info-colors
-:hook (Info-selection-hook . info-colors-fontify-node)
-)
+  :hook (Info-selection-hook . info-colors-fontify-node)
+  )
 
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
@@ -178,24 +178,18 @@
   (pcase appearance
     ('light (load-theme (random-choice doom-themes-light) t))
     ('dark  (load-theme (random-choice doom-themes-dark) t))
-))
+    ))
 
 
 
 (after! doom-themes
   (if IS-MAC (add-hook 'ns-system-appearance-change-functions #'my/apply-theme)
-  (setq doom-theme 'doom-nano-light)))
-
-
-
+    (setq doom-theme 'doom-nano-light)))
 
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
 
 (setq display-line-numbers-type 'relative)
-
-(setq doom-fallback-buffer-name "► Doom"
-      +doom-dashboard-name "► Doom")
 
 ;; this code from https://randomgeekery.org/config/emacs/doom/
 
@@ -208,12 +202,12 @@
   (setq transwin-parameter-alpha 'alpha-background)
 )
 
-;; (use-package emt
-  ;; :defer t
-  ;; :hook (after-init . emt-mode)
-  ;; :config
-  ;; (setq emt-lib-path (concat doom-emacs-dir "EMT/libEMT.dylib"))
-;; )
+(use-package emt
+  :defer t
+  :hook (after-init . emt-mode)
+  :config
+  (setq emacs-macos-tokenizer-lib-path (concat user-emacs-directory "EMT/libEMT.dylib"))
+)
 
 (setq auto-save-default t)
 
@@ -236,7 +230,6 @@
 (use-package! pangu-spacing
   :defer t
   :config
-
   (setq pangu-spacing-real-insert-separtor t)
 )
 
@@ -443,28 +436,6 @@
    org-agenda-current-time-string
    "⭠ now ─────────────────────────────────────────────────")
 )
-
-;;(use-package! org-re-reveal
-;;  :after org
-;;  :config
-;;  (setq org-re-reveal-width 1200)
-;;  (setq org-re-reveal-height 1000)
-;;  (setq org-re-reveal-margin "0.1")
-;;  (setq org-re-reveal-min-scale "0.5")
-;;  (setq org-re-reveal-max-scale "2.5")
-;;  (setq org-re-reveal-transition "cube")
-;;  (setq org-re-reveal-control t)
-;;  (setq org-re-reveal-center t)
-;;  (setq org-re-reveal-progress t)
-;;  (setq org-re-reveal-history nil)
-;;)
-
-
-
-(use-package! org-capture
-  :after org
-  :defer t
-  )
 
 (use-package! ox-hugo
   :after org-capture ox
@@ -916,10 +887,6 @@ Refer to `org-agenda-prefix-format' for more information."
     ;; (setq codeium/document/c
     ;;      ursor_offset 'my-codeium/document/cursor_offset))
 
-(use-package treesit-auto
-  :config
-  (global-treesit-auto-mode))
-
 ;;(use-package! ts-docstr
 ;;:config
 ;;(setq ts-docstr-key-support t)
@@ -932,45 +899,6 @@ Refer to `org-agenda-prefix-format' for more information."
 (if IS-MAC
   (use-package! micromamba)
 )
-
-;;(use-package! xenops
-;;    :after org
-;;    :hook
-;;    (org-mode . xenops-mode)
-;;    (latex-mode . xenops-mode)
-;;    (LaTex-mode . xenops-mode)
-;;    :config
-;;    (setq xenops-reveal-on-entry t
-;;          ;;xenops-image-directory (expand-file-name "xenops/image" doom-cache-dir)
-;;          xenops-math-latex-process 'xelatex)
-;;)
-
-
-;;(after! xenops
-;;  (defun xenops-math-block-delimiter-lines-regexp ()
-;;    "A regexp matching the start or end line of any block math element."
-;;    (format "\\(%s\\)"
-;;            (s-join "\\|"
-;;                    (apply #'append (xenops-elements-get-for-types '(block-math table algorithm) :delimiters)))))
-;;  (defun xenops-math-parse-element-at-point ()
-;;    "Parse any math element at point."
-;;    (or (xenops-math-parse-inline-element-at-point)
-;;        (xenops-math-parse-block-element-at-point)
-;;        (xenops-math-parse-table-at-point)
-;;        (xenops-math-parse-algorithm-at-point)))
-;;
-;;  (defun xenops-math-parse-algorithm-at-point ()
-;;    "Parse algorithm element at point."
-;;    (xenops-parse-element-at-point 'algorithm))
-;;
-;;
-;;  (add-to-list 'xenops-elements '(algorithm
-;;                                  (:delimiters
-;;                                   ("^[ 	]*\\\\begin{algorithm}"
-;;                                    "^[ 	]*\\\\end{algorithm}"))
-;;                                  (:parser . xenops-math-parse-algorithm-at-point)
-;;                                  (:handlers . block-math)))
-;;  )
 
 (setq font-latex-match-reference-keywords
        '(;; BibLaTeX.
@@ -1036,11 +964,6 @@ Refer to `org-agenda-prefix-format' for more information."
         ("autoref" "{")
         ("Autoref" "{")))
 
-;;(use-package org-xlatex
-;;  :after org
-  ;;:hook (org-mode . org-xlatex-mode)
-;;)
-
 ;; 为 latex 提供折叠大纲功能
 (use-package outline
   :hook
@@ -1053,15 +976,6 @@ Refer to `org-agenda-prefix-format' for more information."
   :config
  (add-to-list 'dash-at-point-mode-alist '(python-mode . "python3,django,twisted,sphinx,flask,tornado,sqlalchemy,numpy,scipy,saltcvp,torch,torchvision"))
 ))
-
-;; accept completion from copilot and fallback to company
-;;(use-package! copilot
-;;  :hook (prog-mode . copilot-mode)
-;;  :bind (:map copilot-completion-map
-;;              ("<tab>" . 'copilot-accept-completion)
-;;              ("TAB" . 'copilot-accept-completion)
-;;              ("C-TAB" . 'copilot-accept-completion-by-word)
-;;              ("C-<tab>" . 'copilot-accept-completion-by-word)))
 
 (use-package! just-mode
   :defer t)
@@ -1183,7 +1097,7 @@ Refer to `org-agenda-prefix-format' for more information."
   ;;(setq telega-server-libs-prefix)
 )
 
-(use-package alert
+(use-package! alert
   :defer t
   :config
   (if IS-MAC
