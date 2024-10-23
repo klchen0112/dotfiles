@@ -65,7 +65,7 @@
 
 ;; Framing Size
 ;; start the initial frame maximized
-;;(add-hook 'window-setup-hook #'toggle-frame-maximized)
+(add-hook 'window-setup-hook #'toggle-frame-maximized)
 ;;(add-hook 'window-setup-hook #'toggle-frame-fullscreen)
 
 ;; no title bar
@@ -134,6 +134,10 @@
         doom-serif-font (font-spec :family "Cascadia Code"  :size 23)))
 )
 
+(use-package! info-colors
+:hook (Info-selection-hook . info-colors-fontify-node)
+)
+
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
@@ -193,12 +197,6 @@
 (setq doom-fallback-buffer-name "► Doom"
       +doom-dashboard-name "► Doom")
 
-(use-package! info-colors
-  :defer t
-  :commands (info-colors-fontify-node))
-
-(add-hook! 'Info-selection-hook 'info-colors-fontify-node)
-
 ;; this code from https://randomgeekery.org/config/emacs/doom/
 
 (setq menu-bar-mode t)
@@ -210,9 +208,6 @@
   (setq transwin-parameter-alpha 'alpha-background)
 )
 
-;;(use-package jieba
-;;  :commands jieba-mode
-;;  :init (jieba-mode))
 ;; (use-package emt
   ;; :defer t
   ;; :hook (after-init . emt-mode)
@@ -248,39 +243,6 @@
 (setq my/bib (concat "~/org/" "academic.bib"))
 (setq my/notes (concat "~/org/" "references"))
 (setq my/library-files "~/Documents/org-pdfs")
-
-(use-package! org-ref
-  :defer t)
-
-;;(use-package! bibtex-completion
-;;  :config
-;;  (setq
-;;  bibtex-completion-bibliography my/bib
-;;  bibtex-completion-pdf-field "file"
-;;  bibtex-completion-notes-path my/notes
-;;  bibtex-completion-additional-search-fields '(keywords)
-;;  bibtex-completion-display-formats
-;;	'((article       . "${=has-pdf=:1}${=has-note=:1} ${year:4} ${author:36} ${title:*} ${journal:40}")
-;;	  (inbook        . "${=has-pdf=:1}${=has-note=:1} ${year:4} ${author:36} ${title:*} Chapter ${chapter:32}")
-;;	  (incollection  . "${=has-pdf=:1}${=has-note=:1} ${year:4} ${author:36} ${title:*} ${booktitle:40}")
-;;	  (inproceedings . "${=has-pdf=:1}${=has-note=:1} ${year:4} ${author:36} ${title:*} ${booktitle:40}")
-;;	  (t             . "${=has-pdf=:1}${=has-note=:1} ${year:4} ${author:36} ${title:*}")))
-;;  bibtex-completion-notes-template-multiple-files
-;;    (concat
-;;    "#+TITLE: ${title}\n"
-;;    "#+filetags: ${keywords}\n"
-;;    "* TODO Notes\n"
-;;    ":PROPERTIES:\n"
-;;    ":ID: ${=key=}\n"
-;;    ":NOTER_DOCUMENT: %(orb-process-file-field \"${=key=}\")\n"
-;;    ":AUTHOR: ${author-abbrev}\n"
-;;    ":JOURNAL: ${journaltitle}\n"
-;;    ":DATE: ${date}\n"
-;;    ":YEAR: ${year}\n"
-;;    ":DOI: ${doi}\n"
-;;    ":URL: ${url}\n"
-;;    ":END:\n\n")
-;;)
 
 (use-package! citar
   :defer t
@@ -430,21 +392,6 @@
   (org-special-keyword ((t (:inherit 'fixed-pitch))))
 )
 
-;;(use-package! org-visual-outline
-;;  :after org
-;;  :hook
-;;  (org-mode . org-dynamic-bullets-mode)
-;;  (org-mode . org-visual-indent-mode)
-;;
-;;  )
-
-
-(use-package! visual-fill-column
-  :after org
-  :defer t
-  :custom
-  (visual-fill-column-width 80))
-
 (use-package! org-modern
   :after org
   :defer t
@@ -465,17 +412,8 @@
         )
 )
 
-;;(use-package! valign
-;;  :hook
-;;  (org-mode . valign-mode)
-;;  (markdown-mode . valign-mode)
-;;  :config
-;;  (setq valign-fancy-bar 1)
-;;)
-
 ;; config org download
 (use-package! org-download
-  ;;:hook ((org-mode dired-mode) . org-download-enable)
   :after org
   :defer t
   :config
@@ -483,36 +421,6 @@
   (setq org-download-image-dir "~/Library/Mobile Documents/com~apple~CloudDocs/Documents/org-attach")
   (setq org-download-heading-lvl 'nil)
 )
-
-;; config org-mode
-;;(use-package! org-mind-map
-;;  :config
-;;  (setq org-mind-map-engine "dot")
-;;)
-
-;; config org brain
-;;(use-package! org-brain
-;;  :after org
-;;  :hook
-;;  (before-save-hook . #'org-brain-ensure-ids-in-buffer)
-;;  :init
-;;  (setq org-brain-path (concat org-directory "brain"))
-;;  ;; For Evil users
-;;  (with-eval-after-load 'evil
-;;    (evil-set-initial-state 'org-brain-visualize-mode 'emacs))
-;;  :config
-;;  (setq org-id-track-globally t)
-;;  (setq org-id-locations-file (concat org-directory ".orgids"))
-;;  (add-hook 'before-save-hook )
-;;  (setq org-brain-visualize-default-choices 'all)
-;;  (setq org-brain-title-max-length 12)
-;;  (setq org-brain-include-file-entries nil
-;;        org-brain-file-entries-use-title nil))
-
-;; Allows you to edit entries directly from org-brain-visualize
-;;(use-package! polymode
-;;  :config
-;;  (add-hook 'org-brain-visualize-mode-hook #'org-brain-polymode))
 
 (use-package! org-agenda
   :after org
@@ -1273,18 +1181,6 @@ Refer to `org-agenda-prefix-format' for more information."
   :defer t
   ;;:config
   ;;(setq telega-server-libs-prefix)
-)
-
-(use-package! org-ai
-  ;;:commands (org-ai-mode org-ai-global-mode)
-  :hook (org-mode . org-ai-mode)
-  :after org
-  :defer t
-  :init
-  (org-ai-global-mode)
-  :config
-  ;;(setq org-ai-default-chat-model "gpt-4") ; if you are on the gpt-4 beta:
-  (org-ai-install-yasnippets)
 )
 
 (use-package alert

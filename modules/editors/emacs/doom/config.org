@@ -111,10 +111,10 @@
        vc                ; version-control and Emacs, sitting in a tree
 
        :term
-       ;;eshell            ; the elisp shell that works everywhere
+       eshell            ; the elisp shell that works everywhere
        ;;shell             ; simple shell REPL for Emacs
        ;;term              ; basic terminal emulator for Emacs
-       vterm             ; the best terminal emulation in Emacs
+       ;;vterm             ; the best terminal emulation in Emacs
 
        :checkers
        (syntax +childframe +icons +flymake)               ; tasing you for every semicolon you forget
@@ -282,9 +282,6 @@
 #+begin_src emacs-lisp conf :tangle packages.el
 ;; -*- no-byte-compile: t; -*-
 ;;; $DOOMDIR/packages.el
-(disable-packages! evil-escape)
-;;(unpin! lsp-mode)
-;;(unpin! forge)
 #+end_src
 * Basic setting
 ** Simple Settings
@@ -400,7 +397,7 @@
 #+begin_src emacs-lisp conf :tangle config.el
 ;; Framing Size
 ;; start the initial frame maximized
-;;(add-hook 'window-setup-hook #'toggle-frame-maximized)
+(add-hook 'window-setup-hook #'toggle-frame-maximized)
 ;;(add-hook 'window-setup-hook #'toggle-frame-fullscreen)
 
 ;; no title bar
@@ -486,6 +483,10 @@
 #+end_src
 
 #+begin_src emacs-lisp :tangle config.el
+(use-package! info-colors
+:hook (Info-selection-hook . info-colors-fontify-node)
+)
+
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
@@ -545,11 +546,6 @@
 (setq doom-fallback-buffer-name "► Doom"
       +doom-dashboard-name "► Doom")
 
-(use-package! info-colors
-  :defer t
-  :commands (info-colors-fontify-node))
-
-(add-hook! 'Info-selection-hook 'info-colors-fontify-node)
 #+end_src
 ** dashboard
 :PROPERTIES:
@@ -581,16 +577,12 @@
 * Editor
 ** 分词
 #+begin_src emacs-lisp :tangle packages.el
-;;(package! jieba :recipe (:host github :repo "cireu/jieba.el"))
-;; (if IS-MAC
-  ;; (package! emt :recipe (:host github :repo "roife/emt") :pin "7bea66de1b26d3f3f1cf9e940b269809c0c531b9")
-;; )
+;;(if IS-MAC
+;;    (package! emt :recipe (:host github :repo "roife/emt") :pin ;; "7bea66de1b26d3f3f1cf9e940b269809c0c531b9")
+;;)
 #+end_src
 
 #+begin_src emacs-lisp :tangle config.el
-;;(use-package jieba
-;;  :commands jieba-mode
-;;  :init (jieba-mode))
 ;; (use-package emt
   ;; :defer t
   ;; :hook (after-init . emt-mode)
@@ -863,86 +855,12 @@
 (setq my/notes (concat "~/org/" "references"))
 (setq my/library-files "~/Documents/org-pdfs")
 #+end_src
-** zotero
-:PROPERTIES:
-:ID:       7d0676d7-b53d-4d62-9a1b-bbb49f7a06a7
-:END:
 
-#+begin_src emacs-lisp :tangle packages.el
-;; (package! zotxt)
-#+end_src
-** ebib
-:PROPERTIES:
-:ID:       7836596d-a800-473d-9b3f-1479562dcbe4
-:END:
-#+begin_src emacs-lisp :tangle packages.el
-;;(package! ebib)
-#+end_src
-** org-ref
-:PROPERTIES:
-:ID:       169a5d75-2f84-407b-a18e-844701c58ddc
-:END:
-#+begin_src emacs-lisp :tangle packages.el
-(package! org-ref)
-#+end_src
-
-#+begin_src emacs-lisp :tangle config.el
-(use-package! org-ref
-  :defer t)
-#+end_src
-
-** bibtex-completion
-:PROPERTIES:
-:ID:       eca0c369-5074-473a-9a55-724e47bafc60
-:END:
-#+begin_src emacs-lisp :tangle packages.el
-;;(package! bibtex-completion)
-#+end_src
-
-
-#+begin_src emacs-lisp :tangle config.el
-;;(use-package! bibtex-completion
-;;  :config
-;;  (setq
-;;  bibtex-completion-bibliography my/bib
-;;  bibtex-completion-pdf-field "file"
-;;  bibtex-completion-notes-path my/notes
-;;  bibtex-completion-additional-search-fields '(keywords)
-;;  bibtex-completion-display-formats
-;;	'((article       . "${=has-pdf=:1}${=has-note=:1} ${year:4} ${author:36} ${title:*} ${journal:40}")
-;;	  (inbook        . "${=has-pdf=:1}${=has-note=:1} ${year:4} ${author:36} ${title:*} Chapter ${chapter:32}")
-;;	  (incollection  . "${=has-pdf=:1}${=has-note=:1} ${year:4} ${author:36} ${title:*} ${booktitle:40}")
-;;	  (inproceedings . "${=has-pdf=:1}${=has-note=:1} ${year:4} ${author:36} ${title:*} ${booktitle:40}")
-;;	  (t             . "${=has-pdf=:1}${=has-note=:1} ${year:4} ${author:36} ${title:*}")))
-;;  bibtex-completion-notes-template-multiple-files
-;;    (concat
-;;    "#+TITLE: ${title}\n"
-;;    "#+filetags: ${keywords}\n"
-;;    "* TODO Notes\n"
-;;    ":PROPERTIES:\n"
-;;    ":ID: ${=key=}\n"
-;;    ":NOTER_DOCUMENT: %(orb-process-file-field \"${=key=}\")\n"
-;;    ":AUTHOR: ${author-abbrev}\n"
-;;    ":JOURNAL: ${journaltitle}\n"
-;;    ":DATE: ${date}\n"
-;;    ":YEAR: ${year}\n"
-;;    ":DOI: ${doi}\n"
-;;    ":URL: ${url}\n"
-;;    ":END:\n\n")
-;;)
-
-
-#+end_src
 ** citar
 :PROPERTIES:
 :ID:       108a861b-bfd8-4e47-b634-4ead3d291b4e
 :END:
 citar need vertico
-#+begin_src emacs-lisp conf :tangle packages.el
-
-(package! citar)
-(package! embark)
-#+end_src
 
 #+begin_src emacs-lisp :tangle config.el
 (use-package! citar
@@ -995,12 +913,6 @@ citar need vertico
 #+begin_src emacs-lisp :tangle packages.el
 ;; interact with org-roam and bibtex
 (package! org-roam-bibtex)
-
-;; doom support
-;;(package! citar-org-roam
-;;     :recipe (:host github :repo "emacs-citar/citar-org-roam"
-;;           :files ("*.el")))
-
 #+end_src
 
 
@@ -1054,89 +966,6 @@ citar need vertico
 #+end_src
 
 * org mode
-** org latex
-*** packages
-:PROPERTIES:
-:ID:       fda2f1d9-613c-4c98-a199-ed5c7663bc65
-:END:
-#+begin_src emacs-lisp :tangle packages.el
-
-;; (package! org :recipe
-;;   (:host nil :repo "https://git.tecosaur.net/mirrors/org-mode.git" :remote "mirror" :fork
-;;          (:host nil :repo "https://git.tecosaur.net/tec/org-mode.git" :branch "dev" :remote "tecosaur")
-;;          :files
-;;          (:defaults "etc")
-;;          :build t :pre-build
-;;          (with-temp-file "org-version.el"
-;;            (require 'lisp-mnt)
-;;            (let
-;;                ((version
-;;                  (with-temp-buffer
-;;                    (insert-file-contents "lisp/org.el")
-;;                    (lm-header "version")))
-;;                 (git-version
-;;                  (string-trim
-;;                   (with-temp-buffer
-;;                     (call-process "git" nil t nil "rev-parse" "--short" "HEAD")
-;;                     (buffer-string)))))
-;;              (insert
-;;               (format "(defun org-release () \"The release version of Org.\" %S)\n" version)
-;;               (format "(defun org-git-version () \"The truncate git commit hash of Org mode.\" %S)\n" git-version)
-;;               "(provide 'org-version)\n"))))
-;;   :pin nil)
-
-;; (unpin! org)
-#+end_src
-*** config
-#+begin_src emacs-lisp
-(use-package org-latex-preview
-  :defer t
-  :config
-  ;; Increase preview width
-  (plist-put org-latex-preview-appearance-options
-             :page-width 0.8)
-
-  ;; Use dvisvgm to generate previews
-  ;; You don't need this, it's the default:
-  (setq org-latex-preview-process-default 'dvisvgm)
-
-  ;; Turn on auto-mode, it's built into Org and much faster/more featured than
-  ;; org-fragtog. (Remember to turn off/uninstall org-fragtog.)
-  (add-hook 'org-mode-hook 'org-latex-preview-auto-mode)
-
-  ;; Block C-n and C-p from opening up previews when using auto-mode
-  (add-hook 'org-latex-preview-auto-ignored-commands 'next-line)
-  (add-hook 'org-latex-preview-auto-ignored-commands 'previous-line)
-
-  ;; Enable consistent equation numbering
-  (setq org-latex-preview-numbered t)
-
-  ;; Bonus: Turn on live previews.  This shows you a live preview of a LaTeX
-  ;; fragment and updates the preview in real-time as you edit it.
-  ;; To preview only environments, set it to '(block edit-special) instead
-  (setq org-latex-preview-live t)
-
-  (add-hook 'org-latex-preview-overlay-open-functions
-            (defun my/org-latex-preview-uncenter (ov)
-              (overlay-put ov 'before-string nil)))
-  (add-hook 'org-latex-preview-overlay-close-functions
-            (defun my/org-latex-preview-recenter (ov)
-              (overlay-put ov 'before-string (overlay-get ov 'justify))))
-  (defun my/org-latex-preview-center (ov)
-    (save-excursion
-      (goto-char (overlay-start ov))
-      (when-let* ((elem (org-element-context))
-                  ((or (eq (org-element-type elem) 'latex-environment)
-                       (string-match-p "^\\\\\\[" (org-element-property :value elem))))
-                  (img (overlay-get ov 'display))
-                  (prop `(space :align-to (- center (0.55 . ,img))))
-                  (justify (propertize " " 'display prop 'face 'default)))
-        (overlay-put ov 'justify justify)
-        (overlay-put ov 'before-string (overlay-get ov 'justify)))))
-
-  (add-hook 'org-latex-preview-overlay-update-functions
-            #'my/org-latex-preview-center))
-#+end_src
 ** 设置 org-variable
 :PROPERTIES:
 :ID:       9d20983d-4b67-409e-a118-e8131012e989
@@ -1215,28 +1044,11 @@ citar need vertico
 #+begin_src emacs-lisp conf :tangle packages.el
 (package! org-modern)
 (package! org-appear)
-;;(package! valign :recipe (:host github :repo "casouri/valign"))
-;;(package! org-superstar)
 
-;;(package! org-visual-outline)
 #+end_src
 
 
 #+begin_src emacs-lisp conf :tangle config.el
-;;(use-package! org-visual-outline
-;;  :after org
-;;  :hook
-;;  (org-mode . org-dynamic-bullets-mode)
-;;  (org-mode . org-visual-indent-mode)
-;;
-;;  )
-
-
-(use-package! visual-fill-column
-  :after org
-  :defer t
-  :custom
-  (visual-fill-column-width 80))
 
 (use-package! org-modern
   :after org
@@ -1258,13 +1070,6 @@ citar need vertico
         )
 )
 
-;;(use-package! valign
-;;  :hook
-;;  (org-mode . valign-mode)
-;;  (markdown-mode . valign-mode)
-;;  :config
-;;  (setq valign-fancy-bar 1)
-;;)
 
 #+end_src
 
@@ -1272,14 +1077,9 @@ citar need vertico
 :PROPERTIES:
 :ID:       1e1e87f9-323b-46b6-87b1-0748b585dac3
 :END:
-#+begin_src emacs-lisp conf :tangle packages.el
-(package! org-download)
-#+end_src
-
 #+begin_src emacs-lisp conf :tangle config.el
 ;; config org download
 (use-package! org-download
-  ;;:hook ((org-mode dired-mode) . org-download-enable)
   :after org
   :defer t
   :config
@@ -1292,57 +1092,6 @@ citar need vertico
 
 
 ** org babel
-** org mind map
-:PROPERTIES:
-:ID:       72e9d184-30da-46b7-a67a-ce1d3e796b10
-:END:
-#+begin_src emacs-lisp :tangle packages.el
-;;(package! org-mind-map :recipe (:host github :repo "the-ted/org-mind-map"
-;;                                :files ("*.el")))
-#+end_src
-
-#+begin_src emacs-lisp conf :tangle config.el
-
-;; config org-mode
-;;(use-package! org-mind-map
-;;  :config
-;;  (setq org-mind-map-engine "dot")
-;;)
-#+end_src
-** org-brain
-:PROPERTIES:
-:ID:       4363bd88-37fd-448e-8b22-6a42e6f7c19e
-:END:
-#+begin_src emacs-lisp conf :tangle packages.el
-;;(package! org-brain)
-;;(package! polymode)
-#+end_src
-
-#+begin_src emacs-lisp :conf :tangle config.el
-;; config org brain
-;;(use-package! org-brain
-;;  :after org
-;;  :hook
-;;  (before-save-hook . #'org-brain-ensure-ids-in-buffer)
-;;  :init
-;;  (setq org-brain-path (concat org-directory "brain"))
-;;  ;; For Evil users
-;;  (with-eval-after-load 'evil
-;;    (evil-set-initial-state 'org-brain-visualize-mode 'emacs))
-;;  :config
-;;  (setq org-id-track-globally t)
-;;  (setq org-id-locations-file (concat org-directory ".orgids"))
-;;  (add-hook 'before-save-hook )
-;;  (setq org-brain-visualize-default-choices 'all)
-;;  (setq org-brain-title-max-length 12)
-;;  (setq org-brain-include-file-entries nil
-;;        org-brain-file-entries-use-title nil))
-
-;; Allows you to edit entries directly from org-brain-visualize
-;;(use-package! polymode
-;;  :config
-;;  (add-hook 'org-brain-visualize-mode-hook #'org-brain-polymode))
-#+end_src
 
 ** org-agenda
 :PROPERTIES:
@@ -2425,11 +2174,11 @@ use dash open app dash
 #+end_src
 * AI+X
 ** org ai
-#+begin_src emacs-lisp :tangle packages.el
+#+begin_src emacs-lisp :tangle no
 (package! org-ai)
 #+end_src
 
-#+begin_src emacs-lisp :tangle config.el
+#+begin_src emacs-lisp :tangle no
 (use-package! org-ai
   ;;:commands (org-ai-mode org-ai-global-mode)
   :hook (org-mode . org-ai-mode)
