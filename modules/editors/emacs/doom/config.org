@@ -580,7 +580,7 @@
     :defer t
     :hook (after-init . emt-mode)
     :config
-    (setq emacs-macos-tokenizer-lib-path (concat user-emacs-directory "EMT/libEMT.dylib"))
+    (setq emt-lib-path (concat doom-data-dir "EMT/libEMT.dylib"))
   )
 )
 #+end_src
