@@ -111,7 +111,7 @@
   };
   programs.eza = {
     enable = true;
-    icons = "auto";
+    icons = true;
     git = true;
   };
   programs.bat = {
