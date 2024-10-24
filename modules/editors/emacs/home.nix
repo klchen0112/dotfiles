@@ -72,6 +72,7 @@ in {
         telega
       ];
     provideEmacs = true;
+    experimentalFetchTree = true;
   };
   services.emacs = {
     enable = pkgs.stdenv.isLinux;
