@@ -120,15 +120,15 @@
        (lookup +dictionary +docsets +offline)             ; navigate your code and its documentation
        (lsp +peek)              ; M-x vscode
        (magit             ; a git porcelain for Emacs
-        ;;+forge             ; interface with git forges
-        )
+        +forge             ; interface with git forges
+       )
        make              ; run make tasks from Emacs
        ;;pass              ; password manager for nerds
        pdf               ; pdf enhancements
        ;;prodigy           ; FIXME managing external services & code builders
        rgb               ; creating color strings
        taskrunner        ; taskrunner for all your projects
-       ;;tree-sitter
+       tree-sitter
        ;;terraform         ; infrastructure as code
        ;;tmux              ; an API for interacting with tmux
        upload            ; map local to remote projects via ssh/ftp
@@ -237,7 +237,7 @@
        ;;terra             ; Earth and Moon in alignment for performance.
        ;;(web +lsp)              ; the tubes
        (yaml +lsp
-             ;;+tree-sitter
+             +tree-sitter
        )              ; JSON, but readable
        ;;zig               ; C, but simpler
 
@@ -255,7 +255,7 @@
        ;;twitter           ; twitter client https://twitter.com/vnought
 
        :config
-       literate
+       ;; literate
        (default +bindings +smartparens))
 
 ;;TODO remove add to list
