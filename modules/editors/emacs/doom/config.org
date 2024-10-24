@@ -65,7 +65,7 @@
         +iosevka ; iosevka font ligatures
         +pragmata-pro ; Pragmata-Pro font ligatures
         )       ; ligatures and symbols to make your code pretty again
-       ;;minimap           ; show a map of the code on the side
+       minimap           ; show a map of the code on the side
        modeline          ; snazzy, Atom-inspired modeline, plus API
        nav-flash         ; blink cursor line after big motions
        ;;neotree           ; a project drawer, like NERDTree for vim
@@ -88,7 +88,8 @@
        file-templates    ; auto-snippets for files
        fold              ; (nigh) universal code folding
        (format ; automated prettiness
-        ;; +onsave ; only-changes
+         +onsave ; only-changes
+         +lsp
         )
        ;;god               ; run Emacs commands without modifier keys
        ;;lispy             ; vim for lisp, for people who don't like vim
@@ -134,15 +135,15 @@
        (lookup +dictionary +docsets +offline)             ; navigate your code and its documentation
        (lsp +peek)              ; M-x vscode
        (magit             ; a git porcelain for Emacs
-        ;;+forge             ; interface with git forges
-        )
+        +forge             ; interface with git forges
+       )
        make              ; run make tasks from Emacs
        ;;pass              ; password manager for nerds
        pdf               ; pdf enhancements
        ;;prodigy           ; FIXME managing external services & code builders
        rgb               ; creating color strings
        taskrunner        ; taskrunner for all your projects
-       ;;tree-sitter
+       tree-sitter
        ;;terraform         ; infrastructure as code
        ;;tmux              ; an API for interacting with tmux
        upload            ; map local to remote projects via ssh/ftp
@@ -251,7 +252,7 @@
        ;;terra             ; Earth and Moon in alignment for performance.
        ;;(web +lsp)              ; the tubes
        (yaml +lsp
-             ;;+tree-sitter
+             +tree-sitter
        )              ; JSON, but readable
        ;;zig               ; C, but simpler
 
@@ -269,7 +270,7 @@
        ;;twitter           ; twitter client https://twitter.com/vnought
 
        :config
-       literate
+       ;; literate
        (default +bindings +smartparens))
 
 ;;TODO remove add to list
@@ -1873,13 +1874,6 @@ use dash open app dash
                                               (graphviz-turn-on-live-preview)))))
 #+end_src
 * reader
-** pdf tools
-:PROPERTIES:
-:ID:       0e9cc110-63ef-4e95-a389-173f48b658df
-:END:
-#+begin_src emacs-lisp :tangle packages.el
-;;(unpin! pdf-tools)
-#+end_src
 ** org noter and nov
 :PROPERTIES:
 :ID:       e8eadfe1-c054-4638-9a34-1da12bbe3ae3
@@ -1892,14 +1886,6 @@ use dash open app dash
 
 
 #+begin_src emacs-lisp :tangle config.el
-(use-package pdf-tools
-  :defer t
-  :after org)
-
-(use-package pdf-view
-  :defer t
-  :after (:all org pdf-tools))
-
 (use-package! org-noter
   :after org
   :defer t
@@ -1909,41 +1895,6 @@ use dash open app dash
   (setq org-noter-auto-save-last-location t)
   (setq org-noter-doc-split-fraction '(0.52 0.48))
 )
-
-
-(after! org-noter
-  (defun eli/org-noter-set-highlight (&rest _arg)
-    "Highlight current org-noter note."
-    (save-excursion
-      (with-current-buffer (org-noter--session-notes-buffer org-noter--session)
-        (remove-overlays (point-min) (point-max) 'org-noter-current-hl t)
-        (goto-char (org-entry-beginning-position))
-        (let* ((hl (org-element-context))
-               (hl-begin (plist-get  (plist-get hl 'headline) :begin))
-               (hl-end (1- (plist-get  (plist-get hl 'headline) :contents-begin)))
-               (hl-ov (make-overlay hl-begin hl-end)))
-          (overlay-put hl-ov 'face 'mindre-keyword)
-          (overlay-put hl-ov 'org-noter-current-hl t))
-        (org-cycle-hide-drawers 'all))))
-  (advice-add #'org-noter--focus-notes-region
-              :after #'eli/org-noter-set-highlight)
-  (advice-add #'org-noter-insert-note
-              :after #'eli/org-noter-set-highlight)
-)
-
-;;(use-package! org-noter-nov-overlay)
-
-;;(use-package! org-noter-plus
-;;  :commands (org-noter-plus--follow-nov-link)
-;;  :config
-;;  (setq org-noter-plus-image-dir "~/org/.attach/") ;; Directory to store images extracted from pdf files
-;;)
-;;
-;;(after! nov
-;;  (org-link-set-parameters "nov"
-;;                           ;; Replace the default nov link to work better with org-noter
-;;                           :follow 'org-noter-plus--follow-nov-link)
-;;  )
 #+end_src
 ** org media note
 :PROPERTIES:

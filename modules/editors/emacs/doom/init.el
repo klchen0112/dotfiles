@@ -50,7 +50,7 @@
         +iosevka ; iosevka font ligatures
         +pragmata-pro ; Pragmata-Pro font ligatures
         )       ; ligatures and symbols to make your code pretty again
-       ;;minimap           ; show a map of the code on the side
+       minimap           ; show a map of the code on the side
        modeline          ; snazzy, Atom-inspired modeline, plus API
        nav-flash         ; blink cursor line after big motions
        ;;neotree           ; a project drawer, like NERDTree for vim
@@ -73,7 +73,8 @@
        file-templates    ; auto-snippets for files
        fold              ; (nigh) universal code folding
        (format ; automated prettiness
-        ;; +onsave ; only-changes
+         +onsave ; only-changes
+         +lsp
         )
        ;;god               ; run Emacs commands without modifier keys
        ;;lispy             ; vim for lisp, for people who don't like vim

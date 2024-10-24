@@ -67,8 +67,6 @@
 (package! graphviz-dot-mode)
 (package! ob-blockdiag)
 
-;;(unpin! pdf-tools)
-
 ;;(package! org-noter :recipe (:host github :repo "org-noter/org-noter"))
 
 ;;(package! org-noter-plus :recipe (:host github :repo "yuchen-lea/org-noter-plus"))

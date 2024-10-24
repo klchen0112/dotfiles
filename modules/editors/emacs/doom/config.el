@@ -1024,14 +1024,6 @@ Refer to `org-agenda-prefix-format' for more information."
                                                 (graphviz-turn-off-live-preview)
                                               (graphviz-turn-on-live-preview)))))
 
-(use-package pdf-tools
-  :defer t
-  :after org)
-
-(use-package pdf-view
-  :defer t
-  :after (:all org pdf-tools))
-
 (use-package! org-noter
   :after org
   :defer t
@@ -1041,41 +1033,6 @@ Refer to `org-agenda-prefix-format' for more information."
   (setq org-noter-auto-save-last-location t)
   (setq org-noter-doc-split-fraction '(0.52 0.48))
 )
-
-
-(after! org-noter
-  (defun eli/org-noter-set-highlight (&rest _arg)
-    "Highlight current org-noter note."
-    (save-excursion
-      (with-current-buffer (org-noter--session-notes-buffer org-noter--session)
-        (remove-overlays (point-min) (point-max) 'org-noter-current-hl t)
-        (goto-char (org-entry-beginning-position))
-        (let* ((hl (org-element-context))
-               (hl-begin (plist-get  (plist-get hl 'headline) :begin))
-               (hl-end (1- (plist-get  (plist-get hl 'headline) :contents-begin)))
-               (hl-ov (make-overlay hl-begin hl-end)))
-          (overlay-put hl-ov 'face 'mindre-keyword)
-          (overlay-put hl-ov 'org-noter-current-hl t))
-        (org-cycle-hide-drawers 'all))))
-  (advice-add #'org-noter--focus-notes-region
-              :after #'eli/org-noter-set-highlight)
-  (advice-add #'org-noter-insert-note
-              :after #'eli/org-noter-set-highlight)
-)
-
-;;(use-package! org-noter-nov-overlay)
-
-;;(use-package! org-noter-plus
-;;  :commands (org-noter-plus--follow-nov-link)
-;;  :config
-;;  (setq org-noter-plus-image-dir "~/org/.attach/") ;; Directory to store images extracted from pdf files
-;;)
-;;
-;;(after! nov
-;;  (org-link-set-parameters "nov"
-;;                           ;; Replace the default nov link to work better with org-noter
-;;                           :follow 'org-noter-plus--follow-nov-link)
-;;  )
 
 ;;(use-package! org-media-note
 ;;  :init (setq org-media-note-use-org-ref t)
