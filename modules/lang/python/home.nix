@@ -10,7 +10,7 @@
     # micromamba
   ];
   programs.micromamba = {
-    enable = true;
+    enable = false;
     package = pkgs.micromamba;
     enableFishIntegration = true;
     enableZshIntegration = true;

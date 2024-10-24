@@ -112,6 +112,7 @@
       "mas"
       #"sleepwatcher"
       #"musl-cross"
+      "micromamba"
     ];
     taps = [
       "homebrew/cask"
