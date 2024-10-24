@@ -202,11 +202,13 @@
   (setq transwin-parameter-alpha 'alpha-background)
 )
 
-(use-package emt
-  :defer t
-  :hook (after-init . emt-mode)
-  :config
-  (setq emacs-macos-tokenizer-lib-path (concat user-emacs-directory "EMT/libEMT.dylib"))
+(if IS-MAC
+  (use-package emt
+    :defer t
+    :hook (after-init . emt-mode)
+    :config
+    (setq emacs-macos-tokenizer-lib-path (concat user-emacs-directory "EMT/libEMT.dylib"))
+  )
 )
 
 (setq auto-save-default t)

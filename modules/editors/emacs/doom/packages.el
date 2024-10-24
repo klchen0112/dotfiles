@@ -11,9 +11,7 @@
 
 (package! transwin)
 
-(if IS-MAC
-   (package! emt :recipe (:host github :repo "roife/emt"))
-)
+(package! emt :recipe (:host github :repo "roife/emt") :pin "7bea66de1b26d3f3f1cf9e940b269809c0c531b9")
 
 (package! dired-preview)
 
