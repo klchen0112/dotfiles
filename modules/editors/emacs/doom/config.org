@@ -571,18 +571,18 @@
 * Editor
 ** 分词
 #+begin_src emacs-lisp :tangle packages.el
-;; (package! emt :recipe (:host github :repo "roife/emt") :pin "7bea66de1b26d3f3f1cf9e940b269809c0c531b9")
+(package! emt :recipe (:host github :repo "roife/emt" :files ("*.el" "module/*" "module")) :pin "7bea66de1b26d3f3f1cf9e940b269809c0c531b9")
 #+end_src
 
 #+begin_src emacs-lisp :tangle config.el
-;; (if IS-MAC
-;;   (use-package emt
-;;     :defer t
-;;     :hook (after-init . emt-mode)
-;;     :config
-;;     (setq emacs-macos-tokenizer-lib-path (concat user-emacs-directory "EMT/libEMT.dylib"))
-;;   )
-;; )
+(if IS-MAC
+  (use-package emt
+    :defer t
+    :hook (after-init . emt-mode)
+    :config
+    (setq emt-lib-path (concat doom-data-dir "EMT/libEMT.dylib"))
+  )
+)
 #+end_src
 ** Meow
 :PROPERTIES:
