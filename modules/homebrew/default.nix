@@ -115,7 +115,7 @@
       "micromamba"
     ];
     taps = [
-      "homebrew/cask"
+      # "homebrew/cask"
     ];
     casks = [
       "microsoft-remote-desktop"
