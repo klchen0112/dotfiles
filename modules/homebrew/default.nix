@@ -41,7 +41,6 @@
       raycast
       # sol
 
-      syncthing
       # mpv
       iina
 
@@ -51,9 +50,10 @@
       # microsoft-remote-desktop
     ]
     ++ lib.optionals isWork [
-      iterm2
+      # iterm2
     ]
     ++ lib.optionals (!isWork) [
+      syncthing
       # sunloginclient
       # adrive
       # steam
