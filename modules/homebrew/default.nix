@@ -122,6 +122,7 @@
       "google-chrome"
       "adrive"
       "steam"
+      "logi-options-plus"
     ];
   };
 }
