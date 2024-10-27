@@ -84,7 +84,7 @@
 
        :editor
        ;;(meow  +qwerty +override +leader)
-       (evil +everywhere); come to  dark side, we have cookies
+       ;; (evil +everywhere); come to  dark side, we have cookies
        file-templates    ; auto-snippets for files
        fold              ; (nigh) universal code folding
        (format ; automated prettiness
@@ -128,7 +128,7 @@
        ;;collab ; buffers with friends
        (debugger +lsp)          ; FIXME stepping through code, to help you add bugs
        direnv
-       (docker +lsp)
+       ;; (docker +lsp)
        editorconfig      ; let someone else argue about tabs vs spaces
        ;;ein               ; tame Jupyter notebooks with emacs
        (eval +overlay)     ; run code, run (also, repls)
@@ -589,7 +589,7 @@
 :ID:       ae971f56-8eff-42eb-a096-8a8a7febe736
 :END:
 
-#+begin_src emacs-lisp :tangle no
+#+begin_src emacs-lisp :tangle packages.el
 (package! meow)
 #+end_src
 
@@ -827,15 +827,15 @@
 #+end_src
 ** 自动在中英文间添加空格
 #+begin_src emacs-lisp :tangle packages.el
-(package! pangu-spacing)
+;;(package! pangu-spacing)
 #+end_src
 
 #+begin_src emacs-lisp :tangle yes
-(use-package! pangu-spacing
-  :defer t
-  :config
-  (setq pangu-spacing-real-insert-separtor t)
-)
+;;(use-package! pangu-spacing
+;;  :defer t
+;;  :config
+;;  (setq pangu-spacing-real-insert-separtor t)
+;;)
 #+end_src
 * Biblio
 ** init biblio

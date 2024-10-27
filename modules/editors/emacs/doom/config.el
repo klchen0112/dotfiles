@@ -229,11 +229,11 @@
   ;; globally:
   (dired-preview-global-mode 1))
 
-(use-package! pangu-spacing
-  :defer t
-  :config
-  (setq pangu-spacing-real-insert-separtor t)
-)
+;;(use-package! pangu-spacing
+;;  :defer t
+;;  :config
+;;  (setq pangu-spacing-real-insert-separtor t)
+;;)
 
 (setq my/bib (concat "~/org/" "academic.bib"))
 (setq my/notes (concat "~/org/" "references"))

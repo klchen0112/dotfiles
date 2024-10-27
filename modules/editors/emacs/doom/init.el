@@ -69,7 +69,7 @@
 
        :editor
        ;;(meow  +qwerty +override +leader)
-       (evil +everywhere); come to  dark side, we have cookies
+       ;; (evil +everywhere); come to  dark side, we have cookies
        file-templates    ; auto-snippets for files
        fold              ; (nigh) universal code folding
        (format ; automated prettiness
@@ -113,7 +113,7 @@
        ;;collab ; buffers with friends
        (debugger +lsp)          ; FIXME stepping through code, to help you add bugs
        direnv
-       (docker +lsp)
+       ;; (docker +lsp)
        editorconfig      ; let someone else argue about tabs vs spaces
        ;;ein               ; tame Jupyter notebooks with emacs
        (eval +overlay)     ; run code, run (also, repls)
