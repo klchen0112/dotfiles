@@ -335,6 +335,11 @@
       #   inputs.flake-utils.follows = "flake-utils";
       #   inputs.flake-compat.follows = "flake-compat";
       # };
+      doom = {
+        url = "github:klchen0112/doom";
+        flake = false;
+      };
+
       nix-doom-emacs-unstraightened = {
         url = "github:marienz/nix-doom-emacs-unstraightened";
         # Optional, to download less. Neither the module nor the overlay uses this input.

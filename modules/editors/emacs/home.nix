@@ -36,7 +36,7 @@ in {
   # doom-emacs will enable programs.emacs
   programs.doom-emacs = {
     enable = true;
-    doomDir = ./doom;
+    doomDir = inputs.doom;
     emacs = emacsPackage;
     extraBinPackages = with pkgs;
       [
@@ -70,9 +70,11 @@ in {
         treesit-grammars.with-all-grammars
         # rime
         telega
+        evil
+        meow
       ];
     provideEmacs = true;
-    experimentalFetchTree = true;
+    experimentalFetchTree = false;
   };
   services.emacs = {
     enable = pkgs.stdenv.isLinux;
