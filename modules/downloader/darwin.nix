@@ -7,6 +7,7 @@
   username,
   ...
 }: {
+  imports = [./module.nix];
   services.aria2 = {
     enable = true;
     logFile = "/tmp/aria2.log";
