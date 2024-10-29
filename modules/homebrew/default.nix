@@ -16,7 +16,6 @@
       anki
       snipaste
       # google-chrome
-      firefox
 
       appcleaner
 
@@ -122,7 +121,8 @@
       "google-chrome"
       "adrive"
       "steam"
-      "logi-options-plus"
+      # "logi-options-plus"
+      "firefox"
     ];
   };
 }
