@@ -9,6 +9,13 @@
 }: {
   programs.gpg = {enable = true;};
 
+  # `programs.git` will generate the config file: ~/.config/git/config
+  # to make git use this config file, `~/.gitconfig` should not exist!
+  #
+  #    https://git-scm.com/docs/git-config#Documentation/git-config.txt---global
+  home.activation.removeExistingGitconfig = lib.hm.dag.entryBefore ["checkLinkTargets"] ''
+    rm -f ~/.gitconfig
+  '';
   programs.git = {
     enable = true;
     package = pkgs.git;
@@ -17,10 +24,32 @@
     lfs.enable = true;
     userName = "klchen0112";
     userEmail = "klchen0112@gmail.com";
-    aliases = {co = "checkout";};
+    aliases = {
+      # common aliases
+      br = "branch";
+      co = "checkout";
+      st = "status";
+      ls = "log --pretty=format:\"%C(yellow)%h%Cred%d\\\\ %Creset%s%Cblue\\\\ [%cn]\" --decorate";
+      ll = "log --pretty=format:\"%C(yellow)%h%Cred%d\\\\ %Creset%s%Cblue\\\\ [%cn]\" --decorate --numstat";
+      cm = "commit -m";
+      ca = "commit -am";
+      dc = "diff --cached";
+      amend = "commit --amend -m";
+
+      # aliases for submodule
+      update = "submodule update --init --recursive";
+      foreach = "submodule foreach";
+    };
+    delta = {
+      enable = true;
+      options = {
+        features = "side-by-side";
+      };
+    };
     extraConfig = let
       base_config = {
         init.defaultBranch = "master"; # https://srid.ca/unwoke
+
         core.editor = "emacsclient";
         core.quotepath = false;
         core.autocrlf = false;
@@ -28,7 +57,8 @@
         core.symlinks = true;
         #protocol.keybase.allow = "always";
         credential.helper = "store --file ~/.config/git/git-credentials";
-        pull.rebase = "false";
+        pull.rebase = true;
+        push.autoSetupRemote = true;
       };
       work_config = {
         "http \"github.com\"" = {
@@ -111,7 +141,7 @@
   };
   programs.eza = {
     enable = true;
-    icons = true;
+    icons = "auto";
     git = true;
   };
   programs.bat = {
