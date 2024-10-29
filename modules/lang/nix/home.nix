@@ -9,5 +9,6 @@
     devbox
     statix
     deadnix
+    nix-fast-build
   ];
 }
