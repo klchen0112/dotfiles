@@ -70,7 +70,7 @@ in {
         treesit-grammars.with-all-grammars
         # rime
         telega
-        evil
+        # evil
         meow
       ];
     provideEmacs = true;
