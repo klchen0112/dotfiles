@@ -15,7 +15,7 @@
     package = pkgs.unstable.mamba-cpp;
   };
   programs.micromamba = {
-    enable = false;
+    enable = true;
     enableFishIntegration = true;
     enableZshIntegration = true;
   };
