@@ -184,7 +184,7 @@
     # All flake references used to build my NixOS setup. These are dependencies.
     {
       nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable"; # Nix Packages
-      nixpkgs-unstable.url = "github:nixos/nixpkgs/nixpkgs-unstable"; # Nix Packages
+      nixpkgs-unstable.url = "github:klchen0112/nixpkgs/mamba"; # Nix Packages
 
       #  MacOS
       darwin = {
