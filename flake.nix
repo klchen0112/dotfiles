@@ -143,7 +143,7 @@
             inputs.agenix.darwinModules.default
           ];
         };
-      "mbp-m2-dxm" = let
+      "mbp-dxm" = let
         username = "chenkailong_dxm";
         userEmail = "chenkailong@duxiaoman.com";
         isWork = true;
@@ -154,7 +154,7 @@
           # pkgs = nixpkgs.legacyPackages.aarch64-darwin;
           modules = [
             # Modules that are used
-            ./machines/mbp-m2-dxm
+            ./machines/mbp-dxm
             home-manager.darwinModules.home-manager
             {
               # Home-Manager module that is used
@@ -164,7 +164,7 @@
                 inherit username userEmail inputs outputs isWork;
               }; # Pass flake variable
               home-manager.users.${username} =
-                import ./hosts/mbp-m2-dxm/default.nix;
+                import ./hosts/mbp-dxm/default.nix;
             }
             inputs.brew-nix.darwinModules.default
             inputs.agenix.darwinModules.default

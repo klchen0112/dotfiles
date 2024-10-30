@@ -32,8 +32,8 @@ klcheni12500:
 mbp-m1:
 	darwin-rebuild switch --flake .#mbp-m1
 
-mbp-m2-dxm:
-	darwin-rebuild switch --flake .#mbp-m2-dxm
+mbp-dxm:
+	darwin-rebuild switch --flake .#mbp-dxm
 # Emacs
 emacs-test:
 	rm -rf "$HOME/.config/doom"
