@@ -15,7 +15,6 @@
     ../../modules/desktop/yabai
     ../../modules/homebrew
     ../../modules/editors/darwin.nix
-    ../../modules/downloader/module.nix
     ../../modules/downloader/darwin.nix
     ../../modules/secrets
   ];
