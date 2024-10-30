@@ -82,23 +82,22 @@
       # browser
       yabai -m rule --add app="Google Chrome"
       # chat
-      yabai -m rule --add app="^(Spark)$" --toggle float space=5 manage=on
-      yabai -m rule --add app="^(微信|WeChat)$" --toggle float space=5 manage=on
-      yabai -m rule --add app="^(QQ)$" --toggle float space=5 manage=on
-      yabai -m rule --add app="^(Duxiaomanchat)$" --toggle float space=5 manage=on
+      yabai -m rule --add app="^(微信|WeChat)$" --toggle float space=10 manage=off
+      yabai -m rule --add app="^(QQ)$" --toggle float space=10 manage=off
+      yabai -m rule --add app="^(小满说|Duxiaomanchat)$" --toggle float space=9 manage=off
 
       yabai -m rule --add app="^(Telegram)$" --toggle float space=3 manage=off
       yabai -m rule --add app="^(Discord)$"--toggle float space=3 manage=off
 
       # work
-      yabai -m rule --add app="^(钉钉|DingTalk)$"--toggle float space=4 manage=off
-      yabai -m rule --add app="飞书" space=^4 manage=off
+      yabai -m rule --add app="^(钉钉|DingTalk)$"--toggle float manage=off
+      yabai -m rule --add app="飞书" manage=off
 
       # mail
-      yabai -m rule --add app="Spark" space=^4 manage=off
+      yabai -m rule --add app="Spark" manage=off
 
       # music
-      yabai -m rule --add app="Plexamp" space=^6 manage=off
+      yabai -m rule --add app="Plexamp"  manage=off
 
       # video
       yabai -m rule --add label="mpv" app="^mpv$" manage=off space=^8
