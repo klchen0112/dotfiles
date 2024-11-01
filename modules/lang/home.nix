@@ -18,5 +18,5 @@
     ./yaml/home.nix
   ];
 
-  home.packages = with pkgs; [tree-sitter dockfmt];
+  home.packages = with pkgs; [dockfmt];
 }
