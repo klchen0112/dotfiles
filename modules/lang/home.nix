@@ -15,6 +15,7 @@
     ./python/home.nix
     ./rust/home.nix
     ./web/home.nix
+    ./yaml/home.nix
   ];
 
   home.packages = with pkgs; [tree-sitter dockfmt];
