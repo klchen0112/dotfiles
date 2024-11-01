@@ -123,6 +123,7 @@
       "steam"
       # "logi-options-plus"
       "firefox"
+      "zed"
     ];
   };
 }
