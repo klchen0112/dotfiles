@@ -12,6 +12,7 @@
     # ./jetbrains/home.nix
     ./emacs/home.nix
     ./vim/home.nix
+    ./zed/home.nix
   ];
   home.packages = with pkgs; [
     # wakatime
