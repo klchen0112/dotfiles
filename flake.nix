@@ -184,7 +184,7 @@
     # All flake references used to build my NixOS setup. These are dependencies.
     {
       nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable"; # Nix Packages
-      nixpkgs-unstable.url = "github:klchen0112/nixpkgs/mamba"; # Nix Packages
+      nixpkgs-unstable.url = "github:nixos/nixpkgs/master"; # Nix Packages
 
       #  MacOS
       darwin = {
@@ -318,7 +318,6 @@
         url = "github:nix-community/emacs-overlay/master";
         inputs.nixpkgs.follows = "nixpkgs-unstable";
         inputs.nixpkgs-stable.follows = "nixpkgs";
-        inputs.flake-utils.follows = "flake-utils";
       };
 
       # doom-emacs = {
