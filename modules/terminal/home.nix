@@ -64,10 +64,11 @@
     shellIntegration = {
       enableFishIntegration = true;
     };
+
     settings = {
       #-------------------------------------------- Font --------------------------------------------
       font_family = "Iosevka";
-      font_size = 13;
+      font_size = 14;
 
       #-------------------------------------------- Window --------------------------------------------
       hide_window_decorations =
@@ -87,6 +88,7 @@
         then "/etc/profiles/per-user/${username}/bin/fish --login --interactive"
         else "/etc/profiles/per-user/${username}/bin/fish";
       #-------------------------------------------- Macos Settings --------------------------------------------
+
       macos_titlebar_color = "system";
       macos_option_as_alt = true;
       macos_hide_from_tasks = false;
