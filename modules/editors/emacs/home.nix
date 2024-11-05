@@ -59,6 +59,8 @@ in {
         aspell
 
         pkg-config
+        # telega
+        libwebp
       ]
       ++ (lib.optionals pkgs.stdenv.isDarwin) [
         # pngpaste for org mode download clip
