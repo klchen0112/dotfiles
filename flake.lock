@@ -97,26 +97,6 @@
         "type": "github"
       }
     },
-    "demacs": {
-      "inputs": {
-        "emacs-overlay": ["emacs-overlay"],
-        "flake-utils": ["flake-utils"],
-        "nixpkgs": ["nixpkgs-unstable"]
-      },
-      "locked": {
-        "lastModified": 1730607132,
-        "narHash": "sha256-EoEkZdDOESA8+Iq73jUcrumwFkG9Tm5i5b4dJaezLn0=",
-        "owner": "dezzw",
-        "repo": "demacs",
-        "rev": "075063239003248263107a0843651af4e141496f",
-        "type": "github"
-      },
-      "original": {
-        "owner": "dezzw",
-        "repo": "demacs",
-        "type": "github"
-      }
-    },
     "devshell": {
       "inputs": {
         "nixpkgs": ["nixpkgs"]
@@ -154,16 +134,16 @@
     "doomemacs": {
       "flake": false,
       "locked": {
-        "lastModified": 1730548076,
-        "narHash": "sha256-NQdv5gWYsckwPoh00Lr6VN4IGERH/T08nHbzBhRadN4=",
-        "owner": "doomemacs",
-        "repo": "doomemacs",
-        "rev": "97c0dcc2c328fcc791333e149418c26096043758",
+        "lastModified": 1710891710,
+        "narHash": "sha256-fyMZAFr/l+Ydn0uhznhtuf8ODHfqODFogYCMhmPwc5s=",
+        "owner": "LuigiPiucco",
+        "repo": "doom-emacs",
+        "rev": "f9c0243211a4654347c7bb83daf5e80416739227",
         "type": "github"
       },
       "original": {
-        "owner": "doomemacs",
-        "repo": "doomemacs",
+        "owner": "LuigiPiucco",
+        "repo": "doom-emacs",
         "type": "github"
       }
     },
@@ -296,7 +276,7 @@
     },
     "nix-doom-emacs-unstraightened": {
       "inputs": {
-        "doomemacs": "doomemacs",
+        "doomemacs": ["doomemacs"],
         "emacs-overlay": ["emacs-overlay"],
         "nixpkgs": ["nixpkgs"],
         "systems": ["systems"]
@@ -719,9 +699,9 @@
         "brew-api": "brew-api",
         "brew-nix": "brew-nix",
         "darwin": "darwin",
-        "demacs": "demacs",
         "devshell": "devshell",
         "doom": "doom",
+        "doomemacs": "doomemacs",
         "emacs-overlay": "emacs-overlay",
         "flake-compat": "flake-compat",
         "flake-parts": "flake-parts",

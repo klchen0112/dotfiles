@@ -3,7 +3,7 @@
 {
   inputs,
   pkgs,
-}: {
+}: rec {
   # example = pkgs.callPackage ./example { };
   TsangerJinKai02 = inputs.own-nur.packages.${pkgs.system}.TsangerJinKai02;
   Jigmo = inputs.own-nur.packages.${pkgs.system}.Jigmo;
@@ -12,7 +12,7 @@
     old: {
       buildInputs =
         old.buildInputs
-        ++ [pkgs.xcodebuild];
+        ++ [pkgs.apple-sdk];
       # Define the build phase using the absolute path to xcodebuild and set DerivedData path
       buildPhase = ''
         echo "Building MPS on macOS using xcodebuild..."
@@ -45,6 +45,7 @@
         mkdir -p $out/include
         cp mps*.h $out/include/
       '';
+      meta.platforms = (old.meta.platforms or []) ++ ["aarch64-darwin"];
     }
   );
   # this code from https://github.com/dezzw/demacs/blob/main/flake.nix
@@ -66,7 +67,7 @@
       ];
     buildInputs =
       old.buildInputs
-      ++ [pkgs.xcodebuild pkgs.mps-darwin];
+      ++ [pkgs.xcodebuild mps-darwin];
     patches =
       (old.patches or [])
       ++ [

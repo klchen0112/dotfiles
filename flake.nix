@@ -263,10 +263,14 @@
 
       flake-compat = {
         url = "github:edolstra/flake-compat";
+        inputs.flake-parts.follows = "flake-parts";
         flake = false;
       };
 
-      nixpkgs-lib.url = "github:nix-community/nixpkgs.lib";
+      nixpkgs-lib = {
+        url = "github:nix-community/nixpkgs.lib";
+      };
+
       lib-aggregate = {
         # User Package Management
         url = "github:nix-community/lib-aggregate";
@@ -320,10 +324,10 @@
         inputs.nixpkgs-stable.follows = "nixpkgs";
       };
 
-      # doom-emacs = {
-      #   url = "github:LuigiPiucco/doom-emacs";
-      #   flake = false;
-      # };
+      doomemacs = {
+        url = "github:LuigiPiucco/doom-emacs";
+        flake = false;
+      };
 
       # nix-doom-emacs = {
       #   # Nix-community Doom Emacs
@@ -345,6 +349,7 @@
         inputs.nixpkgs.follows = "nixpkgs";
         inputs.systems.follows = "systems";
         inputs.emacs-overlay.follows = "emacs-overlay";
+        inputs.doomemacs.follows = "doomemacs";
       };
 
       nixos-cosmic = {
