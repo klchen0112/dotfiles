@@ -263,8 +263,6 @@
 
       flake-compat = {
         url = "github:edolstra/flake-compat";
-        inputs.flake-parts.follows = "flake-parts";
-        flake = false;
       };
 
       nixpkgs-lib = {
