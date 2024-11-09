@@ -122,10 +122,15 @@
           sha256 = "sha256-xrg9iAl0ZrfqzCnq0oact5XozRYOY/rP/MO8QdbIkM0=";
         })
         # alpha-background
-        # (pkgs.fetchpatch {
-        #   url = "https://raw.githubusercontent.com/sincebyte/neo-emacs/master/patches/emacs31/ns-alpha-background.patch";
-        #   sha256 = "sha256-3OG1tMpg/1jrP/gsnFCkqJ22OkS/d8voOUqiOk7iUkE=";
-        # })
+        (pkgs.fetchpatch {
+          url = "https://github.com/LuciusChen/.emacs.d/blob/main/patches/ns-alpha-background.patch";
+          sha256 = "sha256-3OG1tMpg/1jrP/gsnFCkqJ22OkS/d8voOUqiOk7iUkE=";
+        })
+        # ns-mac-input-source
+        (pkgs.fetchpatch {
+          url = "https://github.com/LuciusChen/.emacs.d/blob/main/patches/ns-mac-input-source.patch";
+          sha256 = "sha256-3OG1tMpg/1jrP/gsnFCkqJ22OkS/d8voOUqiOk7iUkE=";
+        })
       ];
     meta.platforms = pkgs.lib.platforms.darwin;
     meta.mainProgram = "emacs";
