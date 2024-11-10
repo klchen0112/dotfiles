@@ -56,7 +56,7 @@
       #   "https://mirrors.tuna.tsinghua.edu.cn/nix-channels/store"
       #   "https://cache.nixos.org/"
       # ];
-      auto-optimise-store = true; # Optimise syslinks
+      nix.optimise.automatic = true;
     };
     gc = {
       automatic = true;
@@ -77,6 +77,6 @@
       enable = true;
       channel = "https://nixos.org/channels/nixos-unstable";
     };
-    stateVersion = "22.11";
+    stateVersion = "24.11";
   };
 }
