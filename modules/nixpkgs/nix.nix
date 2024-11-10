@@ -24,7 +24,6 @@
       # options = "--delete-older-than 7d";
     };
     settings = {
-      nix.optimise.automatic = true;
       trusted-users = ["${username}"];
       experimental-features = ["nix-command" "flakes"];
       builders-use-substitutes = true;
