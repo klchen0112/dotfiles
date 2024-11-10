@@ -123,13 +123,13 @@
         })
         # alpha-background
         (pkgs.fetchpatch {
-          url = "https://github.com/LuciusChen/.emacs.d/blob/main/patches/ns-alpha-background.patch";
-          sha256 = "sha256-3OG1tMpg/1jrP/gsnFCkqJ22OkS/d8voOUqiOk7iUkE=";
+          url = "https://raw.githubusercontent.com/LuciusChen/.emacs.d/refs/heads/main/patches/ns-alpha-background.patch";
+          sha256 = "sha256-sJ74+0jshtt0KwASHrn23ZlIOPr4zy47Dh05UDic62s=";
         })
         # ns-mac-input-source
         (pkgs.fetchpatch {
-          url = "https://github.com/LuciusChen/.emacs.d/blob/main/patches/ns-mac-input-source.patch";
-          sha256 = "sha256-3OG1tMpg/1jrP/gsnFCkqJ22OkS/d8voOUqiOk7iUkE=";
+          url = "https://raw.githubusercontent.com/LuciusChen/.emacs.d/refs/heads/main/patches/ns-mac-input-source.patch";
+          sha256 = "sha256-E9BR/axZMhA3QTeoHIKU62Rogr7ZmTtWpnYdi69npNM=";
         })
       ];
     meta.platforms = pkgs.lib.platforms.darwin;
