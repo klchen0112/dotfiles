@@ -9,7 +9,7 @@
   ...
 }: {
   programs.alacritty = {
-    enable = false;
+    enable = true;
     settings = {
       import = ["${inputs.own-nur.packages.${pkgs.system}.catppuccin-alacritty}/catppuccin-latte.toml"];
       window = {
@@ -25,16 +25,16 @@
       };
       font = {
         bold = {
-          family = "JetBrainsMono Nerd Font";
+          family = "Iosevka";
         };
         italic = {
-          family = "JetBrainsMono Nerd Font";
+          family = "Iosevka";
         };
         normal = {
-          family = "JetBrainsMono Nerd Font";
+          family = "Iosevka";
         };
         bold_italic = {
-          family = "JetBrainsMono Nerd Font";
+          family = "Iosevka";
         };
         size = 14;
       };
