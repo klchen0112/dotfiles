@@ -68,6 +68,7 @@
           # "JetBrainsMono"
           "NerdFontsSymbolsOnly"
           "Hack"
+          "Iosevka"
         ];
       })
 

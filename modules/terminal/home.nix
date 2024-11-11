@@ -11,40 +11,49 @@
   programs.alacritty = {
     enable = true;
     settings = {
-      import = ["${inputs.own-nur.packages.${pkgs.system}.catppuccin-alacritty}/catppuccin-latte.toml"];
+      general.import = ["${inputs.own-nur.packages.${pkgs.system}.catppuccin-alacritty}/catppuccin-latte.toml"];
       window = {
-        opacity = 0.93;
+        opacity = 0.8;
         startup_mode = "Windowed";
         dynamic_title = true;
+        dynamic_padding = true;
         option_as_alt = "Both";
-        decorations = "buttonless";
+        decorations =
+          if pkgs.stdenv.isDarwin
+          then "buttonless"
+          else "Full";
         blur = true;
       };
       scrolling = {
         history = 10000;
+        multiplier = 3;
       };
-      font = {
+      font = let
+        fontname = "Iosevka Nerd Font";
+      in {
+        normal = {
+          family = fontname;
+          style = "Bold";
+        };
         bold = {
-          family = "Iosevka";
+          family = fontname;
+          style = "Bold";
         };
         italic = {
-          family = "Iosevka";
-        };
-        normal = {
-          family = "Iosevka";
-        };
-        bold_italic = {
-          family = "Iosevka";
+          family = fontname;
+          style = "Italic";
         };
         size = 14;
       };
-      shell = {
+      cursor.style = "Block";
+      terminal.shell = {
         program = "${pkgs.fish}/bin/fish";
         args = ["-l"];
       };
       env = {
         LANG = "en_US.UTF-8";
         LC_ALL = "en_US.UTF-8";
+        TERM = "xterm-256color";
       };
       selection = {
         save_to_clipboard = true;
