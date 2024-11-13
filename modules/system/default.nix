@@ -23,7 +23,6 @@
       git
       neovim
       wget
-      neofetch
       exa
       gcc
       clang
