@@ -138,6 +138,9 @@
       #   src = pure.src;
       # }
     ];
+    interactiveShellInit = "
+    fastfetch
+    ";
   };
   programs.eza = {
     enable = true;
