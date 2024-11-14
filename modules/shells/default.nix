@@ -36,4 +36,8 @@
     };
     allowSFTP = true;
   };
+  # For direnv build
+  services.lorri = {
+    enable = false;
+  };
 }
