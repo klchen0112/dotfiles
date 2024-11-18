@@ -12,7 +12,9 @@
     then pkgs.emacsPlus31
     else pkgs.emacs29-pgtk;
 in {
-  imports = [inputs.nix-doom-emacs-unstraightened.hmModule];
+  imports = [
+    inputs.nix-doom-emacs-unstraightened.hmModule
+  ];
 
   # home.file.".cache/doom/nix/rime" = {
   #   source = "${inputs.own-rime}";
@@ -76,14 +78,14 @@ in {
         meow
       ];
     provideEmacs = true;
-    experimentalFetchTree = false;
+    experimentalFetchTree = true;
   };
   services.emacs = {
-    enable = pkgs.stdenv.isLinux;
-    package = emacsPackage;
-    client.enable = true;
-    socketActivation.enable = true;
-    startWithUserSession = "graphical";
-    defaultEditor = true;
+    enable = true;
+    # package = emacsPackage;
+    # client.enable = true;
+    # socketActivation.enable = true;
+    # startWithUserSession = "graphical";
+    # defaultEditor = true;
   };
 }

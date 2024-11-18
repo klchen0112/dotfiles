@@ -8,10 +8,10 @@
   ...
 }: {
   services.emacs = {
-    enable = true;
+    enable = false;
     package = pkgs.emacsPlus31;
     additionalPath = ["/Users/${username}"];
-    exec = "emacs --bg-daemon";
+    exec = "emacs";
   };
   environment.variables.EDITOR = "emacs";
 }
