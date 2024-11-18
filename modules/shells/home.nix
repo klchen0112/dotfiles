@@ -138,9 +138,9 @@
       #   src = pure.src;
       # }
     ];
-    # interactiveShellInit = "
-    # fastfetch
-    # ";
+    interactiveShellInit = "
+    macchina
+    ";
   };
   programs.eza = {
     enable = true;
@@ -369,7 +369,7 @@
     nodePackages.prettier
     shfmt
     shellcheck
-    fastfetch
+    macchina
     dog
     choose
     du-dust

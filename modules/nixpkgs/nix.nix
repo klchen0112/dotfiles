@@ -12,15 +12,19 @@
     gc = {
       # Garbage collection
       automatic = true;
-      options = "--delete-older-than 7d";
-
-      # interval = {
-      # Hour = 3;
-      # Minute = 15;
-      # };
+      interval = {
+        Hour = 3;
+        Minute = 15;
+      };
+      user = "${username}";
     };
     optimise = {
       automatic = true;
+      user = "${username}";
+      interval = {
+        Hour = 3;
+        Minute = 15;
+      };
       # options = "--delete-older-than 7d";
     };
     settings = {
