@@ -8,6 +8,9 @@
   #
   ...
 }: {
+  programs.nushell = {
+    enable = true;
+  };
   programs.alacritty = {
     enable = true;
     settings = {
