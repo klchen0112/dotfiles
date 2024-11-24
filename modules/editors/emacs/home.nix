@@ -82,10 +82,9 @@ in {
   };
   services.emacs = {
     enable = true;
-    # package = emacsPackage;
-    # client.enable = true;
-    # socketActivation.enable = true;
-    # startWithUserSession = "graphical";
-    # defaultEditor = true;
+    client.enable = true;
+    socketActivation.enable = true;
+    startWithUserSession = "graphical";
+    defaultEditor = true;
   };
 }
