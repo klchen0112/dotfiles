@@ -63,11 +63,11 @@
       discord
       # openvpn-connect
       activitywatch
-      sfm
+      # sfm
       plexamp
       # keyboard
       qmk-toolbox
-      openscad
+      # openscad
       vial
 
       # vpn
