@@ -48,6 +48,4 @@
       coreutils
     ];
   };
-
-  services.activate-system.enable = true;
 }
