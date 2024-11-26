@@ -21,7 +21,6 @@
     ../../modules/desktop/wayland
     ../../modules/fonts/fonts.nix
     ../../modules/nixpkgs
-    # ../../modules/editors
     ../../modules/shells
     ../../modules/network
     ../../modules/secrets

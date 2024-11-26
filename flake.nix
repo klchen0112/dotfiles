@@ -210,7 +210,7 @@
       # Home Manager
       home-manager = {
         # User Package Management
-        url = "github:klchen0112/home-manager/emacs";
+        url = "github:nix-community/home-manager";
         inputs.nixpkgs.follows = "nixpkgs";
       };
 
@@ -235,8 +235,8 @@
       # add git hooks to format nix code before commit
       pre-commit-hooks = {
         url = "github:cachix/git-hooks.nix";
-        inputs.nixpkgs.follows = "nixpkgs-unstable";
-        inputs.nixpkgs-stable.follows = "nixpkgs";
+        inputs.nixpkgs.follows = "nixpkgs";
+        inputs.nixpkgs-stable.follows = "nixpkgs-unstable";
         inputs.flake-compat.follows = "flake-compat";
       };
 
