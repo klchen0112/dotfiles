@@ -241,15 +241,16 @@
         "nixpkgs": ["nixpkgs"]
       },
       "locked": {
-        "lastModified": 1732482255,
-        "narHash": "sha256-GUffLwzawz5WRVfWaWCg78n/HrBJrOG7QadFY6rtV8A=",
-        "owner": "nix-community",
+        "lastModified": 1732643262,
+        "narHash": "sha256-6P378jUXpZuHUkAfXuBzfNXrvsWorognodOvbnJJ8B0=",
+        "owner": "klchen0112",
         "repo": "home-manager",
-        "rev": "a9953635d7f34e7358d5189751110f87e3ac17da",
+        "rev": "e87a088bf7637ecb42ef6f8137c6b3b6aa152488",
         "type": "github"
       },
       "original": {
-        "owner": "nix-community",
+        "owner": "klchen0112",
+        "ref": "emacs",
         "repo": "home-manager",
         "type": "github"
       }
