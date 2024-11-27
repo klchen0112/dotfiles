@@ -9,7 +9,7 @@
 }: let
   emacsPackage =
     if pkgs.stdenv.hostPlatform.isDarwin
-    then pkgs.emacs30
+    then pkgs.emacsPlus30
     else pkgs.emacs29-pgtk;
 in {
   imports = [

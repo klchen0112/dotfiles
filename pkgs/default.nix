@@ -20,7 +20,7 @@
         })
         # Enable rounded window with no decoration
         (pkgs.fetchpatch {
-          url = "https://raw.githubusercontent.com/d12frosted/homebrew-emacs-plus/master/patches/emacs-30/round-undecorated-frame.patch";
+          url = "https://raw.githubusercontent.com/mkvoya/homebrew-emacs-plus/refs/heads/fix-undecorated-round/patches/emacs-31/round-undecorated-frame.patch";
           sha256 = "uYIxNTyfbprx5mCqMNFVrBcLeo+8e21qmBE3lpcnd+4=";
         })
         # Make Emacs aware of OS-level light/dark mode
@@ -34,10 +34,10 @@
           sha256 = "sha256-xrg9iAl0ZrfqzCnq0oact5XozRYOY/rP/MO8QdbIkM0=";
         })
         # alpha-background
-        # (pkgs.fetchpatch {
-        #   url = "https://raw.githubusercontent.com/LuciusChen/.emacs.d/refs/heads/main/patches/ns-alpha-background.patch";
-        #   sha256 = "sha256-sJ74+0jshtt0KwASHrn23ZlIOPr4zy47Dh05UDic62s=";
-        # })
+        (pkgs.fetchpatch {
+          url = "https://raw.githubusercontent.com/LuciusChen/.emacs.d/refs/heads/main/patches/ns-alpha-background.patch";
+          sha256 = "sha256-sJ74+0jshtt0KwASHrn23ZlIOPr4zy47Dh05UDic62s=";
+        })
         # ns-mac-input-source
         (pkgs.fetchpatch {
           url = "https://raw.githubusercontent.com/LuciusChen/.emacs.d/refs/heads/main/patches/ns-mac-input-source.patch";
@@ -67,10 +67,10 @@
           sha256 = "sha256-3QLq91AQ6E921/W9nfDjdOUWR8YVsqBAT/W9c1woqAw=";
         })
         #Cursor animation
-        (pkgs.fetchpatch {
-          url = "https://raw.githubusercontent.com/sincebyte/neo-emacs/master/patches/emacs30/cursor-animation.patch";
-          sha256 = "sha256-/WPLjmjk3+yRaiAjnH3b7tj2imJTxW87bd5pfgh1j4k=";
-        })
+        # (pkgs.fetchpatch {
+        #   url = "https://raw.githubusercontent.com/sincebyte/neo-emacs/master/patches/emacs30/cursor-animation.patch";
+        #   sha256 = "sha256-/WPLjmjk3+yRaiAjnH3b7tj2imJTxW87bd5pfgh1j4k=";
+        # })
         # alpha-background
         (pkgs.fetchpatch {
           url = "https://raw.githubusercontent.com/sincebyte/neo-emacs/master/patches/emacs30/ns-alpha-background.patch";
