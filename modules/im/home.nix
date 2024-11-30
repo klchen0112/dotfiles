@@ -25,18 +25,18 @@
       enable = pkgs.stdenv.isLinux;
       source = "${inputs.own-nur.packages.${pkgs.system}.catppuccin-fcitx5}/src";
     };
-    ".local/share/fcitx5/rime" = {
-      enable = pkgs.stdenv.isLinux;
-      source = "${inputs.own-rime}";
-      recursive = true;
-      # overwrite = true;
-    };
+    # ".local/share/fcitx5/rime" = {
+    #   enable = pkgs.stdenv.isLinux;
+    #   source = "${inputs.own-rime}";
+    #   recursive = true;
+    #   # overwrite = true;
+    # };
 
-    "Library/Rime" = {
-      enable = false; # pkgs.stdenv.isDarwin
-      source = "${inputs.own-rime}";
-      recursive = true;
-      # overwrite = true;
-    };
+    # "Library/Rime" = {
+    #   enable = false; # pkgs.stdenv.isDarwin
+    #   source = "${inputs.own-rime}";
+    #   recursive = true;
+    #   # overwrite = true;
+    # };
   };
 }
