@@ -94,7 +94,6 @@
           specialArgs = {inherit inputs username outputs;};
           modules = [
             ./machines/i12500
-            inputs.agenix.nixosModules.default
             inputs.nixos-cosmic.nixosModules.default
           ];
         };
@@ -111,7 +110,6 @@
           modules = [
             # > Our main home-manager configuration file <
             ./hosts/i12500
-            inputs.agenix.homeManagerModules.default
           ];
         };
     };
@@ -140,7 +138,6 @@
                 import ./hosts/mbp-m1/default.nix;
             }
             inputs.brew-nix.darwinModules.default
-            inputs.agenix.darwinModules.default
           ];
         };
       "mbp-dxm" = let
@@ -167,7 +164,6 @@
                 import ./hosts/mbp-dxm/default.nix;
             }
             inputs.brew-nix.darwinModules.default
-            inputs.agenix.darwinModules.default
           ];
         };
     };
@@ -196,7 +192,7 @@
       brew-nix = {
         # for local testing via `nix flake check` while developing
         #url = "path:../";
-        url = "github:BatteredBunny/brew-nix";
+        url = "github:klchen0112/brew-nix";
         inputs.nix-darwin.follows = "darwin";
         inputs.brew-api.follows = "brew-api";
         inputs.flake-utils.follows = "flake-utils";
@@ -224,13 +220,13 @@
       systems.url = "github:nix-systems/default";
 
       # secrets management
-      agenix = {
-        url = "github:ryantm/agenix";
-        inputs.darwin.follows = "darwin";
-        inputs.home-manager.follows = "home-manager";
-        inputs.nixpkgs.follows = "nixpkgs";
-        inputs.systems.follows = "systems";
-      };
+      # agenix = {
+      #   url = "github:ryantm/agenix";
+      #   inputs.darwin.follows = "darwin";
+      #   inputs.home-manager.follows = "home-manager";
+      #   inputs.nixpkgs.follows = "nixpkgs";
+      #   inputs.systems.follows = "systems";
+      # };
 
       # add git hooks to format nix code before commit
       pre-commit-hooks = {
@@ -356,26 +352,26 @@
         inputs.flake-compat.follows = "flake-compat";
       };
 
-      anyrun = {
-        url = "github:Kirottu/anyrun";
-        inputs.nixpkgs.follows = "nixpkgs";
-        inputs.flake-parts.follows = "flake-parts";
-        inputs.systems.follows = "systems";
-      };
+      # anyrun = {
+      #   url = "github:Kirottu/anyrun";
+      #   inputs.nixpkgs.follows = "nixpkgs";
+      #   inputs.flake-parts.follows = "flake-parts";
+      #   inputs.systems.follows = "systems";
+      # };
 
-      nixpkgs-firefox-darwin = {
-        url = "github:bandithedoge/nixpkgs-firefox-darwin";
-        inputs.nixpkgs.follows = "nixpkgs";
-      };
+      # nixpkgs-firefox-darwin = {
+      #   url = "github:bandithedoge/nixpkgs-firefox-darwin";
+      #   inputs.nixpkgs.follows = "nixpkgs";
+      # };
       # own package
       own-nur = {
         url = "github:klchen0112/nur";
         inputs.nixpkgs.follows = "nixpkgs";
       };
 
-      own-rime = {
-        url = "github:klchen0112/rime-combo-ice-pinyin";
-        flake = false;
-      };
+      # own-rime = {
+      #   url = "github:klchen0112/rime-combo-ice-pinyin";
+      #   flake = false;
+      # };
     };
 }

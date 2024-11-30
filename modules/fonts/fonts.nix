@@ -62,15 +62,9 @@
       source-han-sans # 思源黑体
       source-han-serif # 思源宋体
 
-      # nerdfonts
-      (nerdfonts.override {
-        fonts = [
-          # "JetBrainsMono"
-          "NerdFontsSymbolsOnly"
-          "Hack"
-          "Iosevka"
-        ];
-      })
+      nerd-fonts.symbols-only
+      nerd-fonts.hack
+      nerd-fonts.iosevka
 
       # Jigmo
     ];
