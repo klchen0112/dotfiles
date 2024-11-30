@@ -9,7 +9,7 @@
   Jigmo = inputs.own-nur.packages.${pkgs.system}.Jigmo;
   # this code from https://github.com/dezzw/demacs/blob/main/flake.nix
 
-  emacsPlus31 = inputs.emacs-overlay.packages.${pkgs.system}.emacs-git.overrideAttrs (old: {
+  emacsPlusMaster = inputs.emacs-overlay.packages.${pkgs.system}.emacs-git.overrideAttrs (old: {
     patches =
       (old.patches or [])
       ++ [
@@ -19,10 +19,10 @@
           sha256 = "+z/KfsBm1lvZTZNiMbxzXQGRTjkCFO4QPlEK35upjsE=";
         })
         # Enable rounded window with no decoration
-        (pkgs.fetchpatch {
-          url = "https://raw.githubusercontent.com/mkvoya/homebrew-emacs-plus/refs/heads/fix-undecorated-round/patches/emacs-31/round-undecorated-frame.patch";
-          sha256 = "uYIxNTyfbprx5mCqMNFVrBcLeo+8e21qmBE3lpcnd+4=";
-        })
+        # (pkgs.fetchpatch {
+        #   url = "https://raw.githubusercontent.com/mkvoya/homebrew-emacs-plus/refs/heads/fix-undecorated-round/patches/emacs-31/round-undecorated-frame.patch";
+        #   sha256 = "uYIxNTyfbprx5mCqMNFVrBcLeo+8e21qmBE3lpcnd+4=";
+        # })
         # Make Emacs aware of OS-level light/dark mode
         (pkgs.fetchpatch {
           url = "https://raw.githubusercontent.com/d12frosted/homebrew-emacs-plus/master/patches/emacs-30/system-appearance.patch";
