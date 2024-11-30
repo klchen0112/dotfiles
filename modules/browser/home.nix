@@ -88,15 +88,15 @@
       extensions = with pkgs.nur.repos.rycee.firefox-addons; [
         # see: https://github.com/nix-community/nur-combined/blob/master/repos/rycee/pkgs/firefox-addons/generated-firefox-addons.nix
         augmented-steam
-        auto-sort-bookmarks
-        auto-tab-discard
-        automatic-dark
-        gopass-bridge
+        # auto-sort-bookmarks
+        # auto-tab-discard
+        # automatic-dark
+        # gopass-bridge
         # https-everywhere
-        link-cleaner
-        privacy-badger
-        tree-style-tab
-        multi-account-containers
+        # link-cleaner
+        # privacy-badger
+        # tree-style-tab
+        # multi-account-containers
         # firefox-translations # translation
         immersive-translate
         tridactyl # vimum
@@ -105,11 +105,12 @@
         omnivore
         blocktube
         rsshub-radar
-        brotab
+        # brotab
         onetab
-        ublock-origin-lite
+        ublock-origin
         zotero-connector
-        blocktube
+        copy-as-org-mode
+        # online-dictionary-helper
       ];
     };
 
