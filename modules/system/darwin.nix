@@ -24,7 +24,7 @@
         KeyRepeat = 1;
 
         AppleShowAllExtensions = true;
-        _HIHideMenuBar = true;
+        _HIHideMenuBar = false;
 
         NSAutomaticCapitalizationEnabled = false; # disable auto capitalization(自动大写)
         NSAutomaticDashSubstitutionEnabled = false; # disable auto dash substitution(智能破折号替换)

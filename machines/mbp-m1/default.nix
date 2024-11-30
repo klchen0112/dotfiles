@@ -12,6 +12,7 @@
     ../../modules/fonts/fonts.nix
     ../../modules/nixpkgs/darwin.nix
     ../../modules/system/darwin.nix
+    ../../modules/desktop/skhd
     ../../modules/desktop/yabai
     ../../modules/homebrew
     ../../modules/downloader/darwin.nix
