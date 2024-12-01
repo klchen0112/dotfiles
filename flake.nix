@@ -72,6 +72,9 @@
             enable = true;
             excludes = [".js" ".md" ".ts"];
           };
+          taplo = {
+            enable = true;
+          };
         };
       };
     });
