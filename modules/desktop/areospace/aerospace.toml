@@ -43,10 +43,16 @@ on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
 # Also see: https://nikitabobko.github.io/AeroSpace/goodies#disable-hide-app
 automatically-unhide-macos-hidden-apps = false
 
+
+exec-on-workspace-change = ['/bin/bash', '-c',
+    'sketchybar --trigger aerospace_workspace_change FOCUSED_WORKSPACE=$AEROSPACE_FOCUSED_WORKSPACE PREV_WORKSPACE=$AEROSPACE_PREV_WORKSPACE'
+]
 [exec]
 inherit-env-vars = true
 [exec.env-vars]
 PATH="${HOME}/bin:/etc/profiles/per-user/${USER}/bin:/current-system/sw/bin:/nix/var/nix/profiles/default/bin:${PATH}"
+
+
 
 # Possible values: (qwerty|dvorak)
 # See https://nikitabobko.github.io/AeroSpace/guide#key-mapping
@@ -61,12 +67,12 @@ preset = 'qwerty'
 #                 Monitor pattern is the same as for 'workspace-to-monitor-force-assignment'.
 #                 See: https://nikitabobko.github.io/AeroSpace/guide#assign-workspaces-to-monitors
 [gaps]
-inner.horizontal = 0
-inner.vertical =   0
-outer.left =       0
-outer.bottom =     0
-outer.top =        0
-outer.right =      0
+inner.horizontal = 4
+inner.vertical =   4
+outer.left =       4
+outer.bottom =     4
+outer.top =        30
+outer.right =      4
 
 # 'main' binding mode declaration
 # See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes
@@ -104,7 +110,8 @@ ctrl-shift-alt-e = "exec-and-forget emacsclient -c -n -a ''"
 alt-slash = 'layout tiles horizontal vertical'
 alt-comma = 'layout accordion horizontal vertical'
 
-alt-f = "layout floating tiling"
+ctrl-alt-shift-f = "layout floating tiling"
+cmd-alt-shift-f = "layout floating tiling"
 alt-shift-f = "fullscreen"
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#focus
@@ -167,7 +174,7 @@ ctrl-alt-shift-6 = 'move-node-to-workspace 6'
 ctrl-alt-shift-7 = 'move-node-to-workspace 7'
 ctrl-alt-shift-8 = 'move-node-to-workspace 8'
 ctrl-alt-shift-9 = 'move-node-to-workspace 9'
-ctrl-alt-shift-0 = 'move-node-to-workspace 10'
+ctrl-alt-shift-0 = 'move-node-to-workspace 0'
 # ctrl-alt-shift-a = 'move-node-to-workspace A'
 # ctrl-alt-shift-b = 'move-node-to-workspace B'
 # ctrl-alt-shift-c = 'move-node-to-workspace C'
@@ -233,16 +240,16 @@ alt-shift-right = ['join-with right', 'mode main']
 
 
 [workspace-to-monitor-force-assignment]
+"0" = "main"
 "1" = "main"
 "2" = "main"
 "3" = "main"
 "4" = "main"
 "5" = "main"
 "6" = "main"
-"7" = "secondary"
-"8" = "secondary"
-"9" = "secondary"
-"10" = "secondary"
+"7" = "main"
+"8" = "main"
+"9" = "main"
 
 
 # =================================================================
@@ -256,67 +263,67 @@ alt-shift-right = ['join-with right', 'mode main']
 
 [[on-window-detected]]
 if.app-id = 'net.kovidgoyal.kitty'
-run = 'move-node-to-workspace 1Kitty'
+run = 'move-node-to-workspace 1'
 
 [[on-window-detected]]
 if.app-id = 'org.alacritty'
-run = 'move-node-to-workspace 2Alacritty'
+run = 'move-node-to-workspace 2'
 
 [[on-window-detected]]
 if.app-id = 'com.tencent.WeWorkMac'
-run = 'move-node-to-workspace 3Work'
+run = 'move-node-to-workspace 3'
 
 [[on-window-detected]]
 if.app-id = 'org.mozilla.firefox'
-run = 'move-node-to-workspace 4Firefox'
+run = 'move-node-to-workspace 4'
 
 [[on-window-detected]]
 if.app-id = 'com.google.Chrome'
-run = 'move-node-to-workspace 5Chrome'
+run = 'move-node-to-workspace 5'
 
 [[on-window-detected]]
 if.app-id = 'ru.keepcoder.Telegram'
-run = 'move-node-to-workspace 6Chat'
+run = 'move-node-to-workspace 6'
 
 [[on-window-detected]]
 if.app-id = 'com.tencent.xinWeChat'
-run = 'move-node-to-workspace 6Chat'
+run = 'move-node-to-workspace 6'
 
 [[on-window-detected]]
 if.app-id = 'com.tencent.qq'
-run = 'move-node-to-workspace 6Chat'
+run = 'move-node-to-workspace 6'
 
 [[on-window-detected]]
 if.app-id = 'com.tencent.QQMusicMac'
-run = 'move-node-to-workspace 7Music'
+run = 'move-node-to-workspace 7'
 
 [[on-window-detected]]
 if.app-id = 'com.netease.163music'
-run = 'move-node-to-workspace 7Music'
+run = 'move-node-to-workspace 7'
 
 [[on-window-detected]]
 if.app-id = 'com.apple.mail'
-run = 'move-node-to-workspace 8Mail'
+run = 'move-node-to-workspace 8'
 
 # calendar
 [[on-window-detected]]
 if.app-id = 'com.apple.iCal'
-run = 'move-node-to-workspace 8Mail'
+run = 'move-node-to-workspace 8'
 
 [[on-window-detected]]
 if.app-id = 'com.apple.finder'
-run = ['layout floating', 'move-node-to-workspace 9File']
+run = ['layout floating', 'move-node-to-workspace 9']
 
 [[on-window-detected]]
 if.app-id = 'com.apple.iBooksX'
-run = ['layout floating', 'move-node-to-workspace 9File']
+run = ['layout floating', 'move-node-to-workspace 9']
 
 # Book/Picture Preview
 [[on-window-detected]]
 if.app-id = 'com.apple.Preview'
-run = ['layout floating', 'move-node-to-workspace 9File']
+run = ['layout floating', 'move-node-to-workspace 9']
 
 # Make all windows float by default
 [[on-window-detected]]
 check-further-callbacks = true
-run = ['layout floating', 'move-node-to-workspace 0Other']
+run = ['layout floating', 'move-node-to-workspace 0']
