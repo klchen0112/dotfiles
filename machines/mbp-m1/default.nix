@@ -12,7 +12,7 @@
     ../../modules/fonts/fonts.nix
     ../../modules/nixpkgs/darwin.nix
     ../../modules/system/darwin.nix
-    ../../modules/desktop/skhd
+    # ../../modules/desktop/skhd
     # ../../modules/desktop/yabai
     ../../modules/desktop/areospace
     ../../modules/homebrew
