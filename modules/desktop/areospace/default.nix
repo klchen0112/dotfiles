@@ -144,4 +144,11 @@
 
     '';
   };
+  services.jankyborders = {
+    enable = true;
+    width = 6.0;
+    hidpi = true;
+    active_color = "0xCFFF69B4";
+    inactive_color = "0x55FFFFFF";
+  };
 }

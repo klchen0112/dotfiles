@@ -323,6 +323,12 @@ run = ['layout floating', 'move-node-to-workspace 9']
 if.app-id = 'com.apple.Preview'
 run = ['layout floating', 'move-node-to-workspace 9']
 
+
+# Make all windows float by default
+[[on-window-detected]]
+if.app-id = 'org.gnu.Emacs'
+run = ['layout floating', 'move-node-to-workspace 1']
+
 # Make all windows float by default
 [[on-window-detected]]
 check-further-callbacks = true
