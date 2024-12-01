@@ -13,7 +13,8 @@
     ../../modules/nixpkgs/darwin.nix
     ../../modules/system/darwin.nix
     ../../modules/desktop/skhd
-    ../../modules/desktop/yabai
+    # ../../modules/desktop/yabai
+    ../../modules/desktop/areospace
     ../../modules/homebrew
     ../../modules/downloader/darwin.nix
     ../../modules/secrets
