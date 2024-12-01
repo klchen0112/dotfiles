@@ -184,7 +184,7 @@
 
       #  MacOS
       darwin = {
-        url = "github:lnl7/nix-darwin/master"; # MacOS Package Management
+        url = "github:talhaHavadar/nix-darwin/fix-aerospace-on-window-detect"; # MacOS Package Management
         inputs.nixpkgs.follows = "nixpkgs";
       };
 

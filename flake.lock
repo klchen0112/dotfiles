@@ -42,16 +42,16 @@
         "nixpkgs": ["nixpkgs"]
       },
       "locked": {
-        "lastModified": 1732603785,
-        "narHash": "sha256-AEjWTJwOmSnVYsSJCojKgoguGfFfwel6z/6ud6UFMU8=",
-        "owner": "lnl7",
+        "lastModified": 1731611461,
+        "narHash": "sha256-GeLDHna/xv0GUFBhnX0H66BBKWgyvS8qB1LnzI8Q8/w=",
+        "owner": "talhaHavadar",
         "repo": "nix-darwin",
-        "rev": "6ab87b7c84d4ee873e937108c4ff80c015a40c7a",
+        "rev": "0a3df54053439f76c1d6ef1cf44b0df767b13c3e",
         "type": "github"
       },
       "original": {
-        "owner": "lnl7",
-        "ref": "master",
+        "owner": "talhaHavadar",
+        "ref": "fix-aerospace-on-window-detect",
         "repo": "nix-darwin",
         "type": "github"
       }
