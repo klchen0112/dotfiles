@@ -76,6 +76,6 @@
       enable = true;
       channel = "https://nixos.org/channels/nixos-unstable";
     };
-    stateVersion = "24.11";
+    stateVersion = "25.05";
   };
 }

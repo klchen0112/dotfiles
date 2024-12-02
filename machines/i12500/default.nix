@@ -63,7 +63,7 @@
   systemd.targets.suspend.enable = false;
   systemd.targets.hibernate.enable = false;
   systemd.targets.hybrid-sleep.enable = false;
-  system.stateVersion = "23.11";
+  system.stateVersion = "25.05";
 
   environment = {
     shells = with pkgs; [fish bash]; # Default shell

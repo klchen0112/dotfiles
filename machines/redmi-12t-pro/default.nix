@@ -14,7 +14,7 @@
 
   programs.home-manager.enable = true;
 
-  system.stateVersion = "23.11";
+  system.stateVersion = "25.05";
 
   environment = {
     shells = with pkgs; [fish bash]; # Default shell
