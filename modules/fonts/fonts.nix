@@ -67,6 +67,8 @@
       nerd-fonts.iosevka
 
       # Jigmo
+
+      sketchybar-app-font
     ];
   };
 }
