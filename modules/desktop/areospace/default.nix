@@ -11,7 +11,7 @@
     config = let
       PLUGIN_DIR = ./plugins;
     in ''
-      #!/user/bin/env bash
+      #!/usr/bin/env bash
       # A simple sketchybar config for aerospace users to get started with
       # Not too different from the base starting config!
 
@@ -22,7 +22,7 @@
       # If you are looking for other colors, see the color picker:
       # https://felixkratz.github.io/SketchyBar/config/tricks#color-picker
 
-      sketchybar --bar position=top height=40 blur_radius=30 color=0xFF3A3C3B margin=10 y_offset=5
+      sketchybar --bar position=top height=40 blur_radius=30 color=0x00000000
 
       ##### Changing Defaults #####
       # We now change some default values, which are applied to all further items.
