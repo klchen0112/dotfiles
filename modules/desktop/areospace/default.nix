@@ -105,17 +105,26 @@
       #   script="$PLUGIN_DIR/front_app.sh" \
       #   --subscribe front_app front_app_switched
 
-      sketchybar --add item space_separator \
-        --set space_separator icon="💩" \
-        icon.padding_left=20 \
-        icon.padding_right=0 \
-        icon.margin_right=0 \
-        label.drawing=off \
-        label.padding_left=0 \
-        label.margin_left=0 \
-        background.drawing=off \
-        script="$PLUGIN_DIR/space_windows.sh" \
-        --subscribe space_separator aerospace_workspace_change
+      sketchybar --add event window_focus
+      sketchybar --add event title_change
+      sketchybar --add event front_app_switched
+
+      sketchybar  --add item window_title q\
+                  --set window_title icon="" \
+                  --set window_title label="" \
+                  icon.font="sketchybar-app-font:Regular:16.0" \
+                  icon.padding_left=20 \
+                  icon.padding_right=0 \
+                  icon.margin_right=20 \
+                  icon.drawing=on \
+                  label.drawing=on \
+                  label.padding_left=0 \
+                  label.margin_left=0 \
+                  background.drawing=on \
+                  script="$PLUGIN_DIR/window_title.sh" \
+                  --subscribe window_title front_app_switched                       \
+                  --subscribe window_title window_focus                             \
+                  --subscribe window_title title_change
 
       ##### Adding Right Items #####
       # In the same way as the left items we can add items to the right side.
