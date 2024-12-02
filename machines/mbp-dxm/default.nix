@@ -12,9 +12,10 @@
     ../../modules/fonts/fonts.nix
     ../../modules/nixpkgs/darwin.nix
     ../../modules/system/darwin.nix
-    ../../modules/desktop/yabai
-    ../../modules/desktop/skhd
-    ../../modules/homebrew/default.nix
+    # ../../modules/desktop/skhd
+    # ../../modules/desktop/yabai
+    ../../modules/desktop/areospace
+    ../../modules/homebrew
     ../../modules/downloader/darwin.nix
     ../../modules/secrets
   ];
