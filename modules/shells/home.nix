@@ -191,7 +191,7 @@
       builtins.fromTOML (builtins.readFile "${
         inputs.own-nur.packages.${pkgs.system}.catppuccin-starship
       }/palettes/latte.toml")
-      // builtins.fromTOML (builtins.readFile ./jetpack.toml);
+      // builtins.fromTOML (builtins.readFile ./starship.toml);
   };
   programs.ripgrep = {enable = true;};
 
