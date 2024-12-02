@@ -123,6 +123,8 @@
       "steam"
       "logi-options+"
       "firefox"
+      "font-sf-pro"
+      "font-sf-mono"
     ];
   };
 }
