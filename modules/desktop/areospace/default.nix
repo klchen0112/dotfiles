@@ -9,12 +9,13 @@
     extraPackages = with pkgs; [jq];
     ## config from https://github.com/Kainoa-h/aerospace-sketchybar/tree/main
     config = let
-      PLUGIN_DIR = ./plugins;
+      plugin_dir = ./plugins;
     in ''
       #!/usr/bin/env bash
       # A simple sketchybar config for aerospace users to get started with
       # Not too different from the base starting config!
 
+      PLUGIN_DIR=${plugin_dir}
       ##### Bar Appearance #####
       # Configuring the general appearance of the bar.
       # These are only some of the options available. For all options see:
@@ -74,7 +75,7 @@
           label.y_offset=-1 \
           label.shadow.drawing=off \
           click_script="aerospace workspace $sid" \
-          script="${PLUGIN_DIR}/aerospace.sh $sid"
+          script="$PLUGIN_DIR/aerospace.sh $sid"
       done
 
       # Load Icons on startup
@@ -86,7 +87,7 @@
         icon_strip=" "
         if [ $apps != "" ]; then
           while read -r app; do
-            icon_strip+=" $(${PLUGIN_DIR}/icon_map_fn.sh "$app")"
+            icon_strip+=" $($PLUGIN_DIR/icon_map_fn.sh "$app")"
           done <<<$apps
         else
           icon_strip=""
@@ -97,14 +98,14 @@
       sketchybar --add item hahamarginleftRight left --set hahamarginleftRight padding_right=0 padding_left=0 width=0 margin_right=0 margin_left=0
 
       # Front app!!
-      # sketchybar --add item front_app q \
+      # sketchybar --add item front_app q\
       #   --set front_app icon.drawing=off \
       #   label.padding_left=0 \
       #   label.margin_left=0 \
-      #   script="${PLUGIN_DIR}/front_app.sh" \
+      #   script="$PLUGIN_DIR/front_app.sh" \
       #   --subscribe front_app front_app_switched
 
-      sketchybar --add item space_separator q \
+      sketchybar --add item space_separator \
         --set space_separator icon="💩" \
         icon.padding_left=20 \
         icon.padding_right=0 \
@@ -113,7 +114,7 @@
         label.padding_left=0 \
         label.margin_left=0 \
         background.drawing=off \
-        script="${PLUGIN_DIR}/space_windows.sh" \
+        script="$PLUGIN_DIR/space_windows.sh" \
         --subscribe space_separator aerospace_workspace_change
 
       ##### Adding Right Items #####
@@ -130,25 +131,25 @@
       sketchybar --add item hahamarginrirrght right --set hahamarginrirrght margin_left=0
 
       sketchybar --add item clock right \
-        --set clock update_freq=10 script="${PLUGIN_DIR}/clock.sh"
+        --set clock update_freq=10 script="$PLUGIN_DIR/clock.sh"
 
       sketchybar  --add item volume right \
-        --set volume script="${PLUGIN_DIR}/volume.sh"
+        --set volume script="$PLUGIN_DIR/volume.sh"
         --subscribe volume volume_change
 
       sketchybar --add item battery right \
-        --set battery update_freq=120 script="${PLUGIN_DIR}/battery.sh" \
+        --set battery update_freq=120 script="$PLUGIN_DIR/battery.sh" \
         --subscribe battery system_woke power_source_change
 
       sketchybar --add item wifi right \
-        --set wifi update_freq=20 script="${PLUGIN_DIR}/wifi.sh" icon.padding_right=0 label.padding_left=0 label.font="SF Pro:Italic:12.0" label.y_offset=-3 \
+        --set wifi update_freq=20 script="$PLUGIN_DIR/wifi.sh" icon.padding_right=0 label.padding_left=0 label.font="SF Pro:Italic:12.0" label.y_offset=-3
 
-      sketchybar  --add item swap e \
-          --set swap update_freq=20 script="${PLUGIN_DIR}/memswap.sh"\
-          icon="" \
-          label.font="Hack Nerd Font:Italic:14.0" \
-          icon.color=0x44FFFFFF \
-          label.color=0x44FFFFFF
+      # sketchybar  --add item swap e \
+      #     --set swap update_freq=20 script="$PLUGIN_DIR/memswap.sh"\
+      #     icon="" \
+      #     label.font="Hack Nerd Font:Italic:14.0" \
+      #     icon.color=0x44FFFFFF \
+      #     label.color=0x44FFFFFF
 
       #### Groups !!! ####
       sketchybar --add bracket spaces '/space\..*/' hahamarginleft hahamarginleftRight \

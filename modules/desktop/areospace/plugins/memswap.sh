@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
 DEFCOLOR="0x44FFFFFF"
 ALERTCOLOR="0xAAFF0000"
