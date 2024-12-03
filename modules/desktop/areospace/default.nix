@@ -91,15 +91,12 @@
               continue  # 跳过当前循环的剩余部分，继续下一次循环
           fi
 
-          sketchybar --set space.$sid drawing=on
-
           icon_strip=" "
-
           while read -r app; do
               icon_strip+=" $($PLUGIN_DIR/icon_map_fn.sh "$app")"
           done <<<$apps
 
-          sketchybar --set space.$sid label="$icon_strip"
+          sketchybar --set space.$sid label="$icon_strip" drawing=on
       done
 
 

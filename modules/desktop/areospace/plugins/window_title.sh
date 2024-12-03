@@ -13,7 +13,8 @@ else
 fi
 
 if [[ ${#WINDOW_TITLE} -gt 50 ]]; then
-  WINDOW_TITLE="$(echo "$WINDOW_TITLE" | cut -c 1-50 | iconv -c)..."
+  WINDOW_TITLE="$(echo "$WINDOW_TITLE" | cut -c 1-50 | iconv -c)"
 fi
 
-sketchybar --set window_title label="$WINDOW_TITLE" icon="$icon_strip" icon.drawing=on
+sketchybar --set window_title label="$WINDOW_TITLE"
+sketchybar --set window_title icon="$icon_strip"
