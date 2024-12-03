@@ -193,7 +193,7 @@ function icon_map() {
   "Element")
     echo ":element:"
     ;;
-  "Emacs")
+  "Emacs" | "emacs")
     echo ":emacs:"
     ;;
   "Evernote Legacy")
@@ -714,53 +714,55 @@ function icon_map() {
     ;;
   esac
 }
-if [ "$SENDER" == "aerospace_workspace_change" ]; then
-  prevapps=$(aerospace list-windows --workspace "$PREV_WORKSPACE" | awk -F'|' '{gsub(/^ *| *$/, "", $2); print $2}')
-  if [ "${prevapps}" != "" ]; then
 
+function app_strip() {
+  if [ "${1}" == "" ]; then
+      echo ""
+  else
     icon_strip=""
     while read -r app
     do
-      icon_strip+=" $(icon_map "$app")"
-    done <<< "${prevapps}"
-    sketchybar --set space.$PREV_WORKSPACE drawing=on
-    sketchybar --set space.$PREV_WORKSPACE label="$icon_strip"
-    sketchybar --set space.$PREV_WORKSPACE background.color=0x44ffffff
+      if [ -n "$icon_strip" ]; then
+        icon_strip+=" $(icon_map "$app")"
+      else
+        icon_strip+="$(icon_map "$app")"
+      fi
+    done <<< "${1}"
+    echo $icon_strip
+  fi
+}
+if [ "$SENDER" == "aerospace_workspace_change" ]; then
+  prevapps=$(aerospace list-windows --workspace "$PREV_WORKSPACE" | awk -F'|' '{gsub(/^ *| *$/, "", $2); print $2}' | sort -u)
+  icon_strip=$(app_strip $prevapps)
+  if [ "$prevapps" != "" ]; then
+    sketchybar --set space.$PREV_WORKSPACE drawing=on \
+                                           label="$icon_strip" \
+                                           background.color=0x44ffffff
   else
-    sketchybar --set space.$PREV_WORKSPACE drawing=off
-    sketchybar --set space.$PREV_WORKSPACE background.color=0x44ffffff
+    sketchybar --set space.$PREV_WORKSPACE drawing=off \
+                                           background.color=0x44ffffff
   fi
   apps=$(aerospace list-windows --workspace "$FOCUSED_WORKSPACE" | awk -F'|' '{gsub(/^ *| *$/, "", $2); print $2}'| sort -u )
-
-  icon_strip=""
-  if [ -z "$apps" ]; then
-      icon_strip=""
-  else
-    while read -r app
-    do
-      icon_strip+=" $(icon_map "$app")"
-    done <<< "${apps}"
-  fi
-  sketchybar --set space.$FOCUSED_WORKSPACE drawing=on
-  sketchybar --set space.$FOCUSED_WORKSPACE label="$icon_strip"
-  sketchybar --set space.$FOCUSED_WORKSPACE background.color=0xAAFF00FF
+  icon_strip=$(app_strip $apps)
+  sketchybar --set space.$FOCUSED_WORKSPACE drawing=on \
+                                            label=$icon_strip \
+                                            background.color=0xAAFF00FF
 fi
 
 if [ "$SENDER" == "space_windows_change" ]; then
   FOCUSED_WORKSPACE=$(aerospace list-workspaces --focused)
-  apps=$(aerospace list-windows --workspace "$FOCUSED_WORKSPACE" | awk -F'|' '{gsub(/^ *| *$/, "", $2); print $2}' | sort -u)
-  icon_strip=""
-  if [ -z "$apps" ]; then
-      icon_strip=""
+
+  apps=$(aerospace list-windows --workspace $FOCUSED_WORKSPACE | awk -F'|' '{gsub(/^ *| *$/, "", $2); print $2}' | sort -u)
+  icon_strip=$(app_strip $apps)
+
+  if [ -n "$icon_strip" ]; then
+    sketchybar --set space.$FOCUSED_WORKSPACE label="$icon_strip" \
+                                                  background.color=0xAAFF00FF \
+                                                  drawing=on
+
   else
-    while read -r app
-    do
-      icon_strip+=" $(icon_map "$app")"
-    done <<< "${apps}"
+    sketchybar --set space.$FOCUSED_WORKSPACE label="" \
+                                                background.color=0x44ffffff \
+                                                drawing=off
   fi
-
-  sketchybar --set space.$FOCUSED_WORKSPACE label="$icon_strip"
-  sketchybar --set space.$FOCUSED_WORKSPACE background.color=0xAAFF00FF
-  sketchybar --set space.$FOCUSED_WORKSPACE drawing=on
 fi
-

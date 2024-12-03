@@ -193,7 +193,7 @@ function icon_map() {
   "Element")
     echo ":element:"
     ;;
-  "Emacs")
+  "Emacs" | "emacs")
     echo ":emacs:"
     ;;
   "Evernote Legacy")
