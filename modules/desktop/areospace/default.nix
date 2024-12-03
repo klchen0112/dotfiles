@@ -25,6 +25,11 @@
 
       sketchybar --bar position=top height=40 blur_radius=30 color=0x00000000
 
+      # sketchybar --add event window_focus
+      # sketchybar --add event title_change
+      # sketchybar --add event front_app_switched
+      # sketchybar --add event space_windows_change
+
       ##### Changing Defaults #####
       # We now change some default values, which are applied to all further items.
       # For a full list of all available item properties see:
@@ -56,9 +61,10 @@
       for sid in $(aerospace list-workspaces --all); do
         sketchybar --add item space.$sid left \
           --subscribe space.$sid aerospace_workspace_change \
+          --subscribe space.$sid space_windows_change \
           --set space.$sid \
           drawing=off \
-          background.color=0x44ffffff \#0xAAFF00FF \
+          background.color=0x44ffffff \
           background.corner_radius=5 \
           background.drawing=on \
           background.border_color=0xAAFFFFFF \
@@ -80,37 +86,24 @@
 
       # Load Icons on startup
       for sid in $(aerospace list-workspaces --all); do
-        apps=$(aerospace list-windows --workspace "$sid" | awk -F'|' '{gsub(/^ *| *$/, "", $2); print $2}')
-        if [ -z "$apps" ]; then
-          continue  # 跳过当前循环的剩余部分，继续下一次循环
-        fi
+          apps=$(aerospace list-windows --workspace "$sid" | awk -F'|' '{gsub(/^ *| *$/, "", $2); print $2}' | sort -u)
+          if [ -z "$apps" ]; then
+              continue  # 跳过当前循环的剩余部分，继续下一次循环
+          fi
 
-        sketchybar --set space.$sid drawing=on
+          sketchybar --set space.$sid drawing=on
 
-        icon_strip=" "
-        if [ $apps != "" ]; then
+          icon_strip=" "
+
           while read -r app; do
-            icon_strip+=" $($PLUGIN_DIR/icon_map_fn.sh "$app")"
+              icon_strip+=" $($PLUGIN_DIR/icon_map_fn.sh "$app")"
           done <<<$apps
-        else
-          icon_strip=""
-        fi
-        sketchybar --set space.$sid label="$icon_strip"
+
+          sketchybar --set space.$sid label="$icon_strip"
       done
 
+
       sketchybar --add item hahamarginleftRight left --set hahamarginleftRight padding_right=0 padding_left=0 width=0 margin_right=0 margin_left=0
-
-      # Front app!!
-      # sketchybar --add item front_app q\
-      #   --set front_app icon.drawing=off \
-      #   label.padding_left=0 \
-      #   label.margin_left=0 \
-      #   script="$PLUGIN_DIR/front_app.sh" \
-      #   --subscribe front_app front_app_switched
-
-      sketchybar --add event window_focus
-      sketchybar --add event title_change
-      sketchybar --add event front_app_switched
 
       sketchybar  --add item window_title q\
                   --set window_title icon="" \
@@ -123,6 +116,7 @@
                   label.drawing=on \
                   label.padding_left=0 \
                   label.margin_left=0 \
+                  drawing=on \
                   script="$PLUGIN_DIR/window_title.sh" \
                   --subscribe window_title front_app_switched                       \
                   --subscribe window_title window_focus                             \

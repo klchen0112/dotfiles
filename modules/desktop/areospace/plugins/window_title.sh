@@ -1,20 +1,19 @@
-#!/usr/bin/env bash
-
-APP=$(aerospace list-windows --focused | awk -F'|' '{gsub(/^ *| *$/, "", $2); print $2}')
+#!/bin/sh
+apps=$(aerospace list-windows --focused | awk -F'|' '{gsub(/^ *| *$/, "", $2); print $2}')
 WINDOW_TITLE=$(aerospace list-windows --focused | awk -F'|' '{gsub(/^ *| *$/, "", $2); print $3}')
-
-icon_strip = ""
-if [ "${APP}" != "" ]; then
-  while read -r app
-  do
-    icon_strip+="$($PLUGIN_DIR/icon_map_fn.sh "$app") "
-  done <<< "${APP}"
+if [ -z "$apps" ]; then
+  icon_strip=""
 else
   icon_strip=""
+  while read -r app
+  do
+    icon_result=$($PLUGIN_DIR/icon_map_fn.sh "$app")
+    icon_strip+=" ${icon_result}"
+  done <<< "${apps}"
 fi
 
 if [[ ${#WINDOW_TITLE} -gt 50 ]]; then
   WINDOW_TITLE="$(echo "$WINDOW_TITLE" | cut -c 1-50 | iconv -c)..."
 fi
 
-sketchybar --set window_title label="$WINDOW_TITLE" icon="$icon_strip"
+sketchybar --set window_title label="$WINDOW_TITLE" icon="$icon_strip" icon.drawing=on

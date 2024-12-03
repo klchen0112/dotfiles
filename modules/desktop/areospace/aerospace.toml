@@ -53,7 +53,7 @@ exec-on-workspace-change = [
 [exec]
 inherit-env-vars = true
 [exec.env-vars]
-PATH = "${HOME}/bin:/etc/profiles/per-user/${USER}/bin:/current-system/sw/bin:/nix/var/nix/profiles/default/bin:${PATH}"
+PATH = "${HOME}/bin:/etc/profiles/per-user/${USER}/bin:/run/current-system/sw/bin:/nix/var/nix/profiles/default/bin:${PATH}"
 
 
 # Possible values: (qwerty|dvorak)
