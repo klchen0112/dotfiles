@@ -3,7 +3,7 @@
 APP=$(aerospace list-windows --focused | awk -F'|' '{gsub(/^ *| *$/, "", $2); print $2}')
 WINDOW_TITLE=$(aerospace list-windows --focused | awk -F'|' '{gsub(/^ *| *$/, "", $2); print $3}')
 
-PLUGIN_DIR=/Users/klchen/my/dotfiles/modules/desktop/areospace/plugins
+icon_strip = ""
 if [ "${APP}" != "" ]; then
   while read -r app
   do

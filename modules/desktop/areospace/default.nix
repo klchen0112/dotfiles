@@ -53,7 +53,7 @@
       sketchybar --add event aerospace_workspace_change
 
       # This only works for single monitor configs!
-      for sid in $(aerospace list-workspaces --monitor focused); do
+      for sid in $(aerospace list-workspaces --all); do
         sketchybar --add item space.$sid left \
           --subscribe space.$sid aerospace_workspace_change \
           --set space.$sid \
@@ -79,8 +79,11 @@
       done
 
       # Load Icons on startup
-      for sid in $(aerospace list-workspaces --monitor focused --empty no); do
+      for sid in $(aerospace list-workspaces --all); do
         apps=$(aerospace list-windows --workspace "$sid" | awk -F'|' '{gsub(/^ *| *$/, "", $2); print $2}')
+        if [ -z "$apps" ]; then
+          continue  # 跳过当前循环的剩余部分，继续下一次循环
+        fi
 
         sketchybar --set space.$sid drawing=on
 
@@ -120,7 +123,6 @@
                   label.drawing=on \
                   label.padding_left=0 \
                   label.margin_left=0 \
-                  background.drawing=on \
                   script="$PLUGIN_DIR/window_title.sh" \
                   --subscribe window_title front_app_switched                       \
                   --subscribe window_title window_focus                             \
