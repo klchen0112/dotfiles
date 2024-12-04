@@ -732,6 +732,7 @@ function app_strip() {
 }
 export -f icon_map
 export -f app_strip
+
 apps=$(aerospace list-windows --focused | awk -F'|' '{gsub(/^ *| *$/, "", $2); print $2}')
 WINDOW_TITLE=$(aerospace list-windows --focused | awk -F'|' '{gsub(/^ *| *$/, "", $2); print $3}')
 FOCUSED_WORKSPACE=$(aerospace list-workspaces --focused)
@@ -745,9 +746,7 @@ sketchybar --set window_title label="$WINDOW_TITLE" \
     icon="$icon_strip"
 
 apps=$(aerospace list-windows --workspace "$FOCUSED_WORKSPACE" | awk -F'|' '{gsub(/^ *| *$/, "", $2); print $2}' | sort -u)
-echo "$apps"
 icon_strip=$(app_strip "$apps")
-echo "$icon_strip"
 if [ -n "$icon_strip" ]; then
     sketchybar --set space."$FOCUSED_WORKSPACE" label="$icon_strip" \
         background.color=0xCFFF69B4 \
