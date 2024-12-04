@@ -80,7 +80,7 @@
           label.y_offset=-1 \
           label.shadow.drawing=off \
           click_script="aerospace workspace $sid" \
-          script="$PLUGIN_DIR/aerospace.sh $sid"
+          script="$PLUGIN_DIR/space_windows.sh"
       done
 
       # Load Icons on startup

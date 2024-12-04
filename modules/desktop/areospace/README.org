@@ -1,0 +1,8 @@
+* Windows title
+   listen front_app_switched, window_focus and title_change
+   change windows_title icon and label
+   change space.CURRENT_SPACE
+* space.*
+   listen aerospace_workspace_change
+   when FOCUSED_WORKSPACE change FOCUSED_WORKSPACE label
+   when PREV_WORKSPACE change PREV_WORKSPACE label
