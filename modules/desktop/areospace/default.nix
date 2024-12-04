@@ -153,6 +153,16 @@
       #     icon.color=0x44FFFFFF \
       #     label.color=0x44FFFFFF
 
+
+
+      sketchybar  --add alias 'TextInputMenuAgent' right                 \
+                  --set 'TextInputMenuAgent'                             \
+                        icon.color=0xff6d8896   \
+                        background.corner_radius=10 \
+                        background.height=3 \
+                        update_freq=3                        \
+                        script="${plugin_dir}/tray.sh"
+
       #### Groups !!! ####
       sketchybar --add bracket spaces '/space\..*/' hahamarginleft hahamarginleftRight \
         --set spaces background.color=0xDAfef3c7 \
@@ -163,6 +173,7 @@
         --set rightItems background.color=0xDAfef3c7 \
         background.corner_radius=10 \
         background.height=30
+
 
       ##### Force all scripts to run the first time (never do this in a script) #####
       sketchybar --update
