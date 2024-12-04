@@ -726,7 +726,7 @@ function app_strip() {
             else
                 icon_strip+="$(icon_map "$app")"
             fi
-        done <<<"$apps"
+        done <<<"${1}"
         echo "$icon_strip"
     fi
 }

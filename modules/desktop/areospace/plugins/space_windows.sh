@@ -724,9 +724,9 @@ app_strip() {
             if [ -n "$icon_strip" ]; then
                 icon_strip="$icon_strip $(icon_map "$app")"
             else
-                icon_strip="$(icon_map "$app")"
+                icon_strip=" $(icon_map "$app")"
             fi
-        done <<<"$apps"
+        done <<<"${1}"
         echo "$icon_strip"
     fi
 }
