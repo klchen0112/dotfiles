@@ -714,22 +714,52 @@ function icon_map() {
     ;;
   esac
 }
+
+function app_strip() {
+  if [ "${1}" == "" ]; then
+      echo ""
+  else
+    icon_strip=""
+    while read -r app; do
+      if [ -n "$icon_strip" ]; then
+        icon_strip+=" $(icon_map "$app")"
+      else
+        icon_strip+="$(icon_map "$app")"
+      fi
+    done <<<$apps
+    echo $icon_strip
+  fi
+}
+
 apps=$(aerospace list-windows --focused | awk -F'|' '{gsub(/^ *| *$/, "", $2); print $2}')
 WINDOW_TITLE=$(aerospace list-windows --focused | awk -F'|' '{gsub(/^ *| *$/, "", $2); print $3}')
-if [ -z "$apps" ]; then
-  icon_strip=""
-else
-  icon_strip=""
-  while read -r app
-  do
-    icon_result=$(icon_map "$app")
-    icon_strip+=" ${icon_result}"
-  done <<< "${apps}"
-fi
+FOCUSED_WORKSPACE=$(aerospace list-workspaces --focused)
+icon_strip=$(app_strip $apps)
 
 if [[ ${#WINDOW_TITLE} -gt 50 ]]; then
   WINDOW_TITLE="$(echo "$WINDOW_TITLE" | cut -c 1-50 | iconv -c)"
 fi
 
-sketchybar --set window_title label="$WINDOW_TITLE"
-sketchybar --set window_title icon="$icon_strip"
+sketchybar --set window_title label="$WINDOW_TITLE" \
+                              icon="$icon_strip"
+
+apps=$(aerospace list-windows --workspace $FOCUSED_WORKSPACE | awk -F'|' '{gsub(/^ *| *$/, "", $2); print $2}')
+echo $apps
+icon_strip=$(app_strip $apps)
+echo $icon_strip
+if [ -n "$icon_strip" ]; then
+  sketchybar --set space.$FOCUSED_WORKSPACE label="$icon_strip" \
+                                                background.color=0xCFFF69B4 \
+                                                label.color=0xFFFFFFFF \
+                                                icon.color=0xFFFFFFFF \
+                                                background.border_color=0xBB352f36 \
+                                                drawing=on
+
+else
+  sketchybar --set space.$FOCUSED_WORKSPACE label="" \
+                                            background.color=0x00000000 \
+                                            label.color=0xBB352f36 \
+                                            icon.color=0xBB352f36 \
+                                            background.border_color=0xAAFFFFFF \
+                                            drawing=off
+fi

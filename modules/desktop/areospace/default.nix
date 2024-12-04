@@ -61,7 +61,6 @@
       for sid in $(aerospace list-workspaces --all); do
         sketchybar --add item space.$sid left \
           --subscribe space.$sid aerospace_workspace_change \
-          --subscribe space.$sid space_windows_change \
           --set space.$sid \
           drawing=off \
           background.color=0x44ffffff \

@@ -715,22 +715,24 @@ function icon_map() {
   esac
 }
 
+
+
 function app_strip() {
   if [ "${1}" == "" ]; then
       echo ""
   else
     icon_strip=""
-    while read -r app
-    do
+    while read -r app; do
       if [ -n "$icon_strip" ]; then
         icon_strip+=" $(icon_map "$app")"
       else
         icon_strip+="$(icon_map "$app")"
       fi
-    done <<< "${1}"
+    done <<<$apps
     echo $icon_strip
   fi
 }
+
 if [ "$SENDER" == "aerospace_workspace_change" ]; then
   prevapps=$(aerospace list-windows --workspace "$PREV_WORKSPACE" | awk -F'|' '{gsub(/^ *| *$/, "", $2); print $2}' | sort -u)
   icon_strip=$(app_strip $prevapps)
@@ -750,34 +752,11 @@ if [ "$SENDER" == "aerospace_workspace_change" ]; then
   fi
   apps=$(aerospace list-windows --workspace "$FOCUSED_WORKSPACE" | awk -F'|' '{gsub(/^ *| *$/, "", $2); print $2}'| sort -u )
   icon_strip=$(app_strip $apps)
+  echo $icon_strip
   sketchybar --set space.$FOCUSED_WORKSPACE drawing=on \
-                                            label=$icon_strip \
+                                            label="$icon_strip" \
                                             background.color=0xCFFF69B4 \
                                             label.color=0xFFFFFFFF \
                                             icon.color=0xFFFFFFFF \
                                             background.border_color=0xBB352f36
-fi
-
-if [ "$SENDER" == "space_windows_change" ]; then
-  FOCUSED_WORKSPACE=$(aerospace list-workspaces --focused)
-
-  apps=$(aerospace list-windows --workspace $FOCUSED_WORKSPACE | awk -F'|' '{gsub(/^ *| *$/, "", $2); print $2}' | sort -u)
-  icon_strip=$(app_strip $apps)
-
-  if [ -n "$icon_strip" ]; then
-    sketchybar --set space.$FOCUSED_WORKSPACE label="$icon_strip" \
-                                                  background.color=0xCFFF69B4 \
-                                                  label.color=0xFFFFFFFF \
-                                                  icon.color=0xFFFFFFFF \
-                                                  background.border_color=0xBB352f36 \
-                                                  drawing=on
-
-  else
-    sketchybar --set space.$FOCUSED_WORKSPACE label="" \
-                                              background.color=0x00000000 \
-                                              label.color=0xBB352f36 \
-                                              icon.color=0xBB352f36 \
-                                              background.border_color=0xAAFFFFFF \
-                                              drawing=off
-  fi
 fi
