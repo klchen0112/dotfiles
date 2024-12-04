@@ -750,9 +750,8 @@ if [ "$SENDER" == "aerospace_workspace_change" ]; then
                                            icon.color=0xBB352f36 \
                                            background.border_color=0xAAFFFFFF
   fi
-  apps=$(aerospace list-windows --workspace "$FOCUSED_WORKSPACE" | awk -F'|' '{gsub(/^ *| *$/, "", $2); print $2}'| sort -u )
+  apps=$(aerospace list-windows --workspace $FOCUSED_WORKSPACE | awk -F'|' '{gsub(/^ *| *$/, "", $2); print $2}'| sort -u )
   icon_strip=$(app_strip $apps)
-  echo $icon_strip
   sketchybar --set space.$FOCUSED_WORKSPACE drawing=on \
                                             label="$icon_strip" \
                                             background.color=0xCFFF69B4 \
