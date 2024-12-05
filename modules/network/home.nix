@@ -2,7 +2,8 @@
 # OpenVPN
 #
 {pkgs, ...}: {
-  home.packages = [
+  home.packages = with pkgs; [
     # pkgs.sing-box
+    ifstat-legacy
   ];
 }

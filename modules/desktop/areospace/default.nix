@@ -129,38 +129,29 @@
       # volume is registered. More info about the event system can be found here:
       # https://felixkratz.github.io/SketchyBar/config/events
 
-      sketchybar --add item hahamarginrirrght right --set hahamarginrirrght margin_left=0
+      sketchybar  --add item hahamarginrirrght right --set hahamarginrirrght margin_left=0
 
-      sketchybar --add item clock right \
-                 --set clock update_freq=10 \
-                      script="$PLUGIN_DIR/clock.sh"
+      sketchybar  --add alias 'TextInputMenuAgent' right \
+                  --set 'TextInputMenuAgent'  update_freq=3  script="${plugin_dir}/tray.sh"  \
+                  --add item clock right \
+                  --set clock update_freq=10 script="${plugin_dir}/clock.sh" \
+                  --add item volume right \
+                  --set volume script="${plugin_dir}/volume.sh" \
+                  --subscribe volume volume_change \
+                  --add item battery right \
+                  --set battery update_freq=120 script="${plugin_dir}/battery.sh" \
+                  --subscribe battery system_woke power_source_change \
+                  --add item network_down right\
+                  --set network_down icon=󰇚 update_freq=1 script="${plugin_dir}/speed.sh" icon.highlight_color=0xff98ff98\
+                  --add item network_up right\
+                  --set network_up icon=󰕒 update_freq=1 script="${plugin_dir}/speed.sh" icon.highlight_color=0xff98ff98\
+                  label.font="Hack Nerd Font:Italic:14.0" \
+                  icon.font="Hack Nerd Font:Heavy:16.0" \
+                  icon.color=0x44FFFFFF \
+                  label.color=0x44FFFFFF
 
-      sketchybar  --add item volume right \
-                  --set volume script="$PLUGIN_DIR/volume.sh"
-                  --subscribe volume volume_change
 
-      sketchybar --add item battery right \
-        --set battery update_freq=120 script="$PLUGIN_DIR/battery.sh" \
-        --subscribe battery system_woke power_source_change
 
-      sketchybar  --add item wifi right \
-                  --set wifi update_freq=20 \
-                            script="$PLUGIN_DIR/wifi.sh" \
-                            icon.padding_right=0 \
-                            label.padding_left=0 \
-                            label.font="SF Pro:Italic:12.0" \
-                            label.y_offset=-3
-
-      # sketchybar  --add item swap e \
-      #     --set swap update_freq=20 script="$PLUGIN_DIR/memswap.sh"\
-      #     icon="" \
-      #     label.font="Hack Nerd Font:Italic:14.0"
-
-      sketchybar  --add alias 'TextInputMenuAgent' right                 \
-                  --set 'TextInputMenuAgent'                             \
-                        icon.color=0xff6d8896   \
-                        update_freq=3                        \
-                        script="${plugin_dir}/tray.sh"
 
       #### Groups !!! ####
       sketchybar  --add bracket spaces '/space\..*/' hahamarginleft hahamarginleftRight \
@@ -168,10 +159,6 @@
                         background.corner_radius=10 \
                         background.height=30
 
-      sketchybar  --add bracket rightItems TextInputMenuAgent clock battery volume wifi \
-                  --set rightItems background.color=0xDAfef3c7 \
-                  background.corner_radius=10 \
-                  background.height=30
 
 
       ##### Force all scripts to run the first time (never do this in a script) #####
