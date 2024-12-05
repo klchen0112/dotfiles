@@ -101,7 +101,7 @@
 
       sketchybar --add item hahamarginleftRight left --set hahamarginleftRight padding_right=0 padding_left=0 width=0 margin_right=0 margin_left=0
 
-      sketchybar  --add item window_title q\
+      sketchybar  --add item window_title center\
                   --set window_title icon="" \
                   --set window_title label="" \
                   icon.font="sketchybar-app-font:Regular:16.0" \
@@ -134,13 +134,13 @@
       sketchybar --add item clock right \
         --set clock update_freq=10 script="$PLUGIN_DIR/clock.sh"
 
-      sketchybar  --add item volume right \
-        --set volume script="$PLUGIN_DIR/volume.sh"
-        --subscribe volume volume_change
+      # sketchybar  --add item volume right \
+      #   --set volume script="$PLUGIN_DIR/volume.sh"
+      #   --subscribe volume volume_change
 
-      sketchybar --add item battery right \
-        --set battery update_freq=120 script="$PLUGIN_DIR/battery.sh" \
-        --subscribe battery system_woke power_source_change
+      # sketchybar --add item battery right \
+      #   --set battery update_freq=120 script="$PLUGIN_DIR/battery.sh" \
+      #   --subscribe battery system_woke power_source_change
 
       sketchybar --add item wifi right \
         --set wifi update_freq=20 script="$PLUGIN_DIR/wifi.sh" icon.padding_right=0 label.padding_left=0 label.font="SF Pro:Italic:12.0" label.y_offset=-3
@@ -148,11 +148,7 @@
       # sketchybar  --add item swap e \
       #     --set swap update_freq=20 script="$PLUGIN_DIR/memswap.sh"\
       #     icon="" \
-      #     label.font="Hack Nerd Font:Italic:14.0" \
-      #     icon.color=0x44FFFFFF \
-      #     label.color=0x44FFFFFF
-
-
+      #     label.font="Hack Nerd Font:Italic:14.0"
 
       sketchybar  --add alias 'TextInputMenuAgent' right                 \
                   --set 'TextInputMenuAgent'                             \
@@ -168,7 +164,7 @@
         background.corner_radius=10 \
         background.height=30
 
-      sketchybar --add bracket rightItems clock volume battery wifi \
+      sketchybar --add bracket rightItems clock wifi \
         --set rightItems background.color=0xDAfef3c7 \
         background.corner_radius=10 \
         background.height=30
