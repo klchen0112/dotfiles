@@ -109,8 +109,8 @@ ctrl-shift-alt-a = "exec-and-forget alacritty"
 ctrl-shift-alt-e = "exec-and-forget emacsclient -c -n -a ''"
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#layout
-ctrl-alt-slash = 'layout tiles horizontal vertical'
-ctrl-alt-comma = 'layout accordion horizontal vertical'
+ctrl-alt-minus = 'layout tiles horizontal vertical'
+ctrl-alt-equal = 'layout accordion horizontal vertical'
 
 alt-shift-f = "fullscreen"
 
