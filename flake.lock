@@ -24,15 +24,15 @@
         "nixpkgs": ["nixpkgs"]
       },
       "locked": {
-        "lastModified": 1732954938,
-        "narHash": "sha256-MBqk0E6IJm5eYJvlw2ALdnv+UnGVDxQEUrVGzQYwPiU=",
-        "owner": "klchen0112",
+        "lastModified": 1732983201,
+        "narHash": "sha256-/B6XYWSntO1GmKt8XBtMDVUaaNarCC4OL+HZm8VT+jU=",
+        "owner": "BatteredBunny",
         "repo": "brew-nix",
-        "rev": "c13e979cade578bba60fbfe3df75a76908091652",
+        "rev": "15362c9fead2677452e8d0688f38d64f633fffb7",
         "type": "github"
       },
       "original": {
-        "owner": "klchen0112",
+        "owner": "BatteredBunny",
         "repo": "brew-nix",
         "type": "github"
       }

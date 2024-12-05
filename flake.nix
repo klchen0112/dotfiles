@@ -201,7 +201,7 @@
       brew-nix = {
         # for local testing via `nix flake check` while developing
         #url = "path:../";
-        url = "github:klchen0112/brew-nix";
+        url = "github:BatteredBunny/brew-nix";
         inputs.nix-darwin.follows = "darwin";
         inputs.brew-api.follows = "brew-api";
         inputs.flake-utils.follows = "flake-utils";
