@@ -132,18 +132,24 @@
       sketchybar --add item hahamarginrirrght right --set hahamarginrirrght margin_left=0
 
       sketchybar --add item clock right \
-        --set clock update_freq=10 script="$PLUGIN_DIR/clock.sh"
+                 --set clock update_freq=10 \
+                      script="$PLUGIN_DIR/clock.sh"
 
-      # sketchybar  --add item volume right \
-      #   --set volume script="$PLUGIN_DIR/volume.sh"
-      #   --subscribe volume volume_change
+      sketchybar  --add item volume right \
+                  --set volume script="$PLUGIN_DIR/volume.sh"
+                  --subscribe volume volume_change
 
-      # sketchybar --add item battery right \
-      #   --set battery update_freq=120 script="$PLUGIN_DIR/battery.sh" \
-      #   --subscribe battery system_woke power_source_change
+      sketchybar --add item battery right \
+        --set battery update_freq=120 script="$PLUGIN_DIR/battery.sh" \
+        --subscribe battery system_woke power_source_change
 
-      sketchybar --add item wifi right \
-        --set wifi update_freq=20 script="$PLUGIN_DIR/wifi.sh" icon.padding_right=0 label.padding_left=0 label.font="SF Pro:Italic:12.0" label.y_offset=-3
+      sketchybar  --add item wifi right \
+                  --set wifi update_freq=20 \
+                            script="$PLUGIN_DIR/wifi.sh" \
+                            icon.padding_right=0 \
+                            label.padding_left=0 \
+                            label.font="SF Pro:Italic:12.0" \
+                            label.y_offset=-3
 
       # sketchybar  --add item swap e \
       #     --set swap update_freq=20 script="$PLUGIN_DIR/memswap.sh"\
@@ -153,21 +159,19 @@
       sketchybar  --add alias 'TextInputMenuAgent' right                 \
                   --set 'TextInputMenuAgent'                             \
                         icon.color=0xff6d8896   \
-                        background.corner_radius=10 \
-                        background.height=3 \
                         update_freq=3                        \
                         script="${plugin_dir}/tray.sh"
 
       #### Groups !!! ####
-      sketchybar --add bracket spaces '/space\..*/' hahamarginleft hahamarginleftRight \
-        --set spaces background.color=0xDAfef3c7 \
-        background.corner_radius=10 \
-        background.height=30
+      sketchybar  --add bracket spaces '/space\..*/' hahamarginleft hahamarginleftRight \
+                  --set spaces background.color=0xDAfef3c7 \
+                        background.corner_radius=10 \
+                        background.height=30
 
-      sketchybar --add bracket rightItems clock wifi \
-        --set rightItems background.color=0xDAfef3c7 \
-        background.corner_radius=10 \
-        background.height=30
+      sketchybar  --add bracket rightItems TextInputMenuAgent clock battery volume wifi \
+                  --set rightItems background.color=0xDAfef3c7 \
+                  background.corner_radius=10 \
+                  background.height=30
 
 
       ##### Force all scripts to run the first time (never do this in a script) #####
