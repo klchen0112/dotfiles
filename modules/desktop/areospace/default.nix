@@ -144,7 +144,7 @@
                   --add item network_down right\
                   --set network_down icon=󰇚 update_freq=1 script="${plugin_dir}/speed.sh" icon.highlight_color=0xff98ff98\
                   --add item network_up right\
-                  --set network_up icon=󰕒 update_freq=1 script="${plugin_dir}/speed.sh" icon.highlight_color=0xff98ff98\
+                  --set network_up icon=󰕒  icon.highlight_color=0xff98ff98\
                   label.font="Hack Nerd Font:Italic:14.0" \
                   icon.font="Hack Nerd Font:Heavy:16.0" \
                   icon.color=0x44FFFFFF \
