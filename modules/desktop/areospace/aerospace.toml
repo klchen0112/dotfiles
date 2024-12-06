@@ -342,9 +342,9 @@ run = ['move-node-to-workspace 7']
 
 [[on-window-detected]]
 if.app-id = 'org.gnu.Emacs'
-run = ['move-node-to-workspace 0']
+run = ['move-node-to-workspace 3']
 
 # Make all windows float by default
 [[on-window-detected]]
 check-further-callbacks = true
-run = ['layout floating', 'move-node-to-workspace 0']
+run = ['layout floating']
