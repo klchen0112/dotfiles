@@ -69,6 +69,9 @@
       # Jigmo
 
       sketchybar-app-font
+
+      # plex mono
+      ibm-plex
     ];
   };
 }
