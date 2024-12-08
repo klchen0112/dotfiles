@@ -5,7 +5,7 @@
 }: {
   programs = {
     vim = {
-      enable = true;
+      enable = false;
       settings = {
         background = "light";
         copyindent = true;
@@ -41,6 +41,12 @@
       enable = false;
       viAlias = true;
       vimAlias = true;
+    };
+    nixvim = {
+      enable = false;
+      viAlias = true;
+      vimAlias = true;
+      colorschemes.catppuccin.enable = true;
     };
   };
 }
