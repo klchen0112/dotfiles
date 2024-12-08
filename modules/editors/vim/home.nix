@@ -42,11 +42,5 @@
       viAlias = true;
       vimAlias = true;
     };
-    nixvim = {
-      enable = false;
-      viAlias = true;
-      vimAlias = true;
-      colorschemes.catppuccin.enable = true;
-    };
   };
 }
