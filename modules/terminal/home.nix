@@ -32,7 +32,10 @@
         multiplier = 3;
       };
       font = let
-        fontname = "Iosevka Nerd Font";
+        fontname =
+          if pkgs.stdenv.isLinux
+          then "Iosevka Nerd Font"
+          else "SF Mono";
       in {
         normal = {
           family = fontname;
@@ -79,7 +82,10 @@
 
     settings = {
       #-------------------------------------------- Font --------------------------------------------
-      font_family = "Iosevka";
+      font_family =
+        if pkgs.stdenv.isLinux
+        then "Iosevka Nerd Font"
+        else "SF Mono";
       font_size = 14;
 
       #-------------------------------------------- Window --------------------------------------------
@@ -87,7 +93,8 @@
         if pkgs.stdenv.isDarwin
         then "titlebar-only "
         else true;
-
+      # Animation
+      cursor_trail = 3;
       #-------------------------------------------- Mouse --------------------------------------------
       url_prefixes = "http https file ftp";
       copy_on_select = true;
