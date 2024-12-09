@@ -23,7 +23,7 @@
       inputs.nix-vscode-extensions.overlays.default
       # neovim-nightly-overlay.overlays.default
       # inputs.nixpkgs-firefox-darwin.overlay
-      inputs.nur.overlay
+      inputs.nur.overlays.default
       # Or define it inline, for example:
       # (final: prev: {
       #   hi = final.hello.overrideAttrs (oldAttrs: {

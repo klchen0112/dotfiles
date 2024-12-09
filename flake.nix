@@ -291,6 +291,9 @@
 
       nur = {
         url = "github:nix-community/NUR"; # NUR Packages
+        inputs.nixpkgs.follows = "nixpkgs";
+        inputs.flake-parts.follows = "flake-parts";
+        inputs.treefmt-nix.follows = "treefmt-nix";
       };
 
       nixgl = {
