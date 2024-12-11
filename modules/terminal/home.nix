@@ -116,10 +116,7 @@
       macos_thicken_font = 0;
       macos_traditional_fullscreen = false;
       macos_show_window_title_in = "all";
-      macos_colorspace =
-        if pkgs.stdenv.isDarwin
-        then "displayp3"
-        else "srgb";
+      macos_colorspace = "displayp3";
     };
   };
 
