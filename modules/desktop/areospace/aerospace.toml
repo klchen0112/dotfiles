@@ -213,6 +213,7 @@ left = 'resize width -50'
 up = 'resize height +50'
 down = 'resize height -50'
 right = 'resize width +50'
+e = "balance-sizes"
 enter = 'mode main'
 esc = 'mode main'
 
@@ -232,10 +233,10 @@ backspace = ['close-all-windows-but-current', 'mode main']
 # sticky is not yet supported https://github.com/nikitabobko/AeroSpace/issues/2
 #s = ['layout sticky tiling', 'mode main']
 
-alt-shift-left = ['join-with left', 'mode main']
-alt-shift-down = ['join-with down', 'mode main']
-alt-shift-up = ['join-with up', 'mode main']
-alt-shift-right = ['join-with right', 'mode main']
+left = ['join-with left', 'mode main']
+down = ['join-with down', 'mode main']
+up = ['join-with up', 'mode main']
+right = ['join-with right', 'mode main']
 
 #down = 'volume down'
 #up = 'volume up'
@@ -264,45 +265,6 @@ alt-shift-right = ['join-with right', 'mode main']
 #
 # =================================================================
 
-[[on-window-detected]]
-if.app-id = 'net.kovidgoyal.kitty'
-run = 'move-node-to-workspace 1'
-
-[[on-window-detected]]
-if.app-id = 'org.alacritty'
-run = 'move-node-to-workspace 2'
-
-[[on-window-detected]]
-if.app-id = 'com.tencent.WeWorkMac'
-run = 'move-node-to-workspace 3'
-
-[[on-window-detected]]
-if.app-id = 'org.mozilla.firefox'
-run = 'move-node-to-workspace 4'
-
-[[on-window-detected]]
-if.app-id = 'com.google.Chrome'
-run = 'move-node-to-workspace 5'
-
-[[on-window-detected]]
-if.app-id = 'ru.keepcoder.Telegram'
-run = 'move-node-to-workspace 6'
-
-[[on-window-detected]]
-if.app-id = 'com.tencent.xinWeChat'
-run = 'move-node-to-workspace 6'
-
-[[on-window-detected]]
-if.app-id = 'com.tencent.qq'
-run = 'move-node-to-workspace 6'
-
-[[on-window-detected]]
-if.app-id = 'com.tencent.QQMusicMac'
-run = 'move-node-to-workspace 7'
-
-[[on-window-detected]]
-if.app-id = 'com.netease.163music'
-run = 'move-node-to-workspace 7'
 
 [[on-window-detected]]
 if.app-id = 'com.apple.mail'
@@ -335,16 +297,3 @@ run = ['layout floating', 'move-node-to-workspace 9']
 [[on-window-detected]]
 if.app-id = 'com.duxiaoman.manruliu'
 run = ['layout floating', 'move-node-to-workspace 9']
-
-[[on-window-detected]]
-if.app-id = 'com.microsoft.VSCode '
-run = ['move-node-to-workspace 7']
-
-[[on-window-detected]]
-if.app-id = 'org.gnu.Emacs'
-run = ['move-node-to-workspace 3']
-
-# Make all windows float by default
-[[on-window-detected]]
-check-further-callbacks = true
-run = ['layout floating']
