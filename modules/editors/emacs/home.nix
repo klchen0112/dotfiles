@@ -69,7 +69,8 @@ in {
         direnv
         devenv
         devbox
-        poetry
+
+        # poetry
       ]
       ++ (lib.optionals pkgs.stdenv.isDarwin) [
         # pngpaste for org mode download clip
