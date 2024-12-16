@@ -63,6 +63,13 @@ in {
         pkg-config
         # telega
         libwebp
+
+        #
+        texliveFull
+        direnv
+        devenv
+        devbox
+        poetry
       ]
       ++ (lib.optionals pkgs.stdenv.isDarwin) [
         # pngpaste for org mode download clip

@@ -1,6 +1,8 @@
 {pkgs, ...}: {
-  programs.texlive = {
-    enable = true;
-    extraPackages = tpkgs: {inherit (tpkgs) scheme-full biblatex latexmk;};
-  };
+  # programs.texlive = {
+  #   enable = true;
+  #   packageSet = pkgs.texliveFull;
+  #   # packages = pkgs.texliveFull;
+  #   # extraPackages = pkgs.texliveFull;
+  # };
 }
