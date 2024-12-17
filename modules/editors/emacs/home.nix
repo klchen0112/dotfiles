@@ -89,7 +89,7 @@ in {
     experimentalFetchTree = true;
   };
   services.emacs = {
-    enable = true;
+    enable = pkgs.stdenv.isLinux;
     client.enable = true;
     socketActivation.enable = true;
     startWithUserSession = "graphical";
