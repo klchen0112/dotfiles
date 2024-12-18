@@ -64,6 +64,7 @@ in {
         # telega
         libwebp
 
+        pandoc
         #
         texliveFull
         direnv
