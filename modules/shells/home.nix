@@ -109,7 +109,7 @@
       E = "emacs -nw";
       grep = "rg";
       cat = "bat";
-      conda = "micromamba";
+      # conda = "micromamba";
       vim = "emacs -nw";
     };
     shellAliases = {
