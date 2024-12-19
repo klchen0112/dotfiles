@@ -106,6 +106,8 @@
         if pkgs.stdenv.isDarwin
         then "/etc/profiles/per-user/${username}/bin/fish --login --interactive"
         else "/etc/profiles/per-user/${username}/bin/fish";
+      #-------------------------------------------- Theme --------------------------------------------
+      background_opacity = 0.8;
       #-------------------------------------------- Macos Settings --------------------------------------------
 
       macos_titlebar_color = "system";
