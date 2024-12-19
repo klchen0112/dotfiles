@@ -111,20 +111,24 @@
       "mas"
       #"sleepwatcher"
       #"musl-cross"
-      "micromamba"
+      # "micromamba"
     ];
     taps = [
       # "homebrew/cask"
     ];
-    casks = [
-      "microsoft-remote-desktop"
-      "google-chrome"
-      "adrive"
-      "steam"
-      "logi-options+"
-      "firefox"
-      "font-sf-pro"
-      "font-sf-mono"
-    ];
+    casks =
+      [
+        "microsoft-remote-desktop"
+        "google-chrome"
+
+        "logi-options+"
+        "firefox"
+        "font-sf-pro"
+        "font-sf-mono"
+      ]
+      ++ lib.optionals (!isWork) [
+        "steam"
+        "adrive"
+      ];
   };
 }
