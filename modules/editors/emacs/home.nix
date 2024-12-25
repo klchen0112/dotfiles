@@ -70,12 +70,16 @@ in {
         direnv
         devenv
         devbox
-
+        # ------------------- Python ---
+        pyright
         # poetry
         # ------------------- Web -------------------------
-        typescript-language-server
         nodejs
         typescript
+
+        typescript-language-server
+        emmet-ls
+        jsonnet-language-server
       ]
       ++ (lib.optionals pkgs.stdenv.isDarwin) [
         # pngpaste for org mode download clip
