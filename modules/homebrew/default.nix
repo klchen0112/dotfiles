@@ -107,8 +107,7 @@
       );
 
     brews = [
-      # "macism"
-      "mas"
+      # "macism
       #"sleepwatcher"
       #"musl-cross"
       # "micromamba"
@@ -129,6 +128,9 @@
       ++ lib.optionals (!isWork) [
         "steam"
         "adrive"
+      ]
+      ++ lib.optionals isWork [
+        "docker"
       ];
   };
 }
