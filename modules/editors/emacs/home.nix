@@ -72,6 +72,10 @@ in {
         devbox
 
         # poetry
+        # ------------------- Web -------------------------
+        typescript-language-server
+        nodejs
+        typescript
       ]
       ++ (lib.optionals pkgs.stdenv.isDarwin) [
         # pngpaste for org mode download clip
