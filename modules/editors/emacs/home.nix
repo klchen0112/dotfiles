@@ -80,6 +80,9 @@ in {
         typescript-language-server
         emmet-ls
         jsonnet-language-server
+        # Building tools
+        bazel
+        cmake
       ]
       ++ (lib.optionals pkgs.stdenv.isDarwin) [
         # pngpaste for org mode download clip
