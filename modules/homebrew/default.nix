@@ -91,14 +91,14 @@
         wechat = 836500024;
         qq = 451108668;
         # dingtalk = 1435447041;
-        # xcode = 497799835;
+        xcode = 497799835;
         spark = 1176895641;
       }
       // (
         if isWork
         then {}
         else {
-          onedrive = 823766827;
+          # onedrive = 823766827;
           # tencent-meeting = 1484048379;
           "microsoft-word" = 462054704;
           "microsoft-powerpoint" = 462062816;
