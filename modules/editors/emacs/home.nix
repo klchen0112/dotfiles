@@ -9,8 +9,8 @@
 }: let
   emacsPackage =
     if pkgs.stdenv.hostPlatform.isDarwin
-    then pkgs.emacsPlusMaster
-    else pkgs.emacs29-pgtk;
+    then pkgs.emacsIGC
+    else pkgs.emacs30-pgtk;
 in {
   imports = [
     inputs.nix-doom-emacs-unstraightened.hmModule
@@ -101,7 +101,7 @@ in {
     experimentalFetchTree = true;
   };
   services.emacs = {
-    enable = pkgs.stdenv.isLinux;
+    enable = true;
     client.enable = true;
     socketActivation.enable = true;
     startWithUserSession = "graphical";

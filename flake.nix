@@ -184,7 +184,7 @@
   inputs =
     # All flake references used to build my NixOS setup. These are dependencies.
     {
-      nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable"; # Nix Packages
+      nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable"; # Nix Packages
       nixpkgs-unstable.url = "github:nixos/nixpkgs/master"; # Nix Packages
 
       #  MacOS

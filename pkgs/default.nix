@@ -85,4 +85,60 @@
     meta.platforms = pkgs.lib.platforms.darwin;
     meta.mainProgram = "emacs";
   });
+  emacsIGC = inputs.emacs-overlay.packages.${pkgs.system}.emacs-git.overrideAttrs (old: rec {
+    name = "emacs-${version}";
+    version = "igc";
+    src = pkgs.fetchFromGitHub {
+      owner = "emacs-mirror";
+      repo = "emacs";
+      rev = "5675290ef8a60bedd102d4ef124e25786442dfaf";
+      hash = "sha256-r7dJ0/Eyd9dUOPp85AVMWTvROte3ZhiAzXQH8QaR8us=";
+    };
+    configureFlags =
+      (old.configureFlags or [])
+      ++ [
+        # "--with-xwidgets" # withXwidgets failed with mps enabled
+        "--with-mps=yes"
+      ];
+    buildInputs =
+      old.buildInputs
+      ++ [inputs.own-nur.packages.${pkgs.system}.mps-darwin];
+    patches =
+      (old.patches or [])
+      ++ [
+        # Fix OS window role (needed for window managers like yabai)
+        (pkgs.fetchpatch {
+          url = "https://raw.githubusercontent.com/d12frosted/homebrew-emacs-plus/master/patches/emacs-28/fix-window-role.patch";
+          sha256 = "+z/KfsBm1lvZTZNiMbxzXQGRTjkCFO4QPlEK35upjsE=";
+        })
+        # Enable rounded window with no decoration
+        (pkgs.fetchpatch {
+          url = "https://raw.githubusercontent.com/mkvoya/homebrew-emacs-plus/refs/heads/fix-undecorated-round/patches/emacs-30/round-undecorated-frame.patch";
+          sha256 = "uYIxNTyfbprx5mCqMNFVrBcLeo+8e21qmBE3lpcnd+4=";
+        })
+        # Make Emacs aware of OS-level light/dark mode
+        (pkgs.fetchpatch {
+          url = "https://raw.githubusercontent.com/d12frosted/homebrew-emacs-plus/master/patches/emacs-30/system-appearance.patch";
+          sha256 = "sha256-3QLq91AQ6E921/W9nfDjdOUWR8YVsqBAT/W9c1woqAw=";
+        })
+        #Cursor animation
+        (pkgs.fetchpatch {
+          url = "https://raw.githubusercontent.com/sincebyte/neo-emacs/master/patches/emacs31/cursor-animation.patch";
+          sha256 = "sha256-xrg9iAl0ZrfqzCnq0oact5XozRYOY/rP/MO8QdbIkM0=";
+        })
+        # alpha-background
+        (pkgs.fetchpatch {
+          url = "https://raw.githubusercontent.com/sincebyte/neo-emacs/master/patches/emacs30/ns-alpha-background.patch";
+          sha256 = "sha256-3OG1tMpg/1jrP/gsnFCkqJ22OkS/d8voOUqiOk7iUkE=";
+        })
+        # ns-mac-input-source
+        (pkgs.fetchpatch {
+          url = "https://raw.githubusercontent.com/LuciusChen/.emacs.d/refs/heads/main/patches/ns-mac-input-source.patch";
+          sha256 = "sha256-E9BR/axZMhA3QTeoHIKU62Rogr7ZmTtWpnYdi69npNM=";
+        })
+      ];
+
+    meta.platforms = pkgs.lib.platforms.darwin;
+    meta.mainProgram = "emacs";
+  });
 }
