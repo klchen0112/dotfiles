@@ -81,7 +81,7 @@ in {
         emmet-ls
         jsonnet-language-server
         # Building tools
-        bazel
+        # bazel_7
         cmake
       ]
       ++ (lib.optionals pkgs.stdenv.isDarwin) [
