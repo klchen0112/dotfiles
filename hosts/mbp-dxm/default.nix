@@ -30,6 +30,7 @@
       # ../../modules/windowManager
       # ../../modules/vpn
       ../../modules/notes/home.nix
+      inputs.catppuccin.homeManagerModules.catppuccin
     ]
     ++ lib.optionals isWork [
       ../../modules/lang/tools/home.nix
@@ -42,4 +43,9 @@
   };
 
   programs.home-manager.enable = true;
+
+  catppuccin = {
+    enable = true;
+    flavor = "latte";
+  };
 }

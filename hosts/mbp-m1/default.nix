@@ -28,6 +28,7 @@
     # ../../modules/windowManager
     # ../../modules/vpn
     ../../modules/notes/home.nix
+    inputs.catppuccin.homeManagerModules.catppuccin
   ];
 
   home = {
@@ -37,4 +38,8 @@
   };
 
   programs.home-manager.enable = true;
+  catppuccin = {
+    enable = true;
+    flavor = "latte";
+  };
 }

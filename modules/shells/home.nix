@@ -9,13 +9,6 @@
 }: {
   programs.gpg = {enable = true;};
 
-  # `programs.git` will generate the config file: ~/.config/git/config
-  # to make git use this config file, `~/.gitconfig` should not exist!
-  #
-  #    https://git-scm.com/docs/git-config#Documentation/git-config.txt---global
-  home.activation.removeExistingGitconfig = lib.hm.dag.entryBefore ["checkLinkTargets"] ''
-    rm -f ~/.gitconfig
-  '';
   programs.git = {
     enable = true;
     package = pkgs.git;
@@ -43,7 +36,7 @@
     delta = {
       enable = true;
       options = {
-        features = "side-by-side";
+        features = lib.mkDefault "side-by-side";
       };
     };
     extraConfig = let
@@ -76,9 +69,8 @@
 
   home.file.".config/btop/themes".source = "${inputs.own-nur.packages.${pkgs.system}.catppuccin-btop}/themes";
   programs.btop = {
-    enable = true;
+    enable = false;
     settings = {
-      color_theme = "catppuccin_latte";
       theme_background = true; # make btop transparent
     };
   };
@@ -151,7 +143,6 @@
   programs.bat = {
     enable = true;
     config = {
-      theme = "Monokai Extended Light";
       style = "numbers,header,grid,changes,snip";
     };
 
@@ -189,10 +180,7 @@
     enableFishIntegration = true;
     enableTransience = true;
     settings =
-      builtins.fromTOML (builtins.readFile "${
-        inputs.own-nur.packages.${pkgs.system}.catppuccin-starship
-      }/palettes/latte.toml")
-      // builtins.fromTOML (builtins.readFile ./starship.toml);
+      builtins.fromTOML (builtins.readFile ./starship.toml);
   };
   programs.ripgrep = {enable = true;};
 

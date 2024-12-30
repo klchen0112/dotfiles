@@ -14,7 +14,6 @@
   programs.alacritty = {
     enable = true;
     settings = {
-      general.import = ["${inputs.own-nur.packages.${pkgs.system}.catppuccin-alacritty}/catppuccin-latte.toml"];
       window = {
         opacity = 0.8;
         startup_mode = "Windowed";
@@ -75,7 +74,6 @@
       LC_ALL = "en_US.UTF-8";
       TERM = "xterm-256color";
     };
-    themeFile = "Catppuccin-Latte";
     shellIntegration = {
       enableFishIntegration = true;
     };

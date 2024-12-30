@@ -381,5 +381,7 @@
       #   url = "github:klchen0112/rime-combo-ice-pinyin";
       #   flake = false;
       # };
+
+      catppuccin.url = "github:catppuccin/nix";
     };
 }
