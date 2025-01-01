@@ -20,7 +20,7 @@
         })
         # Enable rounded window with no decoration
         # (pkgs.fetchpatch {
-        #   url = "https://raw.githubusercontent.com/mkvoya/homebrew-emacs-plus/refs/heads/fix-undecorated-round/patches/emacs-31/round-undecorated-frame.patch";
+        #   url = "https://raw.githubusercontent.com/d12frosted/homebrew-emacs-plus/master/patches/emacs-31/round-undecorated-frame.patch";
         #   sha256 = "iMn/aYtTKyJx3k1n2kVYU0TdriIFPjYSmKh9mEdXrpE=";
         # })
         # Make Emacs aware of OS-level light/dark mode
@@ -67,10 +67,10 @@
           sha256 = "sha256-3QLq91AQ6E921/W9nfDjdOUWR8YVsqBAT/W9c1woqAw=";
         })
         #Cursor animation
-        # (pkgs.fetchpatch {
-        #   url = "https://raw.githubusercontent.com/sincebyte/neo-emacs/master/patches/emacs30/cursor-animation.patch";
-        #   sha256 = "sha256-/WPLjmjk3+yRaiAjnH3b7tj2imJTxW87bd5pfgh1j4k=";
-        # })
+        (pkgs.fetchpatch {
+          url = "https://raw.githubusercontent.com/sincebyte/neo-emacs/master/patches/emacs31/cursor-animation.patch";
+          sha256 = "sha256-xrg9iAl0ZrfqzCnq0oact5XozRYOY/rP/MO8QdbIkM0=";
+        })
         # alpha-background
         (pkgs.fetchpatch {
           url = "https://raw.githubusercontent.com/sincebyte/neo-emacs/master/patches/emacs30/ns-alpha-background.patch";
@@ -91,8 +91,8 @@
     src = pkgs.fetchFromGitHub {
       owner = "emacs-mirror";
       repo = "emacs";
-      rev = "5675290ef8a60bedd102d4ef124e25786442dfaf";
-      hash = "sha256-r7dJ0/Eyd9dUOPp85AVMWTvROte3ZhiAzXQH8QaR8us=";
+      rev = "c45b3a28199f43cfbadc215ef5a4c42c3735ed87";
+      hash = "sha256-tjWHVCSZsAstYLyn5JCipxXYkZduRsVTbgbW46jvhRo=";
     };
     configureFlags =
       (old.configureFlags or [])
