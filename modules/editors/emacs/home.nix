@@ -80,6 +80,7 @@ in {
         typescript-language-server
         emmet-ls
         jsonnet-language-server
+        yaml-language-server
         # Building tools
         # bazel_7
         cmake
