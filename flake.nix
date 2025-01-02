@@ -7,14 +7,14 @@
       # "https://mirrors.tuna.tsinghua.edu.cn/nix-channels/store"
       "https://mirror.sjtu.edu.cn/nix-channels/store"
       "https://cache.nixos.org"
-    ];
-    extra-substituters = [
       "https://nix-community.cachix.org"
       "https://ruixi-rebirth.cachix.org"
       "https://klchen0112.cachix.org"
       "https://devenv.cachix.org"
       "https://rycee.cachix.org"
       "https://cosmic.cachix.org"
+    ];
+    extra-substituters = [
     ];
     extra-trusted-public-keys = [
       "klchen0112.cachix.org-1:cO5Ek4gcvoWtHslHjWn9U5ymU8ZiN7+tJo0jifbtRz4="
@@ -25,6 +25,7 @@
       "rycee.cachix.org-1:TiiXyeSk0iRlzlys4c7HiXLkP3idRf20oQ/roEUAh/A="
       "cosmic.cachix.org-1:Dya9IyXD4xdBehWjrkPv6rtxpmMdRel02smYzA85dPE="
     ];
+
     trusted-users = ["root" "@wheel" "chenkailong_dxm" "klchen"];
   };
 
