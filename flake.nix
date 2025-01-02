@@ -212,7 +212,7 @@
       # Home Manager
       home-manager = {
         # User Package Management
-        url = "github:klchen0112/home-manager/emacs";
+        url = "github:nix-community/home-manager";
         inputs.nixpkgs.follows = "nixpkgs";
       };
 

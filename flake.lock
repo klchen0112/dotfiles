@@ -129,11 +129,11 @@
     "doom": {
       "flake": false,
       "locked": {
-        "lastModified": 1735756368,
-        "narHash": "sha256-ZfbsYgILJUumjlObsDIlYLTu45hgviIFEJQLU9gbHEU=",
+        "lastModified": 1735793046,
+        "narHash": "sha256-c8ybcYhF+a5sYK5BjE5UZH7F9w17Xh33FzPIwD/juh4=",
         "owner": "klchen0112",
         "repo": "doom",
-        "rev": "d37060e3426aada2afc6491cad8f01c676c7ad82",
+        "rev": "741b668b310bc84475f3855da38d51292a6d339b",
         "type": "github"
       },
       "original": {
@@ -307,16 +307,15 @@
         "nixpkgs": ["nixpkgs"]
       },
       "locked": {
-        "lastModified": 1733575710,
-        "narHash": "sha256-vwA/6i6wVLNoOEzu4+TFSorQJhc1D5nOBIePYZh66mM=",
-        "owner": "klchen0112",
+        "lastModified": 1735774425,
+        "narHash": "sha256-C73gLFnEh8ZI0uDijUgCDWCd21T6I6tsaWgIBHcfAXg=",
+        "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "f6a2907bf288876b4200a463ce873e85908d5f23",
+        "rev": "5f6aa268e419d053c3d5025da740e390b12ac936",
         "type": "github"
       },
       "original": {
-        "owner": "klchen0112",
-        "ref": "emacs",
+        "owner": "nix-community",
         "repo": "home-manager",
         "type": "github"
       }
