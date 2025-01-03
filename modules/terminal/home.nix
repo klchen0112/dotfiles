@@ -66,7 +66,7 @@
     };
   };
   programs.ghostty = {
-    enable = true;
+    enable = false;
   };
 
   programs.kitty = {
