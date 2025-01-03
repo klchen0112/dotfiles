@@ -40,6 +40,7 @@ in {
     enable = true;
     doomDir = inputs.doom;
     emacs = emacsPackage;
+    tangleArgs = ".";
     extraBinPackages = with pkgs;
       [
         ripgrep
