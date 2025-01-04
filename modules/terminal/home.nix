@@ -12,7 +12,7 @@
     enable = true;
   };
   programs.alacritty = {
-    enable = true;
+    enable = false;
     settings = {
       window = {
         opacity = 0.8;
@@ -71,7 +71,7 @@
 
   programs.kitty = {
     enable = true;
-    package = pkgs.unstable.kitty;
+    package = pkgs.kitty;
     environment = {
       LANG = "en_US.UTF-8";
       LC_ALL = "en_US.UTF-8";
