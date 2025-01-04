@@ -60,6 +60,7 @@ in {
         # mu4e
         # spell check
         aspell
+        ispell
 
         pkg-config
         # telega
