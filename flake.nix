@@ -382,7 +382,10 @@
       #   url = "github:klchen0112/rime-combo-ice-pinyin";
       #   flake = false;
       # };
-
-      catppuccin.url = "github:catppuccin/nix";
+      catppuccin = {
+        url = "github:catppuccin/nix";
+        inputs.home-manger.follows = "home-manager";
+      };
+      nix-colors.url = "github:misterio77/nix-colors";
     };
 }
