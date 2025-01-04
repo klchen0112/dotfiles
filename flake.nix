@@ -238,7 +238,6 @@
       pre-commit-hooks = {
         url = "github:cachix/git-hooks.nix";
         inputs.nixpkgs.follows = "nixpkgs";
-        inputs.nixpkgs-stable.follows = "nixpkgs-unstable";
         inputs.flake-compat.follows = "flake-compat";
       };
 
@@ -343,6 +342,7 @@
       # };
       doom = {
         url = "github:klchen0112/doom";
+        # url = "git+file:///Users/klchen/my/doom";
         flake = false;
       };
 
