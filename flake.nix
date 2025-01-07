@@ -309,7 +309,6 @@
       nixos-wsl = {
         url = "github:nix-community/NixOS-WSL";
         inputs.nixpkgs.follows = "nixpkgs";
-        inputs.flake-utils.follows = "flake-utils";
         inputs.flake-compat.follows = "flake-compat";
       };
 
@@ -384,7 +383,6 @@
       # };
       catppuccin = {
         url = "github:catppuccin/nix";
-        inputs.home-manger.follows = "home-manager";
       };
       nix-colors.url = "github:misterio77/nix-colors";
     };
