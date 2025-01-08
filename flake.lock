@@ -145,11 +145,11 @@
     "doom": {
       "flake": false,
       "locked": {
-        "lastModified": 1736275444,
-        "narHash": "sha256-u4ul6XvBniOPydauNP9eHzgu94JXCHrxeHK1LUMpI2U=",
+        "lastModified": 1736353265,
+        "narHash": "sha256-vFs3Q41aXBM9TWxcGgOT0bMWD4cnPn+ni90zTT9/QfA=",
         "owner": "klchen0112",
         "repo": "doom",
-        "rev": "12e5efa87c325bf531e1ea2005b7991ecb9b7f8f",
+        "rev": "084c5ec11142c1f454fc81eb2ee15c77281e2790",
         "type": "github"
       },
       "original": {
