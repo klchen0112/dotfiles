@@ -11,6 +11,55 @@
     if pkgs.stdenv.hostPlatform.isDarwin
     then pkgs.emacsIGC
     else pkgs.emacs30-pgtk;
+  extraPackages = with pkgs;
+    [
+      ripgrep
+      fd
+      curl
+      # for emacs sqlite
+      gcc
+      # org mode dot
+      graphviz
+      imagemagick
+      # mpvi required
+      tesseract5
+      ffmpeg
+      ffmpegthumbnailer
+      mediainfo
+      # email
+      # mu4e
+      # spell check
+      hunspell
+      languagetool
+
+      pkg-config
+      # telega
+      libwebp
+
+      #
+      texliveFull
+      direnv
+      devenv
+      devbox
+      # ------------------- Python ---
+      pyright
+      # poetry
+      # ------------------- Web -------------------------
+      nodejs
+      typescript
+
+      typescript-language-server
+      emmet-ls
+      jsonnet-language-server
+      yaml-language-server
+      # Building tools
+      # bazel_7
+      cmake
+    ]
+    ++ (lib.optionals pkgs.stdenv.isDarwin) [
+      # pngpaste for org mode download clip
+      pngpaste
+    ];
 in {
   imports = [
     inputs.nix-doom-emacs-unstraightened.hmModule
@@ -34,63 +83,14 @@ in {
   # enable = true;
   # package = emacsPackage;
   # };
-
+  home.packages = extraPackages;
   # doom-emacs will enable programs.emacs
   programs.doom-emacs = {
     enable = true;
     doomDir = inputs.doom;
     emacs = emacsPackage;
     tangleArgs = ".";
-    extraBinPackages = with pkgs;
-      [
-        ripgrep
-        fd
-        curl
-        # for emacs sqlite
-        gcc
-        # org mode dot
-        graphviz
-        imagemagick
-        # mpvi required
-        tesseract5
-        ffmpeg
-        ffmpegthumbnailer
-        mediainfo
-        # email
-        # mu4e
-        # spell check
-        hunspell
-        languagetool
-
-        pkg-config
-        # telega
-        libwebp
-
-        pandoc
-        #
-        texliveFull
-        direnv
-        devenv
-        devbox
-        # ------------------- Python ---
-        pyright
-        # poetry
-        # ------------------- Web -------------------------
-        nodejs
-        typescript
-
-        typescript-language-server
-        emmet-ls
-        jsonnet-language-server
-        yaml-language-server
-        # Building tools
-        # bazel_7
-        cmake
-      ]
-      ++ (lib.optionals pkgs.stdenv.isDarwin) [
-        # pngpaste for org mode download clip
-        pngpaste
-      ];
+    extraBinPackages = extraPackages;
     extraPackages = epkgs:
       with epkgs; [
         # vterm
