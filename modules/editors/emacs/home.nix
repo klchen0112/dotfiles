@@ -59,8 +59,8 @@ in {
         # email
         # mu4e
         # spell check
-        aspell
-        ispell
+        hunspell
+        languagetool
 
         pkg-config
         # telega
