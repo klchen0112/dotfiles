@@ -9,6 +9,7 @@
 }: {
   nix = {
     package = pkgs.nixVersions.latest;
+    channel.enable = false;
     gc = {
       # Garbage collection
       automatic = true;
