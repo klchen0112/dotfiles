@@ -41,6 +41,7 @@
       direnv
       devenv
       devbox
+      emacs-lsp-booster
       # ------------------- Python ---
       pyright
       # poetry
