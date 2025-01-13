@@ -89,6 +89,7 @@
     enable = true;
     enableFishIntegration = true;
   };
+  catppuccin.fish.enable = true;
   programs.fish = {
     enable = true;
     shellAbbrs = {
