@@ -828,6 +828,22 @@
         "type": "github"
       }
     },
+    "own-rime": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1735635639,
+        "narHash": "sha256-BGQM9kn0VE5aqAgTd+C/IVSHxXHDtnqIY/aFgVAMHJY=",
+        "owner": "klchen0112",
+        "repo": "rime-combo-ice-pinyin",
+        "rev": "483fa0dd9ac5bf6291b0fae5e24b263681abf5c9",
+        "type": "github"
+      },
+      "original": {
+        "owner": "klchen0112",
+        "repo": "rime-combo-ice-pinyin",
+        "type": "github"
+      }
+    },
     "pre-commit-hooks": {
       "inputs": {
         "flake-compat": ["flake-compat"],
@@ -875,6 +891,7 @@
         "nixpkgs-unstable": "nixpkgs-unstable",
         "nur": "nur",
         "own-nur": "own-nur",
+        "own-rime": "own-rime",
         "pre-commit-hooks": "pre-commit-hooks",
         "systems": "systems_2",
         "treefmt-nix": "treefmt-nix"

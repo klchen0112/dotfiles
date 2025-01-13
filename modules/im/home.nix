@@ -16,27 +16,16 @@
       fcitx5-gtk # gtk im module
     ];
   };
+  catppuccin.fcitx5.enable = true;
   home.file = {
     ".config/fcitx5/conf/classicui.conf" = {
       enable = pkgs.stdenv.isLinux;
       source = ./classicui.conf;
     };
-    ".local/share/fcitx5/themes" = {
+    ".local/share/fcitx5/rime" = {
       enable = pkgs.stdenv.isLinux;
-      source = "${inputs.own-nur.packages.${pkgs.system}.catppuccin-fcitx5}/src";
+      source = "${inputs.own-rime}";
+      recursive = true;
     };
-    # ".local/share/fcitx5/rime" = {
-    #   enable = pkgs.stdenv.isLinux;
-    #   source = "${inputs.own-rime}";
-    #   recursive = true;
-    #   # overwrite = true;
-    # };
-
-    # "Library/Rime" = {
-    #   enable = false; # pkgs.stdenv.isDarwin
-    #   source = "${inputs.own-rime}";
-    #   recursive = true;
-    #   # overwrite = true;
-    # };
   };
 }
