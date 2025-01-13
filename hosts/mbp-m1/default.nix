@@ -38,8 +38,5 @@
   };
 
   programs.home-manager.enable = true;
-  catppuccin = {
-    enable = true;
-    flavor = "latte";
-  };
+  catppuccin.flavor = "mocha";
 }

@@ -8,9 +8,6 @@
   #
   ...
 }: {
-  programs.nushell = {
-    enable = true;
-  };
   programs.alacritty = {
     enable = false;
     settings = {
@@ -68,7 +65,7 @@
   programs.ghostty = {
     enable = false;
   };
-
+  catppuccin.kitty.enable = true;
   programs.kitty = {
     enable = true;
     package = pkgs.kitty;

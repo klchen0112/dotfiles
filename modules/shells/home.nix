@@ -67,9 +67,9 @@
       else base_config;
   };
 
-  home.file.".config/btop/themes".source = "${inputs.own-nur.packages.${pkgs.system}.catppuccin-btop}/themes";
+  catppuccin.btop.enable = true;
   programs.btop = {
-    enable = false;
+    enable = true;
     settings = {
       theme_background = true; # make btop transparent
     };
@@ -80,7 +80,7 @@
     enable = pkgs.stdenv.isDarwin;
     autosuggestion.enable =
       true; # Auto suggest options and highlights syntax, searches in history for options
-    # syntaxHighlighting.enable = true;
+    syntaxHighlighting.enable = true;
     defaultKeymap = "emacs";
     enableCompletion = true;
     history.size = 100000;
@@ -140,6 +140,7 @@
     icons = "auto";
     git = true;
   };
+  catppuccin.bat.enable = true;
   programs.bat = {
     enable = true;
     config = {
@@ -154,18 +155,18 @@
       prettybat
     ];
   };
+  catppuccin.fzf.enable = true;
   programs.fzf = {
     enable = true;
     enableFishIntegration = true;
   };
+  catppuccin.tmux.enable = true;
   programs.tmux = {
     enable = true;
     # defaultKeyMode = "emacs";
   };
   programs.direnv = {
     enable = true;
-    # enableFishIntegration = true;
-    enableBashIntegration = true;
     nix-direnv.enable = true;
   };
   programs.jq = {enable = true;};
@@ -174,6 +175,7 @@
   programs.atuin = {
     enable = true;
   };
+  catppuccin.starship.enable = true;
   programs.starship = {
     enable = true;
     enableZshIntegration = true;
@@ -299,5 +301,8 @@
         indent_size = 4;
       };
     };
+  };
+  programs.nushell = {
+    enable = true;
   };
 }
