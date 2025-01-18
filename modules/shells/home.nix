@@ -153,6 +153,7 @@
       batman
       batgrep
       batwatch
+      batpipe
       prettybat
     ];
   };
