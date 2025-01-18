@@ -91,12 +91,12 @@
     })
     .overrideAttrs (old: rec {
       name = "emacs-${version}";
-      version = "igc";
+      version = "igc-2025-01-18";
       src = pkgs.fetchFromGitHub {
         owner = "emacs-mirror";
         repo = "emacs";
-        rev = "2117baac06d6ed7aa84aa12870de2a9e2942a77e";
-        hash = "sha256-3EwxJtoerQ0rSX7nuOCfC/RQB72qzY3R8A9tiN4Z4oQ=";
+        rev = "c311c4158ba806e4ba92f4db4277d1d26b08d387";
+        hash = "sha256-aS096CDTK3RHdZmOoY724Xz3q8Bi4EBZQ/Dd1b07BpI=";
       };
       configureFlags =
         (old.configureFlags or [])
@@ -117,8 +117,8 @@
           })
           # Enable rounded window with no decoration
           (pkgs.fetchpatch {
-            url = "https://raw.githubusercontent.com/mkvoya/homebrew-emacs-plus/refs/heads/fix-undecorated-round/patches/emacs-30/round-undecorated-frame.patch";
-            sha256 = "uYIxNTyfbprx5mCqMNFVrBcLeo+8e21qmBE3lpcnd+4=";
+            url = "https://raw.githubusercontent.com/d12frosted/homebrew-emacs-plus/master/patches/emacs-31/round-undecorated-frame.patch";
+            sha256 = "sha256-/SX8rF4GMA7bobfQ4/F9BTSEigeOd9jgN0jvQ1M0MSs=";
           })
           # Make Emacs aware of OS-level light/dark mode
           (pkgs.fetchpatch {
@@ -131,10 +131,7 @@
             sha256 = "sha256-xrg9iAl0ZrfqzCnq0oact5XozRYOY/rP/MO8QdbIkM0=";
           })
           # alpha-background
-          (pkgs.fetchpatch {
-            url = "https://raw.githubusercontent.com/sincebyte/neo-emacs/master/patches/emacs30/ns-alpha-background.patch";
-            sha256 = "sha256-3OG1tMpg/1jrP/gsnFCkqJ22OkS/d8voOUqiOk7iUkE=";
-          })
+          ./ns-alpha-background.patch
           # ns-mac-input-source
           (pkgs.fetchpatch {
             url = "https://raw.githubusercontent.com/LuciusChen/.emacs.d/refs/heads/main/patches/ns-mac-input-source.patch";
