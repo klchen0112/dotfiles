@@ -5,7 +5,6 @@
 }: {
   # these code from https://github.com/ryan4yin/nix-config
   imports = [
-    inputs.hyprland.nixosModules.default
   ];
 
   programs = {
