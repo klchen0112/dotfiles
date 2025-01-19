@@ -182,6 +182,7 @@
     {
       nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable"; # Nix Packages
       nixpkgs-unstable.url = "github:nixos/nixpkgs/master"; # Nix Packages
+      nixpkgs-stable.url = "github:nixos/nixpkgs/release-24.11"; # Nix Packages
 
       #  MacOS
       darwin = {
@@ -287,13 +288,6 @@
         inputs.treefmt-nix.follows = "treefmt-nix";
       };
 
-      nixgl = {
-        # OpenGL
-        url = "github:guibou/nixGL";
-        inputs.nixpkgs.follows = "nixpkgs";
-        inputs.flake-utils.follows = "flake-utils";
-      };
-
       # devenv = {
       #   url = "github:cachix/devenv";
       #   # inputs.nixpkgs.follows = "nixpkgs";
@@ -316,8 +310,8 @@
 
       emacs-overlay = {
         url = "github:nix-community/emacs-overlay/master";
-        inputs.nixpkgs.follows = "nixpkgs-unstable";
-        inputs.nixpkgs-stable.follows = "nixpkgs";
+        inputs.nixpkgs.follows = "nixpkgs";
+        inputs.nixpkgs-stable.follows = "nixpkgs-stable";
       };
 
       # doomemacs = {
@@ -325,15 +319,6 @@
       #   flake = false;
       # };
 
-      # nix-doom-emacs = {
-      #   # Nix-community Doom Emacs
-      #   url = "github:nix-community/nix-doom-emacs";
-      #   inputs.doom-emacs.follows = "doom-emacs";
-      #   inputs.nixpkgs.follows = "nixpkgs";
-      #   inputs.emacs-overlay.follows = "emacs-overlay";
-      #   inputs.flake-utils.follows = "flake-utils";
-      #   inputs.flake-compat.follows = "flake-compat";
-      # };
       doom = {
         url = "github:klchen0112/doom";
         # url = "git+file:///Users/klchen/my/doom";
@@ -352,20 +337,17 @@
       nixos-cosmic = {
         url = "github:lilyinstarlight/nixos-cosmic";
         inputs.nixpkgs.follows = "nixpkgs";
+        inputs.nixpkgs-stable.follows = "nixpkgs-stable";
         inputs.flake-compat.follows = "flake-compat";
       };
+      # theme
+      catppuccin = {
+        url = "github:catppuccin/nix";
+        inputs.home-manager.follows = "home-manager";
+        inputs.nixpkgs.follows = "nixpkgs";
+        inputs.nixpkgs-stable.follows = "nixpkgs-stable";
+      };
 
-      # anyrun = {
-      #   url = "github:Kirottu/anyrun";
-      #   inputs.nixpkgs.follows = "nixpkgs";
-      #   inputs.flake-parts.follows = "flake-parts";
-      #   inputs.systems.follows = "systems";
-      # };
-
-      # nixpkgs-firefox-darwin = {
-      #   url = "github:bandithedoge/nixpkgs-firefox-darwin";
-      #   inputs.nixpkgs.follows = "nixpkgs";
-      # };
       # own package
       own-nur = {
         url = "github:klchen0112/nur";
@@ -376,9 +358,5 @@
         url = "github:klchen0112/rime-combo-ice-pinyin";
         flake = false;
       };
-      catppuccin = {
-        url = "github:catppuccin/nix";
-      };
-      nix-colors.url = "github:misterio77/nix-colors";
     };
 }
