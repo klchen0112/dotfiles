@@ -39,32 +39,19 @@
         features = lib.mkDefault "side-by-side";
       };
     };
-    extraConfig = let
-      base_config = {
-        init.defaultBranch = "master"; # https://srid.ca/unwoke
+    extraConfig = {
+      init.defaultBranch = "master"; # https://srid.ca/unwoke
 
-        core.editor = "emacsclient";
-        core.quotepath = false;
-        core.autocrlf = false;
-        # For supercede
-        core.symlinks = true;
-        #protocol.keybase.allow = "always";
-        credential.helper = "store --file ~/.config/git/git-credentials";
-        pull.rebase = true;
-        push.autoSetupRemote = true;
-      };
-      work_config = {
-        "http \"github.com\"" = {
-          "proxy" = "socks5h://127.0.0.1:7890";
-        };
-        "http \"https://github.com\"" = {
-          "proxy" = "socks5h://127.0.0.1:7890";
-        };
-      };
-    in
-      if isWork
-      then lib.recursiveUpdate base_config work_config
-      else base_config;
+      core.editor = "emacsclient";
+      core.quotepath = false;
+      core.autocrlf = false;
+      # For supercede
+      core.symlinks = true;
+      #protocol.keybase.allow = "always";
+      credential.helper = "store --file ~/.config/git/git-credentials";
+      pull.rebase = true;
+      push.autoSetupRemote = true;
+    };
   };
 
   catppuccin.btop.enable = true;
