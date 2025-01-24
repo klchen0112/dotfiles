@@ -343,9 +343,7 @@
       # theme
       catppuccin = {
         url = "github:catppuccin/nix";
-        inputs.home-manager.follows = "home-manager";
         inputs.nixpkgs.follows = "nixpkgs";
-        inputs.nixpkgs-stable.follows = "nixpkgs-stable";
       };
 
       # own package
