@@ -5,6 +5,7 @@
   inputs,
   pkgs,
   isWork,
+  config,
   ...
 }:
 {
@@ -181,9 +182,9 @@
   programs.atuin = {
     enable = true;
   };
-  catppuccin.starship.enable = true;
+  catppuccin.starship.enable = config.programs.starship.enable;
   programs.starship = {
-    enable = true;
+    enable = false;
     enableZshIntegration = true;
     enableFishIntegration = true;
     enableTransience = true;
