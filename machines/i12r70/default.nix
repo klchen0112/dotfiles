@@ -13,7 +13,8 @@
   system,
   inputs,
   ...
-}: {
+}:
+{
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
@@ -24,12 +25,14 @@
     ../../modules/secrets
   ];
 
-
-
   users.users.${username} = {
     isNormalUser = true;
     home = "/home/${username}";
-    extraGroups = ["wheel" "networkmanager" "seat"];
+    extraGroups = [
+      "wheel"
+      "networkmanager"
+      "seat"
+    ];
     shell = pkgs.fish; # Default shell
     openssh.authorizedKeys.keys = [
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAGszCNQqxT1/s6sYjj1aewvCjaa3D7UwoOM7UD5K+ha klchen0112@gmail.com"
@@ -46,13 +49,22 @@
   system.stateVersion = "25.05";
 
   environment = {
-    shells = with pkgs; [fish bash]; # Default shell
+    shells = with pkgs; [
+      fish
+      bash
+    ]; # Default shell
     systemPackages = with pkgs; [
       cachix
       fontconfig
       gnugrep # replacee macos's grep
       gnutar # replacee macos's tar
       p7zip
+      wget
     ];
   };
+  programs.nix-ld = {
+    enable = true;
+    package = pkgs.nix-ld-rs; # only for NixOS 24.05
+  };
+
 }

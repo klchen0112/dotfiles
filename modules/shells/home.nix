@@ -6,14 +6,22 @@
   pkgs,
   isWork,
   ...
-}: {
-  programs.gpg = {enable = true;};
+}:
+{
+  programs.gpg = {
+    enable = true;
+  };
 
   programs.git = {
     enable = true;
     package = pkgs.git;
-    ignores = ["*~" "*.swp" ".DS_Store" ".devenv"];
-    attributes = ["*.pdf diff=pdf"];
+    ignores = [
+      "*~"
+      "*.swp"
+      ".DS_Store"
+      ".devenv"
+    ];
+    attributes = [ "*.pdf diff=pdf" ];
     lfs.enable = true;
     userName = "klchen0112";
     userEmail = "klchen0112@gmail.com";
@@ -62,11 +70,12 @@
     };
   };
 
-  programs.bash = {enable = true;};
+  programs.bash = {
+    enable = true;
+  };
   programs.zsh = {
     enable = pkgs.stdenv.isDarwin;
-    autosuggestion.enable =
-      true; # Auto suggest options and highlights syntax, searches in history for options
+    autosuggestion.enable = true; # Auto suggest options and highlights syntax, searches in history for options
     syntaxHighlighting.enable = true;
     defaultKeymap = "emacs";
     enableCompletion = true;
@@ -158,8 +167,12 @@
     enable = true;
     nix-direnv.enable = true;
   };
-  programs.jq = {enable = true;};
-  programs.man = {enable = true;};
+  programs.jq = {
+    enable = true;
+  };
+  programs.man = {
+    enable = true;
+  };
 
   programs.atuin = {
     enable = true;
@@ -170,10 +183,11 @@
     enableZshIntegration = true;
     enableFishIntegration = true;
     enableTransience = true;
-    settings =
-      builtins.fromTOML (builtins.readFile ./starship.toml);
+    settings = builtins.fromTOML (builtins.readFile ./starship.toml);
   };
-  programs.ripgrep = {enable = true;};
+  programs.ripgrep = {
+    enable = true;
+  };
 
   programs.ssh = {
     enable = false;
@@ -216,7 +230,9 @@
         identityFile = "~/.ssh/id_ed25519";
         identitiesOnly = true;
       };
-      n1 = {hostname = "192.168.0.254";};
+      n1 = {
+        hostname = "192.168.0.254";
+      };
       tower = {
         hostname = "192.168.0.200";
         user = "root";
@@ -264,7 +280,6 @@
     shfmt
     shellcheck
     macchina
-    dog
     choose
     du-dust
     duf

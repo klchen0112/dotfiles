@@ -21,166 +21,222 @@
       "cosmic.cachix.org-1:Dya9IyXD4xdBehWjrkPv6rtxpmMdRel02smYzA85dPE="
     ];
 
-    trusted-users = ["root" "@wheel" "chenkailong_dxm" "klchen"];
-  };
-
-  outputs = inputs @ {
-    self,
-    nixpkgs,
-    home-manager,
-    darwin,
-    pre-commit-hooks,
-    nix-on-droid,
-    ...
-  }:
-  # Function that tells my flake which to use and what do what to do with the dependencies.
-  let
-    # Variables that can be used in the config files.
-    inherit (self) outputs;
-    forAllSystems = nixpkgs.lib.genAttrs [
-      "aarch64-linux"
-      "i686-linux"
-      "x86_64-linux"
-      "aarch64-darwin"
-      "x86_64-darwin"
+    trusted-users = [
+      "root"
+      "@wheel"
+      "chenkailong_dxm"
+      "klchen"
     ];
-  in rec {
-    packages = forAllSystems (system: let
-      pkgs = nixpkgs.legacyPackages.${system};
-    in
-      import ./pkgs {inherit pkgs inputs;});
-
-    formatter =
-      forAllSystems (system: nixpkgs.legacyPackages.${system}.alejandra);
-
-    checks = forAllSystems (system: {
-      pre-commit-check = inputs.pre-commit-hooks.lib.${system}.run {
-        src = ./.;
-        hooks = {
-          nixfmt-rfc-style.enable = true; # formatter
-          # deadnix.enable = true; # detect unused variable bindings in `*.nix`
-          # statix.enable = true; # lints and suggestions for Nix code(auto suggestions)
-          prettier = {
-            enable = true;
-            excludes = [".js" ".md" ".ts"];
-          };
-        
-          # Shell
-          shellcheck = {
-            enable = true;
-          };
-          shfmt = {
-            enable = true;
-          };
-          # TOML
-          taplo.enable = true;
-          # JSON
-          pretty-format-json.enable = true;
-        };
-      };
-    });
-    devShell = forAllSystems (system:
-      nixpkgs.legacyPackages.${system}.mkShell {
-        inherit (self.checks.${system}.pre-commit-check) shellHook;
-        buildInputs = self.checks.${system}.pre-commit-check.enabledPackages;
-      });
-
-    overlays = import ./overlays {inherit inputs;};
-
-    nixosConfigurations = {
-      # NixOS configurations
-
-      "i12r70" = let
-        username = "klchen";
-        userEmail = "klchen0112@gmail.com";
-        isWork = false;
-      in
-        nixpkgs.lib.nixosSystem {
-          system = "x86_64-linux";
-          specialArgs = {inherit inputs username outputs;};
-          modules = [
-            inputs.nixos-wsl.nixosModules.default
-            {
-              system.stateVersion = "25.05";
-              wsl.enable = true;
-            }
-            ./machines/i12r70
-            home-manager.nixosModules.home-manager
-            {
-              # Home-Manager module that is used
-              home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
-              home-manager.extraSpecialArgs = {
-                inherit username userEmail inputs outputs isWork;
-              }; # Pass flake variable
-              home-manager.users.${username} =
-                import ./hosts/i12r70/default.nix;
-            }
-          ];
-        };
-    };
-    darwinConfigurations = {
-      "mbp-m1" = let
-        username = "klchen";
-        userEmail = "klchen0112@gmail.com";
-        isWork = false;
-      in
-        darwin.lib.darwinSystem {
-          system = "aarch64-darwin";
-          specialArgs = {inherit username inputs outputs isWork;};
-          # pkgs = nixpkgs.legacyPackages.aarch64-darwin;
-          modules = [
-            # Modules that are used
-            ./machines/mbp-m1
-            home-manager.darwinModules.home-manager
-            {
-              # Home-Manager module that is used
-              home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
-              home-manager.extraSpecialArgs = {
-                inherit username userEmail inputs outputs isWork;
-              }; # Pass flake variable
-              home-manager.users.${username} =
-                import ./hosts/mbp-m1/default.nix;
-            }
-            inputs.brew-nix.darwinModules.default
-          ];
-        };
-      "mbp-dxm" = let
-        username = "chenkailong_dxm";
-        userEmail = "chenkailong@duxiaoman.com";
-        isWork = true;
-      in
-        darwin.lib.darwinSystem {
-          system = "aarch64-darwin";
-          specialArgs = {inherit username inputs outputs isWork;};
-          # pkgs = nixpkgs.legacyPackages.aarch64-darwin;
-          modules = [
-            # Modules that are used
-            ./machines/mbp-dxm
-            home-manager.darwinModules.home-manager
-            {
-              # Home-Manager module that is used
-              home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
-              home-manager.extraSpecialArgs = {
-                inherit username userEmail inputs outputs isWork;
-              }; # Pass flake variable
-              home-manager.users.${username} =
-                import ./hosts/mbp-dxm/default.nix;
-            }
-            inputs.brew-nix.darwinModules.default
-          ];
-        };
-    };
-    nixOnDroidConfigurations = {
-      "redmi-12t-pro" = nix-on-droid.lib.nixOnDroidConfiguration {
-        modules = [
-          ./machines/redmi-12t-pro
-        ];
-      };
-    };
   };
+
+  outputs =
+    inputs@{
+      self,
+      nixpkgs,
+      home-manager,
+      darwin,
+      pre-commit-hooks,
+      nix-on-droid,
+      ...
+    }:
+    # Function that tells my flake which to use and what do what to do with the dependencies.
+    let
+      # Variables that can be used in the config files.
+      inherit (self) outputs;
+      forAllSystems = nixpkgs.lib.genAttrs [
+        "aarch64-linux"
+        "i686-linux"
+        "x86_64-linux"
+        "aarch64-darwin"
+        "x86_64-darwin"
+      ];
+    in
+    rec {
+      packages = forAllSystems (
+        system:
+        let
+          pkgs = nixpkgs.legacyPackages.${system};
+        in
+        import ./pkgs { inherit pkgs inputs; }
+      );
+
+      formatter = forAllSystems (system: nixpkgs.legacyPackages.${system}.alejandra);
+
+      checks = forAllSystems (system: {
+        pre-commit-check = inputs.pre-commit-hooks.lib.${system}.run {
+          src = ./.;
+          hooks = {
+            nixfmt-rfc-style.enable = true; # formatter
+            # deadnix.enable = true; # detect unused variable bindings in `*.nix`
+            # statix.enable = true; # lints and suggestions for Nix code(auto suggestions)
+            prettier = {
+              enable = true;
+              excludes = [
+                ".js"
+                ".md"
+                ".ts"
+              ];
+            };
+
+            # Shell
+            shellcheck = {
+              enable = true;
+            };
+            shfmt = {
+              enable = true;
+            };
+            # TOML
+            taplo.enable = true;
+            # JSON
+            pretty-format-json.enable = true;
+          };
+        };
+      });
+      devShell = forAllSystems (
+        system:
+        nixpkgs.legacyPackages.${system}.mkShell {
+          inherit (self.checks.${system}.pre-commit-check) shellHook;
+          buildInputs = self.checks.${system}.pre-commit-check.enabledPackages;
+        }
+      );
+
+      overlays = import ./overlays { inherit inputs; };
+
+      nixosConfigurations = {
+        # NixOS configurations
+
+        "i12r70" =
+          let
+            username = "klchen";
+            userEmail = "klchen0112@gmail.com";
+            isWork = false;
+          in
+          nixpkgs.lib.nixosSystem {
+            system = "x86_64-linux";
+            specialArgs = { inherit inputs username outputs; };
+            modules = [
+              inputs.nixos-wsl.nixosModules.default
+              {
+                system.stateVersion = "25.05";
+                wsl = {
+                  enable = true;
+                  defaultUser = username;
+                  wslConf.automount.root = "/mnt";
+                  wslConf.interop.appendWindowsPath = false;
+                  wslConf.network.generateHosts = false;
+                  startMenuLaunchers = true;
+                  docker-desktop.enable = false;
+                };
+                # Enable integration with Docker Desktop (needs to be installed)
+              }
+              ./machines/i12r70
+              home-manager.nixosModules.home-manager
+              {
+                # Home-Manager module that is used
+                home-manager.useGlobalPkgs = true;
+                home-manager.useUserPackages = true;
+                home-manager.extraSpecialArgs = {
+                  inherit
+                    username
+                    userEmail
+                    inputs
+                    outputs
+                    isWork
+                    ;
+                }; # Pass flake variable
+                home-manager.users.${username} = import ./hosts/i12r70/default.nix;
+              }
+            ];
+          };
+      };
+      darwinConfigurations = {
+        "mbp-m1" =
+          let
+            username = "klchen";
+            userEmail = "klchen0112@gmail.com";
+            isWork = false;
+          in
+          darwin.lib.darwinSystem {
+            system = "aarch64-darwin";
+            specialArgs = {
+              inherit
+                username
+                inputs
+                outputs
+                isWork
+                ;
+            };
+            # pkgs = nixpkgs.legacyPackages.aarch64-darwin;
+            modules = [
+              # Modules that are used
+              ./machines/mbp-m1
+              home-manager.darwinModules.home-manager
+              {
+                # Home-Manager module that is used
+                home-manager.useGlobalPkgs = true;
+                home-manager.useUserPackages = true;
+                home-manager.extraSpecialArgs = {
+                  inherit
+                    username
+                    userEmail
+                    inputs
+                    outputs
+                    isWork
+                    ;
+                }; # Pass flake variable
+                home-manager.users.${username} = import ./hosts/mbp-m1/default.nix;
+              }
+              inputs.brew-nix.darwinModules.default
+            ];
+          };
+        "mbp-dxm" =
+          let
+            username = "chenkailong_dxm";
+            userEmail = "chenkailong@duxiaoman.com";
+            isWork = true;
+          in
+          darwin.lib.darwinSystem {
+            system = "aarch64-darwin";
+            specialArgs = {
+              inherit
+                username
+                inputs
+                outputs
+                isWork
+                ;
+            };
+            # pkgs = nixpkgs.legacyPackages.aarch64-darwin;
+            modules = [
+              # Modules that are used
+              ./machines/mbp-dxm
+              home-manager.darwinModules.home-manager
+              {
+                # Home-Manager module that is used
+                home-manager.useGlobalPkgs = true;
+                home-manager.useUserPackages = true;
+                home-manager.extraSpecialArgs = {
+                  inherit
+                    username
+                    userEmail
+                    inputs
+                    outputs
+                    isWork
+                    ;
+                }; # Pass flake variable
+                home-manager.users.${username} = import ./hosts/mbp-dxm/default.nix;
+              }
+              inputs.brew-nix.darwinModules.default
+            ];
+          };
+      };
+      nixOnDroidConfigurations = {
+        "redmi-12t-pro" = nix-on-droid.lib.nixOnDroidConfiguration {
+          modules = [
+            ./machines/redmi-12t-pro
+          ];
+        };
+      };
+    };
 
   inputs =
     # All flake references used to build my NixOS setup. These are dependencies.
