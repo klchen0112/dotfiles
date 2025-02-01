@@ -57,22 +57,25 @@
       pre-commit-check = inputs.pre-commit-hooks.lib.${system}.run {
         src = ./.;
         hooks = {
-          alejandra.enable = true; # formatter
+          nixfmt-rfc-style.enable = true; # formatter
           # deadnix.enable = true; # detect unused variable bindings in `*.nix`
           # statix.enable = true; # lints and suggestions for Nix code(auto suggestions)
           prettier = {
             enable = true;
             excludes = [".js" ".md" ".ts"];
           };
-          taplo = {
-            enable = true;
-          };
+        
+          # Shell
           shellcheck = {
             enable = true;
           };
           shfmt = {
             enable = true;
           };
+          # TOML
+          taplo.enable = true;
+          # JSON
+          pretty-format-json.enable = true;
         };
       };
     });
@@ -87,30 +90,32 @@
     nixosConfigurations = {
       # NixOS configurations
 
-      "i12500" = let
+      "i12r70" = let
         username = "klchen";
+        userEmail = "klchen0112@gmail.com";
+        isWork = false;
       in
         nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
           specialArgs = {inherit inputs username outputs;};
           modules = [
-            ./machines/i12500
-            inputs.nixos-cosmic.nixosModules.default
-          ];
-        };
-    };
-    homeConfigurations = {
-      "klchen@i12500" = let
-        username = "klchen";
-        isWork = false;
-      in
-        home-manager.lib.homeManagerConfiguration {
-          pkgs =
-            nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
-          extraSpecialArgs = {inherit inputs outputs username isWork;};
-          modules = [
-            # > Our main home-manager configuration file <
-            ./hosts/i12500
+            inputs.nixos-wsl.nixosModules.default
+            {
+              system.stateVersion = "25.05";
+              wsl.enable = true;
+            }
+            ./machines/i12r70
+            home-manager.nixosModules.home-manager
+            {
+              # Home-Manager module that is used
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.extraSpecialArgs = {
+                inherit username userEmail inputs outputs isWork;
+              }; # Pass flake variable
+              home-manager.users.${username} =
+                import ./hosts/i12r70/default.nix;
+            }
           ];
         };
     };

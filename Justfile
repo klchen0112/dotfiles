@@ -21,11 +21,9 @@ gitgc:
 
 # i12500
 
-i12500:
-	sudo nixos-rebuild switch --flake .#i12500
+i12r70:
+	sudo nixos-rebuild switch --flake .#i12r70
 
-klcheni12500:
-	home-manager switch --flake .#klchen@i12500
 
 # macbook
 
