@@ -4,7 +4,7 @@
     extra-experimental-features = "nix-command flakes";
     substituters = [
       # replace official cache with a mirror located in China
-      # "https://mirrors.tuna.tsinghua.edu.cn/nix-channels/store"
+      "https://mirrors.tuna.tsinghua.edu.cn/nix-channels/store"
       "https://mirror.sjtu.edu.cn/nix-channels/store"
       "https://cache.nixos.org"
       "https://nix-community.cachix.org"
@@ -166,7 +166,7 @@
                 isWork
                 ;
             };
-            pkgs = nixpkgs.legacyPackages.aarch64-darwin;
+            # pkgs = nixpkgs.legacyPackages.aarch64-darwin;
             modules = [
               # Modules that are used
               ./machines/mbp-m1
@@ -375,25 +375,25 @@
         inputs.nixpkgs-stable.follows = "nixpkgs-stable";
       };
 
-      # doomemacs = {
-      #   url = "github:LuigiPiucco/doom-emacs";
-      #   flake = false;
-      # };
+      doomemacs = {
+        url = "github:LuigiPiucco/doom-emacs";
+        flake = false;
+      };
 
-      doom = {
+      doom-config = {
         url = "github:klchen0112/doom";
         # url = "git+file:///Users/klchen/my/doom";
         flake = false;
       };
 
-      nix-doom-emacs-unstraightened = {
-        url = "github:marienz/nix-doom-emacs-unstraightened";
-        # Optional, to download less. Neither the module nor the overlay uses this input.
-        inputs.nixpkgs.follows = "nixpkgs";
-        inputs.systems.follows = "systems";
-        inputs.emacs-overlay.follows = "emacs-overlay";
-        # inputs.doomemacs.follows = "doomemacs";
-      };
+      # nix-doom-emacs-unstraightened = {
+      #   url = "github:marienz/nix-doom-emacs-unstraightened";
+      #   # Optional, to download less. Neither the module nor the overlay uses this input.
+      #   inputs.nixpkgs.follows = "nixpkgs";
+      #   inputs.systems.follows = "systems";
+      #   inputs.emacs-overlay.follows = "emacs-overlay";
+      #   inputs.doomemacs.follows = "doomemacs";
+      # };
 
       nixos-cosmic = {
         url = "github:lilyinstarlight/nixos-cosmic";
