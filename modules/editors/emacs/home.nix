@@ -9,7 +9,7 @@
 }:
 let
   emacsPackage = if pkgs.stdenv.hostPlatform.isDarwin then pkgs.emacsIGC else pkgs.emacs30-pgtk;
-  doomPath = "${config.home.homeDirectory}/my/dotfiles/modules/editors/emacs";
+  doomPath = "${config.home.homeDirectory}/my/dotfiles/modules/editors/emacs/doom";
 
   extraPackages =
     with pkgs;
