@@ -375,10 +375,10 @@
         inputs.nixpkgs-stable.follows = "nixpkgs-stable";
       };
 
-      doomemacs = {
-        url = "github:LuigiPiucco/doom-emacs";
-        flake = false;
-      };
+      # doomemacs = {
+      #   url = "github:LuigiPiucco/doom-emacs";
+      #   flake = false;
+      # };
 
       doom-config = {
         url = "github:klchen0112/doom";
