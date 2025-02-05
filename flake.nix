@@ -60,7 +60,7 @@
         import ./pkgs { inherit pkgs inputs; }
       );
 
-      formatter = forAllSystems (system: nixpkgs.legacyPackages.${system}.alejandra);
+      formatter = forAllSystems (system: nixpkgs.legacyPackages.${system}.nixfmt-rfc-style);
 
       checks = forAllSystems (system: {
         pre-commit-check = inputs.pre-commit-hooks.lib.${system}.run {
@@ -166,7 +166,7 @@
                 isWork
                 ;
             };
-            # pkgs = nixpkgs.legacyPackages.aarch64-darwin;
+            pkgs = nixpkgs.legacyPackages.aarch64-darwin;
             modules = [
               # Modules that are used
               ./machines/mbp-m1
@@ -247,7 +247,7 @@
 
       #  MacOS
       darwin = {
-        url = "github:talhaHavadar/nix-darwin/fix-aerospace-on-window-detect"; # MacOS Package Management
+        url = "github:LnL7/nix-darwin"; # MacOS Package Management
         inputs.nixpkgs.follows = "nixpkgs";
       };
 

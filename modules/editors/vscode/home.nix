@@ -6,14 +6,15 @@
   pkgs,
   username,
   ...
-}: {
+}:
+{
   programs.vscode = {
     enable = true;
 
     package = pkgs.vscode;
-    mutableExtensionsDir =
-      false; # Whether extensions can be installed or updated manually or by Visual Studio Code.
-    extensions = with pkgs.vscode-extensions;
+    mutableExtensionsDir = false; # Whether extensions can be installed or updated manually or by Visual Studio Code.
+    extensions =
+      with pkgs.vscode-extensions;
       [
         # ssh
         ms-vscode-remote.remote-ssh
@@ -76,7 +77,6 @@
 
         # nix
         bbenoist.nix
-        kamadorueda.alejandra
         jnoortheen.nix-ide
         # csv
 
@@ -84,8 +84,7 @@
         # keyboard
         spadin.zmk-tools
       ])
-      ++ lib.optionals pkgs.stdenv.isDarwin
-      (with pkgs.vscode-marketplace; [deerawan.vscode-dash]);
+      ++ lib.optionals pkgs.stdenv.isDarwin (with pkgs.vscode-marketplace; [ deerawan.vscode-dash ]);
     enableUpdateCheck = false;
     enableExtensionUpdateCheck = false;
     userSettings = {
@@ -112,8 +111,10 @@
 
       "editor.inlineSuggest.enabled" = true;
       "editor.semanticHighlighting.enabled" = true;
-      "editor.codeLensFontFamily" = "'Iosevka','Overpass','CMU Typewriter Text','Noto Serif CJK SC','Noto Serif','Hack Nerd Font'";
-      "editor.fontFamily" = "'Iosevka','Overpass','CMU Typewriter Text','Noto Serif CJK SC','Noto Serif','Hack Nerd Font'";
+      "editor.codeLensFontFamily" =
+        "'Iosevka','Overpass','CMU Typewriter Text','Noto Serif CJK SC','Noto Serif','Hack Nerd Font'";
+      "editor.fontFamily" =
+        "'Iosevka','Overpass','CMU Typewriter Text','Noto Serif CJK SC','Noto Serif','Hack Nerd Font'";
       "editor.fontLigatures" = true;
       "editor.fontSize" = 16;
       "editor.formatOnPaste" = false;
@@ -162,14 +163,15 @@
       # --------------------------------------------
       # Search Settings
       # --------------------------------------------
-      "search.exclude" = {};
+      "search.exclude" = { };
       "search.showLineNumbers" = true;
       "search.smartCase" = true;
 
       # --------------------------------------------
       # Terminal Settings
       # --------------------------------------------
-      "terminal.integrated.fontFamily" = "'Iosevka','Overpass','CMU Typewriter Text','Noto Serif CJK SC','Noto Serif','Hack Nerd Font'";
+      "terminal.integrated.fontFamily" =
+        "'Iosevka','Overpass','CMU Typewriter Text','Noto Serif CJK SC','Noto Serif','Hack Nerd Font'";
       "terminal.integrated.defaultProfile.windows" = "PowerShell";
       "terminal.integrated.defaultProfile.osx" = "fish";
       "terminal.integrated.profiles.osx" = {
@@ -195,19 +197,31 @@
       };
       "terminal.integrated.enableVisualBell" = true;
       "terminal.integrated.gpuAcceleration" = "on";
-      "terminal.integrated.env.windows" = {"LC_ALL" = "zh_CN.UTF-8";};
+      "terminal.integrated.env.windows" = {
+        "LC_ALL" = "zh_CN.UTF-8";
+      };
       "terminal.integrated.fontSize" = 15;
       "terminal.integrated.rightClickBehavior" = "selectWord";
       "terminal.integrated.minimumContrastRatio" = 1;
       "terminal.integrated.copyOnSelection" = true;
       "terminal.external.osxExec" = "kitty.app";
       "terminal.explorerKind" = "external";
-      "accessibility.signals.terminalBell" = {"sound" = "on";};
+      "accessibility.signals.terminalBell" = {
+        "sound" = "on";
+      };
       # --------------------------------------------
       # Todo Settings
       # --------------------------------------------
       "todo-tree" = {
-        "general.tags" = ["BUG" "HACK" "FIXME" "TODO" "XXX" "[ ]" "[x]"];
+        "general.tags" = [
+          "BUG"
+          "HACK"
+          "FIXME"
+          "TODO"
+          "XXX"
+          "[ ]"
+          "[x]"
+        ];
         "regex.regex" = "(//|#|<!--|;|/\\*|^|^\\s*(-|\\d+.))\\s*($TAGS)";
       };
 
@@ -248,8 +262,12 @@
       # Language settings
       # --------------------------------------------
       # --------------------------------------------
-      "[yaml]" = {"editor.comments.insertSpace" = false;};
-      "[python]" = {"editor.formatOnType" = false;};
+      "[yaml]" = {
+        "editor.comments.insertSpace" = false;
+      };
+      "[python]" = {
+        "editor.formatOnType" = false;
+      };
 
       # --------------------------------------------
       # C/C++ settings
@@ -289,7 +307,9 @@
       "cmake.autoSelectActiveFolder" = false;
       "cmake.cmakeCommunicationMode" = "legacy";
       "cmake.configureOnOpen" = false;
-      "[Log]" = {"editor.fontSize" = 13;};
+      "[Log]" = {
+        "editor.fontSize" = 13;
+      };
 
       # Nix
 
