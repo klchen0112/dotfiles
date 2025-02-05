@@ -22,7 +22,7 @@
         # github.copilot
         # github.copilot-chat
       ]
-      ++ (with pkgs.vscode-marketplace; [
+      ++ (with inputs.nix-vscode-extensions.extensions.${pkgs.system}.vscode-marketplace; [
         #themes
         mechatroner.rainbow-csv
         gruntfuggly.todo-tree
@@ -84,7 +84,10 @@
         # keyboard
         spadin.zmk-tools
       ])
-      ++ lib.optionals pkgs.stdenv.isDarwin (with pkgs.vscode-marketplace; [ deerawan.vscode-dash ]);
+      ++ lib.optionals pkgs.stdenv.isDarwin (
+        with inputs.nix-vscode-extensions.extensions.${pkgs.system}.vscode-marketplace;
+        [ deerawan.vscode-dash ]
+      );
     enableUpdateCheck = false;
     enableExtensionUpdateCheck = false;
     userSettings = {

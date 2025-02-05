@@ -7,9 +7,11 @@
   username,
   isWork ? true,
   ...
-}: {
+}:
+{
   brew-nix.enable = true;
-  environment.systemPackages = with pkgs.brewCasks;
+  environment.systemPackages =
+    with inputs.brew-nix.packages.${pkgs.system};
     [
       # sf-symbols
       # squirrel
@@ -95,15 +97,16 @@
         spark = 1176895641;
       }
       // (
-        if isWork
-        then {}
-        else {
-          # onedrive = 823766827;
-          # tencent-meeting = 1484048379;
-          "microsoft-word" = 462054704;
-          "microsoft-powerpoint" = 462062816;
-          "microsoft-excel" = 462058435;
-        }
+        if isWork then
+          { }
+        else
+          {
+            # onedrive = 823766827;
+            # tencent-meeting = 1484048379;
+            "microsoft-word" = 462054704;
+            "microsoft-powerpoint" = 462062816;
+            "microsoft-excel" = 462058435;
+          }
       );
 
     brews = [

@@ -7,7 +7,8 @@
   system,
   lib,
   ...
-}: {
+}:
+{
   nixpkgs = {
     # You can add overlays here
     overlays = [
@@ -17,13 +18,13 @@
       outputs.overlays.unstable-packages
 
       # You can also add overlays exported from other flakes:
-      inputs.emacs-overlay.overlays.default
+
       # inputs.nixpkgs-wayland.overlay
       # inputs.devenv.overlays.default
       inputs.nix-vscode-extensions.overlays.default
       # neovim-nightly-overlay.overlays.default
       # inputs.nixpkgs-firefox-darwin.overlay
-      inputs.nur.overlays.default
+      # inputs.nur.overlays.default
       # Or define it inline, for example:
       # (final: prev: {
       #   hi = final.hello.overrideAttrs (oldAttrs: {
@@ -38,9 +39,6 @@
       allowUnsupportedSystem = true;
       #  allowBroken = true;
       # for wechat uos
-      permittedInsecurePackages = [
-        "zotero-6.0.27"
-      ];
     };
   };
 }
