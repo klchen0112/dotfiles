@@ -1,0 +1,3 @@
+[submodule "modules/editors/emacs/doom"]
+	path = modules/editors/emacs/doom
+	url = https://github.com/klchen0112/doom
