@@ -1,4 +1,5 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   imports = [
     ./modules/micromamba.nix
     ./modules/mamba.nix
@@ -11,8 +12,8 @@
     # micromamba
   ];
   programs.mamba-cpp = {
-    enable = false;
-    package = pkgs.unstable.mamba-cpp;
+    enable = true;
+    package = pkgs.mamba-cpp;
   };
   programs.micromamba = {
     enable = false;

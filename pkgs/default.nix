@@ -8,6 +8,7 @@ rec {
   # example = pkgs.callPackage ./example { };
   TsangerJinKai02 = inputs.own-nur.packages.${pkgs.system}.TsangerJinKai02;
   Jigmo = inputs.own-nur.packages.${pkgs.system}.Jigmo;
+  mamba-cpp = inputs.own-nur.packages.${pkgs.system}.mamba-cpp;
   # this code from https://github.com/dezzw/demacs/blob/main/flake.nix
 
   emacsPlusMaster = inputs.emacs-overlay.packages.${pkgs.system}.emacs-git.overrideAttrs (old: {
@@ -93,7 +94,7 @@ rec {
           owner = "emacs-mirror";
           repo = "emacs";
           rev = "4c97d39b16a75411ccfdcf16d0871a77ff41785c";
-          hash = "sha256-rwGQnRPrhTdiVE37jb83LWaCONpW9aZ1E+/yaMrBw10=";
+          hash = "sha256-tEHwKsLAt92PxdVFpoIod0elvMJjzm/0zGv59PPr/hY=";
         };
         configureFlags = (old.configureFlags or [ ]) ++ [
           # "--with-xwidgets" # withXwidgets failed with mps enabled

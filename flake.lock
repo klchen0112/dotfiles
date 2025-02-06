@@ -678,11 +678,11 @@
         "nixpkgs": ["nixpkgs"]
       },
       "locked": {
-        "lastModified": 1735482986,
-        "narHash": "sha256-THikG+kQF5HUkCepsFCDnQRR/PDOeeL6otmxPV9e17Q=",
+        "lastModified": 1738859419,
+        "narHash": "sha256-nXWJEz5Ge6ih9YdMP2NtI7DXHRrDAQCrLCevFXm/Hlc=",
         "owner": "klchen0112",
         "repo": "nur",
-        "rev": "663a0a07a6dbb60c7cafb28394a518240fe05b93",
+        "rev": "e9d9e5fe13a44ca9089b4eeb317aa80fc14253cd",
         "type": "github"
       },
       "original": {
