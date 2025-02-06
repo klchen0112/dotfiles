@@ -4,10 +4,13 @@
 {
   inputs,
   pkgs,
+  lib,
   username,
+  config,
   #
   ...
-}: {
+}:
+{
   programs.alacritty = {
     enable = false;
     settings = {
@@ -17,40 +20,36 @@
         dynamic_title = true;
         dynamic_padding = true;
         option_as_alt = "Both";
-        decorations =
-          if pkgs.stdenv.isDarwin
-          then "buttonless"
-          else "Full";
+        decorations = if pkgs.stdenv.isDarwin then "buttonless" else "Full";
         blur = true;
       };
       scrolling = {
         history = 10000;
         multiplier = 3;
       };
-      font = let
-        fontname =
-          if pkgs.stdenv.isLinux
-          then "Iosevka Nerd Font"
-          else "SF Mono";
-      in {
-        normal = {
-          family = fontname;
-          style = "Bold";
+      font =
+        let
+          fontname = if pkgs.stdenv.isLinux then "Iosevka Nerd Font" else "SF Mono";
+        in
+        {
+          normal = {
+            family = fontname;
+            style = "Bold";
+          };
+          bold = {
+            family = fontname;
+            style = "Bold";
+          };
+          italic = {
+            family = fontname;
+            style = "Italic";
+          };
+          size = 14;
         };
-        bold = {
-          family = fontname;
-          style = "Bold";
-        };
-        italic = {
-          family = fontname;
-          style = "Italic";
-        };
-        size = 14;
-      };
       cursor.style = "Block";
       terminal.shell = {
         program = "${pkgs.fish}/bin/fish";
-        args = ["-l"];
+        args = [ "-l" ];
       };
       env = {
         LANG = "en_US.UTF-8";
@@ -63,9 +62,8 @@
     };
   };
   programs.ghostty = {
-    enable = false;
+    enable = pkgs.stdenv.isLinux;
   };
-  catppuccin.kitty.enable = true;
   programs.kitty = {
     enable = true;
     package = pkgs.kitty;
@@ -80,17 +78,11 @@
 
     settings = {
       #-------------------------------------------- Font --------------------------------------------
-      font_family =
-        if pkgs.stdenv.isLinux
-        then "Iosevka Nerd Font"
-        else "SF Mono";
+      font_family = if pkgs.stdenv.isLinux then "Iosevka Nerd Font" else "SF Mono";
       font_size = 14;
 
       #-------------------------------------------- Window --------------------------------------------
-      hide_window_decorations =
-        if pkgs.stdenv.isDarwin
-        then "titlebar-only "
-        else true;
+      hide_window_decorations = if pkgs.stdenv.isDarwin then "titlebar-only " else true;
       # Animation
       cursor_trail = 3;
       #-------------------------------------------- Mouse --------------------------------------------
@@ -101,11 +93,12 @@
 
       #-------------------------------------------- Shell --------------------------------------------
       shell =
-        if pkgs.stdenv.isDarwin
-        then "/etc/profiles/per-user/${username}/bin/fish --login --interactive"
-        else "/etc/profiles/per-user/${username}/bin/fish";
+        if pkgs.stdenv.isDarwin then
+          "/etc/profiles/per-user/${username}/bin/fish --login --interactive"
+        else
+          "/etc/profiles/per-user/${username}/bin/fish";
       #-------------------------------------------- Theme --------------------------------------------
-      background_opacity = 0.8;
+      background_opacity = lib.mkForce 0.8;
       #-------------------------------------------- Macos Settings --------------------------------------------
 
       macos_titlebar_color = "system";
@@ -122,12 +115,10 @@
 
   programs.wezterm = {
     enable = false;
-    extraConfig = let
-      fontsize =
-        if pkgs.stdenv.isDarwin
-        then "14.0"
-        else "13.0";
-    in
+    extraConfig =
+      let
+        fontsize = if pkgs.stdenv.isDarwin then "14.0" else "13.0";
+      in
       ''
         -- Pull in the wezterm API
         local wezterm = require 'wezterm'
@@ -196,12 +187,13 @@
         config.font_size = ${fontsize}
       ''
       + (
-        if pkgs.stdenv.isDarwin
-        then ''
-          -- Spawn a fish shell in login mod
-          config.default_prog = { '/run/current-system/sw/bin/fish', '-l' }
-        ''
-        else ""
+        if pkgs.stdenv.isDarwin then
+          ''
+            -- Spawn a fish shell in login mod
+            config.default_prog = { '/run/current-system/sw/bin/fish', '-l' }
+          ''
+        else
+          ""
       )
       + ''
         return config

@@ -7,7 +7,8 @@
   username,
   isWork,
   ...
-}: {
+}:
+{
   imports =
     [
       # inputs.nix-doom-emacs.hmModule
@@ -30,7 +31,7 @@
       # ../../modules/windowManager
       # ../../modules/vpn
       ../../modules/notes/home.nix
-      inputs.catppuccin.homeManagerModules.catppuccin
+      inputs.stylix.homeManagerModules.stylix
     ]
     ++ lib.optionals isWork [
       ../../modules/lang/tools/home.nix
@@ -43,5 +44,8 @@
   };
 
   programs.home-manager.enable = true;
-  catppuccin.flavor = "mocha";
+  stylix = {
+    enable = true;
+    base16Scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-dark-hard.yaml";
+  };
 }

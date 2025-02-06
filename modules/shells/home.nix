@@ -62,8 +62,6 @@
       push.autoSetupRemote = true;
     };
   };
-
-  catppuccin.btop.enable = true;
   programs.btop = {
     enable = true;
     settings = {
@@ -86,7 +84,6 @@
     enable = true;
     enableFishIntegration = true;
   };
-  catppuccin.fish.enable = true;
   programs.fish = {
     enable = true;
     shellAbbrs = {
@@ -142,7 +139,6 @@
     icons = "auto";
     git = true;
   };
-  catppuccin.bat.enable = true;
   programs.bat = {
     enable = true;
     config = {
@@ -158,12 +154,10 @@
       prettybat
     ];
   };
-  catppuccin.fzf.enable = true;
   programs.fzf = {
     enable = true;
     enableFishIntegration = true;
   };
-  catppuccin.tmux.enable = true;
   programs.tmux = {
     enable = true;
     # defaultKeyMode = "emacs";
@@ -182,7 +176,7 @@
   programs.atuin = {
     enable = true;
   };
-  catppuccin.starship.enable = config.programs.starship.enable;
+
   programs.starship = {
     enable = false;
     enableZshIntegration = true;

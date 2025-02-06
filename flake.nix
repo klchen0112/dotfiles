@@ -116,6 +116,7 @@
             specialArgs = { inherit inputs username outputs; };
             modules = [
               inputs.nixos-wsl.nixosModules.default
+              inputs.stylix.nixosModules.stylix
               {
                 system.stateVersion = "25.05";
                 wsl = {
@@ -168,10 +169,12 @@
             };
             # pkgs = nixpkgs.legacyPackages.aarch64-darwin;
             modules = [
+              # inputs.stylix.darwinModules.stylix
               # Modules that are used
               ./machines/mbp-m1
               home-manager.darwinModules.home-manager
               {
+                home-manager.backupFileExtension = "backup";
                 # Home-Manager module that is used
                 home-manager.useGlobalPkgs = true;
                 home-manager.useUserPackages = true;
@@ -207,11 +210,13 @@
             };
             # pkgs = nixpkgs.legacyPackages.aarch64-darwin;
             modules = [
+              # inputs.stylix.darwinModules.stylix
               # Modules that are used
               ./machines/mbp-dxm
               home-manager.darwinModules.home-manager
               {
                 # Home-Manager module that is used
+                home-manager.backupFileExtension = "backup";
                 home-manager.useGlobalPkgs = true;
                 home-manager.useUserPackages = true;
                 home-manager.extraSpecialArgs = {
@@ -402,9 +407,11 @@
         inputs.flake-compat.follows = "flake-compat";
       };
       # theme
-      catppuccin = {
-        url = "github:catppuccin/nix";
+      stylix = {
+        url = "github:danth/stylix";
         inputs.nixpkgs.follows = "nixpkgs";
+        inputs.home-manager.follows = "home-manager";
+        inputs.git-hooks.follows = "pre-commit-hooks";
       };
 
       # own package

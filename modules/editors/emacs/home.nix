@@ -65,6 +65,7 @@ in
   # imports = [
   #   inputs.nix-doom-emacs-unstraightened.hmModule
   # ];
+  stylix.targets.emacs.enable = true;
   xdg.configFile."doom".source = config.lib.file.mkOutOfStoreSymlink doomPath;
   # home.file.".cache/doom/nix/rime" = {
   #   source = "${inputs.own-rime}";

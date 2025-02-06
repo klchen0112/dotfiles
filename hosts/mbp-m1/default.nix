@@ -6,7 +6,8 @@
   pkgs,
   username,
   ...
-}: {
+}:
+{
   imports = [
     # inputs.nix-doom-emacs.hmModule
     ../../modules/ai/home.nix
@@ -28,7 +29,8 @@
     # ../../modules/windowManager
     # ../../modules/vpn
     ../../modules/notes/home.nix
-    inputs.catppuccin.homeManagerModules.catppuccin
+    ../../modules/stylix/home.nix
+
   ];
 
   home = {
@@ -38,5 +40,4 @@
   };
 
   programs.home-manager.enable = true;
-  catppuccin.flavor = "mocha";
 }

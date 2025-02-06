@@ -19,7 +19,7 @@
       ../../modules/terminal/home.nix
       ../../modules/visualisation/home.nix
       ../../modules/nixpkgs/home.nix
-      inputs.catppuccin.homeManagerModules.catppuccin
+      inputs.stylix.homeManagerModules.stylix
     ]
     ++ lib.optionals isWork [
       ../../modules/lang/tools/home.nix
@@ -32,5 +32,11 @@
   };
 
   programs.home-manager.enable = true;
-  catppuccin.flavor = "mocha";
+
+  stylix = {
+    enable = true;
+    autoEnable = true;
+    base16Scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-dark-hard.yaml";
+  };
+
 }

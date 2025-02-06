@@ -116,10 +116,7 @@
       "editor.semanticHighlighting.enabled" = true;
       "editor.codeLensFontFamily" =
         "'Iosevka','Overpass','CMU Typewriter Text','Noto Serif CJK SC','Noto Serif','Hack Nerd Font'";
-      "editor.fontFamily" =
-        "'Iosevka','Overpass','CMU Typewriter Text','Noto Serif CJK SC','Noto Serif','Hack Nerd Font'";
       "editor.fontLigatures" = true;
-      "editor.fontSize" = 16;
       "editor.formatOnPaste" = false;
       "editor.formatOnType" = false;
       "editor.formatOnSave" = false;
@@ -203,7 +200,6 @@
       "terminal.integrated.env.windows" = {
         "LC_ALL" = "zh_CN.UTF-8";
       };
-      "terminal.integrated.fontSize" = 15;
       "terminal.integrated.rightClickBehavior" = "selectWord";
       "terminal.integrated.minimumContrastRatio" = 1;
       "terminal.integrated.copyOnSelection" = true;
@@ -243,7 +239,6 @@
       # "window.autoDetectColorScheme" = true;
       # "workbench.preferredLightColorTheme" = "Catppuccin Latte";
       # "workbench.preferredDarkColorTheme" = "Catppuccin Macchiato";
-      "workbench.colorTheme" = "Catppuccin Latte";
       "workbench.iconTheme" = "catppuccin-latte";
       "workbench.editor.enablePreview" = false;
 
