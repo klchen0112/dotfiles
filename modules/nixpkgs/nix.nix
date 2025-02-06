@@ -17,13 +17,5 @@
 
     # options = "--delete-older-than 7d";
     # };
-    settings = {
-      trusted-users = [ "${username}" ];
-      experimental-features = [
-        "nix-command"
-        "flakes"
-      ];
-      builders-use-substitutes = true;
-    };
   };
 }
