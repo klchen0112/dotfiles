@@ -3,9 +3,12 @@
   config,
   lib,
   ...
-}: {
+}:
+{
   options.programs.mamba-cpp = {
-    enable = lib.mkEnableOption "mamba";
+    enable = lib.mkEnableOption "mamba-cpp" // {
+      default = false;
+    };
     package = lib.mkOption {
       type = lib.types.package;
       default = pkgs.mamba-cpp;
@@ -15,34 +18,34 @@
     rootDirectory = lib.mkOption {
       type = lib.types.path;
       apply = toString;
-      default = "${config.home.homeDirectory}/mamba";
-      defaultText = "\${config.home.homeDirectory}/mamba";
+      default = "${config.home.homeDirectory}/.local/share/mamba";
+      defaultText = "\${config.home.homeDirectory}/.local/share/mamba";
     };
     enableBashIntegration = lib.mkOption {
       type = lib.types.bool;
       default = config.programs.bash.enable;
       description = ''
-        Whether to enable micromamba's Bash integration.
+        Whether to enable mamba's Bash integration.
       '';
     };
     enableZshIntegration = lib.mkOption {
       type = lib.types.bool;
       default = config.programs.zsh.enable;
       description = ''
-        Whether to enable micromamba's Zsh integration.
+        Whether to enable mamba's Zsh integration.
       '';
     };
     enableFishIntegration = lib.mkOption {
       type = lib.types.bool;
       default = config.programs.fish.enable;
       description = ''
-        Whether to enable micromamba's Fish integration.
+        Whether to enable mamba's Fish integration.
       '';
     };
   };
   config = lib.mkIf config.programs.mamba-cpp.enable {
     # Always add the configured `pyenv` package.
-    home.packages = [config.programs.mamba-cpp.package];
+    home.packages = [ config.programs.mamba-cpp.package ];
     programs.bash.initExtra = lib.mkIf config.programs.micromamba.enableBashIntegration ''
       export MAMBA_ROOT_PREFIX=${config.programs.mamba-cpp.rootDirectory}
       eval $(${config.programs.mamba-cpp.package}/bin/mamba shell hook --shell bash --root-prefix $MAMBA_ROOT_PREFIX)'';

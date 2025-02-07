@@ -3,9 +3,12 @@
   config,
   lib,
   ...
-}: {
+}:
+{
   options.programs.micromamba = {
-    enable = lib.mkEnableOption "micromamba";
+    enable = lib.mkEnableOption "micromamba" // {
+      default = false;
+    };
     package = lib.mkOption {
       type = lib.types.package;
       default = pkgs.micromamba;
@@ -42,14 +45,12 @@
   };
   config = lib.mkIf config.programs.micromamba.enable {
     # Always add the configured `pyenv` package.
-    home.packages = [config.programs.micromamba.package];
+    home.packages = [ config.programs.micromamba.package ];
     programs.bash.initExtra = lib.mkIf config.programs.micromamba.enableBashIntegration ''
       eval $(${config.programs.micromamba.package}/bin/micromamba shell hook --shell zsh --prefix ${config.programs.micromamba.rootDirectory})
     '';
 
-    programs.zsh.initExtra =
-      lib.mkIf config.programs.micromamba.enableZshIntegration ''
-        eval $(${config.programs.micromamba.package}/bin/micromamba shell hook --shell zsh --prefix ${config.programs.micromamba.rootDirectory})'';
+    programs.zsh.initExtra = lib.mkIf config.programs.micromamba.enableZshIntegration ''eval $(${config.programs.micromamba.package}/bin/micromamba shell hook --shell zsh --prefix ${config.programs.micromamba.rootDirectory})'';
 
     programs.fish.interactiveShellInit = lib.mkIf config.programs.micromamba.enableFishIntegration ''
       ${config.programs.micromamba.package}/bin/micromamba shell hook --shell fish --prefix  ${config.programs.micromamba.rootDirectory} | source
