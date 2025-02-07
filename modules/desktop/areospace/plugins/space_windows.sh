@@ -736,28 +736,15 @@ if [ "$SENDER" = "aerospace_workspace_change" ]; then
         prevapps=$(aerospace list-windows --workspace "$PREV_WORKSPACE" | awk -F'|' '{gsub(/^ *| *$/, "", $2); print $2}' | sort -u)
         icon_strip=$(app_strip "$prevapps")
         if [ "$prevapps" != "" ]; then
-            sketchybar --set space."$PREV_WORKSPACE" drawing=on \
-                label="$icon_strip" \
-                background.color=0x00000000 \
-                label.color=0xBB352f36 \
-                icon.color=0xBB352f36 \
-                background.border_color=0xAAFFFFFF
+            sketchybar --set space."$PREV_WORKSPACE" drawing=on
         else
-            sketchybar --set space."$PREV_WORKSPACE" drawing=off \
-                background.color=0x00000000 \
-                label.color=0xBB352f36 \
-                icon.color=0xBB352f36 \
-                background.border_color=0xAAFFFFFF
+            sketchybar --set space."$PREV_WORKSPACE" drawing=off
         fi
     fi
     if [ "space.$FOCUSED_WORKSPACE" = "$NAME" ]; then
         apps=$(aerospace list-windows --workspace "$FOCUSED_WORKSPACE" | awk -F'|' '{gsub(/^ *| *$/, "", $2); print $2}' | sort -u)
         icon_strip=$(app_strip "$apps")
-        sketchybar --set space."$FOCUSED_WORKSPACE" drawing=on \
-            label="$icon_strip" \
-            background.color=0xCFFF69B4 \
-            label.color=0xFFFFFFFF \
-            icon.color=0xFFFFFFFF \
-            background.border_color=0xBB352f3
+        sketchybar --set space."$FOCUSED_WORKSPACE" drawing=on
+        sketchybar --set space.cur icon="$FOCUSED_WORKSPACE"
     fi
 fi
