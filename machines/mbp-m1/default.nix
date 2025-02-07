@@ -7,7 +7,8 @@
   system,
   isWork ? true,
   ...
-}: {
+}:
+{
   imports = [
     ../../modules/fonts/fonts.nix
     ../../modules/nixpkgs/darwin.nix
@@ -18,6 +19,7 @@
     ../../modules/homebrew
     ../../modules/downloader/darwin.nix
     ../../modules/secrets
+    ../../modules/stylix/darwin.nix
   ];
 
   users.users.${username} = {
@@ -31,7 +33,10 @@
   programs.fish.enable = true;
 
   environment = {
-    shells = with pkgs; [fish bash]; # Default shell
+    shells = with pkgs; [
+      fish
+      bash
+    ]; # Default shell
     # variables = {
     #   # System variables
     #   EDITOR = "nvim";

@@ -31,7 +31,7 @@
       # ../../modules/windowManager
       # ../../modules/vpn
       ../../modules/notes/home.nix
-      inputs.stylix.homeManagerModules.stylix
+      # inputs.stylix.homeManagerModules.stylix
     ]
     ++ lib.optionals isWork [
       ../../modules/lang/tools/home.nix
@@ -44,8 +44,4 @@
   };
 
   programs.home-manager.enable = true;
-  stylix = {
-    enable = true;
-    base16Scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-dark-hard.yaml";
-  };
 }

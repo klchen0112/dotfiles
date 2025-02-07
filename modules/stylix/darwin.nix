@@ -11,7 +11,7 @@
 {
   imports = [
     ./base.nix
-    inputs.stylix.homeManagerModules.stylix
+    inputs.stylix.darwinModules.stylix
   ];
 
 }
