@@ -736,15 +736,14 @@ if [ "$SENDER" = "aerospace_workspace_change" ]; then
         prevapps=$(aerospace list-windows --workspace "$PREV_WORKSPACE" | awk -F'|' '{gsub(/^ *| *$/, "", $2); print $2}' | sort -u)
         icon_strip=$(app_strip "$prevapps")
         if [ "$prevapps" != "" ]; then
-            sketchybar --set space."$PREV_WORKSPACE" drawing=on
+            sketchybar --set space."$PREV_WORKSPACE" drawing=on icon.highlight=off label.highlight=off
         else
-            sketchybar --set space."$PREV_WORKSPACE" drawing=off
+            sketchybar --set space."$PREV_WORKSPACE" drawing=off icon.highlight=off label.highlight=off
         fi
     fi
     if [ "space.$FOCUSED_WORKSPACE" = "$NAME" ]; then
         apps=$(aerospace list-windows --workspace "$FOCUSED_WORKSPACE" | awk -F'|' '{gsub(/^ *| *$/, "", $2); print $2}' | sort -u)
         icon_strip=$(app_strip "$apps")
-        sketchybar --set space."$FOCUSED_WORKSPACE" drawing=on
-        sketchybar --set space.cur icon="$FOCUSED_WORKSPACE"
+        sketchybar --set space."$FOCUSED_WORKSPACE" drawing=on icon.highlight=on label.highlight=on
     fi
 fi

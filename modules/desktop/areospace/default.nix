@@ -43,8 +43,8 @@
                               padding_right=5 \
                               icon.font="Hack Nerd Font:Bold:16.0" \
                               label.font="SF Pro:Semibold:16.0" \
-                              icon.color=0x${config.lib.stylix.colors.base05}ff \
-                              label.color=0x${config.lib.stylix.colors.base05}ff \
+                              icon.color=0xff${config.lib.stylix.colors.base05} \
+                              label.color=0xff${config.lib.stylix.colors.base05} \
                               icon.padding_left=4 \
                               icon.padding_right=4 \
                               label.padding_left=4 \
@@ -61,7 +61,6 @@
         sketchybar --add event aerospace_workspace_change
 
         focused_workspace=$(aerospace list-workspaces --focused)
-        sketchybar --add item space.cur left --set space.cur drawing=on icon="$focused_workspace" background.border_width=1 background.corner_radius=5 background.drawing=on background.drawing=on
 
         # This only works for single monitor configs!
         for sid in $(aerospace list-workspaces --all); do
@@ -69,10 +68,10 @@
             --subscribe space.$sid aerospace_workspace_change \
             --set space.$sid \
             drawing=off \
-            background.color=0x${config.lib.stylix.colors.base00} \
+            background.color=0xff${config.lib.stylix.colors.base00} \
             background.corner_radius=5 \
             background.drawing=on \
-            background.border_color=0x${config.lib.stylix.colors.base05} \
+            background.border_color=0xff${config.lib.stylix.colors.base05} \
             background.border_width=1 \
             background.height=23 \
             background.padding_right=5 \
@@ -80,9 +79,11 @@
             icon="$sid" \
             icon.shadow.drawing=off \
             icon.padding_left=10 \
+            icon.highlight_color=0xff${config.lib.stylix.colors.base04} \
             label.font="sketchybar-app-font:Regular:16.0" \
             label.padding_right=20 \
             label.padding_left=0 \
+            label.highlight_color=0xff${config.lib.stylix.colors.base04} \
             label.y_offset=-1 \
             label.shadow.drawing=off \
             click_script="aerospace workspace $sid" \
@@ -148,9 +149,9 @@
                     --set battery update_freq=120 script="${plugin_dir}/battery.sh" \
                     --subscribe battery system_woke power_source_change \
                     --add item network_down right\
-                    --set network_down icon=󰇚 update_freq=1 script="${plugin_dir}/speed.sh" icon.highlight_color=0xff98ff98\
+                    --set network_down icon=󰇚 update_freq=1 script="${plugin_dir}/speed.sh" icon.highlight_color=0xff${config.lib.stylix.colors.base04}\
                     --add item network_up right\
-                    --set network_up icon=󰕒  icon.highlight_color=0x${config.lib.stylix.colors.base04}\
+                    --set network_up icon=󰕒  icon.highlight_color=0xff${config.lib.stylix.colors.base04}\
                     label.font="Hack Nerd Font:Italic:14.0" \
                     icon.font="Hack Nerd Font:Heavy:16.0"
 
@@ -159,7 +160,7 @@
 
         #### Groups !!! ####
         sketchybar  --add bracket spaces '/space\..*/' hahamarginleft hahamarginleftRight \
-                    --set spaces background.color=0x${config.lib.stylix.colors.base03} \
+                    --set spaces background.color=0xff${config.lib.stylix.colors.base03} \
                           background.corner_radius=10 \
                           background.height=30
 
@@ -174,7 +175,7 @@
     enable = true;
     width = 6.0;
     hidpi = true;
-    active_color = "0xCFFF69B4";
-    inactive_color = "0x55FFFFFF";
+    active_color = "${config.lib.stylix.colors.base03}";
+    inactive_color = "${config.lib.stylix.colors.base01}";
   };
 }
