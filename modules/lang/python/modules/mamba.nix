@@ -46,18 +46,22 @@
   config = lib.mkIf config.programs.mamba-cpp.enable {
     # Always add the configured `pyenv` package.
     home.packages = [ config.programs.mamba-cpp.package ];
-    programs.bash.initExtra = lib.mkIf config.programs.micromamba.enableBashIntegration ''
+    programs.bash.initExtra = lib.mkIf config.programs.mamba-cpp.enableBashIntegration ''
+      export MAMBA_EXE ${config.home.profileDirectory}/bin/mamba
       export MAMBA_ROOT_PREFIX=${config.programs.mamba-cpp.rootDirectory}
-      eval $(${config.programs.mamba-cpp.package}/bin/mamba shell hook --shell bash --root-prefix $MAMBA_ROOT_PREFIX)'';
+      $MAMBA_EXE shell hook --shell fish --root-prefix=$MAMBA_ROOT_PREFIX | source
+    '';
 
     programs.zsh.initExtra = lib.mkIf config.programs.mamba-cpp.enableZshIntegration ''
+      export MAMBA_EXE ${config.home.profileDirectory}/bin/mamba
       export MAMBA_ROOT_PREFIX=${config.programs.mamba-cpp.rootDirectory}
-      eval $(${config.programs.mamba-cpp.package}/bin/mamba shell hook --shell zsh --root-prefix $MAMBA_ROOT_PREFIX)'';
+      $MAMBA_EXE shell hook --shell fish --root-prefix=$MAMBA_ROOT_PREFIX | source
+    '';
 
     programs.fish.interactiveShellInit = lib.mkIf config.programs.mamba-cpp.enableFishIntegration ''
+      set -gx MAMBA_EXE ${config.home.profileDirectory}/bin/mamba
       set -gx MAMBA_ROOT_PREFIX ${config.programs.mamba-cpp.rootDirectory}
-      set -gx MAMBA_EXE ${config.programs.mamba-cpp.package}/bin/mamba
-      $MAMBA_EXE shell hook --shell fish --root-prefix $MAMBA_ROOT_PREFIX | source
+      $MAMBA_EXE shell hook --shell fish --root-prefix=$MAMBA_ROOT_PREFIX | source
     '';
   };
 }

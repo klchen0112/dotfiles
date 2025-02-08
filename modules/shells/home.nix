@@ -97,7 +97,7 @@
       vim = "emacs -nw";
     };
     shellAliases = {
-      conda = "micromamba";
+      conda = "mamba";
       "..." = "cd ../..";
       # "cd" = "z";
     };

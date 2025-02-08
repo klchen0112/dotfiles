@@ -18,8 +18,8 @@
     rootDirectory = lib.mkOption {
       type = lib.types.path;
       apply = toString;
-      default = "${config.home.homeDirectory}/micromamba";
-      defaultText = "\${config.home.homeDirectory}/micromamba";
+      default = "${config.home.homeDirectory}/.local/share/micromamba";
+      defaultText = "\${config.home.homeDirectory}/.local/share/micromamba";
     };
     enableBashIntegration = lib.mkOption {
       type = lib.types.bool;

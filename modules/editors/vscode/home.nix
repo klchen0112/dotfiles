@@ -69,7 +69,7 @@
         ms-toolsai.vscode-jupyter-cell-tags
         ms-toolsai.jupyter-renderers
         ms-toolsai.jupyter-keymap
-        corker.vscode-micromamba
+        # corker.vscode-micromamba
         # cpp
         # llvm-vs-code-extensions.vscode-clangd
         # ms-vscode.cmake-tools

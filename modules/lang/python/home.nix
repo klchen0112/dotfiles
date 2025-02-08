@@ -1,7 +1,7 @@
 { pkgs, ... }:
 {
   imports = [
-    ./modules/micromamba.nix
+    # ./modules/micromamba.nix
     ./modules/mamba.nix
   ];
   home.packages = with pkgs; [
@@ -9,15 +9,12 @@
     # python3Full
     pyright # python language server
     # python311Packages.black # python formatter
-    # micromamba
   ];
   programs.mamba-cpp = {
     enable = true;
     package = pkgs.mamba-cpp;
   };
-  programs.micromamba = {
-    enable = false;
-    enableFishIntegration = true;
-    enableZshIntegration = true;
-  };
+  # programs.micromamba = {
+  #   enable = false;
+  # };
 }
