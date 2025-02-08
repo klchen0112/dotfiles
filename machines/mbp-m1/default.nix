@@ -18,7 +18,7 @@
     ../../modules/desktop/areospace
     ../../modules/homebrew
     ../../modules/downloader/darwin.nix
-    ../../modules/secrets
+    ../../modules/secrets/darwin.nix
     ../../modules/stylix/darwin.nix
   ];
 
@@ -53,4 +53,6 @@
       coreutils
     ];
   };
+  services.openssh.enable = true;
+
 }

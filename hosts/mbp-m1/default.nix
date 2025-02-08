@@ -30,7 +30,7 @@
     # ../../modules/vpn
     ../../modules/notes/home.nix
     # ../../modules/stylix/home.nix
-
+    ../../modules/secrets/home.nix
   ];
 
   home = {

@@ -190,6 +190,7 @@
                 home-manager.users.${username} = import ./hosts/mbp-m1/default.nix;
               }
               inputs.brew-nix.darwinModules.default
+
             ];
           };
         "mbp-dxm" =
@@ -347,6 +348,12 @@
         inputs.treefmt-nix.follows = "treefmt-nix";
       };
 
+      agenix = {
+        url = "github:ryantm/agenix";
+        inputs.nixpkgs.follows = "nixpkgs";
+        inputs.darwin.follows = "darwin";
+      };
+
       nur = {
         url = "github:nix-community/NUR"; # NUR Packages
         inputs.nixpkgs.follows = "nixpkgs";
@@ -422,6 +429,11 @@
 
       own-rime = {
         url = "github:klchen0112/rime-combo-ice-pinyin";
+        flake = false;
+      };
+
+      agenix-secrets = {
+        url = "github:klchen0112/agenix-secrets";
         flake = false;
       };
     };
