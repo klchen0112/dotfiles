@@ -23,7 +23,11 @@
     ../../modules/nixpkgs
     ../../modules/shells
     ../../modules/secrets
+    ../../modules/ssh
   ];
+  # Bootloader.
+  boot.loader.systemd-boot.enable = true;
+  boot.loader.efi.canTouchEfiVariables = true;
 
   security.sudo.wheelNeedsPassword = true; # User does not need to give password when using sudo.
 
