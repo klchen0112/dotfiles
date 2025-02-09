@@ -11,6 +11,7 @@
 {
   imports =
     [
+      ../../modules/account/home.nix
       ../../modules/editors/emacs/home.nix
       ../../modules/lang/home.nix
       ../../modules/network/home.nix
@@ -23,12 +24,6 @@
     ++ lib.optionals isWork [
       ../../modules/lang/tools/home.nix
     ];
-
-  home = {
-    username = "${username}";
-    homeDirectory = "/home/${username}";
-    stateVersion = "25.05";
-  };
 
   programs.home-manager.enable = true;
 

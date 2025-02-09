@@ -19,16 +19,11 @@
       ../../modules/terminal/home.nix
       # ../../modules/visualisation/home.nix
       ../../modules/nixpkgs/home.nix
+      ../../modules/account/home.nix
     ]
     ++ lib.optionals isWork [
       ../../modules/lang/tools/home.nix
     ];
-
-  home = {
-    username = "${username}";
-    homeDirectory = "/home/${username}";
-    stateVersion = "25.05";
-  };
 
   programs.home-manager.enable = true;
 

@@ -31,13 +31,8 @@
     ../../modules/notes/home.nix
     # ../../modules/stylix/home.nix
     ../../modules/secrets/home.nix
+    ../../modules/account/home.nix
   ];
-
-  home = {
-    username = "${username}";
-    homeDirectory = "/Users/${username}";
-    stateVersion = "25.05";
-  };
 
   programs.home-manager.enable = true;
 }

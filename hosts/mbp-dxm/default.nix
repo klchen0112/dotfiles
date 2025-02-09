@@ -11,6 +11,7 @@
 {
   imports =
     [
+      ../../modules/account/home.nix
       # inputs.nix-doom-emacs.hmModule
       ../../modules/ai/home.nix
       ../../modules/browser/home.nix
@@ -36,12 +37,6 @@
     ++ lib.optionals isWork [
       ../../modules/lang/tools/home.nix
     ];
-
-  home = {
-    username = "${username}";
-    homeDirectory = "/Users/${username}";
-    stateVersion = "25.05";
-  };
 
   programs.home-manager.enable = true;
 }
