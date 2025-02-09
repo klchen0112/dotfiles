@@ -32,6 +32,7 @@
       # ../../modules/windowManager
       # ../../modules/vpn
       ../../modules/notes/home.nix
+      ../../modules/secrets/home.nix
       # ../../modules/stylix/home.nix
       # inputs.stylix.homeManagerModules.stylix
     ]

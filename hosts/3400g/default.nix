@@ -20,6 +20,7 @@
       # ../../modules/visualisation/home.nix
       ../../modules/nixpkgs/home.nix
       ../../modules/account/home.nix
+      ../../modules/secrets/home.nix
       ../../modules/stylix/home.nix
     ]
     ++ lib.optionals isWork [
