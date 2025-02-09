@@ -22,6 +22,6 @@
     "@wheel"
   ];
   nix.extraOptions = ''
-    !include ${config.age.secretsDir}access-tokens
+    !include ${config.age.secrets.access-tokens.path}
   '';
 }
