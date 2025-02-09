@@ -20,14 +20,8 @@
     ../../modules/downloader/darwin.nix
     ../../modules/secrets
     ../../modules/stylix/darwin.nix
+    ../../modules/account
   ];
-
-  users.users.${username} = {
-    # macOS user
-    home = "/Users/${username}";
-    name = "${username}";
-    shell = pkgs.fish; # Default shell
-  };
 
   programs.zsh.enable = true;
   programs.fish.enable = true;

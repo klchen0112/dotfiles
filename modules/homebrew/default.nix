@@ -9,6 +9,9 @@
   ...
 }:
 {
+  imports = [
+    inputs.brew-nix.darwinModules.default
+  ];
   brew-nix.enable = true;
   environment.systemPackages =
     with inputs.brew-nix.packages.${pkgs.system};

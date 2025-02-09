@@ -22,6 +22,7 @@
       "@wheel"
     ];
     extra-experimental-features = "nix-command flakes";
+    accept-flake-config = true;
   };
   # nix.extraOptions = ''
   #   !include ${config.age.secrets.access-tokens.path}

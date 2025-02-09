@@ -7,18 +7,20 @@
       "https://mirrors.tuna.tsinghua.edu.cn/nix-channels/store"
       "https://mirror.sjtu.edu.cn/nix-channels/store"
       "https://cache.nixos.org"
+    ];
+    extra-substituters = [
       "https://nix-community.cachix.org"
       "https://klchen0112.cachix.org"
       "https://devenv.cachix.org"
       "https://cosmic.cachix.org"
-    ];
-    extra-substituters = [
+      "https://cache.garnix.io"
     ];
     extra-trusted-public-keys = [
       "klchen0112.cachix.org-1:cO5Ek4gcvoWtHslHjWn9U5ymU8ZiN7+tJo0jifbtRz4="
       "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
       "devenv.cachix.org-1:w1cLUi8dv3hnoSPGAuibQv+f9TZLr6cv/Hm9XgU50cw="
       "cosmic.cachix.org-1:Dya9IyXD4xdBehWjrkPv6rtxpmMdRel02smYzA85dPE="
+      "cache.garnix.io:CTFPyKSLcx5RMJKfLo5EEPUObbA78b0YQ2DTCJXqr9g="
     ];
 
     trusted-users = [
@@ -27,6 +29,8 @@
       "chenkailong_dxm"
       "klchen"
     ];
+    accept-flake-config = true;
+    # extra-experimental-features = "nix-command flakes";
   };
 
   outputs =
@@ -159,20 +163,7 @@
             system = "x86_64-linux";
             specialArgs = { inherit inputs username outputs; };
             modules = [
-              {
-                system.stateVersion = "25.05";
-                wsl = {
-                  enable = true;
-                  defaultUser = username;
-                  wslConf.automount.root = "/mnt";
-                  wslConf.interop.appendWindowsPath = false;
-                  wslConf.network.generateHosts = false;
-                  startMenuLaunchers = true;
-                  docker-desktop.enable = false;
-                };
-                # Enable integration with Docker Desktop (needs to be installed)
-              }
-              ./machines/i12r70
+              ./machines/3400g
               home-manager.nixosModules.home-manager
               {
                 # Home-Manager module that is used
@@ -187,7 +178,7 @@
                     isWork
                     ;
                 }; # Pass flake variable
-                home-manager.users.${username} = import ./hosts/i12r70/default.nix;
+                home-manager.users.${username} = import ./hosts/3400g/default.nix;
               }
             ];
           };
@@ -211,7 +202,6 @@
             };
             # pkgs = nixpkgs.legacyPackages.aarch64-darwin;
             modules = [
-              # inputs.stylix.darwinModules.stylix
               # Modules that are used
               ./machines/mbp-m1
               home-manager.darwinModules.home-manager
@@ -231,7 +221,6 @@
                 }; # Pass flake variable
                 home-manager.users.${username} = import ./hosts/mbp-m1/default.nix;
               }
-              inputs.brew-nix.darwinModules.default
 
             ];
           };
@@ -273,7 +262,6 @@
                 }; # Pass flake variable
                 home-manager.users.${username} = import ./hosts/mbp-dxm/default.nix;
               }
-              inputs.brew-nix.darwinModules.default
             ];
           };
       };
