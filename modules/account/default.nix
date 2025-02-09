@@ -33,7 +33,5 @@ in
         "seat"
       ];
     };
-}
-// lib.optionalAttrs pkgs.stdenv.isLinux {
   users.users.root.openssh.authorizedKeys.keys = authorizedKeys;
 }
