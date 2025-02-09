@@ -205,8 +205,18 @@
         port = 22;
         user = "root";
       };
-      woniu = {
+      a3400g = {
         hostname = "192.168.0.197";
+        port = 22;
+        user = "klchen";
+      };
+      sanjiao = {
+        hostname = "192.168.0.198";
+        port = 22;
+        user = "klchen";
+      };
+      woniu = {
+        hostname = "192.168.0.199";
         port = 22;
         user = "klchen";
       };
