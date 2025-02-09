@@ -12,7 +12,9 @@
 
   home = {
     username = "${username}";
-    homeDirectory = if pkgs.stdenv.isLinux then "/home/${username}" else "/Users/${username}";
+    homeDirectory = lib.mkDefault (
+      if pkgs.stdenv.isLinux then "/home/${username}" else "/Users/${username}"
+    );
     stateVersion = "25.05";
   };
 }
