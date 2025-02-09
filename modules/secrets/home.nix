@@ -12,5 +12,9 @@
   home.packages = [
     inputs.agenix.packages.${pkgs.system}.default
   ];
-  age.secrets.access-tokens.file = "${inputs.agenix-secrets}/access-tokens.age";
+  age = {
+    secretsDir = "${config.home.homeDirectory}/.config/agenix/agenix";
+    secretsMountPoint = "${config.home.homeDirectory}/.config/agenix/agenix.d";
+    secrets.access-tokens.file = "${inputs.agenix-secrets}/access-tokens.age";
+  };
 }

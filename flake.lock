@@ -24,11 +24,11 @@
     "agenix-secrets": {
       "flake": false,
       "locked": {
-        "lastModified": 1739028863,
-        "narHash": "sha256-RkA+mpJqo1OPAGKXd58JOHgfZzkNa/dFU30c7QmZqxM=",
+        "lastModified": 1739117440,
+        "narHash": "sha256-SW0cRk1V04t8hFEmpcz6HZrMHq0d/AhgUz8X8KVk0HI=",
         "owner": "klchen0112",
         "repo": "agenix-secrets",
-        "rev": "647663d0c9358ad8b25a19e77dd73c6732f37c0d",
+        "rev": "68fc485b6390847453e89f79b68d786b7400cc4c",
         "type": "github"
       },
       "original": {
