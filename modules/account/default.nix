@@ -17,20 +17,15 @@
         "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAGszCNQqxT1/s6sYjj1aewvCjaa3D7UwoOM7UD5K+ha klchen0112@gmail.com"
       ];
     }
-    // (
-      if pkgs.stdenv.isLinux then
-        {
-          isNormalUser = true;
-          extraGroups = [
-            "wheel"
-            "networkmanager"
-            "seat"
-          ];
-        }
-
-      else
-        {
-
-        }
-    );
+    // lib.optionalAttrs pkgs.stdenv.isLinux {
+      isNormalUser = true;
+      groups = [
+        "users"
+      ];
+      extraGroups = [
+        "wheel"
+        "networkmanager"
+        "seat"
+      ];
+    };
 }
