@@ -11,7 +11,7 @@
 {
   imports =
     [
-      # ../../modules/editors/emacs/home.nix
+      ../../modules/editors/emacs/home.nix
       # ../../modules/lang/home.nix
       ../../modules/network/home.nix
       ../../modules/sync/home.nix
