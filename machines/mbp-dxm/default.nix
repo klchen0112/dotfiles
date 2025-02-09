@@ -10,6 +10,7 @@
 }:
 {
   imports = [
+    ../../modules/account
     ../../modules/fonts/fonts.nix
     ../../modules/nixpkgs/darwin.nix
     ../../modules/system/darwin.nix

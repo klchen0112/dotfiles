@@ -10,6 +10,7 @@
 }:
 {
   imports = [
+    ../../modules/account
     ../../modules/fonts/fonts.nix
     ../../modules/nixpkgs/darwin.nix
     ../../modules/system/darwin.nix
@@ -21,13 +22,6 @@
     ../../modules/secrets/darwin.nix
     ../../modules/stylix/darwin.nix
   ];
-
-  users.users.${username} = {
-    # macOS user
-    home = "/Users/${username}";
-    name = "${username}";
-    shell = pkgs.fish; # Default shell
-  };
 
   programs.zsh.enable = true;
   programs.fish.enable = true;
