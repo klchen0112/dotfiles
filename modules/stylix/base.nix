@@ -12,8 +12,7 @@
   stylix = {
 
     enable = true;
-    image =
-      if pkgs.stdenv.isDarwin then "/Users/${username}/desktop.jpg" else "/home/${username}/desktop.jpg";
+    image = ./desktop.jpg;
     base16Scheme = "${pkgs.base16-schemes}/share/themes/solarized-light.yaml";
     opacity = {
       applications = 0.8;
