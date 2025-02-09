@@ -20,6 +20,7 @@
       ../../modules/terminal/home.nix
       ../../modules/visualisation/home.nix
       ../../modules/nixpkgs/home.nix
+      ../../modules/stylix/home.nix
     ]
     ++ lib.optionals isWork [
       ../../modules/lang/tools/home.nix

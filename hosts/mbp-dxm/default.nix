@@ -32,6 +32,7 @@
       # ../../modules/windowManager
       # ../../modules/vpn
       ../../modules/notes/home.nix
+      # ../../modules/stylix/home.nix
       # inputs.stylix.homeManagerModules.stylix
     ]
     ++ lib.optionals isWork [
