@@ -182,6 +182,35 @@
               }
             ];
           };
+        "sanjiao" =
+          let
+            username = "klchen";
+            userEmail = "klchen0112@gmail.com";
+            isWork = false;
+          in
+          nixpkgs.lib.nixosSystem {
+            system = "x86_64-linux";
+            specialArgs = { inherit inputs username outputs; };
+            modules = [
+              ./machines/sanjiao
+              home-manager.nixosModules.home-manager
+              {
+                # Home-Manager module that is used
+                home-manager.useGlobalPkgs = true;
+                home-manager.useUserPackages = true;
+                home-manager.extraSpecialArgs = {
+                  inherit
+                    username
+                    userEmail
+                    inputs
+                    outputs
+                    isWork
+                    ;
+                }; # Pass flake variable
+                home-manager.users.${username} = import ./hosts/sanjiao/default.nix;
+              }
+            ];
+          };
       };
       darwinConfigurations = {
         "mbp-m1" =
