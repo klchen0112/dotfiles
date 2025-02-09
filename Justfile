@@ -24,6 +24,14 @@ gitgc:
 i12r70:
 	sudo nixos-rebuild switch --flake .#i12r70
 
+a3400g:
+	sudo nixos-rebuild switch --flake .#3400g
+
+sanjiao:
+	sudo nixos-rebuild switch --flake .#sanjiao
+
+woniu:
+	sudo nixos-rebuild switch --flake .#woniu
 
 # macbook
 
