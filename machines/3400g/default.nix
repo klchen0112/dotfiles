@@ -18,6 +18,7 @@
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
+    ../../modules/account
     ../../modules/locale
     ../../modules/fonts/fonts.nix
     ../../modules/nixpkgs
