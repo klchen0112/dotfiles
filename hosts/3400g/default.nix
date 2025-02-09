@@ -25,7 +25,6 @@
     ++ lib.optionals isWork [
       ../../modules/lang/tools/home.nix
     ];
-  programs.dconf.enable = true;
   programs.home-manager.enable = true;
 
 }
