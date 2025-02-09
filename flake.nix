@@ -301,43 +301,49 @@
           ];
         };
       };
-      colmena = {
-        meta = rec {
+      colmena =
+        let
           username = "klchen";
-          # 这个参数的功能与 `nixosConfigurations.xxx` 中的 `specialArgs` 一致，
-          # 都是用于传递自定义参数到所有子模块。
-          specialArgs = {
-            inherit inputs username outputs;
+          userEmail = "klchen0112@gmail.com";
+          isWork = false;
+        in
+        {
+          meta = {
+
+            # 这个参数的功能与 `nixosConfigurations.xxx` 中的 `specialArgs` 一致，
+            # 都是用于传递自定义参数到所有子模块。
+            specialArgs = {
+              inherit inputs username outputs;
+            };
           };
+          "sanjiao" =
+            { name, nodes, ... }:
+            {
+              deployment.targetHost = "192.168.0.192"; # 远程主机的 IP 地址
+              deployment.targetUser = "root"; # 远程主机的用户名
+
+              imports = [
+                ./machines/sanjiao
+                home-manager.nixosModules.home-manager
+                {
+                  # Home-Manager module that is used
+                  home-manager.useGlobalPkgs = true;
+                  home-manager.useUserPackages = true;
+                  home-manager.extraSpecialArgs = {
+                    inherit
+                      username
+                      userEmail
+                      inputs
+                      outputs
+                      isWork
+                      ;
+                  }; # Pass flake variable
+                  home-manager.users.${username} = import ./hosts/sanjiao/default.nix;
+                }
+              ];
+            };
+
         };
-        "sanjiao" =
-          { name, nodes, ... }:
-          {
-            deployment.targetHost = "192.168.0.192"; # 远程主机的 IP 地址
-            deployment.targetUser = "root"; # 远程主机的用户名
-
-            imports = [
-              ./machines/sanjiao
-              home-manager.nixosModules.home-manager
-              {
-                # Home-Manager module that is used
-                home-manager.useGlobalPkgs = true;
-                home-manager.useUserPackages = true;
-                home-manager.extraSpecialArgs = {
-                  inherit
-                    username
-                    userEmail
-                    inputs
-                    outputs
-                    isWork
-                    ;
-                }; # Pass flake variable
-                home-manager.users.${username} = import ./hosts/sanjiao/default.nix;
-              }
-            ];
-          };
-
-      };
     };
 
   inputs =
