@@ -21,6 +21,7 @@
       ../../modules/nixpkgs/home.nix
       ../../modules/account/home.nix
       ../../modules/stylix/home.nix
+      ../../modules/secrets/home.nix
     ]
     ++ lib.optionals isWork [
       ../../modules/lang/tools/home.nix
