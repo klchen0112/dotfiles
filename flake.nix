@@ -149,6 +149,48 @@
               }
             ];
           };
+        "3400g" =
+          let
+            username = "klchen";
+            userEmail = "klchen0112@gmail.com";
+            isWork = false;
+          in
+          nixpkgs.lib.nixosSystem {
+            system = "x86_64-linux";
+            specialArgs = { inherit inputs username outputs; };
+            modules = [
+              {
+                system.stateVersion = "25.05";
+                wsl = {
+                  enable = true;
+                  defaultUser = username;
+                  wslConf.automount.root = "/mnt";
+                  wslConf.interop.appendWindowsPath = false;
+                  wslConf.network.generateHosts = false;
+                  startMenuLaunchers = true;
+                  docker-desktop.enable = false;
+                };
+                # Enable integration with Docker Desktop (needs to be installed)
+              }
+              ./machines/i12r70
+              home-manager.nixosModules.home-manager
+              {
+                # Home-Manager module that is used
+                home-manager.useGlobalPkgs = true;
+                home-manager.useUserPackages = true;
+                home-manager.extraSpecialArgs = {
+                  inherit
+                    username
+                    userEmail
+                    inputs
+                    outputs
+                    isWork
+                    ;
+                }; # Pass flake variable
+                home-manager.users.${username} = import ./hosts/i12r70/default.nix;
+              }
+            ];
+          };
       };
       darwinConfigurations = {
         "mbp-m1" =
