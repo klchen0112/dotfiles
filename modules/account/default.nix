@@ -14,14 +14,14 @@
       home = if pkgs.stdenv.isLinux then "/home/${username}" else "/Users/${username}";
 
       openssh.authorizedKeys.keys = [
-        "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAGszCNQqxT1/s6sYjj1aewvCjaa3D7UwoOM7UD5K+ha klchen0112@gmail.com"
+        "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAGszCNQqxT1/s6sYjj1aewvCjaa3D7UwoOM7UD5K+ha"
+        "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJyFiios12VBgf9kF4iuOU1VYQhwKz1wpUyADZAnyVGU"
+        "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAII/c10VIo81cztYJza3e+l1JlwsTJQk1lhBOypGhYn3T"
       ];
     }
     // lib.optionalAttrs pkgs.stdenv.isLinux {
       isNormalUser = true;
-      groups = [
-        "users"
-      ];
+
       extraGroups = [
         "wheel"
         "networkmanager"
