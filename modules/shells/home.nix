@@ -190,6 +190,9 @@
     serverAliveInterval = 30;
     serverAliveCountMax = 6;
     compression = true;
+    controlMaster = "auto";
+    controlPath = "~/.ssh/cm/%r@%h";
+    controlPersist = "10m";
     matchBlocks = {
       xiaomi = {
         # hostkeyAlgorithms = "+ssh-rsa";
@@ -219,6 +222,30 @@
         hostname = "192.168.0.199";
         port = 22;
         user = "klchen";
+      };
+      duxiaoman = {
+        hostname = "relay00.duxiaoman-int.com";
+        port = 22;
+        user = "chenkailong_dxm";
+        extraOptions = {
+          "HostKeyAlgorithms" = "ssh-dss";
+        };
+      };
+      xd = {
+        hostname = "relay00.dxmxd02-int.com";
+        port = 22;
+        user = "chenkailong_dxm";
+        extraOptions = {
+          "HostKeyAlgorithms" = "ssh-dss";
+        };
+      };
+      kj = {
+        hostname = "relay00.dxmkj01-int.com";
+        port = 22;
+        user = "chenkailong_dxm";
+        extraOptions = {
+          "HostKeyAlgorithms" = "ssh-dss";
+        };
       };
 
     };
