@@ -47,13 +47,13 @@
     # Always add the configured `pyenv` package.
     home.packages = [ config.programs.mamba-cpp.package ];
     programs.bash.initExtra = lib.mkIf config.programs.mamba-cpp.enableBashIntegration ''
-      export MAMBA_EXE ${config.home.profileDirectory}/bin/mamba
-      export MAMBA_ROOT_PREFIX ${config.programs.mamba-cpp.rootDirectory}
+      export MAMBA_EXE=${config.home.profileDirectory}/bin/mamba
+      export MAMBA_ROOT_PREFIX=${config.programs.mamba-cpp.rootDirectory}
       $MAMBA_EXE shell hook --shell fish --root-prefix=$MAMBA_ROOT_PREFIX | source
     '';
 
     programs.zsh.initExtra = lib.mkIf config.programs.mamba-cpp.enableZshIntegration ''
-      export MAMBA_EXE ${config.home.profileDirectory}/bin/mamba
+      export MAMBA_EXE=${config.home.profileDirectory}/bin/mamba
       export MAMBA_ROOT_PREFIX=${config.programs.mamba-cpp.rootDirectory}
       $MAMBA_EXE shell hook --shell fish --root-prefix=$MAMBA_ROOT_PREFIX | source
     '';
