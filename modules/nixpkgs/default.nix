@@ -13,9 +13,7 @@
     ./base.nix
   ];
   nix.gc.dates = "weekly";
-  # make `nix run nixpkgs#nixpkgs` use the same nixpkgs as the one used by this flake.
-  # nix.registry.nixpkgs.flake = nixpkgs;
-  nix.channel.enable = false; # remove nix-channel related tools & configs, we use flakes instead.
+
   nix.settings.trusted-users = [
     "root"
     "${username}"
@@ -24,4 +22,10 @@
   nix.extraOptions = ''
     !include ${config.age.secrets.access-tokens.path}
   '';
+  # make `nix run nixpkgs#nixpkgs` use the same nixpkgs as the one used by this flake.
+  nix.registry.nixpkgs.flake = nixpkgs;
+  nix.channel.enable = false; # remove nix-channel related tools & configs, we use flakes instead.
+  environment.etc."nix/inputs/nixpkgs".source = "${nixpkgs}";
+  # https://github.com/NixOS/nix/issues/9574
+  nix.settings.nix-path = lib.mkForce "nixpkgs=/etc/nix/inputs/nixpkgs";
 }

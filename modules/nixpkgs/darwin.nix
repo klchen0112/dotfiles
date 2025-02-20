@@ -5,6 +5,8 @@
   pkgs,
   username,
   system,
+  lib,
+  nixpkgs,
   ...
 }:
 {
@@ -25,7 +27,6 @@
     Minute = 15;
   };
   nix.optimise.user = "${username}";
-  nix.registry.nixpkgs.flake = inputs.nixpkgs;
   programs.nix-index.enable = true;
   services.nix-daemon.enable = true; # Auto upgrade daemon
   nix.settings.trusted-users = [
@@ -36,4 +37,10 @@
   nix.extraOptions = ''
     !include ${config.age.secrets.access-tokens.path}
   '';
+  # make `nix run nixpkgs#nixpkgs` use the same nixpkgs as the one used by this flake.
+  nix.registry.nixpkgs.flake = inputs.nixpkgs;
+  nix.channel.enable = false; # remove nix-channel related tools & configs, we use flakes instead.
+  environment.etc."nix/inputs/nixpkgs".source = "${inputs.nixpkgs}";
+  # https://github.com/NixOS/nix/issues/9574
+  nix.settings.nix-path = lib.mkForce "nixpkgs=/etc/nix/inputs/nixpkgs";
 }
