@@ -43,7 +43,9 @@ let
       emacs-lsp-booster
       # ------------------- Python ---
       pyright
-      # poetry
+      ruff
+      poetry
+      uv
       # ------------------- Web -------------------------
       nodejs
       typescript

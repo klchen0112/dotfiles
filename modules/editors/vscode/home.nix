@@ -60,6 +60,7 @@
         ms-python.python
         ms-python.isort
         ms-pyright.pyright
+        zeshuaro.vscode-python-poetry
         # ms-python.vscode-pylance
         kevinrose.vsc-python-indent
         donjayamanne.python-environment-manager
