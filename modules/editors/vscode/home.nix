@@ -13,7 +13,7 @@
 
     package = pkgs.vscode;
     mutableExtensionsDir = false; # Whether extensions can be installed or updated manually or by Visual Studio Code.
-    extensions =
+    profiles.default.extensions =
       with pkgs.vscode-extensions;
       [
         # ssh
@@ -89,9 +89,9 @@
         with inputs.nix-vscode-extensions.extensions.${pkgs.system}.vscode-marketplace;
         [ deerawan.vscode-dash ]
       );
-    enableUpdateCheck = false;
-    enableExtensionUpdateCheck = false;
-    userSettings = {
+    profiles.default.enableUpdateCheck = false;
+    profiles.default.enableExtensionUpdateCheck = false;
+    profiles.default.userSettings = {
       "update.mode" = "none";
       "extensions.autoCheckUpdates" = false;
       "extensions.autoUpdate" = false;

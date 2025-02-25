@@ -6,7 +6,8 @@
   username,
   system,
   ...
-}: {
+}:
+{
   security.pam.enableSudoTouchIdAuth = true;
   system = {
     defaults = {
@@ -71,6 +72,6 @@
       enableKeyMapping = true;
       remapCapsLockToControl = true;
     };
-    stateVersion = 5;
+    stateVersion = 1;
   };
 }
