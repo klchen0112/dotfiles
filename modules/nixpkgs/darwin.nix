@@ -21,10 +21,6 @@
       Minute = 15;
     };
   };
-  nix.optimise.interval = {
-    Hour = 3;
-    Minute = 15;
-  };
   programs.nix-index.enable = true;
   nix.settings.trusted-users = [
     "root"

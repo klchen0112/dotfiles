@@ -41,6 +41,7 @@
       darwin,
       pre-commit-hooks,
       nix-on-droid,
+      srvos,
       ...
     }:
     # Function that tells my flake which to use and what do what to do with the dependencies.
@@ -119,6 +120,7 @@
             system = "x86_64-linux";
             specialArgs = { inherit inputs username outputs; };
             modules = [
+              srvos.nixosModules.server
               inputs.nixos-wsl.nixosModules.default
               inputs.stylix.nixosModules.stylix
               {
@@ -233,6 +235,10 @@
             modules = [
               # Modules that are used
               ./machines/mbp-m1
+              srvos.darwinModules.desktop
+              srvos.darwinModules.mixins-terminfo
+              srvos.darwinModules.mixins-nix-experimental
+              srvos.darwinModules.mixins-trusted-nix-caches
               home-manager.darwinModules.home-manager
               {
                 home-manager.backupFileExtension = "backup";
@@ -354,6 +360,7 @@
       nixpkgs-unstable.url = "github:nixos/nixpkgs/master"; # Nix Packages
       nixpkgs-stable.url = "github:nixos/nixpkgs/release-24.11"; # Nix Packages
 
+      srvos.url = "github:nix-community/srvos";
       #  MacOS
       darwin = {
         url = "github:LnL7/nix-darwin"; # MacOS Package Management
