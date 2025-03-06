@@ -9,6 +9,7 @@
   ...
 }:
 {
+  ids.gids.nixbld = 350;
   imports = [
     ../../modules/account
     ../../modules/fonts/fonts.nix
