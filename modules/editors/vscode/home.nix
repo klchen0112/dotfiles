@@ -60,9 +60,9 @@
         ms-python.python
         ms-python.isort
         ms-pyright.pyright
-        zeshuaro.vscode-python-poetry
+        # zeshuaro.vscode-python-poetry
         # ms-python.vscode-pylance
-        kevinrose.vsc-python-indent
+        charliermarsh.ruff
         donjayamanne.python-environment-manager
         cstrap.python-snippets
         ms-toolsai.jupyter
@@ -84,11 +84,7 @@
         james-yu.latex-workshop
         # keyboard
         spadin.zmk-tools
-      ])
-      ++ lib.optionals pkgs.stdenv.isDarwin (
-        with inputs.nix-vscode-extensions.extensions.${pkgs.system}.vscode-marketplace;
-        [ deerawan.vscode-dash ]
-      );
+      ]);
     profiles.default.enableUpdateCheck = false;
     profiles.default.enableExtensionUpdateCheck = false;
     profiles.default.userSettings = {
@@ -177,20 +173,20 @@
       "terminal.integrated.defaultProfile.osx" = "fish";
       "terminal.integrated.profiles.osx" = {
         "bash" = {
-          "path" = "${pkgs.bash}";
+          "path" = "${pkgs.bash}/bin/bash";
           "args" = [
             "-l"
           ];
           "icon" = "terminal-bash";
         };
         "zsh" = {
-          "path" = "${pkgs.zsh}";
+          "path" = "${pkgs.zsh}/bin/zsh";
           "args" = [
             "-l"
           ];
         };
         "fish" = {
-          "path" = "${pkgs.fish}";
+          "path" = "${pkgs.fish}/bin/fish";
           "args" = [
             "-l"
           ];
