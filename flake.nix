@@ -37,71 +37,40 @@
       nixpkgs,
       home-manager,
       darwin,
-      pre-commit-hooks,
       nix-on-droid,
       srvos,
+      treefmt-nix,
+      systems,
       ...
     }:
     # Function that tells my flake which to use and what do what to do with the dependencies.
     let
       # Variables that can be used in the config files.
       inherit (self) outputs;
-      forAllSystems = nixpkgs.lib.genAttrs [
-        "aarch64-linux"
-        "i686-linux"
-        "x86_64-linux"
-        "aarch64-darwin"
-        "x86_64-darwin"
-      ];
+      # Small tool to iterate over each systems
+      eachSystem = f: nixpkgs.lib.genAttrs (import systems) (system: f nixpkgs.legacyPackages.${system});
+
+      # Eval the treefmt modules from ./treefmt.nix
+      treefmtEval = eachSystem (pkgs: treefmt-nix.lib.evalModule pkgs ./treefmt.nix);
     in
     rec {
-      packages = forAllSystems (
-        system:
-        let
-          pkgs = nixpkgs.legacyPackages.${system};
-        in
-        import ./pkgs { inherit pkgs inputs; }
+      packages = eachSystem (
+        pkgs: import ./pkgs { inherit pkgs inputs; }
       );
 
-      formatter = forAllSystems (system: nixpkgs.legacyPackages.${system}.nixfmt-rfc-style);
+      formatter = eachSystem (pkgs: treefmtEval.${pkgs.system}.config.build.wrapper);
 
-      checks = forAllSystems (system: {
-        pre-commit-check = inputs.pre-commit-hooks.lib.${system}.run {
-          src = ./.;
-          hooks = {
-            nixfmt-rfc-style.enable = true; # formatter
-            # deadnix.enable = true; # detect unused variable bindings in `*.nix`
-            # statix.enable = true; # lints and suggestions for Nix code(auto suggestions)
-            prettier = {
-              enable = true;
-              excludes = [
-                ".js"
-                ".md"
-                ".ts"
-              ];
-            };
-
-            # Shell
-            shellcheck = {
-              enable = true;
-            };
-            shfmt = {
-              enable = true;
-            };
-            # TOML
-            taplo.enable = true;
-            # JSON
-            pretty-format-json.enable = true;
-          };
-        };
+      checks = eachSystem (pkgs: {
+        formatting = treefmtEval.${pkgs.system}.config.build.check self;
       });
-      devShell = forAllSystems (
-        system:
-        nixpkgs.legacyPackages.${system}.mkShell {
-          inherit (self.checks.${system}.pre-commit-check) shellHook;
-          buildInputs = self.checks.${system}.pre-commit-check.enabledPackages;
-        }
-      );
+
+      # devShell = forAllSystems (
+      #   system:
+      #   nixpkgs.legacyPackages.${system}.mkShell {
+      #     inherit (self.checks.${system}.pre-commit-check) shellHook;
+      #     buildInputs = self.checks.${system}.pre-commit-check.enabledPackages;
+      #   }
+      # );
 
       overlays = import ./overlays { inherit inputs; };
 
@@ -430,13 +399,6 @@
       #   inputs.systems.follows = "systems";
       # };
 
-      # add git hooks to format nix code before commit
-      pre-commit-hooks = {
-        url = "github:cachix/git-hooks.nix";
-        inputs.nixpkgs.follows = "nixpkgs";
-        inputs.flake-compat.follows = "flake-compat";
-      };
-
       devshell = {
         url = "github:numtide/devshell";
         inputs.nixpkgs.follows = "nixpkgs";
@@ -447,6 +409,15 @@
         url = "github:numtide/flake-utils";
         inputs.systems.follows = "systems";
       };
+
+
+      # add git hooks to format nix code before commit
+      pre-commit-hooks = {
+        url = "github:cachix/git-hooks.nix";
+        inputs.nixpkgs.follows = "nixpkgs";
+        inputs.flake-compat.follows = "flake-compat";
+      };
+
 
       treefmt-nix = {
         url = "github:numtide/treefmt-nix";
