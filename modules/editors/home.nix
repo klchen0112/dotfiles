@@ -6,7 +6,8 @@
   pkgs,
   username,
   ...
-}: {
+}:
+{
   imports = [
     ./vscode/home.nix
     # ./jetbrains/home.nix

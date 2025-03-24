@@ -1,7 +1,9 @@
 # This file defines overlays
-{inputs, ...}: {
+{ inputs, ... }:
+{
   # This one brings our custom packages from the 'pkgs' directory
-  additions = final: _prev:
+  additions =
+    final: _prev:
     import ../pkgs {
       pkgs = final;
       inherit inputs;
@@ -39,10 +41,10 @@
           #   sha256 = "sha256-77g72tee4ahNcu3hfW1Okqr9z8Y6WrPgUhw316O72Ng=";
           # })
         ];
-      })
-      .overrideAttrs (old: {
-        buildInputs = (old.buildInputs or []) ++ [final.pkgs.luajit];
-      });
+      }).overrideAttrs
+        (old: {
+          buildInputs = (old.buildInputs or [ ]) ++ [ final.pkgs.luajit ];
+        });
   };
 
   # When applied, the unstable nixpkgs set (declared in the flake inputs) will

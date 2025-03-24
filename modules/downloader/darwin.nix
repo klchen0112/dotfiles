@@ -6,8 +6,9 @@
   pkgs,
   username,
   ...
-}: {
-  imports = [./module.nix];
+}:
+{
+  imports = [ ./module.nix ];
   services.aria2 = {
     enable = true;
     logFile = "/tmp/aria2.log";

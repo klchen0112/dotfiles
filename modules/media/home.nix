@@ -1,7 +1,10 @@
 # ../../media
 #
-{pkgs, ...}: {
-  programs.mpv = {enable = pkgs.stdenv.isLinux;};
+{ pkgs, ... }:
+{
+  programs.mpv = {
+    enable = pkgs.stdenv.isLinux;
+  };
   programs.sioyek = {
     enable = false;
     #  package = pkgs.sioyek;
@@ -34,12 +37,13 @@
       "goto_bookmark_g" = "g<S-b>";
     };
   };
-  home.packages = with pkgs;
+  home.packages =
+    with pkgs;
     [
       # anki
       # tidgi
       # marginnote
     ]
-    ++ lib.optionals pkgs.stdenv.isDarwin []
-    ++ lib.optionals pkgs.stdenv.isLinux [plexamp];
+    ++ lib.optionals pkgs.stdenv.isDarwin [ ]
+    ++ lib.optionals pkgs.stdenv.isLinux [ plexamp ];
 }

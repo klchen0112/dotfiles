@@ -3,7 +3,8 @@
   lib,
   isWork,
   ...
-}: {
+}:
+{
   imports =
     [
       ./bash/home.nix
@@ -27,5 +28,5 @@
       ./k8s/home.nix
     ];
 
-  home.packages = with pkgs; [dockfmt];
+  home.packages = with pkgs; [ dockfmt ];
 }

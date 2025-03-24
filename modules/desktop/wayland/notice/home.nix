@@ -4,7 +4,8 @@
   lib,
   config,
   ...
-}: {
+}:
+{
   services.mako = {
     enable = true;
     width = 256;

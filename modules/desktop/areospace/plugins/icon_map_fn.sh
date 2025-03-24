@@ -716,4 +716,3 @@ function icon_map() {
 }
 
 echo $(icon_map "$1")
-

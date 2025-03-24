@@ -9,7 +9,8 @@
   pkgs,
   username,
   ...
-}: {
+}:
+{
   programs.yt-dlp = {
     enable = true;
   };

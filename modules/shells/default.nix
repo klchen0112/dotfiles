@@ -13,13 +13,17 @@
   system,
   inputs,
   ...
-}: {
+}:
+{
   programs.fish = {
     enable = true;
   };
 
   environment = {
-    shells = with pkgs; [fish bash]; # Default shell
+    shells = with pkgs; [
+      fish
+      bash
+    ]; # Default shell
     systemPackages = with pkgs; [
       # Installed Nix packages
       gnumake

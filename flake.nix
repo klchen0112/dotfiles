@@ -54,9 +54,7 @@
       treefmtEval = eachSystem (pkgs: treefmt-nix.lib.evalModule pkgs ./treefmt.nix);
     in
     rec {
-      packages = eachSystem (
-        pkgs: import ./pkgs { inherit pkgs inputs; }
-      );
+      packages = eachSystem (pkgs: import ./pkgs { inherit pkgs inputs; });
 
       formatter = eachSystem (pkgs: treefmtEval.${pkgs.system}.config.build.wrapper);
 
@@ -410,14 +408,12 @@
         inputs.systems.follows = "systems";
       };
 
-
       # add git hooks to format nix code before commit
       pre-commit-hooks = {
         url = "github:cachix/git-hooks.nix";
         inputs.nixpkgs.follows = "nixpkgs";
         inputs.flake-compat.follows = "flake-compat";
       };
-
 
       treefmt-nix = {
         url = "github:numtide/treefmt-nix";

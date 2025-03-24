@@ -4,7 +4,8 @@
   lib,
   config,
   ...
-}: {
+}:
+{
   time.timeZone = "Asia/Shanghai";
 
   i18n = {

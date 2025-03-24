@@ -5,7 +5,8 @@
   config,
   pkgs,
   ...
-}: {
+}:
+{
   imports = [
     # inputs.nix-doom-emacs.hmModule
     ../../modules/nixpkgs
@@ -17,7 +18,10 @@
   system.stateVersion = "25.05";
 
   environment = {
-    shells = with pkgs; [fish bash]; # Default shell
+    shells = with pkgs; [
+      fish
+      bash
+    ]; # Default shell
     systemPackages = with pkgs; [
       cachix
       fontconfig

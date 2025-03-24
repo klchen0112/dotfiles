@@ -5,7 +5,8 @@
   system,
   inputs,
   ...
-}: {
+}:
+{
   fonts = {
     # Fonts
     packages = with pkgs; [

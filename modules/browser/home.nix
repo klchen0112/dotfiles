@@ -6,7 +6,8 @@
   lib,
   isWork,
   ...
-}: {
+}:
+{
   programs.google-chrome = {
     enable = pkgs.stdenv.isLinux;
     package = pkgs.google-chrome;
@@ -14,10 +15,7 @@
   programs.firefox = {
     enable = pkgs.stdenv.isLinux;
     enableGnomeExtensions = false;
-    package =
-      if pkgs.stdenv.isDarwin
-      then pkgs.firefox-bin
-      else pkgs.firefox-wayland; # firefox with wayland support
+    package = if pkgs.stdenv.isDarwin then pkgs.firefox-bin else pkgs.firefox-wayland; # firefox with wayland support
     profiles.default = {
       id = 0;
       isDefault = true;
@@ -25,7 +23,12 @@
       search = {
         force = true;
         default = "DuckDuckGo";
-        order = ["Bing" "Baidu" "DuckDuckGo" "Google"];
+        order = [
+          "Bing"
+          "Baidu"
+          "DuckDuckGo"
+          "Google"
+        ];
       };
       settings = {
         "browser.tabs.loadInBackground" = true;
@@ -35,7 +38,7 @@
         bookmarks = [
           {
             name = "wikipedia";
-            tags = ["wiki"];
+            tags = [ "wiki" ];
             keyword = "wiki";
             url = "https://en.wikipedia.org/wiki/Special:Search?search=%s&go=Go";
           }
@@ -57,12 +60,18 @@
               }
               {
                 name = "wiki";
-                tags = ["wiki" "nix"];
+                tags = [
+                  "wiki"
+                  "nix"
+                ];
                 url = "https://nixos.wiki/";
               }
               {
                 name = "mynixios";
-                tags = ["wiki" "nix"];
+                tags = [
+                  "wiki"
+                  "nix"
+                ];
                 url = "https://mynixos.com/";
               }
             ];
@@ -73,12 +82,12 @@
             bookmarks = [
               {
                 name = "bilibili";
-                tags = ["anime"];
+                tags = [ "anime" ];
                 url = "https://www.bilibili.com/";
               }
               {
                 name = "BGM";
-                tags = ["anime"];
+                tags = [ "anime" ];
                 url = "https://bgm.tv/";
               }
             ];

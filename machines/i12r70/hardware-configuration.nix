@@ -7,14 +7,13 @@
   pkgs,
   modulesPath,
   ...
-}: {
+}:
+{
 
   # Enable networking
   networking = {
     hostName = "i12r70-wsl";
   };
-
-
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";

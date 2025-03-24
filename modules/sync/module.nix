@@ -4,9 +4,11 @@
   pkgs,
   ...
 }:
-with lib; let
+with lib;
+let
   cfg = config.services.syncthing;
-in {
+in
+{
   options = {
     services.syncthing = {
       enable = mkOption {
@@ -18,8 +20,8 @@ in {
       };
       extraOptions = mkOption {
         type = types.listOf types.str;
-        default = [];
-        example = ["--gui-apikey=apiKey"];
+        default = [ ];
+        example = [ "--gui-apikey=apiKey" ];
         description = ''
           Extra command-line arguments to pass to {command}`syncthing`.
         '';
@@ -37,7 +39,7 @@ in {
       };
     };
     config = mkIf cfg.enable {
-      environment.systemPackages = [pkgs.syncthing];
+      environment.systemPackages = [ pkgs.syncthing ];
       launchd.user.agents.syncthing = {
         command = "${pkgs.syncthing}/bin/syncthing -no-browser -no-restart -logflags=0";
         serviceConfig = {

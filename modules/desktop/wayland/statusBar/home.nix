@@ -4,7 +4,8 @@
   lib,
   config,
   ...
-}: {
+}:
+{
   programs.waybar = {
     enable = true;
     systemd = {
@@ -47,9 +48,7 @@
           "interval" = 1;
           "format" = "{:%I:%M %p  %A %b %d}";
           "tooltip" = true;
-          /*
-          "tooltip-format"= "{=%A; %d %B %Y}\n<tt>{calendar}</tt>"
-          */
+          # "tooltip-format"= "{=%A; %d %B %Y}\n<tt>{calendar}</tt>"
           # "tooltip-format" = "上午：高数\n下午：Ps\n晚上：Golang\n<tt>{calendar}</tt>";
         };
 
@@ -67,7 +66,11 @@
           "format" = "{icon} {volume}%";
           "format-muted" = "󰖁 Muted";
           "format-icons" = {
-            "default" = ["" "" ""];
+            "default" = [
+              ""
+              ""
+              ""
+            ];
           };
           "on-click" = "pamixer -t";
           "tooltip" = false;
@@ -77,7 +80,12 @@
           "on-scroll-up" = "light -A 5";
           "on-scroll-down" = "light -U 5";
           "format" = "{icon} {percent}%";
-          "format-icons" = ["󰃝" "󰃞" "󰃟" "󰃠"];
+          "format-icons" = [
+            "󰃝"
+            "󰃞"
+            "󰃟"
+            "󰃠"
+          ];
         };
         "memory" = {
           "interval" = 1;

@@ -7,10 +7,10 @@ IPADDR="$(networksetup -getinfo Wi-Fi | grep "IP address" | head -n 1 | awk -F '
 icon=""
 lbl=""
 if [ "$IPADDR" != " none" ]; then
-    icon="$haswifi"
-    lbl="$IPADDR"
+  icon="$haswifi"
+  lbl="$IPADDR"
 else
-    icon="$nohasnowifi"
+  icon="$nohasnowifi"
 fi
 
 sketchybar --set "$NAME" label="$lbl" icon="$icon"

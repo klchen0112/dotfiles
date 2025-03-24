@@ -6,7 +6,8 @@
   username,
   system,
   ...
-}: {
+}:
+{
   services.skhd = {
     enable = true;
     package = pkgs.skhd;
