@@ -349,6 +349,31 @@
                 }
               ];
             };
+          "3400g" =
+            { name, nodes, ... }:
+            {
+              deployment.targetHost = "192.168.0.197"; # 远程主机的 IP 地址
+              deployment.targetUser = "root"; # 远程主机的用户名
+              modules = [
+                ./machines/3400g
+                home-manager.nixosModules.home-manager
+                {
+                  # Home-Manager module that is used
+                  home-manager.useGlobalPkgs = true;
+                  home-manager.useUserPackages = true;
+                  home-manager.extraSpecialArgs = {
+                    inherit
+                      username
+                      userEmail
+                      inputs
+                      outputs
+                      isWork
+                      ;
+                  }; # Pass flake variable
+                  home-manager.users.${username} = import ./hosts/3400g/default.nix;
+                }
+              ];
+            };
 
         };
     };

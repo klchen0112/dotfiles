@@ -6,6 +6,7 @@
   username,
   system,
   nixpkgs,
+  lib,
   ...
 }:
 {
