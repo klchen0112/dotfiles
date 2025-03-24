@@ -319,7 +319,7 @@
             {
               deployment.targetHost = "192.168.0.197"; # 远程主机的 IP 地址
               deployment.targetUser = "root"; # 远程主机的用户名
-              modules = [
+              imports = [
                 ./machines/3400g
                 home-manager.nixosModules.home-manager
                 {
