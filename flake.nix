@@ -65,7 +65,7 @@
       devShell = eachSystem (
         pkgs:
         pkgs.mkShell {
-          buildInputs = [pkgs.just];
+          buildInputs = [ pkgs.just ];
         }
       );
 
@@ -133,6 +133,7 @@
               home-manager.nixosModules.home-manager
               {
                 # Home-Manager module that is used
+                home-manager.backupFileExtension = "backup";
                 home-manager.useGlobalPkgs = true;
                 home-manager.useUserPackages = true;
                 home-manager.extraSpecialArgs = {
@@ -162,6 +163,7 @@
               home-manager.nixosModules.home-manager
               {
                 # Home-Manager module that is used
+                home-manager.backupFileExtension = "backup";
                 home-manager.useGlobalPkgs = true;
                 home-manager.useUserPackages = true;
                 home-manager.extraSpecialArgs = {
@@ -206,6 +208,7 @@
               home-manager.darwinModules.home-manager
               {
                 # Home-Manager module that is used
+                home-manager.backupFileExtension = "backup";
                 home-manager.useGlobalPkgs = true;
                 home-manager.useUserPackages = true;
                 home-manager.extraSpecialArgs = {
@@ -246,6 +249,7 @@
               home-manager.darwinModules.home-manager
               {
                 # Home-Manager module that is used
+                home-manager.backupFileExtension = "backup";
                 home-manager.useGlobalPkgs = true;
                 home-manager.useUserPackages = true;
                 home-manager.extraSpecialArgs = {
@@ -296,6 +300,7 @@
                 home-manager.nixosModules.home-manager
                 {
                   # Home-Manager module that is used
+                  home-manager.backupFileExtension = "backup";
                   home-manager.useGlobalPkgs = true;
                   home-manager.useUserPackages = true;
                   home-manager.extraSpecialArgs = {
@@ -321,6 +326,7 @@
                 home-manager.nixosModules.home-manager
                 {
                   # Home-Manager module that is used
+                  home-manager.backupFileExtension = "backup";
                   home-manager.useGlobalPkgs = true;
                   home-manager.useUserPackages = true;
                   home-manager.extraSpecialArgs = {
