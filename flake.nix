@@ -62,13 +62,12 @@
         formatting = treefmtEval.${pkgs.system}.config.build.check self;
       });
 
-      # devShell = forAllSystems (
-      #   system:
-      #   nixpkgs.legacyPackages.${system}.mkShell {
-      #     inherit (self.checks.${system}.pre-commit-check) shellHook;
-      #     buildInputs = self.checks.${system}.pre-commit-check.enabledPackages;
-      #   }
-      # );
+      devShell = eachSystem (
+        pkgs:
+        pkgs.mkShell {
+          buildInputs = [pkgs.just];
+        }
+      );
 
       overlays = import ./overlays { inherit inputs; };
 
