@@ -228,7 +228,7 @@
         port = 22;
         user = "chenkailong_dxm";
         extraOptions = {
-          "HostKeyAlgorithms" = "ssh-dss";
+          "HostKeyAlgorithms" = "+ssh-dss";
         };
       };
       xd = {
@@ -236,7 +236,7 @@
         port = 22;
         user = "chenkailong_dxm";
         extraOptions = {
-          "HostKeyAlgorithms" = "ssh-dss";
+          "HostKeyAlgorithms" = "+ssh-dss";
         };
       };
       kj = {
@@ -244,7 +244,7 @@
         port = 22;
         user = "chenkailong_dxm";
         extraOptions = {
-          "HostKeyAlgorithms" = "ssh-dss";
+          "HostKeyAlgorithms" = "+ssh-dss";
         };
       };
 
