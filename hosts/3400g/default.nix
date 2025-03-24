@@ -27,5 +27,5 @@
       ../../modules/lang/tools/home.nix
     ];
   programs.home-manager.enable = true;
-
+  home-manager.backupFileExtension = "backup";
 }

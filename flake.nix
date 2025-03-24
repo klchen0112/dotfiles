@@ -5,7 +5,7 @@
     substituters = [
       # replace official cache with a mirror located in China
       "https://mirrors.tuna.tsinghua.edu.cn/nix-channels/store"
-      "https://mirror.sjtu.edu.cn/nix-channels/store"
+      # "https://mirror.sjtu.edu.cn/nix-channels/store"
       "https://cache.nixos.org"
     ];
     extra-substituters = [
@@ -205,7 +205,6 @@
               srvos.darwinModules.mixins-trusted-nix-caches
               home-manager.darwinModules.home-manager
               {
-                home-manager.backupFileExtension = "backup";
                 # Home-Manager module that is used
                 home-manager.useGlobalPkgs = true;
                 home-manager.useUserPackages = true;
@@ -247,7 +246,6 @@
               home-manager.darwinModules.home-manager
               {
                 # Home-Manager module that is used
-                home-manager.backupFileExtension = "backup";
                 home-manager.useGlobalPkgs = true;
                 home-manager.useUserPackages = true;
                 home-manager.extraSpecialArgs = {
