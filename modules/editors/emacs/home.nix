@@ -38,7 +38,6 @@ let
       #
       texliveFull
       direnv
-      devenv
       devbox
       emacs-lsp-booster
       # ------------------- Python ---

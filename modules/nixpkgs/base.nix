@@ -20,7 +20,6 @@
       # You can also add overlays exported from other flakes:
 
       # inputs.nixpkgs-wayland.overlay
-      # inputs.devenv.overlays.default
       inputs.nix-vscode-extensions.overlays.default
       # neovim-nightly-overlay.overlays.default
       # inputs.nixpkgs-firefox-darwin.overlay
