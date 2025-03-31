@@ -13,7 +13,7 @@
 
     enable = true;
     image = ./desktop.jpg;
-    base16Scheme = "${pkgs.base16-schemes}/share/themes/equilibrium-light.yaml";
+    base16Scheme = "${pkgs.base16-schemes}/share/themes/solarized-light.yaml";
     opacity = {
       applications = 0.8;
       terminal = 0.8;
