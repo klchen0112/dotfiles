@@ -223,6 +223,11 @@
         port = 22;
         user = "klchen";
       };
+      unraid = {
+        hostname = "192.168.0.200";
+        port = 22;
+        user = "root";
+      };
       duxiaoman = {
         hostname = "relay00.duxiaoman-int.com";
         port = 22;
