@@ -117,6 +117,9 @@
       #"sleepwatcher"
       #"musl-cross"
       "micromamba"
+      "podman"
+      "podman-compose"
+      "podman-tui"
     ];
     taps = [
       # "homebrew/cask"
@@ -125,19 +128,19 @@
       [
         "microsoft-remote-desktop"
         "google-chrome"
-
         "logi-options+"
         "firefox"
         "font-sf-pro"
         "font-sf-mono"
-        "zen-browser@twilight"
+        "zen-browser"
+        "podman-desktop"
       ]
       ++ lib.optionals (!isWork) [
         "steam"
         "adrive"
       ]
       ++ lib.optionals isWork [
-        "docker"
+        # "docker"
       ];
   };
 }
