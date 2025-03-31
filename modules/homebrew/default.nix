@@ -130,6 +130,7 @@
         "firefox"
         "font-sf-pro"
         "font-sf-mono"
+        "zen-browser@twilight"
       ]
       ++ lib.optionals (!isWork) [
         "steam"
