@@ -9,11 +9,13 @@
   ...
 }:
 {
-  ids.gids.nixbld = 350;
+  nix.enable = false;
+  # ids.gids.nixbld = 350;
+  nixpkgs.config.allowUnfree = true;
   imports = [
     ../../modules/account
     ../../modules/fonts/fonts.nix
-    ../../modules/nixpkgs/darwin.nix
+    # ../../modules/nixpkgs/darwin.nix
     ../../modules/system/darwin.nix
     # ../../modules/desktop/skhd
     # ../../modules/desktop/yabai
