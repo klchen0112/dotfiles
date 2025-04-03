@@ -110,7 +110,7 @@ rec {
           # Enable rounded window with no decoration
           (pkgs.fetchpatch {
             url = "https://raw.githubusercontent.com/d12frosted/homebrew-emacs-plus/master/patches/emacs-31/round-undecorated-frame.patch";
-            sha256 = "sha256-/SX8rF4GMA7bobfQ4/F9BTSEigeOd9jgN0jvQ1M0MSs=";
+            sha256 = "sha256-WWLg7xUqSa656JnzyUJTfxqyYB/4MCAiiiZUjMOqjuY=";
           })
           # Make Emacs aware of OS-level light/dark mode
           (pkgs.fetchpatch {
