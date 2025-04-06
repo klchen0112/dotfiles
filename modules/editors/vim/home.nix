@@ -4,6 +4,9 @@
   ...
 }:
 {
+  imports = [
+    inputs.nixvim.homeManagerModules.nixvim
+  ];
   programs = {
     vim = {
       enable = false;
@@ -38,10 +41,16 @@
         set hlsearch \" 高亮所有的搜索目标
       ";
     };
-    neovim = {
-      enable = false;
-      viAlias = true;
-      vimAlias = true;
+    nixvim = {
+      enable = true;
+      viAlias = false;
+      vimAlias = false;
+      opts = {
+        number = true;         # Show line numbers
+        relativenumber = true; # Show relative line numbers
+
+        shiftwidth = 2;        # Tab width should be 2
+      };
     };
   };
 }

@@ -5,12 +5,12 @@
     substituters = [
       # replace official cache with a mirror located in China
       "https://mirrors.tuna.tsinghua.edu.cn/nix-channels/store"
-      # "https://mirror.sjtu.edu.cn/nix-channels/store"
+      "https://mirror.sjtu.edu.cn/nix-channels/store"
       "https://cache.nixos.org"
       "https://colmena.cachix.org"
+      "https://nix-community.cachix.org"
     ];
     extra-substituters = [
-      "https://nix-community.cachix.org"
       "https://klchen0112.cachix.org"
       "https://cosmic.cachix.org"
       "https://cache.garnix.io"
@@ -488,6 +488,14 @@
       #   flake = false;
       # };
 
+        nixvim = {
+    url = "github:nix-community/nixvim";
+    # If you are not running an unstable channel of nixpkgs, select the corresponding branch of nixvim.
+    # url = "github:nix-community/nixvim/nixos-24.11";
+
+    inputs.nixpkgs.follows = "nixpkgs";
+  };
+
       doom-config = {
         url = "github:klchen0112/doom";
         # url = "git+file:///Users/klchen/my/doom";
@@ -523,14 +531,11 @@
         inputs.nixpkgs.follows = "nixpkgs";
       };
 
-      own-rime = {
-        url = "github:klchen0112/rime-combo-ice-pinyin";
-        flake = false;
-      };
-
       agenix-secrets = {
         url = "github:klchen0112/agenix-secrets";
         flake = false;
       };
+      
+    
     };
 }
