@@ -134,6 +134,7 @@
         "font-sf-mono"
         "zen-browser"
         "podman-desktop"
+        "squirrel"
       ]
       ++ lib.optionals (!isWork) [
         "steam"
