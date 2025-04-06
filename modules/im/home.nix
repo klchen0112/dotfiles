@@ -6,6 +6,8 @@
   config,
   ...
 }:
+let rimePath = "${config.home.homeDirectory}/my/dotfiles/modules/im/rime";
+in
 {
   i18n.inputMethod = {
     enabled = if pkgs.stdenv.isLinux then "fcitx5" else null;
@@ -22,8 +24,12 @@
     };
     ".local/share/fcitx5/rime" = {
       enable = pkgs.stdenv.isLinux;
-      source = "${inputs.own-rime}";
-      recursive = true;
+      source = config.lib.file.mkOutOfStoreSymlink rimePath;
     };
+    "Library/Rime" = {
+      enable = pkgs.stdenv.isDarwin;
+      source = config.lib.file.mkOutOfStoreSymlink rimePath;
+    };
+    
   };
 }
