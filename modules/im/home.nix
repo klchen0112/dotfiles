@@ -6,7 +6,8 @@
   config,
   ...
 }:
-let rimePath = "${config.home.homeDirectory}/my/dotfiles/modules/im/rime";
+let
+  rimePath = "${config.home.homeDirectory}/my/dotfiles/modules/im/rime";
 in
 {
   i18n.inputMethod = {
@@ -30,6 +31,6 @@ in
       enable = pkgs.stdenv.isDarwin;
       source = config.lib.file.mkOutOfStoreSymlink rimePath;
     };
-    
+
   };
 }
