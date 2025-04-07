@@ -15,14 +15,14 @@
       font-awesome
 
       # mono fonts for coding
-      # jetbrains-mono
+      jetbrains-mono
       iosevka
-      # fira-code
-      # cascadia-code
-      # comic-mono
-      # roboto-mono
-
-      # mononoki
+      nerd-fonts.iosevka
+      fira-code
+      cascadia-code
+      comic-mono
+      roboto-mono
+      mononoki
 
       # Serif fonts
       ibm-plex
@@ -46,9 +46,9 @@
       cm_unicode
       hanazono
       lmodern
-      # lmmath
+      lmmath
 
-      # TsangerJinKai02
+      TsangerJinKai02
       # Noto 系列字体是 Google 主导的，名字的含义是「没有豆腐」（no tofu），因为缺字时显示的方框或者方框被叫作 tofu
       # Noto 系列字族名只支持英文，命名规则是 Noto + Sans 或 Serif + 文字名称。
       # 其中汉字部分叫 Noto Sans/Serif CJK SC/TC/HK/JP/KR，最后一个词是地区变种。
@@ -65,7 +65,6 @@
 
       nerd-fonts.symbols-only
       nerd-fonts.hack
-      nerd-fonts.iosevka
 
       # Jigmo
 
