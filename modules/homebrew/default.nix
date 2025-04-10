@@ -57,7 +57,7 @@
       # iterm2
     ]
     ++ lib.optionals (!isWork) [
-      syncthing
+      # syncthing
       # sunloginclient
       # adrive
       # steam
@@ -116,13 +116,15 @@
       # "macism
       #"sleepwatcher"
       #"musl-cross"
-      "micromamba"
+      # "micromamba"
       "podman"
       "podman-compose"
       "podman-tui"
+      "syncthing"
     ];
     taps = [
       # "homebrew/cask"
+      # "homebrew/services"
     ];
     casks =
       [
@@ -135,6 +137,7 @@
         "zen-browser"
         "podman-desktop"
         "squirrel"
+        # "syncthing"
       ]
       ++ lib.optionals (!isWork) [
         "steam"
