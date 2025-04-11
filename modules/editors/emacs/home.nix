@@ -8,7 +8,7 @@
   ...
 }:
 let
-  emacsPackage = if pkgs.stdenv.hostPlatform.isDarwin then pkgs.emacsIGC else pkgs.emacs30-pgtk;
+  emacsPackage = if pkgs.stdenv.hostPlatform.isDarwin then  pkgs.emacsIGC else pkgs.emacs-pgtk;
   doomPath = "${config.home.homeDirectory}/my/dotfiles/modules/editors/emacs/doom";
 
   extraPackages =
@@ -109,6 +109,7 @@ in
   # };
   services.emacs = {
     enable = true;
+    package = emacsPackage;
     client.enable = true;
     socketActivation.enable = true;
     startWithUserSession = "graphical";
