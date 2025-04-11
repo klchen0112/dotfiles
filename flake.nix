@@ -498,20 +498,19 @@
         inputs.nixpkgs.follows = "nixpkgs";
       };
 
-      # doom-config = {
-        # url = "github:klchen0112/doom";
+      doom-config = {
+        url = "github:klchen0112/doom";
         # url = "git+file:///Users/klchen/my/doom";
-        # flake = false;
-      # };
+        flake = false;
+      };
 
-      # nix-doom-emacs-unstraightened = {
-      #   url = "github:marienz/nix-doom-emacs-unstraightened";
-      #   # Optional, to download less. Neither the module nor the overlay uses this input.
-      #   inputs.nixpkgs.follows = "nixpkgs";
-      #   inputs.systems.follows = "systems";
-      #   inputs.emacs-overlay.follows = "emacs-overlay";
-      #   inputs.doomemacs.follows = "doomemacs";
-      # };
+      nix-doom-emacs-unstraightened = {
+        url = "github:marienz/nix-doom-emacs-unstraightened";
+        inputs.nixpkgs.follows = "nixpkgs";
+        inputs.systems.follows = "systems";
+        inputs.emacs-overlay.follows = "emacs-overlay";
+        #   inputs.doomemacs.follows = "doomemacs";
+      };
 
       nixos-cosmic = {
         url = "github:lilyinstarlight/nixos-cosmic";
