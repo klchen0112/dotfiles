@@ -200,11 +200,11 @@
     "doom-config": {
       "flake": false,
       "locked": {
-        "lastModified": 1744392649,
-        "narHash": "sha256-pkeGCtOt2QQVbxmZ3vIAkYI2uZzp9jWJ2mWLk3X+3z0=",
+        "lastModified": 1744437432,
+        "narHash": "sha256-EWeZnGrqMc1Akb94N5/YXTVC/z/vu5v49Fw+EaurJuI=",
         "owner": "klchen0112",
         "repo": "doom",
-        "rev": "fd295b1f08b5ae549b04b79b9a0aa6cb9fa7ffd5",
+        "rev": "94d83d6458e31a599ec535a8d125db10971725f2",
         "type": "github"
       },
       "original": {
@@ -710,16 +710,16 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1744316434,
-        "narHash": "sha256-lzFCg/1C39pyY2hMB2gcuHV79ozpOz/Vu15hdjiFOfI=",
-        "owner": "nixos",
+        "lastModified": 1744467486,
+        "narHash": "sha256-LcI4G3Yni+RP+JQSaHZKpgKO2ejccTDAlBqFKqqAanw=",
+        "owner": "chadac",
         "repo": "nixpkgs",
-        "rev": "d19cf9dfc633816a437204555afeb9e722386b76",
+        "rev": "46065a88c53843739354cc2203cb631162216397",
         "type": "github"
       },
       "original": {
-        "owner": "nixos",
-        "ref": "nixpkgs-unstable",
+        "owner": "chadac",
+        "ref": "setup-hooks-add-darwin-remove-duplicate-rpaths",
         "repo": "nixpkgs",
         "type": "github"
       }
