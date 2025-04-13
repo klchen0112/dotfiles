@@ -56,6 +56,8 @@ let
       # Building tools
       # bazel_7
       cmake
+
+      dasel
     ]
     ++ (lib.optionals pkgs.stdenv.isDarwin) [
       # pngpaste for org mode download clip
