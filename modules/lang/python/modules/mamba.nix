@@ -4,9 +4,11 @@
   lib,
   ...
 }:
-let cfg= config.programs.mamba-cpp;
-    cfgRootDirectory = cfg.rootDirectory;
-in  {
+let
+  cfg = config.programs.mamba-cpp;
+  cfgRootDirectory = cfg.rootDirectory;
+in
+{
   options.programs.mamba-cpp = {
     enable = lib.mkEnableOption "mamba-cpp" // {
       default = false;
