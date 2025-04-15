@@ -16,11 +16,11 @@
     }).overrideAttrs
       (old: rec {
         name = "emacs-${version}";
-        version = "igc-2025-04-12";
+        version = "igc-2025-04-15";
         src = pkgs.fetchFromGitHub {
           owner = "emacs-mirror";
           repo = "emacs";
-          rev = "e7c7ac73c0a986f0e3b7d8dc4f506df9d100ad38";
+          rev = "7b35a5062231ec5a11c7a87d4797cfb5dba25121";
           hash = "sha256-R+r28ahkW8Hl4sQVQfPxcsRnPdOoEdmmuF8H+T99pJ0=";
         };
         configureFlags = (old.configureFlags or [ ]) ++ [
