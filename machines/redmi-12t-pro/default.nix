@@ -8,7 +8,6 @@
 }:
 {
   imports = [
-    # inputs.nix-doom-emacs.hmModule
     ../../modules/nixpkgs
     ../../modules/locale
   ];
