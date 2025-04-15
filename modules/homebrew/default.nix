@@ -125,7 +125,7 @@
       "podman-compose"
       "podman-tui"
       "syncthing"
-      "iterm2"
+      
     ];
     taps = [
       # "homebrew/cask"
@@ -142,6 +142,7 @@
         "zen-browser"
         "podman-desktop"
         "squirrel"
+        "iterm2"
         # "syncthing"
       ]
       ++ lib.optionals (!isWork) [
