@@ -350,7 +350,7 @@
   inputs =
     # All flake references used to build my NixOS setup. These are dependencies.
     {
-      nixpkgs.url = "github:chadac/nixpkgs/setup-hooks-add-darwin-remove-duplicate-rpaths"; # Nix Packages
+      nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable"; # Nix Packages
       nixpkgs-unstable.url = "github:nixos/nixpkgs/master"; # Nix Packages
       nixpkgs-stable.url = "github:nixos/nixpkgs/release-24.11"; # Nix Packages
 
