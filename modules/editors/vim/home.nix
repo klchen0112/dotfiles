@@ -45,11 +45,36 @@
       enable = true;
       viAlias = false;
       vimAlias = false;
+      # Color scheme.
+      colorschemes.catppuccin = {
+        enable = true;
+        settings.flavour = "macchiato";
+      };
+      plugins.treesitter = {
+        enable = true;
+        settings.highlight.enable = true;
+      };
+      # Options.
       opts = {
-        number = true; # Show line numbers
-        relativenumber = true; # Show relative line numbers
+        # Indent settings.
+        tabstop = 2;
+        shiftwidth = 2;
+        expandtab = true;
+        # Line number.
+        number = true;
+        relativenumber = true;
+        signcolumn = "yes";
+        # Search case sensitivity.
+        ic = true;
+        # Treesitter folding.
+        foldmethod = "expr";
+        foldexpr = "nvim_treesitter#foldexpr()";
+      };
 
-        shiftwidth = 2; # Tab width should be 2
+      # Clipboard.
+      clipboard = {
+        register = "unnamedplus";
+        providers.xclip.enable = true;
       };
     };
   };
