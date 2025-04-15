@@ -121,11 +121,13 @@
       #"sleepwatcher"
       #"musl-cross"
       # "micromamba"
+      "syncthing"
+      
+    ] ++ lib.optionals isWork [
       "podman"
       "podman-compose"
       "podman-tui"
-      "syncthing"
-      
+
     ];
     taps = [
       # "homebrew/cask"
@@ -142,7 +144,6 @@
         "zen-browser"
         "podman-desktop"
         "squirrel"
-        "iterm2"
         # "syncthing"
       ]
       ++ lib.optionals (!isWork) [
@@ -150,6 +151,7 @@
         "adrive"
       ]
       ++ lib.optionals isWork [
+        "iterm2"
         # "docker"
       ];
   };
