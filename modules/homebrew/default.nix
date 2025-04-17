@@ -28,15 +28,12 @@
 
       # keyboardcleantool
 
-      ## Coding
-      dash
 
       omnidisksweeper
 
       # xnviewmp
 
       zotero
-      skim
       # zerotier-one
       # TidGi
       # mathpix-snipping-tool
@@ -45,13 +42,6 @@
       raycast
       # sol
 
-      # mpv
-      iina
-
-      licecap
-      # Keyboard
-      # hhkbStudio
-      # microsoft-remote-desktop
     ]
     ++ lib.optionals isWork [
       # iterm2
@@ -144,6 +134,14 @@
         "zen-browser"
         "podman-desktop"
         "squirrel"
+      # mpv
+      "iina"
+      "skim"
+
+      "licecap"
+      # Keyboard
+      # hhkbStudio
+      # microsoft-remote-desktop
         # "syncthing"
       ]
       ++ lib.optionals (!isWork) [
