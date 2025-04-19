@@ -6,7 +6,6 @@
     # nix-du
     nil
     cachix
-    devbox
     statix
     deadnix
     nix-fast-build
