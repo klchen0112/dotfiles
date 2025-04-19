@@ -36,10 +36,9 @@ let
       libwebp
 
       #
-      texliveFull
+      # texliveFull
       direnv
-      devbox
-      emacs-lsp-booster
+      # emacs-lsp-booster
       # ------------------- Python ---
       pyright
       ruff
