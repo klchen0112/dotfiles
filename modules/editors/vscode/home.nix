@@ -11,7 +11,7 @@
   programs.vscode = {
     enable = true;
 
-    package = pkgs.vscode;
+    package = pkgs.vscodium;
     mutableExtensionsDir = false; # Whether extensions can be installed or updated manually or by Visual Studio Code.
     profiles.default.extensions =
       with pkgs.vscode-extensions;
@@ -21,8 +21,18 @@
         # copilot
         # github.copilot
         # github.copilot-chat
+        # python
+        ms-python.python
+        ms-pyright.pyright
+        charliermarsh.ruff
+
+        ms-toolsai.jupyter
+        ms-toolsai.vscode-jupyter-slideshow
+        ms-toolsai.vscode-jupyter-cell-tags
+        ms-toolsai.jupyter-renderers
+        ms-toolsai.jupyter-keymap
       ]
-      ++ (with inputs.nix-vscode-extensions.extensions.${pkgs.system}.vscode-marketplace; [
+      ++ (with pkgs.vscode-marketplace; [
         #themes
         mechatroner.rainbow-csv
         gruntfuggly.todo-tree
@@ -42,8 +52,11 @@
         oderwat.indent-rainbow
         njqdev.vscode-python-typehint
         # docstring
-
         njpwerner.autodocstring
+
+        # python
+        donjayamanne.python-environment-manager
+        cstrap.python-snippets
         # git
         # eamodio.gitlens
         #donjayamanne.githistory
@@ -54,36 +67,20 @@
         skyapps.fish-vscode
         # markdown
         yzhang.markdown-all-in-one
-        mirone.milkdown
-
-        # python
-        ms-python.python
-        ms-python.isort
-        ms-pyright.pyright
-        # zeshuaro.vscode-python-poetry
-        # ms-python.vscode-pylance
-        charliermarsh.ruff
-        donjayamanne.python-environment-manager
-        cstrap.python-snippets
-        ms-toolsai.jupyter
-        ms-toolsai.vscode-jupyter-slideshow
-        ms-toolsai.vscode-jupyter-cell-tags
-        ms-toolsai.jupyter-renderers
-        ms-toolsai.jupyter-keymap
+        # comment
         # corker.vscode-micromamba
         # cpp
         # llvm-vs-code-extensions.vscode-clangd
         # ms-vscode.cmake-tools
         # ms-vscode.cpptools
-
         # nix
         bbenoist.nix
         jnoortheen.nix-ide
         # csv
 
-        james-yu.latex-workshop
+        # james-yu.latex-workshop
         # keyboard
-        spadin.zmk-tools
+        # spadin.zmk-tools
       ]);
     profiles.default.enableUpdateCheck = false;
     profiles.default.enableExtensionUpdateCheck = false;
