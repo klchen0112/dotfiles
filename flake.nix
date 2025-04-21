@@ -354,7 +354,10 @@
       nixpkgs-unstable.url = "github:nixos/nixpkgs/master"; # Nix Packages
       nixpkgs-stable.url = "github:nixos/nixpkgs/release-24.11"; # Nix Packages
 
-      srvos.url = "github:nix-community/srvos";
+      srvos = {
+        url = "github:nix-community/srvos";
+        inputs.nixpkgs.follows = "nixpkgs";
+      };
       #  MacOS
       darwin = {
         url = "github:LnL7/nix-darwin"; # MacOS Package Management
@@ -492,9 +495,7 @@
 
       nixvim = {
         url = "github:nix-community/nixvim";
-        # If you are not running an unstable channel of nixpkgs, select the corresponding branch of nixvim.
-        # url = "github:nix-community/nixvim/nixos-24.11";
-
+        inputs.flake-parts.follows = "flake-parts";
         inputs.nixpkgs.follows = "nixpkgs";
       };
 
@@ -517,6 +518,7 @@
         inputs.nixpkgs.follows = "nixpkgs";
         inputs.nixpkgs-stable.follows = "nixpkgs-stable";
         inputs.flake-compat.follows = "flake-compat";
+        inputs.rust-overlay.follows = "rust-overlay";
       };
       # theme
       stylix = {
@@ -525,6 +527,7 @@
         inputs.home-manager.follows = "home-manager";
         inputs.git-hooks.follows = "pre-commit-hooks";
         inputs.flake-compat.follows = "flake-compat";
+        inputs.flake-utils.follows = "flake-utils";
         inputs.nur.follows = "nur";
         inputs.systems.follows = "systems";
       };
@@ -539,6 +542,14 @@
         url = "github:klchen0112/agenix-secrets";
         flake = false;
       };
+
+      rust-overlay = {
+        url = "github:oxalica/rust-overlay";
+        inputs.nixpkgs.follows = "nixpkgs";
+      };
+
+
+
 
     };
 }
