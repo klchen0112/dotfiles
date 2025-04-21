@@ -8,7 +8,7 @@
   ...
 }:
 {
-  imports = [ 
+  imports = [
     ../../modules/ai/home.nix
     ../../modules/browser/home.nix
     ../../modules/downloader/home.nix
