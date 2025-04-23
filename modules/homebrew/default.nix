@@ -56,12 +56,6 @@
         # "micromamba"
         "syncthing"
 
-      ]
-      ++ lib.optionals isWork [
-        "podman"
-        "podman-compose"
-        "podman-tui"
-
       ];
     taps = [
       # "homebrew/cask"
