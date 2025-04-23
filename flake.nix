@@ -244,7 +244,10 @@
             };
             # pkgs = nixpkgs.legacyPackages.aarch64-darwin;
             modules = [
-              # inputs.stylix.darwinModules.stylix
+              srvos.darwinModules.desktop
+              srvos.darwinModules.mixins-terminfo
+              srvos.darwinModules.mixins-nix-experimental
+              srvos.darwinModules.mixins-trusted-nix-caches
               # Modules that are used
               ./machines/mbp-dxm
               home-manager.darwinModules.home-manager
