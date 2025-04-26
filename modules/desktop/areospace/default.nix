@@ -43,8 +43,8 @@
                               padding_right=5 \
                               icon.font="Hack Nerd Font:Bold:16.0" \
                               label.font="SF Pro:Semibold:16.0" \
-                              icon.color=0xff${config.lib.stylix.colors.base05} \
-                              label.color=0xff${config.lib.stylix.colors.base05} \
+                              icon.color=0xff${config.lib.stylix.colors.base04} \
+                              label.color=0xff${config.lib.stylix.colors.base04} \
                               icon.padding_left=4 \
                               icon.padding_right=4 \
                               label.padding_left=4 \
@@ -71,7 +71,7 @@
             background.color=0xff${config.lib.stylix.colors.base00} \
             background.corner_radius=5 \
             background.drawing=on \
-            background.border_color=0xff${config.lib.stylix.colors.base05} \
+            background.border_color=0xff${config.lib.stylix.colors.base03} \
             background.border_width=1 \
             background.height=23 \
             background.padding_right=5 \
@@ -79,11 +79,11 @@
             icon="$sid" \
             icon.shadow.drawing=off \
             icon.padding_left=10 \
-            icon.highlight_color=0xff${config.lib.stylix.colors.base07} \
+            icon.highlight_color=0xff${config.lib.stylix.colors.base05} \
             label.font="sketchybar-app-font:Regular:16.0" \
             label.padding_right=20 \
             label.padding_left=0 \
-            label.highlight_color=0xff${config.lib.stylix.colors.base07} \
+            label.highlight_color=0xff${config.lib.stylix.colors.base05} \
             label.y_offset=-1 \
             label.shadow.drawing=off \
             click_script="aerospace workspace $sid" \
@@ -149,9 +149,9 @@
                     --set battery update_freq=120 script="${plugin_dir}/battery.sh" \
                     --subscribe battery system_woke power_source_change \
                     --add item network_down right\
-                    --set network_down icon=󰇚 update_freq=1 script="${plugin_dir}/speed.sh" icon.highlight_color=0xff${config.lib.stylix.colors.base07}\
+                    --set network_down icon=󰇚 update_freq=1 script="${plugin_dir}/speed.sh" icon.highlight_color=0xff${config.lib.stylix.colors.base05}\
                     --add item network_up right\
-                    --set network_up icon=󰕒  icon.highlight_color=0xff${config.lib.stylix.colors.base07}\
+                    --set network_up icon=󰕒  icon.highlight_color=0xff${config.lib.stylix.colors.base04}\
                     label.font="Hack Nerd Font:Italic:14.0" \
                     icon.font="Hack Nerd Font:Heavy:16.0"
 
