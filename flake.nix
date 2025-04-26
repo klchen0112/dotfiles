@@ -353,9 +353,9 @@
   inputs =
     # All flake references used to build my NixOS setup. These are dependencies.
     {
-      nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable"; # Nix Packages
-      nixpkgs-unstable.url = "github:nixos/nixpkgs/master"; # Nix Packages
-      nixpkgs-stable.url = "github:nixos/nixpkgs/release-24.11"; # Nix Packages
+      nixpkgs.url = "git+https://github.com/nixos/nixpkgs?shallow=1&ref=nixos-unstable"; # Nix Packages
+      nixpkgs-unstable.url = "git+https://github.com/nixos/nixpkgs?shallow=1&ref=master"; # Nix Packages
+      nixpkgs-stable.url = "git+https://github.com/nixos/nixpkgs?shallow=1&ref=release-24.11"; # Nix Packages
 
       srvos = {
         url = "github:nix-community/srvos";

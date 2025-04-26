@@ -670,18 +670,19 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1744932701,
-        "narHash": "sha256-fusHbZCyv126cyArUwwKrLdCkgVAIaa/fQJYFlCEqiU=",
-        "owner": "nixos",
-        "repo": "nixpkgs",
-        "rev": "b024ced1aac25639f8ca8fdfc2f8c4fbd66c48ef",
-        "type": "github"
+        "lastModified": 1745526057,
+        "narHash": "sha256-ITSpPDwvLBZBnPRS2bUcHY3gZSwis/uTe255QgMtTLA=",
+        "ref": "nixos-unstable",
+        "rev": "f771eb401a46846c1aebd20552521b233dd7e18b",
+        "shallow": true,
+        "type": "git",
+        "url": "https://github.com/nixos/nixpkgs"
       },
       "original": {
-        "owner": "nixos",
         "ref": "nixos-unstable",
-        "repo": "nixpkgs",
-        "type": "github"
+        "shallow": true,
+        "type": "git",
+        "url": "https://github.com/nixos/nixpkgs"
       }
     },
     "nixpkgs-docs": {
@@ -733,34 +734,36 @@
     },
     "nixpkgs-stable": {
       "locked": {
-        "lastModified": 1745279238,
-        "narHash": "sha256-AQ7M9wTa/Pa/kK5pcGTgX/DGqMHyzsyINfN7ktsI7Fo=",
-        "owner": "nixos",
-        "repo": "nixpkgs",
-        "rev": "9684b53175fc6c09581e94cc85f05ab77464c7e3",
-        "type": "github"
+        "lastModified": 1745662239,
+        "narHash": "sha256-EshOUXYTL8BAtPK/i0tAb0OBxKCtu9xwmDgPP7UJMl0=",
+        "ref": "release-24.11",
+        "rev": "975e563c8cfcaa332af34787152344d3ce9cee6d",
+        "shallow": true,
+        "type": "git",
+        "url": "https://github.com/nixos/nixpkgs"
       },
       "original": {
-        "owner": "nixos",
         "ref": "release-24.11",
-        "repo": "nixpkgs",
-        "type": "github"
+        "shallow": true,
+        "type": "git",
+        "url": "https://github.com/nixos/nixpkgs"
       }
     },
     "nixpkgs-unstable": {
       "locked": {
-        "lastModified": 1745310992,
-        "narHash": "sha256-DM4cjn+kZgGgvmTIc+OIZ5YXr0veEczVCTLhzZg/1rE=",
-        "owner": "nixos",
-        "repo": "nixpkgs",
-        "rev": "731b884d43df03b9238321a7b45550013d89ba00",
-        "type": "github"
+        "lastModified": 1745665852,
+        "narHash": "sha256-FgS2GfZsAy0b8MXWRRjEpirGqBKUMyy/BNa2UxEyoUo=",
+        "ref": "master",
+        "rev": "62248deafac5cbc5bdce69231dbb7943183ffc64",
+        "shallow": true,
+        "type": "git",
+        "url": "https://github.com/nixos/nixpkgs"
       },
       "original": {
-        "owner": "nixos",
         "ref": "master",
-        "repo": "nixpkgs",
-        "type": "github"
+        "shallow": true,
+        "type": "git",
+        "url": "https://github.com/nixos/nixpkgs"
       }
     },
     "nixvim": {
