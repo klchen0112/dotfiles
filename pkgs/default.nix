@@ -13,7 +13,6 @@
   emacsIGC =
     (inputs.emacs-overlay.packages.${pkgs.system}.emacs-git.override {
       withMailutils = false;
-      withNativeCompilation = false;
     }).overrideAttrs
       (old: rec {
         name = "emacs-${version}";
