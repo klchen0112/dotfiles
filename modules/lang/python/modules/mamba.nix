@@ -56,7 +56,7 @@ in
       #"$MAMBA_EXE" shell hook --shell bash --root-prefix "$MAMBA_ROOT_PREFIX"
     '';
 
-    programs.zsh.initExtra = lib.mkIf config.programs.mamba-cpp.enableZshIntegration ''
+    programs.zsh.initContent = lib.mkIf config.programs.mamba-cpp.enableZshIntegration ''
       export MAMBA_EXE=${lib.getExe cfg.package}
       export MAMBA_ROOT_PREFIX=${cfgRootDirectory}
       #"$MAMBA_EXE" shell hook --shell zsh --root-prefix "$MAMBA_ROOT_PREFIX"
