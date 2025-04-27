@@ -391,7 +391,7 @@
 
       # Android
       nix-on-droid = {
-        url = "github:nix-community/nix-on-droid/release-23.11";
+        url = "git+https://github.com/nix-community/nix-on-droid?shallow=1&ref=master";
         inputs.nixpkgs.follows = "nixpkgs";
         inputs.home-manager.follows = "home-manager";
       };
@@ -480,7 +480,7 @@
       };
 
       nix-vscode-extensions = {
-        url = "github:nix-community/nix-vscode-extensions";
+        url = "git+https://github.com/nix-community/nix-vscode-extensions?shallow=1&ref=master";
         inputs.nixpkgs.follows = "nixpkgs-unstable";
         inputs.flake-utils.follows = "flake-utils";
       };
@@ -491,10 +491,10 @@
         inputs.nixpkgs-stable.follows = "nixpkgs-stable";
       };
 
-      # doomemacs = {
-      #   url = "github:LuigiPiucco/doom-emacs";
-      #   flake = false;
-      # };
+      doomemacs = {
+        url = "git+https://github.com/LuigiPiucco/doom-emacs?shallow=1&ref=master";
+        flake = false;
+      };
 
       nixvim = {
         url = "github:nix-community/nixvim";
