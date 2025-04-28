@@ -551,8 +551,11 @@
         inputs.nixpkgs.follows = "nixpkgs";
       };
 
+      nix-darwin-browsers = {
+        url = "github:wuz/nix-darwin-browsers";
+        inputs.nixpkgs.follows = "nixpkgs";
 
-
+      };
 
     };
 }

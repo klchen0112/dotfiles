@@ -21,9 +21,10 @@
 
       # inputs.nixpkgs-wayland.overlay
       inputs.nix-vscode-extensions.overlays.default
+      inputs.nix-darwin-browsers.overlays.default
       # neovim-nightly-overlay.overlays.default
       # inputs.nixpkgs-firefox-darwin.overlay
-      # inputs.nur.overlays.default
+      inputs.nur.overlays.default
       # Or define it inline, for example:
       # (final: prev: {
       #   hi = final.hello.overrideAttrs (oldAttrs: {
@@ -35,7 +36,6 @@
     config = {
       allowUnfree = true; # Allow proprietary software.
       allowUnfreePredicate = _: true;
-      allowUnsupportedSystem = true;
       #  allowBroken = true;
       # for wechat uos
     };

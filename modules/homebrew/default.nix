@@ -48,15 +48,14 @@
           }
       );
 
-    brews =
-      [
-        # "macism
-        #"sleepwatcher"
-        #"musl-cross"
-        # "micromamba"
-        "syncthing"
+    brews = [
+      # "macism
+      #"sleepwatcher"
+      #"musl-cross"
+      # "micromamba"
+      "syncthing"
 
-      ];
+    ];
     taps = [
       # "homebrew/cask"
       # "homebrew/services"
@@ -72,7 +71,7 @@
         # "firefox"
         "font-sf-pro"
         "font-sf-mono"
-        "zen-browser"
+        # "zen-browser"
         "podman-desktop"
         "squirrel"
         # mpv

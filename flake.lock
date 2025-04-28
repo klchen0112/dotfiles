@@ -485,6 +485,26 @@
         "type": "github"
       }
     },
+    "nix-darwin-browsers": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1745111794,
+        "narHash": "sha256-KQnx+G5+sB8LWQav5t8SKlVLZDMluurUUQkryxE4A84=",
+        "owner": "wuz",
+        "repo": "nix-darwin-browsers",
+        "rev": "9d03c97a7c4bbcbce2263e69b73c2c657882218b",
+        "type": "github"
+      },
+      "original": {
+        "owner": "wuz",
+        "repo": "nix-darwin-browsers",
+        "type": "github"
+      }
+    },
     "nix-doom-emacs-unstraightened": {
       "inputs": {
         "doomemacs": "doomemacs_2",
@@ -908,11 +928,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1744394954,
-        "narHash": "sha256-lzTqkndjoGdSdQlbN5SrNCfcZ+40MxoERlqmdXLOzXc=",
+        "lastModified": 1745769577,
+        "narHash": "sha256-NEtOF2kIkK2xFgq0+0aYdshbgejlZDaLzrE2B+O1jK4=",
         "owner": "klchen0112",
         "repo": "nur",
-        "rev": "b0f4c1179f40eea47f4d3d1ed4412748d1eb8585",
+        "rev": "540fc5f2f6e58884aaf4401fcdef2490abf549db",
         "type": "github"
       },
       "original": {
@@ -961,6 +981,7 @@
         "flake-utils": "flake-utils",
         "home-manager": "home-manager",
         "lib-aggregate": "lib-aggregate",
+        "nix-darwin-browsers": "nix-darwin-browsers",
         "nix-doom-emacs-unstraightened": "nix-doom-emacs-unstraightened",
         "nix-eval-jobs": "nix-eval-jobs",
         "nix-on-droid": "nix-on-droid",
