@@ -374,7 +374,6 @@
         url = "github:BatteredBunny/brew-nix";
         inputs.nix-darwin.follows = "darwin";
         inputs.brew-api.follows = "brew-api";
-        inputs.flake-utils.follows = "flake-utils";
         inputs.nixpkgs.follows = "nixpkgs";
       };
       brew-api = {
