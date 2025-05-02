@@ -18,5 +18,5 @@
 
   programs.nix-index.enable = true;
 
-  nix.gc.automatic = true;
+
 }

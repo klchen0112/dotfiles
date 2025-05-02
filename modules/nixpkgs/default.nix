@@ -15,5 +15,4 @@
     ./nix-system.nix
     ./nixpkgs.nix
   ];
-  nix.gc.enable = true;
 }
