@@ -485,26 +485,6 @@
         "type": "github"
       }
     },
-    "nix-darwin-browsers": {
-      "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1745111794,
-        "narHash": "sha256-KQnx+G5+sB8LWQav5t8SKlVLZDMluurUUQkryxE4A84=",
-        "owner": "wuz",
-        "repo": "nix-darwin-browsers",
-        "rev": "9d03c97a7c4bbcbce2263e69b73c2c657882218b",
-        "type": "github"
-      },
-      "original": {
-        "owner": "wuz",
-        "repo": "nix-darwin-browsers",
-        "type": "github"
-      }
-    },
     "nix-doom-emacs-unstraightened": {
       "inputs": {
         "doomemacs": "doomemacs_2",
@@ -981,7 +961,6 @@
         "flake-utils": "flake-utils",
         "home-manager": "home-manager",
         "lib-aggregate": "lib-aggregate",
-        "nix-darwin-browsers": "nix-darwin-browsers",
         "nix-doom-emacs-unstraightened": "nix-doom-emacs-unstraightened",
         "nix-eval-jobs": "nix-eval-jobs",
         "nix-on-droid": "nix-on-droid",
@@ -1000,7 +979,8 @@
         "srvos": "srvos",
         "stylix": "stylix",
         "systems": "systems_2",
-        "treefmt-nix": "treefmt-nix"
+        "treefmt-nix": "treefmt-nix",
+        "zen-browser": "zen-browser"
       }
     },
     "rust-overlay": {
@@ -1237,6 +1217,29 @@
       "original": {
         "owner": "numtide",
         "repo": "treefmt-nix",
+        "type": "github"
+      }
+    },
+    "zen-browser": {
+      "inputs": {
+        "home-manager": [
+          "home-manager"
+        ],
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1746199197,
+        "narHash": "sha256-W99Pd0g7oAkQ0rVtCaKt7oFxxL5dUX25qeRZNHBIFVE=",
+        "owner": "0xc000022070",
+        "repo": "zen-browser-flake",
+        "rev": "434bff07493cfcf52086da6927bb31f22ce0fd40",
+        "type": "github"
+      },
+      "original": {
+        "owner": "0xc000022070",
+        "repo": "zen-browser-flake",
         "type": "github"
       }
     }

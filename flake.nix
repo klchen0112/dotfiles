@@ -551,11 +551,12 @@
         inputs.nixpkgs.follows = "nixpkgs";
       };
 
-      nix-darwin-browsers = {
-        url = "github:wuz/nix-darwin-browsers";
+      zen-browser = {
+        url = "github:0xc000022070/zen-browser-flake";
+        # IMPORTANT: we're using "libgbm" and is only available in unstable so ensure
+        # to have it up-to-date or simply don't specify the nixpkgs input
         inputs.nixpkgs.follows = "nixpkgs";
-
+        inputs.home-manager.follows = "home-manager";
       };
-
     };
 }
