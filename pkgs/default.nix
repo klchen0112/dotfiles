@@ -9,18 +9,37 @@
   TsangerJinKai02 = inputs.own-nur.packages.${pkgs.system}.TsangerJinKai02;
   Jigmo = inputs.own-nur.packages.${pkgs.system}.Jigmo;
   # this code from https://github.com/dezzw/demacs/blob/main/flake.nix
-
   emacsIGC =
     (inputs.emacs-overlay.packages.${pkgs.system}.emacs-git.override {
       withMailutils = false;
     }).overrideAttrs
       (old: rec {
         name = "emacs-${version}";
-        version = "igc-2025-04-15";
+        version = "igc-2025-05-01";
         src = pkgs.fetchFromGitHub {
           owner = "emacs-mirror";
           repo = "emacs";
-          rev = "7b35a5062231ec5a11c7a87d4797cfb5dba25121";
+          rev = "1beea6d6e432c9e0eb16919463d6f4903a542743";
+          hash = "sha256-R+r28ahkW8Hl4sQVQfPxcsRnPdOoEdmmuF8H+T99pJ0=";
+        };
+        configureFlags = (old.configureFlags or [ ]) ++ [
+          # "--with-xwidgets" # withXwidgets failed with mps enabled
+          "--with-mps=yes"
+        ];
+        buildInputs = old.buildInputs ++ [ pkgs.mps ];
+  });
+
+  emacsIGCPlus =
+    (inputs.emacs-overlay.packages.${pkgs.system}.emacs-git.override {
+      withMailutils = false;
+    }).overrideAttrs
+      (old: rec {
+        name = "emacs-${version}";
+        version = "igc-2025-05-01";
+        src = pkgs.fetchFromGitHub {
+          owner = "emacs-mirror";
+          repo = "emacs";
+          rev = "1beea6d6e432c9e0eb16919463d6f4903a542743";
           hash = "sha256-R+r28ahkW8Hl4sQVQfPxcsRnPdOoEdmmuF8H+T99pJ0=";
         };
         configureFlags = (old.configureFlags or [ ]) ++ [
