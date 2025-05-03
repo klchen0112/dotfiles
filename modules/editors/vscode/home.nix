@@ -11,7 +11,7 @@
   programs.vscode = {
     enable = true;
 
-    package = pkgs.vscodium;
+    package = pkgs.vscode;
     mutableExtensionsDir = false; # Whether extensions can be installed or updated manually or by Visual Studio Code.
     profiles.default.extensions =
       with pkgs.vscode-extensions;
