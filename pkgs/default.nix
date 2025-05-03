@@ -20,7 +20,7 @@
           owner = "emacs-mirror";
           repo = "emacs";
           rev = "1beea6d6e432c9e0eb16919463d6f4903a542743";
-          hash = "sha256-R+r28ahkW8Hl4sQVQfPxcsRnPdOoEdmmuF8H+T99pJ0=";
+          hash = "sha256-kaDiII3SeYVlmEZ4KNGp8D3AV4uFfBS4KKwu8dIAnY4=";
         };
         configureFlags = (old.configureFlags or [ ]) ++ [
           # "--with-xwidgets" # withXwidgets failed with mps enabled
@@ -40,7 +40,7 @@
           owner = "emacs-mirror";
           repo = "emacs";
           rev = "1beea6d6e432c9e0eb16919463d6f4903a542743";
-          hash = "sha256-R+r28ahkW8Hl4sQVQfPxcsRnPdOoEdmmuF8H+T99pJ0=";
+          hash = "sha256-kaDiII3SeYVlmEZ4KNGp8D3AV4uFfBS4KKwu8dIAnY4=";
         };
         configureFlags = (old.configureFlags or [ ]) ++ [
           # "--with-xwidgets" # withXwidgets failed with mps enabled
