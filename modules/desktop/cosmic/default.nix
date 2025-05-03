@@ -14,4 +14,22 @@
   # COSMIC Utilities - Observatory not working
   systemd.packages = [ pkgs.observatory ];
   systemd.services.monitord.wantedBy = [ "multi-user.target" ];
+  services.desktopManager.cosmic.enable = true;
+  services.displayManager.cosmic-greeter.enable = true;
+  services.flatpak.enable = true;
+  services.geoclue2.enable = true;
+
+  environment.systemPackages = with pkgs; [
+    chronos
+    cosmic-applets
+    cosmic-edit
+    cosmic-ext-calculator
+    cosmic-ext-forecast
+    cosmic-ext-tasks
+    cosmic-ext-tweaks
+    cosmic-reader
+    cosmic-screenshot
+    quick-webapps
+  ];
+
 }

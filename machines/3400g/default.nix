@@ -17,6 +17,7 @@
 {
   imports = [
     # Include the results of the hardware scan.
+    ../../modules/desktop/cosmic
     ./hardware-configuration.nix
     ../../modules/account
     ../../modules/locale

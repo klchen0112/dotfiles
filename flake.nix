@@ -9,18 +9,9 @@
       "https://cache.nixos.org"
       "https://colmena.cachix.org"
       "https://nix-community.cachix.org"
-    ];
-    extra-substituters = [
-      "https://klchen0112.cachix.org"
       "https://cosmic.cachix.org"
+      "https://klchen0112.cachix.org"
       "https://cache.garnix.io"
-    ];
-    extra-trusted-public-keys = [
-      "klchen0112.cachix.org-1:cO5Ek4gcvoWtHslHjWn9U5ymU8ZiN7+tJo0jifbtRz4="
-      "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
-      "cosmic.cachix.org-1:Dya9IyXD4xdBehWjrkPv6rtxpmMdRel02smYzA85dPE="
-      "cache.garnix.io:CTFPyKSLcx5RMJKfLo5EEPUObbA78b0YQ2DTCJXqr9g="
-      "colmena.cachix.org-1:7BzpDnjjH8ki2CT3f6GdOk7QAzPOl+1t3LvTLXqYcSg="
     ];
 
     trusted-users = [
