@@ -66,8 +66,38 @@
 
       nixosConfigurations = {
         # NixOS configurations
-
         "i12r70" =
+          let
+            username = "klchen";
+            userEmail = "klchen0112@gmail.com";
+            isWork = false;
+          in
+          nixpkgs.lib.nixosSystem {
+            system = "x86_64-linux";
+            specialArgs = { inherit inputs username outputs; };
+            modules = [
+              ./machines/i12r70
+              home-manager.nixosModules.home-manager
+              {
+                # Home-Manager module that is used
+                home-manager.backupFileExtension = "backup";
+                home-manager.useGlobalPkgs = true;
+                home-manager.useUserPackages = true;
+                home-manager.extraSpecialArgs = {
+                  inherit
+                    username
+                    userEmail
+                    inputs
+                    outputs
+                    isWork
+                    ;
+                }; # Pass flake variable
+                home-manager.users.${username} = import ./hosts/i12r70/default.nix;
+              }
+            ];
+          };
+
+        "i12r70-wsl" =
           let
             username = "klchen";
             userEmail = "klchen0112@gmail.com";
@@ -93,7 +123,7 @@
                 };
                 # Enable integration with Docker Desktop (needs to be installed)
               }
-              ./machines/i12r70
+              ./machines/i12r70-wsl
               home-manager.nixosModules.home-manager
               {
                 # Home-Manager module that is used
@@ -108,7 +138,7 @@
                     isWork
                     ;
                 }; # Pass flake variable
-                home-manager.users.${username} = import ./hosts/i12r70/default.nix;
+                home-manager.users.${username} = import ./hosts/i12r70-wsl/default.nix;
               }
             ];
           };
