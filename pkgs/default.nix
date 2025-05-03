@@ -27,7 +27,7 @@
           "--with-mps=yes"
         ];
         buildInputs = old.buildInputs ++ [ pkgs.mps ];
-  });
+      });
 
   emacsIGCPlus =
     (inputs.emacs-overlay.packages.${pkgs.system}.emacs-git.override {

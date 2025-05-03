@@ -10,7 +10,7 @@
 }:
 {
   nix.registry.nixpkgs.flake = inputs.nixpkgs;
-    nix.gc.automatic = true;
+  nix.gc.automatic = true;
   nix.settings = {
     extra-experimental-features = "nix-command flakes";
     substituters = [
