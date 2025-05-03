@@ -42,7 +42,7 @@ let
       # ------------------- Python ---
       pyright
       ruff
-      poetry
+      # poetry
       uv
       # ------------------- Web -------------------------
       nodejs
