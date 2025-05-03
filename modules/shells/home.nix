@@ -197,17 +197,17 @@
       xiaomi = {
         # hostkeyAlgorithms = "+ssh-rsa";
         # pubkeyAcceptedAlgorithms = "+ssh-rsa";
-        hostname = "192.168.10.1";
-        port = 22;
-        user = "root";
-      };
-      ax5 = {
-        # hostkeyAlgorithms = "+ssh-rsa";
-        # pubkeyAcceptedAlgorithms = "+ssh-rsa";
         hostname = "192.168.0.10";
         port = 22;
         user = "root";
       };
+      # ax5 = {
+      #   # hostkeyAlgorithms = "+ssh-rsa";
+      #   # pubkeyAcceptedAlgorithms = "+ssh-rsa";
+      #   hostname = "192.168.0.10";
+      #   port = 22;
+      #   user = "root";
+      # };
       a3400g = {
         hostname = "192.168.0.197";
         port = 22;
