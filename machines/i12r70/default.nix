@@ -27,12 +27,13 @@
     ../../modules/secrets
   ];
 
+
+    # Bootloader.
+  boot.loader.systemd-boot.enable = true;
+  boot.loader.efi.canTouchEfiVariables = true;
+  networking.networkmanager.enable = true;
   security.sudo.wheelNeedsPassword = true; # User does not need to give password when using sudo.
 
-  systemd.targets.sleep.enable = false;
-  systemd.targets.suspend.enable = false;
-  systemd.targets.hibernate.enable = false;
-  systemd.targets.hybrid-sleep.enable = false;
 
   system.stateVersion = "25.05";
 
