@@ -34,4 +34,5 @@ in
       ];
     };
   users.users.root.openssh.authorizedKeys.keys = authorizedKeys;
+  services.openssh.settings.PasswordAuthentication = false;
 }
