@@ -11,7 +11,7 @@
 {
   ids.gids.nixbld = 350;
   imports = [
-    ../../modules/account
+    ../../modules/account/darwin.nix
     ../../modules/fonts/fonts.nix
     ../../modules/nixpkgs/darwin.nix
     ../../modules/system/darwin.nix

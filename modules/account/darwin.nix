@@ -10,5 +10,4 @@
 }:
 {
   imports = [./base.nix];
-  services.openssh.settings.PasswordAuthentication = false;
 }
