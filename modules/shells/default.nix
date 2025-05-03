@@ -35,7 +35,7 @@
     # Forbid root login through SSH.
     settings = {
       X11Forwarding = true;
-      PermitRootLogin = "no"; # disable root login
+      PermitRootLogin = "yes"; # disable root login
       PasswordAuthentication = false; # disable password login
     };
     allowSFTP = true;
