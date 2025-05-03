@@ -27,7 +27,7 @@
     ../../modules/secrets
   ];
 
-
+  networking.hostName = "i12r70";
     # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
