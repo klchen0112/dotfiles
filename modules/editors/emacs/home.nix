@@ -25,6 +25,7 @@ let
       ffmpeg
       ffmpegthumbnailer
       mediainfo
+      sqlite
       # email
       # mu4e
       # spell check
