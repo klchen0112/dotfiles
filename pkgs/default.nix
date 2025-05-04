@@ -80,4 +80,7 @@
         meta.platforms = pkgs.lib.platforms.darwin;
         meta.mainProgram = "emacs";
       });
+
+  firefox-addons = pkgs.recurseIntoAttrs (pkgs.callPackage ./firefox-addons { });
+
 }
