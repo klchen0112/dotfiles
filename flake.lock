@@ -197,11 +197,11 @@
     "doom-config": {
       "flake": false,
       "locked": {
-        "lastModified": 1745318889,
-        "narHash": "sha256-WV801RwuVQbfLDS6qEarQ3j5kc6bOijAI9R80IF/z1U=",
+        "lastModified": 1746354035,
+        "narHash": "sha256-w2MJNgUOGeEt11DKuTxTaS18lbMwvB7V7tRsd8f+BwI=",
         "owner": "klchen0112",
         "repo": "doom",
-        "rev": "38af6d9dbc58c193f27f875d62ddd038455f0087",
+        "rev": "d7a2a9bea3fea5917c4bd968644796e69844e3fb",
         "type": "github"
       },
       "original": {
@@ -213,19 +213,17 @@
     "doomemacs": {
       "flake": false,
       "locked": {
-        "lastModified": 1710891710,
-        "narHash": "sha256-fyMZAFr/l+Ydn0uhznhtuf8ODHfqODFogYCMhmPwc5s=",
-        "ref": "master",
-        "rev": "f9c0243211a4654347c7bb83daf5e80416739227",
-        "shallow": true,
-        "type": "git",
-        "url": "https://github.com/LuigiPiucco/doom-emacs"
+        "lastModified": 1746304245,
+        "narHash": "sha256-R7856wnWYdhjsfiZ2ETuCF4KtOh+HCqGv9vCURbJ/LE=",
+        "owner": "doomemacs",
+        "repo": "doomemacs",
+        "rev": "f5b9cce5e0a29cae13465f84491cafaf62de98e7",
+        "type": "github"
       },
       "original": {
-        "ref": "master",
-        "shallow": true,
-        "type": "git",
-        "url": "https://github.com/LuigiPiucco/doom-emacs"
+        "owner": "doomemacs",
+        "repo": "doomemacs",
+        "type": "github"
       }
     },
     "emacs-overlay": {
@@ -468,9 +466,7 @@
     },
     "nix-doom-emacs-unstraightened": {
       "inputs": {
-        "doomemacs": [
-          "doomemacs"
-        ],
+        "doomemacs": "doomemacs",
         "emacs-overlay": [
           "emacs-overlay"
         ],
@@ -482,11 +478,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1746175298,
-        "narHash": "sha256-bHVcAIzwklJAXXdQgXAJP7eXvFgBFtKLtySzwrCAKLs=",
+        "lastModified": 1746347882,
+        "narHash": "sha256-XsJxVnliI/ELjAI1gSxIIgtCHgQPLlY75Xu0vK6SaBY=",
         "owner": "marienz",
         "repo": "nix-doom-emacs-unstraightened",
-        "rev": "27898f2df6086c3fc9bfe3111d9438e411639920",
+        "rev": "51fe1a517838dcad5d60f6fff118da6b5be38a0e",
         "type": "github"
       },
       "original": {
@@ -937,7 +933,6 @@
         "darwin": "darwin",
         "devshell": "devshell",
         "doom-config": "doom-config",
-        "doomemacs": "doomemacs",
         "emacs-overlay": "emacs-overlay",
         "flake-compat": "flake-compat",
         "flake-parts": "flake-parts",

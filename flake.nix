@@ -523,10 +523,6 @@
         inputs.nixpkgs-stable.follows = "nixpkgs-stable";
       };
 
-      doomemacs = {
-        url = "git+https://github.com/LuigiPiucco/doom-emacs?shallow=1&ref=master";
-        flake = false;
-      };
 
       nixvim = {
         url = "github:nix-community/nixvim";
@@ -545,7 +541,6 @@
         inputs.nixpkgs.follows = "nixpkgs";
         inputs.systems.follows = "systems";
         inputs.emacs-overlay.follows = "emacs-overlay";
-        inputs.doomemacs.follows = "doomemacs";
       };
 
       nixos-cosmic = {
