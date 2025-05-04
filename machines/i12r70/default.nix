@@ -28,12 +28,11 @@
   ];
 
   networking.hostName = "i12r70";
-    # Bootloader.
+  # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   networking.networkmanager.enable = true;
   security.sudo.wheelNeedsPassword = true; # User does not need to give password when using sudo.
-
 
   system.stateVersion = "25.05";
 
@@ -58,7 +57,7 @@
   programs.dconf.enable = true;
 
   # Load nvidia driver for Xorg and Wayland
-  services.xserver.videoDrivers = ["nvidia"];
+  services.xserver.videoDrivers = [ "nvidia" ];
 
   # nvidia settings
   boot.kernelParams = [ "nvidia_drm.fbdev=1" ];
@@ -85,7 +84,7 @@
     open = false;
 
     # Enable the Nvidia settings menu,
-	  # accessible via `nvidia-settings`.
+    # accessible via `nvidia-settings`.
     nvidiaSettings = true;
     # Optionally, you may need to select the appropriate driver version for your specific GPU.
     package = config.boot.kernelPackages.nvidiaPackages.stable;

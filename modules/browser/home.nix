@@ -14,7 +14,6 @@
     ./chrome.nix
   ];
 
-
   home.packages = [ pkgs.nur.repos.rycee.mozilla-addons-to-nix ];
 
 }

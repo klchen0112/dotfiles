@@ -6,9 +6,9 @@
 }:
 rec {
   # example = pkgs.callPackage ./example { };
-  TsangerJinKai02 = pkgs.callPackage ./TsangerJinKai02 {};
-  Jigmo = pkgs.callPackage ./Jigmo {};
-  mps-darwin = pkgs.callPackage ./mps-darwin {};
+  TsangerJinKai02 = pkgs.callPackage ./TsangerJinKai02 { };
+  Jigmo = pkgs.callPackage ./Jigmo { };
+  mps-darwin = pkgs.callPackage ./mps-darwin { };
   # this code from https://github.com/dezzw/demacs/blob/main/flake.nix
   emacsIGC =
     (inputs.emacs-overlay.packages.${pkgs.system}.emacs-git.override {
@@ -28,27 +28,29 @@ rec {
           "--with-mps=yes"
         ];
         buildInputs = old.buildInputs ++ [ mps-darwin ];
-        patches = (old.patches or [ ]) ++ (pkgs.lib.optionals pkgs.stdenv.isDarwin [
-          # Fix OS window role (needed for window managers like yabai)
-          (pkgs.fetchpatch {
-            url = "https://raw.githubusercontent.com/d12frosted/homebrew-emacs-plus/master/patches/emacs-28/fix-window-role.patch";
-            sha256 = "+z/KfsBm1lvZTZNiMbxzXQGRTjkCFO4QPlEK35upjsE=";
-          })
-          # Enable rounded window with no decoration
-          (pkgs.fetchpatch {
-            url = "https://raw.githubusercontent.com/d12frosted/homebrew-emacs-plus/master/patches/emacs-31/round-undecorated-frame.patch";
-            sha256 = "sha256-WWLg7xUqSa656JnzyUJTfxqyYB/4MCAiiiZUjMOqjuY=";
-          })
-          # Make Emacs aware of OS-level light/dark mode
-          ./system-appearance.patch
-          # alpha-background
-          ./ns-alpha-background.patch
-          # ns-mac-input-source
-          (pkgs.fetchpatch {
-            url = "https://raw.githubusercontent.com/LuciusChen/.emacs.d/refs/heads/main/patches/ns-mac-input-source.patch";
-            sha256 = "sha256-E9BR/axZMhA3QTeoHIKU62Rogr7ZmTtWpnYdi69npNM=";
-          })
-        ]);
+        patches =
+          (old.patches or [ ])
+          ++ (pkgs.lib.optionals pkgs.stdenv.isDarwin [
+            # Fix OS window role (needed for window managers like yabai)
+            (pkgs.fetchpatch {
+              url = "https://raw.githubusercontent.com/d12frosted/homebrew-emacs-plus/master/patches/emacs-28/fix-window-role.patch";
+              sha256 = "+z/KfsBm1lvZTZNiMbxzXQGRTjkCFO4QPlEK35upjsE=";
+            })
+            # Enable rounded window with no decoration
+            (pkgs.fetchpatch {
+              url = "https://raw.githubusercontent.com/d12frosted/homebrew-emacs-plus/master/patches/emacs-31/round-undecorated-frame.patch";
+              sha256 = "sha256-WWLg7xUqSa656JnzyUJTfxqyYB/4MCAiiiZUjMOqjuY=";
+            })
+            # Make Emacs aware of OS-level light/dark mode
+            ./system-appearance.patch
+            # alpha-background
+            ./ns-alpha-background.patch
+            # ns-mac-input-source
+            (pkgs.fetchpatch {
+              url = "https://raw.githubusercontent.com/LuciusChen/.emacs.d/refs/heads/main/patches/ns-mac-input-source.patch";
+              sha256 = "sha256-E9BR/axZMhA3QTeoHIKU62Rogr7ZmTtWpnYdi69npNM=";
+            })
+          ]);
 
         meta.platforms = pkgs.lib.platforms.darwin ++ pkgs.lib.platforms.linux;
         meta.mainProgram = "emacs";
