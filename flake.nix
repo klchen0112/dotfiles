@@ -545,7 +545,7 @@
         inputs.nixpkgs.follows = "nixpkgs";
         inputs.systems.follows = "systems";
         inputs.emacs-overlay.follows = "emacs-overlay";
-        #   inputs.doomemacs.follows = "doomemacs";
+        inputs.doomemacs.follows = "doomemacs";
       };
 
       nixos-cosmic = {

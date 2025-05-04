@@ -228,22 +228,6 @@
         "url": "https://github.com/LuigiPiucco/doom-emacs"
       }
     },
-    "doomemacs_2": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1746126559,
-        "narHash": "sha256-KWaXEsOeOsG9RsV2XSiL773CJnIkkRXRipGHoXDJysI=",
-        "owner": "doomemacs",
-        "repo": "doomemacs",
-        "rev": "2b1e07dcf0c5ffce89489c960ef59d204fe8ac3e",
-        "type": "github"
-      },
-      "original": {
-        "owner": "doomemacs",
-        "repo": "doomemacs",
-        "type": "github"
-      }
-    },
     "emacs-overlay": {
       "inputs": {
         "nixpkgs": [
@@ -484,7 +468,9 @@
     },
     "nix-doom-emacs-unstraightened": {
       "inputs": {
-        "doomemacs": "doomemacs_2",
+        "doomemacs": [
+          "doomemacs"
+        ],
         "emacs-overlay": [
           "emacs-overlay"
         ],
