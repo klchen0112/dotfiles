@@ -12,6 +12,7 @@
   imports =
     [
       ../../modules/account/home.nix
+      ../../modules/browser/home.nix
       ../../modules/editors/emacs/home.nix
       ../../modules/lang/home.nix
       ../../modules/network/home.nix

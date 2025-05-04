@@ -9,13 +9,13 @@
   ...
 }:
 {
-  programs.google-chrome = {
-    enable = false;
-    package = pkgs.google-chrome;
-  };
+  improts = [
+    ./zen-browser.nix
+    ./chrome.nix
+  ];
 
-  #   };
-  # };
+
+
   home.packages = [ pkgs.nur.repos.rycee.mozilla-addons-to-nix ];
 
 }

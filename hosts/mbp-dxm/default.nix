@@ -13,7 +13,7 @@
     [
       ../../modules/account/home.nix
       ../../modules/ai/home.nix
-      ../../modules/browser/home.nix
+      # ../../modules/browser/home.nix
       ../../modules/downloader/home.nix
       ../../modules/editors/home.nix
       ../../modules/graphics/home.nix
