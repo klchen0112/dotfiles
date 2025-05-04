@@ -880,26 +880,6 @@
         "type": "github"
       }
     },
-    "own-nur": {
-      "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1745769577,
-        "narHash": "sha256-NEtOF2kIkK2xFgq0+0aYdshbgejlZDaLzrE2B+O1jK4=",
-        "owner": "klchen0112",
-        "repo": "nur",
-        "rev": "540fc5f2f6e58884aaf4401fcdef2490abf549db",
-        "type": "github"
-      },
-      "original": {
-        "owner": "klchen0112",
-        "repo": "nur",
-        "type": "github"
-      }
-    },
     "pre-commit-hooks": {
       "inputs": {
         "flake-compat": [
@@ -951,7 +931,6 @@
         "nixpkgs-unstable": "nixpkgs-unstable",
         "nixvim": "nixvim",
         "nur": "nur",
-        "own-nur": "own-nur",
         "pre-commit-hooks": "pre-commit-hooks",
         "rust-overlay": "rust-overlay",
         "srvos": "srvos",

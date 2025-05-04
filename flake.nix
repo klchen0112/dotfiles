@@ -562,10 +562,10 @@
       };
 
       # own package
-      own-nur = {
-        url = "github:klchen0112/nur";
-        inputs.nixpkgs.follows = "nixpkgs";
-      };
+      # own-nur = {
+      #   url = "github:klchen0112/nur";
+      #   inputs.nixpkgs.follows = "nixpkgs";
+      # };
 
       agenix-secrets = {
         url = "github:klchen0112/agenix-secrets";
