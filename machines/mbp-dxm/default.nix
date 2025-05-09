@@ -22,7 +22,6 @@
     ../../modules/downloader/darwin.nix
     ../../modules/secrets
     ../../modules/stylix/darwin.nix
-    ../../modules/account
   ];
 
   programs.zsh.enable = true;
