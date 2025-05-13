@@ -8,7 +8,7 @@
   ...
 }:
 let
-  emacsPackage = pkgs.emacsIGC;
+  emacsPackage = pkgs.emacs;
   doomPath = "${config.home.homeDirectory}/my/dotfiles/modules/editors/emacs/doom";
 
   extraPackages =
