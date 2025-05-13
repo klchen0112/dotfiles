@@ -16,12 +16,12 @@ rec {
     }).overrideAttrs
       (old: rec {
         name = "emacs-${version}";
-        version = "igc-2025-05-08";
+        version = "igc-2025-05-12";
         src = pkgs.fetchFromGitHub {
           owner = "emacs-mirror";
           repo = "emacs";
-          rev = "4534d9f8db153d3d6ec1943002070c287994ae37";
-          hash = "sha256-kaDiII3SeYVlmEZ4KNGp8D3AV4uFfBS4KKwu8dIAnY4=";
+          rev = "2ef5b055f50d61fea59b54f87dbfd548e7a8b53d";
+          hash = "sha256-k+KFWOPHmtXONK91TGzOmwLCNerUWNcmF9hXc3I5s4A=";
         };
         configureFlags = (old.configureFlags or [ ]) ++ [
           # "--with-xwidgets" # withXwidgets failed with mps enabled
@@ -42,12 +42,16 @@ rec {
               sha256 = "sha256-WWLg7xUqSa656JnzyUJTfxqyYB/4MCAiiiZUjMOqjuY=";
             })
             # Make Emacs aware of OS-level light/dark mode
-            ./system-appearance.patch
+            # ./system-appearance.patch
+            (pkgs.fetchpatch {
+              url = "https://raw.githubusercontent.com/LuciusChen/.emacs.d/refs/heads/main/patches/emacs-31/system-appearance.patch";
+              sha256 = "sha256-8pjPqtcwpDvA+xGAixB8eDEz2zD4Q6wzJ6G2iO5x0yc=";
+            })
             # alpha-background
             ./ns-alpha-background.patch
             # ns-mac-input-source
             (pkgs.fetchpatch {
-              url = "https://raw.githubusercontent.com/LuciusChen/.emacs.d/refs/heads/main/patches/ns-mac-input-source.patch";
+              url = "https://raw.githubusercontent.com/LuciusChen/.emacs.d/refs/heads/main/patches/emacs-31/ns-mac-input-source.patch";
               sha256 = "sha256-E9BR/axZMhA3QTeoHIKU62Rogr7ZmTtWpnYdi69npNM=";
             })
           ]);
