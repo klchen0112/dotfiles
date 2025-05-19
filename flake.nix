@@ -560,7 +560,7 @@
         inputs.home-manager.follows = "home-manager";
         inputs.git-hooks.follows = "pre-commit-hooks";
         inputs.flake-compat.follows = "flake-compat";
-        inputs.flake-utils.follows = "flake-utils";
+        inputs.flake-parts.follows = "flake-parts";
         inputs.nur.follows = "nur";
         inputs.systems.follows = "systems";
       };
