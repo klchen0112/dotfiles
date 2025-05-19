@@ -42,7 +42,6 @@ rec {
               sha256 = "sha256-WWLg7xUqSa656JnzyUJTfxqyYB/4MCAiiiZUjMOqjuY=";
             })
             # Make Emacs aware of OS-level light/dark mode
-            # ./system-appearance.patch
             (pkgs.fetchpatch {
               url = "https://raw.githubusercontent.com/LuciusChen/.emacs.d/refs/heads/main/patches/emacs-31/system-appearance.patch";
               sha256 = "sha256-8pjPqtcwpDvA+xGAixB8eDEz2zD4Q6wzJ6G2iO5x0yc=";
