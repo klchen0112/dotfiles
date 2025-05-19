@@ -1,11 +1,5 @@
 {
   inputs,
-  outputs,
-  lib,
-  config,
-  pkgs,
-  username,
-  isWork,
   ...
 }:
 {
@@ -13,5 +7,6 @@
     ./base.nix
     inputs.stylix.darwinModules.stylix
   ];
+
 
 }

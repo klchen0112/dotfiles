@@ -25,10 +25,10 @@
     masApps =
       {
 
-        "Bitwarden" = 1352778147;
+        # "Bitwarden" = 1352778147;
 
         # dingtalk = 1435447041;
-        xcode = 497799835;
+        # xcode = 497799835;
 
       }
       // (

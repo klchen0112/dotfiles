@@ -11,7 +11,8 @@
 {
   imports = [
     ./base.nix
-    inputs.stylix.homeManagerModules.stylix
+    # inputs.stylix.homeManagerModules.stylix
   ];
+  stylix.targets.gnome.enable =  pkgs.stdenv.isLinux;
 
 }

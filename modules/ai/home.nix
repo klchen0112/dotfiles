@@ -1,4 +1,6 @@
 { pkgs, ... }:
 {
-  home.packages = with pkgs; [ llama-cpp ];
+  home.packages = with pkgs; [
+
+    ];
 }

@@ -23,7 +23,8 @@
     ../../modules/secrets
     ../../modules/stylix/darwin.nix
   ];
-
+  system.primaryUser = "${username}";
+  programs.bash.enable = true;
   programs.zsh.enable = true;
   programs.fish.enable = true;
 
@@ -48,5 +49,6 @@
       p7zip
       coreutils
     ];
+
   };
 }
