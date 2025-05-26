@@ -36,10 +36,10 @@ woniu:
 # macbook
 
 mbp-m1:
-	darwin-rebuild switch --flake .#mbp-m1
+	sudo darwin-rebuild switch --flake .#mbp-m1
 
 mbp-dxm:
-	darwin-rebuild switch --flake .#mbp-dxm
+	sudo darwin-rebuild switch --flake .#mbp-dxm
 # Emacs
 emacs-test:
 	rm -rf "$HOME/.config/doom"
