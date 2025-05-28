@@ -31,8 +31,10 @@
         ms-toolsai.vscode-jupyter-cell-tags
         ms-toolsai.jupyter-renderers
         ms-toolsai.jupyter-keymap
+
       ]
       ++ (with pkgs.vscode-marketplace; [
+        spadin.zmk-tools
         #themes
         mechatroner.rainbow-csv
         gruntfuggly.todo-tree

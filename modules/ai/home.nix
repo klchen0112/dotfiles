@@ -2,5 +2,5 @@
 {
   home.packages = with pkgs; [
 
-    ];
+  ];
 }
