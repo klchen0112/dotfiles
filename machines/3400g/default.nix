@@ -39,7 +39,7 @@
   systemd.targets.hybrid-sleep.enable = false;
   networking.hostName = "3400g";
   system.stateVersion = "25.05";
-
+  programs.bash.enable = true;
   environment = {
     shells = with pkgs; [
       fish

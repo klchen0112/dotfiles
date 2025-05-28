@@ -22,7 +22,7 @@
     ../../modules/secrets/darwin.nix
     ../../modules/stylix/darwin.nix
   ];
-
+  programs.bash.enable = true;
   programs.zsh.enable = true;
   programs.fish.enable = true;
 
@@ -48,5 +48,5 @@
     ];
   };
   services.openssh.enable = true;
-
+  system.primaryUser = "${username}";
 }

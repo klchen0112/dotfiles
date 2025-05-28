@@ -33,7 +33,7 @@
   boot.loader.efi.canTouchEfiVariables = true;
   networking.networkmanager.enable = true;
   security.sudo.wheelNeedsPassword = true; # User does not need to give password when using sudo.
-
+  programs.bash.enable = true;
   system.stateVersion = "25.05";
 
   environment = {

@@ -31,4 +31,5 @@
     ];
     etcBackupExtension = ".bak";
   };
+  programs.bash.enable = true;
 }

@@ -53,5 +53,6 @@
     enable = true;
     package = pkgs.nix-ld; # only for NixOS 24.05
   };
+  programs.bash.enable = true;
   programs.dconf.enable = true;
 }
