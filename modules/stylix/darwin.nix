@@ -8,5 +8,4 @@
     inputs.stylix.darwinModules.stylix
   ];
 
-
 }

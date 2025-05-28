@@ -13,6 +13,6 @@
     ./base.nix
     # inputs.stylix.homeManagerModules.stylix
   ];
-  stylix.targets.gnome.enable =  pkgs.stdenv.isLinux;
+  stylix.targets.gnome.enable = pkgs.stdenv.isLinux;
 
 }
