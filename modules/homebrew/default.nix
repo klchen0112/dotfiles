@@ -71,7 +71,7 @@
         # "firefox"
         "font-sf-pro"
         "font-sf-mono"
-        "zen-browser"
+        "zen"
         "podman-desktop"
         "squirrel"
         # mpv
