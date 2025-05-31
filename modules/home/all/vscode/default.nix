@@ -8,6 +8,13 @@
   ...
 }:
 {
+  fonts.packages = with pkgs; [
+    nerd-fonts.iosevka
+    nerd-fonts.hack
+    cm_unicode
+    noto-fonts-cjk-sans
+    overpass
+  ];
   programs.vscode = {
     enable = true;
 
@@ -111,7 +118,7 @@
       "editor.inlineSuggest.enabled" = true;
       "editor.semanticHighlighting.enabled" = true;
       "editor.codeLensFontFamily" =
-        "'Iosevka','Overpass','CMU Typewriter Text','Noto Serif CJK SC','Noto Serif','Hack Nerd Font'";
+        "'Iosevka Nerd Font','Overpass','CMU Typewriter Text','Noto Serif CJK SC','Noto Serif','Hack Nerd Font'";
       "editor.fontLigatures" = true;
       "editor.formatOnPaste" = false;
       "editor.formatOnType" = false;

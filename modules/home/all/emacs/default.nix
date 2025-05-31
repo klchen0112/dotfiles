@@ -69,7 +69,21 @@ in
   imports = [
     inputs.nix-doom-emacs-unstraightened.hmModule
   ];
-
+  home.sessionVariables = {
+    "EIDTOR" = "emacs";
+  };
+  fonts.packages = with packages; [
+    iosevka
+    cm_unicode
+    ibm-plex
+    symbola
+    noto-fonts-emoji
+    liberation_ttf
+    freefont_ttf
+    twemoji-color-font
+    TsangerJinKai02
+    noto-fonts-cjk-sans
+  ];
   stylix.targets.emacs.enable = false;
   # xdg.configFile."doom".source = config.lib.file.mkOutOfStoreSymlink doomPath;
   # home.file.".cache/doom/nix/rime" = {
