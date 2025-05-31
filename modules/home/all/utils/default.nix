@@ -1,12 +1,11 @@
 # fish configuration
 #
-{
-  lib,
-  inputs,
-  pkgs,
-  isWork,
-  config,
-  ...
+{ lib
+, inputs
+, pkgs
+, isWork
+, config
+, ...
 }:
 {
   programs.gpg = {
@@ -65,7 +64,6 @@
   programs.atuin = {
     enable = true;
   };
-
 
   programs.ripgrep = {
     enable = true;

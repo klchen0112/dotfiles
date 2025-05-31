@@ -1,11 +1,10 @@
 #
 # OpenVPN
 #
-{
-  pkgs,
-  lib,
-  config,
-  #
+{ pkgs
+, lib
+, config
+, #
   ...
 }:
 {
@@ -57,6 +56,5 @@
       macos_colorspace = "displayp3";
     };
   };
-
 
 }

@@ -1,17 +1,16 @@
 #
 # OpenVPN
 #
-{
-  inputs,
-  pkgs,
-  lib,
-  username,
-  config,
-  #
+{ inputs
+, pkgs
+, lib
+, username
+, config
+, #
   ...
 }:
 {
   programs.ghostty = {
     enable = true;
   };
-  }
+}

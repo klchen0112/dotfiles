@@ -51,6 +51,13 @@ in
     ../../config.nix
   ];
   options = {
+    me = lib.mkOption {
+      type = userSubmodule;
+    };
+    machines = lib.mkOption {
+      type = machineSubmodule;
+    };
+
     users = {
       klchen = lib.mkOption {
         type = userSubmodule;

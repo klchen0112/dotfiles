@@ -1,15 +1,13 @@
-{
-
-  pkgs,
-  config,
-  ...
+{ pkgs
+, config
+, ...
 }:
 let
   rimePath = "${config.home.homeDirectory}/my/dotfiles/modules/im/rime";
 in
 {
   i18n.inputMethod = {
-    enabled =  "fcitx5";
+    enabled = "fcitx5";
     fcitx5.addons = with pkgs; [
       fcitx5-rime
       fcitx5-configtool

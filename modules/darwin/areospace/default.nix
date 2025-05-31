@@ -1,4 +1,4 @@
-{ flake,pkgs, ... }:
+{ flake, pkgs, ... }:
 let
   inherit (flake) config inputs;
   inherit (inputs) self;
@@ -10,8 +10,8 @@ in
   };
 
   fonts.packages = with pkgs; [
-      nerd-fonts.hack
-        nerd-fonts.hack
+    nerd-fonts.hack
+    nerd-fonts.hack
   ];
   services.sketchybar = {
     enable = true;

@@ -1,11 +1,15 @@
-{
-  config,
-  pkgs,
-  lib,
-  inputs,
-  ...
+{ flake
+, config
+, pkgs
+, ...
 }:
+
+let
+  inherit (flake.inputs) self;
+  inherit (flake) inputs;
+in
 {
+
   imports = [
     inputs.agenix.homeManagerModules.default
   ];
@@ -15,6 +19,6 @@
   age = {
     secretsDir = "${config.home.homeDirectory}/.config/agenix/agenix";
     secretsMountPoint = "${config.home.homeDirectory}/.config/agenix/agenix.d";
-    secrets.access-tokens.file = "${inputs.agenix-secrets}/access-tokens.age";
+    secrets.access-tokens.file = self + /secrets/access-tokens.age;
   };
 }

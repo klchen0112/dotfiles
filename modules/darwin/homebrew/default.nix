@@ -1,12 +1,12 @@
-{
-  flake,
-  isWork ? true,
-  ...
+{ flake
+, isWork ? true
+, ...
 }:
 let
   inherit (flake) config inputs;
   inherit (inputs) self;
-in {
+in
+{
   imports = [
     inputs.brew-nix.darwinModules.default
   ];
@@ -58,41 +58,40 @@ in {
       # "homebrew/cask"
       # "homebrew/services"
     ];
-    casks =
-      [
-        "anki"
-        "snipaste"
-        "appcleaner"
-        "microsoft-remote-desktop"
-        "google-chrome"
-        "logi-options+"
-        # "firefox"
-        "font-sf-pro"
-        "font-sf-mono"
-        "zen"
-        "podman-desktop"
-        "squirrel"
-        # mpv
-        "iina"
-        "skim"
-        "zotero"
-        "omnidisksweeper"
-        "licecap"
-        "raycast"
-        # Keyboard
-        # hhkbStudio
-        # microsoft-remote-desktop
-        # "syncthing"
-        "steam"
-        "adrive"
-        "discord"
-        "activitywatch"
-        "vial"
-        "qmk-toolbox"
-        "plexamp"
-        "telegram"
-        "iterm2"
-        # "docker"
-      ];
+    casks = [
+      "anki"
+      "snipaste"
+      "appcleaner"
+      "microsoft-remote-desktop"
+      "google-chrome"
+      "logi-options+"
+      # "firefox"
+      "font-sf-pro"
+      "font-sf-mono"
+      "zen"
+      "podman-desktop"
+      "squirrel"
+      # mpv
+      "iina"
+      "skim"
+      "zotero"
+      "omnidisksweeper"
+      "licecap"
+      "raycast"
+      # Keyboard
+      # hhkbStudio
+      # microsoft-remote-desktop
+      # "syncthing"
+      "steam"
+      "adrive"
+      "discord"
+      "activitywatch"
+      "vial"
+      "qmk-toolbox"
+      "plexamp"
+      "telegram"
+      "iterm2"
+      # "docker"
+    ];
   };
 }
