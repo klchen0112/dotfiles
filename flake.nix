@@ -69,7 +69,10 @@
       devShell = eachSystem (
         pkgs:
         pkgs.mkShell {
-          buildInputs = [ pkgs.just ];
+          buildInputs = [
+            pkgs.just
+            pkgs.nixd
+          ];
         }
       );
 
@@ -544,6 +547,14 @@
         inputs.nixpkgs.follows = "nixpkgs";
         inputs.systems.follows = "systems";
         inputs.emacs-overlay.follows = "emacs-overlay";
+      };
+
+      niri = {
+        url = "github:sodiboo/niri-flake";
+        inputs.nixpkgs.follows = "nixpkgs";
+        # inputs.nixpkgs-stable.follows = "nixpkgs-stable";
+        # inputs.flake-compat.follows = "flake-compat";
+        # inputs.rust-overlay.follows = "rust-overlay";
       };
 
       nixos-cosmic = {
