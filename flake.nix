@@ -35,355 +35,31 @@
     # extra-experimental-features = "nix-command flakes";
   };
 
-  outputs =
-    inputs@{
-      self,
-      nixpkgs,
-      home-manager,
-      darwin,
-      nix-on-droid,
-      srvos,
-      treefmt-nix,
-      systems,
-      ...
-    }:
-    # Function that tells my flake which to use and what do what to do with the dependencies.
-    let
-      # Variables that can be used in the config files.
-      inherit (self) outputs;
-      # Small tool to iterate over each systems
-      eachSystem = f: nixpkgs.lib.genAttrs (import systems) (system: f nixpkgs.legacyPackages.${system});
+    outputs = inputs@{ self, ... }:
+    inputs.flake-parts.lib.mkFlake { inherit inputs; } {
+      systems = [ "x86_64-linux" "aarch64-linux" "aarch64-darwin" ];
+      imports = (with builtins;
+        map
+          (fn: ./modules/flake-parts/${fn})
+          (attrNames (readDir ./modules/flake-parts)));
 
-      # Eval the treefmt modules from ./treefmt.nix
-      treefmtEval = eachSystem (pkgs: treefmt-nix.lib.evalModule pkgs ./treefmt.nix);
-    in
-    rec {
-      packages = eachSystem (pkgs: import ./pkgs { inherit pkgs inputs; });
-
-      formatter = eachSystem (pkgs: treefmtEval.${pkgs.system}.config.build.wrapper);
-
-      checks = eachSystem (pkgs: {
-        formatting = treefmtEval.${pkgs.system}.config.build.check self;
-      });
-
-      devShell = eachSystem (
-        pkgs:
-        pkgs.mkShell {
-          buildInputs = [
-            pkgs.just
-            pkgs.nixd
-          ];
-        }
-      );
-
-      overlays = import ./overlays { inherit inputs; };
-
-      nixosConfigurations = {
-        # NixOS configurations
-        "i12r70" =
-          let
-            username = "klchen";
-            userEmail = "klchen0112@gmail.com";
-            isWork = false;
-          in
-          nixpkgs.lib.nixosSystem {
-            system = "x86_64-linux";
-            specialArgs = { inherit inputs username outputs; };
-            modules = [
-              ./machines/i12r70
-              home-manager.nixosModules.home-manager
-              {
-                # Home-Manager module that is used
-                home-manager.backupFileExtension = "backup";
-                home-manager.useGlobalPkgs = true;
-                home-manager.useUserPackages = true;
-                home-manager.extraSpecialArgs = {
-                  inherit
-                    username
-                    userEmail
-                    inputs
-                    outputs
-                    isWork
-                    ;
-                }; # Pass flake variable
-                home-manager.users.${username} = import ./hosts/i12r70/default.nix;
-              }
-            ];
-          };
-
-        "i12r70-wsl" =
-          let
-            username = "klchen";
-            userEmail = "klchen0112@gmail.com";
-            isWork = false;
-          in
-          nixpkgs.lib.nixosSystem {
-            system = "x86_64-linux";
-            specialArgs = { inherit inputs username outputs; };
-            modules = [
-              srvos.nixosModules.server
-              inputs.nixos-wsl.nixosModules.default
-              inputs.stylix.nixosModules.stylix
-              {
-                system.stateVersion = "25.05";
-                wsl = {
-                  enable = true;
-                  defaultUser = username;
-                  wslConf.automount.root = "/mnt";
-                  wslConf.interop.appendWindowsPath = false;
-                  wslConf.network.generateHosts = false;
-                  startMenuLaunchers = true;
-                  docker-desktop.enable = false;
-                };
-                # Enable integration with Docker Desktop (needs to be installed)
-              }
-              ./machines/i12r70-wsl
-              home-manager.nixosModules.home-manager
-              {
-                # Home-Manager module that is used
-                home-manager.useGlobalPkgs = true;
-                home-manager.useUserPackages = true;
-                home-manager.extraSpecialArgs = {
-                  inherit
-                    username
-                    userEmail
-                    inputs
-                    outputs
-                    isWork
-                    ;
-                }; # Pass flake variable
-                home-manager.users.${username} = import ./hosts/i12r70-wsl/default.nix;
-              }
-            ];
-          };
-        "3400g" =
-          let
-            username = "klchen";
-            userEmail = "klchen0112@gmail.com";
-            isWork = false;
-          in
-          nixpkgs.lib.nixosSystem {
-            system = "x86_64-linux";
-            specialArgs = { inherit inputs username outputs; };
-            modules = [
-              ./machines/3400g
-              home-manager.nixosModules.home-manager
-              {
-                # Home-Manager module that is used
-                home-manager.backupFileExtension = "backup";
-                home-manager.useGlobalPkgs = true;
-                home-manager.useUserPackages = true;
-                home-manager.extraSpecialArgs = {
-                  inherit
-                    username
-                    userEmail
-                    inputs
-                    outputs
-                    isWork
-                    ;
-                }; # Pass flake variable
-                home-manager.users.${username} = import ./hosts/3400g/default.nix;
-              }
-            ];
-          };
-        "sanjiao" =
-          let
-            username = "klchen";
-            userEmail = "klchen0112@gmail.com";
-            isWork = false;
-          in
-          nixpkgs.lib.nixosSystem {
-            system = "x86_64-linux";
-            specialArgs = { inherit inputs username outputs; };
-            modules = [
-              ./machines/sanjiao
-              home-manager.nixosModules.home-manager
-              {
-                # Home-Manager module that is used
-                home-manager.backupFileExtension = "backup";
-                home-manager.useGlobalPkgs = true;
-                home-manager.useUserPackages = true;
-                home-manager.extraSpecialArgs = {
-                  inherit
-                    username
-                    userEmail
-                    inputs
-                    outputs
-                    isWork
-                    ;
-                }; # Pass flake variable
-                home-manager.users.${username} = import ./hosts/sanjiao/default.nix;
-              }
-            ];
-          };
-      };
-      darwinConfigurations = {
-        "mbp-m1" =
-          let
-            username = "klchen";
-            userEmail = "klchen0112@gmail.com";
-            isWork = false;
-          in
-          darwin.lib.darwinSystem {
-            system = "aarch64-darwin";
-            specialArgs = {
-              inherit
-                username
-                inputs
-                outputs
-                isWork
-                ;
-            };
-            # pkgs = nixpkgs.legacyPackages.aarch64-darwin;
-            modules = [
-              # Modules that are used
-              ./machines/mbp-m1
-              srvos.darwinModules.desktop
-              srvos.darwinModules.mixins-terminfo
-              srvos.darwinModules.mixins-nix-experimental
-              srvos.darwinModules.mixins-trusted-nix-caches
-              home-manager.darwinModules.home-manager
-              {
-                # Home-Manager module that is used
-                home-manager.backupFileExtension = "backup";
-                home-manager.useGlobalPkgs = true;
-                home-manager.useUserPackages = true;
-                home-manager.extraSpecialArgs = {
-                  inherit
-                    username
-                    userEmail
-                    inputs
-                    outputs
-                    isWork
-                    ;
-                }; # Pass flake variable
-                home-manager.users.${username} = import ./hosts/mbp-m1/default.nix;
-              }
-
-            ];
-          };
-        "mbp-dxm" =
-          let
-            username = "chenkailong_dxm";
-            userEmail = "chenkailong@duxiaoman.com";
-            isWork = true;
-          in
-          darwin.lib.darwinSystem {
-            system = "aarch64-darwin";
-            specialArgs = {
-              inherit
-                username
-                inputs
-                outputs
-                isWork
-                ;
-            };
-            # pkgs = nixpkgs.legacyPackages.aarch64-darwin;
-            modules = [
-              srvos.darwinModules.desktop
-              srvos.darwinModules.mixins-terminfo
-              srvos.darwinModules.mixins-nix-experimental
-              srvos.darwinModules.mixins-trusted-nix-caches
-              # Modules that are used
-              ./machines/mbp-dxm
-              home-manager.darwinModules.home-manager
-              {
-                # Home-Manager module that is used
-                home-manager.backupFileExtension = "backup";
-                home-manager.useGlobalPkgs = true;
-                home-manager.useUserPackages = true;
-                home-manager.extraSpecialArgs = {
-                  inherit
-                    username
-                    userEmail
-                    inputs
-                    outputs
-                    isWork
-                    ;
-                }; # Pass flake variable
-                home-manager.users.${username} = import ./hosts/mbp-dxm/default.nix;
-              }
-            ];
-          };
-      };
-      nixOnDroidConfigurations = {
-        "redmi-12t-pro" = nix-on-droid.lib.nixOnDroidConfiguration {
-          modules = [
-            ./machines/redmi-12t-pro
-          ];
+      perSystem = { lib, system, ... }: {
+        # Make our overlay available to the devShell
+        # "Flake parts does not yet come with an endorsed module that initializes the pkgs argument.""
+        # So we must do this manually; https://flake.parts/overlays#consuming-an-overlay
+        _module.args.pkgs = import inputs.nixpkgs {
+          inherit system;
+          overlays = lib.attrValues self.overlays;
+          config.allowUnfree = true;
         };
       };
-      colmena =
-        let
-          username = "klchen";
-          userEmail = "klchen0112@gmail.com";
-          isWork = false;
-        in
-        {
-          meta = {
-            nixpkgs = import nixpkgs { system = "x86_64-linux"; };
 
-            # 这个参数的功能与 `nixosConfigurations.xxx` 中的 `specialArgs` 一致，
-            # 都是用于传递自定义参数到所有子模块。
-            specialArgs = {
-              inherit inputs username outputs;
-            };
-          };
-          "sanjiao" =
-            { name, nodes, ... }:
-            {
-              deployment.targetHost = "192.168.0.192"; # 远程主机的 IP 地址
-              deployment.targetUser = "root"; # 远程主机的用户名
-
-              imports = [
-                ./machines/sanjiao
-                home-manager.nixosModules.home-manager
-                {
-                  # Home-Manager module that is used
-                  home-manager.backupFileExtension = "backup";
-                  home-manager.useGlobalPkgs = true;
-                  home-manager.useUserPackages = true;
-                  home-manager.extraSpecialArgs = {
-                    inherit
-                      username
-                      userEmail
-                      inputs
-                      outputs
-                      isWork
-                      ;
-                  }; # Pass flake variable
-                  home-manager.users.${username} = import ./hosts/sanjiao/default.nix;
-                }
-              ];
-            };
-          "3400g" =
-            { name, nodes, ... }:
-            {
-              deployment.targetHost = "192.168.0.197"; # 远程主机的 IP 地址
-              deployment.targetUser = "root"; # 远程主机的用户名
-              imports = [
-                ./machines/3400g
-                home-manager.nixosModules.home-manager
-                {
-                  # Home-Manager module that is used
-                  home-manager.backupFileExtension = "backup";
-                  home-manager.useGlobalPkgs = true;
-                  home-manager.useUserPackages = true;
-                  home-manager.extraSpecialArgs = {
-                    inherit
-                      username
-                      userEmail
-                      inputs
-                      outputs
-                      isWork
-                      ;
-                  }; # Pass flake variable
-                  home-manager.users.${username} = import ./hosts/3400g/default.nix;
-                }
-              ];
-            };
-
-        };
+      # https://omnix.page/om/ci.html
+      flake.om.ci.default.ROOT = {
+        dir = ".";
+        steps.flake-check.enable = false; # Doesn't make sense to check nixos config on darwin!
+        steps.custom = { };
+      };
     };
 
   inputs =
@@ -445,7 +121,7 @@
       };
 
       # add git hooks to format nix code before commit
-      pre-commit-hooks = {
+      git-hooks = {
         url = "github:cachix/git-hooks.nix";
         inputs.nixpkgs.follows = "nixpkgs";
         inputs.flake-compat.follows = "flake-compat";
@@ -462,7 +138,7 @@
       };
 
       nixos-unified.url = "github:srid/nixos-unified";
-    
+
       flake-compat = {
         url = "github:edolstra/flake-compat";
       };
@@ -562,7 +238,7 @@
         url = "github:danth/stylix";
         inputs.nixpkgs.follows = "nixpkgs";
         inputs.home-manager.follows = "home-manager";
-        inputs.git-hooks.follows = "pre-commit-hooks";
+        inputs.git-hooks.follows = "git-hooks";
         inputs.flake-compat.follows = "flake-compat";
         inputs.flake-parts.follows = "flake-parts";
         inputs.nur.follows = "nur";
@@ -592,5 +268,8 @@
         inputs.nixpkgs.follows = "nixpkgs";
         inputs.home-manager.follows = "home-manager";
       };
+      omnix.url = "github:juspay/omnix";
     };
+
+
 }
