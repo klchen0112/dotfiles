@@ -433,15 +433,6 @@
 
       systems.url = "github:nix-systems/default";
 
-      # secrets management
-      # agenix = {
-      #   url = "github:ryantm/agenix";
-      #   inputs.darwin.follows = "darwin";
-      #   inputs.home-manager.follows = "home-manager";
-      #   inputs.nixpkgs.follows = "nixpkgs";
-      #   inputs.systems.follows = "systems";
-      # };
-
       devshell = {
         url = "github:numtide/devshell";
         inputs.nixpkgs.follows = "nixpkgs";
@@ -470,6 +461,8 @@
         inputs.nixpkgs-lib.follows = "nixpkgs-lib";
       };
 
+      nixos-unified.url = "github:srid/nixos-unified";
+    
       flake-compat = {
         url = "github:edolstra/flake-compat";
       };
