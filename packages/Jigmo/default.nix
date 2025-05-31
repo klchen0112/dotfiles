@@ -1,7 +1,6 @@
 {
   stdenv,
   lib,
-  callPackage,
   fetchzip,
 }:
 stdenv.mkDerivation rec {
