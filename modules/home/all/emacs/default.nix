@@ -1,15 +1,15 @@
+
 {
-  inputs,
-  outputs,
+  flake,
   lib,
   config,
   pkgs,
-  username,
   ...
 }:
 let
+  inherit (flake) inputs;
   emacsPackage = pkgs.emacsIGC;
-  doomPath = "${config.home.homeDirectory}/my/dotfiles/modules/editors/emacs/doom";
+  # doomPath = "${config.home.homeDirectory}/my/dotfiles/modules/editors/emacs/doom";
 
   extraPackages =
     with pkgs;
