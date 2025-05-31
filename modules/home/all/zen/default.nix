@@ -1,17 +1,19 @@
 {
   pkgs,
-  lib,
-  inputs,
-  isWork,
+  flake,
+  config,
   ...
 }:
+let
+  inherit (flake) inputs;
+in
 {
   imports = [
     inputs.zen-browser.homeModules.beta
     # inputs.nix-darwin-browsers.overlays
   ];
   programs.zen-browser = {
-    enable = pkgs.stdenv.isLinux;
+    enable = true;
     enableGnomeExtensions = false;
     policies = {
       # This will enable the policies.json file for zen-browser
@@ -20,10 +22,10 @@
       DisableAppUpdate = true;
     };
     profiles = {
-      "klchen" = {
+      "${config.me.username}" = {
         id = 0;
         isDefault = true;
-        name = "klchen";
+        name = "${config.me.username}";
         search = {
           force = true;
           default = "DuckDuckGo";
