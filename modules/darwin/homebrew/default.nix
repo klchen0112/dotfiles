@@ -1,14 +1,12 @@
 {
-  inputs,
-  outputs,
-  lib,
-  config,
-  pkgs,
-  username,
+  flake,
   isWork ? true,
   ...
 }:
-{
+let
+  inherit (flake) config inputs;
+  inherit (inputs) self;
+in {
   imports = [
     inputs.brew-nix.darwinModules.default
   ];
@@ -85,8 +83,6 @@
         # hhkbStudio
         # microsoft-remote-desktop
         # "syncthing"
-      ]
-      ++ lib.optionals (!isWork) [
         "steam"
         "adrive"
         "discord"
@@ -95,8 +91,6 @@
         "qmk-toolbox"
         "plexamp"
         "telegram"
-      ]
-      ++ lib.optionals isWork [
         "iterm2"
         # "docker"
       ];
