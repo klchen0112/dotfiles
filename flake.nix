@@ -251,11 +251,6 @@
       #   inputs.nixpkgs.follows = "nixpkgs";
       # };
 
-      agenix-secrets = {
-        url = "github:klchen0112/agenix-secrets";
-        flake = false;
-      };
-
       rust-overlay = {
         url = "github:oxalica/rust-overlay";
         inputs.nixpkgs.follows = "nixpkgs";

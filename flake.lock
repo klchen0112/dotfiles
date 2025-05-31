@@ -29,22 +29,6 @@
         "type": "github"
       }
     },
-    "agenix-secrets": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1746263830,
-        "narHash": "sha256-APVb+FP6rvx26fpziukjRnXPyd2wxzB1iJxh3+UhMms=",
-        "owner": "klchen0112",
-        "repo": "agenix-secrets",
-        "rev": "d43feec7eb81a4771a1ec850a12b1a8fb58cc957",
-        "type": "github"
-      },
-      "original": {
-        "owner": "klchen0112",
-        "repo": "agenix-secrets",
-        "type": "github"
-      }
-    },
     "base16": {
       "inputs": {
         "fromYaml": "fromYaml"
@@ -1200,7 +1184,6 @@
     "root": {
       "inputs": {
         "agenix": "agenix",
-        "agenix-secrets": "agenix-secrets",
         "brew-api": "brew-api",
         "brew-nix": "brew-nix",
         "darwin": "darwin",
