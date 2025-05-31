@@ -1,14 +1,18 @@
-{
-  pkgs,
-
-  ...
+{ pkgs
+, config
+, flake
+, ...
 }:
-{
+let
+  inherit (flake) inputs;
+  {
+  imports = [
+    inputs.stylix.homeManagerModules.stylix
+  ];
+  stylix.targets.gnome.enable = pkgs.stdenv.isLinux;
   stylix = {
-
     enable = true;
-    image = ./desktop.jpg;
-    base16Scheme = "${pkgs.base16-schemes}/share/themes/selenized-light.yaml";
+    base16Scheme = "${pkgs.base16-schemes}/share/themes/${config.me.base16Scheme}.yaml";
     opacity = {
       applications = 0.8;
       terminal = 0.8;
@@ -22,7 +26,6 @@
         package = pkgs.nerd-fonts.iosevka;
         name = "Iosevka Nerd Font";
       };
-
     };
   };
-}
+  }

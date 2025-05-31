@@ -14,7 +14,11 @@ let
       email = lib.mkOption {
         type = lib.types.str;
       };
+      base16Scheme = lib.mkOption {
+        type = lib.types.str;
+      };
       sshKey = lib.mkOption {
+
         type = lib.types.listOf lib.types.singleLineStr;
         description = ''
           SSH public key
