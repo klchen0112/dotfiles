@@ -1,30 +1,19 @@
-#
-#  Specific system configuration settings for MacBook
-#
-#  flake.nix
-#   └─ ./darwin
-#       ├─ ./default.nix
-#       └─ ./configuration.nix *
-#
-{
-  config,
-  pkgs,
-  username,
-  system,
-  inputs,
-  ...
+{ flake
+, pkgs
+, ...
 }:
+let
+  inherit (flake) inputs;
+  inherit (inputs) self;
+in
 {
   imports = [
-    ../../modules/account
-    # Include the results of the hardware scan.
+    self.nixosModules.default
     ./hardware-configuration.nix
-    ../../modules/locale
-    ../../modules/fonts/fonts.nix
-    ../../modules/nixpkgs
-    ../../modules/shells
-    ../../modules/secrets
   ];
+  # Bootloader.
+  boot.loader.systemd-boot.enable = true;
+  boot.loader.efi.canTouchEfiVariables = true;
 
   security.sudo.wheelNeedsPassword = true; # User does not need to give password when using sudo.
 
@@ -32,9 +21,9 @@
   systemd.targets.suspend.enable = false;
   systemd.targets.hibernate.enable = false;
   systemd.targets.hybrid-sleep.enable = false;
-
+  networking.hostName = "3400g";
   system.stateVersion = "25.05";
-
+  programs.bash.enable = true;
   environment = {
     shells = with pkgs; [
       fish
@@ -51,8 +40,7 @@
   };
   programs.nix-ld = {
     enable = true;
-    package = pkgs.nix-ld; # only for NixOS 24.05
+    package = pkgs.nix-ld-rs; # only for NixOS 24.05
   };
-  programs.bash.enable = true;
   programs.dconf.enable = true;
 }

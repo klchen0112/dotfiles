@@ -1,14 +1,12 @@
-{
-  inputs,
-  outputs,
-  config,
-  pkgs,
-  username,
-  system,
-  isWork ? true,
-  ...
+{ inputs
+, outputs
+, config
+, pkgs
+, username
+, ...
 }:
 {
+  ids.gids.nixbld = 350;
   imports = [
     ../../modules/account/darwin.nix
     ../../modules/fonts/fonts.nix
@@ -19,9 +17,10 @@
     ../../modules/desktop/areospace
     ../../modules/homebrew
     ../../modules/downloader/darwin.nix
-    ../../modules/secrets/darwin.nix
+    ../../modules/secrets
     ../../modules/stylix/darwin.nix
   ];
+  system.primaryUser = "${username}";
   programs.bash.enable = true;
   programs.zsh.enable = true;
   programs.fish.enable = true;
@@ -30,6 +29,7 @@
     shells = with pkgs; [
       fish
       bash
+      zsh
     ]; # Default shell
     # variables = {
     #   # System variables
@@ -46,7 +46,6 @@
       p7zip
       coreutils
     ];
+
   };
-  services.openssh.enable = true;
-  system.primaryUser = "${username}";
 }

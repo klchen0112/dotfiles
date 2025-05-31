@@ -6,13 +6,12 @@
 #       ├─ ./default.nix
 #       └─ ./configuration.nix *
 #
-{
-  config,
-  pkgs,
-  username,
-  system,
-  inputs,
-  ...
+{ config
+, pkgs
+, username
+, system
+, inputs
+, ...
 }:
 {
   imports = [

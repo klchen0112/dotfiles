@@ -1,15 +1,16 @@
+# Configuration for my M1 Macbook Max as headless server
+{ flake, ... }:
+
+let
+  inherit (flake) inputs;
+  inherit (inputs) self;
+in
 {
-  inputs,
-  outputs,
-  config,
-  pkgs,
-  username,
-  system,
-  isWork ? true,
-  ...
-}:
-{
-  ids.gids.nixbld = 350;
+  nixos-unified.sshTarget = "klchen@mbp-m1";
+  system.primaryUser = "${flake.config.users.chenkailong_dxm.username}";
+  nixpkgs.hostPlatform = "aarch64-darwin";
+  networking.hostName = "${config.me.username}";
+
   imports = [
     ../../modules/account/darwin.nix
     ../../modules/fonts/fonts.nix
@@ -20,10 +21,9 @@
     ../../modules/desktop/areospace
     ../../modules/homebrew
     ../../modules/downloader/darwin.nix
-    ../../modules/secrets
+    ../../modules/secrets/darwin.nix
     ../../modules/stylix/darwin.nix
   ];
-  system.primaryUser = "${username}";
   programs.bash.enable = true;
   programs.zsh.enable = true;
   programs.fish.enable = true;
@@ -32,7 +32,6 @@
     shells = with pkgs; [
       fish
       bash
-      zsh
     ]; # Default shell
     # variables = {
     #   # System variables
@@ -49,6 +48,7 @@
       p7zip
       coreutils
     ];
-
   };
+  services.openssh.enable = true;
+
 }
