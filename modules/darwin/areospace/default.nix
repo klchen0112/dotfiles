@@ -9,6 +9,10 @@ in
     settings = builtins.fromTOML (builtins.readFile ./aerospace.toml);
   };
 
+  fonts.packages = with pkgs; [
+      nerd-fonts.hack
+        nerd-fonts.hack
+  ];
   services.sketchybar = {
     enable = true;
     extraPackages = with pkgs; [ jq ];
