@@ -1,14 +1,9 @@
-{
-  config,
-  pkgs,
-  username,
-  system,
-  inputs,
-  ...
+{ pkgs
+, config
+, inputs
+, ...
 }:
 {
-  imports = [ ./fonts.nix ];
-
   fonts = {
     fontconfig = {
       defaultFonts = {

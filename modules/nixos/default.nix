@@ -1,10 +1,9 @@
-# This is your nixos configuration.
-# For home configuration, see /modules/home/*
-{ flake, ... }:
 {
   imports = [
     ./common
     ./linux/access-tokens.nix
+    ./linux/fonts
+    ./linux/stylix.nix
   ];
   services.openssh.enable = true;
 }

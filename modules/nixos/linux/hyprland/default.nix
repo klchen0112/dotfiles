@@ -1,5 +1,5 @@
 { pkgs
-, inputs
+, flake
 , ...
 }:
 {
@@ -64,5 +64,5 @@
   environment.systemPackages = with pkgs; [
   ];
   # fix https://github.com/ryan4yin/nix-config/issues/10
-  # security.pam.services.swaylock = { };
+  security.pam.services.swaylock = { };
 }

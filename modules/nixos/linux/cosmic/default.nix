@@ -1,11 +1,11 @@
 { pkgs
 , config
-, inputs
+, flake
 , ...
 }:
 {
   imports = [
-    inputs.nixos-cosmic.nixosModules.default
+    flake.inputs.nixos-cosmic.nixosModules.default
   ];
   # Clipboard Manager not working
   environment.sessionVariables.COSMIC_DATA_CONTROL_ENABLED = 1;
