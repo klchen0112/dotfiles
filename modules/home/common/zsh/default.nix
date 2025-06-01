@@ -1,5 +1,5 @@
 { pkgs
-,
+, ...
 }:
 {
   programs.zsh = {
@@ -8,6 +8,5 @@
     syntaxHighlighting.enable = true;
     defaultKeymap = "emacs";
     enableCompletion = true;
-    history.size = 100000;
   };
 }

@@ -12,7 +12,7 @@ in
     # inputs.nix-darwin-browsers.overlays
   ];
   programs.zen-browser = {
-    enable = true;
+    enable = pkgs.stdenv.isLinux;
     enableGnomeExtensions = false;
     policies = {
       # This will enable the policies.json file for zen-browser

@@ -9,11 +9,13 @@
     ./common/utils
     ./common/gc.nix
     ./common/git
-    # ./common/chrome
-    # ./common/zen
+    ./common/ssh
+    ./common/chrome
+    ./common/zen
     ./common/kitty
     ./common/vscode
     ./common/lang
     ./common/inputmethod
+    ./common/zsh
   ];
 }

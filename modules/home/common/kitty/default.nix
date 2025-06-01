@@ -4,6 +4,7 @@
 , ...
 }:
 {
+  stylix.targets.kitty.enable = true;
   programs.kitty = {
     enable = true;
     package = pkgs.kitty;

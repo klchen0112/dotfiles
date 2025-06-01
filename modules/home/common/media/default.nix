@@ -5,7 +5,6 @@
   };
   programs.sioyek = {
     enable = true;
-    #  package = pkgs.sioyek;
     bindings = {
       "move_up" = "p";
       "move_down" = "n";

@@ -6,15 +6,7 @@ let
   packages = self + /packages;
 in
 self: super: rec {
-  # nuenv = (inputs.nuenv.overlays.nuenv self super).nuenv;
-  # fuckport = self.callPackage "${packages}/fuckport.nix" { };
-  # twitter-convert = self.callPackage "${packages}/twitter-convert" { };
-  # sshuttle-via = self.callPackage "${packages}/sshuttle-via.nix" { };
-  # copy-md-as-html = self.callPackage "${packages}/copy-md-as-html.nix" { };
-  # ci = self.callPackage "${packages}/ci" { };
-  # touchpr = self.callPackage "${packages}/touchpr" { };
   omnix = inputs.omnix.packages.${self.system}.default;
-  # git-merge-and-delete = self.callPackage "${packages}/git-merge-and-delete.nix" { };
   TsangerJinKai02 = self.callPackage "${packages}/TsangerJinKai02" { };
   Jigmo = self.callPackage "${packages}/Jigmo" { };
   firefox-addons = self.recurseIntoAttrs (self.callPackage "${packages}/firefox-addons" { });
@@ -58,7 +50,7 @@ self: super: rec {
             # alpha-background
             (self.fetchpatch {
               url = "https://raw.githubusercontent.com/LuciusChen/.emacs.d/refs/heads/main/patches/emacs-31/ns-alpha-background.patch";
-              sha256 = "sha256-E9BR/axZMhA3QTeoHIKU62Rogr7ZmTtWpnYdi69npNM=";
+              sha256 = "sha256-sJ74+0jshtt0KwASHrn23ZlIOPr4zy47Dh05UDic62s=";
             })
             # ns-mac-input-source
             (self.fetchpatch {

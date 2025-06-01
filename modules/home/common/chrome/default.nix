@@ -3,7 +3,6 @@
 }:
 {
   programs.google-chrome = {
-    enable = true;
-    package = pkgs.google-chrome;
+    enable = pkgs.stdenv.isLinux;
   };
 }
