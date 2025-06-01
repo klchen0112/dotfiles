@@ -1,9 +1,8 @@
-{
-  inputs,
-  pkgs,
-  lib,
-  config,
-  ...
+{ inputs
+, pkgs
+, lib
+, config
+, ...
 }:
 {
   # programs.wofi.enable = true;
