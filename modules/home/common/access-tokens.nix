@@ -3,22 +3,20 @@
 , pkgs
 , ...
 }:
-
-let
-  inherit (flake.inputs) self;
-  inherit (flake) inputs;
-in
 {
 
   imports = [
-    inputs.agenix.homeManagerModules.default
+    flake.inputs.agenix.homeManagerModules.default
   ];
   home.packages = [
-    inputs.agenix.packages.${pkgs.system}.default
+    flake.inputs.agenix.packages.${pkgs.system}.default
   ];
   age = {
     secretsDir = "${config.home.homeDirectory}/.config/agenix/agenix";
     secretsMountPoint = "${config.home.homeDirectory}/.config/agenix/agenix.d";
-    secrets.access-tokens.file = self + /secrets/access-tokens.age;
+    secrets.access-tokens.file = flake.inputs.self + /secrets/access-tokens.age;
   };
+  nix.extraOptions = ''
+    !include ${config.age.secrets.access-tokens.path}
+  '';
 }

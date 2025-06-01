@@ -36,8 +36,7 @@
       extra-experimental-features = "nix-command flakes";
       trusted-users = [
         "root"
-        "@wheel"
-      ];
+      ] ++ config.myusers;
       accept-flake-config = true;
 
     };

@@ -17,5 +17,6 @@
     ./common/lang
     ./common/inputmethod
     ./common/zsh
+    ./common/nix-index
   ];
 }
