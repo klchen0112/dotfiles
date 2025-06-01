@@ -22,6 +22,5 @@ in
     ];
     base16Scheme = "selenized-light";
   };
-
   home.stateVersion = "25.05";
 }

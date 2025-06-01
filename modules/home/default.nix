@@ -1,6 +1,6 @@
 {
   imports = [
-    ./all/emacs
+    # ./all/emacs
     ./all/fish
     ./all/kitty
     ./all/me

@@ -13,9 +13,10 @@ rec {
   myusers = [
     "klchen"
   ];
-  machine = flake.config.machines.mbp-m1;
-  nixpkgs.hostPlatform = machine.platform;
-  networking.hostName = machine.hostName;
+  nixpkgs.hostPlatform = "aarch64-darwin";
+  networking.hostName = "mbp-m1";
+  home-manager.backupFileExtension = "nixos-unified-template-backup";
 
+  system.stateVersion = "24.11";
 
 }

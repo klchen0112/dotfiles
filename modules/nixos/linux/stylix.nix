@@ -10,7 +10,7 @@ in
   imports = [
     inputs.stylix.nixosModules.stylix
   ];
-  stylix.targets.gnome.enable = false;
+  stylix.autoEnable = false;
   stylix = {
     enable = true;
     base16Scheme = "${pkgs.base16-schemes}/share/themes/${config.machine.base16Scheme}.yaml";

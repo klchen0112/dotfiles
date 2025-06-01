@@ -1,7 +1,6 @@
-{
-  pkgs,
-  inputs,
-  ...
+{ pkgs
+, inputs
+, ...
 }:
 {
   # these code from https://github.com/ryan4yin/nix-config
@@ -65,5 +64,5 @@
   environment.systemPackages = with pkgs; [
   ];
   # fix https://github.com/ryan4yin/nix-config/issues/10
-  security.pam.services.swaylock = { };
+  # security.pam.services.swaylock = { };
 }

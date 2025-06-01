@@ -23,5 +23,4 @@ in
   systemd.targets.hibernate.enable = false;
   systemd.targets.hybrid-sleep.enable = false;
   networking.hostName = "sanjiao";
-  home.stateVersion = "25.05";
 }

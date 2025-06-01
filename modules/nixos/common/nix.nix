@@ -58,7 +58,6 @@ in
       trusted-users = [
         "root"
         "@wheel"
-        "${flake.config.me.usernmae}"
       ];
       accept-flake-config = true;
       extraOptions = ''

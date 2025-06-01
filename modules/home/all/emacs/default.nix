@@ -6,7 +6,7 @@
 }:
 let
   inherit (flake) inputs;
-  emacsPackage = pkgs.emacsIGC;
+  emacsPackage = pkgs.emacs;
   # doomPath = "${config.home.homeDirectory}/my/dotfiles/modules/editors/emacs/doom";
 
   extraPackages =
@@ -78,9 +78,9 @@ in
   imports = [
     inputs.nix-doom-emacs-unstraightened.hmModule
   ];
-  home.sessionVariables = {
-    "EIDTOR" = "emacs";
-  };
+  # home.sessionVariables = {
+  #   "EIDTOR" = "emacs";
+  # };
   stylix.targets.emacs.enable = false;
   # xdg.configFile."doom".source = config.lib.file.mkOutOfStoreSymlink doomPath;
   # home.file.".cache/doom/nix/rime" = {
