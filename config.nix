@@ -11,6 +11,7 @@
         "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIB038WYBDH0cCGTeLWDLXZIxXinpLk5oICCpW4UlW3Oz klchen@i12r70"
       ];
       base16Scheme = "selenized-light";
+      root = true;
     };
     chenkailong_dxm = {
       username = "chenkailong_dxm";

@@ -23,6 +23,10 @@ let
           SSH public key
         '';
       };
+      root = lib.mkOption {
+        type = lib.types.bool;
+        default = false;
+      };
     };
   };
   machineSubmodule = lib.types.submodule {
