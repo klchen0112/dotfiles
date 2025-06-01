@@ -4,5 +4,6 @@
     ./primary-as-admin.nix
     ./caches.nix
     ./myusers.nix
+    ./fonts.nix
   ];
 }

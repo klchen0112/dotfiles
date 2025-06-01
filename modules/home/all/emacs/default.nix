@@ -56,6 +56,17 @@ let
       cmake
 
       dasel
+
+      iosevka
+      cm_unicode
+      ibm-plex
+      symbola
+      noto-fonts-emoji
+      liberation_ttf
+      freefont_ttf
+      twemoji-color-font
+      TsangerJinKai02
+      noto-fonts-cjk-sans
     ]
     ++ (lib.optionals pkgs.stdenv.isDarwin) [
       # pngpaste for org mode download clip
@@ -70,18 +81,6 @@ in
   home.sessionVariables = {
     "EIDTOR" = "emacs";
   };
-  fonts.packages = with pkgs; [
-    iosevka
-    cm_unicode
-    ibm-plex
-    symbola
-    noto-fonts-emoji
-    liberation_ttf
-    freefont_ttf
-    twemoji-color-font
-    TsangerJinKai02
-    noto-fonts-cjk-sans
-  ];
   stylix.targets.emacs.enable = false;
   # xdg.configFile."doom".source = config.lib.file.mkOutOfStoreSymlink doomPath;
   # home.file.".cache/doom/nix/rime" = {

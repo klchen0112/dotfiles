@@ -1,14 +1,13 @@
-{
-  inputs,
-  outputs,
-  lib,
-  config,
-  pkgs,
-  username,
-  ...
+{ inputs
+, outputs
+, lib
+, config
+, pkgs
+, username
+, ...
 }:
 {
-  fonts.packages = with pkgs; [
+  home.packages = with pkgs; [
     nerd-fonts.iosevka
     nerd-fonts.hack
     cm_unicode

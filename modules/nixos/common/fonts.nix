@@ -1,10 +1,5 @@
-{
-  config,
-  pkgs,
-  username,
-  system,
-  inputs,
-  ...
+{ pkgs
+, ...
 }:
 {
   fonts = {
