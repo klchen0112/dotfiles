@@ -1,21 +1,16 @@
 { flake, ... }:
-
-let
-  inherit (flake) inputs;
-  inherit (inputs) self;
-in
-{
-  machine = flake.config.machines.mbp-m1;
+let machine =
+  flake.config.machines.mbp-dxm;
+in {
+  machine = flake.config.machines.machine;
   nixpkgs.hostPlatform = machine.platform;
   networking.hostName = machine.hostName;
 
   imports = [
-    self.darwinModules.default
+    flake.inputs.self.darwinModules.default
   ];
-  myusers = [
-    "chenkailong_dxm"
-  ];
-  system.primaryUser = "chenkailong_dxm";
+  myusers = machine.users;
+  system.primaryUser = head machine.users;
   home-manager.backupFileExtension = "nixos-unified-template-backup";
 
   system.stateVersion = 4;

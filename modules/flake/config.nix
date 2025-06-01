@@ -46,6 +46,12 @@ let
           SSH public key
         '';
       };
+      users = lib.mkOption {
+        type = lib.types.listOf lib.types.str;
+        description = ''
+          name of users
+        '';
+      };
     };
   };
 in

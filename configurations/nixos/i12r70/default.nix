@@ -1,20 +1,18 @@
 { flake, config, ... }:
-let
-  inherit (flake) inputs;
-  inherit (inputs) self;
-in
-{
+let machine =
+  flake.config.machines.i12r70;
+in   {
   imports = [
-    self.nixosModules.default
+    flake.inputs.self.nixosModules.default
     ./hardware-configuration.nix
   ];
-  nixpkgs.hostPlatform = "x86_64-linux";
+  machine = machine;
+  nixpkgs.hostPlatform = machine.platform;
+  networking.hostName = machine.hostName;
 
   system.stateVersion = "25.11";
-  # Defined by /modules/home/me.nix
-  # And used all around in /modules/home/*
-  myusers = [ "klchen" ];
-  networking.hostName = "i12r70";
+  myusers = machine.users;
+
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;

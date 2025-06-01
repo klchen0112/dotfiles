@@ -1,20 +1,14 @@
 # Configuration for my M1 Macbook Max as headless server
 { flake, ... }:
-
-let
-  inherit (flake) inputs;
-  inherit (inputs) self;
-in
-rec {
-
+let machine =
+  flake.config.machines.mbp-m1;
+in {
   imports = [
-    self.darwinModules.default
+    flake.inputs.self.darwinModules.default
   ];
-  myusers = [
-    "klchen"
-  ];
-  system.primaryUser = "klchen";
-  machine = flake.config.machines.mbp-m1;
+  myusers = machine.users;
+  system.primaryUser = builtins.head machine.users;
+  machine = machine;
   nixpkgs.hostPlatform = machine.platform;
   networking.hostName = machine.hostName;
   home-manager.backupFileExtension = "nixos-unified-template-backup";

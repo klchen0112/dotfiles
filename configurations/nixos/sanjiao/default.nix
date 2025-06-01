@@ -1,16 +1,17 @@
 { flake, ... }:
-let
-  inherit (flake) inputs;
-  inherit (inputs) self;
+let machine =
+  flake.config.machines.sanjiao;
 in
-{
+ {
   imports = [
-    self.nixosModules.default
+    flake.inputs.self.nixosModules.default
     ./hardware-configuration.nix
   ];
-
+  machine = machine;
+  nixpkgs.hostPlatform = machine.platform;
+  networking.hostName = machine.hostName;
   # Defined by /modules/home/me.nix
-  myusers = [ "klchen" ];
+  myusers = machine.users;
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
@@ -22,7 +23,5 @@ in
   systemd.targets.suspend.enable = false;
   systemd.targets.hibernate.enable = false;
   systemd.targets.hybrid-sleep.enable = false;
-  nixpkgs.hostPlatform = "x86_64-linux";
-  networking.hostName = "sanjiao";
   system.stateVersion = "25.11";
 }

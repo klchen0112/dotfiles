@@ -2,10 +2,6 @@
 , ...
 }:
 {
-  imports = [
-    flake.inputs.brew-nix.darwinModules.default
-  ];
-  brew-nix.enable = true;
   homebrew = {
     # Declare Homebrew using Nix-Darwin
     enable = true;

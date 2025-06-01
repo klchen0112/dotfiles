@@ -2,16 +2,14 @@
 , pkgs
 , ...
 }:
-let
-  inherit (flake) inputs;
-  inherit (inputs) self;
-in
-{
+let machine =
+  flake.config.machines.a3400g;
+in  {
   imports = [
-    self.nixosModules.default
+    flake.inputs.self.nixosModules.default
     ./hardware-configuration.nix
   ];
-  myusers = [ "klchen" ];
+  myusers = machine.users;
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -22,8 +20,10 @@ in
   systemd.targets.suspend.enable = false;
   systemd.targets.hibernate.enable = false;
   systemd.targets.hybrid-sleep.enable = false;
-  networking.hostName = "a3400g";
   system.stateVersion = "25.11";
-  nixpkgs.hostPlatform = "x86_64-linux";
+
+  machine = machine;
+  nixpkgs.hostPlatform = machine.platform;
+  networking.hostName = machine.hostName;
 
 }

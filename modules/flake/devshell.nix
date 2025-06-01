@@ -1,7 +1,7 @@
 { inputs, ... }:
 {
   imports = [
-    inputs.git-hooks.flakeModule
+    # inputs.git-hooks.flakeModule
     inputs.treefmt-nix.flakeModule
   ];
   perSystem =
@@ -14,7 +14,6 @@
       devShells.default = pkgs.mkShell {
         name = "nixos-config-shell";
         meta.description = "Dev environment for nixos-config";
-        inputsFrom = [ config.pre-commit.devShell ];
         packages = with pkgs; [
           just
           colmena
@@ -23,12 +22,10 @@
           inputs'.agenix.packages.default
         ];
       };
-      pre-commit.settings.hooks = {
-        nixpkgs-fmt.enable = false;
-      };
+
       treefmt = {
         projectRootFile = "flake.nix";
-        programs.nixfmt.enable = pkgs.lib.meta.availableOn pkgs.stdenv.buildPlatform pkgs.nixfmt-rfc-style.compiler;
+        programs.nixfmt.enable = true;
         programs.nixfmt.package = pkgs.nixfmt-rfc-style;
         programs.shellcheck.enable = true;
         programs.deno.enable = true;

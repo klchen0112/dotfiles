@@ -31,6 +31,7 @@
         "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAsw5gk6koAb2D1SYnHt3jhYLNCWChR6eFKJ3vPO3tZY"
       ];
       base16Scheme = "selenized-light";
+      users = ["klchen"];
     };
     sanjiao = {
       hostName = "a3400g";
@@ -43,6 +44,7 @@
       platform = "x86_64-linux";
       base16Scheme = "selenized-light";
       sshKey = [ "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIF0EqszwQ4azrDwsLH181TOl2lWACWiaNxwmSNpnfmhQ" ];
+      users = ["klchen"];
     };
     mbp-dxm = {
       hostName = "mbp-dxm";
@@ -51,6 +53,7 @@
         "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIH8NNbMeWmANWXw/oLFRsKPxc8gmMgyhQFYb+v0lrkpI"
       ];
       base16Scheme = "selenized-light";
+      users = ["chenkailong_dxm"];
     };
     mbp-m1 = {
       hostName = "mbp-m1";
@@ -59,6 +62,7 @@
       sshKey = [
         "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIC9ZvdIrZP9su70iBKgCB0QOY0kL9Z9qu3B9Of05VS5a"
       ];
+      users = ["klchen"];
     };
   };
 }
