@@ -3,11 +3,11 @@
 , ...
 }:
 let
-  rimePath = "${config.home.homeDirectory}/my/dotfiles/modules/home/all/inputmethod/rime";
+  rimePath = "${config.home.homeDirectory}/my/dotfiles/rime";
 in
 {
   i18n.inputMethod = {
-    enabled = if pkgs.stdenv.isLinux then "fcitx5" else "null";
+    enabled = if pkgs.stdenv.isLinux then "fcitx5" else null;
     fcitx5.addons = with pkgs; [
       fcitx5-rime
       fcitx5-configtool
@@ -23,11 +23,11 @@ in
       enable = pkgs.stdenv.isLinux;
       source = config.lib.file.mkOutOfStoreSymlink rimePath;
     };
-    home.file = {
-      "Library/Rime" = {
-        enable = pkgs.stdenv.isDarwin;
-        source = config.lib.file.mkOutOfStoreSymlink rimePath;
-      };
+
+    "Library/Rime" = {
+      enable = pkgs.stdenv.isDarwin;
+      source = config.lib.file.mkOutOfStoreSymlink rimePath;
     };
+
   };
 }

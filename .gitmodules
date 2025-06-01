@@ -1,4 +1,4 @@
 [submodule "rime"]
-	path = modules/home/common/inputmethod/rime
+	path = rime
 	url = https://github.com/klchen0112/rime-combo-ice-pinyin.git
     branch = master
