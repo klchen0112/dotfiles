@@ -51,7 +51,7 @@
         inputs.nixpkgs.follows = "nixpkgs";
       };
       #  MacOS
-      darwin = {
+      nix-darwin = {
         url = "github:LnL7/nix-darwin"; # MacOS Package Management
         inputs.nixpkgs.follows = "nixpkgs";
       };
@@ -61,7 +61,7 @@
         # for local testing via `nix flake check` while developing
         #url = "path:../";
         url = "github:BatteredBunny/brew-nix";
-        inputs.nix-darwin.follows = "darwin";
+        inputs.nix-darwin.follows = "nix-darwin";
         inputs.brew-api.follows = "brew-api";
         inputs.nixpkgs.follows = "nixpkgs";
       };
@@ -142,7 +142,7 @@
       agenix = {
         url = "github:ryantm/agenix";
         inputs.nixpkgs.follows = "nixpkgs";
-        inputs.darwin.follows = "darwin";
+        inputs.darwin.follows = "nix-darwin";
         inputs.home-manager.follows = "home-manager";
         inputs.systems.follows = "systems";
       };

@@ -3,7 +3,7 @@
     "agenix": {
       "inputs": {
         "darwin": [
-          "darwin"
+          "nix-darwin"
         ],
         "home-manager": [
           "home-manager"
@@ -118,7 +118,7 @@
           "brew-api"
         ],
         "nix-darwin": [
-          "darwin"
+          "nix-darwin"
         ],
         "nixpkgs": [
           "nixpkgs"
@@ -165,26 +165,6 @@
       "original": {
         "owner": "ipetkov",
         "repo": "crane",
-        "type": "github"
-      }
-    },
-    "darwin": {
-      "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1748352827,
-        "narHash": "sha256-sNUUP6qxGkK9hXgJ+p362dtWLgnIWwOCmiq72LAWtYo=",
-        "owner": "LnL7",
-        "repo": "nix-darwin",
-        "rev": "44a7d0e687a87b73facfe94fba78d323a6686a90",
-        "type": "github"
-      },
-      "original": {
-        "owner": "LnL7",
-        "repo": "nix-darwin",
         "type": "github"
       }
     },
@@ -631,6 +611,26 @@
         "owner": "NixOS",
         "ref": "2.29-maintenance",
         "repo": "nix",
+        "type": "github"
+      }
+    },
+    "nix-darwin": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1748352827,
+        "narHash": "sha256-sNUUP6qxGkK9hXgJ+p362dtWLgnIWwOCmiq72LAWtYo=",
+        "owner": "LnL7",
+        "repo": "nix-darwin",
+        "rev": "44a7d0e687a87b73facfe94fba78d323a6686a90",
+        "type": "github"
+      },
+      "original": {
+        "owner": "LnL7",
+        "repo": "nix-darwin",
         "type": "github"
       }
     },
@@ -1186,7 +1186,6 @@
         "agenix": "agenix",
         "brew-api": "brew-api",
         "brew-nix": "brew-nix",
-        "darwin": "darwin",
         "devshell": "devshell",
         "doom-config": "doom-config",
         "emacs-overlay": "emacs-overlay",
@@ -1197,6 +1196,7 @@
         "home-manager": "home-manager",
         "lib-aggregate": "lib-aggregate",
         "niri": "niri",
+        "nix-darwin": "nix-darwin",
         "nix-doom-emacs-unstraightened": "nix-doom-emacs-unstraightened",
         "nix-eval-jobs": "nix-eval-jobs",
         "nix-on-droid": "nix-on-droid",

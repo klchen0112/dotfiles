@@ -23,5 +23,7 @@ in
   systemd.targets.hibernate.enable = false;
   systemd.targets.hybrid-sleep.enable = false;
   networking.hostName = "a3400g";
-  system.stateVersion = "25.05";
+  system.stateVersion = "25.11";
+  nixpkgs.hostPlatform = "x86_64-linux";
+
 }

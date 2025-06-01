@@ -3,12 +3,9 @@
 , flake
 , ...
 }:
-let
-  inherit (flake) inputs;
-in
 {
   imports = [
-    inputs.stylix.homeModules.stylix
+    flake.inputs.stylix.homeModules.stylix
   ];
   stylix.autoEnable = false;
   stylix = {

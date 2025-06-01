@@ -2,13 +2,9 @@
 , isWork ? true
 , ...
 }:
-let
-  inherit (flake) config inputs;
-  inherit (inputs) self;
-in
 {
   imports = [
-    inputs.brew-nix.darwinModules.default
+    flake.inputs.brew-nix.darwinModules.default
   ];
   brew-nix.enable = true;
   homebrew = {

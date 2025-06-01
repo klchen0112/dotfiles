@@ -1,13 +1,8 @@
-{ flake, config, ... }:
-
-let
-  inherit (flake.inputs) self;
-  inherit (flake) inputs;
-in
+{ flake, config, pkgs, ... }:
 {
   environment.systemPackages = [
-    inputs.agenix.packages.${pkgs.system}.default
+    flake.inputs.agenix.packages.${pkgs.system}.default
   ];
-  imports = [ inputs.agenix.darwinModules.default ];
-  age.secrets.access-tokens.file = self + /secrets/access-tokens.age;
+  imports = [ flake.inputs.agenix.darwinModules.default ];
+  age.secrets.access-tokens.file = flake.inputs.self + /secrets/access-tokens.age;
 }

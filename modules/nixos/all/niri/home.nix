@@ -1,12 +1,10 @@
-{
-  pkgs,
-  config,
-  inputs,
-  ...
+{ flake
+, inputs
+, ...
 }:
 {
   imports = [
-    inputs.niri.homeModules.niri
+    flake.inputs.niri.homeModules.niri
   ];
   # Clipboard Manager not working
   programs.niri.enable = true;

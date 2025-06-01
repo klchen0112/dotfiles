@@ -17,6 +17,6 @@ rec {
   networking.hostName = "mbp-m1";
   home-manager.backupFileExtension = "nixos-unified-template-backup";
 
-  system.stateVersion = "24.11";
+  system.stateVersion = "25.11";
 
 }

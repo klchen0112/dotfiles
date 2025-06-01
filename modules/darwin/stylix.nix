@@ -3,12 +3,9 @@
 , flake
 , ...
 }:
-let
-  inherit (flake) inputs;
-in
 {
   imports = [
-    inputs.stylix.darwinModules.stylix
+    flake.inputs.stylix.darwinModules.stylix
   ];
   stylix.autoEnable = false;
   stylix = {

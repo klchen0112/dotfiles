@@ -4,13 +4,8 @@
 , config
 , ...
 }:
-
-let
-  inherit (flake) inputs;
-  inherit (inputs) self;
-in
 {
-  environment.etc."nix/inputs/nixpkgs".source = "${inputs.nixpkgs}";
+  environment.etc."nix/inputs/nixpkgs".source = "${flake.inputs.nixpkgs}";
 
   nixpkgs = {
     config = {
@@ -18,10 +13,10 @@ in
       allowUnsupportedSystem = true;
       allowUnfree = true;
     };
-    overlays = (lib.attrValues self.overlays) ++ [
-      inputs.nix-vscode-extensions.overlays.default
-      inputs.nur.overlays.default
-    ];
+    # overlays = (lib.attrValues flake.inputs.self.overlays) ++ [
+    #   flake.inputs.nix-vscode-extensions.overlays.default
+    #   flake.inputs.nur.overlays.default
+    # ];
   };
   nix = {
     channel.enable = false; # remove nix-channel related tools & configs, we use flakes instead.

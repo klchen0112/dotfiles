@@ -4,6 +4,7 @@
 {
   imports = [
     ./common
+    ./linux/access-tokens.nix
   ];
   services.openssh.enable = true;
 }

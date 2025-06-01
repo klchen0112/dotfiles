@@ -1,12 +1,10 @@
-{
-  pkgs,
-  config,
-  inputs,
-  ...
+{ pkgs
+, flake
+, ...
 }:
 {
   imports = [
-    inputs.niri.nixosModules.niri
+    flake.inputs.niri.nixosModules.niri
     ./binds.nix
   ];
   # Clipboard Manager not working
@@ -14,4 +12,4 @@
   programs.niri.enable = true;
   programs.niri.package = pkgs.niri-unstable;
   pro
-}
+    }
