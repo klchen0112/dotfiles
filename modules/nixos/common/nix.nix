@@ -17,7 +17,9 @@
       flake.inputs.nix-vscode-extensions.overlays.default
       flake.inputs.nur.overlays.default
       # flake.inputs.self.overlays.default
-    ];
+    ] ++ (
+      lib.attrValues flake.inputs.self.overlays
+    );
   };
   nix = {
     channel.enable = false; # remove nix-channel related tools & configs, we use flakes instead.
