@@ -10,7 +10,7 @@ rec {
   imports = [
     self.darwinModules.default
   ];
-  myUsers = [
+  myusers = [
     "klchen"
   ];
   machine = flake.config.machines.mbp-m1;

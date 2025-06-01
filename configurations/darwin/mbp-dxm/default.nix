@@ -11,7 +11,7 @@ in
   imports = [
     self.darwinModules.default
   ];
-  myUsers = [
+  myusers = [
     "chenkailong_dxm"
   ];
 
