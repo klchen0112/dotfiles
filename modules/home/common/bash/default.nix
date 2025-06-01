@@ -1,7 +1,6 @@
 # fish configuration
 #
-{
-  ...
+{ ...
 }:
 {
   programs.bash = {

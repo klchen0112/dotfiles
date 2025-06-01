@@ -1,17 +1,19 @@
 {
   imports = [
-    ./all/emacs
-    ./all/fish
-    ./all/kitty
-    ./all/me
-    ./all/access-tokens.nix
-    # ./all/stylix.nix
-    ./all/utils
-    ./all/gc.nix
-    ./all/git
-    # ./all/chrome
-    # ./all/zen
-    ./all/kitty
-    ./all/vscode
+    ./common/emacs
+    ./common/fish
+    ./common/kitty
+    ./common/me
+    ./common/access-tokens.nix
+    # ./common/stylix.nix
+    ./common/utils
+    ./common/gc.nix
+    ./common/git
+    # ./common/chrome
+    # ./common/zen
+    ./common/kitty
+    ./common/vscode
+    ./common/lang
+    ./common/inputmethod
   ];
 }
