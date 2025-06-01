@@ -27,7 +27,7 @@ in
         name = "${config.me.username}";
         search = {
           force = true;
-          default = "DuckDuckGo";
+          default = "ddg";
           order = [
             "Bing"
             "Baidu"

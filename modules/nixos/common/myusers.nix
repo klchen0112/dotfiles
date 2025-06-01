@@ -26,12 +26,18 @@ in
     # For home-manager to work.
     # https://github.com/nix-community/home-manager/issues/4026#issuecomment-1565487545
     users.users = mapListToAttrs config.myusers (name:
+    let
+      userConfig = flake.config.users.${name};
+    in
       lib.optionalAttrs pkgs.stdenv.isDarwin
         {
           home = "/Users/${name}";
         } // lib.optionalAttrs pkgs.stdenv.isLinux {
-        isNormalUser = true;
-      }
+          isNormalUser = userConfig.isNormalUser;
+          extraGroups = [ "networkmanager" "wheel" ];
+        } // {
+          openssh.authorizedKeys.keys = userConfig.sshKey;
+        }
     );
 
     # Enable home-manager for our user
