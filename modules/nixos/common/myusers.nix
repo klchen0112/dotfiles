@@ -60,12 +60,10 @@ in
       // {
         root =
           let
-            rootSshKeys = (map (user: user.sshKey) (builtins.filter (user: user.root == true) config.myusers));
+            rootSshKeys = map (user: flake.config.users.${user}.sshKey) (builtins.filter (user: flake.config.users.${user}.root == true) config.myusers);
           in
           {
-            openssh.authorizedKeys.keys = [
-              "dsafsd"
-            ];
+            openssh.authorizedKeys.keys = builtins.concatLists rootSshKeys;
           };
       };
 
