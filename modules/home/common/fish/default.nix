@@ -3,6 +3,9 @@
 , ...
 }:
 {
+  home.packages = [
+    pkgs.macchina
+  ];
   programs.fish = {
     enable = true;
     shellAbbrs = {
