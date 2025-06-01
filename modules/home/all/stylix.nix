@@ -8,9 +8,9 @@ let
 in
 {
   imports = [
-    inputs.stylix.homeManagerModules.stylix
+    inputs.stylix.homeModules.stylix
   ];
-  stylix.targets.gnome.enable = pkgs.stdenv.isLinux;
+  stylix.targets.gnome.enable = false;
   stylix = {
     enable = true;
     base16Scheme = "${pkgs.base16-schemes}/share/themes/${config.me.base16Scheme}.yaml";
