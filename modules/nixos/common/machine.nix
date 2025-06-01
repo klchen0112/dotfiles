@@ -20,6 +20,12 @@ let
           SSH public key
         '';
       };
+      users = lib.mkOption {
+        type = lib.types.listOf lib.types.str;
+        description = ''
+          list of user
+        '';
+      };
     };
   };
 in

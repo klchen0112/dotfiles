@@ -2,16 +2,19 @@
 { flake, ... }:
 let
   machine = flake.config.machines.mbp-m1;
+  myusers = machine.users;
+  primaryUser = builtins.head machine.users;
+  platform = machine.platform;
+  hostName = machine.hostName;
 in
 {
   imports = [
     flake.inputs.self.darwinModules.default
   ];
-  myusers = machine.users;
-  system.primaryUser = builtins.head machine.users;
-  machine = machine;
-  nixpkgs.hostPlatform = machine.platform;
-  networking.hostName = machine.hostName;
+  inherit machine myusers;
+  system.primaryUser = primaryUser;
+  nixpkgs.hostPlatform =platform;
+  networking.hostName = hostName;
   home-manager.backupFileExtension = "nixos-unified-template-backup";
 
   system.stateVersion = 4;

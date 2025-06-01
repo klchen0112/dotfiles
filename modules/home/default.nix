@@ -5,7 +5,7 @@
     ./common/kitty
     ./common/me
     ./common/access-tokens.nix
-    # ./common/stylix.nix
+    ./common/stylix.nix
     ./common/utils
     ./common/gc.nix
     ./common/git
