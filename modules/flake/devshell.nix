@@ -1,14 +1,15 @@
 { inputs, ... }:
 {
   imports = [
-    # inputs.git-hooks.flakeModule
+    inputs.git-hooks.flakeModule
     inputs.treefmt-nix.flakeModule
   ];
   perSystem =
-    { inputs'
-    , config
-    , pkgs
-    , ...
+    {
+      inputs',
+      config,
+      pkgs,
+      ...
     }:
     {
       devShells.default = pkgs.mkShell {
@@ -20,9 +21,12 @@
           nixd
           nix-output-monitor
           inputs'.agenix.packages.default
+          nixfmt-rfc-style
         ];
       };
-
+      pre-commit.settings = {
+        hooks.nixfmt-rfc-style.enable = true;
+      };
       treefmt = {
         projectRootFile = "flake.nix";
         programs.nixfmt.enable = true;
