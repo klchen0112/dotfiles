@@ -13,8 +13,8 @@ rec {
   myusers = [
     "klchen"
   ];
-  machine = flake.config.machines.mbp-m1;
   system.primaryUser = "klchen";
+  machine = flake.config.machines.mbp-m1;
   nixpkgs.hostPlatform = machine.platform;
   networking.hostName = machine.hostName;
   home-manager.backupFileExtension = "nixos-unified-template-backup";
