@@ -7,7 +7,6 @@ in
 {
   imports = [
     ./common
-    self.nixosModules.common
     ./homebrew
     ./areospace
     ./access-tokens.nix

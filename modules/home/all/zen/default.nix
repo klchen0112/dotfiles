@@ -21,10 +21,10 @@ in
       DisableAppUpdate = true;
     };
     profiles = {
-      "${config.me.name}" = {
+      "${config.me.username}" = {
         id = 0;
         isDefault = true;
-        name = "${config.me.name}";
+        name = "${config.me.username}";
         search = {
           force = true;
           default = "DuckDuckGo";

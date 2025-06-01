@@ -1,5 +1,4 @@
 {
-  home.stateVersion = "25.05";
   imports = [
     ./all/emacs
     ./all/fish
@@ -8,5 +7,6 @@
     ./all/access-tokens.nix
     ./all/stylix.nix
     ./all/utils
+    ./all/gc.nix
   ];
 }

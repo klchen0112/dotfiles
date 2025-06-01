@@ -16,7 +16,7 @@
     in
     {
       root.openssh.authorizedKeys.keys = myKeys;
-      ${me.name} =
+      ${me.username} =
         {
           openssh.authorizedKeys.keys = myKeys;
           shell = if pkgs.stdenv.isLinux then pkgs.bash else pkgs.zsh;
