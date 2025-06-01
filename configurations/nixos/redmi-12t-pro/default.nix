@@ -1,34 +1,15 @@
-{ inputs
-, outputs
-, lib
-, config
-, pkgs
-, ...
-}:
+{ flake, ... }:
+let
+  inherit (flake) inputs;
+  inherit (inputs) self;
+in
 {
   imports = [
-    ../../modules/nixpkgs
-    ../../modules/locale
+    self.homeModules.default
+    ./hardware-configuration.nix
   ];
 
-  programs.home-manager.enable = true;
-
-  system.stateVersion = "25.05";
-
-  environment = {
-    shells = with pkgs; [
-      fish
-      bash
-    ]; # Default shell
-    systemPackages = with pkgs; [
-      cachix
-      fontconfig
-      gnugrep # replacee macos's grep
-      gnutar # replacee macos's tar
-      p7zip
-      vim
-    ];
-    etcBackupExtension = ".bak";
-  };
-  programs.bash.enable = true;
+  # Defined by /modules/home/me.nix
+  # And used all around in /modules/home/*
+  me = flake.users.klchen;
 }

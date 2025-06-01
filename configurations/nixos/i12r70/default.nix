@@ -1,30 +1,17 @@
-#
-#  Specific system configuration settings for MacBook
-#
-#  flake.nix
-#   └─ ./darwin
-#       ├─ ./default.nix
-#       └─ ./configuration.nix *
-#
-{ config
-, pkgs
-, username
-, system
-, inputs
-, ...
-}:
+{ flake, config, ... }:
+let
+  inherit (flake) inputs;
+  inherit (inputs) self;
+in
 {
   imports = [
-    ../../modules/account
-    ../../modules/desktop/cosmic
-    # Include the results of the hardware scan.
+    self.homeModules.default
     ./hardware-configuration.nix
-    ../../modules/locale
-    ../../modules/fonts/fonts.nix
-    ../../modules/nixpkgs
-    ../../modules/shells
-    ../../modules/secrets
   ];
+
+  # Defined by /modules/home/me.nix
+  # And used all around in /modules/home/*
+  me = flake.users.klchen;
 
   networking.hostName = "i12r70";
   # Bootloader.
@@ -32,32 +19,8 @@
   boot.loader.efi.canTouchEfiVariables = true;
   networking.networkmanager.enable = true;
   security.sudo.wheelNeedsPassword = true; # User does not need to give password when using sudo.
-  programs.bash.enable = true;
-  system.stateVersion = "25.05";
 
-  environment = {
-    shells = with pkgs; [
-      fish
-      bash
-    ]; # Default shell
-    systemPackages = with pkgs; [
-      cachix
-      fontconfig
-      gnugrep # replacee macos's grep
-      gnutar # replacee macos's tar
-      p7zip
-      wget
-    ];
-  };
-  programs.nix-ld = {
-    enable = true;
-    package = pkgs.nix-ld; # only for NixOS 24.05
-  };
-  programs.dconf.enable = true;
-
-  # Load nvidia driver for Xorg and Wayland
   services.xserver.videoDrivers = [ "nvidia" ];
-
   # nvidia settings
   boot.kernelParams = [ "nvidia_drm.fbdev=1" ];
   hardware.nvidia = {

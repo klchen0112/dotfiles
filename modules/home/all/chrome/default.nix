@@ -1,9 +1,5 @@
-{
-  pkgs,
-  lib,
-  inputs,
-  isWork,
-  ...
+{ pkgs
+, ...
 }:
 {
   programs.google-chrome = {

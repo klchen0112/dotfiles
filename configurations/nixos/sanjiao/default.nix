@@ -1,30 +1,17 @@
-#
-#  Specific system configuration settings for MacBook
-#
-#  flake.nix
-#   └─ ./darwin
-#       ├─ ./default.nix
-#       └─ ./configuration.nix *
-#
-{ config
-, pkgs
-, username
-, system
-, inputs
-, ...
-}:
+{ flake, ... }:
+let
+  inherit (flake) inputs;
+  inherit (inputs) self;
+in
 {
   imports = [
-    # Include the results of the hardware scan.
+    self.homeModules.default
     ./hardware-configuration.nix
-    ../../modules/account
-    ../../modules/locale
-    ../../modules/fonts/fonts.nix
-    ../../modules/nixpkgs
-    ../../modules/shells
-    ../../modules/secrets
-    ../../modules/ssh
   ];
+
+  # Defined by /modules/home/me.nix
+  # And used all around in /modules/home/*
+  me = flake.users.klchen;
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -36,25 +23,5 @@
   systemd.targets.hibernate.enable = false;
   systemd.targets.hybrid-sleep.enable = false;
   networking.hostName = "sanjiao";
-  system.stateVersion = "25.05";
-
-  environment = {
-    shells = with pkgs; [
-      fish
-      bash
-    ]; # Default shell
-    systemPackages = with pkgs; [
-      cachix
-      fontconfig
-      gnugrep # replacee macos's grep
-      gnutar # replacee macos's tar
-      p7zip
-      wget
-    ];
-  };
-  programs.nix-ld = {
-    enable = true;
-    package = pkgs.nix-ld-rs; # only for NixOS 24.05
-  };
-  programs.dconf.enable = true;
+  home.stateVersion = "25.05";
 }

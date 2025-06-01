@@ -21,26 +21,6 @@ in
   systemd.targets.suspend.enable = false;
   systemd.targets.hibernate.enable = false;
   systemd.targets.hybrid-sleep.enable = false;
-  networking.hostName = "3400g";
+  networking.hostName = "a3400g";
   system.stateVersion = "25.05";
-  programs.bash.enable = true;
-  environment = {
-    shells = with pkgs; [
-      fish
-      bash
-    ]; # Default shell
-    systemPackages = with pkgs; [
-      cachix
-      fontconfig
-      gnugrep # replacee macos's grep
-      gnutar # replacee macos's tar
-      p7zip
-      wget
-    ];
-  };
-  programs.nix-ld = {
-    enable = true;
-    package = pkgs.nix-ld-rs; # only for NixOS 24.05
-  };
-  programs.dconf.enable = true;
 }

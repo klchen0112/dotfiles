@@ -1,49 +1,32 @@
+# Like GNU `make`, but `just` rustier.
+# https://just.systems/
+# run `just` from this directory to see available commands
 
-# nix
+# Default command when 'just' is run without arguments
+default:
+  @just --list
 
-up:
-	git pull
-	nix flake update
+# Update nix flake
+[group('Main')]
+update:
+  nix flake update
 
+# Lint nix files
+[group('dev')]
+lint:
+  nix fmt
+
+# Check nix flake
+[group('dev')]
 check:
-	nix flake check
+  nix flake check
 
-fmt:
-	nix fmt
+# Manually enter dev shell
+[group('dev')]
+dev:
+  nix develop
 
-gc:
-  sudo nix store gc --debug
-  sudo nix-collect-garbage --delete-old
-
-gitgc:
-  git reflog expire --expire-unreachable=now --all
-  git gc --prune=now
-
-# i12500
-
-i12r70:
-	sudo nixos-rebuild switch --flake .#i12r70
-
-a3400g:
-	sudo nixos-rebuild switch --flake .#3400g
-
-sanjiao:
-	sudo nixos-rebuild switch --flake .#sanjiao
-
-woniu:
-	sudo nixos-rebuild switch --flake .#woniu
-
-# macbook
-
-mbp-m1:
-	sudo darwin-rebuild switch --flake .#mbp-m1
-
-mbp-dxm:
-	sudo darwin-rebuild switch --flake .#mbp-dxm
-# Emacs
-emacs-test:
-	rm -rf "$HOME/.config/doom"
-	rsync -avz --copy-links --chmod=Du+rwx,Dgo+rx,Fu+rw,Fgo+r modules/editors/emacs/doom/ "$HOME/.config/doom"
-
-emacs-clean:
-	rm -rf "${HOME}/.config/doom"
+# Activate the configuration
+[group('Main')]
+run:
+  nix run

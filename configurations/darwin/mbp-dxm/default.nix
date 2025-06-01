@@ -1,51 +1,18 @@
-{ inputs
-, outputs
-, config
-, pkgs
-, username
-, ...
-}:
+{ flake, ... }:
+
+let
+  inherit (flake) inputs;
+  inherit (inputs) self;
+in
 {
-  ids.gids.nixbld = 350;
+  nixpkgs.hostPlatform = "aarch64-darwin";
+  networking.hostName = "mbp-dxm";
+
   imports = [
-    ../../modules/account/darwin.nix
-    ../../modules/fonts/fonts.nix
-    ../../modules/nixpkgs/darwin.nix
-    ../../modules/system/darwin.nix
-    # ../../modules/desktop/skhd
-    # ../../modules/desktop/yabai
-    ../../modules/desktop/areospace
-    ../../modules/homebrew
-    ../../modules/downloader/darwin.nix
-    ../../modules/secrets
-    ../../modules/stylix/darwin.nix
+    self.darwinModules.default
   ];
-  system.primaryUser = "${username}";
-  programs.bash.enable = true;
-  programs.zsh.enable = true;
-  programs.fish.enable = true;
+  myUsers = [
+    "chenkailong_dxm"
+  ];
 
-  environment = {
-    shells = with pkgs; [
-      fish
-      bash
-      zsh
-    ]; # Default shell
-    # variables = {
-    #   # System variables
-    #   EDITOR = "nvim";
-    #   VISUAL = "nvim";
-    # };
-    systemPackages = with pkgs; [
-      coreutils # gnu ls
-      cachix
-      # sketchybar
-      # fontconfig
-      gnugrep # replacee macos's grep
-      gnutar # replacee macos's tar
-      p7zip
-      coreutils
-    ];
-
-  };
 }

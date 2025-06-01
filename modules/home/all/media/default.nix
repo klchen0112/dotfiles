@@ -1,5 +1,3 @@
-# ../../media
-#
 { pkgs, ... }:
 {
   programs.mpv = {

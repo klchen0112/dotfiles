@@ -1,11 +1,7 @@
-#
-# OpenVPN
-#
 { pkgs
 , lib
 , config
-, #
-  ...
+, ...
 }:
 {
   programs.kitty = {

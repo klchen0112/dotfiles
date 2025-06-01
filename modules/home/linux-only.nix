@@ -1,7 +1,8 @@
 {
   imports = [
-    ./chrome
-    ./zen
-    ./inputmethod/linux.nix
+    ./all/chrome
+    ./all/zen
+    ./all/inputmethod/linux.nix
+
   ];
 }

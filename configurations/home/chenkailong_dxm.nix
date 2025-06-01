@@ -10,11 +10,7 @@ in
 
   # Defined by /modules/home/me.nix
   # And used all around in /modules/home/*
-  me = {
-    username = "${flake.config}";
-    # fullname = "John Doe";
-    email = "johndoe@example.com";
-  };
+  me = flake.users.chenkailong_dxm;
 
   home.stateVersion = "25.05";
 }

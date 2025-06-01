@@ -54,7 +54,7 @@ in
     me = lib.mkOption {
       type = userSubmodule;
     };
-    machines = lib.mkOption {
+    machine = lib.mkOption {
       type = machineSubmodule;
     };
 

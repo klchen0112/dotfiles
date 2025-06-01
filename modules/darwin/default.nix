@@ -6,9 +6,11 @@ let
 in
 {
   imports = [
+    ./common
     self.nixosModules.common
-    inputs.agenix.darwinModules.default
     ./homebrew
     ./areospace
+    ./access-tokens.nix
+    ./stylix.nix
   ];
 }

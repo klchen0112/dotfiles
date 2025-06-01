@@ -70,7 +70,7 @@ in
   home.sessionVariables = {
     "EIDTOR" = "emacs";
   };
-  fonts.packages = with packages; [
+  fonts.packages = with pkgs; [
     iosevka
     cm_unicode
     ibm-plex

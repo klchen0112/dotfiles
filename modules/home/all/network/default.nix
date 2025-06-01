@@ -4,7 +4,7 @@
 { pkgs, ... }:
 {
   home.packages = with pkgs; [
-    # pkgs.sing-box
+    sing-box
     ifstat-legacy
   ];
 }

@@ -5,8 +5,7 @@ let
   inherit (inputs) self;
 in
 {
-  n
-    nix = {
+  nix.settings = {
     substituters = [
       # replace official cache with a mirror located in China
       "https://mirrors.tuna.tsinghua.edu.cn/nix-channels/store"

@@ -35,39 +35,10 @@
     # extra-experimental-features = "nix-command flakes";
   };
 
-  outputs =
-    inputs@{ self, ... }:
-    inputs.flake-parts.lib.mkFlake { inherit inputs; } {
-      systems = [
-        "x86_64-linux"
-        "aarch64-linux"
-        "aarch64-darwin"
-      ];
-      imports = (
-        with builtins; map (fn: ./modules/flake-parts/${fn}) (attrNames (readDir ./modules/flake-parts))
-      );
-
-      perSystem =
-        { lib, system, ... }:
-        {
-          # Make our overlay available to the devShell
-          # "Flake parts does not yet come with an endorsed module that initializes the pkgs argument.""
-          # So we must do this manually; https://flake.parts/overlays#consuming-an-overlay
-          _module.args.pkgs = import inputs.nixpkgs {
-            inherit system;
-            overlays = lib.attrValues self.overlays;
-            config.allowUnfree = true;
-          };
-        };
-
-      # https://omnix.page/om/ci.html
-      flake.om.ci.default.ROOT = {
-        dir = ".";
-        steps.flake-check.enable = false; # Doesn't make sense to check nixos config on darwin!
-        steps.custom = { };
-      };
-    };
-
+  # Wired using https://nixos-unified.org/autowiring.html
+  outputs = inputs:
+    inputs.nixos-unified.lib.mkFlake
+      { inherit inputs; root = ./.; };
   inputs =
     # All flake references used to build my NixOS setup. These are dependencies.
     {
