@@ -1,6 +1,7 @@
-{ pkgs
-, config
-, ...
+{
+  pkgs,
+  config,
+  ...
 }:
 let
   rimePath = "${config.home.homeDirectory}/my/dotfiles/rime";

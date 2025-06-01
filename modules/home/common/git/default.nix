@@ -1,8 +1,9 @@
 # fish configuration
 #
-{ lib
-, pkgs
-, ...
+{
+  lib,
+  pkgs,
+  ...
 }:
 {
   programs.git = {

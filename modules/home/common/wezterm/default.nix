@@ -1,8 +1,9 @@
 #
 # OpenVPN
 #
-{ pkgs
-, #
+{
+  pkgs,
+  #
   ...
 }:
 {

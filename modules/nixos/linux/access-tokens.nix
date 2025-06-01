@@ -1,7 +1,8 @@
-{ flake
-, config
-, pkgs
-, ...
+{
+  flake,
+  config,
+  pkgs,
+  ...
 }:
 
 let

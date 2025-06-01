@@ -1,7 +1,8 @@
-{ pkgs
-, config
-, flake
-, ...
+{
+  pkgs,
+  config,
+  flake,
+  ...
 }:
 {
   imports = [

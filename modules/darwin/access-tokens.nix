@@ -1,4 +1,9 @@
-{ flake, config, pkgs, ... }:
+{
+  flake,
+  config,
+  pkgs,
+  ...
+}:
 {
   environment.systemPackages = [
     flake.inputs.agenix.packages.${pkgs.system}.default

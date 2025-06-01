@@ -1,5 +1,6 @@
-{ flake
-, ...
+{
+  flake,
+  ...
 }:
 {
   homebrew = {
@@ -11,26 +12,24 @@
       cleanup = "zap"; # Uninstall not listed packages and casks
     };
     global.autoUpdate = false;
-    masApps =
-      {
+    masApps = {
 
-        # "Bitwarden" = 1352778147;
+      # "Bitwarden" = 1352778147;
 
-        # dingtalk = 1435447041;
-        # xcode = 497799835;
+      # dingtalk = 1435447041;
+      # xcode = 497799835;
 
+      "goodnotes-5" = 1444383602;
+      qq = 451108668;
+      wechat = 836500024;
+      # spark = 1176895641;
+      # onedrive = 823766827;
+      # tencent-meeting = 1484048379;
+      # "microsoft-word" = 462054704;
+      # "microsoft-powerpoint" = 462062816;
+      # "microsoft-excel" = 462058435;
 
-        "goodnotes-5" = 1444383602;
-        qq = 451108668;
-        wechat = 836500024;
-        # spark = 1176895641;
-        # onedrive = 823766827;
-        # tencent-meeting = 1484048379;
-        # "microsoft-word" = 462054704;
-        # "microsoft-powerpoint" = 462062816;
-        # "microsoft-excel" = 462058435;
-
-      };
+    };
 
     brews = [
       # "macism

@@ -1,7 +1,8 @@
 { flake, ... }:
-let machine =
-  flake.config.machines.mbp-dxm;
-in {
+let
+  machine = flake.config.machines.mbp-dxm;
+in
+{
   machine = flake.config.machines.machine;
   nixpkgs.hostPlatform = machine.platform;
   networking.hostName = machine.hostName;

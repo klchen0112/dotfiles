@@ -1,9 +1,21 @@
 # List of users for darwin or nixos system and their top-level configuration.
-{ flake, pkgs, lib, config, ... }:
+{
+  flake,
+  pkgs,
+  lib,
+  config,
+  ...
+}:
 let
   inherit (flake.inputs) self;
-  mapListToAttrs = m: f:
-    lib.listToAttrs (map (name: { inherit name; value = f name; }) m);
+  mapListToAttrs =
+    m: f:
+    lib.listToAttrs (
+      map (name: {
+        inherit name;
+        value = f name;
+      }) m
+    );
 in
 {
   options = {
@@ -25,29 +37,37 @@ in
   config = {
     # For home-manager to work.
     # https://github.com/nix-community/home-manager/issues/4026#issuecomment-1565487545
-    users.users = mapListToAttrs config.myusers (name:
-    let
-      userConfig = flake.config.users.${name};
-    in
-      lib.optionalAttrs pkgs.stdenv.isDarwin
-        {
+    users.users =
+      mapListToAttrs config.myusers (
+        name:
+        let
+          userConfig = flake.config.users.${name};
+        in
+        lib.optionalAttrs pkgs.stdenv.isDarwin {
           home = "/Users/${name}";
-        } // lib.optionalAttrs pkgs.stdenv.isLinux {
+        }
+        // lib.optionalAttrs pkgs.stdenv.isLinux {
           isNormalUser = true;
-          extraGroups = [ "networkmanager" "wheel" ];
-        } // {
+          extraGroups = [
+            "networkmanager"
+            "wheel"
+          ];
+        }
+        // {
           openssh.authorizedKeys.keys = userConfig.sshKey;
         }
-    ) // {
-      root = let
-    rootSshKeys = (map (user: user.sshKey) (builtins.filter (user: user.root == true) config.myusers));
-    in{
-         openssh.authorizedKeys.keys =
-          [
-            "dsafsd"
-          ];
+      )
+      // {
+        root =
+          let
+            rootSshKeys = (map (user: user.sshKey) (builtins.filter (user: user.root == true) config.myusers));
+          in
+          {
+            openssh.authorizedKeys.keys = [
+              "dsafsd"
+            ];
+          };
       };
-    };
 
     # Enable home-manager for our user
     home-manager.users = mapListToAttrs config.myusers (name: {

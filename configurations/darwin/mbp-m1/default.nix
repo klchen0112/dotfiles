@@ -1,8 +1,9 @@
 # Configuration for my M1 Macbook Max as headless server
 { flake, ... }:
-let machine =
-  flake.config.machines.mbp-m1;
-in {
+let
+  machine = flake.config.machines.mbp-m1;
+in
+{
   imports = [
     flake.inputs.self.darwinModules.default
   ];

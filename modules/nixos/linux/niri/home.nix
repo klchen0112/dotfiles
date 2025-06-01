@@ -1,6 +1,7 @@
-{ flake
-, inputs
-, ...
+{
+  flake,
+  inputs,
+  ...
 }:
 {
   imports = [

@@ -1,10 +1,12 @@
-{ flake
-, pkgs
-, ...
+{
+  flake,
+  pkgs,
+  ...
 }:
-let machine =
-  flake.config.machines.a3400g;
-in  {
+let
+  machine = flake.config.machines.a3400g;
+in
+{
   imports = [
     flake.inputs.self.nixosModules.default
     ./hardware-configuration.nix

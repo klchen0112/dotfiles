@@ -1,7 +1,8 @@
 { flake, config, ... }:
-let machine =
-  flake.config.machines.i12r70;
-in   {
+let
+  machine = flake.config.machines.i12r70;
+in
+{
   imports = [
     flake.inputs.self.nixosModules.default
     ./hardware-configuration.nix

@@ -1,7 +1,8 @@
-{ pkgs
-, config
-, inputs
-, ...
+{
+  pkgs,
+  config,
+  inputs,
+  ...
 }:
 {
   fonts = {

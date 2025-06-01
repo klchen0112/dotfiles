@@ -1,6 +1,7 @@
-{ pkgs
-, flake
-, ...
+{
+  pkgs,
+  flake,
+  ...
 }:
 {
   # these code from https://github.com/ryan4yin/nix-config

@@ -1,8 +1,9 @@
-{ flake
-, pkgs
-, lib
-, config
-, ...
+{
+  flake,
+  pkgs,
+  lib,
+  config,
+  ...
 }:
 {
   environment.etc."nix/inputs/nixpkgs".source = "${flake.inputs.nixpkgs}";
@@ -17,9 +18,7 @@
       flake.inputs.nix-vscode-extensions.overlays.default
       flake.inputs.nur.overlays.default
       # flake.inputs.self.overlays.default
-    ] ++ (
-      lib.attrValues flake.inputs.self.overlays
-    );
+    ] ++ (lib.attrValues flake.inputs.self.overlays);
   };
   nix = {
     channel.enable = false; # remove nix-channel related tools & configs, we use flakes instead.

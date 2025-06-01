@@ -1,8 +1,8 @@
 { flake, ... }:
-let machine =
-  flake.config.machines.sanjiao;
+let
+  machine = flake.config.machines.sanjiao;
 in
- {
+{
   imports = [
     flake.inputs.self.nixosModules.default
     ./hardware-configuration.nix
