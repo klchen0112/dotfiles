@@ -36,9 +36,12 @@
   };
 
   # Wired using https://nixos-unified.org/autowiring.html
-  outputs = inputs:
-    inputs.nixos-unified.lib.mkFlake
-      { inherit inputs; root = ./.; };
+  outputs =
+    inputs:
+    inputs.nixos-unified.lib.mkFlake {
+      inherit inputs;
+      root = ./.;
+    };
   inputs =
     # All flake references used to build my NixOS setup. These are dependencies.
     {
@@ -54,20 +57,6 @@
       nix-darwin = {
         url = "github:LnL7/nix-darwin"; # MacOS Package Management
         inputs.nixpkgs.follows = "nixpkgs";
-      };
-
-      # Optional: Declarative tap management
-      brew-nix = {
-        # for local testing via `nix flake check` while developing
-        #url = "path:../";
-        url = "github:BatteredBunny/brew-nix";
-        inputs.nix-darwin.follows = "nix-darwin";
-        inputs.brew-api.follows = "brew-api";
-        inputs.nixpkgs.follows = "nixpkgs";
-      };
-      brew-api = {
-        url = "github:BatteredBunny/brew-api";
-        flake = false;
       };
 
       # Home Manager
@@ -243,7 +232,7 @@
       omnix.url = "github:juspay/omnix";
 
       nix-index-database.url = "github:nix-community/nix-index-database";
-    nix-index-database.inputs.nixpkgs.follows = "nixpkgs";
+      nix-index-database.inputs.nixpkgs.follows = "nixpkgs";
 
     };
 

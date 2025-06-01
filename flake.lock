@@ -96,48 +96,6 @@
         "type": "github"
       }
     },
-    "brew-api": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1748659015,
-        "narHash": "sha256-di1cZYs+ONApmu1IkeoSZdx9gG2Bs2XwVC6Wn4raOT4=",
-        "owner": "BatteredBunny",
-        "repo": "brew-api",
-        "rev": "7ce74d245d6bd78539b85d17332da77b74793e24",
-        "type": "github"
-      },
-      "original": {
-        "owner": "BatteredBunny",
-        "repo": "brew-api",
-        "type": "github"
-      }
-    },
-    "brew-nix": {
-      "inputs": {
-        "brew-api": [
-          "brew-api"
-        ],
-        "nix-darwin": [
-          "nix-darwin"
-        ],
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1745789424,
-        "narHash": "sha256-+VxPIcnS+bG2kh6pf04WtcxnmNAmLlT3JLEhFwRzDa4=",
-        "owner": "BatteredBunny",
-        "repo": "brew-nix",
-        "rev": "928e5382d927727666bcbbd27240e73eeb269b4a",
-        "type": "github"
-      },
-      "original": {
-        "owner": "BatteredBunny",
-        "repo": "brew-nix",
-        "type": "github"
-      }
-    },
     "cachix-push": {
       "locked": {
         "lastModified": 1725315090,
@@ -1204,8 +1162,6 @@
     "root": {
       "inputs": {
         "agenix": "agenix",
-        "brew-api": "brew-api",
-        "brew-nix": "brew-nix",
         "devshell": "devshell",
         "doom-config": "doom-config",
         "emacs-overlay": "emacs-overlay",
