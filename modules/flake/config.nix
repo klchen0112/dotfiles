@@ -27,7 +27,7 @@ let
   };
   machineSubmodule = lib.types.submodule {
     options = {
-      hostname = lib.mkOption {
+      hostName = lib.mkOption {
         type = lib.types.str;
       };
       platform = lib.mkOption {
@@ -54,7 +54,7 @@ in
       type = lib.types.attrsOf userSubmodule;
     };
     machines = lib.mkOption {
-      type = lib.types.attrsOf userSubmodule;
+      type = lib.types.attrsOf machineSubmodule;
     };
   };
 }

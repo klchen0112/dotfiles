@@ -1,7 +1,7 @@
 {
   imports = [
     ./nix.nix
-    # ./primary-as-admin.nix
+    ./machine.nix
     ./caches.nix
     ./myusers.nix
     ./fonts.nix
