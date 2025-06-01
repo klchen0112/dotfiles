@@ -1,5 +1,5 @@
 {
   imports = [
-    ./all/inputmethod/darwin.nix
+    ./all/kitty
   ];
 }

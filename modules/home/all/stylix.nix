@@ -5,7 +5,8 @@
 }:
 let
   inherit (flake) inputs;
-  {
+in
+{
   imports = [
     inputs.stylix.homeManagerModules.stylix
   ];
@@ -28,4 +29,4 @@ let
       };
     };
   };
-  }
+}

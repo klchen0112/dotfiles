@@ -5,14 +5,15 @@
 }:
 let
   inherit (flake) inputs;
-  {
+in
+{
   imports = [
     inputs.stylix.darwinModules.stylix
   ];
   stylix.targets.gnome.enable = false;
   stylix = {
     enable = true;
-    base16Scheme = "${pkgs.base16-schemes}/share/themes/${config.me.base16Scheme}.yaml";
+    base16Scheme = "${pkgs.base16-schemes}/share/themes/${config.machine.base16Scheme}.yaml";
     opacity = {
       applications = 0.8;
       terminal = 0.8;
@@ -28,4 +29,4 @@ let
       };
     };
   };
-  }
+}

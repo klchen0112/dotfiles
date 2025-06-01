@@ -10,7 +10,7 @@ in
 
   # Defined by /modules/home/me.nix
   # And used all around in /modules/home/*
-  me = flake.users.klchen;
+  me = flake.config.users.klchen;
 
   home.stateVersion = "25.05";
 }

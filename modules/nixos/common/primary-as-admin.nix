@@ -16,10 +16,10 @@
     in
     {
       root.openssh.authorizedKeys.keys = myKeys;
-      ${me.username} =
+      ${me.name} =
         {
           openssh.authorizedKeys.keys = myKeys;
-          shell = pkgs.bash;
+          shell = if pkgs.stdenv.isLinux then pkgs.bash else pkgs.zsh;
         }
         // lib.optionalAttrs pkgs.stdenv.isLinux {
           isNormalUser = true;

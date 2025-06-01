@@ -1,7 +1,7 @@
 {
   users = {
     klchen = {
-      username = "klchen";
+      name = "klchen";
       email = "klchen0112@gmail.com";
       sshKey = [
         "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAGszCNQqxT1/s6sYjj1aewvCjaa3D7UwoOM7UD5K+ha klchen0112@mbp-m1"
@@ -23,7 +23,7 @@
   };
   machines = {
     a3400g = {
-      hostname = "a3400g";
+      hostName = "a3400g";
       platform = "x86_64-linux";
       sshKey = [
         "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAsw5gk6koAb2D1SYnHt3jhYLNCWChR6eFKJ3vPO3tZY"
@@ -31,19 +31,19 @@
       base16Scheme = "selenized-light";
     };
     sanjiao = {
-      hostname = "a3400g";
+      hostName = "a3400g";
       platform = "x86_64-linux";
       sshKey = [ "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAID8T9wyRN9CA/wWN70aHaRoAi1BRFeWkIjfL6+sycRaI" ];
       base16Scheme = "selenized-light";
     };
     i12700 = {
-      hostname = "i12700";
+      hostName = "i12700";
       platform = "x86_64-linux";
       base16Scheme = "selenized-light";
       sshKey = [ "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIF0EqszwQ4azrDwsLH181TOl2lWACWiaNxwmSNpnfmhQ" ];
     };
     mbp-dxm = {
-      hostname = "mbp-dxm";
+      hostName = "mbp-dxm";
       platform = "aarch64-darwin";
       sshKey = [
         "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIH8NNbMeWmANWXw/oLFRsKPxc8gmMgyhQFYb+v0lrkpI"
@@ -52,7 +52,7 @@
     };
 
     mbp-m1 = {
-      hostname = "mbp-m1";
+      hostName = "mbp-m1";
       platform = "aarch64-darwin";
       base16Scheme = "selenized-light";
       sshKey = [

@@ -1,10 +1,4 @@
-# fish configuration
-#
-{ lib
-, inputs
-, pkgs
-, isWork
-, config
+{ pkgs
 , ...
 }:
 {

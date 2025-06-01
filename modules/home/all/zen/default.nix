@@ -1,8 +1,7 @@
-{
-  pkgs,
-  flake,
-  config,
-  ...
+{ pkgs
+, flake
+, config
+, ...
 }:
 let
   inherit (flake) inputs;
@@ -22,10 +21,10 @@ in
       DisableAppUpdate = true;
     };
     profiles = {
-      "${config.me.username}" = {
+      "${config.me.name}" = {
         id = 0;
         isDefault = true;
-        name = "${config.me.username}";
+        name = "${config.me.name}";
         search = {
           force = true;
           default = "DuckDuckGo";

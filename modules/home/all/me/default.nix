@@ -3,7 +3,7 @@
 {
   options = {
     me = {
-      username = lib.mkOption {
+      name = lib.mkOption {
         type = lib.types.str;
         description = "Your username as shown by `id -un`";
       };
@@ -27,6 +27,6 @@
     };
   };
   config = {
-    home.username = config.me.username;
+    home.username = config.me.name;
   };
 }

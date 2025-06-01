@@ -5,7 +5,7 @@
 let
   userSubmodule = lib.types.submodule {
     options = {
-      username = lib.mkOption {
+      name = lib.mkOption {
         type = lib.types.str;
       };
       # fullname = lib.mkOption {
@@ -58,30 +58,11 @@ in
       type = machineSubmodule;
     };
 
-    users = {
-      klchen = lib.mkOption {
-        type = userSubmodule;
-      };
-      chenkailong_dxm = lib.mkOption {
-        type = userSubmodule;
-      };
+    users = lib.mkOption {
+      type = lib.types.attrsOf userSubmodule;
     };
-    machines = {
-      a3400g = lib.mkOption {
-        type = machineSubmodule;
-      };
-      sanjiao = lib.mkOption {
-        type = machineSubmodule;
-      };
-      i12700 = lib.mkOption {
-        type = machineSubmodule;
-      };
-      mbp-dxm = lib.mkOption {
-        type = machineSubmodule;
-      };
-      mbp-m1 = lib.mkOption {
-        type = machineSubmodule;
-      };
+    machines = lib.mkOption {
+      type = lib.types.attrsOf machineSubmodule;
     };
   };
 }

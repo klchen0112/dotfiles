@@ -5,9 +5,7 @@ let
   inherit (flake) inputs;
   inherit (inputs) self;
 in
-{
-  nixpkgs.hostPlatform = "aarch64-darwin";
-  networking.hostName = "mbp-m1";
+rec {
 
   imports = [
     self.darwinModules.default
@@ -15,6 +13,9 @@ in
   myUsers = [
     "klchen"
   ];
+  machine = flake.config.machines.mbp-m1;
+  nixpkgs.hostPlatform = machine.platform;
+  networking.hostName = machine.hostName;
 
 
 }

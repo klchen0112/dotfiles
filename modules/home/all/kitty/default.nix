@@ -34,9 +34,9 @@
       #-------------------------------------------- Shell --------------------------------------------
       shell =
         if pkgs.stdenv.isDarwin then
-          "/etc/profiles/per-user/${config.me.username}/bin/fish --login --interactive"
+          "/etc/profiles/per-user/${config.me.name}/bin/fish --login --interactive"
         else
-          "/etc/profiles/per-user/${config.me.username}/bin/fish";
+          "/etc/profiles/per-user/${config.me.name}/bin/fish";
       #-------------------------------------------- Theme --------------------------------------------
       background_opacity = lib.mkForce 0.8;
       #-------------------------------------------- Macos Settings --------------------------------------------
