@@ -1,8 +1,4 @@
-{ flake, pkgs, ... }:
-let
-  inherit (flake) config inputs;
-  inherit (inputs) self;
-in
+{ config, pkgs, ... }:
 {
   services.aerospace = {
     enable = true;

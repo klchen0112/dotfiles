@@ -1,12 +1,8 @@
-{ inputs
-, outputs
-, lib
-, config
-, pkgs
-, username
+{ pkgs
 , ...
 }:
 {
+  stylix.targets.vscode.enable = true;
   home.packages = with pkgs; [
     nerd-fonts.iosevka
     nerd-fonts.hack

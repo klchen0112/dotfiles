@@ -14,8 +14,9 @@ in
   myusers = [
     "chenkailong_dxm"
   ];
+  system.primaryUser = "chenkailong_dxm";
   home-manager.backupFileExtension = "nixos-unified-template-backup";
 
-  system.stateVersion = "25.11";
+  system.stateVersion = 4;
 
 }

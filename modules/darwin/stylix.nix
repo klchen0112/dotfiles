@@ -10,7 +10,7 @@
   stylix.autoEnable = false;
   stylix = {
     enable = true;
-    base16Scheme = "${pkgs.base16-schemes}/share/themes/${config.machine.base16Scheme}.yaml";
+    base16Scheme = "${pkgs.base16-schemes}/share/themes/selenized-light.yaml";
     opacity = {
       applications = 0.8;
       terminal = 0.8;

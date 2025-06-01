@@ -6,7 +6,7 @@
 }:
 let
   inherit (flake) inputs;
-  emacsPackage = pkgs.emacs;
+  emacsPackage = pkgs.emacsIGC;
   # doomPath = "${config.home.homeDirectory}/my/dotfiles/modules/editors/emacs/doom";
 
   extraPackages =

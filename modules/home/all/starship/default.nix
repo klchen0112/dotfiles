@@ -1,13 +1,3 @@
-# fish configuration
-#
-{
-  lib,
-  inputs,
-  pkgs,
-  isWork,
-  config,
-  ...
-}:
 {
   programs.starship = {
     enable = true;

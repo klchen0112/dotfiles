@@ -1,5 +1,0 @@
-{
-  imports = [
-    ./all/kitty
-  ];
-}

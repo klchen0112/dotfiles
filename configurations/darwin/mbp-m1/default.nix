@@ -13,10 +13,11 @@ rec {
   myusers = [
     "klchen"
   ];
+  system.primaryUser = "klchen";
   nixpkgs.hostPlatform = "aarch64-darwin";
   networking.hostName = "mbp-m1";
   home-manager.backupFileExtension = "nixos-unified-template-backup";
 
-  system.stateVersion = "25.11";
+  system.stateVersion = 4;
 
 }
