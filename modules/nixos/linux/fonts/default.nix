@@ -1,10 +1,4 @@
 {
-  pkgs,
-  config,
-  inputs,
-  ...
-}:
-{
   fonts = {
     fontconfig = {
       defaultFonts = {

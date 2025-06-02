@@ -13,7 +13,7 @@ in
   ];
   inherit machine myusers;
   system.primaryUser = primaryUser;
-  nixpkgs.hostPlatform =platform;
+  nixpkgs.hostPlatform = platform;
   networking.hostName = hostName;
   home-manager.backupFileExtension = "nixos-unified-template-backup";
 

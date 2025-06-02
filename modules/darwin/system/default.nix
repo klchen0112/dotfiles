@@ -1,13 +1,4 @@
 {
-  inputs,
-  outputs,
-  config,
-  pkgs,
-  username,
-  system,
-  ...
-}:
-{
   security.pam.services.sudo_local.touchIdAuth = true;
   system = {
     defaults = {

@@ -1,10 +1,4 @@
 {
-  inputs,
-  outputs,
-  config,
-  pkgs,
-  username,
-  system,
   ...
 }:
 {

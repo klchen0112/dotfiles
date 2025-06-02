@@ -2,12 +2,6 @@
 # Download client
 #
 {
-  inputs,
-  outputs,
-  lib,
-  config,
-  pkgs,
-  username,
   ...
 }:
 {

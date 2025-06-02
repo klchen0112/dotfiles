@@ -92,7 +92,9 @@ in
       // {
         root =
           let
-            rootSshKeys = map (user: flake.config.users.${user}.sshKey) (builtins.filter (user: flake.config.users.${user}.root == true) config.myusers);
+            rootSshKeys = map (user: flake.config.users.${user}.sshKey) (
+              builtins.filter (user: flake.config.users.${user}.root == true) config.myusers
+            );
           in
           {
             openssh.authorizedKeys.keys = builtins.concatLists rootSshKeys;
@@ -101,9 +103,11 @@ in
 
     # Enable home-manager for our user
     home-manager.users = mapListToAttrs config.myusers (name: {
-      imports = [ (self + /configurations/home/${name}.nix) ] ++ (lib.optionals  config.machine.desktop [
-        (self + /modules/home/gui.nix)
-      ]);
+      imports =
+        [ (self + /configurations/home/${name}.nix) ]
+        ++ (lib.optionals config.machine.desktop [
+          (self + /modules/home/gui.nix)
+        ]);
     });
 
     # All users can add Nix caches.
