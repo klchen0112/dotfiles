@@ -251,6 +251,8 @@
         "ningbo204" = "linux";
         "cy" = "linux";
         "i12500" = "linux";
+        "a3400g" = "linux";
+        "sanjiao" = "linux";
       };
       "remote.SSH.localServerDownload" = true;
 
