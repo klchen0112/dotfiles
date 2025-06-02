@@ -46,6 +46,7 @@
       base16Scheme = "selenized-light";
       sshKey = [ "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIF0EqszwQ4azrDwsLH181TOl2lWACWiaNxwmSNpnfmhQ" ];
       users = [ "klchen" ];
+      desktop = true;
     };
     mbp-dxm = {
       hostName = "mbp-dxm";
@@ -55,6 +56,7 @@
       ];
       base16Scheme = "selenized-light";
       users = [ "chenkailong_dxm" ];
+      desktop = true;
     };
     mbp-m1 = {
       hostName = "mbp-m1";
@@ -64,6 +66,7 @@
         "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIC9ZvdIrZP9su70iBKgCB0QOY0kL9Z9qu3B9Of05VS5a"
       ];
       users = [ "klchen" ];
+      desktop = true;
     };
   };
 }

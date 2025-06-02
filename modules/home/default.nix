@@ -1,8 +1,7 @@
 {
   imports = [
-    ./common/emacs
+    ./common/neovim
     ./common/fish
-    ./common/kitty
     ./common/me
     ./common/access-tokens.nix
     ./common/stylix.nix
@@ -10,12 +9,6 @@
     ./common/gc.nix
     ./common/git
     ./common/ssh
-    ./common/chrome
-    ./common/zen
-    ./common/kitty
-    ./common/vscode
-    ./common/lang
-    ./common/inputmethod
     ./common/zsh
     ./common/nix-index
   ];

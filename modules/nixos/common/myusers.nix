@@ -7,6 +7,35 @@
   ...
 }:
 let
+  machineSubmodule = lib.types.submodule {
+    options = {
+      hostName = lib.mkOption {
+        type = lib.types.str;
+      };
+      platform = lib.mkOption {
+        type = lib.types.str;
+      };
+      base16Scheme = lib.mkOption {
+        type = lib.types.str;
+      };
+      sshKey = lib.mkOption {
+        type = lib.types.listOf lib.types.str;
+        description = ''
+          SSH public key
+        '';
+      };
+      users = lib.mkOption {
+        type = lib.types.listOf lib.types.str;
+        description = ''
+          list of user
+        '';
+      };
+      desktop = lib.mkOption {
+        type = lib.types.bool;
+        default = false;
+      };
+    };
+  };
   inherit (flake.inputs) self;
   mapListToAttrs =
     m: f:
@@ -31,6 +60,9 @@ in
           baseNames = map (name: builtins.replaceStrings [ ".nix" ] [ "" ] name) regularFiles; # Removes .nix extension
         in
         baseNames;
+    };
+    machine = lib.mkOption {
+      type = machineSubmodule;
     };
   };
 
@@ -69,7 +101,9 @@ in
 
     # Enable home-manager for our user
     home-manager.users = mapListToAttrs config.myusers (name: {
-      imports = [ (self + /configurations/home/${name}.nix) ];
+      imports = [ (self + /configurations/home/${name}.nix) ] ++ (lib.optionals  config.machine.desktop [
+        (self + /modules/home/gui.nix)
+      ]);
     });
 
     # All users can add Nix caches.

@@ -52,6 +52,10 @@ let
           name of users
         '';
       };
+      desktop = lib.mkOption {
+        type = lib.types.bool;
+        default = false;
+      };
     };
   };
 in

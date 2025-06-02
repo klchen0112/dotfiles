@@ -1,12 +1,11 @@
 {
   pkgs,
-  inputs,
+  flake,
   ...
 }:
 {
   imports = [
-    # inputs.nixvim.homeManagerModules.nixvim
-    inputs.nix4nvchad.homeManagerModule
+    flake.inputs.nix4nvchad.homeManagerModule
   ];
   programs = {
     # codes from https://github.com/JMartJonesy/kickstart.nixvim
