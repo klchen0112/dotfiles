@@ -30,6 +30,10 @@ in
           accessible to users in the "aria2" group.
         '';
       };
+      package = mkOption {
+        type = types.package;
+        default = pkgs.aria2;
+      };
       settings = mkOption {
         type =
           with types;
@@ -64,47 +68,82 @@ in
           Extra lines added to {file}`aria2.conf` file.
         '';
       };
-      extraArguments = mkOption {
-        type = types.separatedString " ";
-        example = "--rpc-listen-all --remote-time=true";
-        default = "";
-        description = lib.mdDoc ''
-          Additional arguments to be passed to Aria2.
-        '';
+      # extraArguments = mkOption {
+      #   type = types.separatedString " ";
+      #   example = "--rpc-listen-all --remote-time=true";
+      #   default = "";
+      #   description = lib.mdDoc ''
+      #     Additional arguments to be passed to Aria2.
+      #   '';
+      # };
+      errorLogFile = lib.mkOption {
+        type = with lib.types; nullOr (either path str);
+        defaultText = lib.literalExpression "\${config.home.homeDirectory}/Library/Logs/aria2/err.log";
+        example = "/Users/khaneliman/Library/Logs/skhd.log";
+        description = "Absolute path to log all stderr output.";
       };
-      logFile = mkOption {
-        type = types.nullOr types.path;
-        default = null;
-        example = "/var/tmp/aria2.log";
-        description = lib.mdDoc ''
-          The logfile to use for the ipfs service. Alternatively
-          {command}`sudo launchctl debug system/org.nixos.ipfs --stderr`
-          can be used to stream the logs to a shell after restarting the service with
-          {command}`sudo launchctl kickstart -k system/org.nixos.ipfs`.
-        '';
+
+      outLogFile = lib.mkOption {
+        type = with lib.types; nullOr (either path str);
+        defaultText = lib.literalExpression "\${config.home.homeDirectory}/Library/Logs/aria2/out.log";
+        example = "/Users/khaneliman/Library/Logs/skhd.log";
+        description = "Absolute path to log all stdout output.";
       };
     };
   };
-  config = mkIf cfg.enable {
+  config = mkIf cfg.enable (
     lib.mkMerge [
       {
-        home.systemPackages = [ pkgs.aria2 ];
-        xdg.configFile."aria2/aria2.conf"= lib.concatStringsSep "\n" (
+        home.packages = [ pkgs.aria2 ];
+        xdg.configFile."aria2/aria2.conf".text = lib.concatStringsSep "\n" (
           [ ]
           ++ lib.mapAttrsToList formatLine cfg.settings
           ++ lib.optional (cfg.extraConfig != "") cfg.extraConfig
         );
       }
+      (mkIf pkgs.stdenv.isLiunx {
+        systemd.user.services.cachix-agent = {
+          Unit.Description = "Cachix Deploy Agent";
+
+          Service = {
+            # We don't want to kill children processes as those are deployments.
+            KillMode = "process";
+            Restart = "on-failure";
+            ExecStart = lib.escapeShellArgs (
+              [ "${cfg.package}/bin/aria2c" ]
+              ++ [
+                "--enable-rpc"
+              ]
+            );
+          };
+
+          Install.WantedBy = [ "default.target" ];
+        };
+      })
       (mkIf pkgs.stdenv.isDarwin {
-          launchd.user.agents.aria2 = {
-            command = "${pkgs.aria2}/bin/aria2c --enable-rpc --conf-path=/etc/aria2.conf ${config.services.aria2.extraArguments}";
-            serviceConfig = {
-              KeepAlive = true;
-              StandardOutPath = cfg.logFile;
-              StandardErrorPath = cfg.logFile;
+        services.aria2 = {
+          errorLogFile = lib.mkOptionDefault "${config.home.homeDirectory}/Library/Logs/aria2/skhd.err.log";
+          outLogFile = lib.mkOptionDefault "${config.home.homeDirectory}/Library/Logs/aria2/skhd.out.log";
+        };
+        launchd.agents.aria2 = {
+          enable = true;
+          config = {
+            ProgramArguments = [
+              "${cfg.package}/bin/aria2c"
+              "--enable-rpc"
+              # "--conf-path=${cfg.xdg.configFile."aria2/aria2.conf"}"
+            ];
+            RunAtLoad = true;
+            StandardErrorPath = cfg.errorLogFile;
+            StandardOutPath = cfg.outLogFile;
+            KeepAlive = {
+              Crashed = true;
+              SuccessfulExit = false;
+
             };
           };
+        };
       })
-    ];
-  };
+    ]
+  );
 }

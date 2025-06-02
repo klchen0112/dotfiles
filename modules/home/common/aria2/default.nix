@@ -2,20 +2,22 @@
 # Download client
 #
 {
+  config,
   ...
 }:
 let
   aira2Path = "${config.home.homeDirectory}/my/dotfiles/modules/home/common/aria2";
+in
 {
   imports = [ ./module.nix ];
 
   xdg.configFile."aria2/clean.sh" = {
     enable = true;
-    source = config.lib.file.mkOutOfStoreSymlink (aira2Path "clean.sh");
+    source = ./clean.sh;
   };
-    xdg.configFile."aria2/delete.sh" = {
+  xdg.configFile."aria2/delete.sh" = {
     enable = true;
-    source = config.lib.file.mkOutOfStoreSymlink (aira2Path "delete.sh");
+    source = ./delete.sh;
   };
 
   services.aria2 = {

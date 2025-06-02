@@ -11,6 +11,6 @@
     ./common/ssh
     ./common/zsh
     ./common/nix-index
-    ./common/aria2
+
   ];
 }

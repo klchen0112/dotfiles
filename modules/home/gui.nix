@@ -7,5 +7,6 @@
     ./common/vscode
     ./common/lang
     ./common/inputmethod
+    ./common/aria2
   ];
 }
