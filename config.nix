@@ -40,8 +40,8 @@
       base16Scheme = "selenized-light";
         users = [ "klchen" ];
     };
-    i12700 = {
-      hostName = "i12700";
+    i12r70 = {
+      hostName = "i12r70";
       platform = "x86_64-linux";
       base16Scheme = "selenized-light";
       sshKey = [ "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIF0EqszwQ4azrDwsLH181TOl2lWACWiaNxwmSNpnfmhQ" ];
