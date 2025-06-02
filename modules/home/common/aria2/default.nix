@@ -89,11 +89,11 @@ in
       # 使用场景：在家庭宽带没有公网 IP 的情况下可以把 BT 和 DHT 监听端口转发至具有公网 IP 的服务器，在此填写服务器的 IP ，可以提升 BT 下载速率。
       #bt-external-ip=
 
-      # IPv4 DHT 文件路径，默认：$\{HOME\}/.aria2/dht.dat
-      dht-file-path = "$\{HOME\}/.config/aria2/dht.dat";
+      # IPv4 DHT 文件路径，默认：${config.home.homeDirectory}/.aria2/dht.dat
+      dht-file-path = "${config.home.homeDirectory}/.config/aria2/dht.dat";
 
-      # IPv6 DHT 文件路径，默认：$\{HOME\}/.aria2/dht6.dat
-      dht-file-path6 = "$\{HOME\}/.config/aria2/dht6.dat";
+      # IPv6 DHT 文件路径，默认：${config.home.homeDirectory}/.aria2/dht6.dat
+      dht-file-path6 = "${config.home.homeDirectory}/.config/aria2/dht6.dat";
       # IPv4 DHT 网络引导节点
       dht-entry-point = "dht.transmissionbt.com:6881";
 
@@ -208,11 +208,11 @@ in
 
       # 下载停止后执行的命令
       # 从 正在下载 到 删除、错误、完成 时触发。暂停被标记为未开始下载，故与此项无关。
-      on-download-stop = "$\{HOME\}/.config/aria2/delete.sh";
+      on-download-stop = "${config.home.homeDirectory}/.config/aria2/delete.sh";
 
       # 下载完成后执行的命令
       # 此项未定义则执行 下载停止后执行的命令 (on-download-stop)
-      on-download-complete = "$\{HOME\}/.config/aria2/clean.sh";
+      on-download-complete = "${config.home.homeDirectory}/.config/aria2/clean.sh";
 
       # 下载错误后执行的命令
       # 此项未定义则执行 下载停止后执行的命令 (on-download-stop)
@@ -253,10 +253,10 @@ in
       #rpc-secure=false
 
       # 在 RPC 服务中启用 SSL/TLS 加密时的证书文件(.pem/.crt)
-      #rpc-certificate=$\{HOME\}/.config/aria2/xxx.pem
+      #rpc-certificate=${config.home.homeDirectory}/.config/aria2/xxx.pem
 
       # 在 RPC 服务中启用 SSL/TLS 加密时的私钥文件(.key)
-      #rpc-private-key=$\{HOME\}/.config/aria2/xxx.key
+      #rpc-private-key=${config.home.homeDirectory}/.config/aria2/xxx.key
 
       # 事件轮询方式, 可选：epoll, kqueue, port, poll, select, 不同系统默认值不同
       #event-poll=select
