@@ -2,7 +2,7 @@
   imports = [
     ./common
     ./homebrew
-    ./areospace
+    ./aerospace
     ./access-tokens.nix
     ./stylix.nix
     ./system
