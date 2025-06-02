@@ -86,17 +86,25 @@ in
     };
   };
   config = mkIf cfg.enable {
-    environment.systemPackages = [ pkgs.aria2 ];
-    launchd.user.agents.aria2 = {
-      command = "${pkgs.aria2}/bin/aria2c --enable-rpc --conf-path=/etc/aria2.conf ${config.services.aria2.extraArguments}";
-      serviceConfig = {
-        KeepAlive = true;
-        StandardOutPath = cfg.logFile;
-        StandardErrorPath = cfg.logFile;
-      };
-    };
-    environment.etc."aria2.conf".text = concatStringsSep "\n" (
-      [ ] ++ mapAttrsToList formatLine cfg.settings ++ optional (cfg.extraConfig != "") cfg.extraConfig
-    );
+    lib.mkMerge [
+      {
+        home.systemPackages = [ pkgs.aria2 ];
+        xdg.configFile."aria2/aria2.conf"= lib.concatStringsSep "\n" (
+          [ ]
+          ++ lib.mapAttrsToList formatLine cfg.settings
+          ++ lib.optional (cfg.extraConfig != "") cfg.extraConfig
+        );
+      }
+      (mkIf pkgs.stdenv.isDarwin {
+          launchd.user.agents.aria2 = {
+            command = "${pkgs.aria2}/bin/aria2c --enable-rpc --conf-path=/etc/aria2.conf ${config.services.aria2.extraArguments}";
+            serviceConfig = {
+              KeepAlive = true;
+              StandardOutPath = cfg.logFile;
+              StandardErrorPath = cfg.logFile;
+            };
+          };
+      })
+    ];
   };
 }

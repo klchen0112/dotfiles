@@ -4,17 +4,24 @@
 {
   ...
 }:
+let
+  aira2Path = "${config.home.homeDirectory}/my/dotfiles/modules/home/common/aria2";
 {
-  programs.yt-dlp = {
-    enable = true;
-  };
-  home.file.".config/aria2/clean.sh".source = ./aria2/clean.sh;
-  home.file.".config/aria2/delete.sh".source = ./aria2/delete.sh;
+  imports = [ ./module.nix ];
 
-  programs.aria2 = {
-    enable = false;
+  xdg.configFile."aria2/clean.sh" = {
+    enable = true;
+    source = config.lib.file.mkOutOfStoreSymlink (aira2Path "clean.sh");
+  };
+    xdg.configFile."aria2/delete.sh" = {
+    enable = true;
+    source = config.lib.file.mkOutOfStoreSymlink (aira2Path "delete.sh");
+  };
+
+  services.aria2 = {
+    enable = true;
     settings = {
-      dir = "$\{HOME\}/Downloads"; # 下载目录。可使用绝对路径或相对路径, 默认: 当前启动位置
+      dir = "${config.home.homeDirectory}/Downloads"; # 下载目录。可使用绝对路径或相对路径, 默认: 当前启动位置
       disk-cache = "64M";
       file-allocation = "none";
       no-file-allocation-limit = "64M";
@@ -22,8 +29,8 @@
       always-resume = false;
       max-resume-failure-tries = 0;
       remote-time = true;
-      input-file = "$\{HOME\}/.config/aria2/aria2.session";
-      save-session = "$\{HOME\}/.config/aria2/aria2.session";
+      input-file = "${config.home.homeDirectory}/.config/aria2/aria2.session";
+      save-session = "${config.home.homeDirectory}/.config/aria2/aria2.session";
       save-session-interval = 1;
       auto-save-interval = 20;
       force-save = false;
