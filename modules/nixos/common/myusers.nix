@@ -106,7 +106,7 @@ in
       imports =
         [ (self + /configurations/home/${name}.nix) ]
         ++ (lib.optionals config.machine.desktop [
-          (self + /modules/home/gui.nix)
+          (self + /modules/home/desktop.nix)
         ]);
     });
 
