@@ -17,7 +17,7 @@ self: super: rec {
     }).overrideAttrs
       (old: rec {
         name = "emacs-${version}";
-        version = "igc-2025-05-27";
+        version = "igc-2025-06-01";
         src = self.fetchFromGitHub {
           owner = "emacs-mirror";
           repo = "emacs";
@@ -34,12 +34,12 @@ self: super: rec {
           ++ (self.lib.optionals self.stdenv.isDarwin [
             # Fix OS window role (needed for window managers like yabai)
             (self.fetchpatch {
-              url = "https://raw.githubusercontent.com/d12frosted/homebrew-emacs-plus/master/patches/emacs-28/fix-window-role.patch";
+              url = "https://raw.githubusercontent.com/LuciusChen/.emacs.d/refs/heads/main/patches/emacs-31/fix-window-role.patch";
               sha256 = "+z/KfsBm1lvZTZNiMbxzXQGRTjkCFO4QPlEK35upjsE=";
             })
             # Enable rounded window with no decoration
             (self.fetchpatch {
-              url = "https://raw.githubusercontent.com/d12frosted/homebrew-emacs-plus/master/patches/emacs-31/round-undecorated-frame.patch";
+              url = "https://raw.githubusercontent.com/LuciusChen/.emacs.d/refs/heads/main/patches/emacs-31/round-undecorated-frame.patch";
               sha256 = "sha256-WWLg7xUqSa656JnzyUJTfxqyYB/4MCAiiiZUjMOqjuY=";
             })
             # Make Emacs aware of OS-level light/dark mode
