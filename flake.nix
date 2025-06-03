@@ -67,11 +67,11 @@
       };
 
       # Android
-      nix-on-droid = {
-        url = "git+https://github.com/nix-community/nix-on-droid?shallow=1&ref=master";
-        inputs.nixpkgs.follows = "nixpkgs";
-        inputs.home-manager.follows = "home-manager";
-      };
+      # nix-on-droid = {
+      #   url = "git+https://github.com/nix-community/nix-on-droid?shallow=1&ref=master";
+      #   inputs.nixpkgs.follows = "nixpkgs";
+      #   inputs.home-manager.follows = "home-manager";
+      # };
 
       systems.url = "github:nix-systems/default";
 
@@ -166,10 +166,10 @@
       #   inputs.flake-parts.follows = "flake-parts";
       #   inputs.nixpkgs.follows = "nixpkgs";
       # };
-      nix4nvchad = {
-        url = "github:nix-community/nix4nvchad";
-        inputs.nixpkgs.follows = "nixpkgs";
-      };
+      # nix4nvchad = {
+      #   url = "github:nix-community/nix4nvchad";
+      #   inputs.nixpkgs.follows = "nixpkgs";
+      # };
 
       doom-config = {
         url = "github:klchen0112/doom";
@@ -192,13 +192,13 @@
         # inputs.rust-overlay.follows = "rust-overlay";
       };
 
-      nixos-cosmic = {
-        url = "github:lilyinstarlight/nixos-cosmic";
-        inputs.nixpkgs.follows = "nixpkgs";
-        inputs.nixpkgs-stable.follows = "nixpkgs-stable";
-        inputs.flake-compat.follows = "flake-compat";
-        inputs.rust-overlay.follows = "rust-overlay";
-      };
+      # nixos-cosmic = {
+      #   url = "github:lilyinstarlight/nixos-cosmic";
+      #   inputs.nixpkgs.follows = "nixpkgs";
+      #   inputs.nixpkgs-stable.follows = "nixpkgs-stable";
+      #   inputs.flake-compat.follows = "flake-compat";
+      #   inputs.rust-overlay.follows = "rust-overlay";
+      # };
       # theme
       stylix = {
         url = "github:danth/stylix";
@@ -217,10 +217,10 @@
       #   inputs.nixpkgs.follows = "nixpkgs";
       # };
 
-      rust-overlay = {
-        url = "github:oxalica/rust-overlay";
-        inputs.nixpkgs.follows = "nixpkgs";
-      };
+      # rust-overlay = {
+      #   url = "github:oxalica/rust-overlay";
+      #   inputs.nixpkgs.follows = "nixpkgs";
+      # };
 
       zen-browser = {
         url = "github:0xc000022070/zen-browser-flake";
