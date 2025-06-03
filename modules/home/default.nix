@@ -1,6 +1,6 @@
 {
   imports = [
-    ./common/neovim
+
     ./common/fish
     ./common/me
     ./common/access-tokens.nix

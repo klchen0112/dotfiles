@@ -1,8 +1,9 @@
 {
+  pkgs,
   ...
 }:
 {
   programs.ghostty = {
-    enable = true;
+    enable = pkgs.stdenv.isLinux;
   };
 }
