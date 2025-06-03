@@ -25,7 +25,6 @@
 
       # emoji
       twemoji-color-font
-      #
 
       # symbol font
       # symbola
@@ -63,7 +62,6 @@
       nerd-fonts.hack
 
       # Jigmo
-
 
       # plex mono
       ibm-plex
