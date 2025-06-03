@@ -8,5 +8,7 @@
     ./common/lang
     ./common/inputmethod
     ./common/aria2
+    ./common/visualisation
+    ./common/ghostty
   ];
 }

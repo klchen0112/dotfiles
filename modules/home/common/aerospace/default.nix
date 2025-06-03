@@ -1,16 +1,17 @@
 { config, pkgs, ... }:
 {
-  services.aerospace = {
-    enable = true;
+  programs.aerospace = {
+    enable = pkgs.stdenv.isDarwin;
     settings = builtins.fromTOML (builtins.readFile ./aerospace.toml);
   };
 
-  fonts.packages = with pkgs; [
+  home.packages = with pkgs; [
     nerd-fonts.hack
-    nerd-fonts.hack
+    sketchybar-app-font
   ];
   services.sketchybar = {
-    enable = true;
+    enable = pkgs.stdenv.isDarwin;
+    service.enable = pkgs.stdenv.isDarwin;;
     extraPackages = with pkgs; [ jq ];
     ## config from https://github.com/Kainoa-h/aerospace-sketchybar/tree/main
     config =
@@ -176,7 +177,7 @@
       '';
   };
   services.jankyborders = {
-    enable = true;
+    enable =pkgs.stdenv.isDarwin;
     width = 6.0;
     hidpi = true;
     active_color = "${config.lib.stylix.colors.base03}";
