@@ -18,5 +18,5 @@ in
   home-manager.backupFileExtension = "nixos-unified-template-backup";
 
   system.stateVersion = 4;
-
+  ids.gids.nixbld = 350;
 }
