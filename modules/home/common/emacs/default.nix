@@ -58,6 +58,8 @@ let
 
       dasel
 
+      mermaid-cli
+
       iosevka
       cm_unicode
       ibm-plex
