@@ -2,17 +2,20 @@
 {
   programs.aerospace = {
     enable = pkgs.stdenv.isDarwin;
-    settings = builtins.fromTOML (builtins.readFile ./aerospace.toml);
+    userSettings = builtins.fromTOML (builtins.readFile ./aerospace.toml);
   };
 
   home.packages = with pkgs; [
     nerd-fonts.hack
     sketchybar-app-font
   ];
-  services.sketchybar = {
+  programs.sketchybar = {
     enable = pkgs.stdenv.isDarwin;
-    service.enable = pkgs.stdenv.isDarwin;;
-    extraPackages = with pkgs; [ jq ];
+    service.enable = pkgs.stdenv.isDarwin;
+    extraPackages = with pkgs; [
+      jq
+      aerospace
+    ];
     ## config from https://github.com/Kainoa-h/aerospace-sketchybar/tree/main
     config =
       let
@@ -42,7 +45,6 @@
         # We now change some default values, which are applied to all further items.
         # For a full list of all available item properties see:
         # https://felixkratz.github.io/SketchyBar/config/items
-
 
         sketchybar --default  padding_left=5 \
                               padding_right=5 \
@@ -101,7 +103,6 @@
             if [ -z "$apps" ]; then
                 continue  # 跳过当前循环的剩余部分，继续下一次循环
             fi
-
             icon_strip=" "
             while read -r app; do
                 icon_strip+=" $($PLUGIN_DIR/icon_map_fn.sh "$app")"
@@ -109,7 +110,6 @@
 
             sketchybar --set space.$sid label="$icon_strip" drawing=on
         done
-
 
         sketchybar --add item hahamarginleftRight left --set hahamarginleftRight padding_right=0 padding_left=0 width=0 margin_right=0 margin_left=0
 
@@ -160,16 +160,11 @@
                     label.font="Hack Nerd Font:Italic:14.0" \
                     icon.font="Hack Nerd Font:Heavy:16.0"
 
-
-
-
         #### Groups !!! ####
         sketchybar  --add bracket spaces '/space\..*/' hahamarginleft hahamarginleftRight \
                     --set spaces background.color=0xff${config.lib.stylix.colors.base01} \
                           background.corner_radius=10 \
                           background.height=30
-
-
 
         ##### Force all scripts to run the first time (never do this in a script) #####
         sketchybar --update
@@ -177,10 +172,13 @@
       '';
   };
   services.jankyborders = {
-    enable =pkgs.stdenv.isDarwin;
-    width = 6.0;
-    hidpi = true;
-    active_color = "${config.lib.stylix.colors.base03}";
-    inactive_color = "${config.lib.stylix.colors.base01}";
+    enable = pkgs.stdenv.isDarwin;
+    settings = {
+      style = "round";
+      width = 6.0;
+      hidpi = "on";
+      active_color = "${config.lib.stylix.colors.base03}";
+      inactive_color = "${config.lib.stylix.colors.base01}";
+    };
   };
 }

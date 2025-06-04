@@ -10,5 +10,6 @@
     ./common/aria2
     ./common/visualisation
     ./common/ghostty
+    ./common/aerospace
   ];
 }
