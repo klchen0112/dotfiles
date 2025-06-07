@@ -35,6 +35,7 @@
         programs.deno.enable = true;
         programs.ruff.check = true;
         programs.ruff.format = true;
+        programs.toml-sort.enable = true;
         settings.formatter.shellcheck.options = [
           "-s"
           "bash"
