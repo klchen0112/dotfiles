@@ -709,6 +709,9 @@ icon_map() {
   "Zulip")
     echo ":zulip:"
     ;;
+  "")
+    echo ""
+    ;;
   *)
     echo ":default:"
     ;;
