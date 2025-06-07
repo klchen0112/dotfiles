@@ -13,6 +13,7 @@
     enable = pkgs.stdenv.isDarwin;
     service.enable = pkgs.stdenv.isDarwin;
     extraPackages = with pkgs; [
+      ifstat-legacy
       jq
       aerospace
     ];
@@ -66,8 +67,6 @@
         ##### Adding aeropsace layouts #####
         # Add the aerospace_workspace_change event we specified in aerospace.toml
         sketchybar --add event aerospace_workspace_change
-
-        focused_workspace=$(aerospace list-workspaces --focused)
 
         # This only works for single monitor configs!
         for sid in $(aerospace list-workspaces --all); do
