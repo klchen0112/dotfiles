@@ -1,46 +1,20 @@
-[directory]
-style = "blue"
+[buf]
+format = "via [$symbol]($style)"
+
+[bun]
+format = "via [$symbol]($style)"
 
 [character]
 success_symbol = "[❯](purple)"
 error_symbol = "[❯](red)"
 vimcmd_symbol = "[❮](green)"
 
-[git_branch]
-format = "[$branch]($style)"
-style = "bright-black"
-
-[git_status]
-format = "[[(*$conflicted$untracked$modified$staged$renamed$deleted)](218) ($ahead_behind$stashed)]($style)"
-style = "cyan"
-conflicted = "​"
-untracked = "​"
-modified = "​"
-staged = "​"
-renamed = "​"
-deleted = "​"
-stashed = "≡"
-
-[git_state]
-format = '\([$state( $progress_current/$progress_total)]($style)\) '
-style = "bright-black"
+[cmake]
+format = "via [$symbol]($style)"
 
 [cmd_duration]
 format = "[$duration]($style) "
 style = "yellow"
-
-[python]
-format = "[$virtualenv]($style) "
-style = "bright-black"
-
-[bun]
-format = "via [$symbol]($style)"
-
-[buf]
-format = "via [$symbol]($style)"
-
-[cmake]
-format = "via [$symbol]($style)"
 
 [cobol]
 format = "via [$symbol]($style)"
@@ -57,6 +31,9 @@ format = "via [$symbol]($style)"
 [deno]
 format = "via [$symbol]($style)"
 
+[directory]
+style = "blue"
+
 [dotnet]
 format = "[$symbol(🎯 $tfm )]($style)"
 
@@ -71,6 +48,25 @@ format = 'via [$symbol]($style)'
 
 [fennel]
 format = 'via [$symbol]($style)'
+
+[git_branch]
+format = "[$branch]($style)"
+style = "bright-black"
+
+[git_state]
+format = '\([$state( $progress_current/$progress_total)]($style)\) '
+style = "bright-black"
+
+[git_status]
+format = "[[(*$conflicted$untracked$modified$staged$renamed$deleted)](218) ($ahead_behind$stashed)]($style)"
+style = "cyan"
+conflicted = "​"
+untracked = "​"
+modified = "​"
+staged = "​"
+renamed = "​"
+deleted = "​"
+stashed = "≡"
 
 [gleam]
 format = 'via [$symbol]($style)'
@@ -126,6 +122,10 @@ format = 'via [$symbol$stack]($style)'
 [purescript]
 format = 'via [$symbol]($style)'
 
+[python]
+format = "[$virtualenv]($style) "
+style = "bright-black"
+
 [quarto]
 format = 'via [$symbol]($style)'
 
@@ -147,10 +147,10 @@ format = 'via [$symbol]($style)'
 [solidity]
 format = 'via [$symbol]($style)'
 
-[typst]
+[swift]
 format = 'via [$symbol]($style)'
 
-[swift]
+[typst]
 format = 'via [$symbol]($style)'
 
 [vagrant]

@@ -2,12 +2,14 @@
   config,
   pkgs,
   ...
-}: let
+}:
+let
   pointer = config.home.pointerCursor;
   makeCommand = command: {
-    command = [command];
+    command = [ command ];
   };
-in {
+in
+{
   programs.niri = {
     enable = true;
     package = pkgs.niri;
@@ -25,8 +27,23 @@ in {
       spawn-at-startup = [
         (makeCommand "hyprlock")
         (makeCommand "swww-daemon")
-        {command = ["wl-paste" "--watch" "cliphist" "store"];}
-        {command = ["wl-paste" "--type text" "--watch" "cliphist" "store"];}
+        {
+          command = [
+            "wl-paste"
+            "--watch"
+            "cliphist"
+            "store"
+          ];
+        }
+        {
+          command = [
+            "wl-paste"
+            "--type text"
+            "--watch"
+            "cliphist"
+            "store"
+          ];
+        }
       ];
       input = {
         keyboard.xkb.layout = "latam";
@@ -72,7 +89,9 @@ in {
         # workspace-shadow = "off";
         backdrop-color = "transparent";
       };
-      gestures = {hot-corners.enable = true;};
+      gestures = {
+        hot-corners.enable = true;
+      };
       cursor = {
         size = 20;
         theme = "${pointer.name}";
@@ -89,12 +108,14 @@ in {
           enable = true;
         };
         preset-column-widths = [
-          {proportion = 0.25;}
-          {proportion = 0.5;}
-          {proportion = 0.75;}
-          {proportion = 1.0;}
+          { proportion = 0.25; }
+          { proportion = 0.5; }
+          { proportion = 0.75; }
+          { proportion = 1.0; }
         ];
-        default-column-width = {proportion = 0.5;};
+        default-column-width = {
+          proportion = 0.5;
+        };
 
         gaps = 6;
         struts = {
