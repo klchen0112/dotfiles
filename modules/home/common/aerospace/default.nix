@@ -72,6 +72,7 @@
         for sid in $(aerospace list-workspaces --all); do
           sketchybar --add item space.$sid left \
             --subscribe space.$sid aerospace_workspace_change \
+            --subscribe space.$sid space_windows_change \
             --set space.$sid \
             drawing=off \
             background.color=0xff${config.lib.stylix.colors.base00} \
@@ -115,6 +116,15 @@
         sketchybar  --add item window_title center\
                     --set window_title icon="" \
                     --set window_title label="" \
+                    background.drawing=on \
+                    background.color=0xff${config.lib.stylix.colors.base00} \
+                    background.corner_radius=5 \
+                    background.drawing=on \
+                    background.border_color=0xff${config.lib.stylix.colors.base03} \
+                    background.border_width=1 \
+                    background.height=23 \
+                    background.padding_right=5 \
+                    background.padding_left=5 \
                     icon.font="sketchybar-app-font:Regular:16.0" \
                     icon.padding_left=20 \
                     icon.padding_right=0 \
