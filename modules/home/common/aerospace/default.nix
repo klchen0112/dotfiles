@@ -51,8 +51,8 @@
                               padding_right=5 \
                               icon.font="Hack Nerd Font:Bold:16.0" \
                               label.font="SF Pro:Semibold:16.0" \
-                              icon.color=0xff${config.lib.stylix.colors.base04} \
-                              label.color=0xff${config.lib.stylix.colors.base04} \
+                              icon.color=0xff${config.lib.stylix.colors.base05} \
+                              label.color=0xff${config.lib.stylix.colors.base05} \
                               icon.padding_left=4 \
                               icon.padding_right=4 \
                               label.padding_left=4 \
@@ -86,11 +86,11 @@
             icon="$sid" \
             icon.shadow.drawing=off \
             icon.padding_left=10 \
-            icon.highlight_color=0xff${config.lib.stylix.colors.base05} \
+            icon.highlight_color=0xff${config.lib.stylix.colors.base02} \
             label.font="sketchybar-app-font:Regular:16.0" \
             label.padding_right=20 \
             label.padding_left=0 \
-            label.highlight_color=0xff${config.lib.stylix.colors.base05} \
+            label.highlight_color=0xff${config.lib.stylix.colors.base02} \
             label.y_offset=-1 \
             label.shadow.drawing=off \
             click_script="aerospace workspace $sid" \
@@ -133,6 +133,7 @@
                     label.drawing=on \
                     label.padding_left=0 \
                     label.margin_left=0 \
+                    label.color=0xff${config.lib.stylix.colors.base05} \
                     drawing=on \
                     script="$PLUGIN_DIR/window_title.sh" \
                     --subscribe window_title front_app_switched                       \
@@ -163,15 +164,15 @@
                     --set battery update_freq=120 script="${plugin_dir}/battery.sh" \
                     --subscribe battery system_woke power_source_change \
                     --add item network_down right\
-                    --set network_down icon=󰇚 update_freq=1 script="${plugin_dir}/speed.sh" icon.highlight_color=0xff${config.lib.stylix.colors.base05}\
+                    --set network_down icon=󰇚 update_freq=1 script="${plugin_dir}/speed.sh" icon.highlight_color=0xff${config.lib.stylix.colors.base02}\
                     --add item network_up right\
-                    --set network_up icon=󰕒  icon.highlight_color=0xff${config.lib.stylix.colors.base04}\
+                    --set network_up icon=󰕒  icon.highlight_color=0xff${config.lib.stylix.colors.base02}\
                     label.font="Hack Nerd Font:Italic:14.0" \
                     icon.font="Hack Nerd Font:Heavy:16.0"
 
         #### Groups !!! ####
         sketchybar  --add bracket spaces '/space\..*/' hahamarginleft hahamarginleftRight \
-                    --set spaces background.color=0xff${config.lib.stylix.colors.base01} \
+                    --set spaces background.color=0xff${config.lib.stylix.colors.base00} \
                           background.corner_radius=10 \
                           background.height=30
 
@@ -186,8 +187,8 @@
       style = "round";
       width = 6.0;
       hidpi = "on";
-      active_color = "${config.lib.stylix.colors.base03}";
-      inactive_color = "${config.lib.stylix.colors.base01}";
+      active_color = "${config.lib.stylix.colors.base0D}";
+      inactive_color = "${config.lib.stylix.colors.base03}";
     };
   };
 }
