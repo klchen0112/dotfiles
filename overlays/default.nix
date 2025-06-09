@@ -17,12 +17,12 @@ self: super: rec {
     }).overrideAttrs
       (old: rec {
         name = "emacs-${version}";
-        version = "igc-2025-06-01";
+        version = "igc-2025-06-07";
         src = self.fetchFromGitHub {
           owner = "emacs-mirror";
           repo = "emacs";
-          rev = "200b02f54dac5db34496f35d0884f03afa23a5a6";
-          hash = "sha256-xm5+SI2VfwVoMDR05m66+DCTuqLEzKe8Yul8Ytg3pw8=";
+          rev = "f90cee6f761b0c2bffcfa64556284884c0f7348f";
+          hash = "sha256-whRv/sLJ+wY07aCdN4T8C6tIjL0yHuLjvVwxUVAsjLY=";
         };
         configureFlags = (old.configureFlags or [ ]) ++ [
           # "--with-xwidgets" # withXwidgets failed with mps enabled
