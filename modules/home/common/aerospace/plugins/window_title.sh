@@ -694,6 +694,9 @@ function icon_map() {
   "Zed")
     echo ":zed:"
     ;;
+  "Zen")
+    echo ":zen_browser:"
+    ;;
   "Zen Browser")
     echo ":zen_browser:"
     ;;
