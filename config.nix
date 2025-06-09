@@ -20,7 +20,7 @@
       sshKey = [
         "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILJsUHc8XEf0Pe2acybyO4uEoYu/FrqjX74cYQCuHuR5 klchen@mbp-dxm"
       ];
-      base16Scheme = "selenized-light";
+      base16Scheme = "shapeshifter";
     };
   };
   machines = {
@@ -54,14 +54,14 @@
       sshKey = [
         "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIH8NNbMeWmANWXw/oLFRsKPxc8gmMgyhQFYb+v0lrkpI"
       ];
-      base16Scheme = "selenized-light";
+      base16Scheme = "shapeshifter";
       users = [ "chenkailong_dxm" ];
       desktop = true;
     };
     mbp-m1 = {
       hostName = "mbp-m1";
       platform = "aarch64-darwin";
-      base16Scheme = "selenized-light";
+      base16Scheme = "atelier-heath-light";
       sshKey = [
         "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIC9ZvdIrZP9su70iBKgCB0QOY0kL9Z9qu3B9Of05VS5a"
       ];
