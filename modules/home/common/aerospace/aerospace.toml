@@ -71,6 +71,7 @@ preset = 'qwerty'
 # 'main' binding mode must be always presented
 # Fallback value (if you omit the key): mode.main.binding = {}
 [mode.main]
+
 [mode.main.binding]
 # See: https://nikitabobko.github.io/AeroSpace/commands#exec-and-forget
 # You can uncomment the following lines to open up terminal with alt + enter shortcut (like in i3)
@@ -156,16 +157,11 @@ right = ['join-with right', 'mode main']
 run = 'move-node-to-workspace 8'
 if.app-id = 'com.apple.mail'
 
-# calendar
-
-# calendar
-
-# Book/Picture Preview
-
 # Book/Picture Preview
 [[on-window-detected]]
 run = 'move-node-to-workspace 8'
 if.app-id = 'com.apple.iCal'
+
 [[on-window-detected]]
 run = 'move-node-to-workspace 8'
 if.app-id = 'com.microsoft.Outlook'
@@ -177,9 +173,11 @@ if.app-id = 'com.apple.finder'
 [[on-window-detected]]
 run = ['layout floating', 'move-node-to-workspace 9']
 if.app-id = 'com.apple.iBooksX'
+
 [[on-window-detected]]
 run = ['layout floating', 'move-node-to-workspace 9']
 if.app-id = 'com.apple.Preview'
+
 [[on-window-detected]]
 run = ['layout floating', 'move-node-to-workspace 9']
 if.app-id = 'com.duxiaoman.manruliu'
