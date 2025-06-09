@@ -168,9 +168,13 @@
                     --set network_down icon=󰇚 \
                                         update_freq=1 \
                                         script="${plugin_dir}/speed.sh" \
-                                        icon.highlight_color=0xff${config.lib.stylix.colors.base04}\
+                                        icon.highlight_color=0xff${config.lib.stylix.colors.base0A}\
                     --add item network_up right\
-                    --set network_up icon=󰕒  icon.highlight_color=0xff${config.lib.stylix.colors.base04}
+                    --set network_up icon=󰕒  icon.highlight_color=0xff${config.lib.stylix.colors.base0A}
+        sketchybar  --add bracket rightBracket TextInputMenuAgent clock volume battery network_down network_up\
+                    --set rightBracket background.color=0xff${config.lib.stylix.colors.base00} \
+                          background.corner_radius=6 \
+                          background.height=30
 
         #### Groups !!! ####
         sketchybar  --add bracket spaces '/space\..*/' hahamarginleft hahamarginleftRight \
