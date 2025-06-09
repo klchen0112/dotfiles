@@ -47,8 +47,8 @@
         # For a full list of all available item properties see:
         # https://felixkratz.github.io/SketchyBar/config/items
 
-        sketchybar --default  padding_left=5 \
-                              padding_right=5 \
+        sketchybar --default  padding_left=4 \
+                              padding_right=4 \
                               icon.font="Hack Nerd Font:Bold:16.0" \
                               label.font="SF Pro:Semibold:16.0" \
                               icon.color=0xff${config.lib.stylix.colors.base05} \
@@ -76,21 +76,22 @@
             --set space.$sid \
             drawing=off \
             background.color=0xff${config.lib.stylix.colors.base00} \
-            background.corner_radius=5 \
+            background.corner_radius=6 \
             background.drawing=on \
             background.border_color=0xff${config.lib.stylix.colors.base03} \
             background.border_width=1 \
-            background.height=23 \
-            background.padding_right=5 \
-            background.padding_left=5 \
+            background.height=24 \
+            background.padding_right=4 \
+            background.padding_left=4 \
             icon="$sid" \
             icon.shadow.drawing=off \
-            icon.padding_left=10 \
-            icon.highlight_color=0xff${config.lib.stylix.colors.base02} \
+            icon.padding_left=8 \
+            icon.padding_right=2 \
+            icon.highlight_color=0xff${config.lib.stylix.colors.base0A} \
             label.font="sketchybar-app-font:Regular:16.0" \
-            label.padding_right=20 \
-            label.padding_left=0 \
-            label.highlight_color=0xff${config.lib.stylix.colors.base02} \
+            label.padding_left=2 \
+            label.padding_right=10 \
+            label.highlight_color=0xff${config.lib.stylix.colors.base0A} \
             label.y_offset=-1 \
             label.shadow.drawing=off \
             click_script="aerospace workspace $sid" \
@@ -111,28 +112,27 @@
             sketchybar --set space.$sid label="$icon_strip" drawing=on
         done
 
-        sketchybar --add item hahamarginleftRight left --set hahamarginleftRight padding_right=0 padding_left=0 width=0 margin_right=0 margin_left=0
+        sketchybar --add item hahamarginleftRight left --set hahamarginleftRight padding_right=0 padding_left=0 width=0
 
         sketchybar  --add item window_title center\
                     --set window_title icon="" \
                     --set window_title label="" \
                     background.drawing=on \
                     background.color=0xff${config.lib.stylix.colors.base00} \
-                    background.corner_radius=5 \
+                    background.corner_radius=6 \
                     background.drawing=on \
                     background.border_color=0xff${config.lib.stylix.colors.base03} \
                     background.border_width=1 \
-                    background.height=23 \
-                    background.padding_right=5 \
-                    background.padding_left=5 \
+                    background.height=30 \
+                    background.padding_left=4 \
+                    background.padding_right=4 \
                     icon.font="sketchybar-app-font:Regular:16.0" \
-                    icon.padding_left=20 \
-                    icon.padding_right=0 \
-                    icon.margin_right=20 \
+                    icon.padding_left=12 \
+                    icon.padding_right=4 \
                     icon.drawing=on \
                     label.drawing=on \
-                    label.padding_left=0 \
-                    label.margin_left=0 \
+                    label.padding_left=4 \
+                    label.padding_right=12 \
                     label.color=0xff${config.lib.stylix.colors.base05} \
                     drawing=on \
                     script="$PLUGIN_DIR/window_title.sh" \
@@ -151,7 +151,7 @@
         # volume is registered. More info about the event system can be found here:
         # https://felixkratz.github.io/SketchyBar/config/events
 
-        sketchybar  --add item hahamarginrirrght right --set hahamarginrirrght margin_left=0
+        sketchybar  --add item hahamarginrirrght right --set hahamarginrirrght
 
         sketchybar  --add alias 'TextInputMenuAgent' right \
                     --set 'TextInputMenuAgent'  update_freq=3  script="${plugin_dir}/tray.sh"  \
@@ -164,16 +164,16 @@
                     --set battery update_freq=120 script="${plugin_dir}/battery.sh" \
                     --subscribe battery system_woke power_source_change \
                     --add item network_down right\
-                    --set network_down icon=󰇚 update_freq=1 script="${plugin_dir}/speed.sh" icon.highlight_color=0xff${config.lib.stylix.colors.base02}\
+                    --set network_down icon=󰇚 update_freq=1 script="${plugin_dir}/speed.sh" icon.highlight_color=0xff${config.lib.stylix.colors.base04}\
                     --add item network_up right\
-                    --set network_up icon=󰕒  icon.highlight_color=0xff${config.lib.stylix.colors.base02}\
+                    --set network_up icon=󰕒  icon.highlight_color=0xff${config.lib.stylix.colors.base04}\
                     label.font="Hack Nerd Font:Italic:14.0" \
                     icon.font="Hack Nerd Font:Heavy:16.0"
 
         #### Groups !!! ####
         sketchybar  --add bracket spaces '/space\..*/' hahamarginleft hahamarginleftRight \
                     --set spaces background.color=0xff${config.lib.stylix.colors.base00} \
-                          background.corner_radius=10 \
+                          background.corner_radius=6 \
                           background.height=30
 
         ##### Force all scripts to run the first time (never do this in a script) #####
