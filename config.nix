@@ -40,7 +40,7 @@
       base16Scheme = "selenized-light";
       users = [ "klchen" ];
     };
-    i12r70 = {
+    i12r20= {
       hostName = "i12r70";
       platform = "x86_64-linux";
       base16Scheme = "selenized-light";

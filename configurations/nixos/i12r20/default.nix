@@ -1,6 +1,6 @@
 { flake, config, ... }:
 let
-  machine = flake.config.machines.i12r70;
+  machine = flake.config.machines.i12r20;
 in
 {
   imports = [
@@ -11,7 +11,7 @@ in
   nixpkgs.hostPlatform = machine.platform;
   networking.hostName = machine.hostName;
 
-  system.stateVersion = "25.11";
+  system.stateVersion = "25.05";
   myusers = machine.users;
 
   # Bootloader.
@@ -19,7 +19,14 @@ in
   boot.loader.efi.canTouchEfiVariables = true;
   networking.networkmanager.enable = true;
   security.sudo.wheelNeedsPassword = true; # User does not need to give password when using sudo.
+  # Don't allow mutation of users outside of the config.
+  users.mutableUsers = false;
 
+  # machine-id is used by systemd for the journal, if you don't
+  # persist this file you won't be able to easily use journalctl to
+  # look at journals for previous boots.
+  environment.etc."machine-id".source
+    = "/nix/persist/etc/machine-id";
   services.xserver.videoDrivers = [ "nvidia" ];
   # nvidia settings
   boot.kernelParams = [ "nvidia_drm.fbdev=1" ];
@@ -51,6 +58,14 @@ in
     # Optionally, you may need to select the appropriate driver version for your specific GPU.
     package = config.boot.kernelPackages.nvidiaPackages.stable;
   };
+   environment.etc."ssh/ssh_host_rsa_key".source
+    = "/nix/persist/etc/ssh/ssh_host_rsa_key";
+  environment.etc."ssh/ssh_host_rsa_key.pub".source
+    = "/nix/persist/etc/ssh/ssh_host_rsa_key.pub";
+  environment.etc."ssh/ssh_host_ed25519_key".source
+    = "/nix/persist/etc/ssh/ssh_host_ed25519_key";
+  environment.etc."ssh/ssh_host_ed25519_key.pub".source
+    = "/nix/persist/etc/ssh/ssh_host_ed25519_key.pub";
   # Enable OpenGL
   hardware.graphics = {
     enable = true;
