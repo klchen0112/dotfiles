@@ -101,7 +101,7 @@ in
           ++ lib.optional (cfg.extraConfig != "") cfg.extraConfig
         );
       }
-      (mkIf pkgs.stdenv.isLiunx {
+      (mkIf pkgs.stdenv.isLinux {
         systemd.user.services.cachix-agent = {
           Unit.Description = "Cachix Deploy Agent";
 
