@@ -60,7 +60,13 @@
         port = 22;
         user = "chenkailong_dxm";
       };
-
+      i12r20 = {
+        # hostkeyAlgorithms = "+ssh-rsa";
+        # pubkeyAcceptedAlgorithms = "+ssh-rsa";
+        hostname = "192.168.88.191";
+        port = 22;
+        user = "klchen";
+      };
     };
   };
 
