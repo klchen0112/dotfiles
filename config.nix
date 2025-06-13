@@ -21,6 +21,7 @@
       sshKey = [
         "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDRMAZXRYA4xaTjMWaiCeFewiST72MBvxz7WyT96N/0mkqudyvAAlgEN5lg7UDOxbH9zg2F9t+Gxj3NH1KoLsE+AygtdMTQ2eiQE47fgtSy0IN0wXq5p4eY4R5M4hTrK8t/7+jBuvEhvQ4u9fp13Ro0/gs1DgL0s3BWA4bySy1lS8Z5a0eM9zoh5sEQJlqzKGI2n9sSpfUdzL5lTjBzMLuXX4fF79tmUs7EBOozMKhyXXh3TecqfFOzBrSgo0s3GpaQEx0FZ3clofZ0Kj0N3ebuf7EmZQbnOqkrOlUFPbztlmlKtUs8w2yjWqTko6IXHzDmJCFNd6vWZV+bBxOmRXYXnjB/txLMJNJDSx4u1ixfNClD2r89UHJBCxemXZaC71ugtsTyUSqu+utBBOcdQ4elnKmBQbZrvFZrjTqeIOvyAk5ByIPfHmIb5gFs2WZ/RlYRu56UC2BbHn1+UpyBz9MMNjuO1pjBGvYfrFx4vafdCgTHUx4SVAl57GRH+UpquzU= 14016@CAD-Laptop"
       ];
+      initialHashedPassword = "$6$FlWAuiXb9KFRyt4E$7XBP3BaZq4rgclsSCJbQRhYku0xOD3vSo/Qs/1wfRK/dhBdaAJGlHDquEFbpduz5CD5W2PUY.NmQlV.p9Q83W1";
       base16Scheme = "selenized-light";
       root = false;
     };
