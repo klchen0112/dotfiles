@@ -1,6 +1,5 @@
 {
   imports = [
-
     ./common/fish
     ./common/me
     ./common/access-tokens.nix
@@ -11,6 +10,5 @@
     ./common/ssh
     ./common/zsh
     ./common/nix-index
-
   ];
 }
