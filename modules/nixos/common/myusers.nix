@@ -84,10 +84,11 @@ in
             "networkmanager"
             "wheel"
           ];
+          initialHashedPassword = userConfig.initialHashedPassword;
+
         }
         // {
           openssh.authorizedKeys.keys = userConfig.sshKey;
-          initialHashedPassword = userConfig.initialHashedPassword;
         }
       )
       // {
