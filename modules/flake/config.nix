@@ -14,6 +14,9 @@ let
       email = lib.mkOption {
         type = lib.types.str;
       };
+      initialHashedPassword = lib.mkOption {
+        type = lib.types.str;
+      };
       base16Scheme = lib.mkOption {
         type = lib.types.str;
       };

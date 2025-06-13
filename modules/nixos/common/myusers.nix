@@ -87,6 +87,7 @@ in
         }
         // {
           openssh.authorizedKeys.keys = userConfig.sshKey;
+          initialHashedPassword = userConfig.initialHashedPassword;
         }
       )
       // {

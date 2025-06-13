@@ -12,6 +12,7 @@
       ];
       base16Scheme = "selenized-light";
       root = true;
+      initialHashedPassword = "$6$qpLfyxefL6ImN6y8$6P2BYZEfmjdh6LeL4646LEhZnORcyxWIRxRBN2Nt6XGLk7pTu6XBy4u.mkpUs2pLW28kFx6dks8SNW2OW0AKf1";
     };
     chenkailong_dxm = {
       username = "chenkailong_dxm";
@@ -21,6 +22,7 @@
         "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILJsUHc8XEf0Pe2acybyO4uEoYu/FrqjX74cYQCuHuR5 klchen@mbp-dxm"
       ];
       base16Scheme = "shapeshifter";
+      initialHashedPassword = "$6$qpLfyxefL6ImN6y8$6P2BYZEfmjdh6LeL4646LEhZnORcyxWIRxRBN2Nt6XGLk7pTu6XBy4u.mkpUs2pLW28kFx6dks8SNW2OW0AKf1";
     };
   };
   machines = {
@@ -41,10 +43,10 @@
       users = [ "klchen" ];
     };
     i12r20 = {
-      hostName = "i12r70";
+      hostName = "i12r20";
       platform = "x86_64-linux";
       base16Scheme = "selenized-light";
-      sshKey = [ "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIF0EqszwQ4azrDwsLH181TOl2lWACWiaNxwmSNpnfmhQ" ];
+      sshKey = [];
       users = [ "klchen" ];
       desktop = true;
     };

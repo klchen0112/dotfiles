@@ -11,6 +11,9 @@
         type = lib.types.str;
         description = "Your full name for use in Git config";
       };
+      initialHashedPassword = lib.mkOption {
+        type = lib.types.str;
+      };
       email = lib.mkOption {
         type = lib.types.str;
         description = "Your email for use in Git config";
