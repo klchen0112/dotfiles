@@ -5,20 +5,8 @@
   config,
   ...
 }:
-let
-  aira2Path = "${config.home.homeDirectory}/my/dotfiles/modules/home/common/aria2";
-in
 {
   imports = [ ./module.nix ];
-
-  xdg.configFile."aria2/clean.sh" = {
-    enable = true;
-    source = ./clean.sh;
-  };
-  xdg.configFile."aria2/delete.sh" = {
-    enable = true;
-    source = ./delete.sh;
-  };
 
   services.aria2 = {
     enable = true;
@@ -205,14 +193,6 @@ in
       peer-id-prefix = "-DE13F0-";
 
       ## 执行额外命令 ##
-
-      # 下载停止后执行的命令
-      # 从 正在下载 到 删除、错误、完成 时触发。暂停被标记为未开始下载，故与此项无关。
-      on-download-stop = "${config.home.homeDirectory}/.config/aria2/delete.sh";
-
-      # 下载完成后执行的命令
-      # 此项未定义则执行 下载停止后执行的命令 (on-download-stop)
-      on-download-complete = "${config.home.homeDirectory}/.config/aria2/clean.sh";
 
       # 下载错误后执行的命令
       # 此项未定义则执行 下载停止后执行的命令 (on-download-stop)

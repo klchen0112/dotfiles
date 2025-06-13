@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 ### START-OF-ICON-MAP
 function icon_map() {
   case "$1" in
@@ -718,4 +719,4 @@ function icon_map() {
   esac
 }
 
-echo $(icon_map "$1")
+icon_map "$1"
