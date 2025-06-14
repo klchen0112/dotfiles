@@ -6,7 +6,6 @@
 {
   imports = [
     flake.inputs.niri.nixosModules.niri
-    ./binds.nix
   ];
   nix.settings = {
     substituters = [ "https://niri.cachix.org/" ];

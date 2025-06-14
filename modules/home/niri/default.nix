@@ -6,7 +6,7 @@
 {
   imports = [
     flake.inputs.niri.homeModules.stylix
-    # ./binds.nix
+    ./binds.nix
   ];
   nix.settings = {
     substituters = [ "https://niri.cachix.org/" ];

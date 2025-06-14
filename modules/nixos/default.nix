@@ -1,7 +1,8 @@
 {
   flake,
-  ...}
-  :{
+  ...
+}:
+{
   imports = [
     ./common
     ./access-tokens.nix
