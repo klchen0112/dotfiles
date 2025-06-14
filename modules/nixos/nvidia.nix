@@ -1,11 +1,5 @@
 { config, ... }:
 {
-  boot.initrd.kernelModules = [ "nvidia" ];
-  boot.extraModulePackages = [ config.boot.kernelPackages.nvidia_x11 ];
-  boot.kernelParams = [
-    "ibt=off"
-  ];
-
   hardware.graphics = {
     enable = true;
   };
