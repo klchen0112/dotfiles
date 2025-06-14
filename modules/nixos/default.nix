@@ -1,9 +1,13 @@
 {
+  flake,
+  ...}
+  :{
   imports = [
     ./common
     ./linux/access-tokens.nix
     ./linux/fonts
-    ./linux/stylix.nix
+    ./stylix.nix
+    flake.inputs.stylix.nixosModules.stylix
   ];
   services.openssh.enable = true;
 }

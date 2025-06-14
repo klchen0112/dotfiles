@@ -1,9 +1,15 @@
 {
+  pkgs,
+  config,
+  flake,
+  ...
+}:
+{
   imports = [
     ./common
     ./homebrew
     ./access-tokens.nix
-    ./stylix.nix
     ./system
+    flake.inputs.stylix.darwinModules.stylix
   ];
 }

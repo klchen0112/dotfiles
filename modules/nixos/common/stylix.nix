@@ -5,9 +5,6 @@
   ...
 }:
 {
-  imports = [
-    flake.inputs.stylix.darwinModules.stylix
-  ];
   stylix.autoEnable = false;
   stylix = {
     homeManagerIntegration.autoImport = false;
@@ -26,6 +23,14 @@
       monospace = {
         package = pkgs.nerd-fonts.iosevka;
         name = "Iosevka Nerd Font";
+      };
+      serif = {
+        package = pkgs.ibm-plex;
+        name = "IBM Plex Serif";
+      };
+      sansSerif = {
+        package = pkgs.dejavu_fonts;
+        name = "CMU Sans Serif";
       };
     };
   };

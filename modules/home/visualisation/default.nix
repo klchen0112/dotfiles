@@ -7,5 +7,4 @@
     colima
     lima
   ];
-  # utm
 }

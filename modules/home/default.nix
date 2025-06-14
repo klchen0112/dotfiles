@@ -1,14 +1,15 @@
 {
   imports = [
-    ./common/fish
-    ./common/me
-    ./common/access-tokens.nix
-    ./common/stylix.nix
-    ./common/utils
-    ./common/gc.nix
-    ./common/git
-    ./common/ssh
-    ./common/zsh
-    ./common/nix-index
+    ./bash
+    ./fish
+    ./me
+    ./access-tokens.nix
+    ./stylix.nix
+    ./utils
+    ./nix
+    ./git
+    ./ssh
+    ./zsh
+    ./nix-index
   ];
 }

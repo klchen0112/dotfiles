@@ -7,6 +7,7 @@
   home.packages = [
     pkgs.macchina
   ];
+  home.shellAliases.j = "just";
   programs.fish = {
     enable = true;
     shellAbbrs = {
