@@ -109,7 +109,7 @@ in
           (self + /modules/home/desktop.nix)
         ])
         ++ (lib.optionals (config.machine.desktop && pkgs.stdenv.isLinux) [
-          # (self + /modules/home/desktop-linux.nix)
+          (self + /modules/home/desktop-linux.nix)
         ]);
     });
 

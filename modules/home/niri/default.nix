@@ -6,8 +6,9 @@
 {
   imports = [
     flake.inputs.niri.homeModules
+    flake.inputs.niri.homeModules.config
     # flake.inputs.niri.homeModules.stylix
-    #./binds.nix
+    # ./binds.nix
     #./hyprlock.nix
     # ./wine.nix
     #./anyrun.nix
@@ -21,14 +22,14 @@
     # utils
     wl-clipboard
   ];
-
+  programs.niri = {
+    enable = true;
+    package = pkgs.niri-unstable;
+  };
   nix.settings = {
     substituters = [ "https://niri.cachix.org/" ];
   };
-  nixpkgs.overlays = [ flake.inputs.niri.overlays.niri ];
   # stylix.targets.niri.enable = true;
-  programs.niri.enable = true;
-  programs.niri.package = pkgs.niri-unstable;
   # make stuff work on wayland
   home.sessionVariables = {
     QT_QPA_PLATFORM = "wayland";
