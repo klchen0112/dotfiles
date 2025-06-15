@@ -45,7 +45,7 @@
   inputs =
     # All flake references used to build my NixOS setup. These are dependencies.
     {
-      nixpkgs.url = "git+https://github.com/nixos/nixpkgs?shallow=1&ref=nixos-unstable"; # Nix Packages
+      nixpkgs.url = "git+https://github.com/nixos/nixpkgs?shallow=1&ref=nixos-unstable-small"; # Nix Packages
       nixpkgs-unstable.url = "git+https://github.com/nixos/nixpkgs?shallow=1&ref=master"; # Nix Packages
       nixpkgs-stable.url = "git+https://github.com/nixos/nixpkgs?shallow=1&ref=release-24.11"; # Nix Packages
 
