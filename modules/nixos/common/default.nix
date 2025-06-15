@@ -11,7 +11,10 @@
     ./stylix.nix
   ];
 
-  environment.systemPackages = with pkgs; [ git helix ];
+  environment.systemPackages = with pkgs; [
+    git
+    helix
+  ];
 
   home-manager.useUserPackages = true;
   home-manager.useGlobalPkgs = true;
