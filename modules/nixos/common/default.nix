@@ -13,7 +13,6 @@
 
   environment.systemPackages = with pkgs; [
     git
-    helix
   ];
 
   home-manager.useUserPackages = true;

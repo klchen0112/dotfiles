@@ -10,6 +10,7 @@
     ./hyprlock.nix
     ./wine.nix
     ./anyrun.nix
+    ./hypridle.nix
   ];
   home.packages = with pkgs; [
     # screenshot
@@ -19,6 +20,7 @@
     # utils
     wl-clipboard
   ];
+
   nix.settings = {
     substituters = [ "https://niri.cachix.org/" ];
   };
