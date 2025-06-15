@@ -1,7 +1,7 @@
-{ pkgs, ... }:
+{ pkgs,config, ... }:
 {
   hardware.bluetooth = {
-    enable = true;
+    enable = config.machine.desktop;
     package = pkgs.bluez5-experimental;
     settings = {
       # make Xbox Series X controller work
