@@ -1,3 +1,4 @@
+{ flake, ... }:
 {
   # programs.wofi.enable = true;
   # app lanchuer
@@ -15,7 +16,7 @@
 
   # };
   imports = [
-    inputs.anyrun.homeManagerModules.default
+    flake.inputs.anyrun.homeManagerModules.default
   ];
   programs.anyrun = {
     enable = true;
