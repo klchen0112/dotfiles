@@ -9,7 +9,6 @@
     ./fonts
     ./stylix.nix
     ./hardware
-    flake.inputs.stylix.nixosModules.stylix
   ];
   services.openssh.enable = true;
 }

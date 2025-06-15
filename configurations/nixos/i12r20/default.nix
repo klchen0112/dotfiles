@@ -6,6 +6,7 @@ in
   imports = [
     flake.inputs.self.nixosModules.default
     flake.inputs.self.nixosModules.nvidia
+    flake.inputs.self.nixosModules.desktop
     ./hardware-configuration.nix
   ];
   machine = machine;

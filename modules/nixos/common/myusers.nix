@@ -65,7 +65,6 @@ in
       type = machineSubmodule;
     };
   };
-
   config = {
     # For home-manager to work.
     # https://github.com/nix-community/home-manager/issues/4026#issuecomment-1565487545
@@ -102,7 +101,6 @@ in
             openssh.authorizedKeys.keys = builtins.concatLists rootSshKeys;
           };
       };
-
     # Enable home-manager for our user
     home-manager.users = mapListToAttrs config.myusers (name: {
       imports =
@@ -111,7 +109,7 @@ in
           (self + /modules/home/desktop.nix)
         ])
         ++ (lib.optionals (config.machine.desktop && pkgs.stdenv.isLinux) [
-          (self + /modules/home/desktop-linux.nix)
+          # (self + /modules/home/desktop-linux.nix)
         ]);
     });
 

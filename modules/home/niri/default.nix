@@ -5,12 +5,13 @@
 }:
 {
   imports = [
-    flake.inputs.niri.homeModules.stylix
-    ./binds.nix
-    ./hyprlock.nix
-    ./wine.nix
-    ./anyrun.nix
-    ./hypridle.nix
+    flake.inputs.niri.homeModules
+    # flake.inputs.niri.homeModules.stylix
+    #./binds.nix
+    #./hyprlock.nix
+    # ./wine.nix
+    #./anyrun.nix
+    #./hypridle.nix
   ];
   home.packages = with pkgs; [
     # screenshot
@@ -25,9 +26,8 @@
     substituters = [ "https://niri.cachix.org/" ];
   };
   nixpkgs.overlays = [ flake.inputs.niri.overlays.niri ];
-  # Clipboard Manager not working
-  stylix.targets.niri.enable = true;
-  programs.niri.enable = pkgs.stdenv.isLinux;
+  # stylix.targets.niri.enable = true;
+  programs.niri.enable = true;
   programs.niri.package = pkgs.niri-unstable;
   # make stuff work on wayland
   home.sessionVariables = {
