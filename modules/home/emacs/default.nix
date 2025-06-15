@@ -70,6 +70,8 @@ let
       twemoji-color-font
       TsangerJinKai02
       noto-fonts-cjk-sans
+      sf-mono-liga
+      SF-Pro
     ]
     ++ (lib.optionals pkgs.stdenv.isDarwin) [
       # pngpaste for org mode download clip

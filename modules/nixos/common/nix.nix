@@ -17,6 +17,7 @@
     overlays = [
       flake.inputs.nix-vscode-extensions.overlays.default
       flake.inputs.nur.overlays.default
+      flake.inputs.emacs-overlay.overlays.default
       # flake.inputs.self.overlays.default
     ] ++ (lib.attrValues flake.inputs.self.overlays);
   };

@@ -4,7 +4,7 @@
   lib,
   mps,
   fetchFromGitHub,
-  emacs-overlay
+  emacs-overlay,
 }:
 (emacs-overlay.packages.${stdenv.system}.emacs-git.override {
   withMailutils = false;
