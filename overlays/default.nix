@@ -13,4 +13,8 @@ self: super: {
   SF-Pro = self.callPackage "${packages}/SF-Pro" { };
   sf-mono-liga = self.callPackage "${packages}/sf-mono-liga" { };
   emacsIGC = self.callPackage "${packages}/emacsIGC" { emacs-overlay = inputs.emacs-overlay; };
+  stable = import inputs.nixpkgs-stable {
+    system = self.system;
+    config.allowUnfree = true;
+  };
 }

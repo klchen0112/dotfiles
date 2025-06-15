@@ -43,8 +43,6 @@
       "google-chrome"
       "logi-options+"
       # "firefox"
-      "font-sf-pro"
-      "font-sf-mono"
       "zen"
       "podman-desktop"
       "squirrel"

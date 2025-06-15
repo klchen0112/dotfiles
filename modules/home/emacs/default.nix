@@ -75,7 +75,7 @@ let
     ]
     ++ (lib.optionals pkgs.stdenv.isDarwin) [
       # pngpaste for org mode download clip
-      pngpaste
+      stable.pngpaste
       hugo
     ];
 in
