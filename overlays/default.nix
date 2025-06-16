@@ -6,7 +6,7 @@ let
   packages = self + /packages;
 in
 self: super: {
-  # omnix = inputs.omnix.packages.${self.system}.default;
+  omnix = inputs.omnix.packages.${self.system}.default;
   TsangerJinKai02 = self.callPackage "${packages}/TsangerJinKai02" { };
   Jigmo = self.callPackage "${packages}/Jigmo" { };
   firefox-addons = self.recurseIntoAttrs (self.callPackage "${packages}/firefox-addons" { });

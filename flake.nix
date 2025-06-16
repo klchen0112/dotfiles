@@ -13,7 +13,7 @@
     {
       nixpkgs.url = "git+https://github.com/nixos/nixpkgs?shallow=1&ref=nixos-unstable-small"; # Nix Packages
       nixpkgs-unstable.url = "git+https://github.com/nixos/nixpkgs?shallow=1&ref=master"; # Nix Packages
-      nixpkgs-stable.url = "git+https://github.com/nixos/nixpkgs?shallow=1&ref=release-24.11"; # Nix Packages
+      nixpkgs-stable.url = "git+https://github.com/nixos/nixpkgs?shallow=1&ref=release-25.05"; # Nix Packages
 
       srvos = {
         url = "github:nix-community/srvos";
