@@ -12,5 +12,6 @@
     ./ghostty
     ./aerospace
     ./media
+    ./sync
   ];
 }

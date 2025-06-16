@@ -56,7 +56,6 @@
       # Keyboard
       # hhkbStudio
       # microsoft-remote-desktop
-      # "syncthing"
       "steam"
       "adrive"
       "discord"
