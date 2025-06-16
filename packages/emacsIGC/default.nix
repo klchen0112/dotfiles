@@ -16,7 +16,7 @@
       owner = "emacs-mirror";
       repo = "emacs";
       rev = "22757bc64a7622b224f7c82d9b19ae06d08a9257";
-      hash = "sha256-ljt7O7QPfxgGGAaoZ9r4i12sJztR/zjnEWpexa8XZb8=";
+      hash = "sha256-BvaXzHUsU9BOtgODeyZxsmEErjJsUGdAUxaSmbeovvw=";
     };
     configureFlags = (old.configureFlags or [ ]) ++ [
       # "--with-xwidgets" # withXwidgets failed with mps enabled

@@ -1,7 +1,8 @@
 {
   pkgs,
   ...
-}:{
+}:
+{
   services.syncthing = {
     enable = true;
     settings = {
@@ -16,7 +17,7 @@
       folders = {
         "~/Library/Mobile Documents/iCloud~dev~fuxiao~app~hamsterapp/Documents/sync" = {
           id = "w4pgi-mnhem";
-          devices = ["redmi-12t-pro"];
+          devices = [ "redmi-12t-pro" ];
         };
       };
 
