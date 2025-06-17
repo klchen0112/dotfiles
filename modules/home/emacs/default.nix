@@ -37,7 +37,7 @@ let
 
       #
       # texliveFull
-      direnv
+
       # emacs-lsp-booster
       # ------------------- Python ---
       pyright
