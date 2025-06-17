@@ -31,7 +31,7 @@
       sshKey = [
         "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILJsUHc8XEf0Pe2acybyO4uEoYu/FrqjX74cYQCuHuR5 klchen@mbp-dxm"
       ];
-      base16Scheme = "shapeshifter";
+      base16Scheme = "catppuccin-mocha";
       initialHashedPassword = "$6$qpLfyxefL6ImN6y8$6P2BYZEfmjdh6LeL4646LEhZnORcyxWIRxRBN2Nt6XGLk7pTu6XBy4u.mkpUs2pLW28kFx6dks8SNW2OW0AKf1";
     };
   };
@@ -71,7 +71,7 @@
       sshKey = [
         "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIH8NNbMeWmANWXw/oLFRsKPxc8gmMgyhQFYb+v0lrkpI"
       ];
-      base16Scheme = "shapeshifter";
+      base16Scheme = "ayu-light";
       users = [ "chenkailong_dxm" ];
       desktop = true;
     };
