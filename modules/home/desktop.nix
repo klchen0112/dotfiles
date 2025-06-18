@@ -3,7 +3,7 @@
     # ./emacs
     ./kitty
     ./chrome
-    ./zen
+#    ./zen
     ./vscode
     ./lang
     ./inputmethod
@@ -14,6 +14,6 @@
     ./media
     ./neovim
     ./sync
-    ./niri
+#    ./niri
   ];
 }

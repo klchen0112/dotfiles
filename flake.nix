@@ -132,10 +132,10 @@
       #   inputs.flake-parts.follows = "flake-parts";
       #   inputs.nixpkgs.follows = "nixpkgs";
       # };
-      # nix4nvchad = {
-      #   url = "github:nix-community/nix4nvchad";
-      #   inputs.nixpkgs.follows = "nixpkgs";
-      # };
+       nix4nvchad = {
+         url = "github:nix-community/nix4nvchad";
+         inputs.nixpkgs.follows = "nixpkgs";
+       };
 
       doom-config = {
         url = "github:klchen0112/doom";

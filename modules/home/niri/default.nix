@@ -8,7 +8,7 @@
     # ./binds.nix
     ./hyprlock.nix
     ./wine.nix
-    ./anyrun.nix
+#    ./anyrun.nix
     ./hypridle.nix
   ];
   home.packages = with pkgs; [
@@ -30,7 +30,7 @@
           };
 
           # use it as an overlay
-          nixpkgs.overlays = [ flake.inputs.nixpkgs-wayland.overlay ];
+#          nixpkgs.overlays = [ flake.inputs.nixpkgs-wayland.overlay ];
 
  # programs.niri = {
  #   enable = true;
