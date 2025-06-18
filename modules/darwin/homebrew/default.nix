@@ -46,7 +46,6 @@
       "zen"
       "podman-desktop"
       "squirrel"
-      # mpv
       "iina"
       "skim"
       "zotero"
