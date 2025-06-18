@@ -41,12 +41,10 @@
         #themes
         mechatroner.rainbow-csv
         gruntfuggly.todo-tree
-        catppuccin.catppuccin-vsc
-        catppuccin.catppuccin-vsc-icons
+        vscode-icons-team.vscode-icons
         # johnpapa.vscode-peacock
         # github.github-vscode-theme
         # akamud.vscode-theme-onelight
-        # vscode-icons-team.vscode-icons
 
         # editor
         streetsidesoftware.code-spell-checker
@@ -238,7 +236,9 @@
       # "window.autoDetectColorScheme" = true;
       # "workbench.preferredLightColorTheme" = "Catppuccin Latte";
       # "workbench.preferredDarkColorTheme" = "Catppuccin Macchiato";
-      "workbench.iconTheme" = "catppuccin-latte";
+      # "workbench.iconTheme" = "catppuccin-latte";
+      # "workbench.productIconTheme"= "vscode-icons";
+      "workbench.iconTheme" = "vscode-icons";
       "workbench.editor.enablePreview" = false;
 
       # --------------------------------------------
