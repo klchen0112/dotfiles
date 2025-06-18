@@ -17,4 +17,8 @@ self: super: {
     system = self.system;
     config.allowUnfree = true;
   };
+  unstable = import inputs.nixpkgs-unstable {
+    system = self.system;
+    config.allowUnfree = true;
+  };
 }
