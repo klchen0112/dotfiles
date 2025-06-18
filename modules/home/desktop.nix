@@ -1,6 +1,6 @@
 {
   imports = [
-    ./emacs
+    # ./emacs
     ./kitty
     ./chrome
     ./zen
@@ -12,6 +12,8 @@
     ./ghostty
     ./aerospace
     ./media
+    ./neovim
     ./sync
+    ./niri
   ];
 }

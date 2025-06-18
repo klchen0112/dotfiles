@@ -1,6 +1,5 @@
 {
   pkgs,
-  config,
   flake,
   ...
 }:
@@ -19,6 +18,7 @@
   services.flatpak.enable = true;
   services.geoclue2.enable = true;
 
+  boot.kernelParams = [ "nvidia_drm.fbdev=1" ];
   environment.systemPackages = with pkgs; [
     chronos
     cosmic-applets

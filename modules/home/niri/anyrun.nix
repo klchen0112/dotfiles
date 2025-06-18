@@ -1,13 +1,13 @@
 {
   pkgs,
-  inputs,
+  flake,
   ...
 }:
 {
   programs.anyrun = {
     enable = true;
     config = {
-      plugins = with inputs.anyrun.packages.${pkgs.system}; [
+      plugins = with flake.inputs.anyrun.packages.${pkgs.system}; [
         applications
         shell
         symbols
