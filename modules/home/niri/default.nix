@@ -5,10 +5,10 @@
 }:
 {
   imports = [
-    # ./binds.nix
+    ./binds.nix
     ./hyprlock.nix
     ./wine.nix
-#    ./anyrun.nix
+    ./anyrun.nix
     ./hypridle.nix
   ];
   home.packages = with pkgs; [
@@ -20,22 +20,21 @@
     wl-clipboard
   ];
   nix.settings = {
-            # add binary caches
-            trusted-public-keys = [
-              "nixpkgs-wayland.cachix.org-1:3lwxaILxMRkVhehr5StQprHdEo4IrE8sRho9R9HOLYA="
-            ];
-            substituters = [
-              "https://nixpkgs-wayland.cachix.org"
-            ];
-          };
+    # add binary caches
+    trusted-public-keys = [
+      "nixpkgs-wayland.cachix.org-1:3lwxaILxMRkVhehr5StQprHdEo4IrE8sRho9R9HOLYA="
+      "niri.cachix.org-1:Wv0OmO7PsuocRKzfDoJ3mulSl7Z6oezYhGhR+3W2964="
+    ];
+    substituters = [
+      "https://nixpkgs-wayland.cachix.org"
+      "https://niri.cachix.org"
+    ];
+  };
 
-          # use it as an overlay
-#          nixpkgs.overlays = [ flake.inputs.nixpkgs-wayland.overlay ];
-
- # programs.niri = {
- #   enable = true;
- #   package = pkgs.niri-unstable;
- # };
+  programs.niri = {
+    enable = true;
+    package = pkgs.niri-unstable;
+  };
   home.sessionVariables = {
     QT_QPA_PLATFORM = "wayland";
     SDL_VIDEODRIVER = "wayland";

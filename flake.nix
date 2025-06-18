@@ -132,10 +132,10 @@
       #   inputs.flake-parts.follows = "flake-parts";
       #   inputs.nixpkgs.follows = "nixpkgs";
       # };
-       nix4nvchad = {
-         url = "github:nix-community/nix4nvchad";
-         inputs.nixpkgs.follows = "nixpkgs";
-       };
+      nix4nvchad = {
+        url = "github:nix-community/nix4nvchad";
+        inputs.nixpkgs.follows = "nixpkgs";
+      };
 
       doom-config = {
         url = "github:klchen0112/doom";
@@ -156,7 +156,18 @@
         inputs.nixpkgs-stable.follows = "nixpkgs-stable";
         # inputs.rust-overlay.follows = "rust-overlay";
       };
+      anyrun = {
+        url = "github:anyrun-org/anyrun";
+        inputs.nixpkgs.follows = "nixpkgs";
+        inputs.flake-parts.follows = "flake-parts";
+        inputs.systems.follows = "systems";
+      };
+      nixpkgs-wayland = {
+        url = "github:nix-community/nixpkgs-wayland";
 
+        # only needed if you use as a package set:
+        inputs.nixpkgs.follows = "nixpkgs";
+      };
       nixos-cosmic = {
         url = "github:lilyinstarlight/nixos-cosmic";
         inputs.nixpkgs.follows = "nixpkgs";
