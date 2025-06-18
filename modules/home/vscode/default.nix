@@ -81,7 +81,6 @@
         bbenoist.nix
         jnoortheen.nix-ide
 
-
         # csv
 
         # james-yu.latex-workshop
@@ -257,7 +256,7 @@
         "a3400g" = "linux";
         "sanjiao" = "linux";
       };
-      "remote.SSH.localServerDownload" = true;
+      "remote.SSH.localServerDownload" = false;
 
       # --------------------------------------------
       # --------------------------------------------
