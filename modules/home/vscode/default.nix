@@ -60,6 +60,7 @@
         # python
         donjayamanne.python-environment-manager
         cstrap.python-snippets
+        tamasfe.even-better-toml
         # git
         # eamodio.gitlens
         #donjayamanne.githistory
@@ -79,6 +80,8 @@
         # nix
         bbenoist.nix
         jnoortheen.nix-ide
+
+
         # csv
 
         # james-yu.latex-workshop
