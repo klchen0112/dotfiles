@@ -65,6 +65,7 @@
       "telegram"
       "iterm2"
       # "docker"
+      "feishu"
     ];
   };
 }
