@@ -6,6 +6,7 @@ in
 {
   imports = [
     self.homeModules.default
+    self.homeModules.nushell
   ];
 
   # Defined by /modules/home/me.nix
