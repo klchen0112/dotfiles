@@ -1,10 +1,9 @@
 {
   imports = [
-    # ./emacs
     ./kitty
     ./chrome
-    #    ./zen
     ./vscode
+    ./zen
     ./lang
     ./inputmethod
     ./aria2
@@ -14,6 +13,5 @@
     ./media
     ./neovim
     ./sync
-    #    ./niri
   ];
 }

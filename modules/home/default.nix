@@ -11,5 +11,6 @@
     ./ssh
     ./zsh
     ./nix-index
+    ./emacs
   ];
 }
