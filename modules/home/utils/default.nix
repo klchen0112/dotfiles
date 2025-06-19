@@ -13,7 +13,6 @@
 
   programs.zoxide = {
     enable = true;
-    enableFishIntegration = true;
   };
 
   programs.eza = {
@@ -74,11 +73,11 @@
     enable = true;
   };
 
-  programs.mcfly = {
-    enable = true;
-    keyScheme = "emacs";
-    enableLightTheme = true;
-  };
+  # programs.mcfly = {
+  #   enable = true;
+  #   keyScheme = "emacs";
+  #   enableLightTheme = true;
+  # };
 
   home.packages = with pkgs; [
     inetutils
