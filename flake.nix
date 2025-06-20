@@ -25,6 +25,18 @@
         inputs.nixpkgs.follows = "nixpkgs";
       };
 
+      nix-homebrew.url = "github:zhaofengli/nix-homebrew";
+
+      # Optional: Declarative tap management
+      homebrew-core = {
+        url = "github:homebrew/homebrew-core";
+        flake = false;
+      };
+      homebrew-cask = {
+        url = "github:homebrew/homebrew-cask";
+        flake = false;
+      };
+
       # Home Manager
       home-manager = {
         # User Package Management
