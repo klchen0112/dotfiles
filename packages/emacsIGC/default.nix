@@ -15,7 +15,7 @@
     src = fetchFromGitHub {
       owner = "emacs-mirror";
       repo = "emacs";
-      rev = "887db2ff38ce82bb5f33aa128c76b578caba216d";
+      rev = "f1737342518baf6968ad0c09132565cad5f4a645";
       hash = "sha256-BvaXzHUsU9BOtgODeyZxsmEErjJsUGdAUxaSmbeovvw=";
     };
     configureFlags = (old.configureFlags or [ ]) ++ [
