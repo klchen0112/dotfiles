@@ -216,7 +216,6 @@
         inputs.nixpkgs.follows = "nixpkgs";
         inputs.home-manager.follows = "home-manager";
       };
-      omnix.url = "github:juspay/omnix";
 
       nix-index-database.url = "github:nix-community/nix-index-database";
       nix-index-database.inputs.nixpkgs.follows = "nixpkgs";
