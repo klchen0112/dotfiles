@@ -1,5 +1,5 @@
 {
   imports = [
-    # ./niri
+    ./niri
   ];
 }

@@ -8,6 +8,8 @@
     flake.inputs.niri.nixosModules.niri
   ];
   programs.niri.enable = true;
+  programs.niri.package = pkgs.niri-unstable;
+  nixpkgs.overlays = [ flake.inputs.niri.overlays.niri ];
   nix.settings = {
     # add binary caches
     trusted-public-keys = [

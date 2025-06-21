@@ -5,6 +5,7 @@
 }:
 {
   imports = [
+    flake.inputs.niri.homeModules.niri
     ./binds.nix
     ./hyprlock.nix
     ./wine.nix
@@ -15,7 +16,6 @@
     # screenshot
     grim
     slurp
-
     # utils
     wl-clipboard
   ];
@@ -33,7 +33,6 @@
 
   programs.niri = {
     enable = true;
-    package = pkgs.niri-unstable;
   };
   home.sessionVariables = {
     QT_QPA_PLATFORM = "wayland";
