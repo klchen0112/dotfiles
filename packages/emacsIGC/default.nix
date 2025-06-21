@@ -11,7 +11,7 @@
 }).overrideAttrs
   (old: rec {
     name = "emacs-${version}";
-    version = "igc-2025-06-17";
+    version = "igc-2025-06-20";
     src = fetchFromGitHub {
       owner = "emacs-mirror";
       repo = "emacs";
