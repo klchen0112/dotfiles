@@ -18,11 +18,6 @@
       # I don't have an Intel mac.
       extra-platforms = lib.mkIf pkgs.stdenv.isDarwin "aarch64-darwin x86_64-darwin";
       extra-experimental-features = "nix-command flakes";
-      trusted-users = [
-        "root"
-        "@wheel"
-        "${config.me.username}"
-      ];
       accept-flake-config = true;
     };
     extraOptions = ''

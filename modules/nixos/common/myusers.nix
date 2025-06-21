@@ -111,11 +111,17 @@ in
         ++ (lib.optionals (config.machine.desktop && pkgs.stdenv.isLinux) [
           (self + /modules/home/desktop-linux.nix)
         ]);
+      nix.settings.trusted-users = [
+        "root"
+        "@wheel"
+        "${name}"
+      ];
     });
 
     # All users can add Nix caches.
     nix.settings.trusted-users = [
       "root"
+      "@wheel"
     ] ++ config.myusers;
   };
 }
