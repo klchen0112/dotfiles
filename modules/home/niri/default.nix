@@ -5,7 +5,6 @@
 }:
 {
   imports = [
-    flake.inputs.niri.homeModules.niri
     ./binds.nix
     ./hyprlock.nix
     ./wine.nix
@@ -29,10 +28,6 @@
       "https://nixpkgs-wayland.cachix.org"
       "https://niri.cachix.org"
     ];
-  };
-
-  programs.niri = {
-    enable = true;
   };
   home.sessionVariables = {
     QT_QPA_PLATFORM = "wayland";
