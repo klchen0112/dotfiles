@@ -8,7 +8,8 @@ let
 in
 {
   i18n.inputMethod = {
-    enabled = if pkgs.stdenv.isLinux then "fcitx5" else null;
+    enable = pkgs.stdenv.isLinux;
+    type = "fcitx5";
     fcitx5.addons = with pkgs; [
       fcitx5-rime
       fcitx5-configtool
