@@ -3,7 +3,7 @@
     ./kitty
     ./chrome
     ./vscode
-    # ./zen
+    ./zen
     ./lang
     ./inputmethod
     ./aria2
