@@ -43,10 +43,7 @@ let
       pyright
       ruff
       # poetry
-      uv
       # ------------------- Web -------------------------
-      nodejs
-      typescript
 
       typescript-language-server
       emmet-ls
