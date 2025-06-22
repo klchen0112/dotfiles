@@ -51,8 +51,6 @@ let
       yaml-language-server
       # Building tools
       # bazel_7
-      cmake
-
       dasel
 
       mermaid-cli
@@ -72,7 +70,7 @@ let
     ]
     ++ (lib.optionals pkgs.stdenv.isDarwin) [
       # pngpaste for org mode download clip
-      stable.pngpaste
+      pngpaste
       hugo
     ];
 in
@@ -80,9 +78,9 @@ in
   imports = [
     inputs.nix-doom-emacs-unstraightened.hmModule
   ];
-  # home.sessionVariables = {
-  #   "EIDTOR" = "emacs";
-  # };
+  home.sessionVariables = {
+    "EIDTOR" = "emacs";
+  };
   stylix.targets.emacs.enable = false;
   # xdg.configFile."doom".source = config.lib.file.mkOutOfStoreSymlink doomPath;
   # home.file.".cache/doom/nix/rime" = {
