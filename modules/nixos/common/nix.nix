@@ -22,7 +22,6 @@
     ] ++ (lib.attrValues flake.inputs.self.overlays);
   };
   nix = {
-    package = pkgs.nixVersions.stable;
     channel.enable = false; # remove nix-channel related tools & configs, we use flakes instead.
     nixPath = [ "nixpkgs=${flake.inputs.nixpkgs}" ]; # Enables use of `nix-shell -p ...` etc
     registry = {

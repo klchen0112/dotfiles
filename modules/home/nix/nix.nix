@@ -7,7 +7,6 @@
 }:
 {
   nix = {
-    package = pkgs.nixVersions.stable;
     nixPath = [ "nixpkgs=${flake.inputs.nixpkgs}" ]; # Enables use of `nix-shell -p ...` etc
     registry = {
       nixpkgs.flake = flake.inputs.nixpkgs;
@@ -21,7 +20,7 @@
       extra-experimental-features = "nix-command flakes";
       accept-flake-config = true;
     };
-  
+
   };
 
 }
