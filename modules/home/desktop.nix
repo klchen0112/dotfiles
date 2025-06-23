@@ -12,6 +12,5 @@
     ./aerospace
     ./media
     ./neovim
-    ./sync
   ];
 }

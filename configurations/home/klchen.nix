@@ -7,6 +7,7 @@ in
   imports = [
     self.homeModules.default
     self.homeModules.nushell
+    self.homeModules.sync
   ];
 
   # Defined by /modules/home/me.nix

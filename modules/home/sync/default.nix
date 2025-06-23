@@ -16,7 +16,8 @@
       };
       folders = {
         "rime-sync" = {
-          path = "~/Library/Mobile Documents/iCloud~dev~fuxiao~app~hamsterapp/Documents/sync";
+          id = "w4pgi-mnhem";
+          path = "'/Users/klchen/Library/Mobile Documents/iCloud~dev~fuxiao~app~hamsterapp/Documents/sync'";
           devices = [
             "redmi-12t-pro"
             "tower"
