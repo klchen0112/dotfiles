@@ -22,7 +22,6 @@
           nix-output-monitor
           inputs'.agenix.packages.default
           nixfmt-rfc-style
-          omnix
         ];
       };
       pre-commit.settings = {
