@@ -11,7 +11,7 @@
   inputs =
     # All flake references used to build my NixOS setup. These are dependencies.
     {
-      nixpkgs.url = "git+https://github.com/nixos/nixpkgs?shallow=1&ref=nixos-unstable"; # Nix Packages
+      nixpkgs.url = "git+https://github.com/nixos/nixpkgs?shallow=1&ref=nixpkgs-unstable"; # Nix Packages
       nixpkgs-unstable.url = "git+https://github.com/nixos/nixpkgs?shallow=1&ref=nixos-unstable-small"; # Nix Packages
       nixpkgs-stable.url = "git+https://github.com/nixos/nixpkgs?shallow=1&ref=release-25.05"; # Nix Packages
 
@@ -154,12 +154,16 @@
         # url = "git+file:///Users/klchen/my/doom";
         flake = false;
       };
-
+      doomemacs = {
+        url = "github:panchoh/doomemacs/fix/magit-plus-forge-ghub-error";
+        flake = false;
+      };
       nix-doom-emacs-unstraightened = {
         url = "github:marienz/nix-doom-emacs-unstraightened";
         inputs.nixpkgs.follows = "nixpkgs";
         inputs.systems.follows = "systems";
         inputs.emacs-overlay.follows = "emacs-overlay";
+        inputs.doomemacs.follows = "doomemacs";
       };
 
       niri = {

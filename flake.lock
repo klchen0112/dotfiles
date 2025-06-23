@@ -178,15 +178,16 @@
     "doomemacs": {
       "flake": false,
       "locked": {
-        "lastModified": 1749895289,
-        "narHash": "sha256-b1Hl70p4OOWkcTtXRiJ3Ker9gzOjAoZfwNqxlmE1s7g=",
-        "owner": "doomemacs",
+        "lastModified": 1750582013,
+        "narHash": "sha256-mrDVFyUefeBcp33SF1vNU1102pqEsp3B34B6QzAJ3rg=",
+        "owner": "panchoh",
         "repo": "doomemacs",
-        "rev": "e6c755305358412a71a990fc2cf592c629edde1e",
+        "rev": "515e5f29db2b39bfb51a2d7d54d5a8b53a34e926",
         "type": "github"
       },
       "original": {
-        "owner": "doomemacs",
+        "owner": "panchoh",
+        "ref": "fix/magit-plus-forge-ghub-error",
         "repo": "doomemacs",
         "type": "github"
       }
@@ -201,11 +202,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1750580687,
-        "narHash": "sha256-W/MkTnW4WPIFQLm1sEf9qnAWu98F32tCjUEhyu+9GeU=",
+        "lastModified": 1750642864,
+        "narHash": "sha256-eFcwPby0BJKu+7kTdPY5Y11ME/sXaOhXs6uFhGDw3NU=",
         "owner": "nix-community",
         "repo": "emacs-overlay",
-        "rev": "eb94726c3ee0a32c931669a506536ee1367a0ae1",
+        "rev": "3d98cbd003b2097d18a94f6d8d96e1039732cd2e",
         "type": "github"
       },
       "original": {
@@ -608,7 +609,9 @@
     },
     "nix-doom-emacs-unstraightened": {
       "inputs": {
-        "doomemacs": "doomemacs",
+        "doomemacs": [
+          "doomemacs"
+        ],
         "emacs-overlay": [
           "emacs-overlay"
         ],
@@ -834,16 +837,16 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1750506804,
-        "narHash": "sha256-VLFNc4egNjovYVxDGyBYTrvVCgDYgENp5bVi9fPTDYc=",
-        "ref": "nixos-unstable",
-        "rev": "4206c4cb56751df534751b058295ea61357bbbaa",
+        "lastModified": 1750386251,
+        "narHash": "sha256-1ovgdmuDYVo5OUC5NzdF+V4zx2uT8RtsgZahxidBTyw=",
+        "ref": "nixpkgs-unstable",
+        "rev": "076e8c6678d8c54204abcb4b1b14c366835a58bb",
         "shallow": true,
         "type": "git",
         "url": "https://github.com/nixos/nixpkgs"
       },
       "original": {
-        "ref": "nixos-unstable",
+        "ref": "nixpkgs-unstable",
         "shallow": true,
         "type": "git",
         "url": "https://github.com/nixos/nixpkgs"
@@ -984,6 +987,7 @@
         "anyrun": "anyrun",
         "devshell": "devshell",
         "doom-config": "doom-config",
+        "doomemacs": "doomemacs",
         "emacs-overlay": "emacs-overlay",
         "flake-compat": "flake-compat",
         "flake-parts": "flake-parts",
