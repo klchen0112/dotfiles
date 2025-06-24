@@ -1,4 +1,4 @@
-{ flake, config, ... }:
+{ flake, config,lib, ... }:
 let
   machine = flake.config.machines.i12r20;
 in
@@ -6,7 +6,7 @@ in
   imports = [
     flake.inputs.self.nixosModules.default
     flake.inputs.self.nixosModules.nvidia
-    flake.inputs.self.nixosModules.desktop
+      flake.inputs.self.nixosModules.desktop
     ./hardware-configuration.nix
   ];
   machine = machine;

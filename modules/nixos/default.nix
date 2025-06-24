@@ -9,6 +9,9 @@
     ./fonts
     ./stylix.nix
     ./hardware
+    flake.inputs.srvos.nixosModules.mixins-terminfo
+    flake.inputs.srvos.nixosModules.mixins-nix-experimental
+    flake.inputs.srvos.nixosModules.mixins-trusted-nix-caches
   ];
   services.openssh = {
     enable = true;
