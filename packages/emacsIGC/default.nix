@@ -11,12 +11,12 @@
 }).overrideAttrs
   (old: rec {
     name = "emacs-${version}";
-    version = "igc-2025-06-20";
+    version = "igc-2025-06-25";
     src = fetchFromGitHub {
       owner = "emacs-mirror";
       repo = "emacs";
-      rev = "f1737342518baf6968ad0c09132565cad5f4a645";
-      hash = "sha256-BvaXzHUsU9BOtgODeyZxsmEErjJsUGdAUxaSmbeovvw=";
+      rev = "1c19182e28e90b619a4c3d5553e3b5ae03eccd12";
+      hash = "sha256-nZIcNLpe6qqyxZMsm8e5jup2HHHaWbgIk36MstxoTjc=";
     };
     configureFlags = (old.configureFlags or [ ]) ++ [
       # "--with-xwidgets" # withXwidgets failed with mps enabled
