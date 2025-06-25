@@ -31,7 +31,7 @@
       sshKey = [
         "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILJsUHc8XEf0Pe2acybyO4uEoYu/FrqjX74cYQCuHuR5 klchen@mbp-dxm"
       ];
-      base16Scheme = "catppuccin-mocha";
+      base16Scheme = "primer-light";
       initialHashedPassword = "$6$qpLfyxefL6ImN6y8$6P2BYZEfmjdh6LeL4646LEhZnORcyxWIRxRBN2Nt6XGLk7pTu6XBy4u.mkpUs2pLW28kFx6dks8SNW2OW0AKf1";
     };
   };
@@ -46,7 +46,7 @@
       users = [ "klchen" ];
     };
     sanjiao = {
-      hostName = "a3400g";
+      hostName = "sanjiao";
       platform = "x86_64-linux";
       sshKey = [ "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAID8T9wyRN9CA/wWN70aHaRoAi1BRFeWkIjfL6+sycRaI" ];
       base16Scheme = "selenized-light";
@@ -71,7 +71,7 @@
       sshKey = [
         "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIH8NNbMeWmANWXw/oLFRsKPxc8gmMgyhQFYb+v0lrkpI"
       ];
-      base16Scheme = "ayu-light";
+      base16Scheme = "primer-light";
       users = [ "chenkailong_dxm" ];
       desktop = true;
     };
