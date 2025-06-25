@@ -1,6 +1,5 @@
 {
   description = "My Personal NixOS and Darwin System Flake Configuration";
-
   # Wired using https://nixos-unified.org/autowiring.html
   outputs =
     inputs:
@@ -11,7 +10,7 @@
   inputs =
     # All flake references used to build my NixOS setup. These are dependencies.
     {
-      nixpkgs.url = "git+https://github.com/nixos/nixpkgs?shallow=1&ref=nixpkgs-unstable"; # Nix Packages
+      nixpkgs.url = "git+https://github.com/nixos/nixpkgs?shallow=1&ref=nixos-unstable"; # Nix Packages
       nixpkgs-unstable.url = "git+https://github.com/nixos/nixpkgs?shallow=1&ref=nixos-unstable-small"; # Nix Packages
       nixpkgs-stable.url = "git+https://github.com/nixos/nixpkgs?shallow=1&ref=release-25.05"; # Nix Packages
 
@@ -184,12 +183,12 @@
         # only needed if you use as a package set:
         inputs.nixpkgs.follows = "nixpkgs";
       };
-      nixos-cosmic = {
-        url = "github:lilyinstarlight/nixos-cosmic";
-        inputs.nixpkgs.follows = "nixpkgs";
-        inputs.nixpkgs-stable.follows = "nixpkgs-stable";
-        inputs.flake-compat.follows = "flake-compat";
-      };
+      # nixos-cosmic = {
+      #   url = "github:lilyinstarlight/nixos-cosmic";
+      #   inputs.nixpkgs.follows = "nixpkgs";
+      #   inputs.nixpkgs-stable.follows = "nixpkgs-stable";
+      #   inputs.flake-compat.follows = "flake-compat";
+      # };
       # theme
       stylix = {
         url = "github:danth/stylix";
@@ -221,8 +220,10 @@
         inputs.home-manager.follows = "home-manager";
       };
 
-      nix-index-database.url = "github:nix-community/nix-index-database";
-      nix-index-database.inputs.nixpkgs.follows = "nixpkgs";
+      nix-index-database = {
+        url = "github:nix-community/nix-index-database";
+        inputs.nixpkgs.follows = "nixpkgs";
+      };
 
     };
 
