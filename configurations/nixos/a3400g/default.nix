@@ -9,7 +9,7 @@ in
 {
   imports = [
     flake.inputs.self.nixosModules.default
-      flake.inputs.self.nixosModules.server
+    flake.inputs.self.nixosModules.server
     ./hardware-configuration.nix
   ];
   myusers = machine.users;
