@@ -78,7 +78,11 @@
   #   keyScheme = "emacs";
   #   enableLightTheme = true;
   # };
-
+  # A multi-shell completion library.
+  programs.carapace = {
+    enable = true;
+  };
+  
   home.packages = with pkgs; [
     inetutils
     nodePackages.prettier
