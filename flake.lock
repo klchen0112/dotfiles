@@ -178,16 +178,15 @@
     "doomemacs": {
       "flake": false,
       "locked": {
-        "lastModified": 1750582013,
-        "narHash": "sha256-mrDVFyUefeBcp33SF1vNU1102pqEsp3B34B6QzAJ3rg=",
-        "owner": "panchoh",
+        "lastModified": 1750902899,
+        "narHash": "sha256-+9DUU3OeVvBLz4aXSqdFDtt7lr3E+QbDJ6tuPImxHns=",
+        "owner": "doomemacs",
         "repo": "doomemacs",
-        "rev": "515e5f29db2b39bfb51a2d7d54d5a8b53a34e926",
+        "rev": "c55abb1bf72bd773c015e5b4449b7a4efa1de8a0",
         "type": "github"
       },
       "original": {
-        "owner": "panchoh",
-        "ref": "fix/magit-plus-forge-ghub-error",
+        "owner": "doomemacs",
         "repo": "doomemacs",
         "type": "github"
       }
@@ -609,9 +608,7 @@
     },
     "nix-doom-emacs-unstraightened": {
       "inputs": {
-        "doomemacs": [
-          "doomemacs"
-        ],
+        "doomemacs": "doomemacs",
         "emacs-overlay": [
           "emacs-overlay"
         ],
@@ -960,7 +957,6 @@
         "anyrun": "anyrun",
         "devshell": "devshell",
         "doom-config": "doom-config",
-        "doomemacs": "doomemacs",
         "emacs-overlay": "emacs-overlay",
         "flake-compat": "flake-compat",
         "flake-parts": "flake-parts",

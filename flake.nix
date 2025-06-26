@@ -153,16 +153,12 @@
         # url = "git+file:///Users/klchen/my/doom";
         flake = false;
       };
-      doomemacs = {
-        url = "github:panchoh/doomemacs/fix/magit-plus-forge-ghub-error";
-        flake = false;
-      };
+
       nix-doom-emacs-unstraightened = {
         url = "github:marienz/nix-doom-emacs-unstraightened";
         inputs.nixpkgs.follows = "nixpkgs";
         inputs.systems.follows = "systems";
         inputs.emacs-overlay.follows = "emacs-overlay";
-        inputs.doomemacs.follows = "doomemacs";
       };
 
       niri = {
