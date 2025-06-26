@@ -76,7 +76,7 @@
       # "firefox"
       "zen"
       "podman-desktop"
-      "squirrel"
+      "squirrel-app"
       "iina"
       "skim"
       "zotero"
