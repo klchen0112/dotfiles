@@ -183,6 +183,14 @@ run = ['layout floating', 'move-node-to-workspace 9']
 if.app-id = 'com.duxiaoman.manruliu'
 
 [[on-window-detected]]
+run = ['layout floating', 'move-node-to-workspace 9']
+if.app-id = 'com.electron.lark'
+
+[[on-window-detected]]
+run = ['layout floating', 'move-node-to-workspace 9']
+if.app-id = 'com.tencent.xinWeChat'
+
+[[on-window-detected]]
 run = ['layout floating']
 if.app-id = '-.RVLSession'
 
