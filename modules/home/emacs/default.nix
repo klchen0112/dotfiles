@@ -22,6 +22,7 @@ let
       # mpvi required
       tesseract5
       ffmpeg
+      poppler
       ffmpegthumbnailer
       mediainfo
       sqlite
