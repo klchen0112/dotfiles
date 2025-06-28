@@ -103,3 +103,4 @@ echo "experimental-features = nix-command flakes" >> ~/.config/nix/nix.conf
 - [[https://github.com/Ruixi-rebirth/flakes.git][Ruixi-rebirth/flakes]]
 - [[https://github.com/ryan4yin/nix-config.git][ryan4yin/nix-config]]
 - [[https://github.com/Rashad-707/dotfiles][Rashad-707/dotfiles]]
+- [[https://github.com/linuxmobile/kaku.git][linuxmobile/kaku]]
