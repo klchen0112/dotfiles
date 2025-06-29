@@ -9,6 +9,7 @@
     ./fonts
     ./stylix.nix
     ./hardware
+    ./network
     flake.inputs.srvos.nixosModules.mixins-terminfo
     flake.inputs.srvos.nixosModules.mixins-nix-experimental
     flake.inputs.srvos.nixosModules.mixins-trusted-nix-caches
