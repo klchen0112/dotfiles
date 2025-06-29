@@ -913,6 +913,7 @@
         "stylix": "stylix",
         "systems": "systems_3",
         "treefmt-nix": "treefmt-nix",
+        "walker": "walker",
         "zen-browser": "zen-browser"
       }
     },
@@ -1128,6 +1129,29 @@
       "original": {
         "owner": "numtide",
         "repo": "treefmt-nix",
+        "type": "github"
+      }
+    },
+    "walker": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ],
+        "systems": [
+          "systems"
+        ]
+      },
+      "locked": {
+        "lastModified": 1748677846,
+        "narHash": "sha256-3GD5xEMUUzCsbi9FmOhg7ZXZgc2NswnrCl+rRL8PsLE=",
+        "owner": "abenz1267",
+        "repo": "walker",
+        "rev": "1afd033ae3cbeb69e0debb2a0805fcbbd3d27bc1",
+        "type": "github"
+      },
+      "original": {
+        "owner": "abenz1267",
+        "repo": "walker",
         "type": "github"
       }
     },

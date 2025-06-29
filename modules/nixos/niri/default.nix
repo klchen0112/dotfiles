@@ -34,9 +34,11 @@
     # add binary caches
     trusted-public-keys = [
       "niri.cachix.org-1:Wv0OmO7PsuocRKzfDoJ3mulSl7Z6oezYhGhR+3W2964="
+      "https://walker.cachix.org"
     ];
     substituters = [
       "https://niri.cachix.org"
+      "walker.cachix.org-1:fG8q+uAaMqhsMxWjwvk0IMb4mFPFLqHjuvfwQxE4oJM="
     ];
   };
 }

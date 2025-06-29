@@ -7,7 +7,7 @@
   imports = [
     ./binds.nix
     ./wine.nix
-    ./anyrun.nix
+    ./walker.nix
     ./settings.nix
     ./swayidle.nix
     ./swaylock.nix

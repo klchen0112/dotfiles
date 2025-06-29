@@ -1,5 +1,11 @@
-{ pkgs, lib,config,... }:
 {
+  pkgs,
+  lib,
+  config,
+  ...
+}:
+{
+  stylix.targets.waybar.enable = true;
   programs.waybar = {
     enable = true;
     systemd.enable = true;
