@@ -82,7 +82,7 @@
   programs.carapace = {
     enable = true;
   };
-  
+
   home.packages = with pkgs; [
     inetutils
     nodePackages.prettier

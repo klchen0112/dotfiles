@@ -7,10 +7,11 @@
   imports = [
     ./binds.nix
     ./wine.nix
-    #    ./anyrun.nix
+    ./anyrun.nix
     ./settings.nix
     ./swayidle.nix
     ./swaylock.nix
+    ./waybar.nix
   ];
   home.packages = with pkgs; [
     # screenshot
