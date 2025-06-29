@@ -33,7 +33,7 @@
       "Mod+Shift+S".action.screenshot = {
         show-pointer = false;
       };
-      "Mod+D".action = spawn "${pkgs.anyrun}/bin/anyrun";
+      "Mod+D".action = spawn "${config.programs.anyrun.package}/bin/anyrun";
       "Ctrl+Alt+L".action = spawn "sh -c pgrep hyprlock || hyprlock";
 
       "Mod+U".action = spawn "env XDG_CURRENT_DESKTOP=gnome gnome-control-center";

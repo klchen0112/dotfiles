@@ -10,6 +10,7 @@
     ./wine.nix
     ./anyrun.nix
     ./hypridle.nix
+    ./settings.nix
   ];
   home.packages = with pkgs; [
     # screenshot
@@ -17,6 +18,7 @@
     slurp
     # utils
     wl-clipboard
+    wlr-randr
     swaybg
     hyprlock
     swaylock-effects
