@@ -21,22 +21,5 @@
       closeOnClick = true;
     };
 
-    extraCss = builtins.readFile (./. + "/style-dark.css");
-
-    extraConfigFiles = {
-      "applications.ron".text = ''
-        Config(
-          desktop_actions: false,
-          max_entries: 5,
-          terminal: Some("ghostty"),
-        )
-      '';
-
-      "shell.ron".text = ''
-        Config(
-          prefix: ">"
-        )
-      '';
-    };
   };
 }

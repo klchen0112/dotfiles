@@ -12,6 +12,7 @@
     ./swayidle.nix
     ./swaylock.nix
     ./waybar.nix
+    ./xwayland-satellite.nix
   ];
   home.packages = with pkgs; [
     # screenshot

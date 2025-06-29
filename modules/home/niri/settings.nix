@@ -10,6 +10,7 @@ let
   };
 in
 {
+  stylix.targets.niri.enable = true;
   programs.niri.settings = {
     environment = {
       CLUTTER_BACKEND = "wayland";
@@ -89,8 +90,6 @@ in
       border = {
         enable = true;
         width = 1;
-        active.color = "#7fb4ca";
-        inactive.color = "#090e13";
       };
       shadow = {
         enable = true;
