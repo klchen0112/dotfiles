@@ -13,6 +13,7 @@
     ./swaylock.nix
     ./waybar.nix
     ./xwayland-satellite.nix
+    ./mako.nix
   ];
   home.packages = with pkgs; [
     # screenshot

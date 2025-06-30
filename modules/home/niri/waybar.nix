@@ -45,12 +45,34 @@
           "pulseaudio"
           "tray"
         ];
+        "image" = {
+          path = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake-white.svg";
+          on-click = "niri msg action toggle-overview";
+          size = 22;
+          tooltip = false;
+        };
+        "wlr/taskbar" = {
+          all-outputs = false;
+          format = "{icon}";
+          icon-size = 16;
+          tooltip = true;
+          tooltip-format = "{title}";
+          active-first = true;
+          on-click = "activate";
+        };
+        "niri/window" = {
+          max-length = 50;
+          format = "{app_id}";
+          separate-outputs = true;
+          on-click = "walker --modules windows";
+          icon = true;
+          icon-size = 18;
+        };
         "niri/workspaces" = {
           all-outputs = false;
           on-click = "activate";
           current-only = false;
           disable-scroll = false;
-          icon-theme = "Papirus-Dark";
           format = "<span><b>{icon}</b></span>";
           format-icons = {
             "1" = "1";
