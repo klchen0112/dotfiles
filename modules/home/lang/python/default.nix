@@ -12,7 +12,6 @@
   ];
   programs.mamba-cpp = {
     enable = true;
-    package = pkgs.mamba-cpp;
   };
   # programs.micromamba = {
   #   enable = false;

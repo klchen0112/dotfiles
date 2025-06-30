@@ -8,7 +8,6 @@
   stylix.targets.kitty.enable = true;
   programs.kitty = {
     enable = true;
-    package = pkgs.kitty;
     environment = {
       LANG = "en_US.UTF-8";
       LC_ALL = "en_US.UTF-8";
@@ -20,7 +19,7 @@
 
     settings = {
       #-------------------------------------------- Font --------------------------------------------
-      font_family = if pkgs.stdenv.isLinux then "Iosevka Nerd Font" else "SF Mono";
+      font_family = "Iosevka Nerd Font";
       font_size = 14;
 
       #-------------------------------------------- Window --------------------------------------------

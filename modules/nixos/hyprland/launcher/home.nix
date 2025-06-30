@@ -1,20 +1,5 @@
 { flake, ... }:
 {
-  # programs.wofi.enable = true;
-  # app lanchuer
-  # programs.rofi = {
-  #   enable = true;
-  #   package = pkgs.rofi-wayland;
-  #   # plugins = [];
-  #   font = "JetBrainsMono Nerd Font 14";
-  #   terminal = "alacritty";
-  #   cycle = true;
-  #   location = "center";
-  #   # settings = {
-
-  #   # };
-
-  # };
   imports = [
     flake.inputs.anyrun.homeManagerModules.default
   ];
