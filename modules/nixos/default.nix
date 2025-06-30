@@ -18,4 +18,8 @@
     enable = true;
     settings.PermitRootLogin = "no";
   };
+  boot = {
+    tmp.useTmpfs = true;
+    tmp.tmpfsSize = "10G";
+  };
 }
