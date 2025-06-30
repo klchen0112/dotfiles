@@ -1,12 +1,13 @@
-{ flake, ... }:
+{ flake, pkgs, ... }:
 {
   imports = [
     flake.inputs.anyrun.homeManagerModules.default
   ];
   programs.anyrun = {
     enable = true;
-    config = {
-      plugins = with inputs.anyrun.packages.${pkgs.system}; [
+    package = flake.inputs.anyrun.packages.${pkgs.system}.anyrun;
+    confg = {
+      plugins = with flake.inputs.anyrun.packages.${pkgs.system}; [
         applications
         kidex
         # directory

@@ -6,6 +6,7 @@
 {
   programs.anyrun = {
     enable = true;
+    package = flake.inputs.anyrun.packages.${pkgs.system}.anyrun;
     config = {
       plugins = with flake.inputs.anyrun.packages.${pkgs.system}; [
         applications

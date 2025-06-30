@@ -170,21 +170,7 @@
       anyrun = {
         url = "github:anyrun-org/anyrun";
         inputs.nixpkgs.follows = "nixpkgs";
-        inputs.flake-parts.follows = "flake-parts";
-        inputs.systems.follows = "systems";
       };
-      nixpkgs-wayland = {
-        url = "github:nix-community/nixpkgs-wayland";
-
-        # only needed if you use as a package set:
-        inputs.nixpkgs.follows = "nixpkgs";
-      };
-      # nixos-cosmic = {
-      #   url = "github:lilyinstarlight/nixos-cosmic";
-      #   inputs.nixpkgs.follows = "nixpkgs";
-      #   inputs.nixpkgs-stable.follows = "nixpkgs-stable";
-      #   inputs.flake-compat.follows = "flake-compat";
-      # };
       # theme
       stylix = {
         url = "github:danth/stylix";
@@ -196,17 +182,6 @@
         inputs.nur.follows = "nur";
         inputs.systems.follows = "systems";
       };
-
-      # own package
-      # own-nur = {
-      #   url = "github:klchen0112/nur";
-      #   inputs.nixpkgs.follows = "nixpkgs";
-      # };
-
-      # rust-overlay = {
-      #   url = "github:oxalica/rust-overlay";
-      #   inputs.nixpkgs.follows = "nixpkgs";
-      # };
 
       zen-browser = {
         url = "github:0xc000022070/zen-browser-flake";

@@ -6,11 +6,11 @@
 {
   imports = [
     ./binds.nix
-    ./hyprlock.nix
     ./wine.nix
-    ./anyrun.nix
-    ./hypridle.nix
+    #    ./anyrun.nix
     ./settings.nix
+    ./swayidle.nix
+    ./swaylock.nix
   ];
   home.packages = with pkgs; [
     # screenshot
@@ -20,15 +20,6 @@
     wl-clipboard
     wlr-randr
     swaybg
-    hyprlock
-    swaylock-effects
-    swayidle
-    wlogout
-    wlsunset
-    fuzzel
-    waybar
-    uwsm
-    xwayland-satellite
     adwaita-icon-theme
     gnome-themes-extra
   ];
@@ -52,11 +43,9 @@
   nix.settings = {
     # add binary caches
     trusted-public-keys = [
-      "nixpkgs-wayland.cachix.org-1:3lwxaILxMRkVhehr5StQprHdEo4IrE8sRho9R9HOLYA="
       "niri.cachix.org-1:Wv0OmO7PsuocRKzfDoJ3mulSl7Z6oezYhGhR+3W2964="
     ];
     substituters = [
-      "https://nixpkgs-wayland.cachix.org"
       "https://niri.cachix.org"
     ];
   };
