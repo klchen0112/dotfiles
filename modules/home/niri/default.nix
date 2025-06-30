@@ -11,9 +11,9 @@
     ./settings.nix
     ./swayidle.nix
     ./swaylock.nix
+    ./swaync.nix
     ./waybar.nix
     ./xwayland-satellite.nix
-    ./mako.nix
   ];
   home.packages = with pkgs; [
     # screenshot
