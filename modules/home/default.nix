@@ -14,4 +14,5 @@
     ./emacs
     ./neovim
   ];
+  fonts.fontconfig.enable = true;
 }
