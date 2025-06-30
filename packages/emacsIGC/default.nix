@@ -8,6 +8,7 @@
 }:
 (emacs-overlay.packages.${stdenv.system}.emacs-git.override {
   withMailutils = false;
+  withPgtk = stdenv.hostPlatform.isLinux;
 }).overrideAttrs
   (old: rec {
     name = "emacs-${version}";
