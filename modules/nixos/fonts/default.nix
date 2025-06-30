@@ -15,7 +15,7 @@
           "DejaVu Sans"
         ];
         monospace = [
-          "jetbrains-mono"
+          "Iosevka Nerd Font"
           "Noto Sans Mono CJK SC"
           "Sarasa Mono SC"
           "DejaVu Sans Mono"
