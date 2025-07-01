@@ -5,7 +5,6 @@
 {
   stylix.targets.vscode.enable = true;
   home.packages = with pkgs; [
-    nerd-fonts.iosevka
     nerd-fonts.hack
     cm_unicode
     noto-fonts-cjk-sans
@@ -112,7 +111,7 @@
       "editor.inlineSuggest.enabled" = true;
       "editor.semanticHighlighting.enabled" = true;
       "editor.codeLensFontFamily" =
-        "'Iosevka Nerd Font','Overpass','CMU Typewriter Text','Noto Serif CJK SC','Noto Serif','Hack Nerd Font'";
+        "'M PLUS Code Latin 50','Overpass','CMU Typewriter Text','Noto Serif CJK SC','Noto Serif','Hack Nerd Font'";
       "editor.fontLigatures" = true;
       "editor.formatOnPaste" = false;
       "editor.formatOnType" = false;
@@ -168,7 +167,7 @@
       # Terminal Settings
       # --------------------------------------------
       "terminal.integrated.fontFamily" =
-        "'Iosevka','Overpass','CMU Typewriter Text','Noto Serif CJK SC','Noto Serif','Hack Nerd Font'";
+        "'M PLUS Code Latin 50','Overpass','CMU Typewriter Text','Noto Serif CJK SC','Noto Serif','Hack Nerd Font'";
       "terminal.integrated.defaultProfile.windows" = "PowerShell";
       "terminal.integrated.defaultProfile.osx" = "fish";
       "terminal.integrated.profiles.osx" = {

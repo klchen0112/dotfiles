@@ -19,6 +19,8 @@
     fonts = {
       sizes = {
         terminal = 14;
+        applications= 16;
+        popups = 12;
       };
       emoji = {
         package = pkgs.twemoji-color-font;
