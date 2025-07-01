@@ -12,7 +12,6 @@
 
       # mono fonts for coding
       iosevka
-      nerd-fonts.iosevka
       nur.repos.skiletro.mplus
 
       # Serif fonts

@@ -17,13 +17,24 @@
       terminal = 0.8;
     };
     fonts = {
+      sizes = {
+        terminal = 14;
+      };
       emoji = {
         package = pkgs.twemoji-color-font;
         name = "Twitter Color Emoji";
       };
       monospace = {
-        package = pkgs.nerd-fonts.iosevka;
-        name = "Iosevka Nerd Font";
+        package = pkgs.nur.repos.skiletro.mplus;
+        name = "M PLUS Code Latin 50";
+      };
+      serif = {
+        package = pkgs.ibm-plex;
+        name = "IBM Plex Serif";
+      };
+      sansSerif = {
+        package = pkgs.dejavu_fonts;
+        name = "CMU Sans Serif";
       };
     };
   };

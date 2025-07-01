@@ -21,8 +21,8 @@
         name = "Twitter Color Emoji";
       };
       monospace = {
-        package = pkgs.nerd-fonts.iosevka;
-        name = "Iosevka Nerd Font";
+        package = pkgs.nur.repos.skiletro.mplus;
+        name = "M PLUS Code Latin 50";
       };
       serif = {
         package = pkgs.ibm-plex;

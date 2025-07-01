@@ -16,11 +16,10 @@
     shellIntegration = {
       enableFishIntegration = true;
     };
+    enableGitIntegration = true;
 
     settings = {
       #-------------------------------------------- Font --------------------------------------------
-      font_family = "Iosevka Nerd Font";
-      font_size = 14;
 
       #-------------------------------------------- Window --------------------------------------------
       hide_window_decorations = if pkgs.stdenv.isDarwin then "titlebar-only " else true;
