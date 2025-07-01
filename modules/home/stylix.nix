@@ -18,8 +18,8 @@
     };
     fonts = {
       sizes = {
-        terminal = 14;
-        applications= 16;
+        terminal = 12;
+        applications= 12;
         popups = 12;
       };
       emoji = {
