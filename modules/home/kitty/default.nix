@@ -5,7 +5,10 @@
   ...
 }:
 {
-  stylix.targets.kitty.enable = true;
+  stylix.targets.kitty = {
+    enable = true;
+    variant256Colors = true;
+  };
   programs.kitty = {
     enable = true;
     environment = {
