@@ -26,7 +26,7 @@
     # Optional: Enable fully-declarative tap management
     #
     # With mutableTaps disabled, taps can no longer be added imperatively with `brew tap`.
-    mutableTaps = true;
+    mutableTaps = false;
     # Automatically migrate existing Homebrew installations
     autoMigrate = true;
   };
@@ -34,8 +34,8 @@
     # Declare Homebrew using Nix-Darwin
     enable = true;
     onActivation = {
-      autoUpdate = true; # Auto update packages
-      upgrade = true;
+      autoUpdate = false; # Auto update packages
+      upgrade = false;
       cleanup = "zap"; # Uninstall not listed packages and casks
     };
     global.autoUpdate = false;
@@ -62,10 +62,7 @@
       # "macism
       #"sleepwatcher"
     ];
-    taps = [
-      # "homebrew/cask"
-      # "homebrew/services"
-    ];
+
     casks = [
       "anki"
       "snipaste"
@@ -97,6 +94,7 @@
       "iterm2"
       # "docker"
       "feishu"
+      "ghostty"
     ];
   };
 }
