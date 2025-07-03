@@ -13,7 +13,7 @@
     ./media
     ./neovim
   ];
-    fonts.fontconfig = {
+  fonts.fontconfig = {
     enable = true;
     defaultFonts = {
       monospace = [ "M PLUS Code Latin 50" ];

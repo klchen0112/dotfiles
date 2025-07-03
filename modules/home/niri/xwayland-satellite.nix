@@ -1,4 +1,5 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   home.packages = with pkgs; [
     xwayland-satellite
   ];
@@ -21,6 +22,6 @@
       ExecStart = "${pkgs.xwayland-satellite}/bin/xwayland-satellite";
       StandardOutput = "journal";
     };
-    Install.WantedBy = ["niri.service"];
+    Install.WantedBy = [ "niri.service" ];
   };
 }
