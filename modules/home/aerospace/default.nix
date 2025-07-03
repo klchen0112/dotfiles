@@ -21,6 +21,8 @@
     config =
       let
         plugin_dir = ./plugins;
+        font_size = "16";
+        corner_radius = "6";
       in
       ''
         #!/usr/bin/env bash
@@ -49,8 +51,8 @@
 
         sketchybar --default  padding_left=4 \
                               padding_right=4 \
-                              icon.font="Hack Nerd Font:Bold:16.0" \
-                              label.font="SF Pro:Semibold:16.0" \
+                              icon.font="Hack Nerd Font:Bold:${font_size}" \
+                              label.font="SF Pro:Semibold:${font_size}" \
                               icon.color=0xff${config.lib.stylix.colors.base05} \
                               label.color=0xff${config.lib.stylix.colors.base05} \
                               icon.padding_left=4 \
@@ -76,7 +78,7 @@
             --set space.$sid \
             drawing=off \
             background.color=0xff${config.lib.stylix.colors.base00} \
-            background.corner_radius=6 \
+            background.corner_radius=${corner_radius} \
             background.drawing=on \
             background.border_color=0xff${config.lib.stylix.colors.base03} \
             background.border_width=1 \
@@ -89,7 +91,7 @@
             icon.padding_right=2 \
             icon.highlight_color=0xff${config.lib.stylix.colors.base0A} \
             icon.y_offset=0 \
-            label.font="sketchybar-app-font:Regular:16.0" \
+            label.font="sketchybar-app-font:Regular:${font_size}" \
             label.padding_left=2 \
             label.padding_right=10 \
             label.highlight_color=0xff${config.lib.stylix.colors.base0A} \
@@ -120,14 +122,14 @@
                     --set window_title label="" \
                     background.drawing=on \
                     background.color=0xff${config.lib.stylix.colors.base00} \
-                    background.corner_radius=6 \
+                    background.corner_radius=${corner_radius} \
                     background.drawing=on \
                     background.border_color=0xff${config.lib.stylix.colors.base03} \
                     background.border_width=1 \
                     background.height=30 \
                     background.padding_left=4 \
                     background.padding_right=4 \
-                    icon.font="sketchybar-app-font:Regular:16.0" \
+                    icon.font="sketchybar-app-font:Regular:${font_size}" \
                     icon.padding_left=12 \
                     icon.padding_right=4 \
                     icon.drawing=on \
@@ -173,13 +175,13 @@
                     --set network_up icon=󰕒  icon.highlight_color=0xff${config.lib.stylix.colors.base0A}
         sketchybar  --add bracket rightBracket TextInputMenuAgent clock volume battery network_down network_up\
                     --set rightBracket background.color=0xff${config.lib.stylix.colors.base00} \
-                          background.corner_radius=6 \
+                          background.corner_radius=${corner_radius} \
                           background.height=30
 
         #### Groups !!! ####
         sketchybar  --add bracket spaces '/space\..*/' hahamarginleft hahamarginleftRight \
                     --set spaces background.color=0xff${config.lib.stylix.colors.base00} \
-                          background.corner_radius=6 \
+                          background.corner_radius=${corner_radius} \
                           background.height=30
 
         ##### Force all scripts to run the first time (never do this in a script) #####
