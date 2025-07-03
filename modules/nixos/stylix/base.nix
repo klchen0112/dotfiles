@@ -11,8 +11,16 @@
     opacity = {
       applications = 0.8;
       terminal = 0.8;
+      popups = 0.8;
     };
+
     fonts = {
+      sizes = {
+        applications = 12;
+        terminal = 12;
+        desktop = 10;
+        popups = 10;
+      };
       emoji = {
         package = pkgs.twemoji-color-font;
         name = "Twitter Color Emoji";
@@ -26,8 +34,8 @@
         name = "IBM Plex Serif";
       };
       sansSerif = {
-        package = pkgs.dejavu_fonts;
-        name = "CMU Sans Serif";
+        package = pkgs.ibm-plex;
+        name = "IBM Plex Serif";
       };
     };
   };
