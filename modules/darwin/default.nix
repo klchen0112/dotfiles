@@ -10,6 +10,6 @@
     ./homebrew
     ./access-tokens.nix
     ./system
-    flake.inputs.stylix.darwinModules.stylix
+    ./stylix
   ];
 }

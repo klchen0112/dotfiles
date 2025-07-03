@@ -7,7 +7,7 @@
     ./common
     ./access-tokens.nix
     ./fonts
-    ./stylix.nix
+    ./stylix
     ./hardware
     ./network
     flake.inputs.srvos.nixosModules.mixins-terminfo

@@ -4,7 +4,7 @@
     ./fish
     ./me
     ./access-tokens.nix
-    ./stylix.nix
+    ./stylix
     ./utils
     ./nix
     ./git
