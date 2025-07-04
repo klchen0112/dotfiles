@@ -45,7 +45,7 @@
       "logi-options+"
       # "firefox"
       "zen"
-      "podman-desktop"
+      # "podman-desktop"
       "squirrel-app"
       "iina"
       "skim"
@@ -54,7 +54,7 @@
       "licecap"
       # "raycast"
       # Keyboard
-      # hhkbStudio
+      "hhkbStudio"
       # microsoft-remote-desktop
       "steam"
       "adrive"
