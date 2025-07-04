@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-PERCENTAGE="$(pmset -g batt | grep -oP '\d+%' | cut -d% -f1)"
+PERCENTAGE="$(pmset -g batt | perl -ne 'print $& while m{\d+%}g' | cut -d% -f1)"
 CHARGING="$(pmset -g batt | grep 'AC Power')"
 
 if [ "$PERCENTAGE" = "" ]; then
