@@ -24,15 +24,14 @@
         inputs.nixpkgs.follows = "nixpkgs";
       };
 
-      nix-homebrew.url = "github:zhaofengli/nix-homebrew";
-
-      # Optional: Declarative tap management
-      homebrew-core = {
-        url = "github:homebrew/homebrew-core";
-        flake = false;
+      brew-nix = {
+        url = "github:BatteredBunny/brew-nix";
+        inputs.nix-darwin.follows = "nix-darwin";
+        inputs.brew-api.follows = "brew-api";
+        inputs.nixpkgs.follows = "nixpkgs";
       };
-      homebrew-cask = {
-        url = "github:homebrew/homebrew-cask";
+      brew-api = {
+        url = "github:BatteredBunny/brew-api";
         flake = false;
       };
 

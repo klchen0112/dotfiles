@@ -5,31 +5,9 @@
 }:
 {
   imports = [
-    flake.inputs.nix-homebrew.darwinModules.nix-homebrew
+     flake.inputs.brew-nix.darwinModules.default
   ];
-  nix-homebrew = {
-    # Install Homebrew under the default prefix
-    enable = true;
-
-    # Apple Silicon Only: Also install Homebrew under the default Intel prefix for Rosetta 2
-    enableRosetta = true;
-
-    # User owning the Homebrew prefix
-    user = builtins.head config.myusers;
-
-    # Optional: Declarative tap management
-    taps = {
-      "homebrew/homebrew-core" = flake.inputs.homebrew-core;
-      "homebrew/homebrew-cask" = flake.inputs.homebrew-cask;
-    };
-
-    # Optional: Enable fully-declarative tap management
-    #
-    # With mutableTaps disabled, taps can no longer be added imperatively with `brew tap`.
-    mutableTaps = false;
-    # Automatically migrate existing Homebrew installations
-    autoMigrate = true;
-  };
+  brew-nix.enable = true;
   homebrew = {
     # Declare Homebrew using Nix-Darwin
     enable = true;
@@ -57,11 +35,6 @@
       # "microsoft-excel" = 462058435;
 
     };
-
-    brews = [
-      # "macism
-      #"sleepwatcher"
-    ];
 
     casks = [
       "anki"
