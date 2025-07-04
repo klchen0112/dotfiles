@@ -17,11 +17,11 @@
         meta.description = "Dev environment for nixos-config";
         packages = with pkgs; [
           just
-          colmena
           nixd
           nix-output-monitor
           inputs'.agenix.packages.default
           nixfmt-rfc-style
+          helix
         ];
       };
       pre-commit.settings = {

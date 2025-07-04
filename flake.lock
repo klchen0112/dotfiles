@@ -363,24 +363,6 @@
         "type": "indirect"
       }
     },
-    "flake-utils_3": {
-      "inputs": {
-        "systems": "systems_2"
-      },
-      "locked": {
-        "lastModified": 1731533236,
-        "narHash": "sha256-l0KFg5HjrsfsO/JpG+r7fRrqm12kzFHyUHqHCVpMMbI=",
-        "owner": "numtide",
-        "repo": "flake-utils",
-        "rev": "11707dc2f618dd54ca8739b309ec4fc024de578b",
-        "type": "github"
-      },
-      "original": {
-        "owner": "numtide",
-        "repo": "flake-utils",
-        "type": "github"
-      }
-    },
     "fromYaml": {
       "flake": false,
       "locked": {
@@ -805,28 +787,6 @@
         "url": "https://github.com/nix-community/nix-vscode-extensions"
       }
     },
-    "nix4nvchad": {
-      "inputs": {
-        "flake-utils": "flake-utils_3",
-        "nixpkgs": [
-          "nixpkgs"
-        ],
-        "nvchad-starter": "nvchad-starter"
-      },
-      "locked": {
-        "lastModified": 1751081677,
-        "narHash": "sha256-UDJemRus2qpaJaSIIvgjf4vaoSkUSYo6hNqGzfVgK7I=",
-        "owner": "nix-community",
-        "repo": "nix4nvchad",
-        "rev": "734dcf5c509d626d6d91cdc94f1fae904235d952",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nix-community",
-        "repo": "nix4nvchad",
-        "type": "github"
-      }
-    },
     "nixos-unified": {
       "locked": {
         "lastModified": 1751174231,
@@ -1027,23 +987,6 @@
         "type": "github"
       }
     },
-    "nvchad-starter": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1750439787,
-        "narHash": "sha256-+UcDn0rTYKlaPi0ybUhYtsdPGPqKChDIPtafjf/in8g=",
-        "owner": "NvChad",
-        "repo": "starter",
-        "rev": "5c656910f058ecdc6753c6a4f39b64afce89a0e6",
-        "type": "github"
-      },
-      "original": {
-        "owner": "NvChad",
-        "ref": "main",
-        "repo": "starter",
-        "type": "github"
-      }
-    },
     "root": {
       "inputs": {
         "agenix": "agenix",
@@ -1067,7 +1010,6 @@
         "nix-index-database": "nix-index-database",
         "nix-on-droid": "nix-on-droid",
         "nix-vscode-extensions": "nix-vscode-extensions",
-        "nix4nvchad": "nix4nvchad",
         "nixos-unified": "nixos-unified",
         "nixos-wsl": "nixos-wsl",
         "nixpkgs": "nixpkgs",
@@ -1077,7 +1019,7 @@
         "nur": "nur",
         "srvos": "srvos",
         "stylix": "stylix",
-        "systems": "systems_3",
+        "systems": "systems_2",
         "treefmt-nix": "treefmt-nix",
         "walker": "walker",
         "zen-browser": "zen-browser"
@@ -1184,21 +1126,6 @@
       }
     },
     "systems_2": {
-      "locked": {
-        "lastModified": 1681028828,
-        "narHash": "sha256-Vy1rq5AaRuLzOxct8nz4T6wlgyUR7zLU309k9mBC768=",
-        "owner": "nix-systems",
-        "repo": "default",
-        "rev": "da67096a3b9bf56a91d16901293e51ba5b49a27e",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nix-systems",
-        "repo": "default",
-        "type": "github"
-      }
-    },
-    "systems_3": {
       "locked": {
         "lastModified": 1681028828,
         "narHash": "sha256-Vy1rq5AaRuLzOxct8nz4T6wlgyUR7zLU309k9mBC768=",

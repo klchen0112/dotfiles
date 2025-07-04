@@ -11,7 +11,7 @@
     ./ghostty
     ./aerospace
     ./media
-    ./neovim
+    ./emacs
   ];
   fonts.fontconfig = {
     enable = true;
