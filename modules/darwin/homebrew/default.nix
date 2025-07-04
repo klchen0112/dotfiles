@@ -54,7 +54,7 @@
       "licecap"
       # "raycast"
       # Keyboard
-      "hhkbStudio"
+      "hhkb-studio"
       # microsoft-remote-desktop
       "steam"
       "adrive"
