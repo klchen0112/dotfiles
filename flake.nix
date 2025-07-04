@@ -35,6 +35,13 @@
         flake = false;
       };
 
+      mac-app-util = {
+        url = "github:hraban/mac-app-util";
+        inputs.nixpkgs.follows = "nixpkgs";
+        inputs.systems.follows = "systems";
+        inputs.flake-compat.follows = "flake-compat";
+      };
+
 
       # Home Manager
       home-manager = {
