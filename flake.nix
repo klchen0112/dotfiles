@@ -42,7 +42,6 @@
         inputs.flake-compat.follows = "flake-compat";
       };
 
-
       # Home Manager
       home-manager = {
         # User Package Management

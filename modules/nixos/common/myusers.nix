@@ -110,7 +110,8 @@ in
         ])
         ++ (lib.optionals (config.machine.desktop && pkgs.stdenv.isLinux) [
           (self + /modules/home/desktop-linux.nix)
-        ]) ++ (lib.optionals (config.machine.desktop && pkgs.stdenv.isDarwin) [
+        ])
+        ++ (lib.optionals (config.machine.desktop && pkgs.stdenv.isDarwin) [
           (self + /modules/home/desktop-darwin.nix)
         ]);
       nix.settings.trusted-users = [

@@ -4,7 +4,7 @@
   ...
 }:
 {
-  imports = [./modules];
+  imports = [ ./modules ];
   programs.hammerspoon = {
     enable = true; # enable the Hammerspoon module
 

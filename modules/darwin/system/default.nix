@@ -1,4 +1,7 @@
 {
+  lib,
+}:
+{
   security.pam.services.sudo_local.touchIdAuth = true;
   system = {
     defaults = {
@@ -16,7 +19,7 @@
         KeyRepeat = 1;
 
         AppleShowAllExtensions = true;
-        _HIHideMenuBar = true;
+        _HIHideMenuBar = lib.mkDefault true;
 
         NSAutomaticCapitalizationEnabled = false; # disable auto capitalization(自动大写)
         NSAutomaticDashSubstitutionEnabled = false; # disable auto dash substitution(智能破折号替换)
