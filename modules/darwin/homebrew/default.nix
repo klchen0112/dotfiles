@@ -52,7 +52,7 @@
       "zotero"
       "omnidisksweeper"
       "licecap"
-      "raycast"
+      # "raycast"
       # Keyboard
       # hhkbStudio
       # microsoft-remote-desktop
