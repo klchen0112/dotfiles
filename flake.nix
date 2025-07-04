@@ -35,26 +35,26 @@
         flake = false;
       };
 
+
       # Home Manager
       home-manager = {
         # User Package Management
-        url = "github:nix-community/home-manager";
+        url = "git+https://github.com/nix-community/home-manager?shallow=1&ref=master";
         inputs.nixpkgs.follows = "nixpkgs";
       };
 
       # Android
-      # nix-on-droid = {
-      #   url = "git+https://github.com/nix-community/nix-on-droid?shallow=1&ref=master";
-      #   inputs.nixpkgs.follows = "nixpkgs";
-      #   inputs.home-manager.follows = "home-manager";
-      # };
+      nix-on-droid = {
+        url = "git+https://github.com/nix-community/nix-on-droid?shallow=1&ref=master";
+        inputs.nixpkgs.follows = "nixpkgs";
+        inputs.home-manager.follows = "home-manager";
+      };
 
       systems.url = "github:nix-systems/default";
 
       devshell = {
         url = "github:numtide/devshell";
         inputs.nixpkgs.follows = "nixpkgs";
-        # inputs.systems.follows = "systems";
       };
 
       flake-utils = {
@@ -163,7 +163,6 @@
         url = "github:sodiboo/niri-flake";
         inputs.nixpkgs.follows = "nixpkgs";
         inputs.nixpkgs-stable.follows = "nixpkgs-stable";
-        # inputs.rust-overlay.follows = "rust-overlay";
       };
       anyrun = {
         url = "github:anyrun-org/anyrun";
