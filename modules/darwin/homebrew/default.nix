@@ -67,7 +67,7 @@
       "iterm2"
       # "docker"
       "feishu"
-      "ghostty"
+      # "ghostty"
     ];
   };
 }
