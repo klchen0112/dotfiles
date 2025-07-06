@@ -10,7 +10,7 @@
         "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAII/c10VIo81cztYJza3e+l1JlwsTJQk1lhBOypGhYn3T klchen@a3400g"
         "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPI6HctaCnuhyOdbrYs2un7/QA/hqFPfDVRlL0klfhGc klchen@i12r20"
       ];
-      base16Scheme = "selenized-light";
+      base16Scheme = "selenized-dark";
       root = true;
       initialHashedPassword = "$6$qpLfyxefL6ImN6y8$6P2BYZEfmjdh6LeL4646LEhZnORcyxWIRxRBN2Nt6XGLk7pTu6XBy4u.mkpUs2pLW28kFx6dks8SNW2OW0AKf1";
     };
@@ -78,7 +78,7 @@
     mbp-m1 = {
       hostName = "mbp-m1";
       platform = "aarch64-darwin";
-      base16Scheme = "atelier-heath-light";
+      base16Scheme = "selenized-dark";
       sshKey = [
         "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIC9ZvdIrZP9su70iBKgCB0QOY0kL9Z9qu3B9Of05VS5a"
       ];
