@@ -122,7 +122,6 @@
         url = "github:nix-community/NUR"; # NUR Packages
         inputs.nixpkgs.follows = "nixpkgs";
         inputs.flake-parts.follows = "flake-parts";
-        inputs.treefmt-nix.follows = "treefmt-nix";
       };
 
       nixos-wsl = {
@@ -155,6 +154,7 @@
 
       doom-config = {
         url = "github:klchen0112/doom";
+        # url = "git+file:///Users/klchen/my/doom";
         flake = false;
       };
 
