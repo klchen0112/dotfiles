@@ -31,7 +31,8 @@ let
       # spell check
       hunspell
       languagetool
-
+      # for emacs lsp booster
+      emacs-lsp-booster
       pkg-config
       # telega
       libwebp
