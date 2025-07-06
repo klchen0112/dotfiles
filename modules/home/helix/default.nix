@@ -10,7 +10,7 @@
     # settings from https://github.com/colemickens/nixcfg/blob/main/mixins/helix.nix
     settings = {
       editor = {
-        auto-pairs = false;
+        auto-pairs = true;
         bufferline = "always";
         color-modes = true;
         cursor-shape = {
