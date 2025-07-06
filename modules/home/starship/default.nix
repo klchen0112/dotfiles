@@ -1,6 +1,11 @@
 {
+  stylix.targets.starship.enable = true;
   programs.starship = {
     enable = true;
+    enableInteractive = true;
+    enableFishIntegration = false;
+    enableZshIntegration = true;
+    enableNushellIntegration = true;
     enableTransience = true;
     settings = builtins.fromTOML (builtins.readFile ./starship.toml);
   };

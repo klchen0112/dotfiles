@@ -1,16 +1,19 @@
-[buf]
-format = "via [$symbol]($style)"
-
-[bun]
-format = "via [$symbol]($style)"
+format = """
+$username\
+$hostname\
+$directory\
+$git_branch\
+$git_state\
+$git_status\
+$cmd_duration\
+$line_break\
+$python\
+$character"""
 
 [character]
 success_symbol = "[❯](purple)"
 error_symbol = "[❯](red)"
 vimcmd_symbol = "[❮](green)"
-
-[cmake]
-format = "via [$symbol]($style)"
 
 [cmd_duration]
 format = "[$duration]($style) "
@@ -30,9 +33,6 @@ format = "via [$symbol]($style)"
 
 [deno]
 format = "via [$symbol]($style)"
-
-[directory]
-style = "blue"
 
 [dotnet]
 format = "[$symbol(🎯 $tfm )]($style)"
