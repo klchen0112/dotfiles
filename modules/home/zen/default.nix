@@ -30,10 +30,10 @@ in
           force = true;
           default = "ddg";
           order = [
-            "Bing"
+            "bing"
             "Baidu"
-            "DuckDuckGo"
-            "Google"
+            "ddg"
+            "google"
           ];
         };
         settings = {
