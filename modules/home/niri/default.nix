@@ -8,12 +8,12 @@
   imports = [
     ./binds.nix
     ./wine.nix
-    ./walker.nix
+    ./walker
     ./settings.nix
     ./swayidle.nix
     ./swaylock.nix
     ./swaync.nix
-    ./waybar.nix
+    ./waybar
     ./xwayland-satellite.nix
   ];
   home.packages = with pkgs; [
