@@ -19,7 +19,7 @@ in
   system.primaryUser = primaryUser;
   nixpkgs.hostPlatform = platform;
   networking.hostName = hostName;
-  
+
   system.stateVersion = 4;
 
 }

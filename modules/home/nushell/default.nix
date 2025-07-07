@@ -3,7 +3,7 @@
   ...
 }:
 let
-  nu_scripts =  "${pkgs.nu_scripts}/share/nu_scripts";
+  nu_scripts = "${pkgs.nu_scripts}/share/nu_scripts";
 in
 {
   stylix.targets.nushell.enable = true;
