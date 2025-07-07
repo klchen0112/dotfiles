@@ -8,11 +8,11 @@
     enableLeftBackColors = true;
     enableRightBackColors = true;
     enableCenterBackColors = true;
+    addCss = true;
   };
   programs.waybar = {
     enable = true;
     systemd.enable = true;
-    addCss = true;
     settings = {
       mainBar = {
         layer = "top";
