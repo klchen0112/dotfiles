@@ -19,8 +19,7 @@ in
   system.primaryUser = primaryUser;
   nixpkgs.hostPlatform = platform;
   networking.hostName = hostName;
-  home-manager.backupFileExtension = "nixos-unified-template-backup";
-
+  
   system.stateVersion = 4;
 
 }
