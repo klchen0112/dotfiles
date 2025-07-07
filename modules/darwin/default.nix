@@ -12,4 +12,5 @@
     ./system
     ./stylix
   ];
+  programs.zsh.enable = true;
 }
