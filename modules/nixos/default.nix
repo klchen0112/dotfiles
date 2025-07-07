@@ -22,7 +22,6 @@
     tmp.useTmpfs = true;
     tmp.tmpfsSize = "10G";
   };
-  programs.bash.enable = true;
   zramSwap = {
     enable = true;
   };
