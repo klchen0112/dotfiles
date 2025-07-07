@@ -2,6 +2,7 @@
   flake,
   config,
   lib,
+  pkgs,
   ...
 }:
 let
@@ -12,6 +13,9 @@ in
     flake.inputs.self.nixosModules.default
     flake.inputs.self.nixosModules.nvidia
     flake.inputs.self.nixosModules.desktop
+    flake.inputs.nixos-hardware.nixosModules.common-gpu-nvidia
+    flake.inputs.nixos-hardware.nixosModules.common-cpu-intel
+    flake.inputs.nixos-hardware.nixosModules.common-pc-ssd
     ./hardware-configuration.nix
   ];
   machine = machine;
@@ -30,7 +34,6 @@ in
 
   # Don't allow mutation of users outside of the config.
   users.mutableUsers = false;
-
   # machine-id is used by systemd for the journal, if you don't
   # persist this file you won't be able to easily use journalctl to
   # look at journals for previous boots.
@@ -42,6 +45,6 @@ in
   environment.etc."ssh/ssh_host_ed25519_key.pub".source =
     "/nix/persist/etc/ssh/ssh_host_ed25519_key.pub";
   hardware.nvidia.prime = {
-    nvidiaBusId = "PCI:01:00:0";
+    nvidiaBusId = "PCI:1:0:0";
   };
 }
