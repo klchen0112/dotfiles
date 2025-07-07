@@ -12,7 +12,6 @@
     settings = {
       window-colorspace = if pkgs.stdenv.isDarwin then "display-p3" else "srgb";
       macos-titlebar-style = "hidden";
-      command = "${config.programs.nushell.package}/bin/nu";
     };
   };
 
