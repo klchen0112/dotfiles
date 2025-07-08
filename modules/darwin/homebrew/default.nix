@@ -35,7 +35,7 @@
       # "microsoft-excel" = 462058435;
 
     };
-    brews = ["mas"];
+    brews = [ "mas" ];
     casks = [
       "anki"
       "snipaste"

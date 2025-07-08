@@ -56,7 +56,8 @@
         inputs.home-manager.follows = "home-manager";
       };
 
-      nixos-hardware.url = "github:NixOS/nixos-hardware/master";
+      nixos-facter-modules.url = "github:nix-community/nixos-facter-modules";
+
       systems.url = "github:nix-systems/default";
 
       devshell = {

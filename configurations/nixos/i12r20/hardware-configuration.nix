@@ -23,7 +23,11 @@
     "sd_mod"
   ];
   boot.initrd.kernelModules = [ ];
-  boot.kernelModules = [ "kvm-intel" ];
+  boot.kernelParams = [ ];
+  boot.kernelModules = [
+    "kvm-intel"
+    "nvidia"
+  ];
   boot.extraModulePackages = [ ];
 
   fileSystems."/" = {
