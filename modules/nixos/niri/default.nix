@@ -13,13 +13,16 @@
   nixpkgs.overlays = [
     flake.inputs.niri.overlays.niri
   ];
-  services.greetd = {
+  services.greetd = let
+    session = {
+      command = "${config.programs.niri.package}/bin/niri-session";
+    };
+  in {
     enable = true;
     settings = {
-      default_session = {
-        command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --asterisks --remember --remember-session --sessions ${config.services.displayManager.sessionData.desktops}/share/wayland-sessions";
-
-      };
+      terminal.vt = 1;
+      default_session = session;
+      initial_session = session;
     };
   };
   nix.settings = {
