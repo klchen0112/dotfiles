@@ -13,18 +13,23 @@
   nixpkgs.overlays = [
     flake.inputs.niri.overlays.niri
   ];
-  services.greetd = let
-    session = {
-      command = "${config.programs.niri.package}/bin/niri-session";
+  services.greetd =
+    let
+      session = {
+        command = "${config.programs.niri.package}/bin/niri-session";
+        user = "klchen";
+      };
+    in
+    {
+      enable = true;
+      settings = {
+        terminal.vt = 1;
+        default_session = session;
+        initial_session = session;
+      };
     };
-  in {
-    enable = true;
-    settings = {
-      terminal.vt = 1;
-      default_session = session;
-      initial_session = session;
-    };
-  };
+  services.displayManager.autoLogin.enable = true;
+  services.displayManager.autoLogin.user = "klchen";
   nix.settings = {
     # add binary caches
     trusted-public-keys = [
