@@ -73,8 +73,19 @@ in
           y = 0;
         };
       };
+      "Hisense Electric Co., Ltd. HISENSE 0x00000001" = {
+        mode = {
+          width = 1920;
+          height = 1080;
+          refresh = 60.0;
+        };
+        scale = 2.0;
+        position = {
+          x = 0;
+          y = 0;
+        };
+      };
     };
-
     overview = {
       # workspace-shadow = "off";
       backdrop-color = "transparent";
