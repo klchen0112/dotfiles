@@ -112,7 +112,7 @@
       "editor.inlineSuggest.enabled" = true;
       "editor.semanticHighlighting.enabled" = true;
       "editor.codeLensFontFamily" =
-        "'M PLUS Code Latin 50','Overpass','CMU Typewriter Text','Noto Serif CJK SC','Noto Serif','Hack Nerd Font'";
+        "'M PLUS Code Latin 50','Overpass','CMU Typewriter Text','Noto Serif CJK SC','Noto Serif','Symbols Nerd Font Mono','Hack Nerd Font'";
       "editor.fontLigatures" = true;
       "editor.formatOnPaste" = false;
       "editor.formatOnType" = false;

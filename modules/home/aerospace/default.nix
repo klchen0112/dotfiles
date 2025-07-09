@@ -7,6 +7,7 @@
 
   home.packages = with pkgs; [
     nerd-fonts.hack
+    nerd-fonts.symbols-only
     sketchybar-app-font
   ];
   programs.sketchybar = {
@@ -51,7 +52,7 @@
 
         sketchybar --default  padding_left=4 \
                               padding_right=4 \
-                              icon.font="Hack Nerd Font:Bold:${font_size}" \
+                              icon.font="Symbols Nerd Font Mono:Bold:${font_size}" \
                               label.font="SF Pro:Semibold:${font_size}" \
                               icon.color=0xff${config.lib.stylix.colors.base05} \
                               label.color=0xff${config.lib.stylix.colors.base05} \
@@ -211,38 +212,43 @@
                                         script="${plugin_dir}/toggle_stats.sh"          \
                     --subscribe        	animator hide_stats show_stats toggle_stats
 
-        sketchybar --add item cpu right \
-                  --set cpu background.padding_left=0 \
-                             background.padding_right=0 \
-                             icon.font="Hack Nerd Font:Regular:16.0" \
+        sketchybar --add item cpu.percent right \
+                  --set cpu.percent background.padding_left=0 \
+                             background.padding_right=30 \
+                             icon.color=0xff${config.lib.stylix.colors.base0D} \
+                             icon.font="Symbols Nerd Font Mono:Regular:16.0" \
                               icon=""
                               update_freq=2
                               # script="${plugin_dir}/cpu.sh"
 
         sketchybar --add item memory right \
                   --set memory background.padding_left=0 \
-                  icon.font="Hack Nerd Font:Regular:16.0" \
+                  icon.color=0xff${config.lib.stylix.colors.base0B} \
+                  icon.font="Symbols Nerd Font Mono:Regular:16.0" \
                               icon=""
                               update_freq=15 \
                               script="${plugin_dir}/ram.sh"
 
         sketchybar --add item disk right \
                     --set disk  background.padding_left=0 \
-                    icon.font="Hack Nerd Font:Regular:16.0" \
+                    icon.color=0xff${config.lib.stylix.colors.base0A} \
+                    icon.font="Symbols Nerd Font Mono:Regular:16.0" \
                                 icon="﬙"
                                 update_freq=60 \
                                 script="${plugin_dir}/disk.sh"
 
         sketchybar 	--add item network.down right 						\
 						        --set network.down  y_offset=-7    \
-                    icon.font="Hack Nerd Font:Regular:16.0" \
+                    icon.color=0xff${config.lib.stylix.colors.base0B} \
+                    icon.font="Symbols Nerd Font Mono:Regular:16.0" \
                                         icon="" \
                                         update_freq=1 \
                                         script="${plugin_dir}/speed.sh"
 
 				sketchybar	--add item network.up right 							\
 						        --set network.up  background.padding_right=-70 \
-                    icon.font="Hack Nerd Font:Regular:16.0" \
+                    icon.color=0xff${config.lib.stylix.colors.base0B} \
+                    icon.font="Symbols Nerd Font Mono:Regular:16.0" \
                                       y_offset=7    \
                                       icon="" \
                                       update_freq=1
@@ -250,13 +256,13 @@
 
         sketchybar --add item separator_right right \
 	                  --set separator_right icon= \
-                          icon.font="Hack Nerd Font:Regular:16.0" \
+                          icon.font="Symbols Nerd Font Mono:Regular:16.0" \
                           background.padding_left=10 \
                           background.padding_right=10 \
                           label.drawing=off \
                           click_script='sketchybar --trigger toggle_stats'
 
-        sketchybar  --add bracket rightBracket TextInputMenuAgent calendar.clock calendar.date volume  separator_right cpu memory disk network.up network.down\
+        sketchybar  --add bracket rightBracket TextInputMenuAgent calendar.clock calendar.date volume  separator_right cpu.percent memory disk network.up network.down\
                     --set rightBracket background.color=0xff${config.lib.stylix.colors.base00} \
                           background.corner_radius=${corner_radius} \
                           background.height=30
