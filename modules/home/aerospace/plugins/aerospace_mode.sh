@@ -1,4 +1,4 @@
-#!/usr/bin/env sh
+#!/usr/bin/env bash
 
 CURRENT_MODE=$(aerospace list-modes --current)
 

@@ -173,9 +173,61 @@
                      --set 'TextInputMenuAgent'  update_freq=3  script="${plugin_dir}/tray.sh"
 
 
-         sketchybar  --add item volume right \
-                     --set volume script="${plugin_dir}/volume.sh" \
-                     --subscribe volume volume_change
+         sketchybar  --add item battery right \
+                     --set volume script="${plugin_dir}/battery.sh" \
+                                  update_freq=10 \
+                     --subscribe battery power_source_change
+
+
+         sketchybar --add item calendar.date right \
+                     --set calendar.date icon=                \
+                                         icon.font="Symobls Nerd Font:Regular:14" \
+                                         icon.align=right          \
+                                         icon.padding_right=0      \
+                                         width=30                  \
+                                         y_offset=6                \
+                                         update_freq=120           \
+                                         script="${plugin_dir}/date.sh"  \
+                     --subscribe calendar.date system_woke
+
+         sketchybar  --add item calendar.clock right \
+                      --set calendar.clock icon=                \
+                                         icon.font="Symobls Nerd Font:Regular:14" \
+                                         icon.padding_right=0      \
+                                         label.padding_left=-50 \
+                                         background.padding_right=-20 \
+                                         background.padding_left=0 \
+                                         width=30                  \
+                                         y_offset=-8                \
+                                         update_freq=15           \
+                                         script="${plugin_dir}/clock.sh"  \
+                     --subscribe calendar.clock system_woke
+
+         sketchybar --add event   hide_stats                                              \
+                     --add event     show_stats                                              \
+                     --add event     toggle_stats                                            \
+
+        sketchybar  --add item          animator right                                     \
+                     --set animator      drawing=off                                         \
+                                         updates=on                                          \
+                                         script="${plugin_dir}/toggle_stats.sh"          \
+                     --subscribe         animator hide_stats show_stats toggle_stats
+
+         sketchybar --add item cpu.percent right \
+                   --set cpu.percent background.padding_left=0 \
+                              background.padding_right=30 \
+                              icon.color=0xff${config.lib.stylix.colors.base0D} \
+                              icon.font="Symbols Nerd Font:Regular:12.0" \
+                              label.font="SF Pro:Semibold:${font_size}" \
+                               icon=""
+                               update_freq=2
+                               # script="${plugin_dir}/cpu.sh"
+
+         sketchybar --add item memory right \
+                   --set memory background.padding_left=0 \
+                   icon.color=0xff${config.lib.stylix.colors.base0B} \
+                   icon.font="Symbols Nerd Font:Regular:12.0" \
+
 
          sketchybar --add item calendar.date right \
                      --set calendar.date icon=                \
