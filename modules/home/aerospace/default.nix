@@ -62,9 +62,7 @@
                               updates=on \
                               y_offset=0
 
-        sketchybar --add item hamarginleft left --set hahamarginleft padding_right=0 padding_left=0 width=5
-
-        sketchybar --add item hahamarginleft left --set hahamarginleft padding_right=0 padding_left=0 width=15
+        sketchybar --add item hahamarginleft left --set hahamarginleft padding_right=0 padding_left=0 width=5
 
         ##### Adding aeropsace layouts #####
         # Add the aerospace_workspace_change event we specified in aerospace.toml
@@ -128,6 +126,12 @@
 
         sketchybar --add item hahamarginleftRight left --set hahamarginleftRight padding_right=0 padding_left=0 width=0
 
+        #### Groups !!! ####
+        sketchybar  --add bracket spaces '/space\..*/' aerospace_mode hahamarginleft hahamarginleftRight \
+                    --set spaces background.color=0xff${config.lib.stylix.colors.base00} \
+                          background.corner_radius=${corner_radius} \
+                          background.height=30
+
         sketchybar  --add item window_title center\
                     --set window_title icon="" \
                     --set window_title label="" \
@@ -149,10 +153,9 @@
                     label.padding_right=12 \
                     label.color=0xff${config.lib.stylix.colors.base05} \
                     drawing=on \
-                    script="$PLUGIN_DIR/window_title.sh" \
-                    --subscribe window_title front_app_switched                       \
-                    --subscribe window_title window_focus                             \
-                    --subscribe window_title title_change
+                    script="${plugin_dir}/window_title.sh" \
+                    --subscribe window_title front_app_switched space_windows_change
+e
 
         ##### Adding Right Items #####
         # In the same way as the left items we can add items to the right side.
@@ -171,7 +174,7 @@
                     --set 'TextInputMenuAgent'  update_freq=3  script="${plugin_dir}/tray.sh"
 
         sketchybar  --add item clock right \
-                    --set clock update_freq=10 script="${plugin_dir}/clock.sh"
+                    --set clock update_freq=10 script="${plugin_dir}/clock.sh" icon.drawing=off
 
         sketchybar  --add item volume right \
                     --set volume script="${plugin_dir}/volume.sh" \
@@ -181,10 +184,10 @@
                     --set battery update_freq=120 script="${plugin_dir}/battery.sh" \
                     --subscribe battery system_woke power_source_change \
 
-        sketchybar --add item cpu right \
-                    --set cpu update_freq=2 \
-                              icon=􀧓 \
-                              script="${plugin_dir}/cpu.sh"
+        # sketchybar --add item cpu right \
+        #             --set cpu update_freq=2 \
+        #                       icon=􀧓 \
+        #                       script="${plugin_dir}/cpu.sh"
         # sketchybar  --add item network_down right\
         #             --set network_down icon=󰇚 \
         #                                 update_freq=1 \
@@ -198,11 +201,6 @@
                           background.corner_radius=${corner_radius} \
                           background.height=30
 
-        #### Groups !!! ####
-        sketchybar  --add bracket spaces '/space\..*/' hahamarginleft hahamarginleftRight \
-                    --set spaces background.color=0xff${config.lib.stylix.colors.base00} \
-                          background.corner_radius=${corner_radius} \
-                          background.height=30
 
         ##### Force all scripts to run the first time (never do this in a script) #####
         sketchybar --update
