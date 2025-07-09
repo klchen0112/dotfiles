@@ -12,6 +12,7 @@
     settings = {
       window-colorspace = if pkgs.stdenv.isDarwin then "display-p3" else "srgb";
       macos-titlebar-style = "hidden";
+      command = "/etc/profiles/per-user/${config.me.username}/bin/nu";
     };
   };
 

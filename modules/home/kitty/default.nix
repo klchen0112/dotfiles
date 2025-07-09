@@ -37,7 +37,7 @@
       #-------------------------------------------- Shell --------------------------------------------
       shell =
         if pkgs.stdenv.isDarwin then
-          "/etc/profiles/per-user/${config.me.username}/bin/fish --login --interactive"
+          "/etc/profiles/per-user/${config.me.username}/bin/nu"
         else
           "/etc/profiles/per-user/${config.me.username}/bin/fish";
       #-------------------------------------------- Theme --------------------------------------------

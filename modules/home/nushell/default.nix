@@ -1,5 +1,6 @@
 {
   pkgs,
+  config,
   ...
 }:
 let
@@ -7,6 +8,7 @@ let
 in
 {
   stylix.targets.nushell.enable = true;
+  programs.starship.enableNushellIntegration = true;
   programs.nushell = {
     enable = true;
     settings = {
@@ -15,11 +17,23 @@ in
         max_results = 200;
       };
     };
+    envFile.text = ''
+      $env.PATH = ["/etc/profiles/per-user/${config.me.username}/bin" "/nix/var/nix/profiles/system/sw/bin" "${config.home.homeDirectory}/.nix-profile/bin" "/run/current-system/sw/bin" "/nix/var/nix/profiles/default/bin" "/usr/local/bin" "/usr/bin" "/bin" "/usr/sbin" "/sbin"]
+      if ($nu.os-info.name == 'mac') {
+        $env.PATH ++= ["/opt/homebrew/bin" "/opt/homebrew/sbin"]
+      }
+    '';
+    plugins = with pkgs.nushellPlugins; [polars highlight query gstat];
     extraConfig = ''
       use ${nu_scripts}/modules/nix/nix.nu *
 
-       # completions
+      # completions
       use ${nu_scripts}/custom-completions/uv/uv-completions.nu *
+      use ${nu_scripts}/custom-completions/git/git-completions.nu *
+      use ${nu_scripts}/custom-completions/just/just-completions.nu *
+      use ${nu_scripts}/custom-completions/nix/nix-completions.nu *
+      use ${nu_scripts}/custom-completions/ssh/ssh-completions.nu *
+      use ${nu_scripts}/custom-completions/eza/eza-completions.nu *
     '';
   };
 }
