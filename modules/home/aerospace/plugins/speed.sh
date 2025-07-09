@@ -18,5 +18,5 @@ else
   UP_FORMAT=$(echo "$UP / 8" | bc -l | awk '{ printf "%.1f KBps", $1 }') # Convert to KBps
 fi
 
-sketchybar -m --set network_down label="$DOWN_FORMAT" icon.highlight="$(if [ "$DOWN" -gt "0" ]; then echo "on"; else echo "off"; fi)" \
-  --set network_up label="$UP_FORMAT" icon.highlight="$(if [ "$UP" -gt "0" ]; then echo "on"; else echo "off"; fi)"
+sketchybar -m --set network.down label="$DOWN_FORMAT" icon.highlight="$(if [ "$DOWN" -gt "0" ]; then echo "on"; else echo "off"; fi)" \
+              --set network.up label="$UP_FORMAT" icon.highlight="$(if [ "$UP" -gt "0" ]; then echo "on"; else echo "off"; fi)"
