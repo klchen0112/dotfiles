@@ -26,250 +26,254 @@
         corner_radius = "6";
       in
       ''
-        #!/usr/bin/env bash
-        # A simple sketchybar config for aerospace users to get started with
-        # Not too different from the base starting config!
+         #!/usr/bin/env bash
+         # A simple sketchybar config for aerospace users to get started with
+         # Not too different from the base starting config!
 
-        PLUGIN_DIR=${plugin_dir}
-        ##### Bar Appearance #####
-        # Configuring the general appearance of the bar.
-        # These are only some of the options available. For all options see:
-        # https://felixkratz.github.io/SketchyBar/config/bar
-        # If you are looking for other colors, see the color picker:
-        # https://felixkratz.github.io/SketchyBar/config/tricks#color-picker
+         PLUGIN_DIR=${plugin_dir}
+         ##### Bar Appearance #####
+         # Configuring the general appearance of the bar.
+         # These are only some of the options available. For all options see:
+         # https://felixkratz.github.io/SketchyBar/config/bar
+         # If you are looking for other colors, see the color picker:
+         # https://felixkratz.github.io/SketchyBar/config/tricks#color-picker
 
-        sketchybar --bar position=top height=40 blur_radius=30 color=0x00000000
+         sketchybar --bar position=top height=40 blur_radius=30 color=0x00000000
 
-        # sketchybar --add event window_focus
-        # sketchybar --add event title_change
-        # sketchybar --add event front_app_switched
-        # sketchybar --add event space_windows_change
+         # sketchybar --add event window_focus
+         # sketchybar --add event title_change
+         # sketchybar --add event front_app_switched
+         # sketchybar --add event space_windows_change
 
-        ##### Changing Defaults #####
-        # We now change some default values, which are applied to all further items.
-        # For a full list of all available item properties see:
-        # https://felixkratz.github.io/SketchyBar/config/items
+         ##### Changing Defaults #####
+         # We now change some default values, which are applied to all further items.
+         # For a full list of all available item properties see:
+         # https://felixkratz.github.io/SketchyBar/config/items
 
-        sketchybar --default  padding_left=4 \
-                              padding_right=4 \
-                              icon.font="Symbols Nerd Font Mono:Bold:${font_size}" \
+         sketchybar --default  padding_left=4 \
+                               padding_right=4 \
+                               icon.font="Hack Nerd Font:Bold:Bold:${font_size}" \
+                               label.font="SF Pro:Semibold:${font_size}" \
+                               icon.color=0xff${config.lib.stylix.colors.base05} \
+                               label.color=0xff${config.lib.stylix.colors.base05} \
+                               icon.padding_left=4 \
+                               icon.padding_right=4 \
+                               label.padding_left=4 \
+                               label.padding_right=4 \
+                               updates=on \
+                               y_offset=0
+
+         sketchybar --add item hahamarginleft left --set hahamarginleft padding_right=0 padding_left=0 width=5
+
+         ##### Adding aeropsace layouts #####
+         # Add the aerospace_workspace_change event we specified in aerospace.toml
+         sketchybar --add event aerospace_workspace_change
+         sketchybar --add event aerospace_mode_change
+
+
+         sketchybar --add item aerospace_mode left \
+                   --subscribe aerospace_mode aerospace_mode_change \
+                   --set aerospace_mode icon="" \
+                   script="${plugin_dir}/aerospace_mode.sh" \
+                   drawing=off
+
+         for sid in $(aerospace list-workspaces --all); do
+           monitor=$(aerospace list-windows --workspace "$sid" --format "%{monitor-appkit-nsscreen-screens-id}")
+           if [ -z "$monitor" ]; then
+             monitor="1"
+           fi
+           sketchybar --add item space.$sid left \
+             --subscribe space.$sid aerospace_workspace_change\
+             --set space.$sid \
+             display="$monitor" \
+             drawing=off \
+             background.color=0xff${config.lib.stylix.colors.base00} \
+             background.corner_radius=${corner_radius} \
+             background.drawing=on \
+             background.border_color=0xff${config.lib.stylix.colors.base03} \
+             background.border_width=1 \
+             background.height=24 \
+             background.padding_right=4 \
+             background.padding_left=4 \
+             icon="$sid" \
+             icon.shadow.drawing=off \
+             icon.padding_left=8 \
+             icon.padding_right=2 \
+             icon.highlight_color=0xff${config.lib.stylix.colors.base0A} \
+             icon.y_offset=0 \
+             label.font="sketchybar-app-font:Regular:${font_size}" \
+             label.padding_left=2 \
+             label.padding_right=10 \
+             label.highlight_color=0xff${config.lib.stylix.colors.base0A} \
+             label.y_offset=-1 \
+             label.shadow.drawing=off \
+             click_script="aerospace workspace $sid" \
+             script="${plugin_dir}/space_windows.sh"
+         done
+
+         # Load Icons on startup
+         for sid in $(aerospace list-workspaces --all); do
+             apps=$(aerospace list-windows --workspace "$sid" | awk -F'|' '{gsub(/^ *| *$/, "", $2); print $2}' | sort -u)
+             if [ -z "$apps" ]; then
+                 continue  # 跳过当前循环的剩余部分，继续下一次循环
+             fi
+             icon_strip=" "
+             while read -r app; do
+                 icon_strip+=" $($PLUGIN_DIR/icon_map_fn.sh "$app")"
+             done <<<$apps
+
+             sketchybar --set space.$sid label="$icon_strip" drawing=on
+         done
+
+
+         #### Groups !!! ####
+         sketchybar  --add bracket spaces '/space\..*/' aerospace_mode \
+                     --set spaces background.color=0xff${config.lib.stylix.colors.base00} \
+                           background.corner_radius=${corner_radius} \
+                           background.height=30
+
+         sketchybar  --add item window_title center\
+                     --set window_title icon="" \
+                     --set window_title label="" \
+                     background.drawing=on \
+                     background.color=0xff${config.lib.stylix.colors.base00} \
+                     background.corner_radius=${corner_radius} \
+                     background.drawing=on \
+                     background.border_color=0xff${config.lib.stylix.colors.base03} \
+                     background.border_width=1 \
+                     background.height=30 \
+                     background.padding_left=4 \
+                     background.padding_right=4 \
+                     icon.font="sketchybar-app-font:Regular:${font_size}" \
+                     icon.padding_left=12 \
+                     icon.padding_right=4 \
+                     icon.drawing=on \
+                     label.drawing=on \
+                     label.padding_left=4 \
+                     label.padding_right=12 \
+                     label.color=0xff${config.lib.stylix.colors.base05} \
+                     drawing=on \
+                     script="${plugin_dir}/window_title.sh" \
+                     --subscribe window_title front_app_switched space_windows_change
+
+         ##### Adding Right Items #####
+         # In the same way as the left items we can add items to the right side.
+         # Additional position (e.g. center) are available, see:
+         # https://felixkratz.github.io/SketchyBar/config/items#adding-items-to-sketchybar
+
+         # Some items refresh on a fixed cycle, e.g. the clock runs its script once
+         # every 10s. Other gititems respond to events they subscribe to, e.g. the
+         # volume.sh script is only executed once an actual change in system audio
+         # volume is registered. More info about the event system can be found here:
+         # https://felixkratz.github.io/SketchyBar/config/events
+
+
+
+         sketchybar  --add alias 'TextInputMenuAgent' right \
+                     --set 'TextInputMenuAgent'  update_freq=3  script="${plugin_dir}/tray.sh"
+
+
+         sketchybar  --add item volume right \
+                     --set volume script="${plugin_dir}/volume.sh" \
+                     --subscribe volume volume_change
+
+         sketchybar --add item calendar.date right \
+                     --set calendar.date icon=                \
+                                         icon.font="Symobls Nerd Font:Regular:14" \
+                                         icon.align=right          \
+                                         icon.padding_right=0      \
+                                         width=30                  \
+                                         y_offset=6                \
+                                         update_freq=120           \
+                                         script="${plugin_dir}/date.sh"  \
+                     --subscribe calendar.date system_woke
+
+         sketchybar  --add item calendar.clock right \
+                      --set calendar.clock icon=                \
+                                         icon.font="Symobls Nerd Font:Regular:14" \
+                                         icon.padding_right=0      \
+                                         label.padding_left=-50 \
+                                         background.padding_right=-20 \
+                                         background.padding_left=0 \
+                                         width=30                  \
+                                         y_offset=-8                \
+                                         update_freq=15           \
+                                         script="${plugin_dir}/clock.sh"  \
+                     --subscribe calendar.clock system_woke
+
+         sketchybar --add event   hide_stats                                              \
+                     --add event     show_stats                                              \
+                     --add event     toggle_stats                                            \
+
+        sketchybar  --add item          animator right                                     \
+                     --set animator      drawing=off                                         \
+                                         updates=on                                          \
+                                         script="${plugin_dir}/toggle_stats.sh"          \
+                     --subscribe         animator hide_stats show_stats toggle_stats
+
+         sketchybar --add item cpu.percent right \
+                   --set cpu.percent background.padding_left=0 \
+                              background.padding_right=30 \
+                              icon.color=0xff${config.lib.stylix.colors.base0D} \
+                              icon.font="Symbols Nerd Font:Regular:12.0" \
                               label.font="SF Pro:Semibold:${font_size}" \
-                              icon.color=0xff${config.lib.stylix.colors.base05} \
-                              label.color=0xff${config.lib.stylix.colors.base05} \
-                              icon.padding_left=4 \
-                              icon.padding_right=4 \
-                              label.padding_left=4 \
-                              label.padding_right=4 \
-                              updates=on \
-                              y_offset=0
+                               icon=""
+                               update_freq=2
+                               # script="${plugin_dir}/cpu.sh"
 
-        sketchybar --add item hahamarginleft left --set hahamarginleft padding_right=0 padding_left=0 width=5
+         sketchybar --add item memory right \
+                   --set memory background.padding_left=0 \
+                   icon.color=0xff${config.lib.stylix.colors.base0B} \
+                   icon.font="Symbols Nerd Font:Regular:12.0" \
+                               icon=""
+                              label.font="SF Pro:Semibold:${font_size}" \
+                               update_freq=15 \
+                               script="${plugin_dir}/ram.sh"
 
-        ##### Adding aeropsace layouts #####
-        # Add the aerospace_workspace_change event we specified in aerospace.toml
-        sketchybar --add event aerospace_workspace_change
-        sketchybar --add event aerospace_mode_change
+         sketchybar --add item disk right \
+                     --set disk  background.padding_left=0 \
+                     icon.color=0xff${config.lib.stylix.colors.base0A} \
+                     icon.font="Symbols Nerd Font Mono:Regular:12.0" \
+                                 icon=""
+                              label.font="SF Pro:Semibold:${font_size}" \
+                                 update_freq=60 \
+                                 script="${plugin_dir}/disk.sh"
 
+         sketchybar --add item network.down right       \
+                     --set network.down  y_offset=-7    \
+                                          icon.color=0xff${config.lib.stylix.colors.base0B} \
+                                          icon.font="Symbols Nerd Font:Regular:10.0" \
+                                          label.font="SF Pro:Semibold:12" \
+                                          icon="" \
+                                          update_freq=1 \
+                                          script="${plugin_dir}/speed.sh"
 
-        sketchybar --add item aerospace_mode left \
-                  --subscribe aerospace_mode aerospace_mode_change \
-                  --set aerospace_mode icon="" \
-                  script="${plugin_dir}/aerospace_mode.sh" \
-                  drawing=off
-
-        for sid in $(aerospace list-workspaces --all); do
-          monitor=$(aerospace list-windows --workspace "$sid" --format "%{monitor-appkit-nsscreen-screens-id}")
-          if [ -z "$monitor" ]; then
-            monitor="1"
-          fi
-          sketchybar --add item space.$sid left \
-            --subscribe space.$sid aerospace_workspace_change\
-            --set space.$sid \
-            display="$monitor" \
-            drawing=off \
-            background.color=0xff${config.lib.stylix.colors.base00} \
-            background.corner_radius=${corner_radius} \
-            background.drawing=on \
-            background.border_color=0xff${config.lib.stylix.colors.base03} \
-            background.border_width=1 \
-            background.height=24 \
-            background.padding_right=4 \
-            background.padding_left=4 \
-            icon="$sid" \
-            icon.shadow.drawing=off \
-            icon.padding_left=8 \
-            icon.padding_right=2 \
-            icon.highlight_color=0xff${config.lib.stylix.colors.base0A} \
-            icon.y_offset=0 \
-            label.font="sketchybar-app-font:Regular:${font_size}" \
-            label.padding_left=2 \
-            label.padding_right=10 \
-            label.highlight_color=0xff${config.lib.stylix.colors.base0A} \
-            label.y_offset=-1 \
-            label.shadow.drawing=off \
-            click_script="aerospace workspace $sid" \
-            script="${plugin_dir}/space_windows.sh"
-        done
-
-        # Load Icons on startup
-        for sid in $(aerospace list-workspaces --all); do
-            apps=$(aerospace list-windows --workspace "$sid" | awk -F'|' '{gsub(/^ *| *$/, "", $2); print $2}' | sort -u)
-            if [ -z "$apps" ]; then
-                continue  # 跳过当前循环的剩余部分，继续下一次循环
-            fi
-            icon_strip=" "
-            while read -r app; do
-                icon_strip+=" $($PLUGIN_DIR/icon_map_fn.sh "$app")"
-            done <<<$apps
-
-            sketchybar --set space.$sid label="$icon_strip" drawing=on
-        done
-
-
-        #### Groups !!! ####
-        sketchybar  --add bracket spaces '/space\..*/' aerospace_mode \
-                    --set spaces background.color=0xff${config.lib.stylix.colors.base00} \
-                          background.corner_radius=${corner_radius} \
-                          background.height=30
-
-        sketchybar  --add item window_title center\
-                    --set window_title icon="" \
-                    --set window_title label="" \
-                    background.drawing=on \
-                    background.color=0xff${config.lib.stylix.colors.base00} \
-                    background.corner_radius=${corner_radius} \
-                    background.drawing=on \
-                    background.border_color=0xff${config.lib.stylix.colors.base03} \
-                    background.border_width=1 \
-                    background.height=30 \
-                    background.padding_left=4 \
-                    background.padding_right=4 \
-                    icon.font="sketchybar-app-font:Regular:${font_size}" \
-                    icon.padding_left=12 \
-                    icon.padding_right=4 \
-                    icon.drawing=on \
-                    label.drawing=on \
-                    label.padding_left=4 \
-                    label.padding_right=12 \
-                    label.color=0xff${config.lib.stylix.colors.base05} \
-                    drawing=on \
-                    script="${plugin_dir}/window_title.sh" \
-                    --subscribe window_title front_app_switched space_windows_change
-
-        ##### Adding Right Items #####
-        # In the same way as the left items we can add items to the right side.
-        # Additional position (e.g. center) are available, see:
-        # https://felixkratz.github.io/SketchyBar/config/items#adding-items-to-sketchybar
-
-        # Some items refresh on a fixed cycle, e.g. the clock runs its script once
-        # every 10s. Other gititems respond to events they subscribe to, e.g. the
-        # volume.sh script is only executed once an actual change in system audio
-        # volume is registered. More info about the event system can be found here:
-        # https://felixkratz.github.io/SketchyBar/config/events
-
-
-
-        sketchybar  --add alias 'TextInputMenuAgent' right \
-                    --set 'TextInputMenuAgent'  update_freq=3  script="${plugin_dir}/tray.sh"
-
-
-        sketchybar  --add item volume right \
-                    --set volume script="${plugin_dir}/volume.sh" \
-                    --subscribe volume volume_change
-
-        sketchybar 	--add item calendar.date right 								\
-                    --set calendar.date icon=date                 \
-                                        icon.font="SF Pro:Bold:14" \
-                                        icon.align=right          \
-                                        icon.padding_right=0      \
-                                        width=30                  \
-                                        y_offset=6                \
-                                        update_freq=120           \
-                                        script="${plugin_dir}/date.sh"  \
-                    --subscribe calendar.date system_woke
-
-        sketchybar  --add item calendar.clock right 							\
-                    --set calendar.clock icon=date                 \
-                                        icon.font="SF Pro:Bold:14" \
-                                        icon.align=right          \
-                                        icon.padding_right=0      \
-                                        label.padding_left=-50 \
-                                        background.padding_right=-20 \
-                                        background.padding_left=0 \
-                                        width=30                  \
-                                        y_offset=-8                \
-                                        update_freq=15           \
-                                        script="${plugin_dir}/clock.sh"  \
-                    --subscribe calendar.clock system_woke
-
-        sketchybar 	--add event 				hide_stats   					                                      \
-                    --add event 				show_stats 					                                        \
-                    --add event 				toggle_stats 					                                      \
-                                                                                                    \
-                    --add item         	animator right                									            \
-                    --set animator     	drawing=off                  									              \
-                                        updates=on                   									              \
-                                        script="${plugin_dir}/toggle_stats.sh"          \
-                    --subscribe        	animator hide_stats show_stats toggle_stats
-
-        sketchybar --add item cpu.percent right \
-                  --set cpu.percent background.padding_left=0 \
-                             background.padding_right=30 \
-                             icon.color=0xff${config.lib.stylix.colors.base0D} \
-                             icon.font="Symbols Nerd Font Mono:Regular:16.0" \
-                              icon=""
-                              update_freq=2
-                              # script="${plugin_dir}/cpu.sh"
-
-        sketchybar --add item memory right \
-                  --set memory background.padding_left=0 \
-                  icon.color=0xff${config.lib.stylix.colors.base0B} \
-                  icon.font="Symbols Nerd Font Mono:Regular:16.0" \
-                              icon=""
-                              update_freq=15 \
-                              script="${plugin_dir}/ram.sh"
-
-        sketchybar --add item disk right \
-                    --set disk  background.padding_left=0 \
-                    icon.color=0xff${config.lib.stylix.colors.base0A} \
-                    icon.font="Symbols Nerd Font Mono:Regular:16.0" \
-                                icon=""
-                                update_freq=60 \
-                                script="${plugin_dir}/disk.sh"
-
-        sketchybar 	--add item network.down right 						\
-						        --set network.down  y_offset=-7    \
-                    icon.color=0xff${config.lib.stylix.colors.base0B} \
-                    icon.font="Symbols Nerd Font Mono:Regular:16.0" \
-                                        icon="" \
-                                        update_freq=1 \
-                                        script="${plugin_dir}/speed.sh"
-
-				sketchybar	--add item network.up right 							\
-						        --set network.up  background.padding_right=-70 \
-                    icon.color=0xff${config.lib.stylix.colors.base0B} \
-                    icon.font="Symbols Nerd Font Mono:Regular:16.0" \
+        sketchybar --add item network.up right        \
+                    --set network.up background.padding_right=-70 \
+                                      icon.color=0xff${config.lib.stylix.colors.base0B} \
+                                      label.font="SF Pro:Semibold:12" \
+                                      icon.font="Symbols Nerd Font Mono::10.0" \
                                       y_offset=7    \
-                                      icon="" \
+                                      icon="" \
                                       update_freq=1
 
 
-        sketchybar --add item separator_right right \
-	                  --set separator_right icon= \
-                          icon.font="Symbols Nerd Font Mono:Regular:16.0" \
-                          background.padding_left=10 \
-                          background.padding_right=30 \
-                          label.drawing=off \
-                          click_script='sketchybar --trigger toggle_stats'
+         sketchybar --add item separator_right right \
+                    --set separator_right icon= \
+                           icon.font="Symbols Nerd Font Mono:Regular:16.0" \
+                           background.padding_left=10 \
+                           background.padding_right=30 \
+                           label.drawing=off \
+                           click_script='sketchybar --trigger toggle_stats'
 
-        sketchybar  --add bracket rightBracket TextInputMenuAgent calendar.clock calendar.date volume  separator_right cpu.percent memory disk network.up network.down\
-                    --set rightBracket background.color=0xff${config.lib.stylix.colors.base00} \
-                          background.corner_radius=${corner_radius} \
-                          background.height=30
+         sketchybar  --add bracket rightBracket TextInputMenuAgent calendar.clock calendar.date volume  separator_right cpu.percent memory disk network.up network.down\
+                     --set rightBracket background.color=0xff${config.lib.stylix.colors.base00} \
+                           background.corner_radius=${corner_radius} \
+                           background.height=30
 
 
-        ##### Force all scripts to run the first time (never do this in a script) #####
-        sketchybar --update
+         ##### Force all scripts to run the first time (never do this in a script) #####
+         sketchybar --update
 
       '';
   };
