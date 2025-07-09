@@ -217,7 +217,7 @@
                              background.padding_right=30 \
                              icon.color=0xff${config.lib.stylix.colors.base0D} \
                              icon.font="Symbols Nerd Font Mono:Regular:16.0" \
-                              icon=""
+                              icon=""
                               update_freq=2
                               # script="${plugin_dir}/cpu.sh"
 
@@ -225,7 +225,7 @@
                   --set memory background.padding_left=0 \
                   icon.color=0xff${config.lib.stylix.colors.base0B} \
                   icon.font="Symbols Nerd Font Mono:Regular:16.0" \
-                              icon=""
+                              icon=""
                               update_freq=15 \
                               script="${plugin_dir}/ram.sh"
 
@@ -233,7 +233,7 @@
                     --set disk  background.padding_left=0 \
                     icon.color=0xff${config.lib.stylix.colors.base0A} \
                     icon.font="Symbols Nerd Font Mono:Regular:16.0" \
-                                icon="﬙"
+                                icon=""
                                 update_freq=60 \
                                 script="${plugin_dir}/disk.sh"
 
@@ -250,7 +250,7 @@
                     icon.color=0xff${config.lib.stylix.colors.base0B} \
                     icon.font="Symbols Nerd Font Mono:Regular:16.0" \
                                       y_offset=7    \
-                                      icon="" \
+                                      icon="" \
                                       update_freq=1
 
 
