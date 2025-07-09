@@ -127,8 +127,8 @@ alt-tab = 'workspace-back-and-forth'
 # See: https://nikitabobko.github.io/AeroSpace/commands#move-workspace-to-monitor
 alt-shift-tab = 'move-workspace-to-monitor --wrap-around next'
 # See: https://nikitabobko.github.io/AeroSpace/commands#mode
-alt-shift-semicolon = 'mode service'
-alt-shift-quote = 'mode resize'
+alt-shift-semicolon = ['mode service', 'exec-and-forget sketchybar --trigger aerospace_mode_change']
+alt-shift-quote = ['mode resize', 'exec-and-forget sketchybar --trigger aerospace_mode_change']
 
 # Declare 'resize' binding mode
 [mode.resize.binding]

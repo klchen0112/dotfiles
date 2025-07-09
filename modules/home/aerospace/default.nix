@@ -69,13 +69,24 @@
         ##### Adding aeropsace layouts #####
         # Add the aerospace_workspace_change event we specified in aerospace.toml
         sketchybar --add event aerospace_workspace_change
+        sketchybar --add event aerospace_mode_change
 
-        # This only works for single monitor configs!
+
+        sketchybar --add item aerospace_mode left \
+                  --subscribe aerospace_mode aerospace_mode_change \
+                  --set aerospace_mode icon="" \
+                  script="${plugin_dir}/aerospace_mode.sh" \
+                  drawing=off
+
         for sid in $(aerospace list-workspaces --all); do
+          monitor=$(aerospace list-windows --workspace "$sid" --format "%{monitor-appkit-nsscreen-screens-id}")
+          if [ -z "$monitor" ]; then
+            monitor="1"
+          fi
           sketchybar --add item space.$sid left \
-            --subscribe space.$sid aerospace_workspace_change \
-            --subscribe space.$sid space_windows_change \
+            --subscribe space.$sid aerospace_workspace_change\
             --set space.$sid \
+            display="$monitor" \
             drawing=off \
             background.color=0xff${config.lib.stylix.colors.base00} \
             background.corner_radius=${corner_radius} \
@@ -98,7 +109,7 @@
             label.y_offset=-1 \
             label.shadow.drawing=off \
             click_script="aerospace workspace $sid" \
-            script="$PLUGIN_DIR/space_windows.sh"
+            script="${plugin_dir}/space_windows.sh"
         done
 
         # Load Icons on startup
@@ -157,23 +168,32 @@
         sketchybar  --add item hahamarginrirrght right --set hahamarginrirrght
 
         sketchybar  --add alias 'TextInputMenuAgent' right \
-                    --set 'TextInputMenuAgent'  update_freq=3  script="${plugin_dir}/tray.sh"  \
-                    --add item clock right \
-                    --set clock update_freq=10 script="${plugin_dir}/clock.sh" \
-                    --add item volume right \
+                    --set 'TextInputMenuAgent'  update_freq=3  script="${plugin_dir}/tray.sh"
+
+        sketchybar  --add item clock right \
+                    --set clock update_freq=10 script="${plugin_dir}/clock.sh"
+
+        sketchybar  --add item volume right \
                     --set volume script="${plugin_dir}/volume.sh" \
-                    --subscribe volume volume_change \
-                    --add item battery right \
+                    --subscribe volume volume_change
+
+        sketchybar  --add item battery right \
                     --set battery update_freq=120 script="${plugin_dir}/battery.sh" \
                     --subscribe battery system_woke power_source_change \
-                    --add item network_down right\
-                    --set network_down icon=󰇚 \
-                                        update_freq=1 \
-                                        script="${plugin_dir}/speed.sh" \
-                                        icon.highlight_color=0xff${config.lib.stylix.colors.base0A}\
-                    --add item network_up right\
-                    --set network_up icon=󰕒  icon.highlight_color=0xff${config.lib.stylix.colors.base0A}
-        sketchybar  --add bracket rightBracket TextInputMenuAgent clock volume battery network_down network_up\
+
+        sketchybar --add item cpu right \
+                    --set cpu update_freq=2 \
+                              icon=􀧓 \
+                              script="${plugin_dir}/cpu.sh"
+        # sketchybar  --add item network_down right\
+        #             --set network_down icon=󰇚 \
+        #                                 update_freq=1 \
+        #                                 script="${plugin_dir}/speed.sh" \
+        #                                 icon.highlight_color=0xff${config.lib.stylix.colors.base0A}\
+        #             --add item network_up right\
+        #             --set network_up icon=󰕒  icon.highlight_color=0xff${config.lib.stylix.colors.base0A}
+
+        sketchybar  --add bracket rightBracket TextInputMenuAgent clock volume battery cpu \
                     --set rightBracket background.color=0xff${config.lib.stylix.colors.base00} \
                           background.corner_radius=${corner_radius} \
                           background.height=30
