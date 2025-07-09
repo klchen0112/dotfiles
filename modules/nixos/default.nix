@@ -1,5 +1,6 @@
 {
   flake,
+  lib,
   ...
 }:
 {
@@ -15,7 +16,7 @@
     flake.inputs.srvos.nixosModules.mixins-trusted-nix-caches
   ];
   services.openssh = {
-    enable = true;
+    enable = lib.mkForce true;
     settings.PermitRootLogin = "no";
   };
   boot = {
