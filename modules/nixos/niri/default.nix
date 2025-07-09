@@ -16,8 +16,7 @@
   services.greetd =
     let
       session = {
-        command = "${config.programs.niri.package}/bin/niri-session";
-        user = "klchen";
+        command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --asterisks --remember --remember-session --sessions ${config.services.displayManager.sessionData.desktops}/share/wayland-sessions";
       };
     in
     {
@@ -28,8 +27,6 @@
         initial_session = session;
       };
     };
-  services.displayManager.autoLogin.enable = true;
-  services.displayManager.autoLogin.user = "klchen";
   nix.settings = {
     # add binary caches
     trusted-public-keys = [
