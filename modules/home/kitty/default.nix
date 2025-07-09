@@ -36,12 +36,9 @@
 
       #-------------------------------------------- Shell --------------------------------------------
       shell =
-        if pkgs.stdenv.isDarwin then
-          "/etc/profiles/per-user/${config.me.username}/bin/nu"
-        else
-          "/etc/profiles/per-user/${config.me.username}/bin/fish";
-      #-------------------------------------------- Theme --------------------------------------------
-      background_opacity = lib.mkForce 0.8;
+
+        "/etc/profiles/per-user/${config.me.username}/bin/nu";
+
       #-------------------------------------------- Macos Settings --------------------------------------------
 
       macos_titlebar_color = "system";
