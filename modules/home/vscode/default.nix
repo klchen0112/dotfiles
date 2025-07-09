@@ -1,5 +1,6 @@
 {
   pkgs,
+  config,
   ...
 }:
 {
@@ -169,26 +170,54 @@
       "terminal.integrated.fontFamily" =
         "'M PLUS Code Latin 50','Overpass','CMU Typewriter Text','Noto Serif CJK SC','Noto Serif','Hack Nerd Font'";
       "terminal.integrated.defaultProfile.windows" = "PowerShell";
-      "terminal.integrated.defaultProfile.osx" = "fish";
+      "terminal.integrated.defaultProfile.osx" = "nushell";
+      "terminal.integrated.defaultProfile.linux" = "nushell";
       "terminal.integrated.profiles.osx" = {
         "bash" = {
-          "path" = "${pkgs.bash}/bin/bash";
+          "path" = "/etc/profiles/per-user/${config.me.username}//bin/bash";
           "args" = [
             "-l"
           ];
           "icon" = "terminal-bash";
         };
         "zsh" = {
-          "path" = "${pkgs.zsh}/bin/zsh";
+          "path" = "/etc/profiles/per-user/${config.me.username}/bin/zsh";
           "args" = [
             "-l"
           ];
         };
         "fish" = {
-          "path" = "${pkgs.fish}/bin/fish";
+          "path" = "/etc/profiles/per-user/${config.me.username}/bin/fish";
           "args" = [
             "-l"
           ];
+        };
+        "nushell" = {
+          "path" = "/etc/profiles/per-user/${config.me.username}/bin/nu";
+        };
+      };
+      "terminal.integrated.profiles.linux" =  {
+        "bash" = {
+          "path" = "/etc/profiles/per-user/${config.me.username}/bin/bash";
+          "args" = [
+            "-l"
+          ];
+          "icon" = "terminal-bash";
+        };
+        "zsh" = {
+          "path" = "/etc/profiles/per-user/${config.me.username}/bin/zsh";
+          "args" = [
+            "-l"
+          ];
+        };
+        "fish" = {
+          "path" = "/etc/profiles/per-user/${config.me.username}/bin/fish";
+          "args" = [
+            "-l"
+          ];
+        };
+        "nushell" = {
+          "path" = "/etc/profiles/per-user/${config.me.username}/bin/nu";
         };
       };
       "terminal.integrated.enableVisualBell" = true;
