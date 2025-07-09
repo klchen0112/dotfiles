@@ -124,10 +124,9 @@
             sketchybar --set space.$sid label="$icon_strip" drawing=on
         done
 
-        sketchybar --add item hahamarginleftRight left --set hahamarginleftRight padding_right=0 padding_left=0 width=0
 
         #### Groups !!! ####
-        sketchybar  --add bracket spaces '/space\..*/' aerospace_mode hahamarginleft hahamarginleftRight \
+        sketchybar  --add bracket spaces '/space\..*/' aerospace_mode \
                     --set spaces background.color=0xff${config.lib.stylix.colors.base00} \
                           background.corner_radius=${corner_radius} \
                           background.height=30
@@ -155,7 +154,6 @@
                     drawing=on \
                     script="${plugin_dir}/window_title.sh" \
                     --subscribe window_title front_app_switched space_windows_change
-e
 
         ##### Adding Right Items #####
         # In the same way as the left items we can add items to the right side.
@@ -168,35 +166,42 @@ e
         # volume is registered. More info about the event system can be found here:
         # https://felixkratz.github.io/SketchyBar/config/events
 
-        sketchybar  --add item hahamarginrirrght right --set hahamarginrirrght
+
 
         sketchybar  --add alias 'TextInputMenuAgent' right \
                     --set 'TextInputMenuAgent'  update_freq=3  script="${plugin_dir}/tray.sh"
 
-        sketchybar  --add item clock right \
-                    --set clock update_freq=10 script="${plugin_dir}/clock.sh" icon.drawing=off
 
         sketchybar  --add item volume right \
                     --set volume script="${plugin_dir}/volume.sh" \
                     --subscribe volume volume_change
 
-        sketchybar  --add item battery right \
-                    --set battery update_freq=120 script="${plugin_dir}/battery.sh" \
-                    --subscribe battery system_woke power_source_change \
+        sketchybar 	--add item calendar.date right 								\
+                    --set calendar.date icon=date                 \
+                                        icon.font="SF Pro:Bold:14" \
+                                        icon.align=right          \
+                                        icon.padding_right=0      \
+                                        width=30                  \
+                                        y_offset=6                \
+                                        update_freq=120           \
+                                        script="${plugin_dir}/date.sh"  \
+                    --subscribe calendar.date system_woke
 
-        # sketchybar --add item cpu right \
-        #             --set cpu update_freq=2 \
-        #                       icon=􀧓 \
-        #                       script="${plugin_dir}/cpu.sh"
-        # sketchybar  --add item network_down right\
-        #             --set network_down icon=󰇚 \
-        #                                 update_freq=1 \
-        #                                 script="${plugin_dir}/speed.sh" \
-        #                                 icon.highlight_color=0xff${config.lib.stylix.colors.base0A}\
-        #             --add item network_up right\
-        #             --set network_up icon=󰕒  icon.highlight_color=0xff${config.lib.stylix.colors.base0A}
+        sketchybar  --add item calendar.clock right 							\
+                    --set calendar.clock icon=date                 \
+                                        icon.font="SF Pro:Bold:14" \
+                                        icon.align=right          \
+                                        icon.padding_right=0      \
+                                        label.padding_left=-50 \
+                                        background.padding_right=-20 \
+                                        background.padding_left=0 \
+                                        width=30                  \
+                                        y_offset=-8                \
+                                        update_freq=15           \
+                                        script="${plugin_dir}/clock.sh"  \
+                    --subscribe calendar.clock system_woke
 
-        sketchybar  --add bracket rightBracket TextInputMenuAgent clock volume battery cpu \
+        sketchybar  --add bracket rightBracket TextInputMenuAgent calendar.clock calendar.date volume  \
                     --set rightBracket background.color=0xff${config.lib.stylix.colors.base00} \
                           background.corner_radius=${corner_radius} \
                           background.height=30
