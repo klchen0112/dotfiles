@@ -6,6 +6,9 @@
 }:
 {
   stylix.autoEnable = false;
+  stylix.targets.gtk = {
+    enable = true;
+  };
   stylix = {
     enable = true;
     opacity = {

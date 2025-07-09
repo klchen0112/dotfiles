@@ -36,15 +36,7 @@
     longitude = "120:00";
   };
 
-  nix.settings = {
-    # add binary caches
-    trusted-public-keys = [
-      "niri.cachix.org-1:Wv0OmO7PsuocRKzfDoJ3mulSl7Z6oezYhGhR+3W2964="
-    ];
-    substituters = [
-      "https://niri.cachix.org"
-    ];
-  };
+
   home.sessionVariables = {
     QT_QPA_PLATFORM = "wayland";
     SDL_VIDEODRIVER = "wayland";
