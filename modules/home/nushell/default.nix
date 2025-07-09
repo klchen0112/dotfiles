@@ -23,7 +23,12 @@ in
         $env.PATH ++= ["/opt/homebrew/bin" "/opt/homebrew/sbin"]
       }
     '';
-    plugins = with pkgs.nushellPlugins; [polars highlight query gstat];
+    plugins = with pkgs.nushellPlugins; [
+      polars
+      highlight
+      query
+      gstat
+    ];
     extraConfig = ''
       use ${nu_scripts}/modules/nix/nix.nu *
 

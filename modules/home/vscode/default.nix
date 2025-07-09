@@ -196,7 +196,7 @@
           "path" = "/etc/profiles/per-user/${config.me.username}/bin/nu";
         };
       };
-      "terminal.integrated.profiles.linux" =  {
+      "terminal.integrated.profiles.linux" = {
         "bash" = {
           "path" = "/etc/profiles/per-user/${config.me.username}/bin/bash";
           "args" = [
