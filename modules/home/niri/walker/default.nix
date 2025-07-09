@@ -4,10 +4,6 @@
   programs.walker = {
     enable = true;
     runAsService = true;
-    theme = {
-      layout = "";
-      style = "";
-    };
   };
   nix.settings = {
     # add binary caches
