@@ -225,28 +225,28 @@
                    --set memory background.padding_left=0 \
                    icon.color=0xff${config.lib.stylix.colors.base0B} \
                    icon.font="Symbols Nerd Font:Regular:12.0" \
-                               icon=""
-                              label.font="SF Pro:Semibold:${font_size}" \
+                               icon="" \
+                               label.font="SF Pro:Semibold:${font_size}" \
                                update_freq=15 \
                                script="${plugin_dir}/ram.sh"
 
          sketchybar --add item disk right \
-                     --set disk  background.padding_left=0 \
-                     icon.color=0xff${config.lib.stylix.colors.base0A} \
-                     icon.font="Symbols Nerd Font Mono:Regular:12.0" \
-                                 icon=""
-                              label.font="SF Pro:Semibold:${font_size}" \
-                                 update_freq=60 \
-                                 script="${plugin_dir}/disk.sh"
+                     --set disk background.padding_left=0 \
+                                icon.color=0xff${config.lib.stylix.colors.base0A} \
+                                icon.font="Symbols Nerd Font Mono:Regular:12.0" \
+                                icon="" \
+                                label.font="SF Pro:Semibold:${font_size}" \
+                                update_freq=60 \
+                                script="${plugin_dir}/disk.sh"
 
          sketchybar --add item network.down right       \
-                     --set network.down  y_offset=-7    \
-                                          icon.color=0xff${config.lib.stylix.colors.base0B} \
-                                          icon.font="Symbols Nerd Font:Regular:10.0" \
-                                          label.font="SF Pro:Semibold:12" \
-                                          icon="" \
-                                          update_freq=1 \
-                                          script="${plugin_dir}/speed.sh"
+                     --set network.down y_offset=-7    \
+                                        icon.color=0xff${config.lib.stylix.colors.base0B} \
+                                        icon.font="Symbols Nerd Font:Regular:10.0" \
+                                        label.font="SF Pro:Semibold:12" \
+                                        icon="" \
+                                        update_freq=1 \
+                                        script="${plugin_dir}/speed.sh"
 
         sketchybar --add item network.up right        \
                     --set network.up background.padding_right=-70 \
