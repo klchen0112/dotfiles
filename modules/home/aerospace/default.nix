@@ -258,7 +258,7 @@
 	                  --set separator_right icon= \
                           icon.font="Symbols Nerd Font Mono:Regular:16.0" \
                           background.padding_left=10 \
-                          background.padding_right=10 \
+                          background.padding_right=30 \
                           label.drawing=off \
                           click_script='sketchybar --trigger toggle_stats'
 
