@@ -17,6 +17,7 @@ self: super: {
     system = self.system;
     config.allowUnfree = true;
   };
+  sketchybarhelper = self.callPackage "${packages}/sketchybarhelper";
   unstable = import inputs.nixpkgs-unstable {
     system = self.system;
     config.allowUnfree = true;
