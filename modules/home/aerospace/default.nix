@@ -26,7 +26,7 @@
         corner_radius = "6";
       in
       ''
-         #!/usr/bin/env zsh
+         #!/usr/bin/env bash
          # A simple sketchybar config for aerospace users to get started with
          # Not too different from the base starting config!
 
