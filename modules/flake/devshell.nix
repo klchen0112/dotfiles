@@ -22,6 +22,7 @@
           inputs'.agenix.packages.default
           nixfmt-rfc-style
           helix
+          lua-language-server
         ];
       };
       pre-commit.settings = {

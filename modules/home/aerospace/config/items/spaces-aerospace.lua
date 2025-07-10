@@ -71,11 +71,18 @@ for i = 1, 10, 1 do
 		local focused_num = tonumber(env.FOCUSED)
 		local is_focused = focused_num == i
 		local color = is_focused and colors.white or colors.comment_bg
+		local bg_color = is_focused and colors.selection_bg or colors.bg
 
 		space:set({
-			icon = { highlight = is_focused },
-			label = { highlight = is_focused },
-			background = { border_color = color },
+			icon = { highlight = is_focused ,
+                 -- background.color = bg_color,
+            },
+			label = { highlight = is_focused ,i
+                  -- background.color = bg_color,
+            },
+			background = { border_color = color ,
+                       -- color = bg_color,
+        },
 		})
 	end)
 
@@ -112,7 +119,7 @@ local window_tracker = Sbar.add("item", {
 })
 
 window_tracker:subscribe("aerospace_workspace_change", function()
-	for workspace_num = 1, 8 do
+	for workspace_num = 1, 10 do
 		Sbar.exec("aerospace list-windows --workspace " .. workspace_num .. ' --format "%{app-name}"', function(result)
 			local icon_line = ""
 			local no_app = true

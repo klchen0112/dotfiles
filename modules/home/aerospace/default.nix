@@ -14,6 +14,20 @@
     nerd-fonts.hack
     nerd-fonts.symbols-only
     sketchybar-app-font
+    blueutil
+    coreutils
+    curl
+    gh
+    gh-notify
+    gnugrep
+    gnused
+    jankyborders
+    jq
+    aerospace
+    sketchybarhelper
+    dynamic-island-helper
+    wttrbar
+
   ];
   home.shellAliases = {
     restart-sketchybar = ''launchctl kickstart -k gui/"$(id -u)"/org.nix-community.home.sketchybar'';
@@ -52,13 +66,6 @@
     };
     "sketchybar/icon_map.lua".source =
       "${pkgs.sketchybar-app-font}/lib/sketchybar-app-font/icon_map.lua";
-    "sketchybar/wm_config.lua".text = ''
-      -- Window manager configuration for sketchybar
-      return {
-        use_aerospace = true,
-        use_yabai = false,
-      }
-    '';
     "sketchybar/colors.lua".text = ''
       #!/usr/bin/env lua
       local colors = {
