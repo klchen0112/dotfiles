@@ -18,6 +18,7 @@ self: super: {
     config.allowUnfree = true;
   };
   sketchybarhelper = self.callPackage "${packages}/sketchybarhelper";
+  dynamic-island-helper = self.callPackage "${packages}/dynamic-island-helper";
   unstable = import inputs.nixpkgs-unstable {
     system = self.system;
     config.allowUnfree = true;
