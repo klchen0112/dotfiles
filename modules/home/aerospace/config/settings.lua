@@ -1,8 +1,8 @@
 #!/usr/bin/env lua
 
 return {
-	font = "SF Pro",
-	nerd_font = "Symbols Nerd Font",
+	font = "M+CodeLat50 Nerd Font",
+	nerd_font = "M+CodeLat50 Nerd Font",
 	app_font = "sketchybar-app-font",
 	paddings = 3,
 }

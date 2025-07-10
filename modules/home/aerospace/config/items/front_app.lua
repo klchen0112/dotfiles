@@ -85,6 +85,10 @@ end)
 local front_app = Sbar.add("item", "front_app", {
 	icon = {
 		drawing = false,
+		font = {
+			family = settings.app_font,
+			size = 16.0,
+		},
 	},
 	background = {
 		padding_left = 0,

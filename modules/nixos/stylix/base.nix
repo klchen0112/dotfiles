@@ -27,7 +27,7 @@
       };
       monospace = {
         package = pkgs.nerd-fonts."m+";
-        name = "M PLUS Code Latin 50 Nerd Font";
+        name = "M+CodeLat50 Nerd Font";
       };
       serif = {
         package = pkgs.ibm-plex;
