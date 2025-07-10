@@ -27,13 +27,17 @@ for i = 1, 10, 1 do
 			padding_right = 20,
 			color = colors.grey,
 			highlight_color = colors.text,
-			font = "sketchybar-app-font:Regular:16.0",
+			font ={
+				family = settings.app_font,
+				size = 16.0,
+				style = "Bold",
+			},
 			y_offset = -1,
 			drawing = false,
 			background = {
 				height = 26,
 				drawing = true,
-				color = colors.surface1,
+				color = colors.comment_bg,
 				corner_radius = 8,
 			},
 		},
@@ -60,8 +64,8 @@ end
 
 Sbar.add("bracket", spaces, {
 	background = {
-		color = colors.surface0,
-		border_color = colors.surface1,
+		color = colors.light_bg,
+		border_color = colors.comment_bg,
 		border_width = 2,
 	},
 })

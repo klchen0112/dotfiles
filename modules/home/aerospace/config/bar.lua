@@ -7,9 +7,9 @@ local bar_height = 40
 -- Equivalent to the --bar domain
 Sbar.bar({
 	blur_radius = 30,
-	border_color = colors.surface1,
+	border_color = colors.comment_bg,
 	border_width = 2,
-	color = colors.base,
+	color = colors.bg,
 	corner_radius = 9,
 	height = bar_height,
 	margin = 10,
@@ -20,7 +20,7 @@ Sbar.bar({
 	shadow = true,
 	sticky = true,
 	topmost = false,
-	y_offset = 10,
+	y_offset = 0,
 })
 
 -- Set external_bar here in case we launch after sketchybar

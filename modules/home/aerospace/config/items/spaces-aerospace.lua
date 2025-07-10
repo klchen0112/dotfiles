@@ -6,7 +6,7 @@ local settings = require("settings")
 
 local spaces = {}
 
-for i = 1, 8, 1 do
+for i = 1, 10, 1 do
 	local space = Sbar.add("item", {
 		position = "left",
 		icon = {
@@ -22,21 +22,25 @@ for i = 1, 8, 1 do
 		label = {
 			padding_left = 6,
 			padding_right = 12,
-			color = colors.grey,
+			color = colors.text,
 			highlight_color = colors.getRandomCatColor(),
-			font = "sketchybar-app-font:Regular:16.0",
+			font = {
+				family = settings.app_font,
+				style = "Regular",
+				size = 16.0
+			},
 			y_offset = -1,
 			background = {
 				height = 26,
 				drawing = true,
-				color = colors.surface1,
+				color = colors.light_bg,
 				corner_radius = 8,
 			},
 		},
 		background = {
 			drawing = true,
-			color = colors.surface0,
-			border_color = colors.surface1,
+			color = colors.light_bg,
+			border_color = colors.light_bg2,
 			border_width = 2,
 			corner_radius = 8,
 		},
@@ -66,7 +70,7 @@ for i = 1, 8, 1 do
 	space:subscribe("aerospace_workspace_change", function(env)
 		local focused_num = tonumber(env.FOCUSED)
 		local is_focused = focused_num == i
-		local color = is_focused and colors.white or colors.surface1
+		local color = is_focused and colors.white or colors.comment_bg
 
 		space:set({
 			icon = { highlight = is_focused },

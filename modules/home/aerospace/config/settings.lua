@@ -2,6 +2,7 @@
 
 return {
 	font = "SF Pro",
-	nerd_font = "Monaspace Neon",
+	nerd_font = "Symbols Nerd Font",
+	app_font = "sketchybar-app-font",
 	paddings = 3,
 }

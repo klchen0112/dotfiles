@@ -48,6 +48,8 @@
       nerd-fonts.symbols-only
       nerd-fonts.hack
 
+      sf-mono-liga
+      SF-Pro
     ];
   };
 }

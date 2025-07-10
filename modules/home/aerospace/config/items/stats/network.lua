@@ -63,8 +63,8 @@ network.up = Sbar.add("item", "network.up", {
 })
 
 network.down:subscribe("network_update", function(env)
-	local up_color = (env.upload == "000 Bps") and colors.subtext0 or colors.green
-	local down_color = (env.download == "000 Bps") and colors.subtext0 or colors.blue
+	local up_color = (env.upload == "000 Bps") and colors.dark_text or colors.green
+	local down_color = (env.download == "000 Bps") and colors.dark_text or colors.blue
 	network.up:set({
 		icon = { color = up_color },
 		label = {

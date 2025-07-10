@@ -21,8 +21,8 @@ local items = {
 
 Sbar.add("bracket", items, {
 	background = {
-		color = colors.surface0,
-		border_color = colors.surface1,
+		color = colors.light_bg,
+		border_color = colors.comment_bg,
 		border_width = 2,
 		padding_left = 5,
 		padding_right = 10,

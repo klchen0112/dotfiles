@@ -10,8 +10,8 @@ Sbar.add("item", "skhd", {
 		padding_right = 5,
 	},
 	background = {
-		color = colors.surface0,
-		border_color = colors.surface1,
+		color = colors.light_bg,
+		border_color = colors.comment_bg,
 		border_width = 2,
 	},
 	drawing = false,

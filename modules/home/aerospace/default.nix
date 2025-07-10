@@ -24,8 +24,19 @@
     configType = "lua";
     sbarLuaPackage = pkgs.sbarlua;
     extraPackages = with pkgs; [
+      blueutil
+      coreutils
+      curl
+      gh
+      gh-notify
+      gnugrep
+      gnused
+      jankyborders
       jq
       aerospace
+      sketchybarhelper
+      dynamic-island-helper
+      wttrbar
     ];
     ## config from https://github.com/khaneliman/khanelinix
     config = {
@@ -45,9 +56,47 @@
       -- Window manager configuration for sketchybar
       return {
         use_aerospace = true,
-        use_yabai = false
-        },
+        use_yabai = false,
       }
+    '';
+    "sketchybar/colors.lua".text = ''
+      #!/usr/bin/env lua
+      local colors = {
+      	bg = 0xff${config.lib.stylix.colors.base00},
+        light_bg = 0xff${config.lib.stylix.colors.base01},
+        selection_bg = 0xff${config.lib.stylix.colors.base02},
+        comment_bg = 0xff${config.lib.stylix.colors.base03},
+        dark_text = 0xff${config.lib.stylix.colors.base04},
+      	text = 0xff${config.lib.stylix.colors.base05},
+        light_text = 0xff${config.lib.stylix.colors.base06},
+        light_bg2 = 0xff${config.lib.stylix.colors.base07},
+      	blue = 0xff${config.lib.stylix.colors.base0D},
+      	green = 0xff${config.lib.stylix.colors.base0B},
+      	yellow = 0xff${config.lib.stylix.colors.base0A},
+        purple = 0xff${config.lib.stylix.colors.base0E},
+        brown = 0xff${config.lib.stylix.colors.base0F},
+        cyan = 0xff${config.lib.stylix.colors.base0C},
+        orange = 0xff${config.lib.stylix.colors.base09},
+      	red = 0xff${config.lib.stylix.colors.base08},
+
+      }
+
+      colors.random_cat_color = {
+      	colors.blue,
+      	colors.green,
+      	colors.yellow,
+      	colors.red,
+      	colors.mauve,
+      	colors.pink,
+      	colors.purple,
+      	colors.brown,
+      }
+
+      colors.getRandomCatColor = function()
+      	return colors.random_cat_color[math.random(1, #colors.random_cat_color)]
+      end
+
+      return colors
     '';
   };
   services.jankyborders = {
