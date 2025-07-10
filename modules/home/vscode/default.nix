@@ -4,7 +4,7 @@
   ...
 }:
 {
-  stylix.targets.vscode.enable = true;
+  stylix.targets.vscode.enable = false;
   home.packages = with pkgs; [
     nerd-fonts.hack
     cm_unicode
@@ -14,7 +14,9 @@
   programs.vscode = {
     enable = true;
     mutableExtensionsDir = false; # Whether extensions can be installed or updated manually or by Visual Studio Code.
+
     profiles.default.extensions =
+
       with pkgs.vscode-extensions;
       [
         # ssh
@@ -87,7 +89,9 @@
       ]);
     profiles.default.enableUpdateCheck = false;
     profiles.default.enableExtensionUpdateCheck = false;
-    profiles.default.userSettings = {
+    profiles.default.userSettings =  let
+        fontFamily = "'M PLUS Code Latin 50','Overpass','CMU Typewriter Text','Noto Serif CJK SC','Noto Serif','Symbols Nerd Font Mono','Hack Nerd Font'";
+      in {
       "update.mode" = "none";
       "extensions.autoCheckUpdates" = false;
       "extensions.autoUpdate" = false;
@@ -111,8 +115,8 @@
 
       "editor.inlineSuggest.enabled" = true;
       "editor.semanticHighlighting.enabled" = true;
-      "editor.codeLensFontFamily" =
-        "'M PLUS Code Latin 50','Overpass','CMU Typewriter Text','Noto Serif CJK SC','Noto Serif','Symbols Nerd Font Mono','Hack Nerd Font'";
+      "editor.fontFamily" = fontFamily;
+      "editor.codeLensFontFamily" = fontFamily;
       "editor.fontLigatures" = true;
       "editor.formatOnPaste" = false;
       "editor.formatOnType" = false;
@@ -167,8 +171,7 @@
       # --------------------------------------------
       # Terminal Settings
       # --------------------------------------------
-      "terminal.integrated.fontFamily" =
-        "'M PLUS Code Latin 50','Overpass','CMU Typewriter Text','Noto Serif CJK SC','Noto Serif','Hack Nerd Font'";
+      "terminal.integrated.fontFamily" = fontFamily;
       "terminal.integrated.defaultProfile.windows" = "PowerShell";
       "terminal.integrated.defaultProfile.osx" = "nushell";
       "terminal.integrated.defaultProfile.linux" = "nushell";
