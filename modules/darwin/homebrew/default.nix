@@ -47,8 +47,6 @@
       "zen"
       # "podman-desktop"
       "squirrel-app"
-      "iina"
-      "skim"
       "zotero"
       "omnidisksweeper"
       "licecap"
