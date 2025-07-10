@@ -23,5 +23,3 @@ Sbar.bar({
 	y_offset = 0,
 })
 
--- Set external_bar here in case we launch after sketchybar
-Sbar.exec("yabai -m config external_bar all:" .. bar_height .. ":0")
