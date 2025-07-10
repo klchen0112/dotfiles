@@ -13,12 +13,12 @@ self: super: {
   SF-Pro = self.callPackage "${packages}/SF-Pro" { };
   sf-mono-liga = self.callPackage "${packages}/sf-mono-liga" { };
   emacsIGC = self.callPackage "${packages}/emacsIGC" { emacs-overlay = inputs.emacs-overlay; };
+  sketchybarhelper = self.callPackage "${packages}/sketchybarhelper" { };
+  dynamic-island-helper = self.callPackage "${packages}/dynamic-island-helper" { };
   stable = import inputs.nixpkgs-stable {
     system = self.system;
     config.allowUnfree = true;
   };
-  sketchybarhelper = self.callPackage "${packages}/sketchybarhelper";
-  dynamic-island-helper = self.callPackage "${packages}/dynamic-island-helper";
   unstable = import inputs.nixpkgs-unstable {
     system = self.system;
     config.allowUnfree = true;
