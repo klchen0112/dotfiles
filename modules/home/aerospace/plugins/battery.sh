@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/env zsh
 
 PERCENTAGE="$(pmset -g batt | perl -ne 'print $& while m{\d+%}g' | cut -d% -f1)"
 CHARGING="$(pmset -g batt | grep 'AC Power')"

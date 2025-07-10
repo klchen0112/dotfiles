@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/env zsh
 ### START-OF-ICON-MAP
 function icon_map() {
   case "$1" in

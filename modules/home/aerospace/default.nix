@@ -26,7 +26,7 @@
         corner_radius = "6";
       in
       ''
-         #!/usr/bin/env bash
+         #!/usr/bin/env zsh
          # A simple sketchybar config for aerospace users to get started with
          # Not too different from the base starting config!
 
@@ -38,7 +38,10 @@
          # If you are looking for other colors, see the color picker:
          # https://felixkratz.github.io/SketchyBar/config/tricks#color-picker
 
-         sketchybar --bar position=top height=40 blur_radius=30 color=0x00000000
+         sketchybar --bar position=top height=30  color=0x00000000 padding_left=5 \
+                    padding_right=5 \
+                    margin=0 \
+                    corner_radius=0
 
          # sketchybar --add event window_focus
          # sketchybar --add event title_change
@@ -50,10 +53,11 @@
          # For a full list of all available item properties see:
          # https://felixkratz.github.io/SketchyBar/config/items
 
-         sketchybar --default  padding_left=4 \
+         sketchybar --default  updates=when_shown \
+                               padding_left=4 \
                                padding_right=4 \
                                icon.font="Hack Nerd Font:Bold:Bold:${font_size}" \
-                               label.font="SF Pro:Semibold:${font_size}" \
+                               label.font="M PLUS Code Latin:Semibold:${font_size}" \
                                icon.color=0xff${config.lib.stylix.colors.base05} \
                                label.color=0xff${config.lib.stylix.colors.base05} \
                                icon.padding_left=4 \
@@ -83,32 +87,32 @@
              monitor="1"
            fi
            sketchybar --add item space.$sid left \
-             --subscribe space.$sid aerospace_workspace_change\
-             --set space.$sid \
-             display="$monitor" \
-             drawing=off \
-             background.color=0xff${config.lib.stylix.colors.base00} \
-             background.corner_radius=${corner_radius} \
-             background.drawing=on \
-             background.border_color=0xff${config.lib.stylix.colors.base03} \
-             background.border_width=1 \
-             background.height=24 \
-             background.padding_right=4 \
-             background.padding_left=4 \
-             icon="$sid" \
-             icon.shadow.drawing=off \
-             icon.padding_left=8 \
-             icon.padding_right=2 \
-             icon.highlight_color=0xff${config.lib.stylix.colors.base0A} \
-             icon.y_offset=0 \
-             label.font="sketchybar-app-font:Regular:${font_size}" \
-             label.padding_left=2 \
-             label.padding_right=10 \
-             label.highlight_color=0xff${config.lib.stylix.colors.base0A} \
-             label.y_offset=-1 \
-             label.shadow.drawing=off \
-             click_script="aerospace workspace $sid" \
-             script="${plugin_dir}/space_windows.sh"
+                      --subscribe space.$sid aerospace_workspace_change\
+                      --set space.$sid \
+                      display="$monitor" \
+                      drawing=off \
+                      background.color=0xff${config.lib.stylix.colors.base00} \
+                      background.corner_radius=${corner_radius} \
+                      background.drawing=on \
+                      background.border_color=0xff${config.lib.stylix.colors.base03} \
+                      background.border_width=1 \
+                      background.height=24 \
+                      background.padding_right=4 \
+                      background.padding_left=4 \
+                      icon="$sid" \
+                      icon.shadow.drawing=off \
+                      icon.padding_left=8 \
+                      icon.padding_right=2 \
+                      icon.highlight_color=0xff${config.lib.stylix.colors.base0A} \
+                      icon.y_offset=0 \
+                      label.font="sketchybar-app-font:Regular:${font_size}" \
+                      label.padding_left=2 \
+                      label.padding_right=10 \
+                      label.highlight_color=0xff${config.lib.stylix.colors.base0A} \
+                      label.y_offset=-1 \
+                      label.shadow.drawing=off \
+                      click_script="aerospace workspace $sid" \
+                      script="${plugin_dir}/space_windows.sh"
          done
 
          # Load Icons on startup
@@ -172,10 +176,10 @@
          sketchybar  --add alias 'TextInputMenuAgent' right \
                      --set 'TextInputMenuAgent'  update_freq=3  script="${plugin_dir}/tray.sh"
 
-
          sketchybar  --add item battery right \
                      --set volume script="${plugin_dir}/battery.sh" \
                                   update_freq=10 \
+                                  icon= \
                      --subscribe battery power_source_change
 
 
@@ -218,7 +222,7 @@
                               background.padding_right=30 \
                               icon.color=0xff${config.lib.stylix.colors.base0D} \
                               icon.font="Symbols Nerd Font:Regular:12.0" \
-                              label.font="SF Pro:Semibold:${font_size}" \
+                              label.font="M PLUS Code Latin:Semibold:${font_size}" \
                                icon=""
                                update_freq=2
                                # script="${plugin_dir}/cpu.sh"
@@ -255,59 +259,57 @@
 
          sketchybar --add event   hide_stats                                              \
                      --add event     show_stats                                              \
-                     --add event     toggle_stats                                            \
-
+                     --add event     toggle_stats
         sketchybar  --add item          animator right                                     \
                      --set animator      drawing=off                                         \
                                          updates=on                                          \
                                          script="${plugin_dir}/toggle_stats.sh"          \
                      --subscribe         animator hide_stats show_stats toggle_stats
 
-         sketchybar --add item cpu.percent right \
-                   --set cpu.percent background.padding_left=0 \
-                              background.padding_right=30 \
-                              icon.color=0xff${config.lib.stylix.colors.base0D} \
-                              icon.font="Symbols Nerd Font:Regular:12.0" \
-                              label.font="SF Pro:Semibold:${font_size}" \
-                               icon=""
-                               update_freq=2
-                               # script="${plugin_dir}/cpu.sh"
-
-         sketchybar --add item memory right \
-                   --set memory background.padding_left=0 \
-                   icon.color=0xff${config.lib.stylix.colors.base0B} \
-                   icon.font="Symbols Nerd Font:Regular:12.0" \
-                               icon="" \
-                               label.font="SF Pro:Semibold:${font_size}" \
-                               update_freq=15 \
-                               script="${plugin_dir}/ram.sh"
-
-         sketchybar --add item disk right \
+        sketchybar --add item disk right \
                      --set disk background.padding_left=0 \
                                 icon.color=0xff${config.lib.stylix.colors.base0A} \
                                 icon.font="Symbols Nerd Font Mono:Regular:12.0" \
                                 icon="" \
-                                label.font="SF Pro:Semibold:${font_size}" \
+                                label.font="M PLUS Code Latin:Semibold:${font_size}" \
                                 update_freq=60 \
                                 script="${plugin_dir}/disk.sh"
 
-         sketchybar --add item network.down right       \
-                     --set network.down y_offset=-7    \
+        sketchybar --add item memory right \
+                    --set memory background.padding_left=0 \
+                                icon.color=0xff${config.lib.stylix.colors.base0B} \
+                                icon.font="Symbols Nerd Font:Regular:12.0" \
+                                icon="" \
+                                label.font="M PLUS Code Latin:Semibold:${font_size}" \
+                                update_freq=15 \
+                                script="${plugin_dir}/ram.sh"
+
+         sketchybar --add item cpu.percent right \
+                    --set cpu.percent background.padding_left=0 \
+                                background.padding_right=30 \
+                                icon.color=0xff${config.lib.stylix.colors.base0D} \
+                                icon.font="Symbols Nerd Font:Regular:12.0" \
+                                label.font="M PLUS Code Latin:Semibold:${font_size}" \
+                                icon="" \
+                                update_freq=2 \
+                                script="${plugin_dir}/cpu.sh"
+
+         sketchybar --add item network.down right     \
+                    --set network.down  y_offset=-7    \
                                         icon.color=0xff${config.lib.stylix.colors.base0B} \
                                         icon.font="Symbols Nerd Font:Regular:10.0" \
-                                        label.font="SF Pro:Semibold:12" \
+                                        label.font="M PLUS Code Latin:Semibold:12" \
                                         icon="" \
                                         update_freq=1 \
                                         script="${plugin_dir}/speed.sh"
 
-        sketchybar --add item network.up right        \
-                    --set network.up background.padding_right=-70 \
-                                      icon.color=0xff${config.lib.stylix.colors.base0B} \
-                                      label.font="SF Pro:Semibold:12" \
+        sketchybar  --add item network.up right        \
+                    --set network.up  icon.color=0xff${config.lib.stylix.colors.base0B} \
+                                      background.padding_right=-76 \
+                                      label.font="M PLUS Code Latin:Semibold:12" \
                                       icon.font="Symbols Nerd Font Mono::10.0" \
                                       y_offset=7    \
-                                      icon="" \
-                                      update_freq=1
+                                      icon=""
 
 
          sketchybar --add item separator_right right \
@@ -318,7 +320,7 @@
                            label.drawing=off \
                            click_script='sketchybar --trigger toggle_stats'
 
-         sketchybar  --add bracket rightBracket TextInputMenuAgent calendar.clock calendar.date volume  separator_right cpu.percent memory disk network.up network.down\
+         sketchybar  --add bracket rightBracket TextInputMenuAgent battery calendar.clock calendar.date volume  separator_right cpu.percent memory disk network.up network.down\
                      --set rightBracket background.color=0xff${config.lib.stylix.colors.base00} \
                            background.corner_radius=${corner_radius} \
                            background.height=30

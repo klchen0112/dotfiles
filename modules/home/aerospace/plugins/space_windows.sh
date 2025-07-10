@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/env zsh
 icon_map() {
   case "$1" in
   "Live")
