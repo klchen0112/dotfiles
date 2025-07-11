@@ -12,7 +12,7 @@ Sbar.default({
 			family = settings.nerd_font,
 			style = "Regular",
 			size = 20.0,
-			features = "liga,dlig,calt,zero,ss01,ss02,ss03,ss04,ss05,ss06,ss07,ss08,ss09,ss10",
+			-- features = "liga,dlig,calt,zero,ss01,ss02,ss03,ss04,ss05,ss06,ss07,ss08,ss09,ss10",
 		},
 		padding_left = settings.paddings,
 		padding_right = settings.paddings,
@@ -22,8 +22,8 @@ Sbar.default({
 		font = {
 			family = settings.font,
 			style = "Regular",
-			size = 13.0,
-			features = "liga,dlig,calt,zero,ss01,ss02,ss03,ss04,ss05,ss06,ss07,ss08,ss09,ss10"
+			size = 14.0,
+			-- features = "liga,dlig,calt,zero,ss01,ss02,ss03,ss04,ss05,ss06,ss07,ss08,ss09,ss10"
 		},
 		padding_left = settings.paddings,
 		padding_right = settings.paddings,

@@ -19,6 +19,7 @@
 
       with pkgs.vscode-extensions;
       [
+        tuttieee.emacs-mcx
         # ssh
         ms-vscode-remote.remote-ssh
         # copilot

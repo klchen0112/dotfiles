@@ -5,12 +5,14 @@ local app_icons = require("app_icons")
 local settings = require("settings")
 
 local spaces = {}
-
-for i = 1, 10, 1 do
-	local space = Sbar.add("item", "space." .. tostring(i) ,{
+Sbar.exec('aerospace list-workspaces --all --format "%{workspace} %{monitor-id}"', function(sid_monitor_id)
+	local sid, monitor_id = sid_monitor_id:match("(%d+) (%d+)")
+	sid = tonumber(sid)
+	monitor_id = tonumber(monitor_id)
+	local space = Sbar.add("item", "space." .. tostring(sid) ,{
 		position = "left",
 		icon = {
-			string = tostring(i),
+			string = tostring(sid),
 			padding_left = 7,
 			padding_right = 7,
 			color = colors.text,
@@ -18,6 +20,7 @@ for i = 1, 10, 1 do
 			font = { family = settings.font,style = "Regular", size = 14,},
 			align = "center",
 		},
+		display=monitor,
 		padding_left = 2,
 		padding_right = 2,
 		label = {
@@ -52,12 +55,13 @@ for i = 1, 10, 1 do
 		},
 	})
 
-	spaces[i] = space
+	spaces[sid] = space
 
 	local space_popup = Sbar.add("item", {
 		position = "popup." .. space.name,
 		padding_left = 5,
 		padding_right = 0,
+		display=monitor_id,
 		background = {
 			drawing = true,
 			image = {
@@ -70,7 +74,7 @@ for i = 1, 10, 1 do
 	-- Subscribe to aerospace workspace change for focus updates
 	space:subscribe("aerospace_workspace_change", function(env)
 		local focused_num = tonumber(env.FOCUSED)
-		local is_focused = focused_num == i
+		local is_focused = focused_num == sid
 		local color = is_focused and colors.white or colors.comment_bg
 		local bg_color = is_focused and colors.selection_bg or colors.light_bg
 
@@ -103,7 +107,8 @@ for i = 1, 10, 1 do
 	space:subscribe("mouse.exited", function(_)
 		space:set({ popup = { drawing = false } })
 	end)
-end
+end)
+
 
 local window_tracker = Sbar.add("item","separator_left", {
 	padding_left = 10,
@@ -116,7 +121,7 @@ local window_tracker = Sbar.add("item","separator_left", {
 })
 
 window_tracker:subscribe("aerospace_workspace_change", function()
-	for workspace_num = 1, 10 do
+	Sbar.exec('aerospace list-workspaces --all --format "%{workspace}"',function(workspace_num)
 		Sbar.exec("aerospace list-windows --workspace " .. workspace_num .. ' --format "%{app-name}"', function(result)
 			local icon_line = ""
 			local no_app = true
@@ -140,12 +145,13 @@ window_tracker:subscribe("aerospace_workspace_change", function()
 
 			if no_app then
 				icon_line = ""
+				spaces[workspace_num]:set({ drawing=false,label = { string = icon_line} })
 			end
 
 			-- Update the workspace label with app icons
 			if spaces[workspace_num] then
-				spaces[workspace_num]:set({ label = { string = icon_line } })
+				spaces[workspace_num]:set({ drawing=true,label = { string = icon_line } })
 			end
 		end)
-	end
+	end)
 end)

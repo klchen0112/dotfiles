@@ -79,7 +79,6 @@
         cyan = 0xff${config.lib.stylix.colors.base0C},
         orange = 0xff${config.lib.stylix.colors.base09},
       	red = 0xff${config.lib.stylix.colors.base08},
-
       }
 
       return colors
