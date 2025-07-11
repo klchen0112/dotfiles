@@ -2,6 +2,34 @@
 
 local colors = require("colors")
 local app_icons = require("app_icons")
+local icons = require("icons")
+-- local dm_mode_status = Sbar.add("item", "aerospace.mode.status", {
+-- 	icon = {
+-- 		color = colors.peach,
+-- 		font = {
+-- 			family = settings.nerd_font,
+-- 			size = 16.0,
+-- 			style = "Bold",
+-- 		},
+-- 		width = 30,
+-- 		string = icons.aerospace.main,
+-- 	},
+-- 	label = { drawing = false },
+-- })
+
+-- dm_mode_status:subscribe("aerospace_mode_change", function(env)
+--         local mode = env.MODE
+--         local icon_s = icons.aerospace.main
+--         if mode == "service" then
+--             icon_s = icons.aerospace.service
+--         else if mode == "resize" then
+--             icon_s = icons.aerospace.resize
+--         end
+--         dm_mode_status.set({
+--                 icon ={string =icon_s, }
+--         })
+-- end)
+
 local settings = require("settings")
 
 local spaces = {}

@@ -127,8 +127,8 @@ alt-tab = 'workspace-back-and-forth'
 # See: https://nikitabobko.github.io/AeroSpace/commands#move-workspace-to-monitor
 alt-shift-tab = 'move-workspace-to-monitor --wrap-around next'
 # See: https://nikitabobko.github.io/AeroSpace/commands#mode
-alt-shift-semicolon = ['mode service', 'exec-and-forget sketchybar --trigger aerospace_mode_change']
-alt-shift-quote = ['mode resize', 'exec-and-forget sketchybar --trigger aerospace_mode_change']
+alt-shift-semicolon = ['mode service', 'exec-and-forget sketchybar --trigger aerospace_mode_change MODE=service']
+alt-shift-quote = ['mode resize', 'exec-and-forget sketchybar --trigger aerospace_mode_change MODE=resize']
 
 # Declare 'resize' binding mode
 [mode.resize.binding]
@@ -137,21 +137,23 @@ up = 'resize height +50'
 down = 'resize height -50'
 right = 'resize width +50'
 e = "balance-sizes"
-enter = 'mode main'
-esc = 'mode main'
+esc = ['mode main', 'exec-and-forget sketchybar --trigger aerospace_mode_change MODE=main']
 
 [mode.service.binding]
-esc = ['reload-config', 'mode main']
-r = ['flatten-workspace-tree', 'mode main'] # reset layout
+esc = ['reload-config', 'mode main', 'exec-and-forget sketchybar --trigger aerospace_mode_change MODE=main']
+# reset layout
+r = ['flatten-workspace-tree', 'mode main', 'exec-and-forget sketchybar --trigger aerospace_mode_change MODE=main']
+# Toggle between floating and tiling layout
 f = [
   'layout floating tiling',
-  'mode main'
-] # Toggle between floating and tiling layout
-backspace = ['close-all-windows-but-current', 'mode main']
-left = ['join-with left', 'mode main']
-down = ['join-with down', 'mode main']
-up = ['join-with up', 'mode main']
-right = ['join-with right', 'mode main']
+  'mode main',
+  'exec-and-forget sketchybar --trigger aerospace_mode_change MODE=main'
+]
+backspace = ['close-all-windows-but-current', 'mode main', 'exec-and-forget sketchybar --trigger aerospace_mode_change MODE=main']
+left = ['join-with left', 'mode main', 'exec-and-forget sketchybar --trigger aerospace_mode_change MODE=main']
+down = ['join-with down', 'mode main', 'exec-and-forget sketchybar --trigger aerospace_mode_change MODE=main']
+up = ['join-with up', 'mode main', 'exec-and-forget sketchybar --trigger aerospace_mode_change MODE=main']
+right = ['join-with right', 'mode main', 'exec-and-forget sketchybar --trigger aerospace_mode_change MODE=main']
 
 [[on-window-detected]]
 run = 'move-node-to-workspace 8'

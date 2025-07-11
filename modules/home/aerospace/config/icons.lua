@@ -82,6 +82,11 @@ return {
         float = "􀢌",
         grid = "􀧍",
     },
+    aerospace = {
+        service = "󰰢",
+        resize = "󰰟";
+        main = "󰰐"
+    };
     spaces = {
         _1 = " ",
         _2 = " ",
