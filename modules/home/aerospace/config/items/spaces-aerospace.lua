@@ -6,7 +6,7 @@ local settings = require("settings")
 
 local spaces = {}
 for sid = 1, 10 do
-local space = Sbar.add("item", "space." .. tostring(sid), {
+    local space = Sbar.add("item", "space." .. tostring(sid), {
         position = "left",
         icon = {
             string = tostring(sid),
@@ -113,7 +113,7 @@ local window_tracker = Sbar.add("item", "separator_left", {
 })
 
 window_tracker:subscribe("aerospace_workspace_change", function()
-    for workspace_num = 1,10 do
+    for workspace_num = 1, 10 do
         Sbar.exec("aerospace list-windows --workspace " .. workspace_num .. ' --format "%{app-name}"', function(result)
             local icon_line = ""
             local no_app = true
@@ -140,6 +140,5 @@ window_tracker:subscribe("aerospace_workspace_change", function()
                 spaces[workspace_num]:set({ drawing = not no_app, label = { string = icon_line } })
             end
         end)
-	end
+    end
 end)
-
