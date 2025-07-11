@@ -88,21 +88,6 @@
 
       }
 
-      colors.random_cat_color = {
-      	colors.blue,
-      	colors.green,
-      	colors.yellow,
-      	colors.red,
-      	colors.mauve,
-      	colors.pink,
-      	colors.purple,
-      	colors.brown,
-      }
-
-      colors.getRandomCatColor = function()
-      	return colors.random_cat_color[math.random(1, #colors.random_cat_color)]
-      end
-
       return colors
     '';
   };

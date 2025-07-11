@@ -14,16 +14,17 @@ for i = 1, 10, 1 do
 			padding_left = 7,
 			padding_right = 7,
 			color = colors.text,
-			highlight_color = colors.getRandomCatColor(),
-			font = { family = settings.font,style = "Regular", size = 14 },
+			highlight_color = colors.dark_text,
+			font = { family = settings.font,style = "Regular", size = 14,},
+			align = "center",
 		},
 		padding_left = 2,
 		padding_right = 2,
 		label = {
 			padding_left = 6,
 			padding_right = 12,
-			color = colors.text,
-			highlight_color = colors.getRandomCatColor(),
+			color = colors.light_text,
+			highlight_color = colors.dark_text,
 			font = {
 				family = settings.app_font,
 				style = "Regular",
@@ -40,7 +41,7 @@ for i = 1, 10, 1 do
 		background = {
 			drawing = true,
 			color = colors.light_bg,
-			border_color = colors.light_bg2,
+			border_color = colors,
 			border_width = 2,
 			corner_radius = 8,
 		},
@@ -71,7 +72,7 @@ for i = 1, 10, 1 do
 		local focused_num = tonumber(env.FOCUSED)
 		local is_focused = focused_num == i
 		local color = is_focused and colors.white or colors.comment_bg
-		local bg_color = is_focused and colors.selection_bg or colors.bg
+		local bg_color = is_focused and colors.selection_bg or colors.light_bg
 
 		space:set({
 			icon = { highlight = is_focused ,},
@@ -104,7 +105,7 @@ for i = 1, 10, 1 do
 	end)
 end
 
-local window_tracker = Sbar.add("item", {
+local window_tracker = Sbar.add("item","separator_left", {
 	padding_left = 10,
 	padding_right = 8,
 	icon = {
