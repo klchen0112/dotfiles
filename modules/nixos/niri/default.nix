@@ -27,13 +27,4 @@
         initial_session = session;
       };
     };
-  nix.settings = {
-    # add binary caches
-    trusted-public-keys = [
-      "walker.cachix.org-1:fG8q+uAaMqhsMxWjwvk0IMb4mFPFLqHjuvfwQxE4oJM="
-    ];
-    substituters = [
-      "https://walker.cachix.org"
-    ];
-  };
 }
