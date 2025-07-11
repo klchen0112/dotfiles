@@ -51,6 +51,7 @@
 
       sf-mono-liga
       SF-Pro
+      sf-symbols
     ];
   };
 }

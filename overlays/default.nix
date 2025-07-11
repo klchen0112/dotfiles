@@ -12,6 +12,11 @@ self: super: {
   firefox-addons = self.recurseIntoAttrs (self.callPackage "${packages}/firefox-addons" { });
   SF-Pro = self.callPackage "${packages}/SF-Pro" { };
   sf-mono-liga = self.callPackage "${packages}/sf-mono-liga" { };
+
+  sf-symbols = self.callPackage "${packages}/sf-symbols" {
+    fonts = true;
+    full = true;
+  };
   emacsIGC = self.callPackage "${packages}/emacsIGC" { emacs-overlay = inputs.emacs-overlay; };
   sketchybarhelper = self.callPackage "${packages}/sketchybarhelper" { };
   dynamic-island-helper = self.callPackage "${packages}/dynamic-island-helper" { };

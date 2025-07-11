@@ -49,7 +49,6 @@
       jq
       aerospace
       sketchybarhelper
-      dynamic-island-helper
       wttrbar
     ];
     ## config from https://github.com/khaneliman/khanelinix
@@ -59,11 +58,6 @@
     };
   };
   xdg.configFile = {
-    "dynamic-island-sketchybar" = {
-      source = lib.cleanSourceWith { src = lib.cleanSource ./dynamic-island-sketchybar/.; };
-
-      recursive = true;
-    };
     "sketchybar/icon_map.lua".source =
       "${pkgs.sketchybar-app-font}/lib/sketchybar-app-font/icon_map.lua";
     "sketchybar/colors.lua".text = ''
