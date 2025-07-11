@@ -40,7 +40,7 @@ local space = Sbar.add("item", "space." .. tostring(sid), {
         background = {
             drawing = true,
             color = colors.light_bg,
-            border_color = colors.border_color,
+            border_color = colors.comment_bg,
             border_width = 2,
             corner_radius = 8,
         },
@@ -70,7 +70,7 @@ local space = Sbar.add("item", "space." .. tostring(sid), {
     space:subscribe("aerospace_workspace_change", function(env)
         local focused_num = tonumber(env.FOCUSED_WORKSPACE)
         local is_focused = focused_num == sid
-        local color = is_focused and colors.light_bg2 or colors.light_bg
+        local color = is_focused and colors.blue or colors.comment_bg
         local bg_color = is_focused and colors.selection_bg or colors.comment_bg
 
         space:set({
