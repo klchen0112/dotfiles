@@ -1,33 +1,21 @@
 {
-  stdenv,
-  lib,
+  stdenvNoCC,
   fetchFromGitHub,
-  unzip,
 }:
-stdenv.mkDerivation rec {
-  pname = "SF-Pro";
-  version = "v3.0.0";
+stdenvNoCC.mkDerivation rec {
+  pname = "sf-mono-liga-bin";
+  version = "7723040ef50633da5094f01f93b96dae5e9b9299";
 
   src = fetchFromGitHub {
-    owner = "sahibjotsaggu";
-    repo = "San-Francisco-Pro-Fonts";
-    rev = "master";
-    sha256 = "sha256-mAXExj8n8gFHq19HfGy4UOJYKVGPYgarGd/04kUIqX4=";
+    owner = "shaunsingh";
+    repo = "SFMono-Nerd-Font-Ligaturized";
+    rev = version;
+    sha256 = "sha256-vPUl6O/ji4hHIH7/qSbUe7q1QdugE1D1ZRw92QcSSDQ=";
   };
 
-  nativeBuildInputs = [ unzip ];
-
+  dontConfigure = true;
   installPhase = ''
     mkdir -p $out/share/fonts/opentype
-    mkdir -p $out/share/fonts/truetype
-    cp *.otf $out/share/fonts/opentype
-    cp *.ttf $out/share/fonts/truetype
+    cp -R $src/*.otf $out/share/fonts/opentype
   '';
-
-  meta = with lib; {
-    description = "San Francisco Pro Fonts";
-    homepage = "https://github.com/sahibjotsaggu/San-Francisco-Pro-Fonts";
-    license = licenses.mit;
-    maintainers = [ maintainers.sahibjotsaggu ];
-  };
 }
