@@ -13,6 +13,7 @@
       # mono fonts for coding
       iosevka
       nur.repos.skiletro.mplus
+      nerd-fonts."m+"
 
       # Serif fonts
       ibm-plex
@@ -48,6 +49,9 @@
       nerd-fonts.symbols-only
       nerd-fonts.hack
 
+      sf-mono-liga
+      SF-Pro
+      sf-symbols
     ];
   };
 }

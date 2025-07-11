@@ -22,6 +22,7 @@
           inputs'.agenix.packages.default
           nixfmt-rfc-style
           helix
+          lua-language-server
         ];
       };
       pre-commit.settings = {
@@ -36,6 +37,7 @@
         programs.ruff.check = true;
         programs.ruff.format = true;
         programs.toml-sort.enable = true;
+        programs.stylua.enable = true;
         settings.formatter.shellcheck.options = [
           "-s"
           "bash"
