@@ -105,3 +105,4 @@ echo "experimental-features = nix-command flakes" >> ~/.config/nix/nix.conf
 - [[https://github.com/Rashad-707/dotfiles][Rashad-707/dotfiles]]
 - [[https://github.com/linuxmobile/kaku.git][linuxmobile/kaku]]
 - [[https://github.com/dileep-kishore/nixos-config][dileep-kishore/nixos-config]]
+- [[https://github.com/khaneliman/khanelinix][khaneliman/khanelinix]] sketchybar configs
