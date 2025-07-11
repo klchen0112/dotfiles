@@ -3,6 +3,7 @@
 local settings = require("settings")
 local icons = require("icons")
 local colors = require("colors")
+local app_icons = require("app_icons")
 
 local yabai = Sbar.add("item", "yabai", {
 	icon = {
@@ -84,9 +85,10 @@ end)
 
 local front_app = Sbar.add("item", "front_app", {
 	icon = {
-		drawing = false,
+		drawing = true,
 		font = {
 			family = settings.app_font,
+			style = "Regular",
 			size = 16.0,
 		},
 	},
@@ -114,8 +116,12 @@ front_app:subscribe("front_app_switched", function(env)
 	if window_rewrite_map[window_name] then
 		window_name = window_rewrite_map[window_name]
 	end
-
+	local lookup = app_icons[window_name]
+	local icon_text = ((lookup == nil) and app_icons["Default"] or lookup)
 	front_app:set({
+		icon = {
+			string = icon_text,
+		},
 		label = {
 			string = window_name,
 		},

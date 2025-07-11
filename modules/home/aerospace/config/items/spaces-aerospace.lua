@@ -7,7 +7,7 @@ local settings = require("settings")
 local spaces = {}
 
 for i = 1, 10, 1 do
-	local space = Sbar.add("item", {
+	local space = Sbar.add("item", "space." .. tostring(i) ,{
 		position = "left",
 		icon = {
 			string = tostring(i),
@@ -15,7 +15,7 @@ for i = 1, 10, 1 do
 			padding_right = 7,
 			color = colors.text,
 			highlight_color = colors.getRandomCatColor(),
-			font = { family = settings.font, size = 14 },
+			font = { family = settings.font,style = "Regular", size = 14 },
 		},
 		padding_left = 2,
 		padding_right = 2,
@@ -74,14 +74,10 @@ for i = 1, 10, 1 do
 		local bg_color = is_focused and colors.selection_bg or colors.bg
 
 		space:set({
-			icon = { highlight = is_focused ,
-                 -- background.color = bg_color,
-            },
-			label = { highlight = is_focused ,i
-                  -- background.color = bg_color,
-            },
+			icon = { highlight = is_focused ,},
+			label = { highlight = is_focused ,},
 			background = { border_color = color ,
-                       -- color = bg_color,
+                       color = bg_color,
         },
 		})
 	end)
