@@ -6,10 +6,8 @@ print("🔍 Loading items/init.lua")
 
 require("items.apple")
 
-
 print("🚀 Loading aerospace spaces configuration")
 require("items.spaces-aerospace")
-
 
 require("items.front_app")
 require("items.today")
