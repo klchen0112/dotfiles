@@ -5,8 +5,6 @@ local icons = require("icons")
 local colors = require("colors")
 local app_icons = require("app_icons")
 
-
-
 local front_app = Sbar.add("item", "front_app", {
     icon = {
         drawing = true,

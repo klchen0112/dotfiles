@@ -84,9 +84,9 @@ return {
     },
     aerospace = {
         service = "󰰢",
-        resize = "󰰟";
-        main = "󰰐"
-    };
+        resize = "󰰟",
+        main = "󰰐",
+    },
     spaces = {
         _1 = " ",
         _2 = " ",
