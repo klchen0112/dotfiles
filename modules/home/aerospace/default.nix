@@ -63,24 +63,37 @@
     "sketchybar/colors.lua".text = ''
       #!/usr/bin/env lua
       local colors = {
-      	bg = 0xff${config.lib.stylix.colors.base00},
+        bg = 0xff${config.lib.stylix.colors.base00},
         light_bg = 0xff${config.lib.stylix.colors.base01},
         selection_bg = 0xff${config.lib.stylix.colors.base02},
         comment_bg = 0xff${config.lib.stylix.colors.base03},
+        border_color = 0xff${config.lib.stylix.colors.base03},
         dark_text = 0xff${config.lib.stylix.colors.base04},
-      	text = 0xff${config.lib.stylix.colors.base05},
+        text = 0xff${config.lib.stylix.colors.base05},
         light_text = 0xff${config.lib.stylix.colors.base06},
         light_bg2 = 0xff${config.lib.stylix.colors.base07},
-      	blue = 0xff${config.lib.stylix.colors.base0D},
-      	green = 0xff${config.lib.stylix.colors.base0B},
-      	yellow = 0xff${config.lib.stylix.colors.base0A},
+        blue = 0xff${config.lib.stylix.colors.base0D},
+        green = 0xff${config.lib.stylix.colors.base0B},
+        yellow = 0xff${config.lib.stylix.colors.base0A},
         purple = 0xff${config.lib.stylix.colors.base0E},
         brown = 0xff${config.lib.stylix.colors.base0F},
         cyan = 0xff${config.lib.stylix.colors.base0C},
         orange = 0xff${config.lib.stylix.colors.base09},
-      	red = 0xff${config.lib.stylix.colors.base08},
+        red = 0xff${config.lib.stylix.colors.base08},
       }
-
+      colors.random_cat_color = {
+        colors.blue,
+        colors.green,
+        colors.yellow,
+        colors.purple,
+        colors.brown,
+        colors.cyan,
+        colors.orange,
+        colors.red,
+      }
+      colors.getRandomCatColor = function()
+        return colors.random_cat_color[math.random(1, #colors.random_cat_color)]
+      end
       return colors
     '';
   };
