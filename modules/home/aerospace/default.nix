@@ -6,7 +6,7 @@
 }:
 {
   programs.aerospace = {
-    enable = pkgs.stdenv.isDarwin;
+    enable = true;
     userSettings = builtins.fromTOML (builtins.readFile ./aerospace.toml);
   };
 
@@ -33,8 +33,8 @@
     restart-sketchybar = ''launchctl kickstart -k gui/"$(id -u)"/org.nix-community.home.sketchybar'';
   };
   programs.sketchybar = {
-    enable = pkgs.stdenv.isDarwin;
-    service.enable = pkgs.stdenv.isDarwin;
+    enable = true;
+    service.enable = true;
     configType = "lua";
     sbarLuaPackage = pkgs.sbarlua;
     extraPackages = with pkgs; [

@@ -9,7 +9,6 @@
     ./aria2
     ./visualisation
     ./ghostty
-    ./aerospace
     ./media
     ./emacs
   ];
