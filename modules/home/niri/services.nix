@@ -24,9 +24,6 @@
     };
   };
 
-  # Wallpaper
-  services.swww.enable = true;
-
   # OSD for volume, brightness changes
   services.swayosd.enable = true;
   systemd.user.services.swayosd = {
