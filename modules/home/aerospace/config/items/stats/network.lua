@@ -37,7 +37,7 @@ network.down = Sbar.add("item", "network.down", {
 
 network.up = Sbar.add("item", "network.up", {
     background = {
-        padding_right = -70,
+        padding_right = -58,
     },
     label = {
         font = {
