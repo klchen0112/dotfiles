@@ -30,9 +30,28 @@ in
   networking.networkmanager.enable = true;
 
   users.users.root.initialHashedPassword = "$6$vUVEcVjGo5f36ZaT$./Uh58JYMKNDgQwFWOjYZSEuXS4kyu/x1RCqF1TW8wVq3F6wVeoR5TwGgRW5rUNQZCVAYgRDCACFYlAMWfaOZ1";
+  environment.systemPackages = with pkgs; [
+    cudatoolkit
+    vulkan-tools
+    clinfo
+    glxinfo
+    intel-gpu-tools
+  ];
+  hardware.graphics = {
+    enable = true;
+    extraPackages = with pkgs; [
+      # your Open GL, Vulkan and VAAPI drivers
+      vpl-gpu-rt # for newer GPUs on NixOS >24.05 or unstable
+      # onevpl-intel-gpu  # for newer GPUs on NixOS <= 24.05
+      # intel-media-sdk   # for older GPUs
+    ];
+  };
   services.xserver.videoDrivers = [
     "modesetting" # example for Intel iGPU; use "amdgpu" here instead if your iGPU is AMD
     "nvidia"
+  ];
+  boot.kernelParams = [
+    "i915.force_probe=4692"
   ];
 
   # Don't allow mutation of users outside of the config.
@@ -47,9 +66,18 @@ in
     "ssh/ssh_host_ed25519_key".source = "/nix/persist/etc/ssh/ssh_host_ed25519_key";
     "ssh/ssh_host_ed25519_key.pub".source = "/nix/persist/etc/ssh/ssh_host_ed25519_key.pub";
   };
-  hardware.nvidia.prime = {
-    reverseSync.enable = true;
-    intelBusId = "PCI:0:2:0";
-    nvidiaBusId = "PCI:1:0:0";
+  users.users."klchen".extraGroups = [
+    "video"
+    "render"
+  ];
+  hardware.nvidia = {
+    modesetting.enable = true;
+    nvidiaSettings = true; # 不需要图形控制面板
+    prime = {
+      offload.enable = true; # 禁用 PRIME 渲染卸载
+      sync.enable = false; # 禁用 PRIME 同步
+      intelBusId = "PCI:0:2:0";
+      nvidiaBusId = "PCI:1:0:0";
+    };
   };
 }
