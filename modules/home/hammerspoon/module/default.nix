@@ -64,7 +64,11 @@ in
         "${extensionsEnvPkg}";
       recursive = true;
       force = true;
-
+    };
+    xdg.configFile."hammerspoon" = mkIf (cfg.configPath != null) {
+      source = cfg.configPath;
+      recursive = true;
+      force = true;
     };
   };
 }
