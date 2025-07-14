@@ -41,14 +41,17 @@
         features = lib.mkDefault "side-by-side";
       };
     };
+
     extraConfig = {
       init.defaultBranch = "master"; # https://srid.ca/unwoke
+      core = {
+        ignorecase = false;
+        editor = "emacsclient";
+        quotepath = false;
+        autocrlf = false;
+        symlinks = true;
+      };
 
-      core.editor = "emacsclient";
-      core.quotepath = false;
-      core.autocrlf = false;
-      # For supercede
-      core.symlinks = true;
       #protocol.keybase.allow = "always";
       credential.helper = "store --file ~/.config/git/git-credentials";
       pull.rebase = true;
