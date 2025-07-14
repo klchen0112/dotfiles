@@ -3,7 +3,7 @@
   imports = [
     flake.inputs.mac-app-util.homeManagerModules.default
     ./hammerspoon
-    ./aerospace
+    # ./aerospace
   ];
 
 }

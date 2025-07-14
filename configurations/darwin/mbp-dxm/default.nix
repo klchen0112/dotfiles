@@ -22,4 +22,5 @@ in
 
   system.stateVersion = 4;
   ids.gids.nixbld = 350;
+  system.defaults.NSGlobalDomain._HIHideMenuBar = false;
 }
