@@ -11,7 +11,7 @@
   ];
 
   environment.systemPackages = with pkgs; [
-    git
+    gitFull
   ];
 
   home-manager.useUserPackages = true;
