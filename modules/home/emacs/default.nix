@@ -104,8 +104,6 @@ in
         treesit-grammars.with-all-grammars
         # rime
         telega
-        evil
-        meow
       ];
     provideEmacs = true;
     experimentalFetchTree = true;
