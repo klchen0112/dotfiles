@@ -98,7 +98,7 @@
     '';
   };
   services.jankyborders = {
-    enable = pkgs.stdenv.isDarwin;
+    enable = true;
     settings = {
       style = "round";
       width = 6.0;
