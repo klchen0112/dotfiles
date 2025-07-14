@@ -1,4 +1,3 @@
-# this code frome https://github.com/DivitMittal/hammerspoon-nix/blob/main/modules/home/hammerspoon.nix
 {
   lib,
   pkgs,
@@ -9,26 +8,6 @@ let
   cfg = config.programs.hammerspoon;
   inherit (lib) mkIf;
 
-  hammerspoonDir = pkgs.runCommand "hammerspoon-config" { } ''
-    mkdir -p $out
-
-    ${lib.optionalString (cfg.configPath != null) ''
-      if [ -d "${cfg.configPath}" ]; then
-        cp -r "${cfg.configPath}"/* $out/
-      else
-        cp "${cfg.configPath}" $out/init.lua
-      fi
-    ''}
-
-    ${lib.optionalString (cfg.spoons != { }) ''
-      mkdir -p $out/Spoons
-      ${lib.concatStringsSep "\n" (
-        lib.mapAttrsToList (name: source: ''
-          cp -r "${source}" "$out/Spoons/${name}.spoon"
-        '') cfg.spoons
-      )}
-    ''}
-  '';
 in
 {
   options =
@@ -58,10 +37,10 @@ in
         };
 
         spoons = mkOption {
-          type = types.attrsOf types.path;
-          default = { };
+          type = types.listOf types.package;
+          default = [ ];
           description = ''
-            Attribute set of Hammerspoon Spoons to install.
+            List of Hammerspoon Spoons to install.
             Keys are spoon names, values are paths to the spoon directories.
             Each spoon will be installed to the Spoons/ subdirectory.
           '';
@@ -74,11 +53,18 @@ in
       "org.hammerspoon.Hammerspoon".MJConfigFile = "${config.xdg.configHome}/hammerspoon/init.lua";
     };
     home.packages = mkIf (cfg.package != null) [ cfg.package ];
-    xdg.configFile = mkIf (cfg.configPath != null || cfg.spoons != { }) {
-      "hammerspoon" = {
-        source = hammerspoonDir;
-        recursive = true;
-      };
+    xdg.configFile."hammerspoon/Spoons" = mkIf (cfg.configPath != null || cfg.spoons != { }) {
+      source =
+        let
+          extensionsEnvPkg = pkgs.buildEnv {
+            name = "hm-hammersppon-extensions";
+            paths = cfg.spoons;
+          };
+        in
+        "${extensionsEnvPkg}";
+      recursive = true;
+      force = true;
+
     };
   };
 }

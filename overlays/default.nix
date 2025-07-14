@@ -10,6 +10,7 @@ self: super: {
   TsangerJinKai03 = self.callPackage "${packages}/TsangerJinKai03" { };
   Jigmo = self.callPackage "${packages}/Jigmo" { };
   firefox-addons = self.recurseIntoAttrs (self.callPackage "${packages}/firefox-addons" { });
+  hammerspoons = self.recurseIntoAttrs (self.callPackage "${packages}/hammerspoons" { });
   SF-Pro = self.callPackage "${packages}/SF-Pro" { };
   sf-mono-liga = self.callPackage "${packages}/sf-mono-liga" { };
 
