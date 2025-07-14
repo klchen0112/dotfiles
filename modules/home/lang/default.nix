@@ -6,11 +6,12 @@
   imports = [
     ./bash
     ./cpp
-    ./csharp
+    # ./csharp
+    ./docker
     ./go
-    ./java
+    # ./java
     ./json
-    ./julia
+    # ./julia
     ./lua
     ./latex
     ./markdown
@@ -21,8 +22,6 @@
     ./web
     ./yaml
     ./k8s
-
   ];
 
-  home.packages = with pkgs; [ dockfmt ];
 }
