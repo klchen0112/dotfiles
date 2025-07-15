@@ -1,19 +1,19 @@
 -- HammerSpoon menu bar item to show active Mission Control space.
 -- Built-in and external display names are shown. Spaces are listed in order per display. Active space is square bracketed.
-local ActiveSpace = hs.loadSpoon("ActiveSpace")
+ActiveSpace = hs.loadSpoon("ActiveSpace")
 ActiveSpace:start()
 -- Warp the mouse cursor from the edge of one screen to the edge of another screen to simulate external monitors being placed side by side.
-local WarpMouse = hs.loadSpoon("WarpMouse")
+WarpMouse = hs.loadSpoon("WarpMouse")
 WarpMouse:start()
 
-local PaperWM = hs.loadSpoon("PaperWM")
+PaperWM = hs.loadSpoon("PaperWM")
 -- Start of PaperWM Ignore Apps
 PaperWM.window_filter:rejectApp("iStat Menus Status") -- ignore a specific app
 PaperWM.window_filter:rejectApp("Finder")
 PaperWM.window_filter:rejectApp("ActivityMonitor")
 PaperWM.window_filter:rejectApp("BitWarden")
 -- End of PaperWM Ignore Apps
-PaperWM.window_gap  =  { top = 10, bottom = 8, left = 12, right = 12 } -- Specific gaps per side
+PaperWM.window_gap  =  { top = 4, bottom = 4, left = 4, right = 4 } -- Specific gaps per side
 PaperWM:bindHotkeys({
     -- switch to a new focused window in tiled grid
     focus_left  = {{"alt" }, "left"},
@@ -27,46 +27,47 @@ PaperWM:bindHotkeys({
     focus_next = {{"alt", "cmd"}, "j"},
 
     -- move windows around in tiled grid
-    swap_left  = {{"alt", "shift"}, "left"},
-    swap_right = {{"alt", "shift"}, "right"},
-    swap_up    = {{"alt", "shift"}, "up"},
-    swap_down  = {{"alt", "shift"}, "down"},
-
+    swap_left  = {{"ctrl", "cmd"}, "left"},
+    swap_right = {{"ctrl", "cmd"}, "right"},
+    swap_up    = {{"ctrl", "cmd"}, "up"},
+    swap_down  = {{"ctrl", "cmd"}, "down"},
+    -- move focused window into / out of a column
+    slurp_in = {{"ctrl", "cmd"}, "i"},
+    barf_out = {{"ctrl", "cmd"}, "o"},
     -- alternative: swap entire columns, rather than
     -- individual windows (to be used instead of
     -- swap_left / swap_right bindings)
-    -- swap_column_left = {{"alt", "cmd", "shift"}, "left"},
-    -- swap_column_right = {{"alt", "cmd", "shift"}, "right"},
+    swap_column_left = {{"ctrl", "cmd", "shift"}, "left"},
+    swap_column_right = {{"ctrl", "cmd", "shift"}, "right"},
 
     -- position and resize focused window
-    center_window        = {{"alt", "cmd"}, "c"},
-    full_width           = {{"alt", "cmd"}, "f"},
-    cycle_width          = {{"alt", "cmd"}, "r"},
-    reverse_cycle_width  = {{"ctrl", "alt", "cmd"}, "r"},
-    cycle_height         = {{"alt", "cmd", "shift"}, "r"},
-    reverse_cycle_height = {{"ctrl", "alt", "cmd", "shift"}, "r"},
+    center_window        = {{"ctrl", "cmd"}, "c"},
+    full_width           = {{"ctrl", "cmd"}, "f"},
+    cycle_width          = {{"ctrl", "cmd"}, "r"},
+    reverse_cycle_width  = {{"ctrl", "cmd", "shift"}, "r"},
+    cycle_height         = {{"ctrl", "cmd", "shift"}, "r"},
+    reverse_cycle_height = {{"ctrl", "ctrl", "cmd", "shift"}, "r"},
 
     -- increase/decrease width
-    increase_width = {{"alt", "cmd"}, "right"},
-    decrease_width = {{"alt", "cmd"}, "left"},
+    increase_width = {{"ctrl", "cmd"}, "="},
+    decrease_width = {{"ctrl", "cmd"}, "-"},
+    increase_height = {{"ctrl", "cmd", "shift"}, "="},
+    decrease_height = {{"ctrl", "cmd", "shift"}, "-"},
 
-    -- move focused window into / out of a column
-    slurp_in = {{"alt", "cmd"}, "i"},
-    barf_out = {{"alt", "cmd"}, "o"},
 
     -- move the focused window into / out of the tiling layer
-    toggle_floating = {{"alt", "cmd", "shift"}, "escape"},
+    toggle_floating = {{"ctrl", "cmd", "shift"}, "escape"},
 
     -- focus the first / second / etc window in the current space
-    focus_window_1 = {{"cmd", "shift"}, "1"},
-    focus_window_2 = {{"cmd", "shift"}, "2"},
-    focus_window_3 = {{"cmd", "shift"}, "3"},
-    focus_window_4 = {{"cmd", "shift"}, "4"},
-    focus_window_5 = {{"cmd", "shift"}, "5"},
-    focus_window_6 = {{"cmd", "shift"}, "6"},
-    focus_window_7 = {{"cmd", "shift"}, "7"},
-    focus_window_8 = {{"cmd", "shift"}, "8"},
-    focus_window_9 = {{"cmd", "shift"}, "9"},
+    focus_window_1 = {{"ctrl", "cmd"}, "1"},
+    focus_window_2 = {{"ctrl", "cmd"}, "2"},
+    focus_window_3 = {{"ctrl", "cmd"}, "3"},
+    focus_window_4 = {{"ctrl", "cmd"}, "4"},
+    focus_window_5 = {{"ctrl", "cmd"}, "5"},
+    focus_window_6 = {{"ctrl", "cmd"}, "6"},
+    focus_window_7 = {{"ctrl", "cmd"}, "7"},
+    focus_window_8 = {{"ctrl", "cmd"}, "8"},
+    focus_window_9 = {{"ctrl", "cmd"}, "9"},
 
     -- switch to a new Mission Control space
     switch_space_l = {{"alt", "cmd"}, ","},
@@ -82,21 +83,21 @@ PaperWM:bindHotkeys({
     switch_space_9 = {{"alt", "cmd"}, "9"},
 
     -- move focused window to a new space and tile
-    move_window_1 = {{"alt", "cmd", "shift"}, "1"},
-    move_window_2 = {{"alt", "cmd", "shift"}, "2"},
-    move_window_3 = {{"alt", "cmd", "shift"}, "3"},
-    move_window_4 = {{"alt", "cmd", "shift"}, "4"},
-    move_window_5 = {{"alt", "cmd", "shift"}, "5"},
-    move_window_6 = {{"alt", "cmd", "shift"}, "6"},
-    move_window_7 = {{"alt", "cmd", "shift"}, "7"},
-    move_window_8 = {{"alt", "cmd", "shift"}, "8"},
-    move_window_9 = {{"alt", "cmd", "shift"}, "9"}
+    move_window_1 = {{"ctrl", "cmd", "shift"}, "1"},
+    move_window_2 = {{"ctrl", "cmd", "shift"}, "2"},
+    move_window_3 = {{"ctrl", "cmd", "shift"}, "3"},
+    move_window_4 = {{"ctrl", "cmd", "shift"}, "4"},
+    move_window_5 = {{"ctrl", "cmd", "shift"}, "5"},
+    move_window_6 = {{"ctrl", "cmd", "shift"}, "6"},
+    move_window_7 = {{"ctrl", "cmd", "shift"}, "7"},
+    move_window_8 = {{"ctrl", "cmd", "shift"}, "8"},
+    move_window_9 = {{"ctrl", "cmd", "shift"}, "9"}
 })
 PaperWM:start() -- restart for new window filter to take effect
 
 -- focus adjacent window with 3 finger swipe
 local current_id, threshold
-local Swipe = hs.loadSpoon("Swipe")
+Swipe = hs.loadSpoon("Swipe")
 Swipe:start(3, function(direction, distance, id)
     if id == current_id then
         if distance > threshold then
@@ -104,13 +105,13 @@ Swipe:start(3, function(direction, distance, id)
 
             -- use "natural" scrolling
             if direction == "left" then
-                PaperWM.actions.focus_right()
-            elseif direction == "right" then
                 PaperWM.actions.focus_left()
+            elseif direction == "right" then
+                PaperWM.actions.focus_right()
             elseif direction == "up" then
-                PaperWM.actions.focus_down()
-            elseif direction == "down" then
                 PaperWM.actions.focus_up()
+            elseif direction == "down" then
+                PaperWM.actions.focus_down()
             end
         end
     else
@@ -118,4 +119,4 @@ Swipe:start(3, function(direction, distance, id)
         threshold = 0.2 -- swipe distance > 20% of trackpad size
     end
 end)
-Swipe:start()
+
