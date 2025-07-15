@@ -7,7 +7,7 @@
 }:
 {
   imports = [ ./module ];
-
+  home.packages = with pkgs; [stats];
   programs.hammerspoon = {
     enable = true; # enable the Hammerspoon module
 
@@ -24,5 +24,15 @@
       Swipe
       WarpMouse
     ];
+  };
+  services.jankyborders = {
+    enable = true;
+    settings = {
+      style = "round";
+      width = 6.0;
+      hidpi = "on";
+      active_color = "${config.lib.stylix.colors.base0D}";
+      inactive_color = "${config.lib.stylix.colors.base03}";
+    };
   };
 }
