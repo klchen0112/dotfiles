@@ -6,8 +6,16 @@ ActiveSpace:start()
 WarpMouse = hs.loadSpoon("WarpMouse")
 WarpMouse:start()
 
+
 PaperWM = hs.loadSpoon("PaperWM")
 -- Start of PaperWM Ignore Apps
+-- PaperWM.window_filter:allowApp("Emacs")
+-- PaperWM.window_filter:setAppFilter("Emacs", {
+--     visible   = true,
+--     fullscreen = false,
+--     hasTitlebar = true,
+--     allowRoles = "AXWindow"   -- 只影响 Emacs
+-- })
 PaperWM.window_filter:rejectApp("iStat Menus Status") -- ignore a specific app
 PaperWM.window_filter:rejectApp("Finder")
 PaperWM.window_filter:rejectApp("ActivityMonitor")
