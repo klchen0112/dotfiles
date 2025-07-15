@@ -145,11 +145,11 @@
         inputs.nixpkgs-stable.follows = "nixpkgs-stable";
       };
 
-      # nixvim = {
-      #   url = "github:nix-community/nixvim";
-      #   inputs.flake-parts.follows = "flake-parts";
-      #   inputs.nixpkgs.follows = "nixpkgs";
-      # };
+      nixvim = {
+        url = "github:nix-community/nixvim";
+        inputs.flake-parts.follows = "flake-parts";
+        inputs.nixpkgs.follows = "nixpkgs";
+      };
       # nix4nvchad = {
       #   url = "github:nix-community/nix4nvchad";
       #   inputs.nixpkgs.follows = "nixpkgs";

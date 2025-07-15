@@ -11,7 +11,7 @@
     ./ssh
     ./zsh
     ./nix-index
-    ./helix
+    ./neovim
   ];
   fonts.fontconfig.enable = true;
 }

@@ -7,7 +7,7 @@
 }:
 {
   imports = [ ./module ];
-  home.packages = with pkgs; [stats];
+  home.packages = with pkgs; [ stats ];
   programs.hammerspoon = {
     enable = true; # enable the Hammerspoon module
 
