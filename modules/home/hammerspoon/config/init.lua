@@ -1,3 +1,18 @@
+local hotkey = require 'hs.hotkey'
+local task = require 'hs.task'
+local alert = require 'hs.alert'
+-- Spawn a new emacs client
+local function newEmacsClient()
+  alert.show('New Emacs client!')
+  task.new('/bin/zsh', nil,
+           { '-l', '-c', 'emacsclient -a "" -c' }):start()
+end
+
+hs.hotkey.bind(
+     {"ctrl", "cmd", "shift" },
+     "e",
+     function() newEmacsClient() end
+)
 -- HammerSpoon menu bar item to show active Mission Control space.
 -- Built-in and external display names are shown. Spaces are listed in order per display. Active space is square bracketed.
 ActiveSpace = hs.loadSpoon("ActiveSpace")
