@@ -9,9 +9,9 @@
   stylix = {
     enable = true;
     opacity = {
-      applications = 0.8;
-      terminal = 0.8;
-      popups = 0.8;
+      applications = 0.9;
+      terminal = 0.9;
+      popups = 0.9;
     };
 
     fonts = {
