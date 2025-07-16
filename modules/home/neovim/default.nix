@@ -148,6 +148,14 @@
         # nginx
         # svelte
       ];
+      settings = {
+        highlight = {
+          enable = true;
+        };
+        indent = {
+          enable = true;
+        };
+      };
     };
   };
 }
