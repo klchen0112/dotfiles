@@ -21,6 +21,7 @@ self: super: {
   emacsIGC = self.callPackage "${packages}/emacsIGC" { emacs-overlay = inputs.emacs-overlay; };
   sketchybarhelper = self.callPackage "${packages}/sketchybarhelper" { };
   dynamic-island-helper = self.callPackage "${packages}/dynamic-island-helper" { };
+  org-reminders = self.callPackage "${packages}/org-reminders" { };
   stable = import inputs.nixpkgs-stable {
     system = self.system;
     config.allowUnfree = true;

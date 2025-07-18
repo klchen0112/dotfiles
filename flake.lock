@@ -198,17 +198,17 @@
     "doom-config": {
       "flake": false,
       "locked": {
-        "lastModified": 1752847621,
-        "narHash": "sha256-yItgQAIkkiJPJA2L3A6KXmhSQ6SNHbckey0KH8NP4oA=",
-        "owner": "klchen0112",
-        "repo": "doom",
-        "rev": "c351cee5fc6c75462c9bfc885996aec35b8516f9",
-        "type": "github"
+        "lastModified": 1752868705,
+        "narHash": "sha256-V+EXSuHNFF1gn/W7qmYc8H2hE4oAxru3WbVQTV2bCcU=",
+        "ref": "refs/heads/master",
+        "rev": "4fed455e7d968d4d12890a0ec61cdd65c7aa7c77",
+        "revCount": 157,
+        "type": "git",
+        "url": "file:///Users/klchen/my/doom"
       },
       "original": {
-        "owner": "klchen0112",
-        "repo": "doom",
-        "type": "github"
+        "type": "git",
+        "url": "file:///Users/klchen/my/doom"
       }
     },
     "doomemacs": {

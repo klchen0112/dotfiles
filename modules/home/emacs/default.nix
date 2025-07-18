@@ -61,6 +61,7 @@ let
       # pngpaste for org mode download clip
       pngpaste
       hugo
+      org-reminders
     ];
 in
 {
@@ -99,11 +100,45 @@ in
     tangleArgs = ".";
     extraBinPackages = extraPackages;
     extraPackages =
-      epkgs: with epkgs; [
+      epkgs:
+      with epkgs;
+
+      let
+        websocket-bridge = epkgs.melpaBuild {
+          pname = "websocket-bridge";
+          version = "9999snapshot1";
+          packageRequires = [ epkgs.websocket ];
+          src = builtins.fetchTree {
+            type = "github";
+            owner = "ginqi7";
+            repo = "websocket-bridge";
+            rev = "535364f8fefd791b22525b7640d291e88c80179d";
+          };
+        };
+        org-reminders = epkgs.melpaBuild {
+          pname = "org-reminders";
+          version = "9999snapshot1";
+          packageRequires = [
+            websocket-bridge
+            epkgs.org
+            epkgs.transient
+          ];
+          src = builtins.fetchTree {
+            type = "github";
+            owner = "ginqi7";
+            repo = "org-reminders";
+            rev = "7d317b5591303265d86022de62498826285ba2c9";
+          };
+        };
+
+      in
+      [
         vterm
         treesit-grammars.with-all-grammars
         # rime
         telega
+        websocket-bridge
+        org-reminders
       ];
     provideEmacs = true;
     experimentalFetchTree = true;
