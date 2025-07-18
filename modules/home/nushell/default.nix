@@ -9,6 +9,22 @@ in
 {
   stylix.targets.nushell.enable = true;
   programs.starship.enableNushellIntegration = true;
+  home.shellAliases = {
+    ls = "exa";
+    ll = "exa -lha";
+    lt = "exa --tree";
+    htop = "btop";
+    psg = "ps aux | rg -v rg | rg -i -e VSZ -e";
+    e = "emacsclient -nc";
+    E = "emacs -nw";
+    grep = "rg";
+    cat = "bat";
+    conda = "mamba";
+    vim = "emacs -nw";
+    "..." = "cd ../..";
+    "j" = "just";
+    "cd" = "z";
+  };
   programs.nushell = {
     enable = true;
     settings = {
@@ -40,6 +56,7 @@ in
       use ${nu_scripts}/custom-completions/nix/nix-completions.nu *
       use ${nu_scripts}/custom-completions/ssh/ssh-completions.nu *
       use ${nu_scripts}/custom-completions/eza/eza-completions.nu *
+      use ${nu_scripts}/custom-completions/bat/bat-completions.nu *
     '';
   };
 }

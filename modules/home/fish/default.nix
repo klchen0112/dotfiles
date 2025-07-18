@@ -7,27 +7,9 @@
   home.packages = [
     pkgs.macchina
   ];
-  home.shellAliases.j = "just";
+
   programs.fish = {
     enable = true;
-    shellAbbrs = {
-      ls = "exa";
-      ll = "exa -lha";
-      lt = "exa --tree";
-      htop = "btop";
-      psg = "ps aux | rg -v rg | rg -i -e VSZ -e";
-      e = "emacsclient -nc";
-      E = "emacs -nw";
-      grep = "rg";
-      cat = "bat";
-      # conda = "mamba";
-      vim = "emacs -nw";
-    };
-    shellAliases = {
-      conda = "mamba";
-      "..." = "cd ../..";
-      # "cd" = "z";
-    };
     plugins = with pkgs.fishPlugins; [
       {
         name = "fzf-fish";
