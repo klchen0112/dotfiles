@@ -59,25 +59,25 @@ PaperWM:bindHotkeys({
     -- alternative: swap entire columns, rather than
     -- individual windows (to be used instead of
     -- swap_left / swap_right bindings)
-    swap_column_left = { { "ctrl", "cmd", "shift" }, "left" },
-    swap_column_right = { { "ctrl", "cmd", "shift" }, "right" },
+    swap_column_left = { { "alt", "shift" }, "left" },
+    swap_column_right = { { "alt", "shift" }, "right" },
 
     -- position and resize focused window
     center_window = { { "ctrl", "cmd" }, "c" },
     full_width = { { "ctrl", "cmd" }, "f" },
     cycle_width = { { "ctrl", "cmd" }, "r" },
-    reverse_cycle_width = { { "ctrl", "cmd", "shift" }, "r" },
-    cycle_height = { { "ctrl", "cmd", "shift" }, "r" },
-    reverse_cycle_height = { { "ctrl", "ctrl", "cmd", "shift" }, "r" },
+    reverse_cycle_width = { { "alt", "shift" }, "r" },
+    cycle_height = { { "alt", "shift" }, "r" },
+    reverse_cycle_height = { { "ctrl", "alt", "shift" }, "r" },
 
     -- increase/decrease width
     increase_width = { { "ctrl", "cmd" }, "=" },
     decrease_width = { { "ctrl", "cmd" }, "-" },
-    increase_height = { { "ctrl", "cmd", "shift" }, "=" },
-    decrease_height = { { "ctrl", "cmd", "shift" }, "-" },
+    increase_height = { { "alt", "shift" }, "=" },
+    decrease_height = { { "alt", "shift" }, "-" },
 
     -- move the focused window into / out of the tiling layer
-    toggle_floating = { { "ctrl", "cmd", "shift" }, "escape" },
+    toggle_floating = { { "alt", "shift" }, "escape" },
 
     -- focus the first / second / etc window in the current space
     focus_window_1 = { { "ctrl", "cmd" }, "1" },
@@ -104,15 +104,15 @@ PaperWM:bindHotkeys({
     switch_space_9 = { { "alt", "cmd" }, "9" },
 
     -- move focused window to a new space and tile
-    move_window_1 = { { "ctrl", "cmd", "shift" }, "1" },
-    move_window_2 = { { "ctrl", "cmd", "shift" }, "2" },
-    move_window_3 = { { "ctrl", "cmd", "shift" }, "3" },
-    move_window_4 = { { "ctrl", "cmd", "shift" }, "4" },
-    move_window_5 = { { "ctrl", "cmd", "shift" }, "5" },
-    move_window_6 = { { "ctrl", "cmd", "shift" }, "6" },
-    move_window_7 = { { "ctrl", "cmd", "shift" }, "7" },
-    move_window_8 = { { "ctrl", "cmd", "shift" }, "8" },
-    move_window_9 = { { "ctrl", "cmd", "shift" }, "9" },
+    move_window_1 = { { "alt", "shift" }, "1" },
+    move_window_2 = { { "alt", "shift" }, "2" },
+    move_window_3 = { { "alt", "shift" }, "3" },
+    move_window_4 = { { "alt", "shift" }, "4" },
+    move_window_5 = { { "alt", "shift" }, "5" },
+    move_window_6 = { { "alt", "shift" }, "6" },
+    move_window_7 = { { "alt", "shift" }, "7" },
+    move_window_8 = { { "alt", "shift" }, "8" },
+    move_window_9 = { { "alt", "shift" }, "9" },
 })
 PaperWM:start() -- restart for new window filter to take effect
 
