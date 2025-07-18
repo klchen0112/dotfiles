@@ -14,7 +14,7 @@ in
     ll = "exa -lha";
     lt = "exa --tree";
     htop = "btop";
-    psg = "ps aux | rg -v rg | rg -i -e VSZ -e";
+    # psg = "ps aux | rg -v rg | rg -i -e VSZ -e";
     e = "emacsclient -nc";
     E = "emacs -nw";
     grep = "rg";
