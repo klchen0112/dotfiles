@@ -74,10 +74,14 @@ in
     modesetting.enable = true;
     nvidiaSettings = true; # 不需要图形控制面板
     prime = {
-      offload.enable = true; # 禁用 PRIME 渲染卸载
+      offload = {
+        enable = true; # 禁用 PRIME 渲染卸载
+        enableOffloadCmd = true;
+      };
       sync.enable = false; # 禁用 PRIME 同步
       intelBusId = "PCI:0:2:0";
       nvidiaBusId = "PCI:1:0:0";
     };
   };
+  hardware.nvidia-container-toolkit.enable = true;
 }
