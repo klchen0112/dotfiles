@@ -156,8 +156,8 @@
       # };
 
       doom-config = {
-                # url = "github:klchen0112/doom";
-        url = "git+file:///Users/klchen/my/doom";
+        url = "github:klchen0112/doom";
+        # url = "git+file:///Users/klchen/my/doom";
         flake = false;
       };
 

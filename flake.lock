@@ -200,15 +200,15 @@
       "locked": {
         "lastModified": 1752868705,
         "narHash": "sha256-V+EXSuHNFF1gn/W7qmYc8H2hE4oAxru3WbVQTV2bCcU=",
-        "ref": "refs/heads/master",
+        "owner": "klchen0112",
+        "repo": "doom",
         "rev": "4fed455e7d968d4d12890a0ec61cdd65c7aa7c77",
-        "revCount": 157,
-        "type": "git",
-        "url": "file:///Users/klchen/my/doom"
+        "type": "github"
       },
       "original": {
-        "type": "git",
-        "url": "file:///Users/klchen/my/doom"
+        "owner": "klchen0112",
+        "repo": "doom",
+        "type": "github"
       }
     },
     "doomemacs": {
