@@ -15,7 +15,7 @@
       command = "/etc/profiles/per-user/${config.me.username}/bin/nu";
       clipboard-read = "allow";
       clipboard-write = "allow";
-      copy-on-select = true;
+      copy-on-select = "clipboard";
     };
   };
 
