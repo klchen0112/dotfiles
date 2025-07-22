@@ -106,6 +106,12 @@ in
     home-manager.users = mapListToAttrs config.myusers (name: {
       imports =
         [ (self + /configurations/home/${name}.nix) ]
+        ++ (lib.optionals pkgs.stdenv.isLinux [
+          (self + /modules/home/bash)
+        ])
+        ++ (lib.optionals pkgs.stdenv.isDarwin [
+          (self + /modules/home/zsh)
+        ])
         ++ (lib.optionals config.machine.desktop [
           (self + /modules/home/desktop.nix)
         ])

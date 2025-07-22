@@ -1,7 +1,5 @@
 {
   imports = [
-    ./bash
-    ./fish
     ./me
     ./access-tokens.nix
     ./stylix
@@ -9,7 +7,6 @@
     ./nix
     ./git
     ./ssh
-    ./zsh
     ./nix-index
     ./neovim
   ];
