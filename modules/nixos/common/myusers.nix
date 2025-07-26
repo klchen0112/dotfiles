@@ -104,23 +104,24 @@ in
     home-manager.backupFileExtension = "nixos-unified-template-backup";
     # Enable home-manager for our user
     home-manager.users = mapListToAttrs config.myusers (name: {
-      imports =
-        [ (self + /configurations/home/${name}.nix) ]
-        ++ (lib.optionals pkgs.stdenv.isLinux [
-          (self + /modules/home/bash)
-        ])
-        ++ (lib.optionals pkgs.stdenv.isDarwin [
-          (self + /modules/home/zsh)
-        ])
-        ++ (lib.optionals config.machine.desktop [
-          (self + /modules/home/desktop.nix)
-        ])
-        ++ (lib.optionals (config.machine.desktop && pkgs.stdenv.isLinux) [
-          (self + /modules/home/desktop-linux.nix)
-        ])
-        ++ (lib.optionals (config.machine.desktop && pkgs.stdenv.isDarwin) [
-          (self + /modules/home/desktop-darwin.nix)
-        ]);
+      imports = [
+        (self + /configurations/home/${name}.nix)
+      ]
+      ++ (lib.optionals pkgs.stdenv.isLinux [
+        (self + /modules/home/bash)
+      ])
+      ++ (lib.optionals pkgs.stdenv.isDarwin [
+        (self + /modules/home/zsh)
+      ])
+      ++ (lib.optionals config.machine.desktop [
+        (self + /modules/home/desktop.nix)
+      ])
+      ++ (lib.optionals (config.machine.desktop && pkgs.stdenv.isLinux) [
+        (self + /modules/home/desktop-linux.nix)
+      ])
+      ++ (lib.optionals (config.machine.desktop && pkgs.stdenv.isDarwin) [
+        (self + /modules/home/desktop-darwin.nix)
+      ]);
       nix.settings.trusted-users = [
         "root"
         "@wheel"
@@ -132,6 +133,7 @@ in
     nix.settings.trusted-users = [
       "root"
       "@wheel"
-    ] ++ config.myusers;
+    ]
+    ++ config.myusers;
   };
 }

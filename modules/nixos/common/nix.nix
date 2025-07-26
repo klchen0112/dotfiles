@@ -19,7 +19,8 @@
       flake.inputs.nur.overlays.default
       flake.inputs.emacs-overlay.overlays.default
       # flake.inputs.self.overlays.default
-    ] ++ (lib.attrValues flake.inputs.self.overlays);
+    ]
+    ++ (lib.attrValues flake.inputs.self.overlays);
   };
   nix = {
     channel.enable = false; # remove nix-channel related tools & configs, we use flakes instead.

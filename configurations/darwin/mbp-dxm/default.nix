@@ -8,13 +8,12 @@ let
   hostName = machine.hostName;
 in
 {
-  imports =
-    [
-      flake.inputs.self.darwinModules.default
-    ]
-    ++ (lib.optionals machine.desktop [
-      flake.inputs.self.darwinModules.desktop
-    ]);
+  imports = [
+    flake.inputs.self.darwinModules.default
+  ]
+  ++ (lib.optionals machine.desktop [
+    flake.inputs.self.darwinModules.desktop
+  ]);
   inherit machine myusers;
   system.primaryUser = primaryUser;
   nixpkgs.hostPlatform = platform;
