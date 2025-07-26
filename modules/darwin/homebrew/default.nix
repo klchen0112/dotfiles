@@ -60,7 +60,7 @@
       "adrive"
       "discord"
       "activitywatch"
-      "vial"
+      # "vial"
       "qmk-toolbox"
       "plexamp"
       "telegram"

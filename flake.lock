@@ -198,11 +198,11 @@
     "doom-config": {
       "flake": false,
       "locked": {
-        "lastModified": 1753162724,
-        "narHash": "sha256-SIgwfm93LsPoSRQ0w5IidDRVjX2iLQQ1FsC/owTDoOA=",
+        "lastModified": 1753536697,
+        "narHash": "sha256-qfKjtU7I3Z5yv8Drz5jBR87Sn5miPIkuvOfDNTOl1vk=",
         "owner": "klchen0112",
         "repo": "doom",
-        "rev": "66b11848f742a49d70e71eb5fef28b8bcf3faed0",
+        "rev": "70e72814dae8fa70e8363bf3143f8732b6085828",
         "type": "github"
       },
       "original": {
