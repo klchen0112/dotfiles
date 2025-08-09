@@ -135,11 +135,13 @@ in
       [
         vterm
         treesit-grammars.with-all-grammars
-        # rime
+        rime
         telega
+      ]
+      ++ (lib.optionals pkgs.stdenv.isDarwin [
         websocket-bridge
         org-reminders
-      ];
+      ]);
     provideEmacs = true;
     experimentalFetchTree = true;
   };

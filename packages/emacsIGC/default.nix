@@ -32,7 +32,7 @@
         # alpha-background
         (fetchpatch {
           url = "https://raw.githubusercontent.com/LuciusChen/.emacs.d/refs/heads/main/patches/emacs-31/ns-alpha-background.patch";
-          sha256 = "sha256-sJ74+0jshtt0KwASHrn23ZlIOPr4zy47Dh05UDic62s=";
+          sha256 = "sha256-y5f8U36t3G2XQIDBu6vbHs7inCtrwhfgBzAANVBISO4=";
         })
         # ns-mac-input-source
         (fetchpatch {
