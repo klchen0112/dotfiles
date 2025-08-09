@@ -5,6 +5,7 @@ in
 {
   imports = [
     flake.inputs.self.nixosModules.default
+    flake.inputs.self.nixosModules.access-tokens
     flake.inputs.self.nixosModules.server
     ./hardware-configuration.nix
   ];

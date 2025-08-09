@@ -14,6 +14,7 @@ in
     flake.inputs.self.nixosModules.nvidia
     flake.inputs.self.nixosModules.desktop
     ./hardware-configuration.nix
+    flake.inputs.self.nixosModules.access-tokens
     flake.inputs.nixos-facter-modules.nixosModules.facter
   ];
   facter.reportPath = ./facter.json;

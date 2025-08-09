@@ -1,7 +1,6 @@
 {
   imports = [
     ./me
-    ./access-tokens.nix
     ./stylix
     ./utils
     ./nix

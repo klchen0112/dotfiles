@@ -10,6 +10,7 @@ in
 {
   imports = [
     flake.inputs.self.darwinModules.default
+    flake.inputs.self.darwinModules.access-tokens
   ]
   ++ (lib.optionals machine.desktop [
     flake.inputs.self.darwinModules.desktop

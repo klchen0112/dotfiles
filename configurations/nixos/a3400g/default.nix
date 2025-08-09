@@ -10,6 +10,7 @@ in
   imports = [
     flake.inputs.self.nixosModules.default
     flake.inputs.self.nixosModules.server
+    flake.inputs.self.nixosModules.access-tokens
     ./hardware-configuration.nix
   ];
   myusers = machine.users;

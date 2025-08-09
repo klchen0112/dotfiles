@@ -9,6 +9,7 @@ in
     self.homeModules.nushell
     self.homeModules.starship
     self.homeModules.sync
+    self.homeModules.access-tokens
   ];
 
   # Defined by /modules/home/me.nix

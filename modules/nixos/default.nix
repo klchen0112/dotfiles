@@ -6,7 +6,6 @@
 {
   imports = [
     ./common
-    ./access-tokens.nix
     ./fonts
     ./stylix
     ./hardware
