@@ -42,7 +42,7 @@ in
     '';
     plugins = with pkgs.nushellPlugins; [
       polars
-      highlight
+      # highlight
       query
       gstat
     ];
