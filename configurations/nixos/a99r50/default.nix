@@ -1,0 +1,74 @@
+{
+  flake,
+  config,
+  lib,
+  pkgs,
+  ...
+}:
+let
+  machine = flake.config.machines.a99r50;
+in
+{
+  imports = [
+    flake.inputs.self.nixosModules.default
+    flake.inputs.self.nixosModules.nvidia
+    flake.inputs.self.nixosModules.desktop
+    flake.inputs.nixos-facter-modules.nixosModules.facter
+    ./hardware-configuration.nix
+  ];
+  facter.reportPath = ./facter.json;
+  machine = machine;
+  nixpkgs.hostPlatform = machine.platform;
+  networking.hostName = machine.hostName;
+
+  system.stateVersion = "25.11";
+  myusers = machine.users;
+
+  # Bootloader.
+  boot.loader.systemd-boot.enable = true;
+  boot.loader.efi.canTouchEfiVariables = true;
+  networking.networkmanager.enable = true;
+
+  users.users.root.initialHashedPassword = "$6$vUVEcVjGo5f36ZaT$./Uh58JYMKNDgQwFWOjYZSEuXS4kyu/x1RCqF1TW8wVq3F6wVeoR5TwGgRW5rUNQZCVAYgRDCACFYlAMWfaOZ1";
+  environment.systemPackages = with pkgs; [
+  ];
+  hardware.graphics = {
+    enable = true;
+    extraPackages = with pkgs; [
+      # your Open GL, Vulkan and VAAPI drivers
+      #	     vpl-gpu-rt # for newer GPUs on NixOS >24.05 or unstable
+      # onevpl-intel-gpu  # for newer GPUs on NixOS <= 24.05
+      # intel-media-sdk   # for older GPUs
+    ];
+  };
+  services.xserver.videoDrivers = [
+    #    "amdgpu" # example for Intel iGPU; use "amdgpu" here instead if your iGPU is AMD
+    "nvidia"
+  ];
+
+  # Don't allow mutation of users outside of the config.
+  users.mutableUsers = false;
+  # machine-id is used by systemd for the journal, if you don't
+  # persist this file you won't be able to easily use journalctl to
+  # look at journals for previous boots.
+  users.users."klchen".extraGroups = [
+    "video"
+    "render"
+  ];
+  hardware.nvidia = {
+    modesetting.enable = true;
+    nvidiaSettings = true; # 不需要图形控制面板
+    prime = {
+      offload = {
+        enable = false; # 禁用 PRIME 渲染卸载
+
+        enableOffloadCmd = false;
+      };
+      sync.enable = false; # 禁用 PRIME 同步
+      #	      intelBusId = "PCI:0:2:0";
+      nvidiaBusId = "PCI:1:0:0";
+    };
+  };
+  ramSwap.enable = true;
+
+}

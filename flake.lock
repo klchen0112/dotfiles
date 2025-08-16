@@ -796,10 +796,10 @@
         ]
       },
       "locked": {
-        "lastModified": 1754792811,
-        "narHash": "sha256-AykbHn8kgpILEIexYVBJBC/zD3E+Fh6fAY1j1+S51fw=",
+        "lastModified": 1755309796,
+        "narHash": "sha256-0mvqD8Cul8Bq+NqeeNy5cbi59R5w8EzaaimJBFpKJ4A=",
         "ref": "master",
-        "rev": "9d8125d53aa4a329ed82a6856831b085cb0f298d",
+        "rev": "73db918d57f44c8a0d8a809596863188675f9cab",
         "shallow": true,
         "type": "git",
         "url": "https://github.com/nix-community/nix-vscode-extensions"

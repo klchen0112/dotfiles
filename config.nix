@@ -9,6 +9,7 @@
         "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKx1SNaQZ6v1onDSGz1wNX1W3zIf2KkTERjKGC+k157D klchen@sanjiao"
         "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAII/c10VIo81cztYJza3e+l1JlwsTJQk1lhBOypGhYn3T klchen@a3400g"
         "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPI6HctaCnuhyOdbrYs2un7/QA/hqFPfDVRlL0klfhGc klchen@i12r20"
+        "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIK8G2M5qM9fOiBL2dlZKfdijKwvPwEUjVG84SUeqyd1V klchen@a99r50"
       ];
       base16Scheme = "selenized-dark";
       root = true;
@@ -65,6 +66,19 @@
       ];
       desktop = true;
     };
+    a99r50 = {
+      hostName = "a99r50";
+      platform = "x86_64-linux";
+      base16Scheme = "selenized-light";
+      sshKey = [
+        "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIC6ZdAMG23UghxVe6vQ2epGMy5bNiqN2D6D7hqNlqoEx"
+      ];
+      users = [
+        "klchen"
+      ];
+      desktop = true;
+    };
+
     mbp-dxm = {
       hostName = "mbp-dxm";
       platform = "aarch64-darwin";
