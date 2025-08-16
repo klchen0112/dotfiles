@@ -11,6 +11,7 @@
     ./ghostty
     ./media
     ./emacs
+    ./sync
   ];
   fonts.fontconfig = {
     enable = true;
