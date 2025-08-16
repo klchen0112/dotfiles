@@ -13,6 +13,7 @@ in
     flake.inputs.self.nixosModules.default
     flake.inputs.self.nixosModules.nvidia
     flake.inputs.self.nixosModules.desktop
+    flake.inputs.self.nixosModules.access-tokens
     flake.inputs.nixos-facter-modules.nixosModules.facter
     ./hardware-configuration.nix
   ];
@@ -69,6 +70,6 @@ in
       nvidiaBusId = "PCI:1:0:0";
     };
   };
-  ramSwap.enable = true;
+  zramSwap.enable = true;
 
 }
