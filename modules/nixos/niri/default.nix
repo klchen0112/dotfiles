@@ -19,7 +19,7 @@
     settings =
       let
         session = {
-          command = "${pkgs.greetd.tuigreet}/bin/tuigreet --cmd ${config.programs.niri.package}/bin/niri-session --remember";
+          command = "${pkgs.tuigreet}/bin/tuigreet --cmd ${config.programs.niri.package}/bin/niri-session --remember";
           user = "klchen";
         };
       in
