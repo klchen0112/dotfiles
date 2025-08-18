@@ -173,15 +173,6 @@
         inputs.nixpkgs.follows = "nixpkgs";
         inputs.nixpkgs-stable.follows = "nixpkgs-stable";
       };
-      anyrun = {
-        url = "github:anyrun-org/anyrun";
-        inputs.nixpkgs.follows = "nixpkgs";
-      };
-      walker = {
-        url = "github:abenz1267/walker";
-        inputs.nixpkgs.follows = "nixpkgs";
-        inputs.systems.follows = "systems";
-      };
       # theme
       stylix = {
         url = "github:danth/stylix";
