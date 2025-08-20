@@ -10,7 +10,7 @@ in
   stylix.targets.nushell.enable = true;
   programs.starship.enableNushellIntegration = true;
   home.shellAliases = {
-    ls = "exa";
+    # ls = "exa";
     ll = "exa -lha";
     lt = "exa --tree";
     htop = "btop";
