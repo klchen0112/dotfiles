@@ -1,4 +1,5 @@
 {
+  config,
   ...
 }:
 {
@@ -8,7 +9,7 @@
     serverAliveCountMax = 6;
     compression = true;
     controlMaster = "auto";
-    controlPath = "~/.ssh/cm/%r@%h";
+    controlPath = "${config.home.homeDirectory}/.ssh/cm/%r@%h";
     controlPersist = "10m";
     matchBlocks = {
       xiaomi = {
@@ -64,6 +65,13 @@
         # hostkeyAlgorithms = "+ssh-rsa";
         # pubkeyAcceptedAlgorithms = "+ssh-rsa";
         hostname = "192.168.88.191";
+        port = 22;
+        user = "klchen";
+      };
+      a99r50 = {
+        # hostkeyAlgorithms = "+ssh-rsa";
+        # pubkeyAcceptedAlgorithms = "+ssh-rsa";
+        hostname = "a99r50.klchen.dns.army";
         port = 22;
         user = "klchen";
       };

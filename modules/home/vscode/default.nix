@@ -287,6 +287,7 @@
           "i12r20" = "linux";
           "a3400g" = "linux";
           "sanjiao" = "linux";
+          "a99r50" = "linux";
         };
         "remote.SSH.localServerDownload" = false;
 
