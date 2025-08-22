@@ -35,11 +35,16 @@ in
   ];
   hardware.graphics = {
     enable = true;
+    enable32Bit = true;
     extraPackages = with pkgs; [
+      amdvlk
       # your Open GL, Vulkan and VAAPI drivers
       #	     vpl-gpu-rt # for newer GPUs on NixOS >24.05 or unstable
       # onevpl-intel-gpu  # for newer GPUs on NixOS <= 24.05
       # intel-media-sdk   # for older GPUs
+    ];
+    extraPackages32 = with pkgs; [
+      driversi686Linux.amdvlk
     ];
   };
   services.xserver.videoDrivers = [
@@ -61,15 +66,15 @@ in
     nvidiaSettings = true; # 不需要图形控制面板
     prime = {
       offload = {
-        enable = false; # 禁用 PRIME 渲染卸载
+        enable = true; # 禁用 PRIME 渲染卸载
 
-        enableOffloadCmd = false;
+        enableOffloadCmd = true;
       };
       sync.enable = false; # 禁用 PRIME 同步
       #	      intelBusId = "PCI:0:2:0";
       nvidiaBusId = "PCI:1:0:0";
+      amdgpuBusId = "PCI:12:0:0";
     };
   };
   zramSwap.enable = true;
-
 }

@@ -7,7 +7,7 @@
   hardware.graphics = {
     enable = true;
   };
-
+  services.xserver.videoDrivers = [ "nvidia" ];
   # Load nvidia driver for Xorg and Wayland
   hardware.nvidia = {
     # Modesetting is required.
@@ -17,11 +17,11 @@
     # Enable this if you have graphical corruption issues or application crashes after waking
     # up from sleep. This fixes it by saving the entire VRAM memory to /tmp/ instead
     # of just the bare essentials.
-    powerManagement.enable = lib.mkDefault false;
+    powerManagement.enable = lib.mkDefault true;
 
     # Fine-grained power management. Turns off GPU when not in use.
     # Experimental and only works on modern Nvidia GPUs (Turing or newer).
-    powerManagement.finegrained = lib.mkDefault false;
+    powerManagement.finegrained = lib.mkDefault true;
 
     # Use the NVidia open source kernel module (not to be confused with the
     # independent third-party "nouveau" open source driver).
@@ -37,6 +37,6 @@
     nvidiaSettings = lib.mkDefault true;
 
     # Optionally, you may need to select the appropriate driver version for your specific GPU.
-    package = lib.mkDefault config.boot.kernelPackages.nvidiaPackages.production;
+    package = lib.mkDefault config.boot.kernelPackages.nvidiaPackages.stable;
   };
 }
