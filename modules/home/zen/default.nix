@@ -115,7 +115,7 @@ in
             # tree-style-tab
             # multi-account-containers
             # firefox-translations # translation
-            immersive-translate
+            # immersive-translate
             tridactyl # vimum
             bitwarden
             blocktube
