@@ -173,6 +173,13 @@
         inputs.nixpkgs.follows = "nixpkgs";
         inputs.nixpkgs-stable.follows = "nixpkgs-stable";
       };
+      #
+      niri-caelestia-shell = {
+        url = "github:jutraim/niri-caelestia-shell";
+        inputs.nixpkgs.follows = "nixpkgs";
+
+      };
+
       # theme
       stylix = {
         url = "github:danth/stylix";
