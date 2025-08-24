@@ -16,15 +16,9 @@
     # ./waybar
     # ./xwayland-satellite.nix
     # ./services.nix
-    flake.inputs.niri-caelestia-shell.homeManagerModules.default
+    #    ./dankMaterialShell.nix
+    ./caelestia.nix
   ];
-  programs.caelestia = {
-    enable = true;
-    cli.enable = true;
-  };
-  programs.fuzzel = {
-    enable = true;
-  };
   home.packages = with pkgs; [
     # screenshot
     grim
@@ -37,13 +31,14 @@
   ];
 
   # 夜光护眼软件
-  services.wlsunset = {
-    enable = true;
-    latitude = "30:00";
-    longitude = "120:00";
-  };
+  # services.wlsunset = {
+  #   enable = true;
+  #   latitude = "30:00";
+  #   longitude = "120:00";
+  # };
 
   home.sessionVariables = {
+    NIXOS_OZONE_WL = "1";
     QT_QPA_PLATFORM = "wayland";
     SDL_VIDEODRIVER = "wayland";
     XDG_SESSION_TYPE = "wayland";

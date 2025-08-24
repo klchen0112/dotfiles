@@ -177,7 +177,10 @@
       niri-caelestia-shell = {
         url = "github:jutraim/niri-caelestia-shell";
         inputs.nixpkgs.follows = "nixpkgs";
-
+      };
+      DankMaterialShell = {
+        url = "github:AvengeMedia/DankMaterialShell";
+        inputs.nixpkgs.follows = "nixpkgs";
       };
 
       # theme
