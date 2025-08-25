@@ -16,8 +16,8 @@
     # ./waybar
     # ./xwayland-satellite.nix
     # ./services.nix
-    #    ./dankMaterialShell.nix
-    ./caelestia.nix
+    ./dankMaterialShell.nix
+    # ./caelestia.nix
   ];
   home.packages = with pkgs; [
     # screenshot
