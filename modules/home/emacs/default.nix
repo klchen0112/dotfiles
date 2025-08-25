@@ -73,7 +73,7 @@ in
   };
   stylix.targets.emacs.enable = false;
   # xdg.configFile."doom".source = config.lib.file.mkOutOfStoreSymlink doomPath;
-  home.file.".local/share/nix-doom/rime" = {
+  home.file.".local/share/nix-doom/Rime" = {
     source = config.lib.file.mkOutOfStoreSymlink rimePath;
     enable = true;
   };
