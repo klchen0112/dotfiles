@@ -9,7 +9,6 @@ let
   inherit (flake) inputs;
   emacsPackage = if pkgs.stdenv.isDarwin then pkgs.emacsIGC else pkgs.emacs-igc-pgtk;
   # doomPath = "${config.home.homeDirectory}/my/dotfiles/modules/editors/emacs/doom";
-  rimePath = "${config.home.homeDirectory}/my/dotfiles/rime";
 
   extraPackages =
     with pkgs;
@@ -73,10 +72,6 @@ in
   };
   stylix.targets.emacs.enable = false;
   # xdg.configFile."doom".source = config.lib.file.mkOutOfStoreSymlink doomPath;
-  home.file.".local/share/nix-doom/Rime" = {
-    source = config.lib.file.mkOutOfStoreSymlink rimePath;
-    enable = true;
-  };
 
   programs.pandoc.enable = true;
 
@@ -141,7 +136,7 @@ in
         websocket-bridge
         org-reminders
       ]);
-    doomLocalDir = "${config.home.homeDirectory}/.local/share/nix-doom";
+    doomLocalDir = "${config.home.homeDirectory}/.cache/doom/rime";
     provideEmacs = true;
     experimentalFetchTree = true;
   };
