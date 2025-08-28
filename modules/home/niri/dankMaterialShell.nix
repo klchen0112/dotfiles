@@ -13,7 +13,7 @@
     enable = true;
     enableKeybinds = true;
     enableSystemd = true;
-    enableSpawn = true;
+    enableSpawn = false;
   };
   programs.niri.settings.binds = with config.lib.niri.actions; {
     "Print".action.screenshot-screen = {
@@ -68,5 +68,10 @@
     "Mod+Shift+Ctrl+Up".action = move-column-to-monitor-down;
     "Mod+Shift+Ctrl+Down".action = move-column-to-monitor-up;
 
+    "Mod+Shift+Slash".action = show-hotkey-overlay;
+    "Mod+Alt+V".action = toggle-overview;
+    "Mod+BracketLeft".action = consume-or-expel-window-left;
+    "Mod+BracketRight".action = consume-or-expel-window-right;
+    "Mod+R".action = switch-preset-column-width;
   };
 }

@@ -23,8 +23,8 @@
     },
     "bluetooth": [
       {
-        "index": 93,
-        "attached_to": 97,
+        "index": 94,
+        "attached_to": 98,
         "class_list": [
           "usb",
           "bluetooth"
@@ -105,8 +105,8 @@
         "module_alias": "usb:v13D3p3617d0000dcE0dsc01dp01icE0isc01ip01in00"
       },
       {
-        "index": 100,
-        "attached_to": 97,
+        "index": 101,
+        "attached_to": 98,
         "class_list": [
           "usb",
           "bluetooth"
@@ -2048,8 +2048,8 @@
     ],
     "disk": [
       {
-        "index": 82,
-        "attached_to": 46,
+        "index": 83,
+        "attached_to": 44,
         "class_list": [
           "disk",
           "block_device",
@@ -2063,6 +2063,87 @@
         "slot": {
           "bus": 0,
           "number": 0
+        },
+        "base_class": {
+          "hex": "0106",
+          "name": "Mass Storage Device",
+          "value": 262
+        },
+        "sub_class": {
+          "hex": "0000",
+          "name": "Disk",
+          "value": 0
+        },
+        "vendor": {
+          "hex": "1e49",
+          "value": 7753
+        },
+        "sub_vendor": {
+          "hex": "1e49",
+          "value": 7753
+        },
+        "device": {
+          "hex": "0071",
+          "name": "ZHITAI TiPlus7100 4TB",
+          "value": 113
+        },
+        "sub_device": {
+          "hex": "0071",
+          "value": 113
+        },
+        "serial": "ZTA54T0AB251540AHC",
+        "model": "ZHITAI TiPlus7100 4TB",
+        "sysfs_id": "/class/block/nvme0n1",
+        "sysfs_bus_id": "nvme0",
+        "sysfs_device_link": "/devices/pci0000:00/0000:00:01.2/0000:02:00.0/nvme/nvme0",
+        "unix_device_names": [
+          "/dev/disk/by-id/nvme-ZHITAI_TiPlus7100_4TB_ZTA54T0AB251540AHC",
+          "/dev/disk/by-id/nvme-ZHITAI_TiPlus7100_4TB_ZTA54T0AB251540AHC_1",
+          "/dev/disk/by-id/nvme-eui.0000000000000000a428b701e80500c5",
+          "/dev/disk/by-path/pci-0000:02:00.0-nvme-1",
+          "/dev/nvme0n1"
+        ],
+        "resources": [
+          {
+            "type": "disk_geo",
+            "cylinders": 3907018,
+            "heads": 64,
+            "sectors": 32,
+            "size": "0x0",
+            "geo_type": "logical"
+          },
+          {
+            "type": "size",
+            "unit": "sectors",
+            "value_1": 8001573552,
+            "value_2": 512
+          }
+        ],
+        "driver": "nvme",
+        "driver_module": "nvme",
+        "drivers": [
+          "nvme"
+        ],
+        "driver_modules": [
+          "nvme"
+        ]
+      },
+      {
+        "index": 84,
+        "attached_to": 46,
+        "class_list": [
+          "disk",
+          "block_device",
+          "nvme"
+        ],
+        "bus_type": {
+          "hex": "0096",
+          "name": "NVME",
+          "value": 150
+        },
+        "slot": {
+          "bus": 0,
+          "number": 1
         },
         "base_class": {
           "hex": "0106",
@@ -2095,15 +2176,15 @@
         },
         "serial": "AA253120034",
         "model": "Silicon Motion FIKWOT FX995Pro 2TB",
-        "sysfs_id": "/class/block/nvme0n1",
-        "sysfs_bus_id": "nvme0",
-        "sysfs_device_link": "/devices/pci0000:00/0000:00:02.2/0000:0b:00.0/nvme/nvme0",
+        "sysfs_id": "/class/block/nvme1n1",
+        "sysfs_bus_id": "nvme1",
+        "sysfs_device_link": "/devices/pci0000:00/0000:00:02.2/0000:0b:00.0/nvme/nvme1",
         "unix_device_names": [
           "/dev/disk/by-id/nvme-FIKWOT_FX995Pro_2TB_AA253120034",
           "/dev/disk/by-id/nvme-FIKWOT_FX995Pro_2TB_AA253120034_1",
           "/dev/disk/by-id/nvme-eui.00000000000000004868340000000000",
           "/dev/disk/by-path/pci-0000:0b:00.0-nvme-1",
-          "/dev/nvme0n1"
+          "/dev/nvme1n1"
         ],
         "resources": [
           {
@@ -2131,88 +2212,7 @@
         ]
       },
       {
-        "index": 83,
-        "attached_to": 44,
-        "class_list": [
-          "disk",
-          "block_device",
-          "nvme"
-        ],
-        "bus_type": {
-          "hex": "0096",
-          "name": "NVME",
-          "value": 150
-        },
-        "slot": {
-          "bus": 0,
-          "number": 1
-        },
-        "base_class": {
-          "hex": "0106",
-          "name": "Mass Storage Device",
-          "value": 262
-        },
-        "sub_class": {
-          "hex": "0000",
-          "name": "Disk",
-          "value": 0
-        },
-        "vendor": {
-          "hex": "1e49",
-          "value": 7753
-        },
-        "sub_vendor": {
-          "hex": "1e49",
-          "value": 7753
-        },
-        "device": {
-          "hex": "0071",
-          "name": "ZHITAI TiPlus7100 4TB",
-          "value": 113
-        },
-        "sub_device": {
-          "hex": "0071",
-          "value": 113
-        },
-        "serial": "ZTA54T0AB251540AHC",
-        "model": "ZHITAI TiPlus7100 4TB",
-        "sysfs_id": "/class/block/nvme1n1",
-        "sysfs_bus_id": "nvme1",
-        "sysfs_device_link": "/devices/pci0000:00/0000:00:01.2/0000:02:00.0/nvme/nvme1",
-        "unix_device_names": [
-          "/dev/disk/by-id/nvme-ZHITAI_TiPlus7100_4TB_ZTA54T0AB251540AHC",
-          "/dev/disk/by-id/nvme-ZHITAI_TiPlus7100_4TB_ZTA54T0AB251540AHC_1",
-          "/dev/disk/by-id/nvme-eui.0000000000000000a428b701e80500c5",
-          "/dev/disk/by-path/pci-0000:02:00.0-nvme-1",
-          "/dev/nvme1n1"
-        ],
-        "resources": [
-          {
-            "type": "disk_geo",
-            "cylinders": 3907018,
-            "heads": 64,
-            "sectors": 32,
-            "size": "0x0",
-            "geo_type": "logical"
-          },
-          {
-            "type": "size",
-            "unit": "sectors",
-            "value_1": 8001573552,
-            "value_2": 512
-          }
-        ],
-        "driver": "nvme",
-        "driver_module": "nvme",
-        "drivers": [
-          "nvme"
-        ],
-        "driver_modules": [
-          "nvme"
-        ]
-      },
-      {
-        "index": 84,
+        "index": 85,
         "attached_to": 0,
         "class_list": [
           "disk",
@@ -2231,13 +2231,15 @@
         "model": "Disk",
         "sysfs_id": "/class/block/zram0",
         "unix_device_names": [
+          "/dev/disk/by-label/zram0",
+          "/dev/disk/by-uuid/0265380a-aad9-4b3f-bf88-fb20d4106216",
           "/dev/zram0"
         ],
         "resources": [
           {
             "type": "size",
             "unit": "sectors",
-            "value_1": 6055552,
+            "value_1": 6055424,
             "value_2": 4096
           }
         ]
@@ -2393,17 +2395,25 @@
         ],
         "detail": {
           "function": 0,
-          "command": 3,
+          "command": 7,
           "header_type": 0,
           "secondary_bus": 0,
           "prog_if": 0
         },
+        "driver": "nvidia",
+        "driver_module": "nvidia",
+        "drivers": [
+          "nvidia"
+        ],
+        "driver_modules": [
+          "nvidia"
+        ],
         "module_alias": "pci:v000010DEd00002C05sv00001B4Csd0000205Cbc03sc00i00"
       }
     ],
     "hub": [
       {
-        "index": 85,
+        "index": 86,
         "attached_to": 73,
         "class_list": [
           "usb",
@@ -2425,7 +2435,7 @@
         },
         "vendor": {
           "hex": "1d6b",
-          "name": "Linux 6.12.32 xhci-hcd",
+          "name": "Linux 6.12.42 xhci-hcd",
           "value": 7531
         },
         "device": {
@@ -2439,7 +2449,7 @@
           "value": 0
         },
         "serial": "0000:0c:00.4",
-        "model": "Linux 6.12.32 xhci-hcd xHCI Host Controller",
+        "model": "Linux 6.12.42 xhci-hcd xHCI Host Controller",
         "sysfs_id": "/devices/pci0000:00/0000:00:08.1/0000:0c:00.4/usb6/6-0:1.0",
         "sysfs_bus_id": "6-0:1.0",
         "detail": {
@@ -2480,7 +2490,7 @@
         "module_alias": "usb:v1D6Bp0003d0612dc09dsc00dp03ic09isc00ip00in00"
       },
       {
-        "index": 89,
+        "index": 90,
         "attached_to": 52,
         "class_list": [
           "usb",
@@ -2502,7 +2512,7 @@
         },
         "vendor": {
           "hex": "1d6b",
-          "name": "Linux 6.12.32 xhci-hcd",
+          "name": "Linux 6.12.42 xhci-hcd",
           "value": 7531
         },
         "device": {
@@ -2516,7 +2526,7 @@
           "value": 0
         },
         "serial": "0000:0c:00.3",
-        "model": "Linux 6.12.32 xhci-hcd xHCI Host Controller",
+        "model": "Linux 6.12.42 xhci-hcd xHCI Host Controller",
         "sysfs_id": "/devices/pci0000:00/0000:00:08.1/0000:0c:00.3/usb3/3-0:1.0",
         "sysfs_bus_id": "3-0:1.0",
         "resources": [
@@ -2567,8 +2577,8 @@
         "module_alias": "usb:v1D6Bp0002d0612dc09dsc00dp01ic09isc00ip00in00"
       },
       {
-        "index": 90,
-        "attached_to": 98,
+        "index": 91,
+        "attached_to": 99,
         "class_list": [
           "usb",
           "hub"
@@ -2653,7 +2663,7 @@
         "module_alias": "usb:v174Cp2074d0001dc09dsc00dp02ic09isc00ip02in00"
       },
       {
-        "index": 91,
+        "index": 92,
         "attached_to": 75,
         "class_list": [
           "usb",
@@ -2675,7 +2685,7 @@
         },
         "vendor": {
           "hex": "1d6b",
-          "name": "Linux 6.12.32 xhci-hcd",
+          "name": "Linux 6.12.42 xhci-hcd",
           "value": 7531
         },
         "device": {
@@ -2689,7 +2699,7 @@
           "value": 0
         },
         "serial": "0000:0d:00.0",
-        "model": "Linux 6.12.32 xhci-hcd xHCI Host Controller",
+        "model": "Linux 6.12.42 xhci-hcd xHCI Host Controller",
         "sysfs_id": "/devices/pci0000:00/0000:00:08.3/0000:0d:00.0/usb7/7-0:1.0",
         "sysfs_bus_id": "7-0:1.0",
         "resources": [
@@ -2740,7 +2750,7 @@
         "module_alias": "usb:v1D6Bp0002d0612dc09dsc00dp01ic09isc00ip00in00"
       },
       {
-        "index": 94,
+        "index": 95,
         "attached_to": 52,
         "class_list": [
           "usb",
@@ -2762,7 +2772,7 @@
         },
         "vendor": {
           "hex": "1d6b",
-          "name": "Linux 6.12.32 xhci-hcd",
+          "name": "Linux 6.12.42 xhci-hcd",
           "value": 7531
         },
         "device": {
@@ -2776,7 +2786,7 @@
           "value": 0
         },
         "serial": "0000:0c:00.3",
-        "model": "Linux 6.12.32 xhci-hcd xHCI Host Controller",
+        "model": "Linux 6.12.42 xhci-hcd xHCI Host Controller",
         "sysfs_id": "/devices/pci0000:00/0000:00:08.1/0000:0c:00.3/usb4/4-0:1.0",
         "sysfs_bus_id": "4-0:1.0",
         "detail": {
@@ -2817,8 +2827,8 @@
         "module_alias": "usb:v1D6Bp0003d0612dc09dsc00dp03ic09isc00ip00in00"
       },
       {
-        "index": 95,
-        "attached_to": 85,
+        "index": 96,
+        "attached_to": 86,
         "class_list": [
           "usb",
           "hub"
@@ -2893,7 +2903,7 @@
         "module_alias": "usb:v174Cp3074d0001dc09dsc00dp03ic09isc00ip00in00"
       },
       {
-        "index": 96,
+        "index": 97,
         "attached_to": 75,
         "class_list": [
           "usb",
@@ -2915,7 +2925,7 @@
         },
         "vendor": {
           "hex": "1d6b",
-          "name": "Linux 6.12.32 xhci-hcd",
+          "name": "Linux 6.12.42 xhci-hcd",
           "value": 7531
         },
         "device": {
@@ -2929,7 +2939,7 @@
           "value": 0
         },
         "serial": "0000:0d:00.0",
-        "model": "Linux 6.12.32 xhci-hcd xHCI Host Controller",
+        "model": "Linux 6.12.42 xhci-hcd xHCI Host Controller",
         "sysfs_id": "/devices/pci0000:00/0000:00:08.3/0000:0d:00.0/usb8/8-0:1.0",
         "sysfs_bus_id": "8-0:1.0",
         "detail": {
@@ -2962,7 +2972,7 @@
         "module_alias": "usb:v1D6Bp0003d0612dc09dsc00dp03ic09isc00ip00in00"
       },
       {
-        "index": 97,
+        "index": 98,
         "attached_to": 41,
         "class_list": [
           "usb",
@@ -2984,7 +2994,7 @@
         },
         "vendor": {
           "hex": "1d6b",
-          "name": "Linux 6.12.32 xhci-hcd",
+          "name": "Linux 6.12.42 xhci-hcd",
           "value": 7531
         },
         "device": {
@@ -2998,7 +3008,7 @@
           "value": 0
         },
         "serial": "0000:09:00.0",
-        "model": "Linux 6.12.32 xhci-hcd xHCI Host Controller",
+        "model": "Linux 6.12.42 xhci-hcd xHCI Host Controller",
         "sysfs_id": "/devices/pci0000:00/0000:00:02.1/0000:03:00.0/0000:04:0c.0/0000:09:00.0/usb1/1-0:1.0",
         "sysfs_bus_id": "1-0:1.0",
         "resources": [
@@ -3049,7 +3059,7 @@
         "module_alias": "usb:v1D6Bp0002d0612dc09dsc00dp01ic09isc00ip00in00"
       },
       {
-        "index": 98,
+        "index": 99,
         "attached_to": 73,
         "class_list": [
           "usb",
@@ -3071,7 +3081,7 @@
         },
         "vendor": {
           "hex": "1d6b",
-          "name": "Linux 6.12.32 xhci-hcd",
+          "name": "Linux 6.12.42 xhci-hcd",
           "value": 7531
         },
         "device": {
@@ -3085,7 +3095,7 @@
           "value": 0
         },
         "serial": "0000:0c:00.4",
-        "model": "Linux 6.12.32 xhci-hcd xHCI Host Controller",
+        "model": "Linux 6.12.42 xhci-hcd xHCI Host Controller",
         "sysfs_id": "/devices/pci0000:00/0000:00:08.1/0000:0c:00.4/usb5/5-0:1.0",
         "sysfs_bus_id": "5-0:1.0",
         "resources": [
@@ -3136,7 +3146,7 @@
         "module_alias": "usb:v1D6Bp0002d0612dc09dsc00dp01ic09isc00ip00in00"
       },
       {
-        "index": 102,
+        "index": 103,
         "attached_to": 41,
         "class_list": [
           "usb",
@@ -3158,7 +3168,7 @@
         },
         "vendor": {
           "hex": "1d6b",
-          "name": "Linux 6.12.32 xhci-hcd",
+          "name": "Linux 6.12.42 xhci-hcd",
           "value": 7531
         },
         "device": {
@@ -3172,7 +3182,7 @@
           "value": 0
         },
         "serial": "0000:09:00.0",
-        "model": "Linux 6.12.32 xhci-hcd xHCI Host Controller",
+        "model": "Linux 6.12.42 xhci-hcd xHCI Host Controller",
         "sysfs_id": "/devices/pci0000:00/0000:00:02.1/0000:03:00.0/0000:04:0c.0/0000:09:00.0/usb2/2-0:1.0",
         "sysfs_bus_id": "2-0:1.0",
         "detail": {
@@ -3215,8 +3225,8 @@
     ],
     "keyboard": [
       {
-        "index": 101,
-        "attached_to": 90,
+        "index": 102,
+        "attached_to": 91,
         "class_list": [
           "keyboard",
           "usb"
@@ -3263,7 +3273,7 @@
           "/dev/input/by-id/usb-Bastard_Keyboards_Charybdis__4x6__Splinky_vial:f64c2b3c-event-kbd",
           "/dev/input/by-path/pci-0000:0c:00.4-usb-0:2.1:1.0-event-kbd",
           "/dev/input/by-path/pci-0000:0c:00.4-usbv2-0:2.1:1.0-event-kbd",
-          "/dev/input/event0"
+          "/dev/input/event3"
         ],
         "resources": [
           {
@@ -3344,10 +3354,158 @@
         ]
       }
     ],
+    "monitor": [
+      {
+        "index": 81,
+        "attached_to": 37,
+        "class_list": [
+          "monitor"
+        ],
+        "base_class": {
+          "hex": "0100",
+          "name": "Monitor",
+          "value": 256
+        },
+        "sub_class": {
+          "hex": "0002",
+          "name": "LCD Monitor",
+          "value": 2
+        },
+        "vendor": {
+          "hex": "3669",
+          "value": 13929
+        },
+        "device": {
+          "hex": "3da1",
+          "name": "MSI PS341WU",
+          "value": 15777
+        },
+        "serial": "DA1A072100649",
+        "model": "MSI PS341WU",
+        "resources": [
+          {
+            "type": "monitor",
+            "width": 1024,
+            "height": 768,
+            "vertical_frequency": 60,
+            "interlaced": false
+          },
+          {
+            "type": "monitor",
+            "width": 1152,
+            "height": 864,
+            "vertical_frequency": 60,
+            "interlaced": false
+          },
+          {
+            "type": "monitor",
+            "width": 1280,
+            "height": 720,
+            "vertical_frequency": 60,
+            "interlaced": false
+          },
+          {
+            "type": "monitor",
+            "width": 1280,
+            "height": 960,
+            "vertical_frequency": 60,
+            "interlaced": false
+          },
+          {
+            "type": "monitor",
+            "width": 3440,
+            "height": 1440,
+            "vertical_frequency": 60,
+            "interlaced": false
+          },
+          {
+            "type": "monitor",
+            "width": 640,
+            "height": 480,
+            "vertical_frequency": 60,
+            "interlaced": false
+          },
+          {
+            "type": "monitor",
+            "width": 800,
+            "height": 600,
+            "vertical_frequency": 60,
+            "interlaced": false
+          },
+          {
+            "type": "size",
+            "unit": "mm",
+            "value_1": 800,
+            "value_2": 330
+          }
+        ],
+        "detail": {
+          "manufacture_year": 2022,
+          "manufacture_week": 5,
+          "vertical_sync": {
+            "min": 48,
+            "max": 61
+          },
+          "horizontal_sync": {
+            "min": 30,
+            "max": 135
+          },
+          "horizontal_sync_timings": {
+            "disp": 3440,
+            "sync_start": 3488,
+            "sync_end": 3576,
+            "total": 3600
+          },
+          "vertical_sync_timings": {
+            "disp": 1440,
+            "sync_start": 1443,
+            "sync_end": 1453,
+            "total": 1481
+          },
+          "clock": 319750,
+          "width": 3440,
+          "height": 1440,
+          "width_millimetres": 800,
+          "height_millimetres": 330,
+          "horizontal_flag": 43,
+          "vertical_flag": 43,
+          "vendor": "",
+          "name": "MSI PS341WU"
+        },
+        "driver_info": {
+          "type": "display",
+          "width": 3440,
+          "height": 1440,
+          "vertical_sync": {
+            "min": 48,
+            "max": 61
+          },
+          "horizontal_sync": {
+            "min": 30,
+            "max": 135
+          },
+          "bandwidth": 0,
+          "horizontal_sync_timings": {
+            "disp": 3440,
+            "sync_start": 3488,
+            "sync_end": 3576,
+            "total": 3600
+          },
+          "vertical_sync_timings": {
+            "disp": 1440,
+            "sync_start": 1443,
+            "sync_end": 1453,
+            "total": 1481
+          },
+          "horizontal_flag": 43,
+          "vertical_flag": 43
+        }
+      }
+    ],
     "mouse": [
       {
-        "index": 99,
-        "attached_to": 90,
+        "index": 100,
+        "attached_to": 91,
         "class_list": [
           "mouse",
           "usb"
@@ -3512,7 +3670,7 @@
         "resources": [
           {
             "type": "hwaddr",
-            "address": 55
+            "address": 53
           },
           {
             "type": "io",
@@ -3628,7 +3786,7 @@
     ],
     "network_interface": [
       {
-        "index": 103,
+        "index": 104,
         "attached_to": 53,
         "class_list": [
           "network_interface"
@@ -3652,7 +3810,7 @@
         "resources": [
           {
             "type": "hwaddr",
-            "address": 55
+            "address": 53
           },
           {
             "type": "phwaddr",
@@ -3669,7 +3827,29 @@
         ]
       },
       {
-        "index": 104,
+        "index": 105,
+        "attached_to": 0,
+        "class_list": [
+          "network_interface"
+        ],
+        "base_class": {
+          "hex": "0107",
+          "name": "Network Interface",
+          "value": 263
+        },
+        "sub_class": {
+          "hex": "0000",
+          "name": "Loopback",
+          "value": 0
+        },
+        "model": "Loopback network interface",
+        "sysfs_id": "/class/net/lo",
+        "unix_device_names": [
+          "lo"
+        ]
+      },
+      {
+        "index": 106,
         "attached_to": 63,
         "class_list": [
           "network_interface"
@@ -3707,28 +3887,6 @@
         ],
         "driver_modules": [
           "igc"
-        ]
-      },
-      {
-        "index": 105,
-        "attached_to": 0,
-        "class_list": [
-          "network_interface"
-        ],
-        "base_class": {
-          "hex": "0107",
-          "name": "Network Interface",
-          "value": 263
-        },
-        "sub_class": {
-          "hex": "0000",
-          "name": "Loopback",
-          "value": 0
-        },
-        "model": "Loopback network interface",
-        "sysfs_id": "/class/net/lo",
-        "unix_device_names": [
-          "lo"
         ]
       }
     ],
@@ -4336,7 +4494,7 @@
     },
     "unknown": [
       {
-        "index": 81,
+        "index": 82,
         "attached_to": 0,
         "class_list": [
           "unknown"
@@ -4378,8 +4536,8 @@
     ],
     "usb": [
       {
-        "index": 86,
-        "attached_to": 97,
+        "index": 87,
+        "attached_to": 98,
         "class_list": [
           "usb",
           "unknown"
@@ -4470,8 +4628,8 @@
         "module_alias": "usb:v0B05p19AFd0100dc00dsc00dp00ic03isc00ip00in02"
       },
       {
-        "index": 87,
-        "attached_to": 90,
+        "index": 88,
+        "attached_to": 91,
         "class_list": [
           "usb",
           "unknown"
@@ -4562,8 +4720,8 @@
         "module_alias": "usb:v3633p0016d0200dc00dsc00dp00ic03isc00ip00in00"
       },
       {
-        "index": 88,
-        "attached_to": 97,
+        "index": 89,
+        "attached_to": 98,
         "class_list": [
           "usb",
           "unknown"
@@ -4646,8 +4804,8 @@
         "module_alias": "usb:v0B05p19AFd0100dc00dsc00dp00icFFiscFFipFFin00"
       },
       {
-        "index": 92,
-        "attached_to": 90,
+        "index": 93,
+        "attached_to": 91,
         "class_list": [
           "usb",
           "unknown"
