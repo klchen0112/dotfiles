@@ -14,10 +14,10 @@ in
     flake.inputs.self.nixosModules.nvidia
     flake.inputs.self.nixosModules.desktop
     flake.inputs.self.nixosModules.access-tokens
-    flake.inputs.nixos-facter-modules.nixosModules.facter
+            flake.inputs.nixos-facter-modules.nixosModules.facter
     ./hardware-configuration.nix
   ];
-  facter.reportPath = ./facter.json;
+    facter.reportPath = ./facter.json;
   machine = machine;
   nixpkgs.hostPlatform = machine.platform;
   networking.hostName = machine.hostName;
@@ -28,8 +28,8 @@ in
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
-  networking.networkmanager.enable = true;
-  systemd.network.enable = true;
+  networking.useNetworkd = lib.mkForce true;
+  networking.useDHCP = lib.mkForce false;
   users.users.root.initialHashedPassword = "$6$vUVEcVjGo5f36ZaT$./Uh58JYMKNDgQwFWOjYZSEuXS4kyu/x1RCqF1TW8wVq3F6wVeoR5TwGgRW5rUNQZCVAYgRDCACFYlAMWfaOZ1";
   environment.systemPackages = with pkgs; [
   ];
