@@ -35,10 +35,10 @@
       detect_urls = true;
 
       #-------------------------------------------- Shell --------------------------------------------
-      shell =
-
-        "/etc/profiles/per-user/${config.me.username}/bin/nu";
-
+      #      shell =
+      #
+      #        "/etc/profiles/per-user/${config.me.username}/bin/nu";
+      #
       #-------------------------------------------- Macos Settings --------------------------------------------
 
       macos_titlebar_color = "system";
