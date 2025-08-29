@@ -1,3 +1,4 @@
+{ pkgs, ... }:
 {
   imports = [
     ./kitty
@@ -13,6 +14,7 @@
     ./emacs
     ./sync
   ];
+  home.packages = with pkgs; [ rustdesk ];
   fonts.fontconfig = {
     enable = true;
     defaultFonts = {
