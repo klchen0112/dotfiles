@@ -1,5 +1,6 @@
 {
   pkgs,
+  config,
   ...
 }:
 {
@@ -20,10 +21,15 @@
       folders = {
         "rime-sync" = {
           id = "w4pgi-mnhem";
-          path = "~/Library/Mobile Documents/iCloud~dev~fuxiao~app~hamsterapp/Documents/sync";
+          path =
+            if pkgs.stdenv.isDarwin then
+              "~/Library/Mobile Documents/iCloud~dev~fuxiao~app~hamsterapp/Documents/sync"
+            else
+              "${config.home.homeDirectory}/.local/share/rime-sync";
           devices = [
             "redmi-12t-pro"
             "tower"
+            "mbp-m1"
           ];
         };
       };
