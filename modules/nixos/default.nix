@@ -18,11 +18,9 @@
     enable = lib.mkForce true;
     settings.PermitRootLogin = "no";
   };
-  boot = {
-    tmp.useTmpfs = true;
-    tmp.tmpfsSize = "10G";
-  };
   zramSwap = {
     enable = true;
   };
+  boot.initrd.systemd.enable = true;
+  networking.useDHCP = lib.mkDefault true;
 }
