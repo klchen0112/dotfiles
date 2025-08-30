@@ -21,11 +21,6 @@ in
     flake.inputs.disko.nixosModules.disko
     ./disko.nix
   ];
-
-  boot.loader.grub.enable = true;
-  boot.loader.grub.efiSupport = true;
-  boot.loader.grub.device = "nodev";
-  boot.loader.efi.efiSysMountPoint = "/boot/efi";
   machine = machine;
   nixpkgs.hostPlatform = machine.platform;
   networking.hostName = machine.hostName;
