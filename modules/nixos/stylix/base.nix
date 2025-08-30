@@ -20,7 +20,7 @@
         terminal = 12;
         desktop = 10;
         popups = 10;
-      }; 
+      };
       emoji = {
         package = pkgs.twemoji-color-font;
         name = "Twitter Color Emoji";

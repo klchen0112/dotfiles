@@ -8,7 +8,10 @@
 let
   inherit (flake) inputs;
   emacsPackage =
-    if pkgs.stdenv.isDarwin then pkgs.emacsIGC else inputs.emacs-overlay.packages.${pkgs.system}.emacs-igc-pgtk;
+    if pkgs.stdenv.isDarwin then
+      pkgs.emacsIGC
+    else
+      inputs.emacs-overlay.packages.${pkgs.system}.emacs-igc-pgtk;
   # doomPath = "${config.home.homeDirectory}/my/dotfiles/modules/editors/emacs/doom";
 
   extraPackages =
