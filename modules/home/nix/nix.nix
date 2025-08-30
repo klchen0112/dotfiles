@@ -7,6 +7,11 @@
 }:
 {
   nix = {
+    config = {
+      allowBroken = true;
+      allowUnsupportedSystem = true;
+      allowUnfree = true;
+    };
     nixPath = [ "nixpkgs=${flake.inputs.nixpkgs}" ]; # Enables use of `nix-shell -p ...` etc
     registry = {
       nixpkgs.flake = flake.inputs.nixpkgs;
