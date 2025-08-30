@@ -11,7 +11,7 @@ in
 {
   imports = [
     flake.inputs.self.nixosModules.default
-      flake.inputs.disko.nixosModules.disko
+    flake.inputs.disko.nixosModules.disko
     ./disko.nix
     ./hardware-configuration.nix
   ];
