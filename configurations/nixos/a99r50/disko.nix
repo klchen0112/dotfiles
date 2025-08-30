@@ -74,15 +74,17 @@
                   swap.swapfile.size = "48G";
                 };
               };
+              mountpoint = "/partition-root";
+              swap = {
+                swapfile = {
+                  size = "48G";
+                };
+              };
             };
           };
         };
       };
-      swap = {
-        swapfile = {
-          size = "48G";
-        };
-      };
+
     };
   };
 }
