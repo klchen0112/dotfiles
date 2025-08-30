@@ -31,6 +31,8 @@ in
 
   users.users.root.initialHashedPassword = "$6$vUVEcVjGo5f36ZaT$./Uh58JYMKNDgQwFWOjYZSEuXS4kyu/x1RCqF1TW8wVq3F6wVeoR5TwGgRW5rUNQZCVAYgRDCACFYlAMWfaOZ1";
   environment.systemPackages = with pkgs; [
+    just
+    git
     neovim
     pciutils
   ];
