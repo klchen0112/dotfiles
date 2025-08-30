@@ -69,9 +69,18 @@
                     "compress=zstd"
                   ];
                 };
+                "/swap" = {
+                  mountpoint = "/.swapvol";
+                  swap.swapfile.size = "48G";
+                };
               };
             };
           };
+        };
+      };
+      swap = {
+        swapfile = {
+          size = "48G";
         };
       };
     };
