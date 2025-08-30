@@ -21,6 +21,7 @@ in
     flake.inputs.disko.nixosModules.disko
     ./disko.nix
   ];
+
   machine = machine;
   nixpkgs.hostPlatform = machine.platform;
   networking.hostName = machine.hostName;
