@@ -4,13 +4,13 @@
     nodev."/" = {
       fsType = "tmpfs";
       mountOptions = [
-        "size=2G"
+        "sizge=2G"
         "defaults"
         "mode=755"
       ];
     };
     disk.nvme0 = {
-      device = "/dev/nvme1n1";
+      device = "/dev/nvme0n1";
       type = "disk";
       content = {
         type = "gpt";
