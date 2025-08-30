@@ -14,11 +14,6 @@
     patches =
       (old.patches or [ ])
       ++ (lib.optionals stdenv.isDarwin [
-        # Fix OS window role (needed for window managers like yabai)
-        (fetchpatch {
-          url = "https://raw.githubusercontent.com/LuciusChen/.emacs.d/refs/heads/main/patches/emacs-31/fix-window-role.patch";
-          sha256 = "0ib2CXtDI7yeD/VpB9QFrHWtsVciU8G3h6oUGu6X2Zc=";
-        })
         # Enable rounded window with no decoration
         (fetchpatch {
           url = "https://raw.githubusercontent.com/LuciusChen/.emacs.d/refs/heads/main/patches/emacs-31/round-undecorated-frame.patch";
