@@ -41,7 +41,7 @@ init-disk2 arg1:
 
 [group('dev')]
 gen:
-  sudo nixos-generate-config --no-filesystems --root /mnt
+  nixos-generate-config --root /tmp/config --no-filesystems
 
 [group('dev')]
 install:

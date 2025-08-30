@@ -20,6 +20,7 @@ in
     flake.inputs.nixos-hardware.nixosModules.common-gpu-nvidia
     flake.inputs.disko.nixosModules.disko
     ./disko.nix
+    ./hardware-configuration.nix
   ];
 
   machine = machine;
