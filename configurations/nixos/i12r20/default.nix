@@ -15,9 +15,7 @@ in
     flake.inputs.self.nixosModules.desktop
     ./hardware-configuration.nix
     flake.inputs.self.nixosModules.access-tokens
-    flake.inputs.nixos-facter-modules.nixosModules.facter
   ];
-  facter.reportPath = ./facter.json;
   machine = machine;
   nixpkgs.hostPlatform = machine.platform;
   networking.hostName = machine.hostName;
