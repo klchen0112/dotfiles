@@ -32,17 +32,10 @@ run:
   nix run
 
 [group('dev')]
-init-disk:
-  sudo nix  --experimental-features "nix-command flakes" run github:nix-community/disko -- --mode destroy,format,mount ./configurations/nixos/a99r50/disko.nix
-
-[group('dev')]
-init-disk2 arg1:
-  sudo nix  --experimental-features "nix-command flakes"  run 'github:nix-community/disko/latest#disko-install' -- --write-efi-boot-entries --flake '.#a99r50' --disk main {{arg1}}
+disko-install  arg1:
+  sudo nix  --experimental-features "nix-command flakes"  run 'github:nix-community/disko/latest#disko-install' -- --write-efi-boot-entries --flake '.#init' --disk main {{arg1}}
 
 [group('dev')]
 gen:
   nixos-generate-config --root /tmp/config --no-filesystems
-
-[group('dev')]
-install:
-  sudo nixos-install --root /mnt --flake '.#a99r50'
+  cp /tmp/config/etc/nixos/hardware-configuration.nix ./configurations/nixos/init/

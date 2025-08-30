@@ -66,6 +66,19 @@
       ];
       desktop = true;
     };
+    init = {
+      hostName = "init";
+      platform = "x86_64-linux";
+      base16Scheme = "selenized-light";
+      sshKey = [
+
+      ];
+      users = [
+        "klchen"
+      ];
+      desktop = false;
+    };
+
     a99r50 = {
       hostName = "a99r50";
       platform = "x86_64-linux";
