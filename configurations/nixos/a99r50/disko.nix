@@ -9,7 +9,7 @@
         "mode=755"
       ];
     };
-    disk.nvme0 = {
+    disk.main = {
       device = "/dev/nvme1n1";
       type = "disk";
       content = {
