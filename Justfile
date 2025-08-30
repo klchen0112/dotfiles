@@ -36,6 +36,10 @@ init-disk:
   sudo nix  --experimental-features "nix-command flakes" run github:nix-community/disko -- --mode destroy,format,mount ./configurations/nixos/a99r50/disko.nix
 
 [group('dev')]
+init-disk2 arg1:
+  sudo nix run 'github:nix-community/disko/latest#disko-install' -- --flake '.#a99r50' --disk {{arg1}}
+
+[group('dev')]
 gen:
   sudo nixos-generate-config --no-filesystems --root /mnt
 
