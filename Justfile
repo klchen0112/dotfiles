@@ -37,7 +37,7 @@ init-disk:
 
 [group('dev')]
 init-disk2 arg1:
-  sudo nix run 'github:nix-community/disko/latest#disko-install' -- --flake '.#a99r50' --disk {{arg1}}
+  sudo nix  --experimental-features "nix-command flakes"  run 'github:nix-community/disko/latest#disko-install' -- --write-efi-boot-entries --flake '.#a99r50' --disk {{arg1}}
 
 [group('dev')]
 gen:
