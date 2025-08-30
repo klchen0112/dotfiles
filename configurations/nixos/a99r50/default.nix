@@ -30,12 +30,20 @@ in
   myusers = machine.users;
 
   # Bootloader.
+  boot.loader.grub.enable = true;
+  boot.loader.grub.efiSupport = true;
+  boot.loader.grub.efiInstallAsRemovable = true;
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
+
+  # networking
   networking.useNetworkd = lib.mkForce true;
   networking.useDHCP = lib.mkForce false;
+
   users.users.root.initialHashedPassword = "$6$vUVEcVjGo5f36ZaT$./Uh58JYMKNDgQwFWOjYZSEuXS4kyu/x1RCqF1TW8wVq3F6wVeoR5TwGgRW5rUNQZCVAYgRDCACFYlAMWfaOZ1";
   environment.systemPackages = with pkgs; [
+    neovim
+    pciutils
   ];
   hardware.graphics = {
     enable = true;

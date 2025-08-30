@@ -30,3 +30,15 @@ dev:
 [group('Main')]
 run:
   nix run
+
+[group('dev')]
+init-disk:
+  sudo nix  --experimental-features "nix-command flakes" run github:nix-community/disko -- --mode destory,create,mount ./configurations/nixos/a99r50/disko.nix
+
+[group('dev')]
+gen:
+  sudo nixos-generate-config --no-filesystems --root /mnt
+
+[group('dev')]
+install:
+  sudo nixos-install --root /mnt --flake '.#a99r50'
