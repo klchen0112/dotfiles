@@ -33,7 +33,7 @@ run:
 
 [group('dev')]
 init-disk:
-  sudo nix  --experimental-features "nix-command flakes" run github:nix-community/disko -- --mode destory,create,mount ./configurations/nixos/a99r50/disko.nix
+  sudo nix  --experimental-features "nix-command flakes" run github:nix-community/disko -- --mode destory,format,mount ./configurations/nixos/a99r50/disko.nix
 
 [group('dev')]
 gen:
