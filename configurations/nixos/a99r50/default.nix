@@ -14,10 +14,19 @@ in
     flake.inputs.self.nixosModules.nvidia
     flake.inputs.self.nixosModules.desktop
     flake.inputs.self.nixosModules.access-tokens
-            flake.inputs.nixos-facter-modules.nixosModules.facter
-    ./hardware-configuration.nix
+    flake.inputs.nixos-hardware.nixosModules.common-gpu-amd
+    flake.inputs.nixos-hardware.nixosModules.common-cpu-amd-zenpower
+    flake.inputs.nixos-hardware.nixosModules.common-cpu-amd-raphael-igpu
+    flake.inputs.nixos-hardware.nixosModules.common-gpu-nvidia
+    flake.inputs.disko.nixosModules.disko
+    ./disko.nix
   ];
-    facter.reportPath = ./facter.json;
+
+  boot.loader.grub.enable = true;
+  boot.loader.grub.efiSupport = true;
+  boot.loader.grub.device = "nodev";
+  boot.loader.efi.canTouchEfiVariables = true;
+  boot.loader.efi.efiSysMountPoint = "/boot/efi";
   machine = machine;
   nixpkgs.hostPlatform = machine.platform;
   networking.hostName = machine.hostName;
@@ -48,7 +57,7 @@ in
     ];
   };
   services.xserver.videoDrivers = [
-    #    "amdgpu" # example for Intel iGPU; use "amdgpu" here instead if your iGPU is AMD
+    "amdgpu" # example for Intel iGPU; use "amdgpu" here instead if your iGPU is AMD
     "nvidia"
   ];
 
