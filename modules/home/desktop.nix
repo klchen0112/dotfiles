@@ -14,7 +14,12 @@
     ./emacs
     ./sync
   ];
-  home.packages = with pkgs; [ rustdesk ];
+  home.packages = with pkgs; [
+
+     ] ++( lib.optionals pkgs.stdenv.isLinux
+
+     [rustdesk]
+     );
   fonts.fontconfig = {
     enable = true;
     defaultFonts = {
