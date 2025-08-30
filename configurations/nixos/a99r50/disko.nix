@@ -10,7 +10,7 @@
       ];
     };
     disk.nvme0 = {
-      device = "/dev/nvme0";
+      device = "/dev/nvme1n1";
       type = "disk";
       content = {
         type = "gpt";
@@ -35,8 +35,7 @@
           root = {
             size = "100%";
             content = {
-              type = "filesystem";
-              format = "btrfs";
+              type = "btrfs";
               extraArgs = [ "-f" ]; # Override existing partition
               subvolumes = {
                 "etc" = {
