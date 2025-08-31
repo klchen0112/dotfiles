@@ -4,7 +4,7 @@
     ./kitty
     ./chrome
     ./vscode
-    ./zen
+    #    ./zen
     ./lang
     ./inputmethod
     ./aria2
@@ -14,12 +14,15 @@
     ./emacs
     ./sync
   ];
-  home.packages = with pkgs; [
+  home.packages =
+    with pkgs;
+    [
 
-     ] ++( lib.optionals pkgs.stdenv.isLinux
+    ]
+    ++ (lib.optionals pkgs.stdenv.isLinux
 
-     [rustdesk]
-     );
+      [ rustdesk ]
+    );
   fonts.fontconfig = {
     enable = true;
     defaultFonts = {
