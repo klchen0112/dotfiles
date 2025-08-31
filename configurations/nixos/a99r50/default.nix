@@ -19,6 +19,8 @@ in
     flake.inputs.nixos-hardware.nixosModules.common-cpu-amd-raphael-igpu
     # offload
     flake.inputs.nixos-hardware.nixosModules.common-gpu-nvidia
+    flake.inputs.nixos-hardware.nixosModules.common-pc-ssd
+    flake.inputs.nixos-hardware.nixosModules.common-hidpi
     flake.inputs.disko.nixosModules.disko
     ./disko.nix
     ./hardware-configuration.nix
