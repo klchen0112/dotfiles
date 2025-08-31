@@ -9,7 +9,7 @@
         "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKx1SNaQZ6v1onDSGz1wNX1W3zIf2KkTERjKGC+k157D klchen@sanjiao"
         "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAII/c10VIo81cztYJza3e+l1JlwsTJQk1lhBOypGhYn3T klchen@a3400g"
         "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPI6HctaCnuhyOdbrYs2un7/QA/hqFPfDVRlL0klfhGc klchen@i12r20"
-        "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIK8G2M5qM9fOiBL2dlZKfdijKwvPwEUjVG84SUeqyd1V klchen@a99r50"
+        "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFNgI2fAHSDQCB+DgZPsjGF+arPudVmWS4hTXbJCvwwX klchen@a99r50"
       ];
       base16Scheme = "selenized-dark";
       root = true;
@@ -84,7 +84,7 @@
       platform = "x86_64-linux";
       base16Scheme = "selenized-light";
       sshKey = [
-        "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIC6ZdAMG23UghxVe6vQ2epGMy5bNiqN2D6D7hqNlqoEx"
+        "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHRBuSM5DLKYUtS1gmoZEA+y2xGrWWtxs3HEutD1LCwx"
       ];
       users = [
         "klchen"
