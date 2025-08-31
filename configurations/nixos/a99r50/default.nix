@@ -14,10 +14,11 @@ in
     # flake.inputs.self.nixosModules.nvidia
     flake.inputs.self.nixosModules.desktop
     flake.inputs.self.nixosModules.access-tokens
-    #flake.inputs.nixos-hardware.nixosModules.common-cpu-amd
-    #flake.inputs.nixos-hardware.nixosModules.common-cpu-amd-zenpower
-    #flake.inputs.nixos-hardware.nixosModules.common-cpu-amd-raphael-igpu
-    #flake.inputs.nixos-hardware.nixosModules.common-gpu-nvidia
+    flake.inputs.nixos-hardware.nixosModules.common-cpu-amd
+    flake.inputs.nixos-hardware.nixosModules.common-cpu-amd-zenpower
+    flake.inputs.nixos-hardware.nixosModules.common-cpu-amd-raphael-igpu
+    # offload
+    flake.inputs.nixos-hardware.nixosModules.common-gpu-nvidia
     flake.inputs.disko.nixosModules.disko
     ./disko.nix
     ./hardware-configuration.nix
@@ -76,7 +77,7 @@ in
     ];
   };
   services.xserver.videoDrivers = [
-    # "amdgpu" # example for Intel iGPU; use "amdgpu" here instead if your iGPU is AMD
+    "amdgpu" # example for Intel iGPU; use "amdgpu" here instead if your iGPU is AMD
     "nvidia"
   ];
 
@@ -96,17 +97,16 @@ in
     forceFullCompositionPipeline = true;
     powerManagement.enable = true;
     open = true; # tried both
-    #prime = {
-    #  #offload = {
-    #  #  enable = true; # 禁用 PRIME 渲染卸载
-
-    #  #  enableOffloadCmd = true;
-    #  #};
-    #  sync.enable = true; # 禁用 PRIME 同步
-    #  #	      intelBusId = "PCI:0:2:0";
-    #  nvidiaBusId = "PCI:1:0:0";
-    #  amdgpuBusId = "PCI:12:0:0";
-    #};
+    prime = {
+      offload = {
+        enable = true; # 禁用 PRIME 渲染卸载
+        enableOffloadCmd = true;
+      };
+      # sync.enable = true; # 禁用 PRIME 同步
+      #	      intelBusId = "PCI:0:2:0";
+      nvidiaBusId = "PCI:1:0:0";
+      amdgpuBusId = "PCI:12:0:0";
+    };
   };
   zramSwap.enable = true;
 }
