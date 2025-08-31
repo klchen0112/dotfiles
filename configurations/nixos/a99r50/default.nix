@@ -11,7 +11,7 @@ in
 {
   imports = [
     flake.inputs.self.nixosModules.default
-        # flake.inputs.self.nixosModules.nvidia
+    # flake.inputs.self.nixosModules.nvidia
     flake.inputs.self.nixosModules.desktop
     flake.inputs.self.nixosModules.access-tokens
     #flake.inputs.nixos-hardware.nixosModules.common-cpu-amd
@@ -27,7 +27,7 @@ in
     # enabling it is required to make Wayland compositors function properly.
     "nvidia-drm.fbdev=1"
   ];
-    services.xserver.enable = true;
+  services.xserver.enable = true;
   services.hardware.openrgb = {
     enable = true;
     package = pkgs.openrgb-with-all-plugins;
@@ -36,7 +36,7 @@ in
   machine = machine;
   nixpkgs.hostPlatform = machine.platform;
   networking.hostName = machine.hostName;
-boot.kernelPackages = pkgs.linuxPackages_latest;
+  boot.kernelPackages = pkgs.linuxPackages_latest;
   system.stateVersion = "25.11";
   myusers = machine.users;
 
@@ -95,18 +95,18 @@ boot.kernelPackages = pkgs.linuxPackages_latest;
     package = config.boot.kernelPackages.nvidiaPackages.production;
     forceFullCompositionPipeline = true;
     powerManagement.enable = true;
-         open = true; # tried both
-            #prime = {
-            #  #offload = {
-            #  #  enable = true; # 禁用 PRIME 渲染卸载
+    open = true; # tried both
+    #prime = {
+    #  #offload = {
+    #  #  enable = true; # 禁用 PRIME 渲染卸载
 
-            #  #  enableOffloadCmd = true;
-            #  #};
-            #  sync.enable = true; # 禁用 PRIME 同步
-            #  #	      intelBusId = "PCI:0:2:0";
-            #  nvidiaBusId = "PCI:1:0:0";
-            #  amdgpuBusId = "PCI:12:0:0";
-            #};
+    #  #  enableOffloadCmd = true;
+    #  #};
+    #  sync.enable = true; # 禁用 PRIME 同步
+    #  #	      intelBusId = "PCI:0:2:0";
+    #  nvidiaBusId = "PCI:1:0:0";
+    #  amdgpuBusId = "PCI:12:0:0";
+    #};
   };
   zramSwap.enable = true;
 }

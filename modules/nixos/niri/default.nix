@@ -11,9 +11,9 @@
   ];
   programs.niri.enable = true;
   programs.niri.package = pkgs.niri;
-    # nixpkgs.overlays = [
-    #   flake.inputs.niri.overlays.niri
-    # ];
+  # nixpkgs.overlays = [
+  #   flake.inputs.niri.overlays.niri
+  # ];
   services.displayManager = {
     gdm.enable = true;
     sessionPackages = with pkgs; [
