@@ -5,7 +5,6 @@
     ./chrome
     ./vscode
     #    ./zen
-    ./lang
     ./inputmethod
     ./aria2
     ./visualisation
