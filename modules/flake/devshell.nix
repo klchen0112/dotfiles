@@ -21,7 +21,7 @@
           nix-output-monitor
           inputs'.agenix.packages.default
           nixfmt-rfc-style
-          helix
+          neovim
           lua-language-server
         ];
       };
