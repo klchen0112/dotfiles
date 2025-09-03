@@ -4,7 +4,7 @@
     ./kitty
     ./chrome
     ./vscode
-    #    ./zen
+    ./zen
     ./inputmethod
     ./aria2
     ./visualisation

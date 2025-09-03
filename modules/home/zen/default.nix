@@ -121,7 +121,7 @@ in
             blocktube
             rsshub-radar
             # brotab
-            onetab
+            # onetab
             ublock-origin
             zotero-connector
             copy-as-org-mode
