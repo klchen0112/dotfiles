@@ -22,5 +22,5 @@
     enable = true;
   };
   boot.initrd.systemd.enable = true;
-  networking.useDHCP = lib.mkDefault true;
+  programs.dconf.enable = true;
 }
