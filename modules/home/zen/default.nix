@@ -13,13 +13,25 @@ in
     # inputs.nix-darwin-browsers.overlays
   ];
   programs.zen-browser = {
-    enable = pkgs.stdenv.isLinux;
+    enable = true;
     enableGnomeExtensions = false;
     policies = {
-      # This will enable the policies.json file for zen-browser
-      # These will disable auto updates for zen-browser since it's managed by Nix
-      AppAutoUpdate = false;
+      AutofillAddressEnabled = true;
+      AutofillCreditCardEnabled = false;
       DisableAppUpdate = true;
+      DisableFeedbackCommands = true;
+      DisableFirefoxStudies = true;
+      DisablePocket = true;
+      DisableTelemetry = true;
+      DontCheckDefaultBrowser = true;
+      NoDefaultBookmarks = true;
+      OfferToSaveLogins = false;
+      EnableTrackingProtection = {
+        Value = true;
+        Locked = true;
+        Cryptomining = true;
+        Fingerprinting = true;
+      };
     };
     profiles = {
       "${config.me.username}" = {
@@ -36,6 +48,47 @@ in
             "google"
           ];
         };
+        containersForce = true;
+        containers = {
+          Personal = {
+            color = "purple";
+            icon = "fingerprint";
+            id = 1;
+          };
+          Work = {
+            color = "blue";
+            icon = "briefcase";
+            id = 2;
+          };
+          Shopping = {
+            color = "yellow";
+            icon = "dollar";
+            id = 3;
+          };
+        };
+        spacesForce = true;
+        spaces =
+          let
+            containers = config.programs.zen-browser.profiles."${config.me.username}".containers;
+          in
+          {
+            "Space" = {
+              id = "c6de089c-410d-4206-961d-ab11f988d40a";
+              position = 1000;
+            };
+            "Work" = {
+              id = "cdd10fab-4fc5-494b-9041-325e5759195b";
+              icon = "chrome://browser/skin/zen-icons/selectable/star-2.svg";
+              container = containers."Work".id;
+              position = 2000;
+            };
+            "Shopping" = {
+              id = "78aabdad-8aae-4fe0-8ff0-2a0c6c4ccc24";
+              icon = "💸";
+              container = containers."Shopping".id;
+              position = 3000;
+            };
+          };
         settings = {
           "browser.tabs.loadInBackground" = true;
           #   "widget.gtk.rounded-bottom-corners.enabled" = true;
@@ -111,7 +164,7 @@ in
             # gopass-bridge
             # https-everywhere
             # link-cleaner
-            # privacy-badger
+            privacy-badger
             # tree-style-tab
             # multi-account-containers
             # firefox-translations # translation
@@ -125,6 +178,9 @@ in
             ublock-origin
             zotero-connector
             copy-as-org-mode
+            violentmonkey
+            tab-session-manager
+            auto-tab-discard
           ]
           ++ (with pkgs.firefox-addons; [
             online-dictionary-helper

@@ -46,7 +46,7 @@
       "google-chrome"
       "logi-options+"
       # "firefox"
-      "zen"
+      # "zen"
       # "podman-desktop"
       "squirrel-app"
       "zotero"
@@ -66,7 +66,7 @@
       "telegram"
       "iterm2"
       # "docker"
-      "feishu"
+      # "feishu"
       # "ghostty"
     ];
   };
