@@ -2,6 +2,19 @@
 {
   programs.mpv = {
     enable = true;
+    package = (
+      pkgs.mpv-unwrapped.wrapper {
+        scripts = with pkgs.mpvScripts; [
+          reload
+          encode
+          decode
+        ];
+
+        mpv = pkgs.mpv-unwrapped.override {
+          waylandSupport = pkgs.stdenv.isLinux;
+        };
+      }
+    );
   };
   programs.sioyek = {
     enable = true;
