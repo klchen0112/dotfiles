@@ -36,7 +36,35 @@
       initialHashedPassword = "$6$qpLfyxefL6ImN6y8$6P2BYZEfmjdh6LeL4646LEhZnORcyxWIRxRBN2Nt6XGLk7pTu6XBy4u.mkpUs2pLW28kFx6dks8SNW2OW0AKf1";
     };
   };
-  machines = {
+  android = {
+    redmi-12t-pro = {
+
+    };
+  };
+  darwin = {
+    mbp-m1 = {
+      hostName = "mbp-m1";
+      platform = "aarch64-darwin";
+      base16Scheme = "selenized-dark";
+      sshKey = [
+        "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIC9ZvdIrZP9su70iBKgCB0QOY0kL9Z9qu3B9Of05VS5a"
+      ];
+      users = [ "klchen" ];
+      desktop = true;
+    };
+
+    mbp-dxm = {
+      hostName = "mbp-dxm";
+      platform = "aarch64-darwin";
+      sshKey = [
+        "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIH8NNbMeWmANWXw/oLFRsKPxc8gmMgyhQFYb+v0lrkpI"
+      ];
+      base16Scheme = "primer-light";
+      users = [ "chenkailong_dxm" ];
+      desktop = true;
+    };
+  };
+  linux = {
     a3400g = {
       hostName = "a3400g";
       platform = "x86_64-linux";
@@ -89,27 +117,6 @@
       users = [
         "klchen"
       ];
-      desktop = true;
-    };
-
-    mbp-dxm = {
-      hostName = "mbp-dxm";
-      platform = "aarch64-darwin";
-      sshKey = [
-        "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIH8NNbMeWmANWXw/oLFRsKPxc8gmMgyhQFYb+v0lrkpI"
-      ];
-      base16Scheme = "primer-light";
-      users = [ "chenkailong_dxm" ];
-      desktop = true;
-    };
-    mbp-m1 = {
-      hostName = "mbp-m1";
-      platform = "aarch64-darwin";
-      base16Scheme = "selenized-dark";
-      sshKey = [
-        "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIC9ZvdIrZP9su70iBKgCB0QOY0kL9Z9qu3B9Of05VS5a"
-      ];
-      users = [ "klchen" ];
       desktop = true;
     };
   };

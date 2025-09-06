@@ -63,14 +63,17 @@ let
   };
 in
 {
-  imports = [
-    ../../config.nix
-  ];
   options = {
     users = lib.mkOption {
       type = lib.types.attrsOf userSubmodule;
     };
-    machines = lib.mkOption {
+    android = lib.mkOption {
+      type = lib.types.attrsOf machineSubmodule;
+    };
+    darwin = lib.mkOption {
+      type = lib.types.attrsOf machineSubmodule;
+    };
+    linux = lib.mkOption {
       type = lib.types.attrsOf machineSubmodule;
     };
   };

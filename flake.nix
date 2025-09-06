@@ -29,7 +29,14 @@
   };
   outputs =
     inputs@{ self, ... }:
+    let
+      machineUserConfig = import ./config.nix;
+    in
     inputs.flake-parts.lib.mkFlake { inherit inputs; } {
+      users = machineUserConfig.users;
+      darwin = machineUserConfig.darwin;
+      linux = machineUserConfig.linux;
+      android = machineUserConfig.android;
       systems = [
         "x86_64-linux"
         "aarch64-linux"
