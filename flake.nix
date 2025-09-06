@@ -73,6 +73,8 @@
         inputs.nixpkgs.follows = "nixpkgs";
         inputs.systems.follows = "systems";
         inputs.flake-compat.follows = "flake-compat";
+        inputs.treefmt-nix.follows = "treefmt-nix";
+        inputs.flake-utils.follows = "flake-utils";
       };
 
       # Home Manager
