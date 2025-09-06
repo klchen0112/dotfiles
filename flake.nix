@@ -1,6 +1,5 @@
 {
   description = "My Personal NixOS and Darwin System Flake Configuration";
-  # Wired using https://nixos-unified.org/autowiring.html
   nixConfig = {
     substituters = [
       # replace official cache with a mirror located in China
@@ -29,10 +28,16 @@
     ];
   };
   outputs =
-    inputs:
-    inputs.nixos-unified.lib.mkFlake {
-      inherit inputs;
-      root = ./.;
+    inputs@{ self, ... }:
+    inputs.flake-parts.lib.mkFlake { inherit inputs; } {
+      systems = [
+        "x86_64-linux"
+        "aarch64-linux"
+        "aarch64-darwin"
+      ];
+      imports = (
+        with builtins; map (fn: ./modules/flake-parts/${fn}) (attrNames (readDir ./modules/flake-parts))
+      );
     };
   inputs =
     # All flake references used to build my NixOS setup. These are dependencies.
@@ -116,8 +121,6 @@
         url = "github:hercules-ci/flake-parts";
         inputs.nixpkgs-lib.follows = "nixpkgs-lib";
       };
-
-      nixos-unified.url = "github:srid/nixos-unified";
 
       flake-compat = {
         url = "github:edolstra/flake-compat";

@@ -101,7 +101,7 @@ in
             openssh.authorizedKeys.keys = builtins.concatLists rootSshKeys;
           };
       };
-    home-manager.backupFileExtension = "nixos-unified-template-backup";
+    home-manager.backupFileExtension = "backup";
     # Enable home-manager for our user
     home-manager.users = mapListToAttrs config.myusers (name: {
       imports = [
