@@ -25,6 +25,7 @@ let
   inherit (lib.strings) hasSuffix removeSuffix;
   users = config.users;
   machines = config.machines;
+
   readModules =
     {
       dir,
@@ -47,6 +48,31 @@ let
       ) (readDir dir)
     else
       { };
+  mkNixOs =
+    {
+      machineConfig,
+      users,
+      specialArgs,
+    }:
+    (
+
+      inputs.nixpkgs.lib.nixosSystem {
+        moudles = [
+          inputs.home-manager.nixosModules
+          ({pkgs,...}:{
+              ,co
+          }
+
+          )
+          {
+            networking.hostName = machineConfig.hostName;
+            nixpkgs.hostPaltform = machineConfig.sysetem;
+          }
+          ./configurations/nixos/${machineConfig.hostName}
+        ];
+
+      }
+    );
 in
 {
   config.flake = {
