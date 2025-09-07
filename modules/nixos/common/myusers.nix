@@ -7,44 +7,7 @@
   ...
 }:
 let
-  machineSubmodule = lib.types.submodule {
-    options = {
-      hostName = lib.mkOption {
-        type = lib.types.str;
-      };
-      platform = lib.mkOption {
-        type = lib.types.str;
-      };
-      base16Scheme = lib.mkOption {
-        type = lib.types.str;
-      };
-      sshKey = lib.mkOption {
-        type = lib.types.listOf lib.types.str;
-        description = ''
-          SSH public key
-        '';
-      };
-      users = lib.mkOption {
-        type = lib.types.listOf lib.types.str;
-        description = ''
-          list of user
-        '';
-      };
-      desktop = lib.mkOption {
-        type = lib.types.bool;
-        default = false;
-      };
-    };
-  };
-  inherit (flake.inputs) self;
-  mapListToAttrs =
-    m: f:
-    lib.listToAttrs (
-      map (name: {
-        inherit name;
-        value = f name;
-      }) m
-    );
+
 in
 {
   options = {
@@ -61,9 +24,7 @@ in
         in
         baseNames;
     };
-    machine = lib.mkOption {
-      type = machineSubmodule;
-    };
+
   };
   config = {
     # For home-manager to work.
@@ -107,12 +68,7 @@ in
       imports = [
         (self + /configurations/home/${name}.nix)
       ]
-      ++ (lib.optionals pkgs.stdenv.isLinux [
-        (self + /modules/home/bash)
-      ])
-      ++ (lib.optionals pkgs.stdenv.isDarwin [
-        (self + /modules/home/zsh)
-      ])
+
       ++ (lib.optionals config.machine.desktop [
         (self + /modules/home/desktop.nix)
       ])
