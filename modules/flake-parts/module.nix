@@ -60,7 +60,10 @@ let
         moudles = [
           inputs.home-manager.nixosModules
           ({pkgs,...}:{
-              ,co
+              home-manager.users = mapAttrs (
+
+
+              ) 
           }
 
           )
