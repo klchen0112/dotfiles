@@ -1,18 +1,20 @@
 {
-  ...
-}:
-{
-  programs = {
-    vim = {
-      enable = true;
-      settings = {
-        background = "light";
-        copyindent = true;
-        number = true;
-        relativenumber = true;
-        shiftwidth = 4;
-      };
-      extraConfig = "
+  flake.modules.homeManager.vim =
+    {
+      ...
+    }:
+    {
+      programs = {
+        vim = {
+          enable = true;
+          settings = {
+            background = "light";
+            copyindent = true;
+            number = true;
+            relativenumber = true;
+            shiftwidth = 4;
+          };
+          extraConfig = "
         set guifont=Courier:h12
         set foldenable      \" 允许折叠
         set showcmd         \"输入的命令显示出来，看的清楚些
@@ -35,6 +37,7 @@
         set cmdheight=2 \" 命令行显示2行
         set hlsearch \" 高亮所有的搜索目标
       ";
+        };
+      };
     };
-  };
 }

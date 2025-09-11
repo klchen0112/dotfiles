@@ -1,5 +1,5 @@
 {
-  flake,
+  inputs,
   pkgs,
   lib,
   config,
@@ -14,12 +14,17 @@
     };
   };
   nix = {
-    nixPath = [ "nixpkgs=${flake.inputs.nixpkgs}" ]; # Enables use of `nix-shell -p ...` etc
+    channel.enable = false; # remove nix-channel related tools & configs, we use flakes instead.
+    nixPath = [
+      "nixpkgs=${inputs.nixpkgs}"
+      "nixpkgs-unstable=${inputs.nixpkgs-unstable}"
+      "nixpkgs-stable=${inputs.nixpkgs-stable}"
+    ]; # Enables use of `nix-shell -p ...` etc
     registry = {
-      nixpkgs.flake = flake.inputs.nixpkgs;
-      nixpkgs-unstable.flake = flake.inputs.nixpkgs-unstable;
+      nixpkgs.flake = inputs.nixpkgs;
+      nixpkgs-unstable.flake = inputs.nixpkgs-unstable;
+      nixpkgs-stable.flake = inputs.nixpkgs-stable;
     };
-    gc.automatic = true;
     settings = {
       max-jobs = "auto";
       # I don't have an Intel mac.

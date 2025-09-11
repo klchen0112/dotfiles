@@ -1,5 +1,7 @@
 {
-  programs.zed-editor = {
-    enable = true;
+  flake.modules.homeManager.zed = {
+    programs.zed-editor = {
+      enable = true;
+    };
   };
 }

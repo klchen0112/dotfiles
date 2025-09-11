@@ -1,7 +1,9 @@
-{ pkgs, ... }:
 {
-  home.packages = with pkgs; [
-    kubectl
-    minikube
-  ];
+  flake.modules.homeManager.k8s =
+    { pkgs, ... }:
+    {
+      home.packages = with pkgs; [
+        kubectl
+      ];
+    };
 }

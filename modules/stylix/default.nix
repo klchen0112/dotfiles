@@ -1,4 +1,8 @@
 {
+  flake-file.inputs = {
+    stylix.url = "github:danth/stylix";
+  };
+
   flake.modules.homeManager.stylix =
     {
       pkgs,

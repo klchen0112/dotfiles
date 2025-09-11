@@ -1,8 +1,11 @@
 {
-  ...
-}:
-{
-  qt = {
-    enable = true;
-  };
+  flake.modules.homeManager.qt =
+    {
+      ...
+    }:
+    {
+      qt = {
+        enable = true;
+      };
+    };
 }
