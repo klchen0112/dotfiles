@@ -16,9 +16,10 @@
           nixd
           nix-output-monitor
           inputs'.agenix.packages.default
+
           nixfmt-rfc-style
           neovim
-          lua-language-server
+          lua-languagle-server
           inputs'.allfollow.packages.default
         ];
       };
