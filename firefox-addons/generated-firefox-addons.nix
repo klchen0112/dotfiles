@@ -1,8 +1,6 @@
 {
   buildFirefoxXpiAddon,
-  fetchurl,
   lib,
-  stdenv,
 }:
 {
   "online-dictionary-helper" = buildFirefoxXpiAddon {

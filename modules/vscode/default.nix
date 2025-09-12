@@ -1,9 +1,4 @@
 {
-  flake-file.inputs = {
-    nix-vscode-extensions = {
-      url = "git+https://github.com/nix-community/nix-vscode-extensions?shallow=1&ref=master";
-    };
-  };
   flake.modules.homeManager.vscode =
     {
       pkgs,
@@ -11,7 +6,6 @@
       ...
     }:
     {
-      stylix.targets.vscode.enable = false;
       home.packages = with pkgs; [
         nerd-fonts.hack
         cm_unicode

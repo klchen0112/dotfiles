@@ -5,7 +5,6 @@
   flake.modules.darwin.homebrew =
     {
       inputs,
-      config,
       ...
     }:
     {

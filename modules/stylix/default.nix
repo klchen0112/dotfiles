@@ -1,3 +1,4 @@
+{inputs,...}:
 {
   flake-file.inputs = {
     stylix.url = "github:danth/stylix";
@@ -13,7 +14,6 @@
     {
       imports = [
         inputs.stylix.homeModules.stylix
-        ./base.nix
       ];
       # enable gtk
       stylix.targets.gtk.enable = true;
@@ -39,7 +39,6 @@
     {
       pkgs,
       config,
-      inputs,
       ...
     }:
     {

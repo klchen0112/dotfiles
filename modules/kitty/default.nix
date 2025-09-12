@@ -2,8 +2,6 @@
   flake.modules.homeManager.kitty =
     {
       pkgs,
-      lib,
-      config,
       ...
     }:
     {

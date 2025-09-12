@@ -8,18 +8,14 @@
       //  "ignored": ["unused_binding", "unused_with"],
       // },
       "formatting": {
-        "command": [
-          "nixfmt"
-        ]
+        "command": ["nixfmt"]
       }
     },
     // settings for 'nixd' LSP
     "nixd": {
       "formatting": {
         // ...
-        "command": [
-          "nixfmt"
-        ]
+        "command": ["nixfmt"]
       },
       "options": {
         // By default, this entry will be read from `import <nixpkgs> { }`.

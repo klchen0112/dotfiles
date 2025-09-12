@@ -1,3 +1,4 @@
+{ inputs, ... }:
 {
   flake-file.inputs = {
     emacs-overlay.url = "github:nix-community/emacs-overlay/master";
@@ -12,19 +13,14 @@
   };
   flake.modules.homeManager.emacs =
     {
-      flake,
       lib,
       config,
       pkgs,
       ...
     }:
     let
-      inherit (flake) inputs;
-      emacsPackage =
-        if pkgs.stdenv.isDarwin then
-          pkgs.emacsIGC
-        else
-          inputs.emacs-overlay.packages.${pkgs.system}.emacs-igc-pgtk;
+
+      emacsPackage = if pkgs.stdenv.isDarwin then pkgs.emacsIGC else pkgs.emacs-igc-pgtk;
       # doomPath = "${config.home.homeDirectory}/my/dotfiles/modules/editors/emacs/doom";
 
       extraPackages =
@@ -87,7 +83,7 @@
       home.sessionVariables = {
         "EIDTOR" = "emacs";
       };
-      stylix.targets.emacs.enable = false;
+      # stylix.targets.emacs.enable = false;
       # xdg.configFile."doom".source = config.lib.file.mkOutOfStoreSymlink doomPath;
 
       programs.pandoc.enable = true;

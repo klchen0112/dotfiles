@@ -6,7 +6,6 @@
   ];
   perSystem =
     {
-      self,
       ...
     }:
     {
@@ -25,6 +24,16 @@
         settings.formatter.shellcheck.options = [
           "-s"
           "bash"
+        ];
+        settings.global.excludes = [
+          ".envrc"
+          "Justfile"
+          "*.org"
+          "*.png"
+          "*rc"
+          "*.conf"
+          "*/packages/*"
+
         ];
       };
     };

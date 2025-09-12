@@ -2,7 +2,7 @@
   inputs.nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
 
   outputs =
-    { self, nixpkgs }:
+    { nixpkgs }:
     let
       forAllSystems =
         f:
@@ -26,10 +26,10 @@
       );
 
       packages = forAllSystems (
-        { addons, ... }: nixpkgs.lib.filterAttrs (name: val: name != "buildFirefoxXpiAddon") addons
+        { addons, ... }: nixpkgs.lib.filterAttrs (name: _val: name != "buildFirefoxXpiAddon") addons
       );
 
-      overlays.default = final: prev: {
+      overlays.default = final: _prev: {
         firefox-addons = final.callPackage ./. { };
       };
     };

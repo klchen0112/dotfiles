@@ -1,7 +1,6 @@
 {
   stdenv,
   lib,
-  callPackage,
   fetchurl,
 }:
 stdenv.mkDerivation rec {

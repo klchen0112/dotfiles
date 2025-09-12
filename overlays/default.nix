@@ -5,7 +5,7 @@ let
   inherit (inputs) self;
   packages = self + /packages;
 in
-self: super: {
+self: _super: {
   TsangerJinKai02 = self.callPackage "${packages}/TsangerJinKai02" { };
   TsangerJinKai03 = self.callPackage "${packages}/TsangerJinKai03" { };
   Jigmo = self.callPackage "${packages}/Jigmo" { };

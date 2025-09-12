@@ -45,5 +45,4 @@ in
   flake.modules.homeManager.stylix = cfg;
   flake.modules.darwin.stylix = cfg;
   flake.modules.linux.stylix = cfg;
-
 }
