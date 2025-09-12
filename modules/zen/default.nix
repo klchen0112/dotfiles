@@ -1,11 +1,12 @@
+{inputs,...}:
 {
   flake-file.inputs = {
     zen-browser.url = "github:0xc000022070/zen-browser-flake";
+      nur.url = "github:nix-community/NUR";
   };
   flake.modules.homeManager.zen =
     {
       pkgs,
-      inputs,
       config,
       ...
     }:
@@ -36,10 +37,10 @@
           };
         };
         profiles = {
-          "${config.me.username}" = {
+          "${config.home.username}" = {
             id = 0;
             isDefault = true;
-            name = "${config.me.username}";
+            name = "${config.home.username}";
             search = {
               force = true;
               default = "ddg";
@@ -71,7 +72,7 @@
             spacesForce = true;
             spaces =
               let
-                containers = config.programs.zen-browser.profiles."${config.me.username}".containers;
+                containers = config.programs.zen-browser.profiles."${config.home.username}".containers;
               in
               {
                 "Space" = {
@@ -184,9 +185,10 @@
                 tab-session-manager
                 auto-tab-discard
               ]
-              ++ (with pkgs.firefox-addons; [
-                online-dictionary-helper
-              ]);
+              # ++ (with pkgs.firefox-addons; [
+              #   online-dictionary-helper
+              # ])
+              ;
           };
         };
       };

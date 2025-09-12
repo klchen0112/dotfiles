@@ -3,8 +3,7 @@
     { pkgs, ... }:
     {
       home.packages = with pkgs; [
-        # nodejs
-        # nodePackages.nodejs
+        nodejs
         # nodePackages.npm
         # nodePackages.pnpm
         # nodePackages.eslint

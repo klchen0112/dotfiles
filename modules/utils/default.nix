@@ -96,6 +96,7 @@
         gnugrep
         lrzsz
         python312Packages.editorconfig
+        just
       ];
 
       editorconfig = {

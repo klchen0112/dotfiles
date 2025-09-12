@@ -5,12 +5,16 @@ let
     inputs.nixpkgs.lib.nixosSystem {
       inherit system;
       modules = [
+        inputs.home-manager.nixosModules.home-manager
         inputs.self.modules.nixos.${cls}
         inputs.self.modules.nixos.${name}
         {
           networking.hostName = lib.mkDefault name;
           nixpkgs.hostPlatform = lib.mkDefault system;
           system.stateVersion = "25.05";
+          home-manager.extraSpecialArgs = {
+            inherit inputs;
+          };
         }
       ];
     };
@@ -24,12 +28,17 @@ let
       inherit system;
       modules = [
         inputs.home-manager.darwinModules.home-manager
+        inputs.self.modules.darwin.nix
         inputs.self.modules.darwin.darwin
         inputs.self.modules.darwin.${name}
         {
           networking.hostName = lib.mkDefault name;
           nixpkgs.hostPlatform = lib.mkDefault system;
           system.stateVersion = 6;
+
+          home-manager.extraSpecialArgs = {
+            inherit inputs;
+          };
         }
       ];
     };

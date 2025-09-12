@@ -14,7 +14,7 @@
         settings = {
           window-colorspace = if pkgs.stdenv.isDarwin then "display-p3" else "srgb";
           macos-titlebar-style = "hidden";
-          command = "/etc/profiles/per-user/${config.me.username}/bin/nu";
+          command = "/etc/profiles/per-user/${config.home.username}/bin/nu";
           clipboard-read = "allow";
           clipboard-write = "allow";
           copy-on-select = "clipboard";

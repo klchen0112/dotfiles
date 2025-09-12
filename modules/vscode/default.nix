@@ -1,4 +1,7 @@
 {
+  flake-file.inputs = {
+    nix-vscode-extensions.url = "github:nix-community/nix-vscode-extensions";
+  };
   flake.modules.homeManager.vscode =
     {
       pkgs,
@@ -181,50 +184,51 @@
             "terminal.integrated.defaultProfile.linux" = "nushell";
             "terminal.integrated.profiles.osx" = {
               "bash" = {
-                "path" = "/etc/profiles/per-user/${config.me.username}//bin/bash";
+                "path" = "/etc/profiles/per-user/${config.home.username}//bin/bash";
                 "args" = [
                   "-l"
                 ];
                 "icon" = "terminal-bash";
               };
               "zsh" = {
-                "path" = "/etc/profiles/per-user/${config.me.username}/bin/zsh";
+                "path" = "/etc/profiles/per-user/${config.home.username}/bin/zsh";
                 "args" = [
                   "-l"
                 ];
               };
               "fish" = {
-                "path" = "/etc/profiles/per-user/${config.me.username}/bin/fish";
+                "path" = "/etc/profiles/per-user/${config.home.username
+                }/bin/fish";
                 "args" = [
                   "-l"
                 ];
               };
               "nushell" = {
-                "path" = "/etc/profiles/per-user/${config.me.username}/bin/nu";
+                "path" = "/etc/profiles/per-user/${config.home.username}/bin/nu";
               };
             };
             "terminal.integrated.profiles.linux" = {
               "bash" = {
-                "path" = "/etc/profiles/per-user/${config.me.username}/bin/bash";
+                "path" = "/etc/profiles/per-user/${config.home.username}/bin/bash";
                 "args" = [
                   "-l"
                 ];
                 "icon" = "terminal-bash";
               };
               "zsh" = {
-                "path" = "/etc/profiles/per-user/${config.me.username}/bin/zsh";
+                "path" = "/etc/profiles/per-user/${config.home.username}/bin/zsh";
                 "args" = [
                   "-l"
                 ];
               };
               "fish" = {
-                "path" = "/etc/profiles/per-user/${config.me.username}/bin/fish";
+                "path" = "/etc/profiles/per-user/${config.home.username}/bin/fish";
                 "args" = [
                   "-l"
                 ];
               };
               "nushell" = {
-                "path" = "/etc/profiles/per-user/${config.me.username}/bin/nu";
+                "path" = "/etc/profiles/per-user/${config.home.username}/bin/nu";
               };
             };
             "terminal.integrated.enableVisualBell" = true;

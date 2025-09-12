@@ -2,14 +2,14 @@
 let
   flake-file.inputs = {
     #  MacOS
+     nix-darwin.url = "github:nix-darwin/nix-darwin/master";
     mac-app-util = {
       url = "github:hraban/mac-app-util";
     };
   };
   flake.modules.darwin.darwin = {
     imports = [
-      inputs.home-manager.darwinModules.home-manager
-      # inputs.mac-app-util.darwinModules.default
+      inputs.mac-app-util.darwinModules.default
       # inputs.srvos.darwinModules.desktop
       # inputs.srvos.darwinModules.mixins-terminfo
       # inputs.srvos.darwinModules.mixins-nix-experimental
@@ -20,7 +20,7 @@ let
     { ... }:
     {
       imports = [
-        # inputs.mac-app-util.homeManagerModules.default
+        inputs.mac-app-util.homeManagerModules.default
       ];
     };
 

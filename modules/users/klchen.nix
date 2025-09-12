@@ -1,4 +1,17 @@
 { config, inputs, ... }:
+let
+  home.home-manager.users.klchen.imports = with inputs.self.modules.homeManager; [
+    klchen
+    vscode
+    nushell
+    nix
+    stylix
+    zen
+    starship
+    utils
+    git
+  ];
+in
 {
   flake.meta.users.klchen = {
     username = "klchen";
@@ -14,9 +27,23 @@
     base16Scheme = "selenized-dark";
     initialHashedPassword = "$6$qpLfyxefL6ImN6y8$6P2BYZEfmjdh6LeL4646LEhZnORcyxWIRxRBN2Nt6XGLk7pTu6XBy4u.mkpUs2pLW28kFx6dks8SNW2OW0AKf1";
   };
+  flake.modules.homeManager.klchen =
+    { pkgs, lib, ... }:
+    {
+      home.username = lib.mkDefault "klchen";
+      home.homeDirectory = lib.mkDefault (
+        if pkgs.stdenvNoCC.isDarwin then "/Users/klchen" else "/home/klchen"
+      );
+      home.stateVersion = lib.mkDefault "25.05";
+      stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/${config.flake.meta.users.klchen.base16Scheme}.yaml";
+    };
+
   flake.modules.nixos.klchen =
     { pkgs, ... }:
     {
+      imports = [
+        home
+      ];
       nix.settings.trusted-users = [ config.flake.meta.users.klchen.username ];
       users.users.klchen = {
         description = config.flake.meta.users.klchen.fullname;
@@ -36,20 +63,19 @@
       };
       users.users.root.openssh.authorizedKeys.keys = config.flake.meta.users.klchen.authorizedKeys;
     };
-  flake.modules.darwin.klchen = {
-    home-manager.users.klchen = {
-      imports = with inputs.self.modules.homeManager; [
-        emacs
-        vscode
-        # stylix
+  flake.modules.darwin.klchen =
+    { lib, ... }:
+    {
+      imports = [
+        home
+
       ];
-      home.homeDirectory = "/Users/${config.flake.meta.users.klchen.username}";
-      home.stateVersion = "25.11";
+
+      home-manager.users.klchen.home.homeDirectory = lib.mkForce "/Users/klchen";
+      users.users.klchen = {
+        name = config.flake.meta.users.klchen.username;
+      };
+      programs.zsh.enable = true;
+      nix.settings.trusted-users = [ config.flake.meta.users.klchen.username ];
     };
-    users.users.klchen = {
-      name = config.flake.meta.users.klchen.username;
-    };
-    programs.zsh.enable = true;
-    nix.settings.trusted-users = [ config.flake.meta.users.klchen.username ];
-  };
 }

@@ -1,8 +1,9 @@
-{
+topLevel: {
   flake.modules.homeManager.git =
     {
-      lib,
-      pkgs,
+    config,
+    pkgs,
+    lib,
       ...
     }:
     {
@@ -17,8 +18,8 @@
         ];
         attributes = [ "*.pdf diff=pdf" ];
         lfs.enable = true;
-        userName = "klchen0112";
-        userEmail = "klchen0112@gmail.com";
+        userName = topLevel.config.flake.meta.users.${config.home.username}.username;
+        userEmail = topLevel.config.flake.meta.users.${config.home.username}.email;
         aliases = {
           # common aliases
           br = "branch";

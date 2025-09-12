@@ -1,4 +1,7 @@
 {
+  flake-file.inputs = {
+    agenix.url = "github:ryantm/agenix";
+  };
   flake.modules.nixos.access-tokens =
     {
       pkgs,
@@ -13,7 +16,7 @@
       imports = [ inputs.agenix.nixosModules.default ];
       age.secrets.access-tokens.file = inputs.self + /secrets/access-tokens.age;
       nix.extraOptions = ''
-        !include ${config.age.secrets.access-tokens.path}
+        !in clude ${config.age.secrets.access-tokens.path}
       '';
     };
   flake.modules.darwin.access-tokens =

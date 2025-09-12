@@ -1,7 +1,7 @@
+{ inputs, ... }:
 let
   cfg =
     {
-      inputs,
       pkgs,
       lib,
       ...
@@ -15,17 +15,17 @@ let
         };
       };
       nix = {
-        channel.enable = false; # remove nix-channel related tools & configs, we use flakes instead.
+
         nixPath = [
           "nixpkgs=${inputs.nixpkgs}"
           "nixpkgs-unstable=${inputs.nixpkgs-unstable}"
           "nixpkgs-stable=${inputs.nixpkgs-stable}"
         ]; # Enables use of `nix-shell -p ...` etc
-        registry = {
-          nixpkgs.flake = inputs.nixpkgs;
-          nixpkgs-unstable.flake = inputs.nixpkgs-unstable;
-          nixpkgs-stable.flake = inputs.nixpkgs-stable;
-        };
+        # registry = {
+        #   nixpkgs.flake = inputs.nixpkgs;
+        #   nixpkgs-unstable.flake = inputs.nixpkgs-unstable;
+        #   nixpkgs-stable.flake = inputs.nixpkgs-stable;
+        # };
         settings = {
           max-jobs = "auto";
           # I don't have an Intel mac.
@@ -39,8 +39,8 @@ let
     };
 in
 {
+
   flake.modules.homeManager.nix = cfg;
   flake.modules.darwin.nix = cfg;
   flake.modules.linux.nix = cfg;
-
 }

@@ -1,7 +1,7 @@
 { inputs, ... }:
 let
   inherit (inputs.self.lib.mk-os)
-    darwin linux wsl
+    darwin
     ;
 in
 {

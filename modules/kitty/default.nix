@@ -37,7 +37,7 @@
           #-------------------------------------------- Shell --------------------------------------------
           #      shell =
           #
-          #        "/etc/profiles/per-user/${config.me.username}/bin/nu";
+          #        "/etc/profiles/per-user/${config.home.username}/bin/nu";
           #
           #-------------------------------------------- Macos Settings --------------------------------------------
 
