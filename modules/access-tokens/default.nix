@@ -1,7 +1,4 @@
 {
-  flake-file.inputs = {
-    agenix.url = "github:ryantm/agenix";
-  };
   flake.modules.nixos.access-tokens =
     {
       pkgs,
