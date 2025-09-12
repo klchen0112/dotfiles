@@ -39,6 +39,16 @@
           # (self: super: { deplkkoy-rs = { inherit (pkgs) deploy-rs; lib = super.deploy-rs.lib; }; })
         ];
       };
-      pkgsDirectory = ../../packages;
+      pkgsDirectory = ../../packages/by-name;
     };
+  flake = {
+    overlays.default =
+      final: prev:
+      withSystem prev.stdenv.hostPlatform.system (
+        { config, ... }:
+        {
+          local = config.packages;
+        }
+      );
+  };
 }
