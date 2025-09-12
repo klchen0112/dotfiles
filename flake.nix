@@ -32,9 +32,10 @@
   inputs =
     # All flake references used to build my NixOS setup. These are dependencies.
     {
-      nixpkgs = {
-        url = "github:nixos/nixpkgs/nixpkgs-unstable";
-      };
+      nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
+      nixpkgs-unstable.url = "github:nixos/nixpkgs/master";
+      nixpkgs-stable.url = "github:nixos/nixpkgs/release-25.05";
+
       srvos = {
         url = "github:nix-community/srvos";
       };
@@ -51,6 +52,8 @@
       disko = {
         url = "github:nix-community/disko/latest";
       };
+      agenix.url = "github:ryantm/agenix";
+      emacs-overlay.url = "github:nix-community/emacs-overlay/master";
 
       # add git hooks to format nix code before commit
       git-hooks = {
@@ -85,6 +88,7 @@
       systems = {
         url = "github:nix-systems/default";
       };
+      pkgs-by-name-for-flake-parts.url = "github:drupol/pkgs-by-name-for-flake-parts";
     };
 
 }
