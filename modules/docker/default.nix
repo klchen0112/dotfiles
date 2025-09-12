@@ -1,4 +1,7 @@
-{ pkgs, ... }:
 {
-  home.packages = with pkgs; [ dockfmt ];
+  flake.modules.homeManager.docker =
+    { pkgs, ... }:
+    {
+      home.packages = with pkgs; [ dockfmt ];
+    };
 }

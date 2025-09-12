@@ -8,11 +8,6 @@
   flake.modules.homeManager.nix =
     { pkgs, ... }:
     {
-      imports = [
-        ./gc.nix
-        ./caches.nix
-        ./nix.nix
-      ];
       home.packages = with pkgs; [
         nixfmt-rfc-style
         # nixfmt
@@ -34,11 +29,6 @@
       ...
     }:
     {
-      imports = [
-        ./gc.nix
-        ./caches.nix
-        ./nix.nix
-      ];
 
       environment.etc."nix/inputs/nixpkgs".source = "${inputs.nixpkgs}";
 

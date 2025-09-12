@@ -1,18 +1,21 @@
 {
-  flake,
-  ...
-}:
-{
-  imports = [
-    flake.inputs.niri-caelestia-shell.homeManagerModules.default
+  flake.modules.homeManager.niri-caelestia-shell =
+    {
+      inputs,
+      ...
+    }:
+    {
+      imports = [
+        inputs.niri-caelestia-shell.homeManagerModules.default
 
-  ];
-  programs.caelestia = {
-    enable = true;
-    cli.enable = true;
-  };
-  programs.fuzzel = {
-    enable = true;
-  };
+      ];
+      programs.caelestia = {
+        enable = true;
+        cli.enable = true;
+      };
+      programs.fuzzel = {
+        enable = true;
+      };
 
+    };
 }

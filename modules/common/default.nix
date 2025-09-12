@@ -1,19 +1,16 @@
 {
-  pkgs,
-  ...
-}:
-{
-  imports = [
-    ./nix.nix
-    ./caches.nix
-    ./myusers.nix
-    ./fonts.nix
-  ];
+  flake.modules.nixos.common =
+    {
+      pkgs,
+      ...
+    }:
+    {
 
-  environment.systemPackages = with pkgs; [
-    gitFull
-  ];
+      environment.systemPackages = with pkgs; [
+        gitFull
+      ];
 
-  home-manager.useUserPackages = true;
-  home-manager.useGlobalPkgs = true;
+      home-manager.useUserPackages = true;
+      home-manager.useGlobalPkgs = true;
+    };
 }

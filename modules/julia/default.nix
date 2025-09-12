@@ -1,6 +1,9 @@
-{ pkgs, ... }:
 {
-  home.packages = with pkgs; [
-    # julia
-  ];
+  flake.modules.homeManager.julia =
+    { pkgs, ... }:
+    {
+      home.packages = with pkgs; [
+        # julia
+      ];
+    };
 }

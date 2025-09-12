@@ -1,5 +1,2 @@
 {
-  imports = [
-    ./bluetooth.nix
-  ];
 }

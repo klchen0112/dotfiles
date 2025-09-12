@@ -1,5 +1,5 @@
-{
-  nix.settings = {
+let
+  nix_settings = {
     substituters = [
       # replace official cache with a mirror located in China
       "https://mirrors.tuna.tsinghua.edu.cn/nix-channels/store?priority=0"
@@ -26,5 +26,15 @@
       "niri.cachix.org-1:Wv0OmO7PsuocRKzfDoJ3mulSl7Z6oezYhGhR+3W2964="
     ];
   };
-
+in
+{
+  flake.modules.homeManager.nix = {
+    nix.settings = nix_settings;
+  };
+  flake.modules.darwin.nix = {
+    nix.settings = nix_settings;
+  };
+  flake.modules.linux.nix = {
+    nix.settings = nix_settings;
+  };
 }

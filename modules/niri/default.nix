@@ -54,20 +54,6 @@
   flake.modules.homeManager.niri =
     { pkgs, ... }:
     {
-      imports = [
-        # ./binds.nix
-        # ./wine.nix
-        # ./walker
-        # ./settings.nix
-        # ./swayidle.nix
-        # ./swaylock.nix
-        # ./swaync.nix
-        # ./waybar
-        # ./xwayland-satellite.nix
-        # ./services.nix
-        ./dankMaterialShell.nix
-        # ./caelestia.nix
-      ];
       home.packages = with pkgs; [
         # screenshot
         grim
