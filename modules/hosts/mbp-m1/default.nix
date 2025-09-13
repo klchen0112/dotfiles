@@ -13,8 +13,8 @@
   flake.modules.darwin.mbp-m1 = {
     imports = with inputs.self.modules.darwin; [
       klchen
-      # homebrew
-      font
+      homebrew
+
     ];
     home-manager.users.klchen.imports = with config.flake.modules.homeManager; [
       # git

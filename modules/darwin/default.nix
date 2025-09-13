@@ -13,9 +13,10 @@ let
       inputs.srvos.darwinModules.mixins-terminfo
       inputs.srvos.darwinModules.mixins-nix-experimental
       inputs.srvos.darwinModules.mixins-trusted-nix-caches
+      inputs.self.modules.darwin.font
     ];
   };
-  flake.modules.homeManager.desktop =
+  flake.modules.homeManager.home =
     { ... }:
     {
       imports = [
