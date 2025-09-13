@@ -19,14 +19,15 @@
     }:
     let
 
-      emacsPackage = (if pkgs.stdenv.isDarwin then pkgs.local.emacsIGC else pkgs.emacs-igc-pgtk).pkgs.withPackages (
-        epkgs: with epkgs;
-        [
-          treesit-grammars.with-all-grammars
-          rime
-          telega
-        ]
-      );
+      emacsPackage =
+        (if pkgs.stdenv.isDarwin then pkgs.local.emacsIGC else pkgs.emacs-igc-pgtk).pkgs.withPackages
+          (
+            epkgs: with epkgs; [
+              treesit-grammars.with-all-grammars
+              rime
+              telega
+            ]
+          );
       # doomPath = "${config.home.homeDirectory}/my/dotfiles/modules/editors/emacs/doom";
       extraPackages =
         with pkgs;
@@ -78,15 +79,15 @@
           openssh
         ];
         text = ''
-          # set -e
-          # if test -f "$HOME"/.config/emacs/.local/etc/@/init*.el; then
-          #   doom_rev="$(rg "put 'doom-version 'ref '\"(\w+)\"" "$HOME"/.config/emacs/.local/etc/@/init*.el -or '$1')"
-          # fi
+          set -e
+          if test -f "$HOME"/.config/emacs/.local/etc/@/init*.el; then
+            doom_rev="$(rg "put 'doom-version 'ref '\"(\w+)\"" "$HOME"/.config/emacs/.local/etc/@/init*.el -or '$1')"
+          fi
 
-          # if test "''${doom_rev:-}" = "${inputs.doom-emacs.rev}"; then
-          #   echo "DOOM Emacs already at revision ${inputs.doom-emacs.rev}"
-          #   exit 0 # doom already pointing to same revision
-          # fi
+          if test "''${doom_rev:-}" = "${inputs.doom-emacs.rev}"; then
+            echo "DOOM Emacs already at revision ${inputs.doom-emacs.rev}"
+            exit 0 # doom already pointing to same revision
+          fi
 
           (
             echo "DOOM config obtaining revision ${inputs.doom-config.rev}"
@@ -115,13 +116,6 @@
       };
     in
     {
-      nixpkgs = {
-        config.allowUnfree = true;
-        overlays = [
-          inputs.self.overlays.default
-        ];
-      };
-
       home.packages = extraPackages;
 
       programs.emacs = {
