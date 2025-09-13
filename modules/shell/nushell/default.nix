@@ -2,6 +2,7 @@
   flake.modules.homeManager.nushell =
     {
       pkgs,
+      config,
       ...
     }:
     let
@@ -35,12 +36,12 @@
           };
           show_banner = false;
         };
-        #envFile.text = ''
-        #  $env.PATH = ["/etc/profiles/per-user/${config.home.username}/bin" "/nix/var/nix/profiles/system/sw/bin" "${config.home.homeDirectory}/.nix-profile/bin" "/run/current-system/sw/bin" "/nix/var/nix/profiles/default/bin" "/usr/local/bin" "/usr/bin" "/bin" "/usr/sbin" "/sbin"]
-        #  if ($nu.os-info.name == 'mac') {
-        #    $env.PATH ++= ["/opt/homebrew/bin" "/opt/homebrew/sbin"]
-        #  }
-        #'';
+        envFile.text = ''
+         $env.PATH = ["/etc/profiles/per-user/${config.home.username}/bin" "/nix/var/nix/profiles/system/sw/bin" "${config.home.homeDirectory}/.nix-profile/bin" "/run/current-system/sw/bin" "/nix/var/nix/profiles/default/bin" "/usr/local/bin" "/usr/bin" "/bin" "/usr/sbin" "/sbin"]
+         if ($nu.os-info.name == 'mac') {
+           $env.PATH ++= ["/opt/homebrew/bin" "/opt/homebrew/sbin"]
+         }
+        '';
         plugins = with pkgs.nushellPlugins; [
           polars
           # highlight
