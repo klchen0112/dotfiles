@@ -20,6 +20,9 @@
     devshell = {
       url = "github:numtide/devshell";
     };
+    disko = {
+      url = "github:nix-community/disko";
+    };
     doom-config = {
       flake = false;
       url = "github:klchen0112/doom";

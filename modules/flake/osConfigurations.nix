@@ -5,6 +5,10 @@ let
     ;
 in
 {
+  flake-file.inputs = {
+    disko.url = "github:nix-community/disko";
+  };
+
   flake.darwinConfigurations = {
     mbp-m1 = darwin "mbp-m1";
   };
