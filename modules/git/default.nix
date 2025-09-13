@@ -1,9 +1,9 @@
 topLevel: {
   flake.modules.homeManager.git =
     {
-    config,
-    pkgs,
-    lib,
+      config,
+      pkgs,
+      lib,
       ...
     }:
     {
