@@ -1,7 +1,6 @@
 {
   flake.modules.homeManager.i18n =
     {
-      pkgs,
       ...
     }:
     {
