@@ -24,6 +24,10 @@
       flake = false;
       url = "github:klchen0112/doom";
     };
+    doom-emacs = {
+      flake = false;
+      url = "github:doomemacs/doomemacs";
+    };
     emacs-overlay = {
       url = "github:nix-community/emacs-overlay/master";
     };
@@ -50,9 +54,6 @@
     };
     nix-darwin = {
       url = "github:nix-darwin/nix-darwin/master";
-    };
-    nix-doom-emacs-unstraightened = {
-      url = "github:marienz/nix-doom-emacs-unstraightened";
     };
     nix-index-database = {
       url = "github:nix-community/nix-index-database";

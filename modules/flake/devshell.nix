@@ -14,6 +14,7 @@
           nixfmt-rfc-style
           neovim
           inputs'.allfollow.packages.default
+          local.emacsIGC
         ];
       };
     };

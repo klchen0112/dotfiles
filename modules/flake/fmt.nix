@@ -2,19 +2,21 @@
 {
   flake-file.inputs = {
     git-hooks.url = "github:cachix/git-hooks.nix";
+    treefmt-nix.url = "github:numtide/treefmt-nix";
+
   };
   imports = [
     inputs.treefmt-nix.flakeModule
-    # inputs.git-hooks.flakeModule
+    inputs.git-hooks.flakeModule
   ];
   perSystem =
     {
       ...
     }:
     {
-      # pre-commit.settings = {
-      #   hooks.nixfmt-rfc-style.enable = true;
-      # };
+      pre-commit.settings = {
+        hooks.nixfmt-rfc-style.enable = true;
+      };
       treefmt = {
         projectRootFile = "flake.nix";
         programs.nixfmt.enable = true;

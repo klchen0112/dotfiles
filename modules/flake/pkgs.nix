@@ -6,9 +6,9 @@
 {
   flake-file.inputs = {
     pkgs-by-name-for-flake-parts.url = "github:drupol/pkgs-by-name-for-flake-parts";
-       nixpkgs.url = "git+https://github.com/nixos/nixpkgs?shallow=1&ref=nixos-unstable"; # Nix Packages
-      nixpkgs-unstable.url = "git+https://github.com/nixos/nixpkgs?shallow=1&ref=nixos-unstable-small"; # Nix Packages
-      nixpkgs-stable.url = "git+https://github.com/nixos/nixpkgs?shallow=1&ref=release-25.05"; # Nix Packages
+    nixpkgs.url = "git+https://github.com/nixos/nixpkgs?shallow=1&ref=nixos-unstable"; # Nix Packages
+    nixpkgs-unstable.url = "git+https://github.com/nixos/nixpkgs?shallow=1&ref=nixos-unstable-small"; # Nix Packages
+    nixpkgs-stable.url = "git+https://github.com/nixos/nixpkgs?shallow=1&ref=release-25.05"; # Nix Packages
   };
   imports = [
     inputs.pkgs-by-name-for-flake-parts.flakeModule
@@ -41,11 +41,12 @@
           })
           inputs.emacs-overlay.overlays.default
           inputs.nix-vscode-extensions.overlays.default
+          inputs.self.overlays.default
           # inputs.deploy-rs.overlays.default
           # (self: super: { deplkkoy-rs = { inherit (pkgs) deploy-rs; lib = super.deploy-rs.lib; }; })
         ];
       };
-      pkgsDirectory = ../../packages/by-name;
+      pkgsDirectory = ../../pkgs/by-name;
     };
   flake = {
     overlays.default =
