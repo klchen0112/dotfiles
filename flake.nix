@@ -82,6 +82,9 @@
     pkgs-by-name-for-flake-parts = {
       url = "github:drupol/pkgs-by-name-for-flake-parts";
     };
+    srvos = {
+      url = "github:nix-community/srvos";
+    };
     stylix = {
       url = "github:nix-community/stylix";
     };
