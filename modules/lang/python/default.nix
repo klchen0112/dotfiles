@@ -14,9 +14,6 @@
         pyright
         ruff
       ];
-      programs.mamba-cpp = {
-        enable = true;
-      };
       xdg.configFile."uv/uv.toml".text = ''
         [[index]]
         url = "https://pypi.tuna.tsinghua.edu.cn/simple"

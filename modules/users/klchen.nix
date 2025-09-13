@@ -14,6 +14,8 @@ let
     java
     utils
     ssh
+    python
+    mamba-cpp
   ];
 in
 {
