@@ -14,12 +14,16 @@
     imports = with inputs.self.modules.darwin; [
       klchen
       # homebrew
+      font
     ];
     home-manager.users.klchen.imports = with config.flake.modules.homeManager; [
       # git
       hammerspoon
       homebrew
+      ghostty
+
     ];
+    home-manager.backupFileExtension = "hmbp";
     system.primaryUser = "klchen";
     ids.gids.nixbld = 30000;
   };
