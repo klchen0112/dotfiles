@@ -38,7 +38,11 @@
           "*rc"
           "*.conf"
           "*/packages/*"
-
+          "*.h"
+          "*.c"
+          "*/makefile"
+          "rime"
+          "*.age"
         ];
       };
     };
