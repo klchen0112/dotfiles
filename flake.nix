@@ -64,6 +64,9 @@
     nix-vscode-extensions = {
       url = "github:nix-community/nix-vscode-extensions";
     };
+    nixos-hardware = {
+      url = "github:NixOS/nixos-hardware/master";
+    };
     nixpkgs = {
       url = "git+https://github.com/nixos/nixpkgs?shallow=1&ref=nixos-unstable";
     };

@@ -2,7 +2,6 @@
 let
   home.home-manager.users.klchen.imports = with inputs.self.modules.homeManager; [
     klchen
-    vscode
     nushell
     nix
     stylix
@@ -63,7 +62,7 @@ in
           "tty"
           "wheel"
         ];
-        shell = pkgs.fish;
+        shell = pkgs.bash;
         openssh.authorizedKeys.keys = config.flake.meta.users.klchen.authorizedKeys;
         initialHashedPassword = config.flake.meta.users.klchen.initialHashedPassword;
       };
@@ -74,7 +73,6 @@ in
     {
       imports = [
         home
-
       ];
 
       home-manager.users.klchen.home.homeDirectory = lib.mkForce "/Users/klchen";

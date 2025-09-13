@@ -1,6 +1,6 @@
 {
   flake.modules.homeManager.niri = {
-    stylix.targets.niri.enable = true;
+    # stylix.targets.niri.enable = true;
     programs.niri.settings = {
       environment = {
         CLUTTER_BACKEND = "wayland";

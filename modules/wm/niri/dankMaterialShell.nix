@@ -1,4 +1,7 @@
 {
+  flake-file.inputs = {
+    DankMaterialShell.url = "github:AvengeMedia/DankMaterialShell";
+  };
   flake.modules.homeManager.niri =
     {
       inputs,

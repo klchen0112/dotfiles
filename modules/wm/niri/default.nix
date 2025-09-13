@@ -1,3 +1,4 @@
+{ inputs, ... }:
 {
   flake-file.inputs = {
     niri.url = "github:sodiboo/niri-flake";
@@ -5,7 +6,7 @@
     DankMaterialShell.url = "github:AvengeMedia/DankMaterialShell";
   };
   flake.modules.nixos.niri =
-    { pkgs, inputs, ... }:
+    { pkgs, ... }:
     {
       imports = [
         inputs.niri.nixosModules.niri

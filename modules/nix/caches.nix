@@ -34,7 +34,7 @@ in
   flake.modules.darwin.nix = {
     nix.settings = nix_settings;
   };
-  flake.modules.linux.nix = {
+  flake.modules.nios.nix = {
     nix.settings = nix_settings;
   };
 }

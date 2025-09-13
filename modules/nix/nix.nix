@@ -9,8 +9,6 @@ let
     {
       nixpkgs = {
         config = {
-          allowBroken = true;
-          allowUnsupportedSystem = true;
           allowUnfree = true;
         };
       };
@@ -42,5 +40,5 @@ in
 
   flake.modules.homeManager.nix = cfg;
   flake.modules.darwin.nix = cfg;
-  flake.modules.linux.nix = cfg;
+  flake.modules.nixos.nix = cfg;
 }

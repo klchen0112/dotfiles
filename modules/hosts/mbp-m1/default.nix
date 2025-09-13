@@ -22,6 +22,7 @@
       homebrew
       ghostty
       aria2
+      vscode
     ];
     home-manager.backupFileExtension = "hmbp";
     system.primaryUser = "klchen";

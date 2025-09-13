@@ -1,18 +1,26 @@
+{ inputs, config, ... }:
 {
   flake.modules.nixos.a99r50 =
     {
-      config,
       lib,
       pkgs,
-      inputs,
       ...
     }:
     {
+      home-manager.users.klchen.imports = with config.flake.modules.homeManager; [
+        niri
+        ghostty
+        aria2
+      ];
+      home-manager.backupFileExtension = "hmbp";
+
       imports = [
-        inputs.self.nixosModules.default
+        inputs.self.modules.nixos.klchen
         # inputs.self.nixosModules.nvidia
-        inputs.self.nixosModules.desktop
-        inputs.self.nixosModules.access-tokens
+        inputs.self.modules.nixos.nvidia
+
+        inputs.self.modules.nixos.niri
+
         inputs.nixos-hardware.nixosModules.common-cpu-amd
         inputs.nixos-hardware.nixosModules.common-cpu-amd-zenpower
         inputs.nixos-hardware.nixosModules.common-cpu-amd-raphael-igpu
@@ -21,7 +29,6 @@
         inputs.nixos-hardware.nixosModules.common-pc-ssd
         inputs.nixos-hardware.nixosModules.common-hidpi
         inputs.disko.nixosModules.disko
-        ./hardware-configuration.nix
       ];
       boot.kernelParams = [
         # Since NVIDIA does not load kernel mode setting by default,
@@ -86,7 +93,6 @@
       hardware.nvidia = {
         modesetting.enable = true;
         nvidiaSettings = true;
-        package = config.boot.kernelPackages.nvidiaPackages.production;
         forceFullCompositionPipeline = true;
         powerManagement.enable = true;
         open = true; # tried both

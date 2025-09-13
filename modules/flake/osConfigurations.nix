@@ -1,12 +1,14 @@
 { inputs, ... }:
 let
   inherit (inputs.self.lib.mk-os)
-    darwin linux
+    darwin
+    linux
     ;
 in
 {
   flake-file.inputs = {
     disko.url = "github:nix-community/disko";
+    nixos-hardware.url = "github:NixOS/nixos-hardware/master";
   };
 
   flake.darwinConfigurations = {
