@@ -184,50 +184,50 @@
             "terminal.integrated.defaultProfile.linux" = "nushell";
             "terminal.integrated.profiles.osx" = {
               "bash" = {
-                "path" = "/etc/profiles/per-user/${config.home.username}//bin/bash";
+                "path" = "${config.home.homeDirectory}//bin/bash";
                 "args" = [
                   "-l"
                 ];
                 "icon" = "terminal-bash";
               };
               "zsh" = {
-                "path" = "/etc/profiles/per-user/${config.home.username}/bin/zsh";
+                "path" = "${config.home.homeDirectory}/bin/zsh";
                 "args" = [
                   "-l"
                 ];
               };
               "fish" = {
-                "path" = "/etc/profiles/per-user/${config.home.username}/bin/fish";
+                "path" = "${config.home.homeDirectory}/bin/fish";
                 "args" = [
                   "-l"
                 ];
               };
               "nushell" = {
-                "path" = "/etc/profiles/per-user/${config.home.username}/bin/nu";
+                "path" = "${config.home.homeDirectory}/bin/nu";
               };
             };
             "terminal.integrated.profiles.linux" = {
               "bash" = {
-                "path" = "/etc/profiles/per-user/${config.home.username}/bin/bash";
+                "path" = "${config.home.homeDirectory}/bin/bash";
                 "args" = [
                   "-l"
                 ];
                 "icon" = "terminal-bash";
               };
               "zsh" = {
-                "path" = "/etc/profiles/per-user/${config.home.username}/bin/zsh";
+                "path" = "${config.home.homeDirectory}/bin/zsh";
                 "args" = [
                   "-l"
                 ];
               };
               "fish" = {
-                "path" = "/etc/profiles/per-user/${config.home.username}/bin/fish";
+                "path" = "${config.home.homeDirectory}/bin/fish";
                 "args" = [
                   "-l"
                 ];
               };
               "nushell" = {
-                "path" = "/etc/profiles/per-user/${config.home.username}/bin/nu";
+                "path" = "${config.home.homeDirectory}/bin/nu";
               };
             };
             "terminal.integrated.enableVisualBell" = true;
