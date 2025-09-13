@@ -7,7 +7,6 @@
       ...
     }:
     {
-      imports = [ ./module ];
       home.packages = with pkgs; [ stats ];
       programs.hammerspoon = {
         enable = true; # enable the Hammerspoon module
@@ -19,11 +18,11 @@
         configPath = lib.cleanSource ./config;
 
         # Optional: Install Hammerspoon Spoons
-        spoons = with pkgs.hammerspoons; [
-          PaperWM
-          ActiveSpace
-          Swipe
-          WarpMouse
+        spoons = with pkgs.local; [
+          hammerspoons-PaperWM
+          hammerspoons-ActiveSpace
+          hammerspoons-Swipe
+          hammerspoons-WarpMouse
         ];
       };
       services.jankyborders = {

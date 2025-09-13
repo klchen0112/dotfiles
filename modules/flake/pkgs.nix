@@ -47,6 +47,7 @@
         ];
       };
       pkgsDirectory = ../../pkgs/by-name;
+      pkgsNameSeparator = "-";
     };
   flake = {
     overlays.default =
