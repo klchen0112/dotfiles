@@ -10,6 +10,10 @@ let
     starship
     utils
     git
+    emacs
+    java
+    utils
+    ssh
   ];
 in
 {
@@ -30,12 +34,12 @@ in
   flake.modules.homeManager.klchen =
     { pkgs, lib, ... }:
     {
-      home.username = lib.mkDefault "klchen";
+      home.username = lib.mkDefault " klchen";
       home.homeDirectory = lib.mkDefault (
         if pkgs.stdenvNoCC.isDarwin then "/Users/klchen" else "/home/klchen"
       );
       home.stateVersion = lib.mkDefault "25.05";
-      stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/${config.flake.meta.users.klchen.base16Scheme}.yaml";
+
     };
 
   flake.modules.nixos.klchen =
