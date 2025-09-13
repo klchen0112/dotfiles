@@ -1,5 +1,5 @@
 {
-  flake.modules.homeManager.nvidia =
+  flake.modules.nixos.nvidia =
     {
       config,
       lib,
