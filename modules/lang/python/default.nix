@@ -11,6 +11,8 @@
         # python3Full
         pyright # python language server
         # python311Packages.black # python formatter
+        pyright
+        ruff
       ];
       programs.mamba-cpp = {
         enable = true;

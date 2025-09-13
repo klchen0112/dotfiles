@@ -1,8 +1,8 @@
-{inputs,...}:
+{ inputs, ... }:
 {
   flake-file.inputs = {
     zen-browser.url = "github:0xc000022070/zen-browser-flake";
-      nur.url = "github:nix-community/NUR";
+    nur.url = "github:nix-community/NUR";
   };
   flake.modules.homeManager.zen =
     {
@@ -156,39 +156,37 @@
                 }
               ];
             };
-            extensions.packages =
-              with inputs.nur.legacyPackages."${pkgs.system}".repos.rycee.firefox-addons;
-              [
-                # see: https://github.com/nix-community/nur-combined/blob/master/repos/rycee/pkgs/firefox-addons/generated-firefox-addons.nix
-                augmented-steam
-                # auto-sort-bookmarks
-                # auto-tab-discard
-                # automatic-dark
-                # gopass-bridge
-                # https-everywhere
-                # link-cleaner
-                privacy-badger
-                # tree-style-tab
-                # multi-account-containers
-                # firefox-translations # translation
-                # immersive-translate
-                tridactyl # vimum
-                bitwarden
-                blocktube
-                rsshub-radar
-                # brotab
-                # onetab
-                ublock-origin
-                zotero-connector
-                copy-as-org-mode
-                violentmonkey
-                tab-session-manager
-                auto-tab-discard
-              ]
-              # ++ (with pkgs.firefox-addons; [
-              #   online-dictionary-helper
-              # ])
-              ;
+            extensions.packages = with inputs.nur.legacyPackages."${pkgs.system}".repos.rycee.firefox-addons; [
+              # see: https://github.com/nix-community/nur-combined/blob/master/repos/rycee/pkgs/firefox-addons/generated-firefox-addons.nix
+              augmented-steam
+              # auto-sort-bookmarks
+              # auto-tab-discard
+              # automatic-dark
+              # gopass-bridge
+              # https-everywhere
+              # link-cleaner
+              privacy-badger
+              # tree-style-tab
+              # multi-account-containers
+              # firefox-translations # translation
+              # immersive-translate
+              tridactyl # vimum
+              bitwarden
+              blocktube
+              rsshub-radar
+              # brotab
+              # onetab
+              ublock-origin
+              zotero-connector
+              copy-as-org-mode
+              violentmonkey
+              tab-session-manager
+              auto-tab-discard
+            ]
+            # ++ (with pkgs.firefox-addons; [
+            #   online-dictionary-helper
+            # ])
+            ;
           };
         };
       };

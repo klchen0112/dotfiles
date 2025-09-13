@@ -197,8 +197,7 @@
                 ];
               };
               "fish" = {
-                "path" = "/etc/profiles/per-user/${config.home.username
-                }/bin/fish";
+                "path" = "/etc/profiles/per-user/${config.home.username}/bin/fish";
                 "args" = [
                   "-l"
                 ];
