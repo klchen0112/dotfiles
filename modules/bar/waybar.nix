@@ -1,4 +1,4 @@
-{
+{ flake.modules.homeManager.waybar = {
   pkgs,
   ...
 }:
@@ -352,4 +352,5 @@
       };
     };
   };
+};
 }
