@@ -2,27 +2,32 @@
 {
   flake-file.inputs = {
     emacs-overlay.url = "github:nix-community/emacs-overlay/master";
-    nix-doom-emacs-unstraightened.url = "github:marienz/nix-doom-emacs-unstraightened";
-
     doom-config = {
       url = "github:klchen0112/doom";
       # url = "git+file:///Users/klchen/my/doom";
       flake = false;
     };
+    doom-emacs.flake = false;
+    doom-emacs.url = "github:doomemacs/doomemacs";
 
   };
   flake.modules.homeManager.emacs =
     {
       lib,
-      config,
       pkgs,
       ...
     }:
     let
 
-      emacsPackage = if pkgs.stdenv.isDarwin then pkgs.emacsIGC else pkgs.emacs-igc-pgtk;
+      emacsPackage = (if pkgs.stdenv.isDarwin then pkgs.local.emacsIGC else pkgs.emacs-igc-pgtk).pkgs.withPackages (
+        epkgs: with epkgs;
+        [
+          treesit-grammars.with-all-grammars
+          rime
+          telega
+        ]
+      );
       # doomPath = "${config.home.homeDirectory}/my/dotfiles/modules/editors/emacs/doom";
-
       extraPackages =
         with pkgs;
         [
@@ -47,118 +52,90 @@
           emacs-lsp-booster
           pkg-config
           # telega
-          libwebp
 
           #
           # texliveFull
 
           # emacs-lsp-booster
           # ------------------- Python ---
-          pyright
-          ruff
+
           # poetry
           # ------------------- Web -------------------------
-
-          typescript-language-server
-          emmet-ls
-          jsonnet-language-server
-          yaml-language-server
-          # Building tools
-          # bazel_7
-          dasel
-
           mermaid-cli
         ]
         ++ (lib.optionals pkgs.stdenv.isDarwin) [
           # pngpaste for org mode download clip
           pngpaste
           hugo
-          org-reminders
+          # pkgs.local.org-reminders
         ];
+      doom-install = pkgs.writeShellApplication {
+        name = "doom-install";
+        runtimeInputs = with pkgs; [
+          git
+          emacsPackage
+          ripgrep
+          openssh
+        ];
+        text = ''
+          # set -e
+          # if test -f "$HOME"/.config/emacs/.local/etc/@/init*.el; then
+          #   doom_rev="$(rg "put 'doom-version 'ref '\"(\w+)\"" "$HOME"/.config/emacs/.local/etc/@/init*.el -or '$1')"
+          # fi
+
+          # if test "''${doom_rev:-}" = "${inputs.doom-emacs.rev}"; then
+          #   echo "DOOM Emacs already at revision ${inputs.doom-emacs.rev}"
+          #   exit 0 # doom already pointing to same revision
+          # fi
+
+          (
+            echo "DOOM config obtaining revision ${inputs.doom-config.rev}"
+            if ! test -d "$HOME/.config/doom/.git"; then
+              git clone --depth 1 https://github.com/klchen0112/doom "$HOME/.config/doom"
+            fi
+            cd "$HOME/.config/doom"
+            git fetch --depth 1 origin "${inputs.doom-config.rev}"
+            git reset --hard "${inputs.doom-config.rev}"
+            ${emacsPackage}/bin/emacs --batch --eval "(require 'org)" --eval '(org-babel-tangle-file "config.org")'
+          )
+
+          (
+            echo "DOOM Emacs obtaining revision ${inputs.doom-emacs.rev}"
+            if ! test -d "$HOME/.config/emacs/.git"; then
+              git clone --depth 1 https://github.com/doomemacs/doomemacs "$HOME/.config/emacs"
+            fi
+            cd "$HOME/.config/emacs"
+            git fetch --depth 1 origin "${inputs.doom-emacs.rev}"
+            git reset --hard "${inputs.doom-emacs.rev}"
+            bin/doom install --no-config --no-env --no-install --no-fonts --no-hooks --force
+            echo "DOOM Emacs updated to revision ${inputs.doom-emacs.rev}"
+            bin/doom sync -e --force
+          )
+        '';
+      };
     in
     {
-      imports = [
-        inputs.nix-doom-emacs-unstraightened.hmModule
-      ];
-      home.sessionVariables = {
-        "EIDTOR" = "emacs";
+      nixpkgs = {
+        config.allowUnfree = true;
+        overlays = [
+          inputs.self.overlays.default
+        ];
       };
-      # stylix.targets.emacs.enable = false;
-      # xdg.configFile."doom".source = config.lib.file.mkOutOfStoreSymlink doomPath;
 
-      programs.pandoc.enable = true;
-
-      # home.file.".config/emacs".source = inputs.doomemacs;
-      # home.file.".config/doom" = {
-      # source = ./doom;
-      # recursive = true;
-      # onChange = "~/.config/emacs/bin/doom sync";
-      # };
-
-      # programs.emacs = {
-      # enable = true;
-      # package = emacsPackage;
-      # };
       home.packages = extraPackages;
-      # doom-emacs will enable programs.emacs
-      programs.doom-emacs = {
+
+      programs.emacs = {
         enable = true;
-        doomDir = inputs.doom-config;
-        emacs = emacsPackage;
-        tangleArgs = ".";
-        extraBinPackages = extraPackages;
-        extraPackages =
-          epkgs:
-          with epkgs;
-
-          let
-            websocket-bridge = epkgs.melpaBuild {
-              pname = "websocket-bridge";
-              version = "9999snapshot1";
-              packageRequires = [ epkgs.websocket ];
-              src = builtins.fetchTree {
-                type = "github";
-                owner = "ginqi7";
-                repo = "websocket-bridge";
-                rev = "535364f8fefd791b22525b7640d291e88c80179d";
-              };
-            };
-            org-reminders = epkgs.melpaBuild {
-              pname = "org-reminders";
-              version = "9999snapshot1";
-              packageRequires = [
-                websocket-bridge
-                epkgs.org
-                epkgs.transient
-              ];
-              src = builtins.fetchTree {
-                type = "github";
-                owner = "ginqi7";
-                repo = "org-reminders";
-                rev = "7d317b5591303265d86022de62498826285ba2c9";
-              };
-            };
-
-          in
-          [
-            treesit-grammars.with-all-grammars
-            rime
-            telega
-          ]
-          ++ (lib.optionals pkgs.stdenv.isDarwin [
-            websocket-bridge
-            org-reminders
-          ]);
-        doomLocalDir = "${config.home.homeDirectory}/.cache/doom/rime";
-        provideEmacs = true;
-        experimentalFetchTree = true;
+        package = emacsPackage;
       };
       services.emacs = {
         enable = true;
+        package = emacsPackage;
         client.enable = true;
         socketActivation.enable = true;
         startWithUserSession = "graphical";
         defaultEditor = true;
       };
+      home.activation.doom-install = ''run ${lib.getExe doom-install}'';
     };
 }
