@@ -21,7 +21,7 @@
       hammerspoon
       homebrew
       ghostty
-
+      aria2
     ];
     home-manager.backupFileExtension = "hmbp";
     system.primaryUser = "klchen";
