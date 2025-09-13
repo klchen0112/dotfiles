@@ -1,10 +1,10 @@
+{ inputs, ... }:
 {
   flake-file.inputs = {
     brew-nix.url = "github:BatteredBunny/brew-nix";
   };
   flake.modules.darwin.homebrew =
     {
-      inputs,
       ...
     }:
     {
@@ -75,4 +75,9 @@
         ];
       };
     };
+  flake.modules.homeManager.homebrew = {
+    nixpkgs.overlays = [
+      inputs.brew-nix.overlays.default
+    ];
+  };
 }
