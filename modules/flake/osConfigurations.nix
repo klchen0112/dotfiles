@@ -16,5 +16,6 @@ in
   };
   flake.nixosConfigurations = {
     a99r50 = linux "a99r50";
+    init = linux "init";
   };
 }
