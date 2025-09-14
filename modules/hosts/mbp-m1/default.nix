@@ -23,6 +23,7 @@
       ghostty
       aria2
       vscode
+      inputmethod
     ];
     home-manager.backupFileExtension = "hmbp";
     system.primaryUser = "klchen";
