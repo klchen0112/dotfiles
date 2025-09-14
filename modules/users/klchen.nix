@@ -14,7 +14,7 @@ let
     utils
     ssh
     python
-    mamba-cpp
+    # mamba-cpp
   ];
 in
 {
