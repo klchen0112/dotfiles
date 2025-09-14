@@ -12,6 +12,7 @@
         ghostty
         aria2
         kitty
+        bash
       ];
       home-manager.backupFileExtension = "hmbp";
 
