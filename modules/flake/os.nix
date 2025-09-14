@@ -8,7 +8,8 @@ let
         inputs.home-manager.nixosModules.home-manager
         inputs.self.modules.nixos.root
         inputs.self.modules.nixos.nix
-        # inputs.self.modules.nixos.${cls}
+        inputs.self.modules.nixos.nixos
+        # inputs.self.modules.nixos.${_cls}
         inputs.self.modules.nixos.${name}
         {
           networking.hostName = lib.mkDefault name;

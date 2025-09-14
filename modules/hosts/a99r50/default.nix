@@ -11,6 +11,7 @@
         niri
         ghostty
         aria2
+        kitty
       ];
       home-manager.backupFileExtension = "hmbp";
 
