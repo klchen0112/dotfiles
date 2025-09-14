@@ -1,7 +1,7 @@
 { inputs, lib, ... }:
 let
   mkNixos =
-    system: cls: name:
+    system: _cls: name:
     inputs.nixpkgs.lib.nixosSystem {
       inherit system;
       modules = [

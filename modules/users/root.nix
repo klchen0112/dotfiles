@@ -1,8 +1,8 @@
-{ config, inputs, ... }:
+{ config, ... }:
 {
 
   flake.modules.nixos.root =
-    { pkgs, ... }:
+    { ... }:
     {
       nix.settings.trusted-users = [ "root" ];
       users.users.root = {
