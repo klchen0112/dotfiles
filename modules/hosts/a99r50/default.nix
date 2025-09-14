@@ -19,8 +19,9 @@
       imports = [
         inputs.self.modules.nixos.klchen
         # inputs.self.nixosModules.nvidia
-        inputs.self.modules.nixos.nvidia
+        # inputs.self.modules.nixos.nvidia
 
+        inputs.self.modules.nixos.font
         inputs.self.modules.nixos.niri
 
         inputs.nixos-hardware.nixosModules.common-cpu-amd
@@ -44,7 +45,7 @@
         motherboard = "amd";
       };
 
-      boot.kernelPackages = pkgs.linuxPackages_latest;
+      # boot.kernelPackages = pkgs.linuxPackages_latest;
       system.stateVersion = "25.05";
 
       # Bootloader.
@@ -82,7 +83,7 @@
         ];
       };
       services.xserver.videoDrivers = [
-        "amdgpu" # example for Intel iGPU; use "amdgpu" here instead if your iGPU is AMD
+        # "amdgpu" # example for Intel iGPU; use "amdgpu" here instead if your iGPU is AMD
         "nvidia"
       ];
 
@@ -92,17 +93,25 @@
       # persist this file you won't be able to easily use journalctl to
       # look at journals for previous boots.
 
+      boot.kernelPackages = pkgs.linuxPackages_latest;
       hardware.nvidia = {
         modesetting.enable = true;
         nvidiaSettings = true;
-        forceFullCompositionPipeline = true;
-        powerManagement.enable = true;
+        # Nvidia power management. Experimental, and can cause sleep/suspend to fail.
+        # Enable this if you have graphical corruption issues or application crashes after waking
+        # up from sleep. This fixes it by saving the entire VRAM memory to /tmp/ instead
+        # of just the bare essentials.
+        powerManagement.enable = false;
+
+        # Fine-grained power management. Turns off GPU when not in use.
+        # Experimental and only works on modern Nvidia GPUs (Turing or newer).
+        powerManagement.finegrained = false;
         open = true; # tried both
         prime = {
-          offload = {
-            enable = true; # 禁用 PRIME 渲染卸载
-            enableOffloadCmd = true;
-          };
+          # offload = {
+          #   enable = true; # 禁用 PRIME 渲染卸载
+          #   enableOffloadCmd = true;
+          # };
           # sync.enable = true; # 禁用 PRIME 同步
           #	      intelBusId = "PCI:0:2:0";
           nvidiaBusId = "PCI:1:0:0";
