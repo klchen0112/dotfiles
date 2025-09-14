@@ -3,7 +3,6 @@
   flake-file.inputs = {
     niri.url = "github:sodiboo/niri-flake";
     # niri-caelestia-shell.url = "github:jutraim/niri-caelestia-shell";
-    DankMaterialShell.url = "github:AvengeMedia/DankMaterialShell";
   };
   flake.modules.nixos.niri =
     { pkgs, ... }:
