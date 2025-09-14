@@ -1,5 +1,6 @@
 let
   nix_settings = {
+    allow-import-from-derivation = true;
     substituters = [
       # replace official cache with a mirror located in China
       "https://mirrors.tuna.tsinghua.edu.cn/nix-channels/store?priority=0"
@@ -37,4 +38,5 @@ in
   flake.modules.nios.nix = {
     nix.settings = nix_settings;
   };
+  flake-file.nixConfig = nix_settings;
 }
