@@ -1,0 +1,123 @@
+{ inputs, config, ... }:
+{
+  flake.modules.nixos.a99r50 =
+    {
+      lib,
+      pkgs,
+      ...
+    }:
+    {
+      home-manager.users.klchen.imports = with config.flake.modules.homeManager; [
+        niri
+        ghostty
+        aria2
+        kitty
+        bash
+      ];
+      home-manager.backupFileExtension = "hmbp";
+
+      imports = [
+        inputs.self.modules.nixos.klchen
+        # inputs.self.nixosModules.nvidia
+        # inputs.self.modules.nixos.nvidia
+
+        inputs.self.modules.nixos.font
+        inputs.self.modules.nixos.niri
+
+        inputs.nixos-hardware.nixosModules.common-cpu-amd
+        inputs.nixos-hardware.nixosModules.common-cpu-amd-zenpower
+        inputs.nixos-hardware.nixosModules.common-cpu-amd-raphael-igpu
+        # offload
+        inputs.nixos-hardware.nixosModules.common-gpu-nvidia
+        inputs.nixos-hardware.nixosModules.common-pc-ssd
+        inputs.nixos-hardware.nixosModules.common-hidpi
+        inputs.disko.nixosModules.disko
+      ];
+      boot.kernelParams = [
+        # Since NVIDIA does not load kernel mode setting by default,
+        # enabling it is required to make Wayland compositors function properly.
+        "nvidia-drm.fbdev=1"
+      ];
+      services.xserver.enable = true;
+      services.hardware.openrgb = {
+        enable = true;
+        package = pkgs.openrgb-with-all-plugins;
+        motherboard = "amd";
+      };
+
+      # boot.kernelPackages = pkgs.linuxPackages_latest;
+      system.stateVersion = "25.05";
+
+      # Bootloader.
+      boot.loader.systemd-boot.enable = true;
+
+      # networking
+      networking.useNetworkd = lib.mkForce true;
+      networking.useDHCP = lib.mkForce false;
+
+      environment.systemPackages = with pkgs; [
+        neovim
+        pciutils
+      ];
+      # Load nvidia driver for Xorg and Wayland
+      hardware.graphics = {
+        enable = true;
+        enable32Bit = true;
+        extraPackages = with pkgs; [
+          amdvlk
+          vaapiVdpau
+          libvdpau-va-gl
+          vulkan-loader
+          vulkan-headers
+          nvidia-vaapi-driver
+          mesa
+          vulkan-tools
+          vulkan-validation-layers
+          # your Open GL, Vulkan and VAAPI drivers
+          #	     vpl-gpu-rt # for newer GPUs on NixOS >24.05 or unstable
+          # onevpl-intel-gpu  # for newer GPUs on NixOS <= 24.05
+          # intel-media-sdk   # for older GPUs
+        ];
+        extraPackages32 = with pkgs; [
+          driversi686Linux.amdvlk
+        ];
+      };
+      services.xserver.videoDrivers = [
+        # "amdgpu" # example for Intel iGPU; use "amdgpu" here instead if your iGPU is AMD
+        "nvidia"
+      ];
+
+      # Don't allow mutation of users outside of the config.
+      users.mutableUsers = false;
+      # machine-id is used by systemd for the journal, if you don't
+      # persist this file you won't be able to easily use journalctl to
+      # look at journals for previous boots.
+
+      boot.kernelPackages = pkgs.linuxPackages_latest;
+      hardware.nvidia = {
+        modesetting.enable = true;
+        nvidiaSettings = true;
+        # Nvidia power management. Experimental, and can cause sleep/suspend to fail.
+        # Enable this if you have graphical corruption issues or application crashes after waking
+        # up from sleep. This fixes it by saving the entire VRAM memory to /tmp/ instead
+        # of just the bare essentials.
+        powerManagement.enable = false;
+
+        # Fine-grained power management. Turns off GPU when not in use.
+        # Experimental and only works on modern Nvidia GPUs (Turing or newer).
+        powerManagement.finegrained = false;
+        open = true; # tried both
+        prime = {
+          # offload = {
+          #   enable = true; # 禁用 PRIME 渲染卸载
+          #   enableOffloadCmd = true;
+          # };
+          # sync.enable = true; # 禁用 PRIME 同步
+          #	      intelBusId = "PCI:0:2:0";
+          nvidiaBusId = "PCI:1:0:0";
+          amdgpuBusId = "PCI:12:0:0";
+        };
+      };
+      zramSwap.enable = true;
+    };
+}

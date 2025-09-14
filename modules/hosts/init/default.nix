@@ -1,0 +1,34 @@
+{ inputs, ... }:
+{
+  flake.modules.nixos.init =
+    {
+      lib,
+      pkgs,
+      ...
+    }:
+    {
+      imports = [
+        inputs.disko.nixosModules.disko
+      ];
+
+      system.stateVersion = "25.05";
+
+      # Bootloader.
+      boot.loader.systemd-boot.enable = true;
+
+      # networking
+      networking.useNetworkd = lib.mkForce true;
+      networking.useDHCP = lib.mkForce false;
+
+      environment.systemPackages = with pkgs; [
+        just
+        git
+        neovim
+        pciutils
+      ];
+
+      # Don't allow mutation of users outside of the config.
+      users.mutableUsers = false;
+      zramSwap.enable = true;
+    };
+}

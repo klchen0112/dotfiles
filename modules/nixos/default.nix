@@ -1,26 +1,9 @@
+{ inputs, ... }:
 {
-  flake,
-  lib,
-  ...
-}:
-{
-  imports = [
-    ./common
-    ./fonts
-    ./stylix
-    ./hardware
-    ./network
-    flake.inputs.srvos.nixosModules.mixins-terminfo
-    flake.inputs.srvos.nixosModules.mixins-nix-experimental
-    flake.inputs.srvos.nixosModules.mixins-trusted-nix-caches
-  ];
-  services.openssh = {
-    enable = lib.mkForce true;
-    settings.PermitRootLogin = "no";
+  flake.modules.nixos.nixos = {
+    services.openssh.enable = true;
+    imports = with inputs.self.modules.nixos; [
+      network
+    ];
   };
-  zramSwap = {
-    enable = true;
-  };
-  boot.initrd.systemd.enable = true;
-  programs.dconf.enable = true;
 }

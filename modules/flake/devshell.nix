@@ -1,16 +1,6 @@
-{ inputs, ... }:
 {
-  imports = [
-    inputs.git-hooks.flakeModule
-    inputs.treefmt-nix.flakeModule
-  ];
   perSystem =
-    {
-      inputs',
-      config,
-      pkgs,
-      ...
-    }:
+    { pkgs, inputs', ... }:
     {
       devShells.default = pkgs.mkShell {
         name = "nixos-config-shell";
@@ -20,27 +10,11 @@
           nixd
           nix-output-monitor
           inputs'.agenix.packages.default
+
           nixfmt-rfc-style
           neovim
-          lua-language-server
-        ];
-      };
-      pre-commit.settings = {
-        hooks.nixfmt-rfc-style.enable = true;
-      };
-      treefmt = {
-        projectRootFile = "flake.nix";
-        programs.nixfmt.enable = true;
-        programs.nixfmt.package = pkgs.nixfmt-rfc-style;
-        programs.shellcheck.enable = true;
-        programs.deno.enable = true;
-        programs.ruff.check = true;
-        programs.ruff.format = true;
-        programs.toml-sort.enable = true;
-        programs.stylua.enable = true;
-        settings.formatter.shellcheck.options = [
-          "-s"
-          "bash"
+          inputs'.allfollow.packages.default
+          local.emacsIGC
         ];
       };
     };

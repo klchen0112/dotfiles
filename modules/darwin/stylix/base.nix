@@ -1,1 +1,0 @@
-../../nixos/stylix/base.nix

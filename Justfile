@@ -39,3 +39,6 @@ disko-install  arg1:
 gen:
   nixos-generate-config --root /tmp/config --no-filesystems
   cp /tmp/config/etc/nixos/hardware-configuration.nix ./configurations/nixos/init/
+
+write:
+  nix run .#write-flake
