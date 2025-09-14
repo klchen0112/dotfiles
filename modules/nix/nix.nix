@@ -10,6 +10,7 @@ let
       nixpkgs = {
         config = {
           allowUnfree = true;
+          allowUnsupportedSystem = true;
         };
       };
       nix = {
