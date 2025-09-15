@@ -1,22 +1,4 @@
 { config, inputs, ... }:
-let
-  home.home-manager.users.klchen.imports = with inputs.self.modules.homeManager; [
-    klchen
-    nushell
-    nix
-    stylix
-    zen
-    starship
-    utils
-    git
-    emacs
-    java
-    utils
-    ssh
-    python
-    # mamba-cpp
-  ];
-in
 {
   flake.meta.users.klchen = {
     username = "klchen";
@@ -40,15 +22,24 @@ in
         if pkgs.stdenvNoCC.isDarwin then "/Users/klchen" else "/home/klchen"
       );
       home.stateVersion = lib.mkDefault "25.05";
-
+      imports = with inputs.self.modules.homeManager; [
+        nushell
+        nix
+        stylix
+        starship
+        utils
+        git
+        emacs
+        utils
+        ssh
+        python
+      ];
     };
 
   flake.modules.nixos.klchen =
     { pkgs, ... }:
     {
-      imports = [
-        home
-      ];
+      home-manager.users.klchen.imports = with inputs.self.modules.homeManager; [ klchen ];
       nix.settings.trusted-users = [ config.flake.meta.users.klchen.username ];
       users.users.klchen = {
         description = config.flake.meta.users.klchen.fullname;
@@ -71,10 +62,7 @@ in
   flake.modules.darwin.klchen =
     { lib, ... }:
     {
-      imports = [
-        home
-      ];
-
+      home-manager.users.klchen.imports = with inputs.self.modules.homeManager; [ klchen ];
       home-manager.users.klchen.home.homeDirectory = lib.mkForce "/Users/klchen";
       users.users.klchen = {
         name = config.flake.meta.users.klchen.username;

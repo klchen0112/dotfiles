@@ -14,16 +14,17 @@
     imports = with inputs.self.modules.darwin; [
       klchen
       homebrew
-
+      # access-tokens
     ];
     home-manager.users.klchen.imports = with config.flake.modules.homeManager; [
-      # git
+      zsh
       hammerspoon
       homebrew
       ghostty
       aria2
       vscode
       inputmethod
+      zen
     ];
     home-manager.backupFileExtension = "hmbp";
     system.primaryUser = "klchen";

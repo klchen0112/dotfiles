@@ -14,6 +14,7 @@ let
       inputs.srvos.darwinModules.mixins-nix-experimental
       inputs.srvos.darwinModules.mixins-trusted-nix-caches
       inputs.self.modules.darwin.font
+      inputs.self.modules.darwin.system
     ];
   };
   flake.modules.homeManager.home =
