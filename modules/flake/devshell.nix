@@ -13,7 +13,7 @@
 
           nixfmt-rfc-style
           neovim
-          inputs'.nix-auto-follow.packages.default
+          inputs'.allfollow.packages.default
         ];
       };
     };
