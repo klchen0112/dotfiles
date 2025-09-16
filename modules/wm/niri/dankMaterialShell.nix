@@ -1,6 +1,9 @@
 {
   flake-file.inputs = {
-    DankMaterialShell.url = "github:AvengeMedia/DankMaterialShell";
+    DankMaterialShell = {
+      url = "github:AvengeMedia/DankMaterialShell";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
   flake.modules.homeManager.niri =
     {

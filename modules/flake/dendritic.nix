@@ -9,7 +9,13 @@
     flake-file.url = "github:vic/flake-file";
     flake-parts.url = "github:hercules-ci/flake-parts";
     systems.url = "github:nix-systems/default";
-    allfollow.url = "github:spikespaz/allfollow";
+    allfollow = {
+      url = "github:spikespaz/allfollow";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        systems.follows = "systems";
+      };
+    };
   };
   flake-file.outputs = ''
     inputs: inputs.flake-parts.lib.mkFlake { inherit inputs; }

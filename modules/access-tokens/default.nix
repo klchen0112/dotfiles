@@ -1,7 +1,14 @@
 { inputs, ... }:
 {
   flake-file.inputs = {
-    agenix.url = "github:ryantm/agenix";
+    agenix = {
+      url = "github:ryantm/agenix";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        home-manager.follows = "home-manager";
+        nix-darwin.follows = "nix-darwin";
+      };
+    };
   };
   flake.modules.homeManager.access-tokens =
     {

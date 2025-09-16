@@ -1,8 +1,16 @@
 { inputs, ... }:
 {
   flake-file.inputs = {
-    zen-browser.url = "github:0xc000022070/zen-browser-flake";
-    nur.url = "github:nix-community/NUR";
+    zen-browser = {
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.home-manager.follows = "home-manager";
+      url = "github:0xc000022070/zen-browser-flake";
+    };
+    nur = {
+      url = "github:nix-community/NUR";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.flake-parts.follows = "flake-parts";
+    };
   };
   flake.modules.homeManager.zen =
     {

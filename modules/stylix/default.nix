@@ -2,6 +2,9 @@ topLevel: {
   flake-file.inputs = {
     stylix = {
       url = "github:nix-community/stylix";
+      inputs.nur.follows = "nur";
+      inputs.flake-parts.follows = "flake-parts";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
   };
   flake.modules.homeManager.stylix =

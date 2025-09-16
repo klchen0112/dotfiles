@@ -58,6 +58,11 @@
       url = "github:doomemacs/doomemacs";
     };
     emacs-overlay = {
+      inputs = {
+        nixpkgs = {
+          follows = "nixpkgs";
+        };
+      };
       url = "github:nix-community/emacs-overlay/master";
     };
     flake-file = {
@@ -67,6 +72,11 @@
       url = "github:hercules-ci/flake-parts";
     };
     git-hooks = {
+      inputs = {
+        nixpkgs = {
+          follows = "nixpkgs";
+        };
+      };
       url = "github:cachix/git-hooks.nix";
     };
     home-manager = {
@@ -76,18 +86,46 @@
       url = "github:vic/import-tree";
     };
     mac-app-util = {
+      inputs = {
+        nixpkgs = {
+          follows = "nixpkgs";
+        };
+      };
       url = "github:hraban/mac-app-util";
     };
     niri = {
+      inputs = {
+        nixpkgs = {
+          follows = "nixpkgs";
+        };
+        nixpkgs-stable = {
+          follows = "nixpkgs-stable";
+        };
+      };
       url = "github:sodiboo/niri-flake";
     };
     nix-darwin = {
+      inputs = {
+        nixpkgs = {
+          follows = "nixpkgs";
+        };
+      };
       url = "github:nix-darwin/nix-darwin/master";
     };
     nix-index-database = {
+      inputs = {
+        nixpkgs = {
+          follows = "nixpkgs";
+        };
+      };
       url = "github:nix-community/nix-index-database";
     };
     nix-vscode-extensions = {
+      inputs = {
+        nixpkgs = {
+          follows = "nixpkgs";
+        };
+      };
       url = "github:nix-community/nix-vscode-extensions";
     };
     nixos-hardware = {
@@ -106,27 +144,72 @@
       url = "git+https://github.com/nixos/nixpkgs?shallow=1&ref=nixos-unstable-small";
     };
     nixvim = {
+      inputs = {
+        nixpkgs = {
+          follows = "nixpkgs";
+        };
+        nixpkgs-stable = {
+          follows = "nixpkgs-stable";
+        };
+      };
       url = "github:nix-community/nixvim";
     };
     nur = {
+      inputs = {
+        flake-parts = {
+          follows = "flake-parts";
+        };
+        nixpkgs = {
+          follows = "nixpkgs";
+        };
+      };
       url = "github:nix-community/NUR";
     };
     pkgs-by-name-for-flake-parts = {
       url = "github:drupol/pkgs-by-name-for-flake-parts";
     };
     srvos = {
+      inputs = {
+        nixpkgs = {
+          follows = "nixpkgs";
+        };
+      };
       url = "github:nix-community/srvos";
     };
     stylix = {
+      inputs = {
+        flake-parts = {
+          follows = "flake-parts";
+        };
+        nixpkgs = {
+          follows = "nixpkgs";
+        };
+        nur = {
+          follows = "nur";
+        };
+      };
       url = "github:nix-community/stylix";
     };
     systems = {
       url = "github:nix-systems/default";
     };
     treefmt-nix = {
+      inputs = {
+        nixpkgs = {
+          follows = "nixpkgs";
+        };
+      };
       url = "github:numtide/treefmt-nix";
     };
     zen-browser = {
+      inputs = {
+        home-manager = {
+          follows = "home-manager";
+        };
+        nixpkgs = {
+          follows = "nixpkgs";
+        };
+      };
       url = "github:0xc000022070/zen-browser-flake";
     };
   };

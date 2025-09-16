@@ -1,7 +1,14 @@
 { inputs, ... }:
 {
   flake-file.inputs = {
-    nixvim.url = "github:nix-community/nixvim";
+    nixvim = {
+      url = "github:nix-community/nixvim";
+      inputs = {
+        nixpkgs-stable.follows = "nixpkgs-stable";
+        nixpkgs.follows = "nixpkgs";
+      };
+
+    };
   };
 
   flake.modules.homeManager.nixvim =

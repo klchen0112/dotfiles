@@ -1,7 +1,10 @@
 { inputs, ... }:
 {
   flake-file.inputs = {
-    emacs-overlay.url = "github:nix-community/emacs-overlay/master";
+    emacs-overlay = {
+      inputs.nixpkgs.follows = "nixpkgs";
+      url = "github:nix-community/emacs-overlay/master";
+    };
     doom-config = {
       url = "github:klchen0112/doom";
       # url = "git+file:///Users/klchen/my/doom";

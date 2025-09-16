@@ -1,7 +1,13 @@
 { inputs, ... }:
 {
   flake-file.inputs = {
-    niri.url = "github:sodiboo/niri-flake";
+    niri = {
+      url = "github:sodiboo/niri-flake";
+      inputs = {
+        nixpkgs-stable.follows = "nixpkgs-stable";
+        nixpkgs.follows = "nixpkgs";
+      };
+    };
     # niri-caelestia-shell.url = "github:jutraim/niri-caelestia-shell";
   };
   flake.modules.nixos.niri =
