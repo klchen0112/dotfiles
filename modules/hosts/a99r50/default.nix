@@ -15,6 +15,7 @@ niri
         kitty
         bash
         syncthing
+        emacs
       ];
       home-manager.backupFileExtension = "hmbp";
 
