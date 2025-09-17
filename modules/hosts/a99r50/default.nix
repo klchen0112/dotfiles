@@ -8,7 +8,8 @@
     }:
     {
       home-manager.users.klchen.imports = with config.flake.modules.homeManager; [
-        niri
+inputmethod
+niri
         ghostty
         aria2
         kitty
