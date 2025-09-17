@@ -25,6 +25,8 @@
       vscode
       inputmethod
       zen
+      syncthing
+      emacs
     ];
     home-manager.backupFileExtension = "hmbp";
     system.primaryUser = "klchen";

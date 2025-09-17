@@ -29,10 +29,10 @@
         starship
         utils
         git
-        emacs
         utils
         ssh
         python
+        nix-index
       ];
     };
 
