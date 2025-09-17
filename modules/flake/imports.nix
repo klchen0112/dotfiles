@@ -17,7 +17,6 @@
       url = "github:nix-community/home-manager";
       inputs = {
         nixpkgs.follows = "nixpkgs";
-        nix-darwin.follows = "nix-darwin";
       };
     };
   };

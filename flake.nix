@@ -114,9 +114,6 @@
     };
     home-manager = {
       inputs = {
-        nix-darwin = {
-          follows = "nix-darwin";
-        };
         nixpkgs = {
           follows = "nixpkgs";
         };
