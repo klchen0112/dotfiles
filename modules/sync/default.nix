@@ -35,6 +35,7 @@
                 "redmi-12t-pro"
                 "tower"
                 "mbp-m1"
+                "a99r50"
               ];
             };
           };
