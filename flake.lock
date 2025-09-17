@@ -25,7 +25,9 @@
     },
     "agenix": {
       "inputs": {
-        "darwin": "darwin",
+        "darwin": [
+          "nix-darwin"
+        ],
         "home-manager": [
           "home-manager"
         ],
@@ -194,28 +196,6 @@
         "type": "github"
       }
     },
-    "darwin": {
-      "inputs": {
-        "nixpkgs": [
-          "agenix",
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1744478979,
-        "narHash": "sha256-dyN+teG9G82G+m+PX/aSAagkC+vUv0SgUw3XkPhQodQ=",
-        "owner": "lnl7",
-        "repo": "nix-darwin",
-        "rev": "43975d782b418ebf4969e9ccba82466728c2851b",
-        "type": "github"
-      },
-      "original": {
-        "owner": "lnl7",
-        "ref": "master",
-        "repo": "nix-darwin",
-        "type": "github"
-      }
-    },
     "devshell": {
       "inputs": {
         "nixpkgs": [
@@ -293,22 +273,6 @@
       "original": {
         "owner": "AvengeMedia",
         "repo": "danklinux",
-        "type": "github"
-      }
-    },
-    "doom-config": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1758042379,
-        "narHash": "sha256-WMPOnxQzjxZknTbGnhD+38kA8b4n8YkIZU4wu+jf/XA=",
-        "owner": "klchen0112",
-        "repo": "doom",
-        "rev": "22985f366d302255c942c79a7b6da24fd0b45e6b",
-        "type": "github"
-      },
-      "original": {
-        "owner": "klchen0112",
-        "repo": "doom",
         "type": "github"
       }
     },
@@ -1011,6 +975,22 @@
         "url": "https://git.outfoxxed.me/quickshell/quickshell"
       }
     },
+    "rime": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1757866438,
+        "narHash": "sha256-rHbSzwLGZXMf4iDxm1mJYG9JdXo0Cd94i++gHhrg4DE=",
+        "owner": "klchen0112",
+        "repo": "rime-snow-combo-pinyin",
+        "rev": "147ffcc3a3be8a04e0b8493092fdc3a246fa261e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "klchen0112",
+        "repo": "rime-snow-combo-pinyin",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
         "DankMaterialShell": "DankMaterialShell",
@@ -1019,7 +999,6 @@
         "brew-nix": "brew-nix",
         "devshell": "devshell",
         "disko": "disko",
-        "doom-config": "doom-config",
         "doom-emacs": "doom-emacs",
         "emacs-overlay": "emacs-overlay",
         "flake-file": "flake-file",
@@ -1042,6 +1021,7 @@
         "nixvim": "nixvim",
         "nur": "nur",
         "pkgs-by-name-for-flake-parts": "pkgs-by-name-for-flake-parts",
+        "rime": "rime",
         "srvos": "srvos",
         "stylix": "stylix",
         "systems": "systems_7",

@@ -8,11 +8,11 @@
     allow-import-from-derivation = true;
     substituters = [
       "https://mirrors.tuna.tsinghua.edu.cn/nix-channels/store?priority=0"
-      "https://mirror.sjtu.edu.cn/nix-channels/store?priority=1"
-      "https://nix-community.cachix.org?priority=2"
-      "https://klchen0112.cachix.org?priority=3"
-      "https://niri.cachix.org?priority=4"
-      "https://cache.nixos.org?priority=5"
+      "https://mirror.sjtu.edu.cn/nix-channels/store?priority=0"
+      "https://nix-community.cachix.org?priority=1"
+      "https://niri.cachix.org?priority=1"
+      "https://cache.nixos.org?priority=1"
+      "https://klchen0112.cachix.org?priority=2"
     ];
     trusted-public-keys = [
       "klchen0112.cachix.org-1:cO5Ek4gcvoWtHslHjWn9U5ymU8ZiN7+tJo0jifbtRz4="
@@ -41,11 +41,11 @@
     };
     agenix = {
       inputs = {
+        darwin = {
+          follows = "nix-darwin";
+        };
         home-manager = {
           follows = "home-manager";
-        };
-        nix-darwin = {
-          follows = "nix-darwin";
         };
         nixpkgs = {
           follows = "nixpkgs";
@@ -85,10 +85,6 @@
     };
     disko = {
       url = "github:nix-community/disko";
-    };
-    doom-config = {
-      flake = false;
-      url = "github:klchen0112/doom";
     };
     doom-emacs = {
       flake = false;
@@ -212,6 +208,10 @@
     };
     pkgs-by-name-for-flake-parts = {
       url = "github:drupol/pkgs-by-name-for-flake-parts";
+    };
+    rime = {
+      flake = false;
+      url = "github:klchen0112/rime-snow-combo-pinyin";
     };
     srvos = {
       inputs = {
