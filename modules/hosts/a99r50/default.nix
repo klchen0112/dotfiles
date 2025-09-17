@@ -13,6 +13,7 @@
         aria2
         kitty
         bash
+        syncthing
       ];
       home-manager.backupFileExtension = "hmbp";
 
