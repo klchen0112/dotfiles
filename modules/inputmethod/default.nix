@@ -13,15 +13,6 @@
       ...
     }:
     let
-      my-rime-data = pkgs.stdenv.mkDerivation {
-        name = "my-rime-config-data";
-        src = inputs.rime; # 'self' 指向 flake 自身
-        buildInputs = [ pkgs.librime ];
-        installPhase = ''
-          mkdir -p $out
-          cp -r ./* $out/
-        '';
-      };
       rime-install = pkgs.writeShellApplication {
         name = "doom-install";
         runtimeInputs = with pkgs; [
@@ -51,14 +42,14 @@
         enable = pkgs.stdenv.isLinux;
         type = "fcitx5";
         fcitx5.addons = with pkgs; [
-          fcitx5-rime.override
-          { rimeDataPkgs = [ my-rime-data ]; }
+          (fcitx5-rime.override { rimeDataPkgs = [ pkgs.local.rime-combo-snow-pinyin ]; })
           fcitx5-configtool
           fcitx5-gtk # gtk im module
         ];
       };
 
-      home.activation.rime-install = lib.optionalAttrs pkgs.stdenv.isDarwin ''run ${lib.getExe rime-install}'';
+      home.activation.rime-install =
+        if pkgs.stdenv.isDarwin then ''run ${lib.getExe rime-install}'' else '''';
 
     };
 }
