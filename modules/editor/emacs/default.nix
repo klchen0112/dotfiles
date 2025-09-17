@@ -5,11 +5,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
       url = "github:nix-community/emacs-overlay/master";
     };
-    doom-config = {
-      url = "github:klchen0112/doom";
-      # url = "git+file:///Users/klchen/my/doom";
-      flake = false;
-    };
     doom-emacs.flake = false;
     doom-emacs.url = "github:doomemacs/doomemacs";
 
@@ -91,17 +86,6 @@
             echo "DOOM Emacs already at revision ${inputs.doom-emacs.rev}"
             exit 0 # doom already pointing to same revision
           fi
-
-          (
-            echo "DOOM config obtaining revision ${inputs.doom-config.rev}"
-            if ! test -d "$HOME/.config/doom/.git"; then
-              git clone --depth 1 https://github.com/klchen0112/doom "$HOME/.config/doom"
-            fi
-            cd "$HOME/.config/doom"
-            git fetch --depth 1 origin "${inputs.doom-config.rev}"
-            git reset --hard "${inputs.doom-config.rev}"
-            ${emacsPackage}/bin/emacs --batch --eval "(require 'org)" --eval '(org-babel-tangle-file "config.org")'
-          )
 
           (
             echo "DOOM Emacs obtaining revision ${inputs.doom-emacs.rev}"
