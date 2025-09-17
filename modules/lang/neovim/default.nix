@@ -4,10 +4,9 @@
     nixvim = {
       url = "github:nix-community/nixvim";
       inputs = {
-        nixpkgs-stable.follows = "nixpkgs-stable";
+        flake-parts.follows = "flake-parts";
         nixpkgs.follows = "nixpkgs";
       };
-
     };
   };
 

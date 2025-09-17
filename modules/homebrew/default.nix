@@ -1,7 +1,13 @@
 { inputs, ... }:
 {
   flake-file.inputs = {
-    brew-nix.url = "github:BatteredBunny/brew-nix";
+    brew-nix = {
+      url = "github:BatteredBunny/brew-nix";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        nix-darwin.follows = "nix-darwin";
+      };
+    };
   };
   flake.modules.darwin.homebrew =
     {

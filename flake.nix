@@ -32,18 +32,55 @@
 
   inputs = {
     DankMaterialShell = {
+      inputs = {
+        nixpkgs = {
+          follows = "nixpkgs";
+        };
+      };
       url = "github:AvengeMedia/DankMaterialShell";
     };
     agenix = {
+      inputs = {
+        home-manager = {
+          follows = "home-manager";
+        };
+        nix-darwin = {
+          follows = "nix-darwin";
+        };
+        nixpkgs = {
+          follows = "nixpkgs";
+        };
+      };
       url = "github:ryantm/agenix";
     };
     allfollow = {
+      inputs = {
+        nixpkgs = {
+          follows = "nixpkgs";
+        };
+        systems = {
+          follows = "systems";
+        };
+      };
       url = "github:spikespaz/allfollow";
     };
     brew-nix = {
+      inputs = {
+        nix-darwin = {
+          follows = "nix-darwin";
+        };
+        nixpkgs = {
+          follows = "nixpkgs";
+        };
+      };
       url = "github:BatteredBunny/brew-nix";
     };
     devshell = {
+      inputs = {
+        nixpkgs = {
+          follows = "nixpkgs";
+        };
+      };
       url = "github:numtide/devshell";
     };
     disko = {
@@ -80,6 +117,14 @@
       url = "github:cachix/git-hooks.nix";
     };
     home-manager = {
+      inputs = {
+        nix-darwin = {
+          follows = "nix-darwin";
+        };
+        nixpkgs = {
+          follows = "nixpkgs";
+        };
+      };
       url = "github:nix-community/home-manager";
     };
     import-tree = {
@@ -145,11 +190,11 @@
     };
     nixvim = {
       inputs = {
+        flake-parts = {
+          follows = "flake-parts";
+        };
         nixpkgs = {
           follows = "nixpkgs";
-        };
-        nixpkgs-stable = {
-          follows = "nixpkgs-stable";
         };
       };
       url = "github:nix-community/nixvim";
