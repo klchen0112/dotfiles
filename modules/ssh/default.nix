@@ -7,13 +7,16 @@
     {
       programs.ssh = {
         enable = true;
-        serverAliveInterval = 30;
-        serverAliveCountMax = 6;
-        compression = true;
-        controlMaster = "auto";
-        controlPath = "${config.home.homeDirectory}/.ssh/cm/%r@%h";
-        controlPersist = "10m";
+
         matchBlocks = {
+          "*" = {
+            serverAliveInterval = 30;
+            serverAliveCountMax = 6;
+            compression = true;
+            controlMaster = "auto";
+            controlPath = "${config.home.homeDirectory}/.ssh/cm/%r@%h";
+            controlPersist = "10m";
+          };
           xiaomi = {
             # hostkeyAlgorithms = "+ssh-rsa";
             # pubkeyAcceptedAlgorithms = "+ssh-rsa";
