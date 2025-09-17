@@ -37,10 +37,15 @@
           show_banner = false;
         };
         envFile.text = ''
-          $env.PATH = ["/etc/profiles/per-user/${config.home.username}/bin" "/nix/var/nix/profiles/system/sw/bin" "${config.home.homeDirectory}/.nix-profile/bin" "/run/current-system/sw/bin" "/nix/var/nix/profiles/default/bin" "/usr/local/bin" "/usr/bin" "/bin" "/usr/sbin" "/sbin"]
-          if ($nu.os-info.name == 'mac') {
-            $env.PATH ++= ["/opt/homebrew/bin" "/opt/homebrew/sbin"]
-          }
+        $env.PATH = (
+            $env.PATH
+            | split row (char esep)
+            | prepend $"/etc/profiles/per-user/($env.USER)/bin"
+            | prepend $"/Users/($env.USER)/.nix-profile/bin"
+            | prepend $"/home/($env.USER)/.nix-profile/bin"
+            | prepend '/run/current-system/sw/bin/'
+            | prepend "/nix/var/nix/profiles/default/bin"
+        )
         '';
         plugins = with pkgs.nushellPlugins; [
           polars

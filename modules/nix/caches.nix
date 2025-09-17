@@ -4,11 +4,11 @@ let
     substituters = [
       # replace official cache with a mirror located in China
       "https://mirrors.tuna.tsinghua.edu.cn/nix-channels/store?priority=0"
-      "https://mirror.sjtu.edu.cn/nix-channels/store?priority=1"
-      "https://nix-community.cachix.org?priority=2"
-      "https://klchen0112.cachix.org?priority=3"
-      "https://niri.cachix.org?priority=4"
-      "https://cache.nixos.org?priority=5"
+      "https://mirror.sjtu.edu.cn/nix-channels/store?priority=0"
+      "https://nix-community.cachix.org?priority=1"
+      "https://niri.cachix.org?priority=1"
+      "https://cache.nixos.org?priority=1"
+      "https://klchen0112.cachix.org?priority=2"
     ];
     trusted-substituters = [
       # replace official cache with a mirror located in China
