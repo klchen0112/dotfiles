@@ -16,6 +16,7 @@
       my-rime-data = pkgs.stdenv.mkDerivation {
         name = "my-rime-config-data";
         src = inputs.rime; # 'self' 指向 flake 自身
+        buildInputs = [ pkgs.librime ];
         installPhase = ''
           mkdir -p $out
           cp -r ./* $out/
