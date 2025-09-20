@@ -27,6 +27,7 @@
       zen
       syncthing
       emacs
+      keyboard
     ];
     home-manager.backupFileExtension = "hmbp";
     system.primaryUser = "klchen";

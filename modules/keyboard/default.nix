@@ -5,11 +5,10 @@
       home.packages =
         with pkgs;
         [
-          # qmk
+          qmk
         ]
         ++ lib.optionals pkgs.stdenv.isLinux [
           vial
-          qmk
         ];
     };
 }
