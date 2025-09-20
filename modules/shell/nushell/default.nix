@@ -36,18 +36,17 @@
           show_banner = false;
         };
         envFile.text = ''
-          if (sys host).name == "Darwin" {
-            $env.PATH = (
-                $env.PATH
-                | split row (char esep)
-                | prepend $"/etc/profiles/per-user/($env.USER)/bin"
-                | prepend $"/Users/($env.USER)/.nix-profile/bin"
-                | prepend $"/run/wrappers/bin"
-                | prepend '/run/current-system/sw/bin/'
-                | prepend "/nix/var/nix/profiles/default/bin"
-                | uniq --unique
-            )
-          }
+if (sys host).name == "Darwin" {
+    $env.PATH = (
+        $env.PATH
+        | prepend $"/etc/profiles/per-user/($env.USER)/bin"
+        | prepend $"/Users/($env.USER)/.nix-profile/bin"
+        | prepend "/run/wrappers/bin"
+        | prepend "/run/current-system/sw/bin"
+        | prepend "/nix/var/nix/profiles/default/bin"
+        | uniq
+    )
+}
         '';
         plugins = with pkgs.nushellPlugins; [
           polars
