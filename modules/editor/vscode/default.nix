@@ -187,50 +187,50 @@
             "terminal.integrated.defaultProfile.linux" = "nushell";
             "terminal.integrated.profiles.osx" = {
               "bash" = {
-                "path" = "${config.home.homeDirectory}//bin/bash";
+                "path" = "${config.home.homeDirectory}/.nix-profile/bin/bash";
                 "args" = [
                   "-l"
                 ];
                 "icon" = "terminal-bash";
               };
               "zsh" = {
-                "path" = "${config.home.homeDirectory}/bin/zsh";
+                "path" = "${config.home.homeDirectory}/.nix-profile/bin/zsh";
                 "args" = [
                   "-l"
                 ];
               };
               "fish" = {
-                "path" = "${config.home.homeDirectory}/bin/fish";
+                "path" = "${config.home.homeDirectory}/.nix-profile/bin/fish";
                 "args" = [
                   "-l"
                 ];
               };
               "nushell" = {
-                "path" = "${config.home.homeDirectory}/bin/nu";
+                "path" = "${config.home.homeDirectory}/.nix-profile/bin/nu";
               };
             };
             "terminal.integrated.profiles.linux" = {
               "bash" = {
-                "path" = "${config.home.homeDirectory}/bin/bash";
+                "path" = "${config.home.homeDirectory}/.nix-profile/bin/bash";
                 "args" = [
                   "-l"
                 ];
                 "icon" = "terminal-bash";
               };
               "zsh" = {
-                "path" = "${config.home.homeDirectory}/bin/zsh";
+                "path" = "${config.home.homeDirectory}/.nix-profile/bin/zsh";
                 "args" = [
                   "-l"
                 ];
               };
               "fish" = {
-                "path" = "${config.home.homeDirectory}/bin/fish";
+                "path" = "${config.home.homeDirectory}/.nix-profile/bin/fish";
                 "args" = [
                   "-l"
                 ];
               };
               "nushell" = {
-                "path" = "${config.home.homeDirectory}/bin/nu";
+                "path" = "${config.home.homeDirectory}/.nix-profile/bin/nu";
               };
             };
             "terminal.integrated.enableVisualBell" = true;
