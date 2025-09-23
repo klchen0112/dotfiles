@@ -3,6 +3,7 @@
   flake-file.inputs = rec {
     emacs-overlay = {
       inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs-stable.follows = "nixpkgs-stable";
       url = "github:nix-community/emacs-overlay/master";
     };
     doomemacs = {
@@ -14,6 +15,7 @@
     #   inputs.nixpkgs.follows = "nixpkgs";
     #   inputs.systems.follows = "systems";
     #   inputs.doomemacs.follows = "doomemacs";
+    #   inputs.emacs-overlay.follows = "emacs-overlay";
     # };
   };
   flake.modules.homeManager.emacs =

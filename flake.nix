@@ -84,6 +84,11 @@
       url = "github:numtide/devshell";
     };
     disko = {
+      inputs = {
+        nixpkgs = {
+          follows = "nixpkgs";
+        };
+      };
       url = "github:nix-community/disko";
     };
     doomemacs = {
@@ -95,6 +100,9 @@
         nixpkgs = {
           follows = "nixpkgs";
         };
+        nixpkgs-stable = {
+          follows = "nixpkgs-stable";
+        };
       };
       url = "github:nix-community/emacs-overlay/master";
     };
@@ -102,7 +110,15 @@
       url = "github:vic/flake-file";
     };
     flake-parts = {
+      inputs = {
+        nixpkgs-lib = {
+          follows = "nixpkgs-lib";
+        };
+      };
       url = "github:hercules-ci/flake-parts";
+    };
+    flake-utils = {
+      url = "github:numtide/flake-utils";
     };
     git-hooks = {
       inputs = {
@@ -128,6 +144,9 @@
         nixpkgs = {
           follows = "nixpkgs";
         };
+        treefmt-nix = {
+          follows = "treefmt-nix";
+        };
       };
       url = "github:hraban/mac-app-util";
     };
@@ -149,20 +168,6 @@
         };
       };
       url = "github:nix-darwin/nix-darwin/master";
-    };
-    nix-doom-emacs-unstraightened = {
-      inputs = {
-        doomemacs = {
-          follows = "doomemacs";
-        };
-        nixpkgs = {
-          follows = "nixpkgs";
-        };
-        systems = {
-          follows = "systems";
-        };
-      };
-      url = "github:marienz/nix-doom-emacs-unstraightened";
     };
     nix-index-database = {
       inputs = {
