@@ -26,7 +26,7 @@
           fi
 
           (
-            echo "DOOM Emacs obtaining revision ${inputs.doom-emacs.rev}"
+            echo "Rime obtaining revision ${inputs.rime.rev}"
             if ! test -d "$HOME/Library/Rime/.git"; then
               git clone --depth 1 https://github.com/klchen0112/rime-snow-combo-pinyin "$HOME/Library/Rime"
             fi
