@@ -58,7 +58,7 @@
       security.pam.services.greetd.enableGnomeKeyring = true;
     };
   flake.modules.homeManager.niri =
-    { pkgs, ... }:
+    { pkgs, config, ... }:
     {
       home.packages = with pkgs; [
         # screenshot
@@ -71,6 +71,29 @@
 
       ];
 
+      programs.niriswitcher = {
+        enable = true;
+        settings = {
+          center_on_focus = true;
+          appearance = {
+            system_theme = "dark";
+            icon_size = 64;
+          };
+        };
+      };
+      programs.niri.settings.spawn-at-startup = [
+        {
+          command = [
+            "niriswitcher"
+          ];
+        }
+      ];
+      programs.niri.settings.binds = with config.lib.niri.actions; {
+        "Alt+Tab".action = spawn "niriswitcherctl" "show" "--window";
+        "Alt+Shift+Tab" = spawn "niriswitcherctl" "show" "--window";
+        "Alt+Grave".action = spawn "niriswitcherctl" "show" "--workspace";
+        "Alt+Shift+Grave".action = spawn "niriswitcherctl" "show" "--workspace";
+      };
       # 夜光护眼软件
       # services.wlsunset = {
       #   enable = true;
