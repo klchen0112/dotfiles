@@ -9,12 +9,12 @@
       url = "github:doomemacs/doomemacs";
       flake = false;
     };
-    nix-doom-emacs-unstraightened = {
-      url = "github:marienz/nix-doom-emacs-unstraightened";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.systems.follows = "systems";
-      inputs.doomemacs.follows = "doomemacs";
-    };
+    # nix-doom-emacs-unstraightened = {
+    #   url = "github:marienz/nix-doom-emacs-unstraightened";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    #   inputs.systems.follows = "systems";
+    #   inputs.doomemacs.follows = "doomemacs";
+    # };
   };
   flake.modules.homeManager.emacs =
     {
@@ -24,57 +24,48 @@
     }:
     let
 
-      emacsPackage =
-        (if pkgs.stdenv.isDarwin then pkgs.local.emacsIGC else pkgs.emacs-igc-pgtk).pkgs.withPackages
-          (
-            epkgs: with epkgs; [
-              treesit-grammars.with-all-grammars
-              rime
-              telega
-            ]
-          );
+      emacsPackage = pkgs.emacsWithPackagesFromUsePackage {
+        package = if pkgs.stdenv.isDarwin then pkgs.local.emacsIGC else pkgs.emacs-igc-pgtk;
+        alwaysEnsure = true;
+        defaultInitFile = true;
+        extraEmacsPackages =
+          epkgs:
+
+          with pkgs;
+          [
+            fd
+            curl
+            # org mode dot
+            graphviz
+            imagemagick
+            # mpvi required
+            tesseract5
+            ffmpeg
+            poppler
+            ffmpegthumbnailer
+            mediainfo
+            sqlite
+            # email
+            # mu4e
+            # spell check
+            hunspell
+            languagetool
+            # for emacs lsp booster
+            emacs-lsp-booster
+            pkg-config
+
+            emacs-lsp-booster
+
+          ]
+          ++ (lib.optionals pkgs.stdenv.isDarwin) [
+            # pngpaste for org mode download clip
+            pngpaste
+            hugo
+            # pkgs.local.org-reminders
+          ];
+
+      };
       # doomPath = "${config.home.homeDirectory}/my/dotfiles/modules/editors/emacs/doom";
-      extraPackages =
-        with pkgs;
-        [
-          fd
-          curl
-          # org mode dot
-          graphviz
-          imagemagick
-          # mpvi required
-          tesseract5
-          ffmpeg
-          poppler
-          ffmpegthumbnailer
-          mediainfo
-          sqlite
-          # email
-          # mu4e
-          # spell check
-          hunspell
-          languagetool
-          # for emacs lsp booster
-          emacs-lsp-booster
-          pkg-config
-          # telega
-
-          #
-          # texliveFull
-
-          emacs-lsp-booster
-          # ------------------- Python ---
-
-          # poetry
-          # ------------------- Web -------------------------
-          mermaid-cli
-        ]
-        ++ (lib.optionals pkgs.stdenv.isDarwin) [
-          # pngpaste for org mode download clip
-          pngpaste
-          hugo
-          # pkgs.local.org-reminders
-        ];
       doom-install = pkgs.writeShellApplication {
         name = "doom-install";
         runtimeInputs = with pkgs; [
@@ -110,7 +101,6 @@
       };
     in
     {
-      home.packages = extraPackages;
 
       programs.emacs = {
         enable = true;
@@ -124,6 +114,6 @@
         startWithUserSession = "graphical";
         defaultEditor = true;
       };
-      home.activation.doom-install = ''run ${lib.getExe doom-install}'';
+      # home.activation.doom-install = ''run ${lib.getExe doom-install}'';
     };
 }
