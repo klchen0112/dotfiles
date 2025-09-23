@@ -1,13 +1,20 @@
 { inputs, ... }:
 {
-  flake-file.inputs = {
+  flake-file.inputs = rec {
     emacs-overlay = {
       inputs.nixpkgs.follows = "nixpkgs";
       url = "github:nix-community/emacs-overlay/master";
     };
-    doom-emacs.flake = false;
-    doom-emacs.url = "github:doomemacs/doomemacs";
-
+    doomemacs = {
+      url = "github:doomemacs/doomemacs";
+      flake = false;
+    };
+    nix-doom-emacs-unstraightened = {
+      url = "github:marienz/nix-doom-emacs-unstraightened";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.systems.follows = "systems";
+      inputs.doomemacs.follows = "doomemacs";
+    };
   };
   flake.modules.homeManager.emacs =
     {
@@ -55,7 +62,7 @@
           #
           # texliveFull
 
-          # emacs-lsp-booster
+          emacs-lsp-booster
           # ------------------- Python ---
 
           # poetry
@@ -82,21 +89,21 @@
             doom_rev="$(rg "put 'doom-version 'ref '\"(\w+)\"" "$HOME"/.config/emacs/.local/etc/@/init*.el -or '$1')"
           fi
 
-          if test "''${doom_rev:-}" = "${inputs.doom-emacs.rev}"; then
-            echo "DOOM Emacs already at revision ${inputs.doom-emacs.rev}"
+          if test "''${doom_rev:-}" = "${inputs.doomemacs.rev}"; then
+            echo "DOOM Emacs already at revision ${inputs.doomemacs.rev}"
             exit 0 # doom already pointing to same revision
           fi
 
           (
-            echo "DOOM Emacs obtaining revision ${inputs.doom-emacs.rev}"
+            echo "DOOM Emacs obtaining revision ${inputs.doomemacs.rev}"
             if ! test -d "$HOME/.config/emacs/.git"; then
               git clone --depth 1 https://github.com/doomemacs/doomemacs "$HOME/.config/emacs"
             fi
             cd "$HOME/.config/emacs"
-            git fetch --depth 1 origin "${inputs.doom-emacs.rev}"
-            git reset --hard "${inputs.doom-emacs.rev}"
+            git fetch --depth 1 origin "${inputs.doomemacs.rev}"
+            git reset --hard "${inputs.doomemacs.rev}"
             bin/doom install --no-config --no-env --no-install --no-fonts --no-hooks --force
-            echo "DOOM Emacs updated to revision ${inputs.doom-emacs.rev}"
+            echo "DOOM Emacs updated to revision ${inputs.doomemacs.rev}"
             bin/doom sync -e --force
           )
         '';
