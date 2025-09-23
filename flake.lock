@@ -276,14 +276,14 @@
         "type": "github"
       }
     },
-    "doom-emacs": {
+    "doomemacs": {
       "flake": false,
       "locked": {
-        "lastModified": 1758086625,
-        "narHash": "sha256-lVjmxvA3UBofJsvENa18SuldgT/5hAARFSSQHB5qzrw=",
+        "lastModified": 1758598203,
+        "narHash": "sha256-jFDlDAXeYAMtwbYq59VE1rpcRhLsj4M2UUsROOXu3+Q=",
         "owner": "doomemacs",
         "repo": "doomemacs",
-        "rev": "395a807aae955c47fe00fab79120ec3f20da1e4e",
+        "rev": "7e711d53cac8badaaa1a458e3e80d16495832a50",
         "type": "github"
       },
       "original": {
@@ -310,6 +310,29 @@
       "original": {
         "owner": "nix-community",
         "ref": "master",
+        "repo": "emacs-overlay",
+        "type": "github"
+      }
+    },
+    "emacs-overlay_2": {
+      "inputs": {
+        "nixpkgs": [
+          "nix-doom-emacs-unstraightened"
+        ],
+        "nixpkgs-stable": [
+          "nix-doom-emacs-unstraightened"
+        ]
+      },
+      "locked": {
+        "lastModified": 1758504501,
+        "narHash": "sha256-xg8fVogl3HivVNJufmq/9RZFoIou36rDBWCji1GH34I=",
+        "owner": "nix-community",
+        "repo": "emacs-overlay",
+        "rev": "e88a8c1edf089b1a31378cf48f7ca3854950dc2a",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-community",
         "repo": "emacs-overlay",
         "type": "github"
       }
@@ -697,6 +720,33 @@
         "type": "github"
       }
     },
+    "nix-doom-emacs-unstraightened": {
+      "inputs": {
+        "doomemacs": [
+          "doomemacs"
+        ],
+        "emacs-overlay": "emacs-overlay_2",
+        "nixpkgs": [
+          "nixpkgs"
+        ],
+        "systems": [
+          "systems"
+        ]
+      },
+      "locked": {
+        "lastModified": 1758542136,
+        "narHash": "sha256-8r6qZgxuAFJrlfiTpuQJl/cpydP3YTU8jIpE/2IXZuw=",
+        "owner": "marienz",
+        "repo": "nix-doom-emacs-unstraightened",
+        "rev": "1e3f4e31f6c8d9852c9aaa6064add4265df848c6",
+        "type": "github"
+      },
+      "original": {
+        "owner": "marienz",
+        "repo": "nix-doom-emacs-unstraightened",
+        "type": "github"
+      }
+    },
     "nix-index-database": {
       "inputs": {
         "nixpkgs": [
@@ -999,7 +1049,7 @@
         "brew-nix": "brew-nix",
         "devshell": "devshell",
         "disko": "disko",
-        "doom-emacs": "doom-emacs",
+        "doomemacs": "doomemacs",
         "emacs-overlay": "emacs-overlay",
         "flake-file": "flake-file",
         "flake-parts": "flake-parts",
@@ -1009,6 +1059,7 @@
         "mac-app-util": "mac-app-util",
         "niri": "niri",
         "nix-darwin": "nix-darwin",
+        "nix-doom-emacs-unstraightened": "nix-doom-emacs-unstraightened",
         "nix-index-database": "nix-index-database",
         "nix-vscode-extensions": "nix-vscode-extensions",
         "nixos-hardware": "nixos-hardware",

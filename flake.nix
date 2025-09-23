@@ -86,7 +86,7 @@
     disko = {
       url = "github:nix-community/disko";
     };
-    doom-emacs = {
+    doomemacs = {
       flake = false;
       url = "github:doomemacs/doomemacs";
     };
@@ -149,6 +149,20 @@
         };
       };
       url = "github:nix-darwin/nix-darwin/master";
+    };
+    nix-doom-emacs-unstraightened = {
+      inputs = {
+        doomemacs = {
+          follows = "doomemacs";
+        };
+        nixpkgs = {
+          follows = "nixpkgs";
+        };
+        systems = {
+          follows = "systems";
+        };
+      };
+      url = "github:marienz/nix-doom-emacs-unstraightened";
     };
     nix-index-database = {
       inputs = {
