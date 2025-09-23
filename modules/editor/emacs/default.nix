@@ -29,6 +29,7 @@
       emacsPackage = pkgs.emacsWithPackagesFromUsePackage {
         package = if pkgs.stdenv.isDarwin then pkgs.local.emacsIGC else pkgs.emacs-igc-pgtk;
         alwaysEnsure = true;
+        alwaysTangle = true;
         # defaultInitFile = true;
         config = ./config.org;
         extraEmacsPackages =
