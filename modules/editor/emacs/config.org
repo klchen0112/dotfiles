@@ -1,6 +1,6 @@
 * early-init
 
-#+begin_src emacs-lisp :tangle early-init.el
+#+begin_src emacs-lisp :tangle config.el
 (setq gc-cons-threshold most-positive-fixnum)
 
 ;; All our packages come from Nix
@@ -10,18 +10,38 @@
 (provide 'early-init)
 ;;; early-init.el ends here
 #+end_src
-* init.el
-
+* config.el
+** config.el
+*** lexical-binding
+#+begin_src emacs-lisp :tangle config.el
+;;; -*- lexical-binding: t -*-
+#+end_src
+*** Native Compilation
+#+begin_src emacs-lisp :tangle config.el
+(when (and (fboundp 'native-comp-available-p)
+           (native-comp-available-p))
+  (setq native-comp-async-report-warnings-errors nil
+        native-comp-deferred-compilation t))
+#+end_src
+*** use-package
+#+begin_src emacs-lisp :tangle config.el
+(require 'use-package)
+(setq use-package-always-ensure t
+      use-package-always-defer t
+      use-package-expand-minimally t)
+#+end_src
 ** Startup
-#+begin_src emacs-lisp :tangle init.el
+#+begin_src emacs-lisp :tangle config.el
 (use-package meow
+   :ensure t
   :config
   (meow-setup)
   (meow-global-mode 1))
 #+end_src
 ** org mode
-#+begin_src emacs-lisp :tangle init.el
+#+begin_src emacs-lisp :tangle config.el
 (use-package org-modern
+ :ensure t
   :hook
   (org-mode . org-modern-mode)
 )
