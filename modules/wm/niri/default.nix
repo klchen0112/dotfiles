@@ -90,7 +90,7 @@
       ];
       programs.niri.settings.binds = with config.lib.niri.actions; {
         "Alt+Tab".action = spawn "niriswitcherctl" "show" "--window";
-        "Alt+Shift+Tab" = spawn "niriswitcherctl" "show" "--window";
+        "Alt+Shift+Tab".action = spawn "niriswitcherctl" "show" "--window";
         "Alt+Grave".action = spawn "niriswitcherctl" "show" "--workspace";
         "Alt+Shift+Grave".action = spawn "niriswitcherctl" "show" "--workspace";
       };
