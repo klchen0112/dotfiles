@@ -1,0 +1,28 @@
+* early-init
+
+#+begin_src emacs-lisp :tangle early-init.el
+(setq gc-cons-threshold most-positive-fixnum)
+
+;; All our packages come from Nix
+(setq package-enable-at-startup nil
+      package-archives nil)
+
+(provide 'early-init)
+;;; early-init.el ends here
+#+end_src
+* init.el
+
+** Startup
+#+begin_src emacs-lisp :tangle init.el
+(use-package meow
+  :config
+  (meow-setup)
+  (meow-global-mode 1))
+#+end_src
+** org mode
+#+begin_src emacs-lisp :tangle init.el
+(use-package org-modern
+  :hook
+  (org-mode . org-modern-mode)
+)
+#+end_src

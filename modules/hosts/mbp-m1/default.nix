@@ -26,7 +26,7 @@
       inputmethod
       zen
       syncthing
-      # emacs
+      emacs
       keyboard
     ];
     home-manager.backupFileExtension = "hmbp";

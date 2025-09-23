@@ -30,6 +30,7 @@
         package = if pkgs.stdenv.isDarwin then pkgs.local.emacsIGC else pkgs.emacs-igc-pgtk;
         alwaysEnsure = true;
         defaultInitFile = true;
+        config = ./config.org;
         extraEmacsPackages =
           epkgs:
 
