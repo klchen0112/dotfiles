@@ -238,3 +238,83 @@
             org-roam-ui-open-on-start t)
 )
 #+end_src
+* Compeletion
+
+#+begin_src emacs-lisp
+
+    (use-package orderless
+      :ensure t
+      :custom
+      (completion-styles '(orderless basic))
+      (completion-category-overrides '((file (styles partial-completion))))
+      (completion-category-defaults nil) ;; Disable defaults, use our settings
+      (completion-pcm-leading-wildcard t)
+      )
+
+    (use-package vertico
+      :ensure t
+      :init
+      (vertico-mode)
+      :custom
+      (vertico-cycle t)
+      )
+
+
+    (use-package consult
+      :ensure t
+      )
+
+    (use-package corfu
+      :ensure t
+      :init
+      (global-corfu-mode)
+     )
+
+    (use-package cape
+      :ensure t
+      :init
+        (add-hook 'completion-at-point-functions #'cape-dabbrev)
+    (add-hook 'completion-at-point-functions #'cape-file)
+    (add-hook 'completion-at-point-functions #'cape-elisp-block)
+    )
+
+    (use-package consult
+      :ensure t)
+
+  (use-package tempel
+  	     :ensure t
+  	     :init
+
+  ;; Setup completion at point
+  (defun tempel-setup-capf ()
+    ;; Add the Tempel Capf to `completion-at-point-functions'.
+    ;; `tempel-expand' only triggers on exact matches. Alternatively use
+    ;; `tempel-complete' if you want to see all matches, but then you
+    ;; should also configure `tempel-trigger-prefix', such that Tempel
+    ;; does not trigger too often when you don't expect it. NOTE: We add
+    ;; `tempel-expand' *before* the main programming mode Capf, such
+    ;; that it will be tried first.
+    (setq-local completion-at-point-functions
+                (cons #'tempel-expand
+                      completion-at-point-functions)))
+
+  (add-hook 'conf-mode-hook 'tempel-setup-capf)
+  (add-hook 'prog-mode-hook 'tempel-setup-capf)
+  (add-hook 'text-mode-hook 'tempel-setup-capf)
+
+  	     )
+    (use-package tempel-collection
+    :ensure t
+    :after tempel
+  )
+   #+end_src
+
+* Project
+#+begin_src emacs-lisp
+  (use-package projectile
+    :ensure t
+    :diminish projectile-mode)
+   #+end_src
+
+* Files
+
