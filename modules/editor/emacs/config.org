@@ -16,6 +16,16 @@
   (setq native-comp-async-report-warnings-errors nil
         native-comp-deferred-compilation t))
 #+end_src
+
+* Constants
+
+#+begin_src emacs-lisp
+;; 判断操作系统类型
+(defconst IS-MAC (eq system-type 'darwin))
+(defconst IS-LINUX (eq system-type 'gnu/linux))
+(defconst IS-WINDOWS (eq system-type 'windows-nt))
+
+#+end_src
 * use-package
 #+begin_src emacs-lisp
 (setq use-package-always-defer t)
@@ -114,6 +124,35 @@
      )
      (meow-global-mode 1)
   )
+#+end_src
+* Ui
+#+begin_src emacs-lisp
+ ;; Disable UI chrome earl
+  (menu-bar-mode -1)
+  (tool-bar-mode -1)
+  (scroll-bar-mode -1)
+
+  (setq window-divider-default-right-width 0)
+  (setq window-divider-default-bottom-width 0)
+  (window-divider-mode -1)
+
+  (add-to-list 'default-frame-alist '(internal-border-width . 0))
+  (set-frame-parameter nil 'internal-border-width 0)
+#+end_src
+
+** Font
+*** Nerd icons
+
+#+begin_src emacs-lisp
+
+
+#+end_src
+** Dashboard
+
+#+begin_src emacs-lisp
+(use-package dashboard
+  :config
+  (dashboard-setup-startup-hook))
 #+end_src
 * org mode
 #+begin_src emacs-lisp
