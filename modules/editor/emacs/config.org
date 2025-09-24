@@ -309,6 +309,30 @@
   )
    #+end_src
 
+* Lang
+** LSP
+
+#+begin_src emacs-lisp
+  (use-package eglot
+    :ensure t
+    :custom
+    (eglot-autoshutdown t)
+    )
+
+  (use-package eglot-booster
+	:after eglot
+	:config	(eglot-booster-mode))
+   #+end_src
+** JAVA
+#+begin_src emacs-lsip
+(use-package eglot-java
+  :ensure t
+)
+#+end_src
+** Python
+
+** CPP
+
 * Project
 #+begin_src emacs-lisp
   (use-package projectile
@@ -318,3 +342,10 @@
 
 * Files
 
+* Git
+
+#+begin_src emacs-lisp
+
+  (use-package magit
+    :ensure t)
+#+end_src
