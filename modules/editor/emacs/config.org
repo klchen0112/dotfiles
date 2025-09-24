@@ -144,16 +144,36 @@
 *** Nerd icons
 
 #+begin_src emacs-lisp
-
-
+  (use-package nerd-icons
+    :defer t)
 #+end_src
-** Dashboard
+
+
+** Dashboard And Modline
+
 
 #+begin_src emacs-lisp
-(use-package dashboard
-  :config
-  (dashboard-setup-startup-hook))
+  (use-package dashboard
+    :config
+    (dashboard-setup-startup-hook))
+
+ (use-package doom-modeline
+  :ensure t
+  :init (doom-modeline-mode 1))
 #+end_src
+
+* Navigation
+** which-key
+
+#+begin_src emacs-lisp
+(use-package which-key
+    :hook (after-init . which-key-mode)
+    :custom
+    (setq which-key-idle-delay 0.3)
+)
+#+end_src
+
+
 * org mode
 #+begin_src emacs-lisp
   (setq org-directory "~/org")
