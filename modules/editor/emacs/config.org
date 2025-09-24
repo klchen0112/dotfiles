@@ -349,3 +349,10 @@
   (use-package magit
     :ensure t)
 #+end_src
+* Terminal
+
+#+begin_src emacs-lisp
+  (use-package eat
+    :ensure t)
+
+#+end_src
