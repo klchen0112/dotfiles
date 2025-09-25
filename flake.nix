@@ -91,6 +91,10 @@
       };
       url = "github:nix-community/disko";
     };
+    doom-config = {
+      flake = false;
+      url = "github:klchen0112/doom";
+    };
     doomemacs = {
       flake = false;
       url = "github:doomemacs/doomemacs";
@@ -168,6 +172,23 @@
         };
       };
       url = "github:nix-darwin/nix-darwin/master";
+    };
+    nix-doom-emacs-unstraightened = {
+      inputs = {
+        doomemacs = {
+          follows = "doomemacs";
+        };
+        emacs-overlay = {
+          follows = "emacs-overlay";
+        };
+        nixpkgs = {
+          follows = "nixpkgs";
+        };
+        systems = {
+          follows = "systems";
+        };
+      };
+      url = "github:marienz/nix-doom-emacs-unstraightened";
     };
     nix-index-database = {
       inputs = {

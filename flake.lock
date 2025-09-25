@@ -278,6 +278,22 @@
         "type": "github"
       }
     },
+    "doom-config": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1758627947,
+        "narHash": "sha256-NjiVicRjALbo+rJGedhzjDOc3Kw140Ar7GoYo4LwnWc=",
+        "owner": "klchen0112",
+        "repo": "doom",
+        "rev": "1bddb856a1b8ef5b211cdc7a655936de5465fd04",
+        "type": "github"
+      },
+      "original": {
+        "owner": "klchen0112",
+        "repo": "doom",
+        "type": "github"
+      }
+    },
     "doomemacs": {
       "flake": false,
       "locked": {
@@ -723,6 +739,35 @@
         "type": "github"
       }
     },
+    "nix-doom-emacs-unstraightened": {
+      "inputs": {
+        "doomemacs": [
+          "doomemacs"
+        ],
+        "emacs-overlay": [
+          "emacs-overlay"
+        ],
+        "nixpkgs": [
+          "nixpkgs"
+        ],
+        "systems": [
+          "systems"
+        ]
+      },
+      "locked": {
+        "lastModified": 1758789710,
+        "narHash": "sha256-+xbJDFo5mpirqhakvwdHAxijzFNwzU+TzE5MSWQmshg=",
+        "owner": "marienz",
+        "repo": "nix-doom-emacs-unstraightened",
+        "rev": "90abd165638a6a937c1f52b21df3ed08e7448a9a",
+        "type": "github"
+      },
+      "original": {
+        "owner": "marienz",
+        "repo": "nix-doom-emacs-unstraightened",
+        "type": "github"
+      }
+    },
     "nix-index-database": {
       "inputs": {
         "nixpkgs": [
@@ -962,6 +1007,7 @@
         "brew-nix": "brew-nix",
         "devshell": "devshell",
         "disko": "disko",
+        "doom-config": "doom-config",
         "doomemacs": "doomemacs",
         "emacs-overlay": "emacs-overlay",
         "flake-file": "flake-file",
@@ -973,6 +1019,7 @@
         "mac-app-util": "mac-app-util",
         "niri": "niri",
         "nix-darwin": "nix-darwin",
+        "nix-doom-emacs-unstraightened": "nix-doom-emacs-unstraightened",
         "nix-index-database": "nix-index-database",
         "nix-vscode-extensions": "nix-vscode-extensions",
         "nixos-hardware": "nixos-hardware",
