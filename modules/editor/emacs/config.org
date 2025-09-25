@@ -259,6 +259,8 @@
       (vertico-cycle t)
       )
 
+  (use-package embark
+    :ensure t)
 
     (use-package consult
       :ensure t
@@ -283,6 +285,11 @@
 
   (use-package tempel
   	     :ensure t
+  	    :custom
+  (tempel-trigger-prefix "<")
+
+  :bind (("M-+" . tempel-complete) ;; Alternative tempel-expand
+         ("M-*" . tempel-insert))
   	     :init
 
   ;; Setup completion at point
@@ -309,7 +316,43 @@
   )
    #+end_src
 
+* Env
+#+begin_src emacs-lisp
+(use-package envrc
+  :hook (after-init . envrc-global-mode))
+#+end_src
+* Project
+#+begin_src emacs-lisp
+  (use-package projectile
+    :ensure t
+    :diminish projectile-mode)
+   #+end_src
+
+* Files
+
+#+begin_src emacs-lisp
+  (use-package dirvish
+    :ensure t)
+    (use-package diredfl
+      :ensure t)
+#+end_src
+* Git
+
+#+begin_src emacs-lisp
+
+  (use-package magit
+    :ensure t)
+#+end_src
+* Terminal
+
+#+begin_src emacs-lisp
+  (use-package eat
+    :ensure t)
+
+#+end_src
 * Lang
+** Tree-sitter
+
 ** LSP
 
 #+begin_src emacs-lisp
@@ -330,29 +373,10 @@
 )
 #+end_src
 ** Python
-
+** Env
+#+begin_src emacs-lisp
+(use-package pet
+  :config
+  (add-hook 'python-base-mode-hook 'pet-mode -10))
+#+end_src
 ** CPP
-
-* Project
-#+begin_src emacs-lisp
-  (use-package projectile
-    :ensure t
-    :diminish projectile-mode)
-   #+end_src
-
-* Files
-
-* Git
-
-#+begin_src emacs-lisp
-
-  (use-package magit
-    :ensure t)
-#+end_src
-* Terminal
-
-#+begin_src emacs-lisp
-  (use-package eat
-    :ensure t)
-
-#+end_src
