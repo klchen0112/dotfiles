@@ -32,6 +32,7 @@
         alwaysTangle = true;
         defaultInitFile = true;
         config = ./config.org;
+	extraEmacsPackages = epkgs: [ epkgs.treesit-grammars.with-all-grammars ];
       };
       # doomPath = "${config.home.homeDirectory}/my/dotfiles/modules/editors/emacs/doom";
       doom-install = pkgs.writeShellApplication {
