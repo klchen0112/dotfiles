@@ -25,7 +25,7 @@ let
       inputs.self.modules.darwin.system
     ];
   };
-  flake.modules.homeManager.home =
+  flake.modules.homeManager.darwin =
     { ... }:
     {
       imports = [

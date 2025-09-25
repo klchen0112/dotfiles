@@ -28,6 +28,7 @@
       syncthing
       emacs
       keyboard
+      darwin
     ];
     home-manager.backupFileExtension = "hmbp";
     system.primaryUser = "klchen";
