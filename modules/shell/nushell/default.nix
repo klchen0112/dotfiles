@@ -39,11 +39,10 @@
           if (sys host).name == "Darwin" {
               $env.PATH = (
                   $env.PATH
-                  | prepend $"/etc/profiles/per-user/($env.USER)/bin"
-                  | prepend $"/Users/($env.USER)/.nix-profile/bin"
                   | prepend "/run/wrappers/bin"
                   | prepend "/run/current-system/sw/bin"
-                  | prepend "/nix/var/nix/profiles/default/bin"
+                  | prepend $"/etc/profiles/per-user/($env.USER)/bin"
+                  | prepend $"/Users/($env.USER)/.nix-profile/bin"
               )
           }
         '';
