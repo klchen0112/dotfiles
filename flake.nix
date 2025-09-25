@@ -94,6 +94,7 @@
     doom-config = {
       flake = false;
       url = "github:klchen0112/doom";
+      # url = "git+file///Users/klchen/.config/doom";
     };
     doomemacs = {
       flake = false;

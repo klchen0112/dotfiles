@@ -81,6 +81,7 @@
       enable = true;
       emacs = doomEmacsPackage;
       doomDir = inputs.doom-config;  # or e.g. `./doom.d` for a local configuration
+      tangleArgs = "--all config.org";
       extraPackages = epkgs: [ epkgs.treesit-grammars.with-all-grammars ];
       experimentalFetchTree = true;
     };
