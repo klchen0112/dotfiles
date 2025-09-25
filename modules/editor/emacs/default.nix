@@ -32,42 +32,6 @@
         alwaysTangle = true;
         defaultInitFile = true;
         config = ./config.org;
-        extraEmacsPackages =
-          epkgs:
-
-          with pkgs;
-          [
-            fd
-            curl
-            # org mode dot
-            graphviz
-            imagemagick
-            # mpvi required
-            tesseract5
-            ffmpeg
-            poppler
-            ffmpegthumbnailer
-            mediainfo
-            sqlite
-            # email
-            # mu4e
-            # spell check
-            hunspell
-            languagetool
-            # for emacs lsp booster
-            emacs-lsp-booster
-            pkg-config
-
-            emacs-lsp-booster
-
-          ]
-          ++ (lib.optionals pkgs.stdenv.isDarwin) [
-            # pngpaste for org mode download clip
-            pngpaste
-            hugo
-            # pkgs.local.org-reminders
-          ];
-
       };
       # doomPath = "${config.home.homeDirectory}/my/dotfiles/modules/editors/emacs/doom";
       doom-install = pkgs.writeShellApplication {
@@ -118,6 +82,40 @@
         startWithUserSession = "graphical";
         defaultEditor = true;
       };
+      home.packages =
+          with pkgs;
+          [
+            fd
+            curl
+            # org mode dot
+            graphviz
+            imagemagick
+            # mpvi required
+            tesseract5
+            ffmpeg
+            poppler
+            ffmpegthumbnailer
+            mediainfo
+            sqlite
+            # email
+            # mu4e
+            # spell check
+            hunspell
+            languagetool
+            # for emacs lsp booster
+            emacs-lsp-booster
+            pkg-config
+
+            emacs-lsp-booster
+
+          ]
+          ++ (lib.optionals pkgs.stdenv.isDarwin) [
+            # pngpaste for org mode download clip
+            pngpaste
+            hugo
+            # pkgs.local.org-reminders
+          ];
+
       # home.activation.doom-install = ''run ${lib.getExe doom-install}'';
     };
 }
