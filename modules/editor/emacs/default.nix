@@ -91,23 +91,20 @@
             graphviz
             imagemagick
             # mpvi required
-            tesseract5
-            ffmpeg
-            poppler
-            ffmpegthumbnailer
-            mediainfo
-            sqlite
+            # tesseract5
+            # ffmpeg
+            # poppler
+            # ffmpegthumbnailer
+            # mediainfo
+            # sqlite
             # email
             # mu4e
             # spell check
-            hunspell
-            languagetool
+            # hunspell
+            # languagetool
             # for emacs lsp booster
             emacs-lsp-booster
             pkg-config
-
-            emacs-lsp-booster
-
           ]
           ++ (lib.optionals pkgs.stdenv.isDarwin) [
             # pngpaste for org mode download clip
