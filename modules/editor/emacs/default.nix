@@ -1,6 +1,6 @@
 { inputs, ... }:
 {
-  flake-file.inputs = rec {
+  flake-file.inputs = {
     emacs-overlay = {
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.nixpkgs-stable.follows = "nixpkgs-stable";
@@ -36,7 +36,7 @@
       #   alwaysTangle = true;
       #   defaultInitFile = true;
       #   config = ./config.org;
-	    #   extraEmacsPackages = epkgs: [ epkgs.treesit-grammars.with-all-grammars ];
+      #   extraEmacsPackages = epkgs: [ epkgs.treesit-grammars.with-all-grammars ];
       # };
       # doomPath = "${config.home.homeDirectory}/my/dotfiles/modules/editors/emacs/doom";
       # doom-install = pkgs.writeShellApplication {
@@ -75,16 +75,16 @@
     in
     {
       imports = [
-         inputs.nix-doom-emacs-unstraightened.homeModule
+        inputs.nix-doom-emacs-unstraightened.homeModule
       ];
-    programs.doom-emacs = {
-      enable = true;
-      emacs = doomEmacsPackage;
-      doomDir = inputs.doom-config;  # or e.g. `./doom.d` for a local configuration
-      # tangleArgs = "--all config.org";
-      extraPackages = epkgs: [ epkgs.treesit-grammars.with-all-grammars ];
-      experimentalFetchTree = true;
-    };
+      programs.doom-emacs = {
+        enable = true;
+        emacs = doomEmacsPackage;
+        doomDir = inputs.doom-config; # or e.g. `./doom.d` for a local configuration
+        # tangleArgs = "--all config.org";
+        extraPackages = epkgs: [ epkgs.treesit-grammars.with-all-grammars ];
+        experimentalFetchTree = true;
+      };
       # programs.emacs = {
       #   enable = true;
       #   package = emacsPackage;
@@ -97,35 +97,35 @@
         defaultEditor = true;
       };
       home.packages =
-          with pkgs;
-          [
-            fd
-            curl
-            # org mode dot
-            graphviz
-            imagemagick
-            # mpvi required
-            # tesseract5
-            # ffmpeg
-            # poppler
-            # ffmpegthumbnailer
-            # mediainfo
-            # sqlite
-            # email
-            # mu4e
-            # spell check
-            # hunspell
-            # languagetool
-            # for emacs lsp booster
-            emacs-lsp-booster
-            pkg-config
-          ]
-          ++ (lib.optionals pkgs.stdenv.isDarwin) [
-            # pngpaste for org mode download clip
-            pngpaste
-            hugo
-            pkgs.local.org-reminders
-          ];
+        with pkgs;
+        [
+          fd
+          curl
+          # org mode dot
+          graphviz
+          imagemagick
+          # mpvi required
+          # tesseract5
+          # ffmpeg
+          # poppler
+          # ffmpegthumbnailer
+          # mediainfo
+          # sqlite
+          # email
+          # mu4e
+          # spell check
+          # hunspell
+          # languagetool
+          # for emacs lsp booster
+          emacs-lsp-booster
+          pkg-config
+        ]
+        ++ (lib.optionals pkgs.stdenv.isDarwin) [
+          # pngpaste for org mode download clip
+          pngpaste
+          hugo
+          pkgs.local.org-reminders
+        ];
 
       # home.activation.doom-install = ''run ${lib.getExe doom-install}'';
     };

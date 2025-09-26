@@ -3,7 +3,7 @@
     { pkgs, ... }:
     {
       home.packages = with pkgs; [
-        #   gopls
+        gopls
         #   gomodifytags
         #   gotests
         # gore

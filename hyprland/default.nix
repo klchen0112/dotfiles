@@ -63,6 +63,7 @@
       # List packages installed in system profile. To search, run:
       # $ nix search wget
       environment.systemPackages = with pkgs; [
+        wget
       ];
       # fix https://github.com/ryan4yin/nix-config/issues/10
       security.pam.services.swaylock = { };

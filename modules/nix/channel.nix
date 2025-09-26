@@ -1,4 +1,4 @@
-{ inputs, ... }:
+{ ... }:
 {
   flake.modules.darwin.nix = {
     nix.channel.enable = false;

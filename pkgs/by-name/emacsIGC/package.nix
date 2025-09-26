@@ -4,11 +4,11 @@
   lib,
   emacs-igc,
 }:
-(emacs-igc.override ({
+(emacs-igc.override {
   withNativeCompilation = true;
   withMailutils = false;
-})).overrideAttrs
-  (old: rec {
+}).overrideAttrs
+  (old: {
     patches =
       (old.patches or [ ])
       ++ (lib.optionals stdenv.isDarwin [
