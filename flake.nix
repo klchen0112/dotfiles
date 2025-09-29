@@ -94,22 +94,13 @@
     doom-config = {
       flake = false;
       url = "github:klchen0112/doom";
-      # url = "git+file///Users/klchen/.config/doom";
     };
     doomemacs = {
       flake = false;
-      url = "github:doomemacs/doomemacs";
+      follows = "nix-doom-emacs-unstraightened/doomemacs";
     };
     emacs-overlay = {
-      inputs = {
-        nixpkgs = {
-          follows = "nixpkgs";
-        };
-        nixpkgs-stable = {
-          follows = "nixpkgs-stable";
-        };
-      };
-      url = "github:nix-community/emacs-overlay/master";
+      follows = "nix-doom-emacs-unstraightened/emacs-overlay";
     };
     flake-file = {
       url = "github:vic/flake-file";
@@ -176,12 +167,6 @@
     };
     nix-doom-emacs-unstraightened = {
       inputs = {
-        doomemacs = {
-          follows = "doomemacs";
-        };
-        emacs-overlay = {
-          follows = "emacs-overlay";
-        };
         nixpkgs = {
           follows = "nixpkgs";
         };

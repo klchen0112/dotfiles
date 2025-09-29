@@ -2,12 +2,14 @@
 {
   flake-file.inputs = {
     emacs-overlay = {
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.nixpkgs-stable.follows = "nixpkgs-stable";
-      url = "github:nix-community/emacs-overlay/master";
+      # inputs.nixpkgs.follows = "nixpkgs";
+      # inputs.nixpkgs-stable.follows = "nixpkgs-stable";
+      # url = "github:nix-community/emacs-overlay/master";
+      follows = "nix-doom-emacs-unstraightened/emacs-overlay";
     };
     doomemacs = {
-      url = "github:doomemacs/doomemacs";
+      # url = "github:doomemacs/doomemacs";
+      follows = "nix-doom-emacs-unstraightened/doomemacs";
       flake = false;
     };
     doom-config = {
@@ -18,8 +20,6 @@
       url = "github:marienz/nix-doom-emacs-unstraightened";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.systems.follows = "systems";
-      inputs.doomemacs.follows = "doomemacs";
-      inputs.emacs-overlay.follows = "emacs-overlay";
     };
   };
   flake.modules.homeManager.emacs =

@@ -313,23 +313,22 @@
     "emacs-overlay": {
       "inputs": {
         "nixpkgs": [
-          "nixpkgs"
+          "nix-doom-emacs-unstraightened"
         ],
         "nixpkgs-stable": [
-          "nixpkgs-stable"
+          "nix-doom-emacs-unstraightened"
         ]
       },
       "locked": {
-        "lastModified": 1758877935,
-        "narHash": "sha256-I3tQqmGR9F5rUFGqL4DB0amQ0iQMfD+KCKz0n+/gYM0=",
+        "lastModified": 1759111708,
+        "narHash": "sha256-vFFue5sy7YRPhQQGW9kiCj+tAY3Gfm05svmDLFt5FIw=",
         "owner": "nix-community",
         "repo": "emacs-overlay",
-        "rev": "c902fe2dc5bc7d95381876e7b68065173af971b6",
+        "rev": "c8f778ca07cc9d8182599be4e794db6c8e03682e",
         "type": "github"
       },
       "original": {
         "owner": "nix-community",
-        "ref": "master",
         "repo": "emacs-overlay",
         "type": "github"
       }
@@ -741,12 +740,8 @@
     },
     "nix-doom-emacs-unstraightened": {
       "inputs": {
-        "doomemacs": [
-          "doomemacs"
-        ],
-        "emacs-overlay": [
-          "emacs-overlay"
-        ],
+        "doomemacs": "doomemacs",
+        "emacs-overlay": "emacs-overlay",
         "nixpkgs": [
           "nixpkgs"
         ],
@@ -1008,8 +1003,14 @@
         "devshell": "devshell",
         "disko": "disko",
         "doom-config": "doom-config",
-        "doomemacs": "doomemacs",
-        "emacs-overlay": "emacs-overlay",
+        "doomemacs": [
+          "nix-doom-emacs-unstraightened",
+          "doomemacs"
+        ],
+        "emacs-overlay": [
+          "nix-doom-emacs-unstraightened",
+          "emacs-overlay"
+        ],
         "flake-file": "flake-file",
         "flake-parts": "flake-parts",
         "flake-utils": "flake-utils",
