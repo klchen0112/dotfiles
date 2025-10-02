@@ -16,6 +16,7 @@
         bash
         syncthing
         emacs
+        zen
       ];
       home-manager.backupFileExtension = "hmbp";
 
