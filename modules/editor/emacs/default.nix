@@ -29,15 +29,17 @@
       ...
     }:
     let
-      doomEmacsPackage = if pkgs.stdenv.isDarwin then pkgs.local.emacsIGC else pkgs.emacs-igc-pgtk;
-      # emacsPackage = pkgs.emacsWithPackagesFromUsePackage {
-      #   package = if pkgs.stdenv.isDarwin then pkgs.local.emacsIGC else pkgs.emacs-igc-pgtk;
-      #   alwaysEnsure = true;
-      #   alwaysTangle = true;
-      #   defaultInitFile = true;
-      #   config = ./config.org;
-      #   extraEmacsPackages = epkgs: [ epkgs.treesit-grammars.with-all-grammars ];
-      # };
+      # doomEmacsPackage = if pkgs.stdenv.isDarwin then pkgs.emacs-macport else pkgs.emacs-igc-pgtk;
+      # emacsPackage = if pkgs.stdenv.isDarwin then pkgs.emacs-macport else pkgs.emacs-igc-pgtk;
+      emacsPackage = pkgs.emacsWithPackagesFromUsePackage {
+        package = if pkgs.stdenv.isDarwin then pkgs.local.emacsIGC else pkgs.emacs-igc-pgtk;
+        alwaysEnsure = true;
+        alwaysTangle = true;
+        defaultInitFile = true;
+        config = ./config.org;
+        extraEmacsPackages = epkgs: [ epkgs.treesit-grammars.with-all-grammars epkgs.rime epkgs.telega];
+      };
+
       # doomPath = "${config.home.homeDirectory}/my/dotfiles/modules/editors/emacs/doom";
       # doom-install = pkgs.writeShellApplication {
       #   name = "doom-install";
@@ -74,23 +76,24 @@
       # };
     in
     {
-      imports = [
-        inputs.nix-doom-emacs-unstraightened.homeModule
-      ];
-      programs.doom-emacs = {
-        enable = true;
-        emacs = doomEmacsPackage;
-        doomDir = inputs.doom-config; # or e.g. `./doom.d` for a local configuration
-        # tangleArgs = "--all config.org";
-        extraPackages = epkgs: [ epkgs.treesit-grammars.with-all-grammars ];
-        experimentalFetchTree = true;
-      };
-      # programs.emacs = {
+      # imports = [
+      #   inputs.nix-doom-emacs-unstraightened.homeModule
+      # ];
+      # programs.doom-emacs = {
       #   enable = true;
-      #   package = emacsPackage;
+      #   emacs = doomEmacsPackage;
+      #   doomDir = inputs.doom-config; # or e.g. `./doom.d` for a local configuration
+      #   # tangleArgs = "--all config.org";
+      #   extraPackages = epkgs: [ epkgs.treesit-grammars.with-all-grammars ];
+      #   experimentalFetchTree = true;
       # };
+      programs.emacs = {
+        enable = true;
+        package = emacsPackage;
+      };
       services.emacs = {
         enable = true;
+        package = emacsPackage;
         client.enable = true;
         socketActivation.enable = true;
         startWithUserSession = "graphical";
