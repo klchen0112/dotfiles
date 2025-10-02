@@ -19,6 +19,7 @@
           clipboard-write = "allow";
           copy-on-select = "clipboard";
           window-decoration = false;
+          macos-option-as-alt = true;
         };
       };
     };
