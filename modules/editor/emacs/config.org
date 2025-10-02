@@ -255,9 +255,6 @@
    )
 #+end_src
 ** Babel
-(after org
-
-)
 
 * Compeletion
 ** Vertico and orderless
@@ -283,7 +280,7 @@
     :after vertico
   )
 #+end_src
-
+** Embark
   #+begin_src emacs-lisp
     (use-package embark)
     (use-package consult)
@@ -292,7 +289,7 @@
          :hook
          (embark-collect-mode . consult-preview-at-point-mode))
 #+end_src
-
+** Corfu
 #+begin_src emacs-lisp
         (use-package corfu
              :init
@@ -336,7 +333,7 @@
 
 
 #+end_src
-
+** Tempel
 #+begin_src emacs-lisp
 
                 (use-package tempel
@@ -386,22 +383,31 @@
 * Files
 
 #+begin_src emacs-lisp
-(use-package dirvish)
-(use-package diredfl)
+(use-package dired
+            :defer t
+           )
+(use-package dirvish
+    	:after dired)
+(use-package diredfl
+  	  :after dired)
 #+end_src
 * Git
 
 #+begin_src emacs-lisp
-(when (featurep :system 'windows)
-  (setenv "GIT_ASKPASS" "git-gui--askpass"))
-  (use-package magit)
-  (use-package diff-hl)
-  (use-package smerge-mode)
+  (when (featurep :system 'windows)
+    (setenv "GIT_ASKPASS" "git-gui--askpass"))
+    (use-package magit
+      :defer t)
+    (use-package diff-hl
+  	:defer t)
+    (use-package smerge-mode
+      :defer t)
   #+end_src
 * Terminal
 
 #+begin_src emacs-lisp
-  (use-package eat)
+    (use-package eat
+      :defer t)
 
 #+end_src
 
@@ -418,22 +424,32 @@
 ** LSP
 
 #+begin_src emacs-lisp
-  (use-package eglot
-    :custom
-    (eglot-autoshutdown t)
-    )
+    (defun eglot-setup-eldoc ()
+      (setq-local eldoc-documentation-functions '(flymake-eldoc-function
+                                                  eglot-signature-eldoc-function
+                                                  eglot-hover-eldoc-function)))
+      (use-package eglot
+        :defer t
+        :custom
+        (eglot-autoshutdown t)
+        :hook
+        (eglot-mode . 'eglot-setup-eldoc)
+        )
 
-  (use-package eglot-booster
-	:after eglot
-	:config	(eglot-booster-mode))
+      (use-package eglot-booster
+      	:after eglot
+          :custom (eglot-booster-io-only t)
+      	:hook (eglot-mode . eglot-booster-mode)
+  )
    #+end_src
 ** JAVA
-#+begin_src emacs-lsip
-(use-package eglot-java
-)
+#+begin_src emacs-lisp
+  (use-package eglot-java
+    :after eglot
+  )
 #+end_src
 ** Python
-** Env
+*** Env
 #+begin_src emacs-lisp
 (use-package pet
   :config
