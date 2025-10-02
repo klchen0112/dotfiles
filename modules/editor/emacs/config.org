@@ -412,6 +412,10 @@
 #+end_src
 
 * Lang
+** Fmt
+#+begin_src emacs-lisp
+  (use-package format-all)
+#+end_src
 ** Tree-sitter
 #+begin_src emacs-lisp
   (use-package treesit-auto
@@ -485,6 +489,34 @@
 
 
 #+end_src
+
+** Just mode
+
+#+begin_src emacs-lisp
+  (use-package just-mode
+    :mode (
+  	 ("/[Jj]ustfile\\'" . just-mode)
+  	 ("\\.[Jj]ust\\(file\\)?\\'" . just-mode)
+     )
+   )
+  (use-package justl)
+#+end_src
+
+** Yaml Mode
+#+begin_src emacs-lisp
+  (use-package yaml-mode)
+#+end_src
+
+** Docker
+
+#+begin_src emacs-lisp
+  (use-package docker
+
+    )
+  (use-package dockerfile-ts-mode
+    :mode (".*Dockerfile\\'" . dockerfile-ts-mode))
+#+end_src
+
 * LLM
 #+begin_src emacs-lisp
 (use-package gptel)
