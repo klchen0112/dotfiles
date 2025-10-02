@@ -1,5 +1,5 @@
-#+PROPERTY: header-args:emacs-lisp :tangle config.el
 #+title: KLChen
+#+PROPERTY: header-args:emacs-lisp :tangle config.el
 * lexical-binding
 #+begin_src emacs-lisp
 ;;; -*- lexical-binding: t -*-
@@ -40,7 +40,7 @@
     :config
     (setq meow-cheatsheet-layout meow-cheatsheet-layout-qwerty)
     (meow-motion-define-key
- f    '("j" . meow-next)
+     '("j" . meow-next)
      '("k" . meow-prev)
      '("<escape>" . ignore)
      )
