@@ -376,8 +376,11 @@
 * Git
 
 #+begin_src emacs-lisp
-
+(when (featurep :system 'windows)
+  (setenv "GIT_ASKPASS" "git-gui--askpass"))
   (use-package magit)
+  (use-package diff-hl)
+  (use-package smerge-mode)
   #+end_src
 * Terminal
 
