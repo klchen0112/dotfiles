@@ -40,7 +40,7 @@
     :config
     (setq meow-cheatsheet-layout meow-cheatsheet-layout-qwerty)
     (meow-motion-define-key
-     '("j" . meow-next)
+ f    '("j" . meow-next)
      '("k" . meow-prev)
      '("<escape>" . ignore)
      )
@@ -151,7 +151,6 @@
 
 ** Font
 *** Nerd icons
-
 #+begin_src emacs-lisp
   (use-package nerd-icons
     :defer t)
@@ -222,32 +221,27 @@
         org-agenda-tags-column 0
         org-ellipsis "…")
 
-        (global-org-modern-mode)
   )
 
 #+end_src
 ** Roam
 #+begin_src emacs-lisp
-(use-package org-roam
-          :after org
-           :custom
-           (org-roam-directory (file-truename org-directory))
-           :config
-           (org-roam-db-autosync-mode)
-      ;; If using org-roam-protocol
-      (require 'org-roam-protocol)
-      )
+  (use-package org-roam
+            :after org
+             :custom
+             (org-roam-directory (file-truename org-directory))
+             :config
+             (org-roam-db-autosync-mode)
+        ;; If using org-roam-protocol
+        (require 'org-roam-protocol)
+        )
 
-(use-package org-roam-ui
-    :after org-roam ;; or :after org
-    :config
-    (org-roam-setup)
-    (org-roam-db-autosync-mode)
-      (setq org-roam-ui-sync-theme t
-            org-roam-ui-follow t
-            org-roam-ui-update-on-save t
-            org-roam-ui-open-on-start t)
-)
+  (use-package org-roam-ui
+      :after org-roam ;; or :after org
+      :config
+        (setq org-roam-ui-sync-theme t
+              org-roam-ui-follow t)
+   )
 #+end_src
 ** Babel
 (after org
@@ -255,74 +249,111 @@
 )
 
 * Compeletion
-
+** Vertico and orderless
 #+begin_src emacs-lisp
-
-       (use-package orderless
+  (use-package orderless
          :custom
          (completion-styles '(orderless basic))
          (completion-category-overrides '((file (styles partial-completion))))
          (completion-category-defaults nil) ;; Disable defaults, use our settings
          (completion-pcm-leading-wildcard t)
-         )
+         (orderless-component-separator #'orderless-escapable-split-on-space)
+  )
 
-       (use-package vertico
-         :init
-         (vertico-mode)
-         :custom
-         (vertico-cycle t)
-         )
+  (use-package vertico
+    :init
+    (vertico-mode)
+    :custom
+    (vertico-cycle t)
+  )
+#+end_src
 
-     (use-package embark
-    )
-       (use-package consult)
-  (use-package embark-consult
-    :after (embark consult)
-    )
-       (use-package corfu
-         :init
-         (global-corfu-mode)
-        )
+  #+begin_src emacs-lisp
+    (use-package embark)
+    (use-package consult)
+    (use-package embark-consult
+         :after (:all embark consult)
+         :hook
+         (embark-collect-mode . consult-preview-at-point-mode))
+#+end_src
 
-       (use-package cape
-         :init
-           (add-hook 'completion-at-point-functions #'cape-dabbrev)
-       (add-hook 'completion-at-point-functions #'cape-file)
-       (add-hook 'completion-at-point-functions #'cape-elisp-block)
+#+begin_src emacs-lisp
+        (use-package corfu
+             :init
+              (global-corfu-mode)
+              :custom
+      	(corfu-auto t)
+      	(corfu-atuo-refix 2)
+              (corfu-cycle t)
+              (corfu-preselect 'prompt)
+              (corfu-count 16)
+              (corfu-max-width 120)
+              (corfu-on-exact-match nil)
+              (corfu-quit-at-boundary     'separator)
+              (tab-always-indent 'complete))
+      (use-package nerd-icons-corfu
+          :defer t
+          :after (:all nerd-icons corfu)
        )
+                   (use-package corfu-terminal
+                     :unless (featurep 'tty-child-frames)
+                     :hook (corfu-mode . corfu-terminal-mode)
+      	       :after (corfu)
+                    )
+                     (use-package corfu-history
+                   :hook ((corfu-mode . corfu-history-mode))
+    	       :after corfu
+    )
+                     
+                 (use-package corfu-popupinfo
+                   :hook ((corfu-mode . corfu-popupinfo-mode))
+                   :config
+                   (setq corfu-popupinfo-delay '(0.5 . 1.0))
+  		 )
+                          (use-package cape
+                   	 :defer t
+                            :init
+                              (add-hook 'completion-at-point-functions #'cape-dabbrev)
+                          (add-hook 'completion-at-point-functions #'cape-file)
+                          (add-hook 'completion-at-point-functions #'cape-elisp-block)
+                          )
 
 
-     (use-package tempel
-     	     :ensure t
-     	    :custom
-     (tempel-trigger-prefix "<")
+#+end_src
 
-     :bind (("M-+" . tempel-complete) ;; Alternative tempel-expand
-            ("M-*" . tempel-insert))
-     	     :init
+#+begin_src emacs-lisp
 
-     ;; Setup completion at point
-     (defun tempel-setup-capf ()
-       ;; Add the Tempel Capf to `completion-at-point-functions'.
-       ;; `tempel-expand' only triggers on exact matches. Alternatively use
-       ;; `tempel-complete' if you want to see all matches, but then you
-       ;; should also configure `tempel-trigger-prefix', such that Tempel
-       ;; does not trigger too often when you don't expect it. NOTE: We add
-       ;; `tempel-expand' *before* the main programming mode Capf, such
-       ;; that it will be tried first.
-       (setq-local completion-at-point-functions
-                   (cons #'tempel-expand
-                         completion-at-point-functions)))
+                (use-package tempel
+                	     :ensure t
+                	    :custom
+                (tempel-trigger-prefix "<")
 
-     (add-hook 'conf-mode-hook 'tempel-setup-capf)
-     (add-hook 'prog-mode-hook 'tempel-setup-capf)
-     (add-hook 'text-mode-hook 'tempel-setup-capf)
+                :bind (("M-+" . tempel-complete) ;; Alternative tempel-expand
+                       ("M-*" . tempel-insert))
+                	     :init
+             	   
+                ;; Setup completion at point
+                (defun tempel-setup-capf ()
+                  ;; Add the Tempel Capf to `completion-at-point-functions'.
+                  ;; `tempel-expand' only triggers on exact matches. Alternatively use
+                  ;; `tempel-complete' if you want to see all matches, but then you
+                  ;; should also configure `tempel-trigger-prefix', such that Tempel
+                  ;; does not trigger too often when you don't expect it. NOTE: We add
+                  ;; `tempel-expand' *before* the main programming mode Capf, such
+                  ;; that it will be tried first.
+                  (setq-local completion-at-point-functions
+                              (cons #'tempel-expand
+                                    completion-at-point-functions)))
 
-     	     )
-       (use-package tempel-collection
-       :ensure t
-       :after tempel
-     )
+                (add-hook 'conf-mode-hook 'tempel-setup-capf)
+                (add-hook 'prog-mode-hook 'tempel-setup-capf)
+                (add-hook 'text-mode-hook 'tempel-setup-capf)
+
+                	     )
+                  (use-package tempel-collection
+                  :ensure t
+                  :after tempel
+                )
    #+end_src
 
 * Env
@@ -408,8 +439,6 @@
                      'js-mode)))
     (use-package nix-mode
       :mode "\\.nix\\'"
-      :config
-      (require 'nix-repl)
      )
     (use-package nix-update)
 
