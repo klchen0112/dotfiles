@@ -152,7 +152,14 @@
   (add-to-list 'default-frame-alist '(internal-border-width . 0))
   (set-frame-parameter nil 'internal-border-width 0)
 #+end_src
-
+** Theme
+#+begin_src emacs-lisp
+    (use-package modus-themes
+  :demand t
+  :config
+  (load-theme 'modus-vivendi)  
+      )
+#+end_src
 ** Font
 *** Nerd icons
 #+begin_src emacs-lisp

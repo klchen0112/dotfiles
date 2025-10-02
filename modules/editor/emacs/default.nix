@@ -87,6 +87,7 @@
       #   extraPackages = epkgs: [ epkgs.treesit-grammars.with-all-grammars ];
       #   experimentalFetchTree = true;
       # };
+      stylix.targets.emacs.enable = false;
       programs.emacs = {
         enable = true;
         package = emacsPackage;
