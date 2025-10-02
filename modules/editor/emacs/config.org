@@ -45,7 +45,7 @@
      '("<escape>" . ignore)
      )
     (meow-leader-define-key
-      ;; Use SPC (0-9) for digit arguments.
+     ;; Use SPC (0-9) for digit arguments.
      '("1" . meow-digit-argument)
      '("2" . meow-digit-argument)
      '("3" . meow-digit-argument)
@@ -122,18 +122,10 @@
      '("'" . repeat)
      '("<escape>" . ignore)
      )
-     (meow-global-mode 1)
-  )
-#+end_src
-* Editor
-#+begin_src emacs-lisp
-  (use-package apheleia
-
-    :init
-    (add-hook 'eglot-managed-mode-hook #'+format-with-lsp-toggle-h)
-
+    (meow-global-mode 1)
     )
 #+end_src
+* Editor
 * Ui
 ** Relate live number
 #+begin_src emacs-lisp
@@ -154,11 +146,11 @@
 #+end_src
 ** Theme
 #+begin_src emacs-lisp
-    (use-package modus-themes
-  :demand t
-  :config
-  (load-theme 'modus-vivendi)  
-      )
+  (use-package modus-themes
+    :demand t
+    :config
+    (load-theme 'modus-vivendi)
+    )
 #+end_src
 ** Font
 *** Nerd icons
@@ -176,8 +168,8 @@
     :config
     (dashboard-setup-startup-hook))
 
- (use-package doom-modeline
-  :init (doom-modeline-mode 1))
+  (use-package doom-modeline
+    :init (doom-modeline-mode 1))
 #+end_src
 
 * Navigation
@@ -196,44 +188,43 @@
 
 ** base settings
 #+begin_src emacs-lisp
- (setq org-directory "~/org")
- (use-package org
+  (setq org-directory "~/org")
+  (use-package org
     :defer t
     :define
     :bind ("C-c I" . 'org-id-get-create)
- )
- (use-package org-modern
+    )
+  (use-package org-modern
     :after org
     :hook
     (org-mode . org-modern-mode)
     :config
     ;; Add frame borders and window dividers
-        (modify-all-frames-parameters
-        '((right-divider-width . 40)
-        (internal-border-width . 40)))
-        (dolist (face '(window-divider
+    (modify-all-frames-parameters
+     '((right-divider-width . 40)
+       (internal-border-width . 40)))
+    (dolist (face '(window-divider
                     window-divider-first-pixel
                     window-divider-last-pixel))
-        (face-spec-reset-face face)
-        (set-face-foreground face (face-attribute 'default :background)))
-        (set-face-background 'fringe (face-attribute 'default :background))
+      (face-spec-reset-face face)
+      (set-face-foreground face (face-attribute 'default :background)))
+    (set-face-background 'fringe (face-attribute 'default :background))
 
-        (setq
-        ;; Edit settings
-        org-auto-align-tags nil
-        org-tags-column 0
-        org-catch-invisible-edits 'show-and-error
-        org-special-ctrl-a/e t
-        org-insert-heading-respect-content t
+    (setq
+     ;; Edit settings
+     org-auto-align-tags nil
+     org-tags-column 0
+     org-catch-invisible-edits 'show-and-error
+     org-special-ctrl-a/e t
+     org-insert-heading-respect-content t
 
-        ;; Org styling, hide markup etc.
-        org-hide-emphasis-markers t
-        org-pretty-entities t
-        org-agenda-tags-column 0
-        org-ellipsis "…")
+     ;; Org styling, hide markup etc.
+     org-hide-emphasis-markers t
+     org-pretty-entities t
+     org-agenda-tags-column 0
+     org-ellipsis "…")
 
-  )
-
+    )
 #+end_src
 ** Roam
 #+begin_src emacs-lisp
@@ -260,113 +251,111 @@
 ** Vertico and orderless
 #+begin_src emacs-lisp
   (use-package orderless
-         :custom
-         (completion-styles '(orderless basic))
-         (completion-category-overrides '((file (styles partial-completion))))
-         (completion-category-defaults nil) ;; Disable defaults, use our settings
-         (completion-pcm-leading-wildcard t)
-         (orderless-component-separator #'orderless-escapable-split-on-space)
-  )
+    :custom
+    (completion-styles '(orderless basic))
+    (completion-category-overrides '((file (styles partial-completion))))
+    (completion-category-defaults nil) ;; Disable defaults, use our settings
+    (completion-pcm-leading-wildcard t)
+    (orderless-component-separator #'orderless-escapable-split-on-space)
+    )
 
   (use-package vertico
     :init
     (vertico-mode)
     :custom
     (vertico-cycle t)
-  )
+    )
   (use-package vertico-directory
     :after vertico)
   (use-package vertico-flat
     :after vertico
-  )
+    )
 #+end_src
 ** Embark
   #+begin_src emacs-lisp
     (use-package embark)
     (use-package consult)
     (use-package embark-consult
-         :after (:all embark consult)
-         :hook
-         (embark-collect-mode . consult-preview-at-point-mode))
+      :after (:all embark consult)
+      :hook
+      (embark-collect-mode . consult-preview-at-point-mode))
 #+end_src
 ** Corfu
 #+begin_src emacs-lisp
-        (use-package corfu
-             :init
-              (global-corfu-mode)
-              :custom
-      	(corfu-auto t)
-      	(corfu-atuo-refix 2)
-              (corfu-cycle t)
-              (corfu-preselect 'prompt)
-              (corfu-count 16)
-              (corfu-max-width 120)
-              (corfu-on-exact-match nil)
-              (corfu-quit-at-boundary     'separator)
-              (tab-always-indent 'complete))
-      (use-package nerd-icons-corfu
-          :defer t
-          :after (:all nerd-icons corfu)
-       )
-                   (use-package corfu-terminal
-                     :unless (featurep 'tty-child-frames)
-                     :hook (corfu-mode . corfu-terminal-mode)
-      	       :after (corfu)
-                    )
-                     (use-package corfu-history
-                   :hook ((corfu-mode . corfu-history-mode))
-    	       :after corfu
+  (use-package corfu
+    :init
+    (global-corfu-mode)
+    :custom
+    (corfu-auto t)
+    (corfu-atuo-refix 2)
+    (corfu-cycle t)
+    (corfu-preselect 'prompt)
+    (corfu-count 16)
+    (corfu-max-width 120)
+    (corfu-on-exact-match nil)
+    (corfu-quit-at-boundary     'separator)
+    (tab-always-indent 'complete))
+  (use-package nerd-icons-corfu
+    :defer t
+    :after (:all nerd-icons corfu)
     )
-                     
-                 (use-package corfu-popupinfo
-                   :hook ((corfu-mode . corfu-popupinfo-mode))
-                   :config
-                   (setq corfu-popupinfo-delay '(0.5 . 1.0))
-  		 )
-                          (use-package cape
-                   	 :defer t
-                            :init
-                              (add-hook 'completion-at-point-functions #'cape-dabbrev)
-                          (add-hook 'completion-at-point-functions #'cape-file)
-                          (add-hook 'completion-at-point-functions #'cape-elisp-block)
-                          )
+  (use-package corfu-terminal
+    :unless (featurep 'tty-child-frames)
+    :hook (corfu-mode . corfu-terminal-mode)
+    :after (corfu)
+    )
+  (use-package corfu-history
+    :hook ((corfu-mode . corfu-history-mode))
+    :after corfu
+    )
 
-
+  (use-package corfu-popupinfo
+    :hook ((corfu-mode . corfu-popupinfo-mode))
+    :config
+    (setq corfu-popupinfo-delay '(0.5 . 1.0))
+    )
+  (use-package cape
+    :defer t
+    :init
+    (add-hook 'completion-at-point-functions #'cape-dabbrev)
+    (add-hook 'completion-at-point-functions #'cape-file)
+    (add-hook 'completion-at-point-functions #'cape-elisp-block)
+    )
 #+end_src
 ** Tempel
 #+begin_src emacs-lisp
 
-                (use-package tempel
-                	     :ensure t
-                	    :custom
-                (tempel-trigger-prefix "<")
+  (use-package tempel
+    :ensure t
+    :custom
+    (tempel-trigger-prefix "<")
 
-                :bind (("M-+" . tempel-complete) ;; Alternative tempel-expand
-                       ("M-*" . tempel-insert))
-                	     :init
-             	   
-                ;; Setup completion at point
-                (defun tempel-setup-capf ()
-                  ;; Add the Tempel Capf to `completion-at-point-functions'.
-                  ;; `tempel-expand' only triggers on exact matches. Alternatively use
-                  ;; `tempel-complete' if you want to see all matches, but then you
-                  ;; should also configure `tempel-trigger-prefix', such that Tempel
-                  ;; does not trigger too often when you don't expect it. NOTE: We add
-                  ;; `tempel-expand' *before* the main programming mode Capf, such
-                  ;; that it will be tried first.
-                  (setq-local completion-at-point-functions
-                              (cons #'tempel-expand
-                                    completion-at-point-functions)))
+    :bind (("M-+" . tempel-complete) ;; Alternative tempel-expand
+  	 ("M-*" . tempel-insert))
+    :init
 
-                (add-hook 'conf-mode-hook 'tempel-setup-capf)
-                (add-hook 'prog-mode-hook 'tempel-setup-capf)
-                (add-hook 'text-mode-hook 'tempel-setup-capf)
+    ;; Setup completion at point
+    (defun tempel-setup-capf ()
+      ;; Add the Tempel Capf to `completion-at-point-functions'.
+      ;; `tempel-expand' only triggers on exact matches. Alternatively use
+      ;; `tempel-complete' if you want to see all matches, but then you
+      ;; should also configure `tempel-trigger-prefix', such that Tempel
+      ;; does not trigger too often when you don't expect it. NOTE: We add
+      ;; `tempel-expand' *before* the main programming mode Capf, such
+      ;; that it will be tried first.
+      (setq-local completion-at-point-functions
+  		(cons #'tempel-expand
+                        completion-at-point-functions)))
 
-                	     )
-                  (use-package tempel-collection
-                  :ensure t
-                  :after tempel
-                )
+    (add-hook 'conf-mode-hook 'tempel-setup-capf)
+    (add-hook 'prog-mode-hook 'tempel-setup-capf)
+    (add-hook 'text-mode-hook 'tempel-setup-capf)
+
+    )
+  (use-package tempel-collection
+    :ensure t
+    :after tempel
+    )
    #+end_src
 
 * Env
@@ -383,25 +372,30 @@
 * Files
 
 #+begin_src emacs-lisp
-(use-package dired
-            :defer t
-           )
-(use-package dirvish
-    	:after dired)
-(use-package diredfl
-  	  :after dired)
+  (use-package dired
+    :defer t
+    )
+
+  (use-package dirvish
+    :after dired)
+
+  (use-package diredfl
+    :after dired)
 #+end_src
 * Git
 
 #+begin_src emacs-lisp
   (when (featurep :system 'windows)
     (setenv "GIT_ASKPASS" "git-gui--askpass"))
-    (use-package magit
-      :defer t)
-    (use-package diff-hl
-  	:defer t)
-    (use-package smerge-mode
-      :defer t)
+
+  (use-package magit
+    :defer t)
+
+  (use-package diff-hl
+    :defer t)
+
+  (use-package smerge-mode
+    :defer t)
   #+end_src
 * Terminal
 
@@ -428,23 +422,23 @@
 ** LSP
 
 #+begin_src emacs-lisp
-    (defun eglot-setup-eldoc ()
-      (setq-local eldoc-documentation-functions '(flymake-eldoc-function
-                                                  eglot-signature-eldoc-function
-                                                  eglot-hover-eldoc-function)))
-      (use-package eglot
-        :defer t
-        :custom
-        (eglot-autoshutdown t)
-        :hook
-        (eglot-mode . 'eglot-setup-eldoc)
-        )
+  (defun eglot-setup-eldoc ()
+    (setq-local eldoc-documentation-functions '(flymake-eldoc-function
+                                                eglot-signature-eldoc-function
+                                                eglot-hover-eldoc-function)))
+  (use-package eglot
+    :defer t
+    :custom
+    (eglot-autoshutdown t)
+    :hook
+    (eglot-mode . 'eglot-setup-eldoc)
+    )
 
-      (use-package eglot-booster
-      	:after eglot
-          :custom (eglot-booster-io-only t)
-      	:hook (eglot-mode . eglot-booster-mode)
-  )
+  (use-package eglot-booster
+    :after eglot
+    :custom (eglot-booster-io-only t)
+    :hook (eglot-mode . eglot-booster-mode)
+    )
    #+end_src
 ** JAVA
 #+begin_src emacs-lisp
@@ -465,7 +459,9 @@
 #+begin_src emacs-lisp
   (use-package json-mode
   :mode "\\.js\\(?:on\\|[hl]int\\(?:rc\\)?\\)\\'")
+
   (use-package json-snatcher)
+
   (use-package json-ts-mode)
 #+end_src
 
@@ -473,21 +469,20 @@
 #+begin_src emacs-lisp
 
   (add-to-list 'auto-mode-alist
-             (cons "/flake\\.lock\\'"
-                   ('json-mode
-                     'js-mode)))
-    (use-package nix-mode
-      :mode "\\.nix\\'"
-     )
-    (use-package nix-update)
+               (cons "/flake\\.lock\\'"
+                     ('json-mode
+                      'js-mode)))
+  (use-package nix-mode
+    :mode "\\.nix\\'"
+    )
 
-    (use-package nix-ts-mode)
+  (use-package nix-update)
+
+  (use-package nix-ts-mode)
 
 
-    (use-package nix-update
+  (use-package nix-update
     :commands nix-update-fetch)
-
-
 #+end_src
 
 ** Just mode
@@ -510,9 +505,8 @@
 ** Docker
 
 #+begin_src emacs-lisp
-  (use-package docker
-
-    )
+  (use-package docker)
+  
   (use-package dockerfile-ts-mode
     :mode (".*Dockerfile\\'" . dockerfile-ts-mode))
 #+end_src
