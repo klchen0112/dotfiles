@@ -135,6 +135,10 @@
     )
 #+end_src
 * Ui
+** Relate live number
+#+begin_src emacs-lisp
+  (setq display-line-numbers-type t)
+#+end_src
 #+begin_src emacs-lisp
  ;; Disable UI chrome earl
   (menu-bar-mode -1)
@@ -265,6 +269,11 @@
     (vertico-mode)
     :custom
     (vertico-cycle t)
+  )
+  (use-package vertico-directory
+    :after vertico)
+  (use-package vertico-flat
+    :after vertico
   )
 #+end_src
 
