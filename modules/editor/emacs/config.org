@@ -131,7 +131,7 @@
 
     :init
     (add-hook 'eglot-managed-mode-hook #'+format-with-lsp-toggle-h)
-    
+
     )
 #+end_src
 * Ui
@@ -183,10 +183,14 @@
 
 
 * org mode
+
+** base settings
 #+begin_src emacs-lisp
-  (setq org-directory "~/org")
+ (setq org-directory "~/org")
  (use-package org
     :defer t
+    :define
+    :bind ("C-c I" . 'org-id-get-create)
  )
  (use-package org-modern
     :after org
@@ -222,7 +226,7 @@
   )
 
 #+end_src
-
+** Roam
 #+begin_src emacs-lisp
 (use-package org-roam
           :after org
@@ -237,12 +241,19 @@
 (use-package org-roam-ui
     :after org-roam ;; or :after org
     :config
+    (org-roam-setup)
+    (org-roam-db-autosync-mode)
       (setq org-roam-ui-sync-theme t
             org-roam-ui-follow t
             org-roam-ui-update-on-save t
             org-roam-ui-open-on-start t)
 )
 #+end_src
+** Babel
+(after org
+
+)
+
 * Compeletion
 
 #+begin_src emacs-lisp
@@ -400,6 +411,8 @@
                      'js-mode)))
     (use-package nix-mode
       :mode "\\.nix\\'"
+      :config
+      (require 'nix-repl)
      )
     (use-package nix-update)
 
@@ -410,6 +423,9 @@
     :commands nix-update-fetch)
 
 
-  (use-package nix-repl
-    :commands nix-repl-show)
+#+end_src
+* LLM
+#+begin_src emacs-lisp
+(use-package gptel)
+
 #+end_src
