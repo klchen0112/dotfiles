@@ -719,22 +719,39 @@
     )
 #+end_src
 ** Python
-*** Env
-#+begin_src emacs-lisp
-  (use-package pet
-    :hook
-    (python-base-mode . pet-mode)
-   )
-#+end_src
 *** Mode
 #+begin_src emacs-lisp
   (use-package python-mode
     :ensure nil
     :mode
     ("\\.py\\'" . python-ts-mode)
+    )
+#+end_src
+*** Fmt
+#+begin_src emacs-lisp
+  (use-package ruff-format
+    :after python)
+#+end_src
+*** Env
+#+begin_src emacs-lisp
+  (use-package pet
     :hook
-    ((python-base-mode . eglot-ensure)
-     (python-base-mode . toggle-truncate-lines)))
+    (python-base-mode . (lambda () pet-mode
+  			(setq-local python-shell-interpreter (pet-executable-find "python")
+  				    python-shell-virtualenv-root (pet-virtualenv-root))
+  			(pet-eglot-setup)
+  			(eglot-ensure)
+  			(pet-flycheck-setup)
+  			(flycheck-mode)
+  			(setq-local lsp-pyright-python-executable-cmd python-shell-interpreter
+  				    lsp-pyright-venv-path python-shell-virtualenv-root)
+  			(eglot)
+  			(setq-local dap-python-executable python-shell-interpreter)
+
+  			(setq-local python-pytest-executable (pet-executable-find "pytest"))
+  			
+  		    )
+    )
 #+end_src
 ** Rust
 #+begin_src emacs-lisp
