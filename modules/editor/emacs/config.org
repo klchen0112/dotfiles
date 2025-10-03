@@ -289,11 +289,16 @@
     :custom
     (vertico-cycle t)
     )
-  
-  (use-package marginalia
-  :ensure t
-  :hook (after-init . marginalia-mode))
 
+  (use-package marginalia
+    :ensure t
+    :hook (after-init . marginalia-mode))
+
+
+  (use-package nerd-icons-completion
+    :after marginalia
+    :config
+    (add-hook 'marginalia-mode-hook #'nerd-icons-completion-marginalia-setup))
 
   (use-package vertico-directory
     :ensure nil
@@ -330,6 +335,7 @@
     (corfu-on-exact-match nil)
     (corfu-quit-at-boundary     'separator)
     (tab-always-indent 'complete))
+
   (use-package nerd-icons-corfu
     :defer t
     :after (:all nerd-icons corfu)
@@ -352,6 +358,7 @@
     :config
     (setq corfu-popupinfo-delay '(0.5 . 1.0))
     )
+  
   (use-package cape
     :defer t
     :init
@@ -410,16 +417,19 @@
 * Files
 
 #+begin_src emacs-lisp
-  (use-package dired
-    :ensure nil
-    :defer t
-    )
+    (use-package dired
+      :ensure nil
+      )
+  (use-package nerd-icons-dired
+    :ensure t
+    :hook
+    (dired-mode . nerd-icons-dired-mode))
+  
+    (use-package dirvish
+      :after dired)
 
-  (use-package dirvish
-    :after dired)
-
-  (use-package diredfl
-    :after dired)
+    (use-package diredfl
+      :after dired)
 #+end_src
 * Git
 
