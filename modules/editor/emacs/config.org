@@ -627,12 +627,12 @@
 
 ** Nix
 #+begin_src emacs-lisp
-
   (add-to-list 'auto-mode-alist
                (cons "/flake\\.lock\\'"
                      ('json-mode
                       'js-mode)))
-  (use-package nix-mode
+  
+  (use-package nix-ts-mode
     :mode ("\\.nix\\'" . nix-ts-mode)
     :hook
     ((nix-base-mode . eglot-ensure))
