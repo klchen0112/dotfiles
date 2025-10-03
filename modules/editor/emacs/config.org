@@ -10,6 +10,7 @@
 * Benchmark
 #+begin_src emacs-lisp
   (use-package benchmark-init
+    :when init-file-debug
     :ensure t
     :config
     ;; To disable collection of benchmark data after init is done.
@@ -17,6 +18,7 @@
 #+end_src
 * Complier Settings
 #+begin_src emacs-lisp
+  (setq package-enable-at-startup nil)
   ;;;; Compiler settings
   (eval-when-compile
     (require 'use-package)
@@ -536,12 +538,11 @@
     :preface
     )
 
-  (use-package treesit-auto
+  (use-package treesit-fold
     :when (treesit-available-p)
-    :config
-    (treesit-auto-add-to-auto-mode-alist 'all)
-    (global-treesit-auto-mode
-  ))
+    :defer t
+    :after treesit
+   )
 #+end_src
 ** LSP
 
@@ -558,17 +559,33 @@
     (eglot-mode . 'eglot-setup-eldoc)
     )
 
+  (use-package consult-eglot
+    :after eglot
+    )
+
+  (use-package consult-eglot-embark
+    :after (consult-eglot embark)
+    :config
+    (consult-eglot-embark-mode)
+   )
+
   (use-package eglot-booster
     :after eglot
     :custom (eglot-booster-io-only t)
-    :hook (eglot-mode . eglot-booster-mode)
+    :config (eglot-booster-mode)
     )
    #+end_src
 ** JAVA
 #+begin_src emacs-lisp
+  (use-package java-mode
+    :mode
+    ("\\.java\\'" . java-ts-mode)
+    )
+
   (use-package eglot-java
     :after eglot
-  )
+    :hook (java-base-mode . eglot-java-mode)
+    )
 #+end_src
 ** Python
 *** Env
