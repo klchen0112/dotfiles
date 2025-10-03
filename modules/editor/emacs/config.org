@@ -32,6 +32,7 @@
 (setq use-package-always-defer t)
 #+end_src
 * Startup
+** meow
 #+begin_src emacs-lisp
   (use-package meow
     :ensure t
@@ -126,6 +127,14 @@
     (meow-global-mode 1)
     )
 #+end_src
+** shell
+#+begin_src emacs-lisp
+  (use-package exec-path-from-shell
+    :ensure t
+    :config (when (daemonp)
+              (exec-path-from-shell-initialize))
+   )
+#+end_src
 * Editor
 * Ui
 ** Relate live number
@@ -167,6 +176,14 @@
     ;; `modus-themes-load-random', `modus-themes-load-random-dark',
     ;; `modus-themes-load-random-light').
     (modus-themes-load-theme 'ef-owl))
+#+end_src
+
+*** smooth scrolling
+#+begin_src emacs-lisp
+  (pixel-scroll-precision-mode 1)
+  (setq mouse-wheel-scroll-amount '(1 ((shift) . 1))) ;; one line at a time
+  (setq mouse-wheel-follow-mouse 't) ;; scroll window under mouse
+  (setq scroll-step 1) 
 #+end_src
 ** Font
 *** Nerd icons
@@ -405,8 +422,13 @@
 
 * Env
 #+begin_src emacs-lisp
-(use-package envrc
-  :hook (after-init . envrc-global-mode))
+  (use-package envrc
+    :hook (after-init . envrc-global-mode))
+
+  (use-package direnv
+   :config
+   (direnv-mode))
+
 #+end_src
 * Project
 #+begin_src emacs-lisp
@@ -506,6 +528,13 @@
   :config
   (add-hook 'python-base-mode-hook 'pet-mode -10))
 #+end_src
+** Rust
+#+begin_src emacs-lisp
+  (use-package rust-ts-mode
+    :if (treesit-language-available-p 'rust)
+    :mode (("\\.rs\\'" . rust-ts-mode))
+  )
+#+end_src
 ** CPP
 
 ** Json
@@ -530,13 +559,13 @@
     :mode "\\.nix\\'"
     )
 
+  (use-package nix-shell
+    :ensure nil)
+
   (use-package nix-update)
 
-  (use-package nix-ts-mode)
-
-
-  (use-package nix-update
-    :commands nix-update-fetch)
+  (use-package nix-drv-mode
+    :ensure nil)
 #+end_src
 
 ** Just mode
