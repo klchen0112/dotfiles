@@ -149,6 +149,50 @@
     (meow-tree-sitter-register-defaults)
     )
 #+end_src
+** Rime
+#+begin_src emacs-lisp
+  (use-package sis
+    :if (or IS-MAC IS-LINUX)
+    :init
+    (add-hook 'meow-insert-exit-hook #'sis-set-english)
+    :config
+    (sis-ism-lazyman-config
+     "com.apple.keylayout.UnicodeHexInput"
+     "im.rime.inputmethod.Squirrel.Rime"
+     )
+    ;; enable the /cursor color/ mode
+    (sis-global-cursor-color-mode t)
+    ;; enable the /respect/ mode
+    (sis-global-respect-mode t)
+    ;; enable the /context/ mode for all buffers
+    (sis-global-context-mode t)
+    ;; enable the /inline english/ mode for all buffers
+    (sis-global-inline-mode t)
+    )
+
+  (use-package rime
+   :defer t
+   :bind
+   (:map rime-mode-map
+         ("S- " . 'rime-send-keybinding))
+   :config
+   (if IS-LINUX
+    (setq rime-user-data-dir "~/.local/share/fcitx5/rime")
+    (setq rime-user-data-dir "~/Library/Rime")
+    )
+   (setq rime-show-candidate 'posframe)
+   (setq rime-show-preedit 'inline)
+   (setq default-input-method "rime")
+   (setq rime-inline-ascii-trigger 'shift-r)
+   (setq rime-translate-keybindings '("C-f" "C-b" "C-n" "C-p" "C-g" "<left>" "<right>" "<up>" "<down>" "<prior>" "<next>" "<delete>"))
+   )
+
+  (use-package rime-regexp
+    :after rime
+    :config
+    (rime-regexp-mode t))
+
+#+end_src
 ** shell
 #+begin_src emacs-lisp
   (use-package exec-path-from-shell
