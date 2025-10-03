@@ -5,10 +5,31 @@
 ;;; -*- lexical-binding: t -*-
 #+end_src
 
-
 * config.el
 
-
+* Benchmark
+#+begin_src emacs-lisp
+  (use-package benchmark-init
+    :ensure t
+    :config
+    ;; To disable collection of benchmark data after init is done.
+    (add-hook 'after-init-hook 'benchmark-init/deactivate))
+#+end_src
+* Complier Settings
+#+begin_src emacs-lisp
+  ;;;; Compiler settings
+  (eval-when-compile
+    (require 'use-package)
+    (if init-file-debug
+        (progn
+          (message "--debug-init active")
+          (setq use-package-compute-statistics t)
+          (setq use-package-verbose t)
+          (setq use-package-minimum-reported-time 0.001))
+      (setq use-package-compute-statistics nil))
+    (setq use-package-always-defer t)
+    (setq use-package-expand-minimally t))
+#+end_src
 * Native Compilation
 #+begin_src emacs-lisp
   (when (and (fboundp 'native-comp-available-p) (native-comp-available-p))
@@ -26,10 +47,6 @@
 (defconst IS-LINUX (eq system-type 'gnu/linux))
 (defconst IS-WINDOWS (eq system-type 'windows-nt))
 
-#+end_src
-* use-package
-#+begin_src emacs-lisp
-(setq use-package-always-defer t)
 #+end_src
 * Startup
 ** meow
@@ -199,10 +216,9 @@
 #+begin_src emacs-lisp
   (use-package dashboard
     :demand t
-    :hook
-    (after-init . dashboard-setup-startup-hook)
     :config
     (setq dashboard-icon-type 'nerd-icons)
+     (dashboard-setup-startup-hook)
    )
 
   (use-package doom-modeline
@@ -234,11 +250,11 @@
 ** base settings
 #+begin_src emacs-lisp
   (setq org-directory "~/org")
+  
   (use-package org
-    :defer t
-    :define
     :bind ("C-c I" . 'org-id-get-create)
     )
+
   (use-package org-modern
     :after org
     :hook
@@ -497,14 +513,35 @@
 #+begin_src emacs-lisp
   (use-package format-all)
 #+end_src
+** Dae
+#+begin_src emacs-lisp
+  (use-package dape
+    :commands
+    (dape)
+    :custom
+    (dape-buffer-window-arrangement 'right)
+    (dape-inlay-hints t)
+    :hook
+    (dape-mode    . repeat-mode)
+    (dape-mode    . eldoc-mode)
+    (kill-emasc   . dape-breakpoint-save)
+    (after-init   . dape-breakpoint-load)
+    (dape-compile . kill-buffer))
+#+end_src
 ** Tree-sitter
 #+begin_src emacs-lisp
+  (use-package treesit
+    :when (treesit-available-p)
+    :defer t
+    :preface
+    )
+
   (use-package treesit-auto
+    :when (treesit-available-p)
     :config
     (treesit-auto-add-to-auto-mode-alist 'all)
     (global-treesit-auto-mode
-  )
-  )
+  ))
 #+end_src
 ** LSP
 
@@ -540,6 +577,16 @@
   :config
   (add-hook 'python-base-mode-hook 'pet-mode -10))
 #+end_src
+*** Mode
+#+begin_src emacs-lisp
+  (use-package python-mode
+    :ensure nil
+    :mode
+    ("\\.py\\'" . python-ts-mode)
+    :hook
+    ((python-base-mode . eglot-ensure)
+     (python-base-mode . toggle-truncate-lines)))
+#+end_src
 ** Rust
 #+begin_src emacs-lisp
   (use-package rust-ts-mode
@@ -569,6 +616,8 @@
                       'js-mode)))
   (use-package nix-mode
     :mode "\\.nix\\'"
+    :hook
+    ((nix-base-mode . eglot-ensure))
     )
 
   (use-package nix-shell
