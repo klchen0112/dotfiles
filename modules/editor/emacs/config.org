@@ -615,7 +615,7 @@
                      ('json-mode
                       'js-mode)))
   (use-package nix-mode
-    :mode "\\.nix\\'"
+    :mode ("\\.nix\\'" . nix-ts-mode)
     :hook
     ((nix-base-mode . eglot-ensure))
     )
