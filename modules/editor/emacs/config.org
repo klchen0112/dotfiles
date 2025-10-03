@@ -255,9 +255,28 @@
 ** base settings
 #+begin_src emacs-lisp
   (setq org-directory "~/org")
-  
+
   (use-package org
     :bind ("C-c I" . 'org-id-get-create)
+    )
+
+  (use-package org-download
+    :after org
+    :config
+    (setq org-download-method 'directory)
+    (setq org-download-image-dir "~/Library/Mobile Documents/com~apple~CloudDocs/Documents/org-attach")
+    (setq org-download-heading-lvl 'nil)
+    )
+  
+  (use-package org-agenda
+    :after org
+    :config
+    ;; 时间前导0
+    (setq org-agenda-time-leading-zero t)
+    ;; 默认显示区间
+    (setq org-agenda-span 7)
+    ;; agenda view 默认从周一开始显示
+    (setq org-agenda-start-on-weekday 1)
     )
 
   (use-package org-modern
@@ -295,21 +314,86 @@
 ** Roam
 #+begin_src emacs-lisp
   (use-package org-roam
-            :after org
-             :custom
-             (org-roam-directory (file-truename org-directory))
-             :config
-             (org-roam-db-autosync-mode)
-        ;; If using org-roam-protocol
-        (require 'org-roam-protocol)
-        )
+    :after org
+    :commands (org-roam-buffer
+               org-roam-setup
+               org-roam-capture
+               org-roam-node-find)
+    :bind (("C-c n r a" . org-id-get-create)
+  	 ("C-c n l" . org-roam-buffer-toggle)
+  	 ("C-c n f" . org-roam-node-find)
+  	 ("C-c n g" . org-roam-graph)
+  	 ("C-c n i" . org-roam-node-insert)
+  	 ("C-c n c" . org-roam-capture)
+  	 ("C-c n r" . org-roam-ref-find)
+  	 ("C-c n R" . org-roam-ref-add)
+  	 ("C-c n s" . org-roam-db-sync)
+  	 ("C-c n e" . org-roam-to-hugo-md)
+  	 ;; Dailies
+  	 ("C-c n j" . org-roam-dailies-capture-today))
+    :custom
+    (org-roam-directory (file-truename org-directory))
+    :config
+    (org-roam-db-autosync-mode)
+    (setq org-id-link-to-org-use-id t)
+    (setq org-roam-completion-everywhere t)
+    ;; If using org-roam-protocol
+    (require 'org-roam-protocol)
+    )
 
   (use-package org-roam-ui
-      :after org-roam ;; or :after org
-      :config
-        (setq org-roam-ui-sync-theme t
-              org-roam-ui-follow t)
-   )
+    :after org-roam ;; or :after org
+    :config
+    (setq org-roam-ui-sync-theme t
+          org-roam-ui-follow t
+  	org-roam-ui-update-on-save t
+          org-roam-ui-open-on-start nil
+  	)
+    )
+
+  ;;自动创建笔记的创建时间和修改时间
+  (use-package org-roam-timestamps
+    :after org-roam
+    :defer t
+    :config
+    (org-roam-timestamps-mode)
+    (setq org-roam-timestamps-parent-file t))
+
+  ;;跨文件的引用，能够实现笔记的一处修改，处处修改。
+  (use-package org-transclusion
+    :after org-roam
+    :defer t
+    :config
+    (org-transclusion-mode)
+    )
+
+  (use-package consult-org-roam
+    :after org-roam
+    :config
+    (consult-org-roam-mode)
+    :custom
+    ;; Use `ripgrep' for searching with `consult-org-roam-search'
+    (consult-org-roam-grep-func #'consult-ripgrep)
+    ;; Configure a custom narrow key for `consult-buffer'
+    (consult-org-roam-buffer-narrow-key ?r)
+    ;; Display org-roam buffers right after non-org-roam buffers
+    ;; in consult-buffer (and not down at the bottom)
+    (consult-org-roam-buffer-after-buffers t)
+  )
+#+end_src
+** Bibtex
+#+begin_src emacs-lisp
+  (setq my/bib (concat "~/org/" "academic.bib")
+        my/notes (concat "~/org/" "references")
+        my/library-files "~/Documents/org-pdfs")
+
+  (use-package citar)
+  (use-package citar-org-roam
+    :after (citar org-roam)
+    )
+  (use-package org-roam-bibtex
+    :after (org-roam)
+    )
 #+end_src
 ** Babel
 * History
