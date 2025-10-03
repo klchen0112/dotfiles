@@ -4,9 +4,6 @@
 #+begin_src emacs-lisp
 ;;; -*- lexical-binding: t -*-
 #+end_src
-
-* config.el
-
 * Benchmark
 #+begin_src emacs-lisp
   (use-package benchmark-init
@@ -144,6 +141,12 @@
      '("<escape>" . ignore)
      )
     (meow-global-mode 1)
+    )
+
+  (use-package meow-tree-sitter
+    :after (meow treesit)
+    :config
+    (meow-tree-sitter-register-defaults)
     )
 #+end_src
 ** shell
