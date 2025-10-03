@@ -11,10 +11,11 @@
 
 * Native Compilation
 #+begin_src emacs-lisp
-(when (and (fboundp 'native-comp-available-p)
-           (native-comp-available-p))
-  (setq native-comp-async-report-warnings-errors nil
-        native-comp-deferred-compilation t))
+  (when (and (fboundp 'native-comp-available-p) (native-comp-available-p))
+    (setq native-comp-async-report-warnings-errors nil
+          native-comp-deferred-compilation t
+  	package-native-compile t)
+    )
 #+end_src
 
 * Constants
@@ -147,10 +148,25 @@
 ** Theme
 #+begin_src emacs-lisp
   (use-package modus-themes
+    :demand t)
+  (use-package ef-themes
     :demand t
+    :after modus-themes
+    :init
+    ;; This makes the Modus commands listed below consider only the Ef
+    ;; themes.  For an alternative that includes Modus and all
+    ;; derivative themes (like Ef), enable the
+    ;; `modus-themes-include-derivatives-mode' instead.
+    ;;(ef-themes-take-over-modus-themes-mode 1)
     :config
-    (load-theme 'modus-vivendi)
-    )
+    ;; All customisations here.
+    (setq modus-themes-mixed-fonts t)
+    (setq modus-themes-italic-constructs t)
+
+    ;; Finally, load your theme of choice (or a random one with
+    ;; `modus-themes-load-random', `modus-themes-load-random-dark',
+    ;; `modus-themes-load-random-light').
+    (modus-themes-load-theme 'ef-owl))
 #+end_src
 ** Font
 *** Nerd icons
@@ -265,10 +281,16 @@
     :custom
     (vertico-cycle t)
     )
+
   (use-package vertico-directory
+    :ensure nil
     :after vertico)
+
   (use-package vertico-flat
     :after vertico
+    :ensure nil
+    :custom
+    (vertico-flat-mode)
     )
 #+end_src
 ** Embark
@@ -300,16 +322,19 @@
     :after (:all nerd-icons corfu)
     )
   (use-package corfu-terminal
+    :ensure nil
     :unless (featurep 'tty-child-frames)
     :hook (corfu-mode . corfu-terminal-mode)
     :after (corfu)
     )
   (use-package corfu-history
+    :ensure nil
     :hook ((corfu-mode . corfu-history-mode))
     :after corfu
     )
 
   (use-package corfu-popupinfo
+    :ensure nil
     :hook ((corfu-mode . corfu-popupinfo-mode))
     :config
     (setq corfu-popupinfo-delay '(0.5 . 1.0))
@@ -373,6 +398,7 @@
 
 #+begin_src emacs-lisp
   (use-package dired
+    :ensure nil
     :defer t
     )
 
@@ -395,6 +421,7 @@
     :defer t)
 
   (use-package smerge-mode
+    :ensure nil
     :defer t)
   #+end_src
 * Terminal
@@ -457,12 +484,13 @@
 
 ** Json
 #+begin_src emacs-lisp
-  (use-package json-mode
-  :mode "\\.js\\(?:on\\|[hl]int\\(?:rc\\)?\\)\\'")
+    (use-package json-mode
+    :mode "\\.js\\(?:on\\|[hl]int\\(?:rc\\)?\\)\\'")
 
-  (use-package json-snatcher)
+    (use-package json-snatcher)
 
-  (use-package json-ts-mode)
+    (use-package json-ts-mode
+      :ensure nil)
 #+end_src
 
 ** Nix
@@ -505,10 +533,11 @@
 ** Docker
 
 #+begin_src emacs-lisp
-  (use-package docker)
-  
-  (use-package dockerfile-ts-mode
-    :mode (".*Dockerfile\\'" . dockerfile-ts-mode))
+    (use-package docker)
+    
+    (use-package dockerfile-ts-mode
+      :mode (".*Dockerfile\\'" . dockerfile-ts-mode)
+      :ensure nil)
 #+end_src
 
 * LLM
