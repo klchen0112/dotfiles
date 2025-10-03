@@ -440,6 +440,9 @@
   (use-package magit
     :defer t)
 
+  (use-package forge
+    :after magit)
+
   (use-package diff-hl
     :defer t)
 
