@@ -198,11 +198,23 @@
 
 #+begin_src emacs-lisp
   (use-package dashboard
+    :demand t
+    :hook
+    (after-init . dashboard-setup-startup-hook)
     :config
-    (dashboard-setup-startup-hook))
+    (setq dashboard-icon-type 'nerd-icons)
+   )
 
   (use-package doom-modeline
-    :init (doom-modeline-mode 1))
+    :demand t
+    :hook
+    (
+     (after-init . doom-modeline-mode)
+     (doom-modeline-mode . size-indication-mode)
+     (doom-modeline-mode . column-number-mode) 
+     )
+    )
+
 #+end_src
 
 * Navigation
