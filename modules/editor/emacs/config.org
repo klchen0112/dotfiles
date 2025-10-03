@@ -573,9 +573,10 @@
 ** Python
 *** Env
 #+begin_src emacs-lisp
-(use-package pet
-  :config
-  (add-hook 'python-base-mode-hook 'pet-mode -10))
+  (use-package pet
+    :hook
+    (python-base-mode . pet-mode)
+   )
 #+end_src
 *** Mode
 #+begin_src emacs-lisp
