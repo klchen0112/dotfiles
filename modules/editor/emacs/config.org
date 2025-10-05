@@ -750,7 +750,7 @@
 
   			(setq-local python-pytest-executable (pet-executable-find "pytest"))
   			
-  		    )
+  		    ))
     )
 #+end_src
 ** Rust
