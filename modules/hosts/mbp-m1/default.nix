@@ -14,7 +14,7 @@
     imports = with inputs.self.modules.darwin; [
       klchen
       homebrew
-      # access-tokens
+      access-tokens
     ];
     home-manager.users.klchen.imports = with config.flake.modules.homeManager; [
       zsh
@@ -29,6 +29,7 @@
       emacs
       keyboard
       darwin
+      access-tokens
     ];
     home-manager.backupFileExtension = "hmbp";
     system.primaryUser = "klchen";
