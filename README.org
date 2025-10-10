@@ -38,7 +38,8 @@ home.nix for nixos and darwin user-wide config
 │  │  ├── codeblocks
 │  │  ├── emacs
 │  │  ├── helix
-│  │  ├── home.nix
+
+│  │  ├── HOME.nix
 │  │  ├── jetbrains
 │  │  ├── vim
 │  │  └── vscode

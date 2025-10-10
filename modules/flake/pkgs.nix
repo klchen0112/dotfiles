@@ -40,7 +40,6 @@
               inherit system;
             };
           })
-          inputs.emacs-overlay.overlays.default
           inputs.nix-vscode-extensions.overlays.default
           inputs.self.overlays.default
           # inputs.deploy-rs.overlays.default

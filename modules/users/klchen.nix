@@ -29,7 +29,6 @@
         starship
         utils
         git
-        utils
         ssh
         python
         nix-index

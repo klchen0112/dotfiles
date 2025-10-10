@@ -44,6 +44,7 @@
         # enabling it is required to make Wayland compositors function properly.
         "nvidia-drm.fbdev=1"
       ];
+
       services.xserver.enable = true;
       services.hardware.openrgb = {
         enable = true;

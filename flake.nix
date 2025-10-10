@@ -91,16 +91,16 @@
       };
       url = "github:nix-community/disko";
     };
-    doom-config = {
-      flake = false;
-      url = "github:klchen0112/doom";
-    };
-    doomemacs = {
-      flake = false;
-      follows = "nix-doom-emacs-unstraightened/doomemacs";
-    };
-    emacs-overlay = {
-      follows = "nix-doom-emacs-unstraightened/emacs-overlay";
+    emacs-config = {
+      inputs = {
+        nixpkgs = {
+          follows = "nixpkgs";
+        };
+        twist = {
+          follows = "twist";
+        };
+      };
+      url = "github:klchen0112/emacs-config";
     };
     flake-file = {
       url = "github:vic/flake-file";
@@ -164,17 +164,6 @@
         };
       };
       url = "github:nix-darwin/nix-darwin/master";
-    };
-    nix-doom-emacs-unstraightened = {
-      inputs = {
-        nixpkgs = {
-          follows = "nixpkgs";
-        };
-        systems = {
-          follows = "systems";
-        };
-      };
-      url = "github:marienz/nix-doom-emacs-unstraightened";
     };
     nix-index-database = {
       inputs = {
@@ -268,6 +257,9 @@
         };
       };
       url = "github:numtide/treefmt-nix";
+    };
+    twist = {
+      url = "github:emacs-twist/twist.nix";
     };
     zen-browser = {
       inputs = {

@@ -15,7 +15,7 @@
         devenv
       ];
       nixpkgs.overlays = [
-        inputs.emacs-overlay.overlays.default
+        #  inputs.emacs-overlay.overlays.default
         inputs.nix-vscode-extensions.overlays.default
         inputs.self.overlays.default
       ];
@@ -30,7 +30,7 @@
       environment.etc."nix/inputs/nixpkgs".source = "${inputs.nixpkgs}";
 
       nixpkgs.overlays = [
-        inputs.emacs-overlay.overlays.default
+        #        inputs.emacs-overlay.overlays.default
         inputs.nix-vscode-extensions.overlays.default
         inputs.self.overlays.default
       ];
@@ -44,7 +44,7 @@
       environment.etc."nix/inputs/nixpkgs".source = "${inputs.nixpkgs}";
 
       nixpkgs.overlays = [
-        inputs.emacs-overlay.overlays.default
+        #       inputs.emacs-overlay.overlays.default
         inputs.nix-vscode-extensions.overlays.default
         inputs.self.overlays.default
       ];

@@ -5,7 +5,14 @@
       programs.gpg = {
         enable = true;
       };
-
+      services.gpg-agent = {
+        enable = true;
+        pinentry = {
+          package = pkgs.pinentry-all;
+          program = "pinentry-gnome3";
+        };
+        enableSshSupport = true;
+      };
       stylix.targets.btop.enable = true;
       programs.btop = {
         enable = true;
@@ -97,6 +104,7 @@
         lrzsz
         python312Packages.editorconfig
         just
+        gcr
       ];
 
       editorconfig = {
