@@ -14,7 +14,7 @@
     }:
     let
       rime-install = pkgs.writeShellApplication {
-        name = "doom-install";
+        name = "rime-install";
         runtimeInputs = with pkgs; [
           git
           openssh
