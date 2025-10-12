@@ -10,8 +10,8 @@
       home-manager.users.klchen.imports = with config.flake.modules.homeManager; [
         inputmethod
         niri
-        # niri-caelestia-shell
-	dankMaterialShell
+        niri-caelestia-shell
+        # dankMaterialShell
         ghostty
         aria2
         kitty

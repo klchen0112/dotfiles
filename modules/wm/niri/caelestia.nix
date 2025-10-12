@@ -42,9 +42,9 @@
           enable = true;
         };
         settings = {
-	  bar.status = {
-      showBattery = false;
-    };
+          bar.status = {
+            showBattery = false;
+          };
           appearance.font.family = {
             mono = config.stylix.fonts.monospace.name;
           };
@@ -56,9 +56,11 @@
 
       programs.niri.settings.binds = with config.lib.niri.actions; {
         "Mod+Space" = {
-          action = spawn "qs" "-c" "niri-caelestia-shell" "ipc" "call" "drawers" "toggle" "launcher";
+          action = spawn "caelestia-shell" "ipc" "call" "drawers" "toggle" "launcher";
           hotkey-overlay.title = "Toggle Application Launcher";
         };
+        "Mod+L".action = spawn "caelestia-shell" "ipc" "call" "lock" "lock";
+
       };
     };
 }
