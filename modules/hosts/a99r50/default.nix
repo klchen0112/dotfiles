@@ -10,6 +10,8 @@
       home-manager.users.klchen.imports = with config.flake.modules.homeManager; [
         inputmethod
         niri
+        # niri-caelestia-shell
+	dankMaterialShell
         ghostty
         aria2
         kitty
@@ -17,6 +19,7 @@
         syncthing
         emacs
         zen
+        zed
         access-tokens
       ];
       home-manager.backupFileExtension = "hmbp";

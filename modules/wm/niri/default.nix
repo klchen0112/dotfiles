@@ -8,7 +8,6 @@
         nixpkgs.follows = "nixpkgs";
       };
     };
-    # niri-caelestia-shell.url = "github:jutraim/niri-caelestia-shell";
   };
   flake.modules.nixos.niri =
     { pkgs, ... }:
@@ -18,9 +17,9 @@
       ];
       programs.niri.enable = true;
       programs.niri.package = pkgs.niri;
-      # nixpkgs.overlays = [
-      #   flake.inputs.niri.overlays.niri
-      # ];
+      nixpkgs.overlays = [
+        inputs.niri.overlays.niri
+      ];
       services.displayManager = {
         gdm.enable = true;
         sessionPackages = with pkgs; [

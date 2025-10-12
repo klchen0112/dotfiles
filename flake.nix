@@ -176,6 +176,14 @@
       };
       url = "github:sodiboo/niri-flake";
     };
+    niri-caelestia-shell = {
+      inputs = {
+        nixpkgs = {
+          follows = "nixpkgs";
+        };
+      };
+      url = "github:jutraim/niri-caelestia-shell";
+    };
     nix-darwin = {
       inputs = {
         nixpkgs = {
@@ -253,6 +261,10 @@
     };
     pkgs-by-name-for-flake-parts = {
       url = "github:drupol/pkgs-by-name-for-flake-parts";
+    };
+    quickshell = {
+      follows = "niri-caelestia-shell/quickshell";
+      url = "git+https://git.outfoxxed.me/quickshell/quickshell";
     };
     rime = {
       flake = false;
