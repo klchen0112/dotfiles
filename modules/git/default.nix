@@ -52,9 +52,9 @@ topLevel: {
             autocrlf = false;
             symlinks = true;
           };
-          commit.gpgSign = true;
-          tag.gpgSign = true;
-          user.signingkey = "8041DF8D45CD149D";
+          # commit.gpgSign = true;
+          # tag.gpgSign = true;
+          # user.signingkey = "8041DF8D45CD149D";
           #protocol.keybase.allow = "always";
           credential.helper = "store --file ~/.config/git/git-credentials";
           pull.rebase = true;

@@ -8,8 +8,13 @@
       services.gpg-agent = {
         enable = true;
         pinentry = {
-          package = pkgs.pinentry-all;
-          program = "pinentry-gnome3";
+          package =
+            if pkgs.stdenv.isLinux then
+
+              pkgs.pinentry-gnome3
+            else
+              pkgs.pinentry_mac;
+          program = if pkgs.stdenv.isLinux then "pinentry-gnome3" else "pinentry-mac";
         };
         enableSshSupport = true;
       };
