@@ -1,5 +1,17 @@
 { inputs, ... }:
 {
+  flake.meta.machines.init = {
+    hostName = "init";
+    platform = "x86_64-linux";
+    base16Scheme = "selenized-light";
+    sshKey = [
+
+    ];
+    users = [
+      "klchen"
+    ];
+    desktop = false;
+  };
   flake.modules.nixos.init =
     {
       lib,

@@ -1,5 +1,17 @@
 { inputs, config, ... }:
 {
+  flake.meta.machines.a99r50 = {
+    hostName = "a99r50";
+    platform = "x86_64-linux";
+    base16Scheme = "selenized-light";
+    sshKey = [
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHRBuSM5DLKYUtS1gmoZEA+y2xGrWWtxs3HEutD1LCwx"
+    ];
+    users = [
+      "klchen"
+    ];
+    desktop = true;
+  };
   flake.modules.nixos.a99r50 =
     {
       lib,

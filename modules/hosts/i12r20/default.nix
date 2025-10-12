@@ -1,4 +1,17 @@
 {
+  flake.meta.machines.i12r20 = {
+
+    hostName = "i12r20";
+    platform = "x86_64-linux";
+    base16Scheme = "selenized-light";
+    sshKey = [
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIO3hO4yhyrO8JHbP6yokAEbRDPb4FR/bhtoIb2rIBP5q root@i12r20"
+    ];
+    users = [
+      "klchen"
+    ];
+    desktop = true;
+  };
   flake.modules.nixos.i12r20 =
     {
       pkgs,
