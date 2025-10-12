@@ -12,7 +12,7 @@
   };
   imports = [
     inputs.treefmt-nix.flakeModule
-    #   inputs.git-hooks.flakeModule
+    inputs.git-hooks.flakeModule
   ];
   perSystem =
     {
@@ -20,13 +20,21 @@
       ...
     }:
     {
-      #     pre-commit.settings = {
-      #       hooks.nixfmt-rfc-style.enable = true;
-      #     };
+      pre-commit.settings = {
+        hooks.nixfmt-rfc-style.enable = true;
+      };
       treefmt = {
         projectRootFile = "flake.nix";
-        programs.nixfmt.enable = pkgs.lib.meta.availableOn pkgs.stdenv.buildPlatform pkgs.nixfmt-rfc-style.compiler;
+        enableDefaultExcludes = true;
+        programs.nixfmt.enable = true;
         programs.nixfmt.package = pkgs.nixfmt-rfc-style;
+        programs.shellcheck.enable = true;
+        settings.global.excludes = [
+          "Justfile"
+          "*.org"
+          "*.png"
+        ];
+        settings.global.on-unmatched = "warn";
       };
     };
 }
