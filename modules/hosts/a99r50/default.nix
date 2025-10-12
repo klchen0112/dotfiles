@@ -33,6 +33,7 @@
         zen
         zed
         access-tokens
+	keyboard
       ];
       home-manager.backupFileExtension = "hmbp";
 
