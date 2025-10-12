@@ -5,6 +5,7 @@
       url = "github:klchen0112/emacs-config";
       inputs.twist.follows = "twist";
       inputs.nixpkgs.follows = "nixpkgs";
+      inputs.flake-parts.follows = "flake-parts";
     };
     twist.url = "github:emacs-twist/twist.nix";
   };
@@ -17,10 +18,10 @@
       imports = [ inputs.emacs-config.homeModules.twist ];
       programs.emacs-twist = {
         enable = true;
-        settings = {
-          extraFeatures = [
-          ];
-        };
+	
+	settings = {enableDefaultEditor = true;
+	  enableYequakeScripts = true;
+	  };
       };
       services.emacs = {
         enable = true;

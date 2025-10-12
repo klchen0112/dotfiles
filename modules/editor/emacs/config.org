@@ -144,7 +144,7 @@
     )
 
   (use-package meow-tree-sitter
-    :after (meow treesit)
+    :after (meow)
     :config
     (meow-tree-sitter-register-defaults)
     )
@@ -311,9 +311,10 @@
     (setq org-download-image-dir "~/Library/Mobile Documents/com~apple~CloudDocs/Documents/org-attach")
     (setq org-download-heading-lvl 'nil)
     )
-  
+
   (use-package org-agenda
     :after org
+    :ensure nil
     :config
     ;; 时间前导0
     (setq org-agenda-time-leading-zero t)
@@ -663,16 +664,9 @@
 #+end_src
 ** Tree-sitter
 #+begin_src emacs-lisp
-  (use-package treesit
-    :when (treesit-available-p)
-    :defer t
-    :preface
-    )
-
   (use-package treesit-fold
     :when (treesit-available-p)
     :defer t
-    :after treesit
    )
 #+end_src
 ** LSP
@@ -708,7 +702,9 @@
    #+end_src
 ** JAVA
 #+begin_src emacs-lisp
-  (use-package java-mode
+  (use-package java-ts-mode
+    :if (treesit-language-available-p 'rust)
+    :ensure nil
     :mode
     ("\\.java\\'" . java-ts-mode)
     )
@@ -721,7 +717,7 @@
 ** Python
 *** Mode
 #+begin_src emacs-lisp
-  (use-package python-mode
+  (use-package python-ts-mode
     :ensure nil
     :mode
     ("\\.py\\'" . python-ts-mode)
@@ -756,6 +752,7 @@
 ** Rust
 #+begin_src emacs-lisp
   (use-package rust-ts-mode
+    :ensure nil
     :if (treesit-language-available-p 'rust)
     :mode (("\\.rs\\'" . rust-ts-mode))
   )

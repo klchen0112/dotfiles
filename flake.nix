@@ -101,6 +101,9 @@
     };
     emacs-config = {
       inputs = {
+        flake-parts = {
+          follows = "flake-parts";
+        };
         nixpkgs = {
           follows = "nixpkgs";
         };
