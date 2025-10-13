@@ -1,7 +1,7 @@
 {
   flake-file.inputs = {
     quickshell = {
-      url = "git+https://git.outfoxxed.me/quickshell/quickshell";
+      # url = "git+https://git.outfoxxed.me/quickshell/quickshell";
       follows = "niri-caelestia-shell/quickshell";
     };
     niri-caelestia-shell = {

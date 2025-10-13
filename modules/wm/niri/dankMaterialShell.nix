@@ -3,6 +3,7 @@
     DankMaterialShell = {
       url = "github:AvengeMedia/DankMaterialShell";
       inputs.nixpkgs.follows = "nixpkgs";
+      inputs.quickshell.follows = "quickshell";
     };
   };
   flake.modules.homeManager.dankMaterialShell =

@@ -36,6 +36,7 @@
         nixpkgs = {
           follows = "nixpkgs";
         };
+        quickshell.follows = "quickshell";
       };
       url = "github:AvengeMedia/DankMaterialShell";
     };
@@ -267,7 +268,7 @@
     };
     quickshell = {
       follows = "niri-caelestia-shell/quickshell";
-      url = "git+https://git.outfoxxed.me/quickshell/quickshell";
+      # url = "git+https://git.outfoxxed.me/quickshell/quickshell";
     };
     rime = {
       flake = false;
