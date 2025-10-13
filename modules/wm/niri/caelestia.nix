@@ -60,7 +60,7 @@
           hotkey-overlay.title = "Toggle Application Launcher";
         };
         "Mod+L".action = spawn "caelestia-shell" "ipc" "call" "lock" "lock";
-
+	"Mod+V".action = spawn "pkill" "fuzzel" "||" "caelestia" "clipboard";
       };
     };
 }
