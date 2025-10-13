@@ -50,13 +50,62 @@
 * Startup
 ** meow
 #+begin_src emacs-lisp
+(defconst meow-cheatsheet-layout-engrammer
+  '((<TLDE> "[" "{")
+    (<AE01> "1" "!")
+    (<AE02> "2" "@")
+    (<AE03> "3" "#")
+    (<AE04> "4" "$")
+    (<AE05> "5" "%")
+    (<AE06> "6" "^")
+    (<AE07> "7" "&")
+    (<AE08> "8" "*")
+    (<AE09> "9" "()")
+    (<AE10> "0" ")")
+    (<AE11> "[" "{")
+    (<AE12> "]" "}")
+    (<AD01> "b" "B")
+    (<AD02> "y" "Y")
+    (<AD03> "o" "O")
+    (<AD04> "u" "U")
+    (<AD05> "'" "\"")
+    (<AD06> ";" ":")
+    (<AD07> "l" "L")
+    (<AD08> "d" "D")
+    (<AD09> "w" "W")
+    (<AD10> "v" "v")
+    (<AD11> "z" "Z")
+    (<AD12> "+" "=")
+    (<AC01> "c" "C")
+    (<AC02> "i" "i")
+    (<AC03> "e" "E")
+    (<AC04> "a" "A")
+    (<AC05> "," "<")
+    (<AC06> "." ">")
+    (<AC07> "h" "H")
+    (<AC08> "t" "T")
+    (<AC09> "s" "S")
+    (<AC10> "n" "N")
+    (<AC11> "q" "Q")
+    (<AB01> "g" "G")
+    (<AB02> "x" "X")
+    (<AB03> "j" "J")
+    (<AB04> "k" "K")
+    (<AB05> "-" "_")
+    (<AB06> "/" "?")
+    (<AB07> "r" "R")
+    (<AB08> "m" "M")
+    (<AB09> "f" "f")
+    (<AB10> "p" "P")
+    (<BKSL> "-" "_")))
+
   (use-package meow
     :ensure t
     :demand t
     :init
     (setq meow-leader-key "SPC")  ; 设置 leader 键为空格
     :config
-    (setq meow-cheatsheet-layout meow-cheatsheet-layout-qwerty)
+    (setq meow-cheatsheet-layout meow-cheatsheet-layout-engrammer)
     (meow-motion-overwrite-define-key
      ;; 'j' and 'k' are suggested to be bound to `meow-next' and `meow-prev', but
      ;; these deactivate the region, which is not helpful unless we're in normal
@@ -270,7 +319,7 @@
   (pixel-scroll-precision-mode 1)
   (setq mouse-wheel-scroll-amount '(1 ((shift) . 1))) ;; one line at a time
   (setq mouse-wheel-follow-mouse 't) ;; scroll window under mouse
-  (setq scroll-step 1) 
+  (setq scroll-step 1)
 #+end_src
 ** Font
 *** Nerd icons
@@ -297,7 +346,7 @@
     (
      (after-init . doom-modeline-mode)
      (doom-modeline-mode . size-indication-mode)
-     (doom-modeline-mode . column-number-mode) 
+     (doom-modeline-mode . column-number-mode)
      )
     )
 
@@ -558,7 +607,7 @@
     :config
     (setq corfu-popupinfo-delay '(0.5 . 1.0))
     )
-  
+
   (use-package cape
     :defer t
     :init
@@ -629,7 +678,7 @@
     :ensure t
     :hook
     (dired-mode . nerd-icons-dired-mode))
-  
+
     (use-package dirvish
       :after dired)
 
@@ -766,7 +815,7 @@
   			(setq-local dap-python-executable python-shell-interpreter)
 
   			(setq-local python-pytest-executable (pet-executable-find "pytest"))
-  			
+
   		    ))
     )
 #+end_src
@@ -797,7 +846,7 @@
                (cons "/flake\\.lock\\'"
                      ('json-mode
                       'js-mode)))
-  
+
   (use-package nix-ts-mode
     :mode ("\\.nix\\'" . nix-ts-mode)
     :hook
@@ -834,7 +883,7 @@
 
 #+begin_src emacs-lisp
     (use-package docker)
-    
+
     (use-package dockerfile-ts-mode
       :mode (".*Dockerfile\\'" . dockerfile-ts-mode)
       :ensure nil)
