@@ -31,15 +31,6 @@
   };
 
   inputs = {
-    DankMaterialShell = {
-      inputs = {
-        nixpkgs = {
-          follows = "nixpkgs";
-        };
-        quickshell.follows = "quickshell";
-      };
-      url = "github:AvengeMedia/DankMaterialShell";
-    };
     agenix = {
       inputs = {
         darwin = {
@@ -91,14 +82,6 @@
         };
       };
       url = "github:nix-community/disko";
-    };
-    doom-config = {
-      flake = false;
-      url = "github:klchen0112/doom";
-    };
-    doomemacs = {
-      flake = false;
-      follows = "nix-doom-emacs-unstraightened/doomemacs";
     };
     emacs-config = {
       inputs = {
@@ -196,20 +179,6 @@
       };
       url = "github:nix-darwin/nix-darwin/master";
     };
-    nix-doom-emacs-unstraightened = {
-      inputs = {
-        emacs-overlay = {
-          follows = "emacs-overlay";
-        };
-        nixpkgs = {
-          follows = "nixpkgs";
-        };
-        systems = {
-          follows = "systems";
-        };
-      };
-      url = "github:marienz/nix-doom-emacs-unstraightened";
-    };
     nix-index-database = {
       inputs = {
         nixpkgs = {
@@ -268,7 +237,6 @@
     };
     quickshell = {
       follows = "niri-caelestia-shell/quickshell";
-      # url = "git+https://git.outfoxxed.me/quickshell/quickshell";
     };
     rime = {
       flake = false;

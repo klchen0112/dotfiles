@@ -1,30 +1,5 @@
 {
   "nodes": {
-    "DankMaterialShell": {
-      "inputs": {
-        "dgop": "dgop",
-        "dms-cli": "dms-cli",
-        "nixpkgs": [
-          "nixpkgs"
-        ],
-        "quickshell": [
-          "quickshell"
-        ]
-      },
-      "locked": {
-        "lastModified": 1757815368,
-        "narHash": "sha256-E61yxlH2VWxEIeF62sO2mrZW8xk7WIi3SQvOZHyv4SU=",
-        "owner": "AvengeMedia",
-        "repo": "DankMaterialShell",
-        "rev": "ba6c7ae28c0be2cbb128853dbe47ac1fe15bacda",
-        "type": "github"
-      },
-      "original": {
-        "owner": "AvengeMedia",
-        "repo": "DankMaterialShell",
-        "type": "github"
-      }
-    },
     "agenix": {
       "inputs": {
         "darwin": [
@@ -275,27 +250,6 @@
         "type": "github"
       }
     },
-    "dgop": {
-      "inputs": {
-        "nixpkgs": [
-          "DankMaterialShell",
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1757252286,
-        "narHash": "sha256-QwWQzlxAGvIi6VAc8DQ6ONCKKwtPyaHQW1cQyGbP7Og=",
-        "owner": "AvengeMedia",
-        "repo": "dgop",
-        "rev": "a65a02ddf8bade9c109d055e644e4bd851183bd5",
-        "type": "github"
-      },
-      "original": {
-        "owner": "AvengeMedia",
-        "repo": "dgop",
-        "type": "github"
-      }
-    },
     "disko": {
       "inputs": {
         "nixpkgs": [
@@ -313,59 +267,6 @@
       "original": {
         "owner": "nix-community",
         "repo": "disko",
-        "type": "github"
-      }
-    },
-    "dms-cli": {
-      "inputs": {
-        "nixpkgs": [
-          "DankMaterialShell",
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1757296630,
-        "narHash": "sha256-3H236F5oIKkqpfnwrvZQs4Y5imKb6JCMFGDkHs8VDjQ=",
-        "owner": "AvengeMedia",
-        "repo": "danklinux",
-        "rev": "dac591711ab30d6b071a5cec674a3d2e04665ee1",
-        "type": "github"
-      },
-      "original": {
-        "owner": "AvengeMedia",
-        "repo": "danklinux",
-        "type": "github"
-      }
-    },
-    "doom-config": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1759342110,
-        "narHash": "sha256-2XVTK0Elc1yGCbARFQ5C+XxLqqOn0bbcVGlSS8i5lg0=",
-        "owner": "klchen0112",
-        "repo": "doom",
-        "rev": "eb2d55c5b596a15e7610790f85f956c3df9334af",
-        "type": "github"
-      },
-      "original": {
-        "owner": "klchen0112",
-        "repo": "doom",
-        "type": "github"
-      }
-    },
-    "doomemacs": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1759180402,
-        "narHash": "sha256-Y67ooUjDMWjPk+/IjMRnhe+OPn19Q0wF73prtExwyiI=",
-        "owner": "doomemacs",
-        "repo": "doomemacs",
-        "rev": "5e7e93beb9f2b5a81768aaf4950203ceea21c4f6",
-        "type": "github"
-      },
-      "original": {
-        "owner": "doomemacs",
-        "repo": "doomemacs",
         "type": "github"
       }
     },
@@ -1178,33 +1079,6 @@
         "type": "github"
       }
     },
-    "nix-doom-emacs-unstraightened": {
-      "inputs": {
-        "doomemacs": "doomemacs",
-        "emacs-overlay": [
-          "emacs-overlay"
-        ],
-        "nixpkgs": [
-          "nixpkgs"
-        ],
-        "systems": [
-          "systems"
-        ]
-      },
-      "locked": {
-        "lastModified": 1760085666,
-        "narHash": "sha256-UPFtAehoFvrnefM5X7lVOuvIery23KbwBOLujUFSL9Q=",
-        "owner": "marienz",
-        "repo": "nix-doom-emacs-unstraightened",
-        "rev": "a25a633243995fb74f819eef7c9948dee8defe7b",
-        "type": "github"
-      },
-      "original": {
-        "owner": "marienz",
-        "repo": "nix-doom-emacs-unstraightened",
-        "type": "github"
-      }
-    },
     "nix-filter": {
       "locked": {
         "lastModified": 1757882181,
@@ -1694,17 +1568,11 @@
     },
     "root": {
       "inputs": {
-        "DankMaterialShell": "DankMaterialShell",
         "agenix": "agenix",
         "allfollow": "allfollow",
         "brew-nix": "brew-nix",
         "devshell": "devshell",
         "disko": "disko",
-        "doom-config": "doom-config",
-        "doomemacs": [
-          "nix-doom-emacs-unstraightened",
-          "doomemacs"
-        ],
         "emacs-config": "emacs-config",
         "emacs-overlay": "emacs-overlay_2",
         "flake-file": "flake-file",
@@ -1717,7 +1585,6 @@
         "niri": "niri",
         "niri-caelestia-shell": "niri-caelestia-shell",
         "nix-darwin": "nix-darwin_2",
-        "nix-doom-emacs-unstraightened": "nix-doom-emacs-unstraightened",
         "nix-index-database": "nix-index-database",
         "nix-vscode-extensions": "nix-vscode-extensions",
         "nixos-hardware": "nixos-hardware",
