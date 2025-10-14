@@ -22,6 +22,9 @@
             a99r50 = {
               id = "5W52MX5-JIZFA55-AP74KQ2-7QAI5OF-DZKSJ5M-KPBAHVD-ZVB67M5-WFYVAQC";
             };
+            vivoY300T = {
+              id = "7Y6E2VH-HF7IDIW-KO6PBAK-GPZP7CV-2XNJSKS-WLWF4WH-YNQAS74-IW5YXAJ";
+            };
           };
           folders = {
             "rime-sync" = {
