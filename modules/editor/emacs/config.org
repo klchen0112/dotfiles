@@ -257,10 +257,10 @@
    (setq rime-translate-keybindings '("C-f" "C-b" "C-n" "C-p" "C-g" "<left>" "<right>" "<up>" "<down>" "<prior>" "<next>" "<delete>"))
    )
 
-  (use-package rime-regexp
-    :after rime
-    :config
-    (rime-regexp-mode t))
+  ;;(use-package rime-regexp
+  ;;  :after rime
+  ;;  :config
+  ;;  (rime-regexp-mode t))
 
 #+end_src
 ** shell
