@@ -10,6 +10,7 @@
     {
       pkgs,
       lib,
+      config,
       ...
     }:
     let
@@ -42,9 +43,28 @@
         enable = pkgs.stdenv.isLinux;
         type = "fcitx5";
         fcitx5.addons = with pkgs; [
-          (fcitx5-rime.override { rimeDataPkgs = [ pkgs.local.rime-combo-snow-pinyin pkgs.rime-data ]; })
+          (fcitx5-rime.override {
+            rimeDataPkgs = [
+              pkgs.local.rime-combo-snow-pinyin
+              pkgs.rime-data
+            ];
+          })
           fcitx5-configtool
           fcitx5-gtk # gtk im module
+        ];
+      };
+      services.syncthing.settings.folders."rime-sync" = {
+        id = "w4pgi-mnhem";
+        path =
+          if pkgs.stdenv.isDarwin then
+            "~/Library/Mobile Documents/iCloud~dev~fuxiao~app~hamsterapp/Documents/sync"
+          else
+            "${config.home.homeDirectory}/.local/share/fcitx5/rime/sync";
+        devices = [
+          "redmi-12t-pro"
+          "tower"
+          "mbp-m1"
+          "a99r50"
         ];
       };
 

@@ -26,23 +26,6 @@
               id = "7Y6E2VH-HF7IDIW-KO6PBAK-GPZP7CV-2XNJSKS-WLWF4WH-YNQAS74-IW5YXAJ";
             };
           };
-          folders = {
-            "rime-sync" = {
-              id = "w4pgi-mnhem";
-              path =
-                if pkgs.stdenv.isDarwin then
-                  "~/Library/Mobile Documents/iCloud~dev~fuxiao~app~hamsterapp/Documents/sync"
-                else
-                  "${config.home.homeDirectory}/.local/share/rime-sync";
-              devices = [
-                "redmi-12t-pro"
-                "tower"
-                "mbp-m1"
-                "a99r50"
-              ];
-            };
-          };
-
         };
         tray = {
           enable = pkgs.stdenv.isLinux;
