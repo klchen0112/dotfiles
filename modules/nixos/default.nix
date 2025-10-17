@@ -5,5 +5,6 @@
     imports = with inputs.self.modules.nixos; [
       network
     ];
+    time.timeZone = "Asia/Shanghai";
   };
 }
