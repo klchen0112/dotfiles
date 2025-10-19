@@ -95,7 +95,7 @@
           follows = "twist";
         };
       };
-      url = "github:klchen0112/emacs-config";
+      url = "github:klchen0112/.emacs.d";
     };
     emacs-overlay = {
       inputs = {
