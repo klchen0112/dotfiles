@@ -29,11 +29,11 @@
         kitty
         bash
         syncthing
-        emacs
+        emacs-twist
         zen
         zed
         access-tokens
-	keyboard
+        keyboard
       ];
       home-manager.backupFileExtension = "hmbp";
 

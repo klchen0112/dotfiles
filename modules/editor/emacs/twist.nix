@@ -2,7 +2,7 @@
 {
   flake-file.inputs = {
     emacs-config = {
-      url = "github:klchen0112/emacs-config";
+      url = "github:klchen0112/.emacs.d";
       inputs.twist.follows = "twist";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.flake-parts.follows = "flake-parts";
@@ -18,10 +18,11 @@
       imports = [ inputs.emacs-config.homeModules.twist ];
       programs.emacs-twist = {
         enable = true;
-	
-	settings = {enableDefaultEditor = true;
-	  enableYequakeScripts = true;
-	  };
+
+        settings = {
+          enableDefaultEditor = true;
+          enableYequakeScripts = true;
+        };
       };
       services.emacs = {
         enable = true;
