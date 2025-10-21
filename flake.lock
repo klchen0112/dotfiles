@@ -277,11 +277,11 @@
         "twist-overrides": "twist-overrides"
       },
       "locked": {
-        "lastModified": 1761043071,
-        "narHash": "sha256-G+gNNTKLZnWbOYXhQm9NGxKG12EOQ45t9HWypmOedDI=",
+        "lastModified": 1761065356,
+        "narHash": "sha256-ZxCmq487mzrN+znUJpmO1CWvqZh7ZVMd+bhm9kP3Ygk=",
         "owner": "klchen0112",
         "repo": ".emacs.d",
-        "rev": "0100267aeec923141103692281d7b8f02ec91d87",
+        "rev": "cb9fb85d449ec07dc886e8936bd351fd88cc5714",
         "type": "github"
       },
       "original": {
