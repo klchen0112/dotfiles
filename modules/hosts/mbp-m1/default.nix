@@ -26,7 +26,7 @@
       inputmethod
       zen
       syncthing
-      emacs
+      emacs-twist
       keyboard
       darwin
       access-tokens
