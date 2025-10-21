@@ -270,6 +270,7 @@
         "nongnu-elpa": "nongnu-elpa",
         "nongnu-elpa-archive": "nongnu-elpa-archive",
         "org-babel": "org-babel",
+        "pkgs-by-name-for-flake-parts": "pkgs-by-name-for-flake-parts",
         "systems": "systems_2",
         "twist": [
           "twist"
@@ -277,11 +278,11 @@
         "twist-overrides": "twist-overrides"
       },
       "locked": {
-        "lastModified": 1761065356,
-        "narHash": "sha256-ZxCmq487mzrN+znUJpmO1CWvqZh7ZVMd+bhm9kP3Ygk=",
+        "lastModified": 1761068079,
+        "narHash": "sha256-N8MBbSkSYGNP2P9Kdx8emKssKUD8qGQXeFkjrBScE9k=",
         "owner": "klchen0112",
         "repo": ".emacs.d",
-        "rev": "cb9fb85d449ec07dc886e8936bd351fd88cc5714",
+        "rev": "2ccdf101b06c1b5cba59405559aaa8c86125e792",
         "type": "github"
       },
       "original": {
@@ -1076,6 +1077,21 @@
         "type": "github"
       }
     },
+    "pkgs-by-name-for-flake-parts_2": {
+      "locked": {
+        "lastModified": 1743779435,
+        "narHash": "sha256-5eaQ3iKcwUbLw7pOJJqV85qgf5L+ihfsISrifGM7czQ=",
+        "owner": "drupol",
+        "repo": "pkgs-by-name-for-flake-parts",
+        "rev": "477b3e8f981e3d7bac9d297e64796c918942f744",
+        "type": "github"
+      },
+      "original": {
+        "owner": "drupol",
+        "repo": "pkgs-by-name-for-flake-parts",
+        "type": "github"
+      }
+    },
     "quickshell": {
       "inputs": {
         "nixpkgs": [
@@ -1143,7 +1159,7 @@
         "nixpkgs-unstable": "nixpkgs-unstable",
         "nixvim": "nixvim",
         "nur": "nur",
-        "pkgs-by-name-for-flake-parts": "pkgs-by-name-for-flake-parts",
+        "pkgs-by-name-for-flake-parts": "pkgs-by-name-for-flake-parts_2",
         "quickshell": [
           "niri-caelestia-shell",
           "quickshell"
