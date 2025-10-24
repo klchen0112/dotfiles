@@ -6,20 +6,6 @@
         nerd-fonts.hack
         nerd-fonts.symbols-only
         sketchybar-app-font
-        blueutil
-        coreutils
-        curl
-        gh
-        gh-notify
-        gnugrep
-        gnused
-        jankyborders
-        jq
-        aerospace
-        local.sketchybarhelper
-        local.dynamic-island-helper
-        wttrbar
-
       ];
       home.shellAliases = {
         restart-sketchybar = ''launchctl kickstart -k gui/"$(id -u)"/org.nix-community.home.sketchybar'';
@@ -40,7 +26,7 @@
           jankyborders
           jq
           aerospace
-          sketchybarhelper
+          local.sketchybarhelper
           wttrbar
         ];
         ## config from https://github.com/khaneliman/khanelinix
