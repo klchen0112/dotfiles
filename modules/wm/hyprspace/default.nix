@@ -1,5 +1,5 @@
 {
-  flake.modules.homeManager.aerospace =
+  flake.modules.homeManager.hyprspace =
     { pkgs, config, ... }:
     {
       programs.aerospace = {
