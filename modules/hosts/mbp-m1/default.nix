@@ -18,7 +18,7 @@
     ];
     home-manager.users.klchen.imports = with config.flake.modules.homeManager; [
       zsh
-      hammerspoon
+      # hammerspoon
       homebrew
       ghostty
       aria2
@@ -30,6 +30,8 @@
       keyboard
       darwin
       access-tokens
+      aerospace
+      aero-sketchybar
     ];
     home-manager.backupFileExtension = "hmbp";
     system.primaryUser = "klchen";

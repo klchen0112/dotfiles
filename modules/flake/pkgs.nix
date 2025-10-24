@@ -43,6 +43,7 @@
           inputs.nix-vscode-extensions.overlays.default
           inputs.self.overlays.default
           inputs.emacs-overlay.overlays.default
+          inputs.emacs-config.overlays.default
           # inputs.deploy-rs.overlays.default
           # (self: super: { deplkkoy-rs = { inherit (pkgs) deploy-rs; lib = super.deploy-rs.lib; }; })
         ];
