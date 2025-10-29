@@ -278,11 +278,11 @@
         "twist-overrides": "twist-overrides"
       },
       "locked": {
-        "lastModified": 1761068079,
-        "narHash": "sha256-N8MBbSkSYGNP2P9Kdx8emKssKUD8qGQXeFkjrBScE9k=",
+        "lastModified": 1761315697,
+        "narHash": "sha256-/3h8TG2p/Yt7AlQHOfJN17S3XdXsyvQlrCDNvR+d6vk=",
         "owner": "klchen0112",
         "repo": ".emacs.d",
-        "rev": "2ccdf101b06c1b5cba59405559aaa8c86125e792",
+        "rev": "fe124bc6e28656a77b7ebc269b459cd3aa49ba67",
         "type": "github"
       },
       "original": {
@@ -293,10 +293,7 @@
     },
     "emacs-overlay": {
       "inputs": {
-        "nixpkgs": [
-          "emacs-config",
-          "nixpkgs"
-        ],
+        "nixpkgs": "nixpkgs",
         "nixpkgs-stable": "nixpkgs-stable"
       },
       "locked": {
@@ -883,19 +880,18 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1757745802,
-        "narHash": "sha256-hLEO2TPj55KcUFUU1vgtHE9UEIOjRcH/4QbmfHNF820=",
-        "ref": "nixos-unstable",
-        "rev": "c23193b943c6c689d70ee98ce3128239ed9e32d1",
-        "shallow": true,
-        "type": "git",
-        "url": "https://github.com/nixos/nixpkgs"
+        "lastModified": 1761114652,
+        "narHash": "sha256-f/QCJM/YhrV/lavyCVz8iU3rlZun6d+dAiC3H+CDle4=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "01f116e4df6a15f4ccdffb1bcd41096869fb385c",
+        "type": "github"
       },
       "original": {
+        "owner": "NixOS",
         "ref": "nixos-unstable",
-        "shallow": true,
-        "type": "git",
-        "url": "https://github.com/nixos/nixpkgs"
+        "repo": "nixpkgs",
+        "type": "github"
       }
     },
     "nixpkgs-stable": {
@@ -943,6 +939,23 @@
       },
       "original": {
         "ref": "nixos-unstable-small",
+        "shallow": true,
+        "type": "git",
+        "url": "https://github.com/nixos/nixpkgs"
+      }
+    },
+    "nixpkgs_2": {
+      "locked": {
+        "lastModified": 1757745802,
+        "narHash": "sha256-hLEO2TPj55KcUFUU1vgtHE9UEIOjRcH/4QbmfHNF820=",
+        "ref": "nixos-unstable",
+        "rev": "c23193b943c6c689d70ee98ce3128239ed9e32d1",
+        "shallow": true,
+        "type": "git",
+        "url": "https://github.com/nixos/nixpkgs"
+      },
+      "original": {
+        "ref": "nixos-unstable",
         "shallow": true,
         "type": "git",
         "url": "https://github.com/nixos/nixpkgs"
@@ -1151,7 +1164,7 @@
         "nix-index-database": "nix-index-database",
         "nix-vscode-extensions": "nix-vscode-extensions",
         "nixos-hardware": "nixos-hardware",
-        "nixpkgs": "nixpkgs",
+        "nixpkgs": "nixpkgs_2",
         "nixpkgs-lib": [
           "nixpkgs"
         ],

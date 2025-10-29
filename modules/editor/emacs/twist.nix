@@ -16,6 +16,8 @@
     }:
     {
       imports = [ inputs.emacs-config.homeModules.twist ];
+      home.packages = with pkgs;
+      [local.org-reminders];
       programs.emacs-twist = {
         enable = true;
 
