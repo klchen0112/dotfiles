@@ -12,12 +12,12 @@
   flake.modules.homeManager.emacs-twist =
     {
       pkgs,
+      lib,
       ...
     }:
     {
       imports = [ inputs.emacs-config.homeModules.twist ];
-      home.packages = with pkgs;
-      [local.org-reminders];
+      home.packages = with pkgs; [ ] ++ (lib.optionals pkgs.stdenv.isDarwin [ local.org-reminders ]);
       programs.emacs-twist = {
         enable = true;
 
