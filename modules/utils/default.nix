@@ -2,6 +2,7 @@
   flake.modules.homeManager.utils =
     { pkgs, ... }:
     {
+     programs.delta.enable = true;
       programs.gpg = {
         enable = true;
       };
@@ -43,7 +44,7 @@
         extraPackages = with pkgs.bat-extras; [
           batdiff
           batman
-          batgrep
+#          batgrep
           batwatch
           batpipe
           prettybat
@@ -101,7 +102,7 @@
         shfmt
         shellcheck
         choose
-        du-dust
+       dust
         duf
         just
         coreutils
@@ -110,6 +111,7 @@
         python312Packages.editorconfig
         just
         gcr
+        dig
       ];
 
       editorconfig = {

@@ -21,8 +21,7 @@ let
 
           # emoji
           twemoji-color-font
-          noto-fonts-emoji # 彩色的表情符号字体
-
+          noto-fonts-color-emoji # 彩色的表情符号字体
           # symbol font
           # symbola
 
@@ -43,7 +42,6 @@ let
           # 其中汉字部分叫 Noto Sans/Serif CJK SC/TC/HK/JP/KR，最后一个词是地区变种。
           noto-fonts # 大部分文字的常见样式，不包含汉字
           noto-fonts-cjk-sans # 汉字部分
-          noto-fonts-extra # 提供额外的字重和宽度变种
 
           local.TsangerJinKai03
           local.Jigmo
