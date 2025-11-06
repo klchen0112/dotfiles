@@ -45,17 +45,6 @@
       };
       url = "github:ryantm/agenix";
     };
-    allfollow = {
-      inputs = {
-        nixpkgs = {
-          follows = "nixpkgs";
-        };
-        systems = {
-          follows = "systems";
-        };
-      };
-      url = "github:spikespaz/allfollow";
-    };
     brew-nix = {
       inputs = {
         nix-darwin = {
@@ -66,6 +55,9 @@
         };
       };
       url = "github:BatteredBunny/brew-nix";
+    };
+    den = {
+      url = "github:vic/den";
     };
     devshell = {
       inputs = {
@@ -107,6 +99,9 @@
         };
       };
       url = "github:nix-community/emacs-overlay/master";
+    };
+    flake-aspects = {
+      url = "github:vic/flake-aspects";
     };
     flake-file = {
       url = "github:vic/flake-file";
@@ -171,6 +166,14 @@
       };
       url = "github:jutraim/niri-caelestia-shell";
     };
+    nix-auto-follow = {
+      inputs = {
+        nixpkgs = {
+          follows = "nixpkgs";
+        };
+      };
+      url = "github:fzakaria/nix-auto-follow";
+    };
     nix-darwin = {
       inputs = {
         nixpkgs = {
@@ -220,6 +223,17 @@
         };
       };
       url = "github:nix-community/nixvim";
+    };
+    noctalia-shell = {
+      inputs = {
+        nixpkgs = {
+          follows = "nixpkgs";
+        };
+        quickshell = {
+          follows = "quickshell";
+        };
+      };
+      url = "github:noctalia-dev/noctalia-shell";
     };
     nur = {
       inputs = {
