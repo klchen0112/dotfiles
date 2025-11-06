@@ -1,3 +1,4 @@
+
 { inputs, config, ... }:
 {
   flake.meta.machines.a99r50 = {
@@ -22,8 +23,9 @@
       home-manager.users.klchen.imports = with config.flake.modules.homeManager; [
         inputmethod
         niri
-        niri-caelestia-shell
-        # dankMaterialShell
+       niri-caelestia-shell
+#         noctalia-shell
+#        dankMaterialShell
         ghostty
         aria2
         kitty
@@ -73,11 +75,7 @@
 
       # Bootloader.
       boot.loader.systemd-boot.enable = true;
-
-      # networking
-      networking.useNetworkd = lib.mkForce true;
-      networking.useDHCP = lib.mkForce false;
-
+ networking.networkmanager.dhcp = "dhcpcd";
       environment.systemPackages = with pkgs; [
         neovim
         pciutils
@@ -87,8 +85,7 @@
         enable = true;
         enable32Bit = true;
         extraPackages = with pkgs; [
-          amdvlk
-          vaapiVdpau
+          libva-vdpau-driver
           libvdpau-va-gl
           vulkan-loader
           vulkan-headers
@@ -98,11 +95,8 @@
           vulkan-validation-layers
           # your Open GL, Vulkan and VAAPI drivers
           #	     vpl-gpu-rt # for newer GPUs on NixOS >24.05 or unstable
-          # onevpl-intel-gpu  # for newer GPUs on NixOS <= 24.05
+          # onevpl-intel-gpu  # for newer GPUs on NixOS <= 24.05:
           # intel-media-sdk   # for older GPUs
-        ];
-        extraPackages32 = with pkgs; [
-          driversi686Linux.amdvlk
         ];
       };
       services.xserver.videoDrivers = [
