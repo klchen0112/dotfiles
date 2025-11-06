@@ -1,6 +1,6 @@
 {
   flake.modules.homeManager.hyprspace =
-    { pkgs, config, ... }:
+    { pkgs, ... }:
     {
       programs.aerospace = {
         enable = true;

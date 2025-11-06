@@ -1,4 +1,3 @@
-
 { inputs, config, ... }:
 {
   flake.meta.machines.a99r50 = {
@@ -15,7 +14,6 @@
   };
   flake.modules.nixos.a99r50 =
     {
-      lib,
       pkgs,
       ...
     }:
@@ -25,7 +23,7 @@
         niri
         # niri-caelestia-shell
         noctalia-shell
-#        dankMaterialShell
+        #        dankMaterialShell
         ghostty
         aria2
         kitty
@@ -48,7 +46,7 @@
         inputs.self.modules.nixos.niri
         inputs.self.modules.nixos.access-tokens
         inputs.self.modules.nixos.noctalia-shell
-        
+
         inputs.nixos-hardware.nixosModules.common-cpu-amd
         inputs.nixos-hardware.nixosModules.common-cpu-amd-zenpower
         inputs.nixos-hardware.nixosModules.common-cpu-amd-raphael-igpu
@@ -76,7 +74,7 @@
 
       # Bootloader.
       boot.loader.systemd-boot.enable = true;
- networking.networkmanager.dhcp = "dhcpcd";
+      networking.networkmanager.dhcp = "dhcpcd";
       environment.systemPackages = with pkgs; [
         neovim
         pciutils

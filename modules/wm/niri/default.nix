@@ -81,11 +81,11 @@
         };
       };
       programs.niri.settings.spawn-at-startup = [
-         {
-           command = [
-             "niriswitcher"
-           ];
-         }
+        {
+          command = [
+            "niriswitcher"
+          ];
+        }
       ];
       programs.niri.settings.binds = with config.lib.niri.actions; {
         "Alt+Tab".action = spawn "niriswitcherctl" "show" "--window";

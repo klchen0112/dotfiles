@@ -29,10 +29,19 @@
         programs.nixfmt.enable = true;
         programs.nixfmt.package = pkgs.nixfmt-rfc-style;
         programs.shellcheck.enable = true;
+        programs.stylua.enable = true;
+        programs.toml-sort.enable = true;
+        programs.clang-format.enable = true;
+        programs.just.enable = true;
+
+        programs.ruff-format.enable = true;
         settings.global.excludes = [
-          "Justfile"
           "*.org"
           "*.png"
+          "*.conf"
+          "*rc"
+          "*/makefile"
+          "*.age"
         ];
         settings.global.on-unmatched = "warn";
       };

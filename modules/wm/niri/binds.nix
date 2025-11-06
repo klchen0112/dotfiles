@@ -2,7 +2,6 @@
   flake.modules.homeManager.niri =
     {
       config,
-      pkgs,
       ...
     }:
     {
@@ -10,7 +9,7 @@
         "Print".action.screenshot-screen = {
           write-to-disk = true;
         };
-#        "Mod+Shift+Alt+S".action = screenshot-window;
+        #        "Mod+Shift+Alt+S".action = screenshot-window;
         "Mod+Q".action = close-window;
         "Mod+F".action = maximize-column;
         # "Mod+Shift+F".action = fullscreen-window;

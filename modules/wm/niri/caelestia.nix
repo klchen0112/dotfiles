@@ -36,12 +36,12 @@
         };
         settings = {
           bar = {
-          persistent = true;
-          status = {
-            showBattery = false;
+            persistent = true;
+            status = {
+              showBattery = false;
+            };
           };
-          };
-    };
+        };
       };
 
       programs.niri.settings.binds = with config.lib.niri.actions; {

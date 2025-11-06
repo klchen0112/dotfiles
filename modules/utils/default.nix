@@ -2,7 +2,7 @@
   flake.modules.homeManager.utils =
     { pkgs, ... }:
     {
-     programs.delta.enable = true;
+      programs.delta.enable = true;
       programs.gpg = {
         enable = true;
       };
@@ -44,7 +44,7 @@
         extraPackages = with pkgs.bat-extras; [
           batdiff
           batman
-#          batgrep
+          #          batgrep
           batwatch
           batpipe
           prettybat
@@ -102,7 +102,7 @@
         shfmt
         shellcheck
         choose
-       dust
+        dust
         duf
         just
         coreutils
