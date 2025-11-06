@@ -12,24 +12,10 @@
       inputs.nixpkgs-lib.follows = "nixpkgs-lib";
     };
     systems.url = "github:nix-systems/default";
-    allfollow = {
-      url = "github:spikespaz/allfollow";
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-        systems.follows = "systems";
-      };
-    };
     flake-utils = {
       url = "github:numtide/flake-utils";
     };
   };
-  flake-file.outputs = ''
-    inputs: inputs.flake-parts.lib.mkFlake { inherit inputs; }
-    (inputs.import-tree ./modules)
-  '';
 
-  flake-file.prune-lock = {
-    enable = true;
-  };
   systems = import inputs.systems;
 }
