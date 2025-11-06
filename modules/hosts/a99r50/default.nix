@@ -23,8 +23,8 @@
       home-manager.users.klchen.imports = with config.flake.modules.homeManager; [
         inputmethod
         niri
-       niri-caelestia-shell
-#         noctalia-shell
+        # niri-caelestia-shell
+        noctalia-shell
 #        dankMaterialShell
         ghostty
         aria2
@@ -47,7 +47,8 @@
         inputs.self.modules.nixos.font
         inputs.self.modules.nixos.niri
         inputs.self.modules.nixos.access-tokens
-
+        inputs.self.modules.nixos.noctalia-shell
+        
         inputs.nixos-hardware.nixosModules.common-cpu-amd
         inputs.nixos-hardware.nixosModules.common-cpu-amd-zenpower
         inputs.nixos-hardware.nixosModules.common-cpu-amd-raphael-igpu

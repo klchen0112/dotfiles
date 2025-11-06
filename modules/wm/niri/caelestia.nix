@@ -29,34 +29,24 @@
         cli = {
 
           enable = true;
-          settings.theme = {
-            enableBtop = true;
-            enableCava = true;
-            enableGtk = true;
-            enableQt = true;
-
-          };
 
         };
         systemd = {
           enable = true;
         };
         settings = {
-          bar.status = {
+          bar = {
+          persistent = true;
+          status = {
             showBattery = false;
           };
-          appearance.font.family = {
-            mono = config.stylix.fonts.monospace.name;
           };
-        };
-      };
-      programs.fuzzel = {
-        enable = true;
+    };
       };
 
       programs.niri.settings.binds = with config.lib.niri.actions; {
         "Mod+Space" = {
-          action = spawn "caelestia-shell" "ipc" "call" "drawers" "toggle" "launcher";
+          action = spawn "caelestia-shell" "ipc" "call" "launcher" "toggle";
           hotkey-overlay.title = "Toggle Application Launcher";
         };
         "Mod+L".action = spawn "caelestia-shell" "ipc" "call" "lock" "lock";

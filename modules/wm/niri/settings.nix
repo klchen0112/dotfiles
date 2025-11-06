@@ -12,25 +12,25 @@
         QT_WAYLAND_DISABLE_WINDOWDECORATION = "1";
         SDL_VIDEODRIVER = "wayland";
       };
-      spawn-at-startup = [
-        {
-          command = [
-            "wl-paste"
-            "--watch"
-            "cliphist"
-            "store"
-          ];
-        }
-        {
-          command = [
-            "wl-paste"
-            "--type text"
-            "--watch"
-            "cliphist"
-            "store"
-          ];
-        }
-      ];
+      # spawn-at-startup =[
+      #   {
+      #     command = [
+      #       "wl-paste"
+      #       "--watch"
+      #       "cliphist"
+      #       "store"
+      #     ];
+      #   }
+      #   {
+      #     command = [
+      #       "wl-paste"
+      #       "--type text"
+      #       "--watch"
+      #       "cliphist"
+      #       "store"
+      #     ];
+      #   }
+      # ];
       input = {
         keyboard.xkb.layout = "us";
         touchpad = {
