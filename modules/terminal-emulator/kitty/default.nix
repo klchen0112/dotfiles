@@ -16,9 +16,6 @@
           LC_ALL = "en_US.UTF-8";
           TERM = "xterm-256color";
         };
-        shellIntegration = {
-          enableFishIntegration = true;
-        };
         enableGitIntegration = true;
 
         settings = {

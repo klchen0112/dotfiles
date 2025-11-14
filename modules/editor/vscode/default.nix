@@ -76,7 +76,6 @@
             # waderyan.gitblame
             kahole.magit
             # shell
-            skyapps.fish-vscode
             # markdown
             yzhang.markdown-all-in-one
             # comment
@@ -199,12 +198,12 @@
                   "-l"
                 ];
               };
-              "fish" = {
-                "path" = "${config.home.homeDirectory}/.nix-profile/bin/fish";
-                "args" = [
-                  "-l"
-                ];
-              };
+              # "fish" = {
+              #   "path" = "${config.home.homeDirectory}/.nix-profile/bin/fish";
+              #   "args" = [
+              #     "-l"
+              #   ];
+              # };
               "nushell" = {
                 "path" = "${config.home.homeDirectory}/.nix-profile/bin/nu";
               };
@@ -223,12 +222,12 @@
                   "-l"
                 ];
               };
-              "fish" = {
-                "path" = "${config.home.homeDirectory}/.nix-profile/bin/fish";
-                "args" = [
-                  "-l"
-                ];
-              };
+              # "fish" = {
+              #   "path" = "${config.home.homeDirectory}/.nix-profile/bin/fish";
+              #   "args" = [
+              #     "-l"
+              #   ];
+              # };
               "nushell" = {
                 "path" = "${config.home.homeDirectory}/.nix-profile/bin/nu";
               };
