@@ -2,7 +2,10 @@
   flake.modules.homeManager.utils =
     { pkgs, ... }:
     {
-      programs.delta.enable = true;
+      programs.delta = {
+        enable = true;
+        enableGitIntegration = true;
+      };
       programs.gpg = {
         enable = true;
       };
@@ -54,7 +57,6 @@
       stylix.targets.fzf.enable = true;
       programs.fzf = {
         enable = true;
-        enableFishIntegration = true;
       };
 
       stylix.targets.tmux.enable = true;
