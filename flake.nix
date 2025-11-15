@@ -8,7 +8,7 @@
     allow-import-from-derivation = true;
     substituters = [
       "https://mirrors.tuna.tsinghua.edu.cn/nix-channels/store?priority=0"
-      "https://mirror.sjtu.edu.cn/nix-channels/store?priority=0"
+      # "https://mirror.sjtu.edu.cn/nix-channels/store?priority=0"
       "https://nix-community.cachix.org?priority=1"
       "https://niri.cachix.org?priority=1"
       "https://cache.nixos.org?priority=1"
@@ -131,7 +131,7 @@
           follows = "nixpkgs";
         };
       };
-      url = "github:nix-community/home-manager";
+      url = "github:qowoz/home-manager/darwin";
     };
     import-tree = {
       url = "github:vic/import-tree";
@@ -144,6 +144,7 @@
         treefmt-nix = {
           follows = "treefmt-nix";
         };
+        cl-nix-lite.url = "github:r4v3n6101/cl-nix-lite/url-fix";
       };
       url = "github:hraban/mac-app-util";
     };
@@ -180,7 +181,7 @@
           follows = "nixpkgs";
         };
       };
-      url = "github:nix-darwin/nix-darwin/master";
+      url = "github:qowoz/nix-darwin/applications";
     };
     nix-index-database = {
       inputs = {
