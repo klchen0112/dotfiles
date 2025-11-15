@@ -41,10 +41,6 @@
               size = 14;
             };
           cursor.style = "Block";
-          terminal.shell = {
-            program = "${pkgs.fish}/bin/fish";
-            args = [ "-l" ];
-          };
           env = {
             LANG = "en_US.UTF-8";
             LC_ALL = "en_US.UTF-8";
