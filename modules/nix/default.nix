@@ -8,11 +8,11 @@
         # nixfmt
         # nix-du
         nil
-        cachix
-        statix
-        deadnix
-        nix-fast-build
-        devenv
+        # cachix
+        # statix
+        # deadnix
+        # nix-fast-build
+        # devenv
       ];
       nixpkgs.overlays = [
         #  inputs.emacs-overlay.overlays.default

@@ -45,12 +45,12 @@
         };
 
         extraPackages = with pkgs.bat-extras; [
-          batdiff
-          batman
-          #          batgrep
-          batwatch
-          batpipe
-          prettybat
+          # batdiff
+          # batman
+          # batgrep
+          # batwatch
+          # batpipe
+          # prettybat
         ];
       };
 
@@ -65,7 +65,7 @@
         # defaultKeyMode = "emacs";
       };
       programs.direnv = {
-        enable = true;
+        enable = false;
         nix-direnv.enable = true;
         config.global = {
           # Make direnv messages less verbose
