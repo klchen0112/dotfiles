@@ -20,8 +20,13 @@ topLevel: {
         lfs.enable = true;
 
         settings = {
-          # userName = [topLevel.config.flake.meta.users.${config.home.username}.username];
-          # userEmail = [topLevel.config.flake.meta.users.${config.home.username}.email];
+
+          user = {
+
+            name = topLevel.config.flake.meta.users.${config.home.username}.username;
+            email = topLevel.config.flake.meta.users.${config.home.username}.email;
+
+          };
           aliases = {
             # common aliases
             br = "branch";
