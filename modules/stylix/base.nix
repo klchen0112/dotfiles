@@ -18,8 +18,8 @@ let
           sizes = {
             applications = 12;
             terminal = 12;
-            desktop = 10;
-            popups = 10;
+            desktop = 9;
+            popups = 9;
           };
           emoji = {
             package = pkgs.twemoji-color-font;
