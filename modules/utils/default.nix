@@ -65,7 +65,7 @@
         # defaultKeyMode = "emacs";
       };
       programs.direnv = {
-        enable = false;
+        enable = true;
         nix-direnv.enable = true;
         config.global = {
           # Make direnv messages less verbose
