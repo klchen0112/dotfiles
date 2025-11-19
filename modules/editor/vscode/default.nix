@@ -9,6 +9,7 @@
     {
       pkgs,
       config,
+      lib,
       ...
     }:
     {
@@ -18,6 +19,8 @@
         noto-fonts-cjk-sans
         overpass
       ];
+
+      stylix.targets.vscode.enable = true;
       programs.vscode = {
         enable = true;
         mutableExtensionsDir = false; # Whether extensions can be installed or updated manually or by Visual Studio Code.
@@ -50,9 +53,6 @@
             mechatroner.rainbow-csv
             gruntfuggly.todo-tree
             vscode-icons-team.vscode-icons
-            # johnpapa.vscode-peacock
-            # github.github-vscode-theme
-            # akamud.vscode-theme-onelight
 
             # editor
             streetsidesoftware.code-spell-checker
@@ -124,8 +124,8 @@
 
             "editor.inlineSuggest.enabled" = true;
             "editor.semanticHighlighting.enabled" = true;
-            "editor.fontFamily" = fontFamily;
-            "editor.codeLensFontFamily" = fontFamily;
+            "editor.fontFamily" = lib.mkForce fontFamily;
+            "editor.codeLensFontFamily" =  lib.mkForce  fontFamily;
             "editor.fontLigatures" = true;
             "editor.formatOnPaste" = false;
             "editor.formatOnType" = false;
@@ -180,7 +180,7 @@
             # --------------------------------------------
             # Terminal Settings
             # --------------------------------------------
-            "terminal.integrated.fontFamily" = fontFamily;
+            "terminal.integrated.fontFamily" =  lib.mkForce  fontFamily;
             "terminal.integrated.defaultProfile.windows" = "PowerShell";
             "terminal.integrated.defaultProfile.osx" = "nushell";
             "terminal.integrated.defaultProfile.linux" = "nushell";
