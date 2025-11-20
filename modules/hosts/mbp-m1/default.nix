@@ -30,7 +30,8 @@
       keyboard
       darwin
       access-tokens
-      aerospace
+      # aerospace
+      hyprspace
       aero-sketchybar
     ];
     home-manager.backupFileExtension = "hmbp";

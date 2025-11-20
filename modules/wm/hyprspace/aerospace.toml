@@ -19,7 +19,7 @@ enable-normalization-opposite-orientation-for-nested-containers = true
 # You can set 0 to disable the padding feature
 accordion-padding = 30
 # Possible values: tiles|accordion
-default-root-container-layout = 'niri'
+default-root-container-layout = 'scroll'
 # Possible values: horizontal|vertical|auto
 # 'auto' means: wide monitor (anything wider than high) gets horizontal orientation,
 # tall monitor (anything higher than wide) gets vertical orientation
@@ -39,6 +39,8 @@ exec-on-workspace-change = [
   '-c',
   'sketchybar --trigger aerospace_workspace_change FOCUSED_WORKSPACE=$AEROSPACE_FOCUSED_WORKSPACE PREV_WORKSPACE=$AEROSPACE_PREV_WORKSPACE'
 ]
+
+niri-focused-width-ratio = 0.67
 
 [exec]
 inherit-env-vars = true
@@ -81,11 +83,12 @@ preset = 'qwerty'
 # activate
 # end tell'
 # '''
-ctrl-shift-alt-a = "exec-and-forget alacritty"
+ctrl-shift-alt-a = "exec-and-forget ghostty"
 ctrl-shift-alt-e = "exec-and-forget emacsclient -c -n -a ''"
 # See: https://nikitabobko.github.io/AeroSpace/commands#layout
 ctrl-alt-minus = 'layout tiles horizontal vertical'
 ctrl-alt-equal = 'layout accordion horizontal vertical'
+ctrl-alt-s = 'layout scroll'
 alt-shift-f = "fullscreen"
 # See: https://nikitabobko.github.io/AeroSpace/commands#focus
 alt-left = 'focus left'
@@ -129,7 +132,7 @@ alt-shift-tab = 'move-workspace-to-monitor --wrap-around next'
 # See: https://nikitabobko.github.io/AeroSpace/commands#mode
 alt-shift-semicolon = ['mode service', 'exec-and-forget sketchybar --trigger aerospace_mode_change MODE=service']
 alt-shift-quote = ['mode resize', 'exec-and-forget sketchybar --trigger aerospace_mode_change MODE=resize']
-
+wrrwwb 89db6b6wwwwwwwww8b79d349b379 brrrrrrrt8yit8isuy2
 # Declare 'resize' binding mode
 [mode.resize.binding]
 left = 'resize width -50'

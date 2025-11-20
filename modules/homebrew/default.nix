@@ -48,7 +48,11 @@
         brews = [
           "mas"
         ];
+        taps = [
+          "BarutSRB/tap"
+        ];
         casks = [
+          "hyprspace"
           "anki"
           "snipaste"
           "appcleaner"
