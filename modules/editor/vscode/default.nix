@@ -125,7 +125,7 @@
             "editor.inlineSuggest.enabled" = true;
             "editor.semanticHighlighting.enabled" = true;
             "editor.fontFamily" = lib.mkForce fontFamily;
-            "editor.codeLensFontFamily" =  lib.mkForce  fontFamily;
+            "editor.codeLensFontFamily" = lib.mkForce fontFamily;
             "editor.fontLigatures" = true;
             "editor.formatOnPaste" = false;
             "editor.formatOnType" = false;
@@ -180,7 +180,7 @@
             # --------------------------------------------
             # Terminal Settings
             # --------------------------------------------
-            "terminal.integrated.fontFamily" =  lib.mkForce  fontFamily;
+            "terminal.integrated.fontFamily" = lib.mkForce fontFamily;
             "terminal.integrated.defaultProfile.windows" = "PowerShell";
             "terminal.integrated.defaultProfile.osx" = "nushell";
             "terminal.integrated.defaultProfile.linux" = "nushell";

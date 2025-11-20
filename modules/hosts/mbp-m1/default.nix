@@ -1,4 +1,9 @@
-{ inputs, config, lib,... }:
+{
+  inputs,
+  config,
+  lib,
+  ...
+}:
 {
   flake.meta.machines.mbp-m1 = {
     hostName = "mbp-m1";

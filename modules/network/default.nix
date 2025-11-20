@@ -11,7 +11,7 @@
     {
       networking.networkmanager = {
         enable = true;
-       
+
       };
     };
 
