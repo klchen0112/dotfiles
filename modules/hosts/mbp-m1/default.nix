@@ -1,4 +1,4 @@
-{ inputs, config, ... }:
+{ inputs, config, lib,... }:
 {
   flake.meta.machines.mbp-m1 = {
     hostName = "mbp-m1";
@@ -16,6 +16,7 @@
       homebrew
       access-tokens
     ];
+    system.defaults.NSGlobalDomain._HIHideMenuBar = lib.mkForce false;
     home-manager.users.klchen.imports = with config.flake.modules.homeManager; [
       zsh
       # hammerspoon
@@ -32,7 +33,7 @@
       access-tokens
       # aerospace
       hyprspace
-      aero-sketchybar
+      # aero-sketchybar
     ];
     home-manager.backupFileExtension = "hmbp";
     system.primaryUser = "klchen";
