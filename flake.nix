@@ -7,8 +7,7 @@
   nixConfig = {
     allow-import-from-derivation = true;
     substituters = [
-      "https://mirrors.tuna.tsinghua.edu.cn/nix-channels/store?priority=0"
-      # "https://mirror.sjtu.edu.cn/nix-channels/store?priority=0"
+      "https://mirrors.cernet.edu.cn/nix-channels/store?priority=0"
       "https://nix-community.cachix.org?priority=1"
       "https://niri.cachix.org?priority=1"
       "https://cache.nixos.org?priority=1"
@@ -21,6 +20,7 @@
       "niri.cachix.org-1:Wv0OmO7PsuocRKzfDoJ3mulSl7Z6oezYhGhR+3W2964="
     ];
     trusted-substituters = [
+      "https://mirrors.cernet.edu.cn/nix-channels/store"
       "https://mirrors.tuna.tsinghua.edu.cn/nix-channels/store"
       "https://mirror.sjtu.edu.cn/nix-channels/store"
       "https://cache.nixos.org"
