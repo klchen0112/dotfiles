@@ -27,7 +27,7 @@ topLevel: {
             email = topLevel.config.flake.meta.users.${config.home.username}.email;
 
           };
-          aliases = {
+          alias = {
             # common aliases
             br = "branch";
             co = "checkout";
