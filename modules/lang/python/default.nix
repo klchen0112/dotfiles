@@ -13,6 +13,7 @@
         # python311Packages.black # python formatter
         pyright
         ruff
+        uv
       ];
       xdg.configFile."uv/uv.toml".text = ''
         [[index]]
