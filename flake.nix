@@ -131,7 +131,7 @@
           follows = "nixpkgs";
         };
       };
-      url = "github:qowoz/home-manager/darwin";
+      url = "github:nix-community/home-manager";
     };
     import-tree = {
       url = "github:vic/import-tree";
@@ -181,7 +181,7 @@
           follows = "nixpkgs";
         };
       };
-      url = "github:qowoz/nix-darwin/applications";
+      url = "github:nix-darwin/nix-darwin";
     };
     nix-index-database = {
       inputs = {
