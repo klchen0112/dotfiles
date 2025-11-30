@@ -28,7 +28,7 @@
     {
 
       environment.etc."nix/inputs/nixpkgs".source = "${inputs.nixpkgs}";
-
+      programs.nix-ld.enable = true;
       nixpkgs.overlays = [
         #        inputs.emacs-overlay.overlays.default
         inputs.nix-vscode-extensions.overlays.default
