@@ -135,30 +135,6 @@
         "type": "github"
       }
     },
-    "caelestia-cli": {
-      "inputs": {
-        "caelestia-shell": [
-          "niri-caelestia-shell"
-        ],
-        "nixpkgs": [
-          "niri-caelestia-shell",
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1764381410,
-        "narHash": "sha256-WR/oQQjveFqQxo8oHngZuOVgBQINDgPe+lCXLeNhAAg=",
-        "owner": "caelestia-dots",
-        "repo": "cli",
-        "rev": "ed12d4cb82600872a82feb577711be1148c7af35",
-        "type": "github"
-      },
-      "original": {
-        "owner": "caelestia-dots",
-        "repo": "cli",
-        "type": "github"
-      }
-    },
     "cl-nix-lite": {
       "locked": {
         "lastModified": 1763190794,
@@ -172,21 +148,6 @@
         "owner": "r4v3n6101",
         "ref": "url-fix",
         "repo": "cl-nix-lite",
-        "type": "github"
-      }
-    },
-    "den": {
-      "locked": {
-        "lastModified": 1764187768,
-        "narHash": "sha256-YjRXIG6K7iYbgWRG4/tqJIXFEW/fX2Tck8RwF+NEHlc=",
-        "owner": "vic",
-        "repo": "den",
-        "rev": "3ec43279b5afea898737238a75178079bf91d606",
-        "type": "github"
-      },
-      "original": {
-        "owner": "vic",
-        "repo": "den",
         "type": "github"
       }
     },
@@ -340,21 +301,6 @@
       "original": {
         "owner": "rafaelmardojai",
         "repo": "firefox-gnome-theme",
-        "type": "github"
-      }
-    },
-    "flake-aspects": {
-      "locked": {
-        "lastModified": 1763763502,
-        "narHash": "sha256-J78S02ZbBclWz7WKF8C+kHUca9/KdHtSeRgO/WF9LjY=",
-        "owner": "vic",
-        "repo": "flake-aspects",
-        "rev": "83c8e44186bc9631509a55cf5a053950ecd3dc30",
-        "type": "github"
-      },
-      "original": {
-        "owner": "vic",
-        "repo": "flake-aspects",
         "type": "github"
       }
     },
@@ -737,28 +683,6 @@
         "type": "github"
       }
     },
-    "niri-caelestia-shell": {
-      "inputs": {
-        "caelestia-cli": "caelestia-cli",
-        "nixpkgs": [
-          "nixpkgs"
-        ],
-        "quickshell": "quickshell"
-      },
-      "locked": {
-        "lastModified": 1764467589,
-        "narHash": "sha256-FnfReTXdZZRPtA0eTYcEi1rbmGxSM9uMqVnAK1m3E4U=",
-        "owner": "jutraim",
-        "repo": "niri-caelestia-shell",
-        "rev": "7be642d15eef5d20afaf52ef09d6a4847a545ed2",
-        "type": "github"
-      },
-      "original": {
-        "owner": "jutraim",
-        "repo": "niri-caelestia-shell",
-        "type": "github"
-      }
-    },
     "niri-stable": {
       "flake": false,
       "locked": {
@@ -792,26 +716,6 @@
         "type": "github"
       }
     },
-    "nix-auto-follow": {
-      "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1754073254,
-        "narHash": "sha256-CQp/v2HQ7AtGJQqFGRZLHt4MZAK3NF94I6GDaRyhbsc=",
-        "owner": "fzakaria",
-        "repo": "nix-auto-follow",
-        "rev": "5baa00b79d4cc46523da0b8b3532c5163d151be4",
-        "type": "github"
-      },
-      "original": {
-        "owner": "fzakaria",
-        "repo": "nix-auto-follow",
-        "type": "github"
-      }
-    },
     "nix-darwin": {
       "inputs": {
         "nixpkgs": [
@@ -828,6 +732,7 @@
       },
       "original": {
         "owner": "nix-darwin",
+        "ref": "master",
         "repo": "nix-darwin",
         "type": "github"
       }
@@ -1135,27 +1040,6 @@
         "type": "github"
       }
     },
-    "quickshell": {
-      "inputs": {
-        "nixpkgs": [
-          "niri-caelestia-shell",
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1764045583,
-        "narHash": "sha256-W24ReyRrhOKTKIsuAMkY5hnVlCufGoONM79sjUoyQkk=",
-        "ref": "refs/heads/master",
-        "rev": "e9bad67619ee9937a1bbecfc6ad3b4231d2ecdc3",
-        "revCount": 709,
-        "type": "git",
-        "url": "https://git.outfoxxed.me/outfoxxed/quickshell"
-      },
-      "original": {
-        "type": "git",
-        "url": "https://git.outfoxxed.me/outfoxxed/quickshell"
-      }
-    },
     "rime": {
       "flake": false,
       "locked": {
@@ -1176,12 +1060,10 @@
       "inputs": {
         "agenix": "agenix",
         "brew-nix": "brew-nix",
-        "den": "den",
         "devshell": "devshell",
         "disko": "disko",
         "emacs-config": "emacs-config",
         "emacs-overlay": "emacs-overlay_2",
-        "flake-aspects": "flake-aspects",
         "flake-file": "flake-file",
         "flake-parts": "flake-parts",
         "flake-utils": "flake-utils",
@@ -1190,8 +1072,6 @@
         "import-tree": "import-tree",
         "mac-app-util": "mac-app-util",
         "niri": "niri",
-        "niri-caelestia-shell": "niri-caelestia-shell",
-        "nix-auto-follow": "nix-auto-follow",
         "nix-darwin": "nix-darwin",
         "nix-index-database": "nix-index-database",
         "nix-vscode-extensions": "nix-vscode-extensions",
@@ -1206,10 +1086,6 @@
         "noctalia-shell": "noctalia-shell",
         "nur": "nur",
         "pkgs-by-name-for-flake-parts": "pkgs-by-name-for-flake-parts_2",
-        "quickshell": [
-          "niri-caelestia-shell",
-          "quickshell"
-        ],
         "rime": "rime",
         "srvos": "srvos",
         "stylix": "stylix",

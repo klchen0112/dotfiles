@@ -3,7 +3,6 @@
     noctalia-shell = {
       url = "github:noctalia-dev/noctalia-shell";
       inputs.nixpkgs.follows = "nixpkgs";
-      inputs.quickshell.follows = "quickshell";
     };
   };
   flake.modules.nixos.noctalia-shell = {
