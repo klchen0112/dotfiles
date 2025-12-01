@@ -56,6 +56,7 @@
     };
     emacs-config = {
       inputs = {
+        emacs-overlay.follows = "emacs-overlay";
         flake-parts.follows = "flake-parts";
         nixpkgs.follows = "nixpkgs";
         twist.follows = "twist";

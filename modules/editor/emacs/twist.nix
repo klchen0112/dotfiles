@@ -6,6 +6,7 @@
       inputs.twist.follows = "twist";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.flake-parts.follows = "flake-parts";
+      inputs.emacs-overlay.follows = "emacs-overlay";
     };
     twist.url = "github:emacs-twist/twist.nix";
   };
