@@ -6,13 +6,13 @@
       home.packages = with pkgs; [
         nixfmt-rfc-style
         # nixfmt
-        # nix-du
+        nix-du
         nil
-        # cachix
+        cachix
         # statix
         # deadnix
-        # nix-fast-build
-        # devenv
+        nix-fast-build
+        devenv
       ];
       nixpkgs.overlays = [
         #  inputs.emacs-overlay.overlays.default
