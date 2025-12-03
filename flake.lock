@@ -234,11 +234,11 @@
         "twist-overrides": "twist-overrides"
       },
       "locked": {
-        "lastModified": 1764526230,
-        "narHash": "sha256-QvYlf1m67BE3J3OxE/jNLqSkqoDTxYutmOU9EF2xLrA=",
+        "lastModified": 1764784639,
+        "narHash": "sha256-nYzUpA4KGV28lg8iyVupLJPE65YPHtoYdfBFIoTs93M=",
         "owner": "klchen0112",
         "repo": ".emacs.d",
-        "rev": "30d41e432840729c9ce1ba873506bac7ddb0b4ac",
+        "rev": "3c2c51ee616d81d03922a4f83020dde04e535f86",
         "type": "github"
       },
       "original": {
@@ -540,7 +540,7 @@
     "gnu-elpa-archive": {
       "flake": false,
       "locked": {
-        "narHash": "sha256-CMGItt8/2v7Tt8DrDTBRldDJj1gQlvKq9PievuoOGVw=",
+        "narHash": "sha256-C0RP2tij6ggriRFE3i1hxkX8fFifxaqsHIyscpytfHE=",
         "type": "file",
         "url": "https://elpa.gnu.org/packages/archive-contents"
       },
@@ -642,11 +642,11 @@
     "melpa": {
       "flake": false,
       "locked": {
-        "lastModified": 1762719597,
-        "narHash": "sha256-uAhT85xhQFDlewnoI8He5sui2c2iLLp3HL2OGpZ+E18=",
+        "lastModified": 1764451304,
+        "narHash": "sha256-0h6LyOEoLsC1AJ6e+ieAXp2Na8WUz5BwSamEYZTGfsk=",
         "owner": "melpa",
         "repo": "melpa",
-        "rev": "55c8b669f7cce2ed8e826076ef6e99c4e0fd888c",
+        "rev": "424e2bd3cbf6932f60400911483a6664342719c0",
         "type": "github"
       },
       "original": {
@@ -912,11 +912,11 @@
     "nongnu-elpa": {
       "flake": false,
       "locked": {
-        "lastModified": 1761939294,
-        "narHash": "sha256-mSj7wVTYC1ZnZTtVbpckYs+6T2z/bV7PFmiwge/5dv0=",
+        "lastModified": 1764451551,
+        "narHash": "sha256-rWFIcwvdAK/ggMQNJyriqoxX1+qFwGwIfKhowJSSaQA=",
         "owner": "elpa-mirrors",
         "repo": "nongnu",
-        "rev": "a1bc6db585ef85e03e4fbd405adadb8f48dcede9",
+        "rev": "1084df2a9337a08b7becfabb9518e51a42231f92",
         "type": "github"
       },
       "original": {
@@ -928,7 +928,7 @@
     "nongnu-elpa-archive": {
       "flake": false,
       "locked": {
-        "narHash": "sha256-afRFji25YtLEEtaE6fvPdLCpajEmRVXWIHgG8lu7oOg=",
+        "narHash": "sha256-ePzZzq934nCS1QNvCAD6UWGRYN+8Rf0urNORjAF2USI=",
         "type": "file",
         "url": "https://elpa.nongnu.org/nongnu/archive-contents"
       },
