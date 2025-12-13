@@ -85,13 +85,6 @@
       url = "github:nix-community/home-manager";
     };
     import-tree.url = "github:vic/import-tree";
-    mac-app-util = {
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-        treefmt-nix.follows = "treefmt-nix";
-      };
-      url = "github:hraban/mac-app-util";
-    };
     niri = {
       inputs = {
         nixpkgs.follows = "nixpkgs";
