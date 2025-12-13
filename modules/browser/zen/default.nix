@@ -23,6 +23,7 @@
         inputs.zen-browser.homeModules.beta
         # inputs.nix-darwin-browsers.overlays
       ];
+      stylix.targets.zen-browser.profileNames = [ "${config.home.username}" ];
       programs.zen-browser = {
         enable = true;
         enableGnomeExtensions = false;
