@@ -31,7 +31,6 @@
         syncthing
         emacs-twist
         zen
-        zed
         access-tokens
         keyboard
       ];
@@ -109,7 +108,6 @@
       # persist this file you won't be able to easily use journalctl to
       # look at journals for previous boots.
 
-      boot.kernelPackages = pkgs.linuxPackages_latest;
       hardware.nvidia = {
         modesetting.enable = true;
         nvidiaSettings = true;
