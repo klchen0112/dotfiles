@@ -218,11 +218,11 @@
         "twist-overrides": "twist-overrides"
       },
       "locked": {
-        "lastModified": 1764784639,
-        "narHash": "sha256-nYzUpA4KGV28lg8iyVupLJPE65YPHtoYdfBFIoTs93M=",
+        "lastModified": 1765631534,
+        "narHash": "sha256-0Ud5wWAFvWL63Rjo28twEguAL/7M8nays3MBmzY7FpE=",
         "owner": "klchen0112",
         "repo": ".emacs.d",
-        "rev": "3c2c51ee616d81d03922a4f83020dde04e535f86",
+        "rev": "74ffcd3422844466dbb8ff6fb852112a3a93fce4",
         "type": "github"
       },
       "original": {
@@ -453,11 +453,11 @@
     "gnu-elpa": {
       "flake": false,
       "locked": {
-        "lastModified": 1760200209,
-        "narHash": "sha256-Cx4W8whZRpGcoU0p2T1yirug8FRaKR8WcMopjPmlrrA=",
+        "lastModified": 1765018035,
+        "narHash": "sha256-qEkKN4KlvFCOXgLSb1JnHxrEh5Plc6rkUTwM9Ldt9BM=",
         "owner": "elpa-mirrors",
         "repo": "elpa",
-        "rev": "95b0fc13c5b21306efb70c45442f0883bc401d4f",
+        "rev": "38919c57854227ba2a8c334ea028ddf1b0508fb4",
         "type": "github"
       },
       "original": {
@@ -469,7 +469,7 @@
     "gnu-elpa-archive": {
       "flake": false,
       "locked": {
-        "narHash": "sha256-C0RP2tij6ggriRFE3i1hxkX8fFifxaqsHIyscpytfHE=",
+        "narHash": "sha256-lvArFvhuexiyaf95qiZBAiF6jDIh6/oZKwIWZW4NVyc=",
         "type": "file",
         "url": "https://elpa.gnu.org/packages/archive-contents"
       },
@@ -516,11 +516,11 @@
     "melpa": {
       "flake": false,
       "locked": {
-        "lastModified": 1764451304,
-        "narHash": "sha256-0h6LyOEoLsC1AJ6e+ieAXp2Na8WUz5BwSamEYZTGfsk=",
+        "lastModified": 1765123912,
+        "narHash": "sha256-1i1GM8x3gFiCl1EZbsVt+vwaDwmBMi1vrXwANfMIsQQ=",
         "owner": "melpa",
         "repo": "melpa",
-        "rev": "424e2bd3cbf6932f60400911483a6664342719c0",
+        "rev": "83bfae0e6c0de8435359368192f7a73723197a77",
         "type": "github"
       },
       "original": {
@@ -801,7 +801,7 @@
     "nongnu-elpa-archive": {
       "flake": false,
       "locked": {
-        "narHash": "sha256-ePzZzq934nCS1QNvCAD6UWGRYN+8Rf0urNORjAF2USI=",
+        "narHash": "sha256-ehncwXZFXRUSC3cmrLzA7IvffBbvHhQANhnQ5bDald4=",
         "type": "file",
         "url": "https://elpa.nongnu.org/nongnu/archive-contents"
       },
