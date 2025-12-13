@@ -62,7 +62,6 @@ topLevel: {
             # tag.gpgSign = true;
             # user.signingkey = "8041DF8D45CD149D";
             #protocol.keybase.allow = "always";
-            credential.helper = "store --file ~/.config/git/git-credentials";
             pull.rebase = true;
             push.autoSetupRemote = true;
           };
