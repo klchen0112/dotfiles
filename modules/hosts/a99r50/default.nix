@@ -33,6 +33,7 @@
         zen
         access-tokens
         keyboard
+        vm
       ];
       home-manager.backupFileExtension = "hmbp";
 
@@ -46,6 +47,8 @@
         inputs.self.modules.nixos.access-tokens
         inputs.self.modules.nixos.noctalia-shell
 
+        inputs.self.modules.nixos.vm
+
         inputs.nixos-hardware.nixosModules.common-cpu-amd
         inputs.nixos-hardware.nixosModules.common-cpu-amd-zenpower
         inputs.nixos-hardware.nixosModules.common-cpu-amd-raphael-igpu
@@ -54,6 +57,7 @@
         inputs.nixos-hardware.nixosModules.common-pc-ssd
         inputs.nixos-hardware.nixosModules.common-hidpi
         inputs.disko.nixosModules.disko
+
       ];
       boot.kernelParams = [
         # Since NVIDIA does not load kernel mode setting by default,

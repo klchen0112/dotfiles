@@ -1,13 +1,18 @@
+{ inputs, ... }:
 {
-  flake.modules.nixos.visualisation =
-    { ... }:
+  flake-file.inputs = {
+
+  };
+  flake.modules.nixos.vm =
+    { modulesPath, ... }:
     {
       ###################################################################################
       #
       #  Visualisation - Libvirt(QEMU/KVM) / Docker / LXD / WayDroid
       #
       ###################################################################################
-
+      imports = [
+      ];
       virtualisation = {
         docker = {
           enable = true;
@@ -25,11 +30,10 @@
         };
 
         waydroid.enable = true;
-        lxd.enable = true;
       };
 
     };
-  flake.modules.homeManager.visualisation =
+  flake.modules.homeManager.vm =
     { pkgs, ... }:
     {
 
