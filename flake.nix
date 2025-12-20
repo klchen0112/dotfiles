@@ -105,7 +105,6 @@
       url = "github:nix-community/nix-vscode-extensions";
     };
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
-    nixos-lima.url = "github:nixos-lima/nixos-lima/";
     nixos-wsl = {
       inputs.nixpkgs.follows = "nixpkgs";
       url = "github:nix-community/nixos-wsl";
