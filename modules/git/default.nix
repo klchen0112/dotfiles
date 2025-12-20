@@ -66,7 +66,9 @@ topLevel: {
             push.autoSetupRemote = true;
           };
         };
-
       };
+        home.packages = with pkgs; [
+          gh
+        ];
     };
 }
