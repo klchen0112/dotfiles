@@ -31,9 +31,11 @@
         syncthing
         emacs-twist
         zen
+        chrome
         access-tokens
         keyboard
         vm
+        vscode
       ];
       home-manager.backupFileExtension = "hmbp";
 
