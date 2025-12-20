@@ -31,6 +31,11 @@
           #   port = 22;
           #   user = "root";
           # };
+          "github.com" = {
+            hostname = "ssh.github.com";
+            port = 443;
+            user = "git";
+          };
           a3400g = {
             hostname = "192.168.0.197";
             port = 22;
