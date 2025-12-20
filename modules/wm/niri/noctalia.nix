@@ -134,7 +134,7 @@
             panelsOverlayLayer = false;
           };
           location = {
-            name = "Tokyo";
+            name = "Shanghai";
             weatherEnabled = true;
             useFahrenheit = false;
             use12hourFormat = false;
@@ -240,7 +240,7 @@
           };
           dock = {
             enabled = true;
-            displayMode = "always_visible";
+            displayMode = "auto_hide";
             floatingRatio = 1;
             size = 1;
             onlySameOutput = true;
