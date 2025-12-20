@@ -9,10 +9,10 @@
   flake.modules.nixos.network =
     { lib, ... }:
     {
-      networking.useDHCP = lib.mkForce true;
-      networking.dhcpcd.enable = true;
+      networking.useDHCP = lib.mkDefault true;
+      networking.dhcpcd.enable = lib.mkDefault true;
       networking.networkmanager = {
-        enable = true;
+        enable = lib.mkDefault true;
 
       };
     };
