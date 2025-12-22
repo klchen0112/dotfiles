@@ -139,5 +139,9 @@
         };
       };
       zramSwap.enable = true;
+      networking.interfaces.eno1 = {
+        useDHCP = true;
+        wakeOnLan.enable = true;
+      };
     };
 }
