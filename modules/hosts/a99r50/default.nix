@@ -113,7 +113,7 @@
       # machine-id is used by systemd for the journal, if you don't
       # persist this file you won't be able to easily use journalctl to
       # look at journals for previous boots.
-
+      hardware.nvidia-container-toolkit.enable = true;
       hardware.nvidia = {
         modesetting.enable = true;
         nvidiaSettings = true;
