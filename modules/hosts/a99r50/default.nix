@@ -15,6 +15,7 @@
   flake.modules.nixos.a99r50 =
     {
       pkgs,
+      lib,
       ...
     }:
     {
@@ -139,6 +140,12 @@
         };
       };
       zramSwap.enable = true;
+      networking.networkmanager.enable = true;
+      networking.networkmanager.dns = "none";
+
+      # These options are unnecessary when managing DNS ourselves
+      networking.useDHCP = lib.mkDefault true;
+      networking.dhcpcd.enable = true;
       networking.interfaces.eno1 = {
         useDHCP = true;
         wakeOnLan.enable = true;
