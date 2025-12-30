@@ -80,7 +80,6 @@
 
       # Bootloader.
       boot.loader.systemd-boot.enable = true;
-      networking.networkmanager.dhcp = "dhcpcd";
       environment.systemPackages = with pkgs; [
         neovim
         pciutils
@@ -141,11 +140,11 @@
       };
       zramSwap.enable = true;
       networking.networkmanager.enable = true;
-      networking.networkmanager.dns = "none";
-
+      networking.nameservers = [ ];
       # These options are unnecessary when managing DNS ourselves
       networking.useDHCP = lib.mkDefault true;
       networking.dhcpcd.enable = true;
+      services.resolved.enable = true;
       networking.interfaces.eno1 = {
         useDHCP = true;
         wakeOnLan.enable = true;
