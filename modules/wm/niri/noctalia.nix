@@ -1,3 +1,4 @@
+{ inputs, ... }:
 {
   flake-file.inputs = {
     noctalia-shell = {
@@ -6,10 +7,17 @@
     };
   };
   flake.modules.nixos.noctalia-shell = {
+    imports = [
+      inputs.noctalia-shell.nixosModules.default
+    ];
+    networking.networkmanager.enable = true;
+    hardware.bluetooth.enable = true;
+    services.power-profiles-daemon.enable = true;
+    services.upower.enable = true;
+    services.noctalia-shell.enable = true;
   };
   flake.modules.homeManager.noctalia-shell =
     {
-      inputs,
       config,
       ...
     }:
@@ -18,6 +26,7 @@
         inputs.noctalia-shell.homeModules.default
 
       ];
+
       programs.niri = {
         settings = {
           # ...
@@ -50,6 +59,7 @@
 
       programs.noctalia-shell = {
         enable = true;
+        package = null;
         settings = {
           settingsVersion = 18;
           setupCompleted = false;
