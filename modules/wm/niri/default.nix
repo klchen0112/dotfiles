@@ -12,6 +12,21 @@
   flake.modules.nixos.niri =
     { pkgs, ... }:
     {
+      programs.xwayland.enable = true;
+      environment.sessionVariables = {
+        NIXOS_OZONE_WL = "1";
+        QT_QPA_PLATFORM = "wayland";
+        SDL_VIDEODRIVER = "wayland";
+        XDG_SESSION_TYPE = "wayland";
+        # for hyprland with nvidia gpu" = " ref https://wiki.hyprland.org/Nvidia/
+        "LIBVA_DRIVER_NAME" = "nvidia";
+        "__GLX_VENDOR_LIBRARY_NAME" = "nvidia";
+        # VA-API hardware video acceleration
+        "NVD_BACKEND" = "direct";
+
+        "GBM_BACKEND" = "nvidia-drm";
+
+      };
       imports = [
         inputs.niri.nixosModules.niri
       ];
@@ -57,7 +72,9 @@
       #    };
       #};
       # unlock GPG keyring on login
-      security.pam.services.greetd.enableGnomeKeyring = true;
+      security.polkit.enable = true; # polkit
+      services.gnome.gnome-keyring.enable = true; # secret service
+      security.pam.services.swaylock = { };
     };
   flake.modules.homeManager.niri =
     { pkgs, config, ... }:
