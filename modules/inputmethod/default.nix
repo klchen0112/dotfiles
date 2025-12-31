@@ -52,6 +52,7 @@
           qt6Packages.fcitx5-configtool
           fcitx5-gtk # gtk im module
         ];
+        fcitx5.waylandFrontend = true;
       };
       services.syncthing.settings.folders."rime-sync" = {
         id = "w4pgi-mnhem";
