@@ -21,7 +21,10 @@
         inputs.niri.overlays.niri
       ];
       services.displayManager = {
-        gdm.enable = true;
+        gdm = {
+          enable = true;
+          wayland = true;
+        };
         sessionPackages = with pkgs; [
           niri
         ];
@@ -70,16 +73,6 @@
 
       ];
 
-      programs.niriswitcher = {
-        enable = true;
-        settings = {
-          center_on_focus = true;
-          appearance = {
-            system_theme = "dark";
-            icon_size = 64;
-          };
-        };
-      };
       programs.niri.settings.spawn-at-startup = [
         {
           command = [

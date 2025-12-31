@@ -164,5 +164,9 @@
       prefer-no-csd = true;
       hotkey-overlay.skip-at-startup = true;
     };
+    #recent-windows = {
+    #  binds = {
+    #  };
+    #};
   };
 }
