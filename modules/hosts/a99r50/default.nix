@@ -32,16 +32,18 @@
         syncthing
         emacs-twist
         zen
-        chrome
+        # chrome
         access-tokens
         keyboard
         vm
         vscode
+        flatpak
       ];
       home-manager.backupFileExtension = "hmbp";
 
       imports = [
         inputs.self.modules.nixos.klchen
+        inputs.self.modules.nixos.flatpak
         # inputs.self.nixosModules.nvidia
         # inputs.self.modules.nixos.nvidia
 
