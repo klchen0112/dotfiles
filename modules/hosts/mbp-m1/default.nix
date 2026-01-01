@@ -20,6 +20,7 @@
       klchen
       homebrew
       access-tokens
+      hyprspace
     ];
     system.defaults.NSGlobalDomain._HIHideMenuBar = lib.mkForce false;
     home-manager.users.klchen.imports = with config.flake.modules.homeManager; [
