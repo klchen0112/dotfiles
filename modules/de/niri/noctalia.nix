@@ -293,29 +293,6 @@
             matugenSchemeType = "scheme-fruit-salad";
             generateTemplatesForPredefined = true;
           };
-          templates = {
-            gtk = true;
-            qt = true;
-            kcolorscheme = false;
-            alacritty = false;
-            kitty = false;
-            ghostty = true;
-            foot = false;
-            wezterm = false;
-            fuzzel = false;
-            discord = false;
-            discord_vesktop = false;
-            discord_webcord = false;
-            discord_armcord = false;
-            discord_equibop = false;
-            discord_lightcord = false;
-            discord_dorion = false;
-            pywalfox = false;
-            vicinae = false;
-            walker = false;
-            code = false;
-            enableUserTemplates = false;
-          };
           nightLight = {
             enabled = false;
             forced = false;
