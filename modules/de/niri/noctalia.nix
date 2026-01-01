@@ -47,13 +47,6 @@
               "toggle" # ❌
             ];
           };
-          spawn-at-startup = [
-            {
-              command = [
-                "noctalia-shell"
-              ];
-            }
-          ];
         };
       };
 
@@ -61,12 +54,11 @@
         enable = true;
         package = null;
         settings = {
-          settingsVersion = 18;
           setupCompleted = false;
           bar = {
-            position = "top";
+            position = "right";
             monitors = [ ];
-            density = "default";
+            density = "compact";
             showCapsule = true;
             floating = false;
             marginVertical = 0.25;
@@ -302,12 +294,12 @@
             generateTemplatesForPredefined = true;
           };
           templates = {
-            gtk = false;
-            qt = false;
+            gtk = true;
+            qt = true;
             kcolorscheme = false;
             alacritty = false;
             kitty = false;
-            ghostty = false;
+            ghostty = true;
             foot = false;
             wezterm = false;
             fuzzel = false;
