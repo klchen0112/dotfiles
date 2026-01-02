@@ -34,7 +34,7 @@
         zen
         # chrome
         access-tokens
-        keyboard
+#        keyboard
         vm
         vscode
         flatpak
