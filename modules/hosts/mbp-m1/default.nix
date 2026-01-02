@@ -22,7 +22,6 @@
       access-tokens
       omniwm
     ];
-    system.defaults.NSGlobalDomain._HIHideMenuBar = lib.mkForce false;
     home-manager.users.klchen.imports = with config.flake.modules.homeManager; [
       zsh
       # hammerspoon
