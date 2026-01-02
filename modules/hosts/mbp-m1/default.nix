@@ -20,7 +20,7 @@
       klchen
       homebrew
       access-tokens
-      hyprspace
+      omniwm
     ];
     system.defaults.NSGlobalDomain._HIHideMenuBar = lib.mkForce false;
     home-manager.users.klchen.imports = with config.flake.modules.homeManager; [
@@ -38,7 +38,6 @@
       darwin
       access-tokens
       # aerospace
-      hyprspace
       # aero-sketchybar
     ];
     home-manager.backupFileExtension = "hmbp";
