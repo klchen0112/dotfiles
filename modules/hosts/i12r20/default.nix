@@ -39,7 +39,7 @@
       environment.systemPackages = with pkgs; [
         vulkan-tools
         clinfo
-        glxinfo
+        mesa-demos
         intel-gpu-tools
       ];
       hardware.graphics = {
@@ -53,7 +53,6 @@
       };
       services.xserver.videoDrivers = [
         "modesetting" # example for Intel iGPU; use "amdgpu" here instead if your iGPU is AMD
-        "nvidia"
       ];
       boot.kernelParams = [
         "i915.force_probe=4692"
