@@ -30,6 +30,8 @@
       ];
       home-manager.users.klchen.imports = with config.flake.modules.homeManager; [
         access-tokens
+        syncthing
+        emacs-twist
       ];
       # Bootloader.
       boot.loader.systemd-boot.enable = true;
