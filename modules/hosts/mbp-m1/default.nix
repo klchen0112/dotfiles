@@ -20,7 +20,7 @@
       klchen
       homebrew
       access-tokens
-      omniwm
+      aerospace
     ];
     home-manager.users.klchen.imports = with config.flake.modules.homeManager; [
       zsh
@@ -36,8 +36,8 @@
       keyboard
       darwin
       access-tokens
-      # aerospace
-      # aero-sketchybar
+      aerospace
+      aero-sketchybar
     ];
     home-manager.backupFileExtension = "hmbp";
     system.primaryUser = "klchen";
