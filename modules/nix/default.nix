@@ -32,6 +32,7 @@
       nixpkgs.overlays = [
         #        inputs.emacs-overlay.overlays.default
         inputs.nix-vscode-extensions.overlays.default
+        inputs.firefox-addons.overlays.default
         inputs.self.overlays.default
       ];
     };
@@ -45,6 +46,7 @@
 
       nixpkgs.overlays = [
         #       inputs.emacs-overlay.overlays.default
+        inputs.firefox-addons.overlays.default
         inputs.nix-vscode-extensions.overlays.default
         inputs.self.overlays.default
       ];

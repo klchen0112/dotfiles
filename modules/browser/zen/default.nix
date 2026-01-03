@@ -11,6 +11,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.flake-parts.follows = "flake-parts";
     };
+    firefox-addons = {
+      url = "github:osipog/nix-firefox-addons";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
   flake.modules.homeManager.zen =
     {
@@ -19,6 +23,9 @@
       ...
     }:
     {
+      nixpkgs.overlays = [
+        inputs.firefox-addons.overlays.default
+      ];
       imports = [
         inputs.zen-browser.homeModules.beta
         # inputs.nix-darwin-browsers.overlays
@@ -165,37 +172,34 @@
                 }
               ];
             };
-            extensions.packages = with inputs.nur.legacyPackages."${pkgs.system}".repos.rycee.firefox-addons; [
+            extensions.packages = with pkgs.firefoxAddons; [
               # see: https://github.com/nix-community/nur-combined/blob/master/repos/rycee/pkgs/firefox-addons/generated-firefox-addons.nix
               augmented-steam
               # auto-sort-bookmarks
-              # auto-tab-discard
+              auto-tab-discard
               # automatic-dark
               # gopass-bridge
               # https-everywhere
               # link-cleaner
-              privacy-badger
+              privacy-badger17
               # tree-style-tab
               # multi-account-containers
               # firefox-translations # translation
-              # immersive-translate
-              tridactyl # vimum
-              bitwarden
+              immersive-translate
+              tridactyl-vim # vimum
+              bitwarden-password-manager
               blocktube
               rsshub-radar
               # brotab
               # onetab
               ublock-origin
-              zotero-connector
+              # zotero-connector
               copy-as-org-mode
               violentmonkey
+              online-dictionary-helper
               tab-session-manager
               auto-tab-discard
-            ]
-            # ++ (with pkgs.firefox-addons; [
-            #   online-dictionary-helper
-            # ])
-            ;
+            ];
           };
         };
       };

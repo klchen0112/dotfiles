@@ -70,6 +70,10 @@
       };
       url = "github:nix-community/emacs-overlay/master";
     };
+    firefox-addons = {
+      inputs.nixpkgs.follows = "nixpkgs";
+      url = "github:osipog/nix-firefox-addons";
+    };
     flake-file.url = "github:vic/flake-file";
     flake-parts = {
       inputs.nixpkgs-lib.follows = "nixpkgs-lib";
