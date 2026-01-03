@@ -20,10 +20,6 @@
       };
       onActivation = true;
     };
-    services.flatpak.packages = [
-      "com.tencent.WeChat"
-      "com.qq.QQ"
-    ];
   };
 
 }

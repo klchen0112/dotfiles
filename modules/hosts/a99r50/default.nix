@@ -38,6 +38,7 @@
         vm
         vscode
         flatpak
+        im
       ];
       home-manager.backupFileExtension = "hmbp";
 
