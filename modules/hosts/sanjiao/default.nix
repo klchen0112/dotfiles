@@ -1,3 +1,4 @@
+{ inputs, config, ... }:
 {
 
   flake.meta.machines.sanjiao = {
