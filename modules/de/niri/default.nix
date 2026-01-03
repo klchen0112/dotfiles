@@ -87,16 +87,16 @@
         wl-clipboard
         wlr-randr
         gnome-themes-extra
+        file-roller
+        gnome-control-center
+        gnome-text-editor
+        nautilus
+        (papers.override { supportNautilus = true; })
 
+        inkscape
+        scrcpy
       ];
 
-      programs.niri.settings.spawn-at-startup = [
-        {
-          command = [
-            "niriswitcher"
-          ];
-        }
-      ];
       programs.niri.settings.binds = with config.lib.niri.actions; {
         "Alt+Tab".action = spawn "niriswitcherctl" "show" "--window";
         "Alt+Shift+Tab".action = spawn "niriswitcherctl" "show" "--window";
