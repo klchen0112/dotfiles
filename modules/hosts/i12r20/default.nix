@@ -1,3 +1,4 @@
+{ inputs, config, ... }:
 {
   flake.meta.machines.i12r20 = {
 
@@ -18,14 +19,24 @@
       ...
     }:
     {
-
+      imports = [
+        inputs.self.modules.nixos.klchen
+        inputs.self.modules.nixos.font
+        inputs.self.modules.nixos.access-tokens
+        inputs.self.modules.nixos.vm
+        inputs.nixos-hardware.nixosModules.common-cpu-intel
+        # offload
+        inputs.nixos-hardware.nixosModules.common-pc-ssd
+      ];
+      home-manager.users.klchen.imports = with config.flake.modules.homeManager; [
+        access-tokens
+      ];
       # Bootloader.
       boot.loader.systemd-boot.enable = true;
       boot.loader.efi.canTouchEfiVariables = true;
       networking.networkmanager.enable = true;
 
       environment.systemPackages = with pkgs; [
-        cudatoolkit
         vulkan-tools
         clinfo
         glxinfo
@@ -64,19 +75,5 @@
         "video"
         "render"
       ];
-      hardware.nvidia = {
-        modesetting.enable = true;
-        nvidiaSettings = true; # 不需要图形控制面板
-        prime = {
-          offload = {
-            enable = true; # 禁用 PRIME 渲染卸载
-            enableOffloadCmd = true;
-          };
-          sync.enable = false; # 禁用 PRIME 同步
-          intelBusId = "PCI:0:2:0";
-          nvidiaBusId = "PCI:1:0:0";
-        };
-      };
-      hardware.nvidia-container-toolkit.enable = true;
     };
 }
