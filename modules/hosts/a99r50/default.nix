@@ -78,7 +78,6 @@
       };
 
       # boot.kernelPackages = pkgs.linuxPackages_latest;
-      system.stateVersion = "25.05";
 
       # Bootloader.
       boot.loader.systemd-boot.enable = true;

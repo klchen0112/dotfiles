@@ -21,7 +21,7 @@
       home.homeDirectory = lib.mkDefault (
         if pkgs.stdenvNoCC.isDarwin then "/Users/klchen" else "/home/klchen"
       );
-      home.stateVersion = lib.mkDefault "25.05";
+      home.stateVersion = lib.mkDefault "25.11";
       imports = with inputs.self.modules.homeManager; [
         nushell
         nix

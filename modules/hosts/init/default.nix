@@ -23,7 +23,6 @@
         inputs.disko.nixosModules.disko
       ];
 
-      system.stateVersion = "25.05";
 
       # Bootloader.
       boot.loader.systemd-boot.enable = true;

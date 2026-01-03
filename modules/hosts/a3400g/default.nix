@@ -20,7 +20,6 @@
       boot.loader.systemd-boot.enable = true;
       boot.loader.efi.canTouchEfiVariables = true;
 
-      system.stateVersion = "25.05";
       imports = [
         inputs.self.modules.nixos.klchen
       ];
