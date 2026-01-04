@@ -22,13 +22,11 @@
       home-manager.users.klchen.imports = with config.flake.modules.homeManager; [
         bash
         emacs-twist
-        access-tokens
       ];
       home-manager.backupFileExtension = "hmbp";
 
       imports = [
         inputs.self.modules.nixos.klchen
-        inputs.self.modules.nixos.access-tokens
       ];
       wsl.defaultUser = lib.lists.head config.flake.meta.machines.wsl.users;
 
