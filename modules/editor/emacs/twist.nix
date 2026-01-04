@@ -27,11 +27,5 @@
           enableYequakeScripts = true;
         };
       };
-      services.emacs = {
-        enable = true;
-        client.enable = true;
-        socketActivation.enable = true;
-        startWithUserSession = "graphical";
-      };
     };
 }
