@@ -23,7 +23,6 @@
         bash
         emacs-twist
         access-tokens
-        vm
       ];
       home-manager.backupFileExtension = "hmbp";
 

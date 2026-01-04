@@ -35,7 +35,6 @@
         # chrome
         access-tokens
 #        keyboard
-        vm
         vscode
         flatpak
         im

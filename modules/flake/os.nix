@@ -8,7 +8,6 @@ let
         inputs.home-manager.nixosModules.home-manager
         inputs.self.modules.nixos.root
         inputs.self.modules.nixos.nix
-        inputs.self.modules.nixos.network
         # inputs.self.modules.nixos.${_cls}
         inputs.self.modules.nixos.${name}
         {
