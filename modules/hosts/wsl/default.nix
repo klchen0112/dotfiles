@@ -31,7 +31,7 @@
         inputs.self.modules.nixos.klchen
         inputs.self.modules.nixos.access-tokens
       ];
-      wsl.defaultUser = lib.lists.head config.flake.meta.wsl.users;
+      wsl.defaultUser = lib.lists.head config.flake.meta.machines.wsl.users;
 
       # Don't allow mutation of users outside of the config.
       users.mutableUsers = false;
