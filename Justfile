@@ -33,7 +33,7 @@ run:
 
 [group('dev')]
 switch arg1:
-    sudo nixos-rebuild --experimental-features "nix-command flakes"   switch --flake  .#{{ arg1 }}
+    sudo nixos-rebuild switch --flake  .#{{ arg1 }}
 
 [group('dev')]
 disko-install arg1:
