@@ -7,10 +7,10 @@
         enableGitIntegration = true;
       };
       programs.gpg = {
-        enable = true;
+        enable = false;
       };
       services.gpg-agent = {
-        enable = true;
+        enable = false;
         pinentry = {
           package =
             if pkgs.stdenv.isLinux then
