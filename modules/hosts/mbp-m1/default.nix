@@ -40,7 +40,7 @@
       aero-sketchybar
     ];
     home-manager.backupFileExtension = "hmbp";
-    system.primaryUser = "klchen";
+    system.primaryUser = lib.lists.head config.flake.meta.machines.mbp-m1.users;
     ids.gids.nixbld = 30000;
   };
 }
