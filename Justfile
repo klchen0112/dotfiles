@@ -32,6 +32,10 @@ run:
     nix run
 
 [group('dev')]
+switch arg1:
+    sudo nixos-rebuild --experimental-features "nix-command flakes"   switch --flake  .#{{ arg1 }}
+
+[group('dev')]
 disko-install arg1:
     sudo nix  --experimental-features "nix-command flakes"  run 'github:nix-community/disko/latest#disko-install' -- --write-efi-boot-entries --flake '.#init' --disk main {{ arg1 }}
 
