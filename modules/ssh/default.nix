@@ -56,25 +56,10 @@
             port = 22;
             user = "root";
           };
-          duxiaoman = {
-            hostname = "relay00.duxiaoman-int.com";
-            port = 22;
-            user = "chenkailong_dxm";
-          };
-          xd = {
-            hostname = "relay00.dxmxd02-int.com";
-            port = 22;
-            user = "chenkailong_dxm";
-          };
-          kj = {
-            hostname = "relay00.dxmkj01-int.com";
-            port = 22;
-            user = "chenkailong_dxm";
-          };
           i12r20 = {
             # hostkeyAlgorithms = "+ssh-rsa";
             # pubkeyAcceptedAlgorithms = "+ssh-rsa";
-            hostname = "192.168.88.191";
+            hostname = "192.168.0.199";
             port = 22;
             user = "klchen";
           };
