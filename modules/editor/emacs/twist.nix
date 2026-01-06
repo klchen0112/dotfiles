@@ -3,12 +3,12 @@
   flake-file.inputs = {
     emacs-config = {
       url = "github:klchen0112/.emacs.d";
-      inputs.twist.follows = "twist";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.flake-parts.follows = "flake-parts";
-      inputs.emacs-overlay.follows = "emacs-overlay";
     };
-    twist.url = "github:emacs-twist/twist.nix";
+    emacs-overlay = {
+      follows = "emacs-config/emacs-overlay";
+    };
   };
   flake.modules.homeManager.emacs-twist =
     {

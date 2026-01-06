@@ -1,12 +1,5 @@
 { inputs, ... }:
 {
-  flake-file.inputs = {
-    emacs-overlay = {
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.nixpkgs-stable.follows = "nixpkgs-stable";
-      url = "github:nix-community/emacs-overlay/master";
-    };
-  };
   flake.modules.homeManager.emacs =
     {
       lib,
