@@ -11,18 +11,18 @@
         # python3Full
         pyright # python language server
         # python311Packages.black # python formatter
-        pyright
         ruff
         uv
+        ty
       ];
       xdg.configFile."uv/uv.toml".text = ''
         [[index]]
-        url = "https://pypi.tuna.tsinghua.edu.cn/simple"
+        url = "https://mirrors.certnet.edu.cn/pypi/web/simple"
         default = true
       '';
       home.file.".pip/pip.conf".text = ''
         [global]
-        index-url = https://pypi.tuna.tsinghua.edu.cn/simple
+        index-url = https://mirrors.cernet.edu.cn/pypi/web/simple
       '';
       home.file.".condarc".text = ''
         channels:
