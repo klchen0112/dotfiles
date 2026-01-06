@@ -56,20 +56,12 @@
     };
     emacs-config = {
       inputs = {
-        emacs-overlay.follows = "emacs-overlay";
         flake-parts.follows = "flake-parts";
         nixpkgs.follows = "nixpkgs";
-        twist.follows = "twist";
       };
       url = "github:klchen0112/.emacs.d";
     };
-    emacs-overlay = {
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-        nixpkgs-stable.follows = "nixpkgs-stable";
-      };
-      url = "github:nix-community/emacs-overlay/master";
-    };
+    emacs-overlay.follows = "emacs-config/emacs-overlay";
     firefox-addons = {
       inputs.nixpkgs.follows = "nixpkgs";
       url = "github:osipog/nix-firefox-addons";
@@ -151,7 +143,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
       url = "github:numtide/treefmt-nix";
     };
-    twist.url = "github:emacs-twist/twist.nix";
     zen-browser = {
       inputs = {
         home-manager.follows = "home-manager";

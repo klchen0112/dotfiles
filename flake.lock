@@ -195,9 +195,7 @@
     },
     "emacs-config": {
       "inputs": {
-        "emacs-overlay": [
-          "emacs-overlay"
-        ],
+        "emacs-overlay": "emacs-overlay",
         "flake-parts": [
           "flake-parts"
         ],
@@ -212,9 +210,7 @@
         "org-babel": "org-babel",
         "pkgs-by-name-for-flake-parts": "pkgs-by-name-for-flake-parts",
         "systems": "systems_2",
-        "twist": [
-          "twist"
-        ],
+        "twist": "twist",
         "twist-overrides": "twist-overrides"
       },
       "locked": {
@@ -233,24 +229,19 @@
     },
     "emacs-overlay": {
       "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ],
-        "nixpkgs-stable": [
-          "nixpkgs-stable"
-        ]
+        "nixpkgs": "nixpkgs",
+        "nixpkgs-stable": "nixpkgs-stable"
       },
       "locked": {
-        "lastModified": 1767346221,
-        "narHash": "sha256-bM5hL5hPQH634rJVMT/yrwR/k7y+fvYpcuomxqSHRVA=",
+        "lastModified": 1767719761,
+        "narHash": "sha256-oUvHOhcXu8qNs/lBxDOwER3I0YckKbB7u+pBZWxyDzU=",
         "owner": "nix-community",
         "repo": "emacs-overlay",
-        "rev": "c713cc9fac56bc90cb1ce9d438c426b38bb7d71a",
+        "rev": "58695d86a60dffa069e445d4c8caffccef668a49",
         "type": "github"
       },
       "original": {
         "owner": "nix-community",
-        "ref": "master",
         "repo": "emacs-overlay",
         "type": "github"
       }
@@ -744,22 +735,37 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1767364772,
-        "narHash": "sha256-fFUnEYMla8b7UKjijLnMe+oVFOz6HjijGGNS1l7dYaQ=",
-        "ref": "nixpkgs-unstable",
-        "rev": "16c7794d0a28b5a37904d55bcca36003b9109aaa",
-        "shallow": true,
-        "type": "git",
-        "url": "https://github.com/nixos/nixpkgs"
+        "lastModified": 1767379071,
+        "narHash": "sha256-EgE0pxsrW9jp9YFMkHL9JMXxcqi/OoumPJYwf+Okucw=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "fb7944c166a3b630f177938e478f0378e64ce108",
+        "type": "github"
       },
       "original": {
-        "ref": "nixpkgs-unstable",
-        "shallow": true,
-        "type": "git",
-        "url": "https://github.com/nixos/nixpkgs"
+        "owner": "NixOS",
+        "ref": "nixos-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
       }
     },
     "nixpkgs-stable": {
+      "locked": {
+        "lastModified": 1767051569,
+        "narHash": "sha256-0MnuWoN+n1UYaGBIpqpPs9I9ZHW4kynits4mrnh1Pk4=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "40ee5e1944bebdd128f9fbada44faefddfde29bd",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "nixos-25.05",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "nixpkgs-stable_2": {
       "locked": {
         "lastModified": 1767439050,
         "narHash": "sha256-UHXvixX4PjyzuTtyEU0GAe4W7sIVFBBntCNPHkZTRrA=",
@@ -777,6 +783,23 @@
       }
     },
     "nixpkgs-unstable": {
+      "locked": {
+        "lastModified": 1767364772,
+        "narHash": "sha256-fFUnEYMla8b7UKjijLnMe+oVFOz6HjijGGNS1l7dYaQ=",
+        "ref": "nixpkgs-unstable",
+        "rev": "16c7794d0a28b5a37904d55bcca36003b9109aaa",
+        "shallow": true,
+        "type": "git",
+        "url": "https://github.com/nixos/nixpkgs"
+      },
+      "original": {
+        "ref": "nixpkgs-unstable",
+        "shallow": true,
+        "type": "git",
+        "url": "https://github.com/nixos/nixpkgs"
+      }
+    },
+    "nixpkgs_2": {
       "locked": {
         "lastModified": 1767364772,
         "narHash": "sha256-fFUnEYMla8b7UKjijLnMe+oVFOz6HjijGGNS1l7dYaQ=",
@@ -932,7 +955,10 @@
         "devshell": "devshell",
         "disko": "disko",
         "emacs-config": "emacs-config",
-        "emacs-overlay": "emacs-overlay",
+        "emacs-overlay": [
+          "emacs-config",
+          "emacs-overlay"
+        ],
         "firefox-addons": "firefox-addons",
         "flake-file": "flake-file",
         "flake-parts": "flake-parts",
@@ -947,11 +973,11 @@
         "nix-vscode-extensions": "nix-vscode-extensions",
         "nixos-hardware": "nixos-hardware",
         "nixos-wsl": "nixos-wsl",
-        "nixpkgs": "nixpkgs",
+        "nixpkgs": "nixpkgs_2",
         "nixpkgs-lib": [
           "nixpkgs"
         ],
-        "nixpkgs-stable": "nixpkgs-stable",
+        "nixpkgs-stable": "nixpkgs-stable_2",
         "nixpkgs-unstable": "nixpkgs-unstable",
         "noctalia-shell": "noctalia-shell",
         "nur": "nur",
@@ -961,7 +987,6 @@
         "stylix": "stylix",
         "systems": "systems_6",
         "treefmt-nix": "treefmt-nix",
-        "twist": "twist",
         "zen-browser": "zen-browser"
       }
     },
