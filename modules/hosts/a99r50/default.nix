@@ -38,6 +38,7 @@
         vscode
         flatpak
         im
+        office
       ];
       home-manager.backupFileExtension = "hmbp";
 
