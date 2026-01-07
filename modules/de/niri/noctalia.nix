@@ -14,7 +14,6 @@
     hardware.bluetooth.enable = true;
     services.power-profiles-daemon.enable = true;
     services.upower.enable = true;
-    services.noctalia-shell.enable = true;
   };
   flake.modules.homeManager.noctalia-shell =
     {
@@ -52,7 +51,7 @@
 
       programs.noctalia-shell = {
         enable = true;
-        package = null;
+        systemd.enable = true;
         settings = {
           setupCompleted = false;
           bar = {
