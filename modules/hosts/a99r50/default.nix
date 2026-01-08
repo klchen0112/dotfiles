@@ -34,7 +34,7 @@
         zen
         # chrome
         access-tokens
-#        keyboard
+        keyboard
         vscode
         flatpak
         im
@@ -142,14 +142,18 @@
       };
       zramSwap.enable = true;
       networking.networkmanager.enable = true;
-      networking.nameservers = [ ];
       # These options are unnecessary when managing DNS ourselves
-      networking.useDHCP = lib.mkDefault true;
-      networking.dhcpcd.enable = true;
-      services.resolved.enable = true;
       networking.interfaces.eno1 = {
         useDHCP = true;
         wakeOnLan.enable = true;
+      };
+      networking = {
+        resolvconf.enable = true;
+        # 清空所有静态 DNS 配置
+        nameservers = [ ];
+
+        # 可选：确保 DHCP 的 DNS 优先级最高
+        dhcpcd.extraConfig = "nohook resolv.conf";
       };
     };
 }
