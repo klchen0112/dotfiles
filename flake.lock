@@ -214,17 +214,17 @@
         "twist-overrides": "twist-overrides"
       },
       "locked": {
-        "lastModified": 1768041834,
-        "narHash": "sha256-LgZ8bXtkNgkHnn8Z/4ynuYHJchXkOPml+T6V7RLOt9M=",
-        "owner": "klchen0112",
-        "repo": ".emacs.d",
-        "rev": "fe5a505bf0f0ecd0f2690445b4849eb9c9ca66c4",
-        "type": "github"
+        "lastModified": 1768044057,
+        "narHash": "sha256-3jPBfw/rYDefqUmfM98geR9wWNupa22erUAyJC0wCLk=",
+        "ref": "refs/heads/master",
+        "rev": "0cd4669cfb1420e661597fdbf7f6d932a144e7e0",
+        "revCount": 147,
+        "type": "git",
+        "url": "file:///Users/klchen/my/.emacs.d"
       },
       "original": {
-        "owner": "klchen0112",
-        "repo": ".emacs.d",
-        "type": "github"
+        "type": "git",
+        "url": "file:///Users/klchen/my/.emacs.d"
       }
     },
     "emacs-overlay": {
