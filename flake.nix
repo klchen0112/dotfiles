@@ -106,7 +106,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
       url = "github:nix-community/nixos-wsl";
     };
-    nixpkgs.url = "git+https://github.com/nixos/nixpkgs?shallow=1&ref=nixpkgs-unstable";
+    nixpkgs.url = "git+https://github.com/nixos/nixpkgs?shallow=1&ref=nixos-unstable";
     nixpkgs-lib.follows = "nixpkgs";
     nixpkgs-stable.url = "git+https://github.com/nixos/nixpkgs?shallow=1&ref=release-25.11";
     nixpkgs-unstable.url = "git+https://github.com/nixos/nixpkgs?shallow=1&ref=nixpkgs-unstable";
