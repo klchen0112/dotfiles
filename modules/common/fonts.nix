@@ -13,7 +13,6 @@ let
           font-awesome
 
           # mono fonts for coding
-          iosevka
           nerd-fonts."m+"
 
           # Serif fonts

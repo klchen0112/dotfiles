@@ -57,6 +57,7 @@
         openssh.authorizedKeys.keys = config.flake.meta.users.klchen.authorizedKeys;
         initialHashedPassword = config.flake.meta.users.klchen.initialHashedPassword;
       };
+      services.openssh.settings.AllowUsers = [ config.flake.meta.users.klchen.fullname];
       users.users.root.openssh.authorizedKeys.keys = config.flake.meta.users.klchen.authorizedKeys;
     };
   flake.modules.darwin.klchen =

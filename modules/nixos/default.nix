@@ -1,7 +1,14 @@
 { inputs, ... }:
 {
   flake.modules.nixos.nixos = {
-    services.openssh.enable = true;
+    services.openssh = {
+      enable = true;
+      settings = {
+        PasswordAuthentication = false;
+        KbdInteractiveAuthentication = false;
+        PermitRootLogin = "no";
+      };
+    };
     programs.dconf.enable = true;
     imports = with inputs.self.modules.nixos; [
       network
@@ -21,7 +28,7 @@
       wslConf.automount.root = "/mnt";
       wslConf.interop.appendWindowsPath = false;
       wslConf.network.generateHosts = false;
-      
+
       startMenuLaunchers = true;
     };
   };
