@@ -1,8 +1,11 @@
+let
+  machine = "i12r20";
+in
 { inputs, config, ... }:
 {
-  flake.meta.machines.i12r20 = {
+  flake.meta.machines.${machine} = {
 
-    hostName = "i12r20";
+    hostName = "${machine}";
     platform = "x86_64-linux";
     base16Scheme = "selenized-light";
     sshKey = [
@@ -13,21 +16,22 @@
     ];
     desktop = true;
   };
-  flake.modules.nixos.i12r20 =
+  flake.modules.nixos.${machine} =
     {
       pkgs,
       ...
     }:
     {
       imports = [
-        inputs.self.modules.nixos.klchen
         inputs.self.modules.nixos.font
         inputs.self.modules.nixos.access-tokens
         inputs.self.modules.nixos.vm
         inputs.nixos-hardware.nixosModules.common-cpu-intel
         # offload
         inputs.nixos-hardware.nixosModules.common-pc-ssd
-      ];
+      ]
+      ++ (builtins.map (user: inputs.self.modules.nixos.${user}) config.flake.meta.machines.a99r50.users);
+
       home-manager.users.klchen.imports = with config.flake.modules.homeManager; [
         access-tokens
         syncthing

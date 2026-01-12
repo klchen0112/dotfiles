@@ -1,7 +1,10 @@
+let
+  machine = "a99r50";
+in
 { inputs, config, ... }:
 {
-  flake.meta.machines.a99r50 = {
-    hostName = "a99r50";
+  flake.meta.machines.${machine} = {
+    hostName = "${machine}";
     platform = "x86_64-linux";
     base16Scheme = "selenized-light";
     sshKey = [
@@ -12,7 +15,7 @@
     ];
     desktop = true;
   };
-  flake.modules.nixos.a99r50 =
+  flake.modules.nixos.${machine} =
     {
       pkgs,
       lib,
@@ -43,7 +46,6 @@
       home-manager.backupFileExtension = "hmbp";
 
       imports = [
-        inputs.self.modules.nixos.klchen
         inputs.self.modules.nixos.flatpak
         # inputs.self.nixosModules.nvidia
         # inputs.self.modules.nixos.nvidia
@@ -64,7 +66,8 @@
         inputs.nixos-hardware.nixosModules.common-hidpi
         inputs.disko.nixosModules.disko
 
-      ];
+      ]
+      ++ (builtins.map (user: inputs.self.modules.nixos.${user}) config.flake.meta.machines.a99r50.users);
       boot.kernelParams = [
         # Since NVIDIA does not load kernel mode setting by default,
         # enabling it is required to make Wayland compositors function properly.

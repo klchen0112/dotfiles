@@ -1,7 +1,15 @@
-{ inputs, config,lib,... }:
+let
+  machine = "wsl-nixos";
+in
 {
-  flake.meta.machines.wsl = {
-    hostName = "wsl";
+  inputs,
+  config,
+  lib,
+  ...
+}:
+{
+  flake.meta.machines.${machine} = {
+    hostName = "${machine}";
     platform = "x86_64-linux";
     base16Scheme = "selenized-light";
     sshKey = [
@@ -12,7 +20,7 @@
     ];
     desktop = false;
   };
-  flake.modules.nixos.wsl =
+  flake.modules.nixos.wsl-nixos =
     {
       lib,
       pkgs,
@@ -25,10 +33,11 @@
       ];
       home-manager.backupFileExtension = "hmbp";
 
-      imports = [
-        inputs.self.modules.nixos.klchen
-      ];
-      wsl.defaultUser = lib.lists.head config.flake.meta.machines.wsl.users;
+      imports = (
+        builtins.map (user: inputs.self.modules.nixos.${user}) config.flake.meta.machines.a99r50.users
+      );
+
+      wsl.defaultUser = lib.lists.head config.flake.meta.machines.wsl-nixos.users;
 
       # Don't allow mutation of users outside of the config.
       users.mutableUsers = false;

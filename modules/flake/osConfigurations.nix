@@ -26,7 +26,7 @@ in
     a99r50 = linux "a99r50";
     i12r20 = linux "i12r20";
     sanjiao = linux "sanjiao";
-    wsl = wsl "wsl";
+    wsl = wsl "wsl-nixos";
     init = linux "init";
   };
 }
