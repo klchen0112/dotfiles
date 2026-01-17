@@ -32,8 +32,8 @@ run:
     nix run
 
 [group('dev')]
-switch arg1:
-    sudo nixos-rebuild switch --flake  .#{{ arg1 }}
+switch:
+    nixos-rebuild switch --sudo --flake .#"$(shell hostname)"
 
 [group('dev')]
 disko-install arg1:
