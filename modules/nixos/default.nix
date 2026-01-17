@@ -1,14 +1,6 @@
 { inputs, ... }:
 {
   flake.modules.nixos.nixos = {
-    services.openssh = {
-      enable = true;
-      settings = {
-        PasswordAuthentication = false;
-        KbdInteractiveAuthentication = false;
-        PermitRootLogin = "no";
-      };
-    };
     programs.dconf.enable = true;
     imports = with inputs.self.modules.nixos; [
       network
