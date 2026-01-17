@@ -37,7 +37,7 @@ switch-macos HOST=`hostname`:
 	sudo darwin-rebuild switch --flake .#"{{HOST}}"
 
 # NixOS 构建命令  
-switch-nixos HOST=`hostname`:
+switch-linux HOST=`hostname`:
 	sudo nixos-rebuild switch --flake .#"{{HOST}}"
     
 [group('dev')]
