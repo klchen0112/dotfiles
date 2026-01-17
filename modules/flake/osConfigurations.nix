@@ -29,7 +29,7 @@ in
     };
   };
 
-  flake.dawinConfigurations = {
+  flake.darwinConfigurations = {
     mbp-m1 = darwin "mbp-m1";
   };
   flake.nixosConfigurations = {
@@ -40,6 +40,9 @@ in
     init = linux "init";
   };
   flake.deploy = {
-    nodes.a99r50 = mkNode "a99r50" self.nixosConfigurations.a99r50;
+    nodes = {
+      a99r50 = mkNode "a99r50" self.nixosConfigurations.a99r50;
+      sanjiao = mkNode "sanjiao" self.nixosConfigurations.sanjiao;
+    };
   };
 }

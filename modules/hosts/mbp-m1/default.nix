@@ -1,3 +1,6 @@
+let
+  machine = "mbp-m1";
+in
 {
   inputs,
   config,
@@ -5,8 +8,8 @@
   ...
 }:
 {
-  flake.meta.machines.mbp-m1 = {
-    hostName = "mbp-m1";
+  flake.meta.machines.${machine} = {
+    hostName = machine;
     platform = "aarch64-darwin";
     base16Scheme = "selenized-dark";
     sshKey = [
@@ -15,13 +18,18 @@
     users = [ "klchen" ];
     desktop = true;
   };
-  flake.modules.darwin.mbp-m1 = {
-    imports = with inputs.self.modules.darwin; [
-      klchen
-      homebrew
-      access-tokens
-      aerospace
-    ];
+  flake.modules.darwin.${machine} = {
+    nixpkgs.system = config.flake.meta.machines.${machine}.platform;
+    imports =
+      with inputs.self.modules.darwin;
+      [
+        homebrew
+        access-tokens
+        aerospace
+      ]
+      ++ (builtins.map (
+        user: inputs.self.modules.darwin.${user}
+      ) config.flake.meta.machines.${machine}.users);
     home-manager.users.klchen.imports = with config.flake.modules.homeManager; [
       zsh
       # hammerspoon
@@ -40,7 +48,7 @@
       aero-sketchybar
     ];
     home-manager.backupFileExtension = "hmbp";
-    system.primaryUser = lib.lists.head config.flake.meta.machines.mbp-m1.users;
+    system.primaryUser = lib.lists.head config.flake.meta.machines.${machine}.users;
     ids.gids.nixbld = 30000;
   };
 }

@@ -29,9 +29,9 @@ let
         inputs.home-manager.darwinModules.home-manager
         inputs.self.modules.darwin.nix
         inputs.self.modules.darwin.darwin
+        inputs.self.modules.darwin.${name}
         {
           system.stateVersion = 6;
-
           home-manager.extraSpecialArgs = {
             inherit inputs;
           };
