@@ -17,9 +17,6 @@
       ...
     }:
     {
-      home.packages = [
-        inputs.agenix.packages.${pkgs.system}.default
-      ];
       imports = [ inputs.agenix.homeManagerModules.default ];
       age.secrets.access-tokens.file = inputs.self + /secrets/access-tokens.age;
       nix.extraOptions = ''
@@ -37,9 +34,6 @@
       ...
     }:
     {
-      environment.systemPackages = [
-        inputs.agenix.packages.${pkgs.system}.default
-      ];
       imports = [ inputs.agenix.nixosModules.default ];
       age.identityPaths = [ "/etc/ssh/ssh_host_ed25519_key" ];
       age.secrets.access-tokens.file = inputs.self + /secrets/access-tokens.age;
@@ -54,9 +48,6 @@
       ...
     }:
     {
-      environment.systemPackages = [
-        inputs.agenix.packages.${pkgs.system}.default
-      ];
       imports = [ inputs.agenix.darwinModules.default ];
       age.identityPaths = [ "/etc/ssh/ssh_host_ed25519_key" ];
       age.secrets.access-tokens.file = inputs.self + /secrets/access-tokens.age;
