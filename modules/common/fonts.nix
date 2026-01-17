@@ -42,18 +42,11 @@ let
           noto-fonts # 大部分文字的常见样式，不包含汉字
           noto-fonts-cjk-sans # 汉字部分
 
-          local.TsangerJinKai03
-          local.Jigmo
           nerd-fonts.symbols-only
           nerd-fonts.hack
-        ]
-        ++ (lib.optionals pkgs.stdenv.isDarwin [
 
-          local.sf-mono-liga
-          local.SF-Pro
-          local.sf-symbols
-
-        ]);
+          tsangertypeFonts.jinkai05-w03
+        ];
     };
 in
 {

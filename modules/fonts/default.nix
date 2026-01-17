@@ -1,4 +1,8 @@
 {
+  flake-file.inputs = {
+    chinese-fonts-overlay.url = "github:brsvh/chinese-fonts-overlays/main";
+
+  };
   flake.modules.homeManager.fontconfig = {
     fonts = {
       fontconfig = {
