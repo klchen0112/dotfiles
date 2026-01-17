@@ -28,20 +28,18 @@ dev:
 run:
     nix run
 
-# 或者使用条件判断：
 [group('dev')]
-switch:
-    just switch-{{os()}}
-
+switch HOST=`hostname`:
+    just switch-{{os()}} "{{HOST}}"
 
 # macOS 构建命令
-switch-macos:
-	sudo darwin-rebuild switch --flake .#{{ host }}
+switch-macos HOST=`hostname`:
+	sudo darwin-rebuild switch --flake .#"{{HOST}}"
 
 # NixOS 构建命令  
-switch-nixos:
-	sudo nixos-rebuild switch --flake .#{{ host }}
-
+switch-nixos HOST=`hostname`:
+	sudo nixos-rebuild switch --flake .#"{{HOST}}"
+    
 [group('dev')]
 disko-install arg1:
     sudo nix  --experimental-features "nix-command flakes"  run 'github:nix-community/disko/latest#disko-install' -- --write-efi-boot-entries --flake '.#init' --disk main {{ arg1 }}
