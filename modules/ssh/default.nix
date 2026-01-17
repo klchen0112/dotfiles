@@ -28,7 +28,7 @@
             controlPath = "${config.home.homeDirectory}/.ssh/cm/%r@%h";
             controlPersist = "10m";
           };
-          xiaomi = {
+          xiaomi-ax6000 = {
             # hostkeyAlgorithms = "+ssh-rsa";
             # pubkeyAcceptedAlgorithms = "+ssh-rsa";
             hostname = "192.168.0.10";
@@ -48,17 +48,17 @@
             user = "git";
           };
           a3400g = {
-            hostname = "192.168.0.197";
+            hostname = "a3400g.klchen.duckdns.org";
             port = 22;
             user = "klchen";
           };
           sanjiao = {
-            hostname = "192.168.0.198";
+            hostname = "sanjiao.klchen.duckdns.org";
             port = 22;
             user = "klchen";
           };
           woniu = {
-            hostname = "192.168.0.199";
+            hostname = "woniu.klchen.duckdns.org";
             port = 22;
             user = "klchen";
           };
@@ -70,14 +70,14 @@
           i12r20 = {
             # hostkeyAlgorithms = "+ssh-rsa";
             # pubkeyAcceptedAlgorithms = "+ssh-rsa";
-            hostname = "192.168.0.199";
+            hostname = "i12r20.klchen.duckdns.org";
             port = 22;
             user = "klchen";
           };
           a99r50 = {
             # hostkeyAlgorithms = "+ssh-rsa";
             # pubkeyAcceptedAlgorithms = "+ssh-rsa";
-            hostname = "a99r50.klchen.dns.army";
+            hostname = "a99r50.klchen.duckdns.org";
             port = 22;
             user = "klchen";
           };
