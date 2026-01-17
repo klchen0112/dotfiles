@@ -51,3 +51,7 @@ gen:
 
 write:
     nix run .#write-flake
+
+
+deploy:
+    deploy --skip-checks --interactive-sudo true
