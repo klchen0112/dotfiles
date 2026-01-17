@@ -34,7 +34,7 @@ in
       home-manager.backupFileExtension = "hmbp";
 
       imports = (
-        builtins.map (user: inputs.self.modules.nixos.${user}) config.flake.meta.machines.a99r50.users
+        builtins.map (user: inputs.self.modules.nixos.${user}) config.flake.meta.machines.${machine}.users
       );
 
       wsl.defaultUser = lib.lists.head config.flake.meta.machines.wsl-nixos.users;

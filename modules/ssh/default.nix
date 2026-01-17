@@ -1,4 +1,15 @@
 {
+  flake.modules.nixos.ssh = {
+    services.openssh = {
+      enable = true;
+      authorizedKeysInHomedir = true;
+      settings = {
+        PasswordAuthentication = false;
+        KbdInteractiveAuthentication = false;
+        PermitRootLogin = "no";
+      };
+    };
+  };
   flake.modules.homeManager.ssh =
     {
       config,

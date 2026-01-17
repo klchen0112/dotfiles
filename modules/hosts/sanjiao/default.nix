@@ -21,7 +21,9 @@ in
       # offload
       inputs.nixos-hardware.nixosModules.common-pc-ssd
     ]
-    ++ (builtins.map (user: inputs.self.modules.nixos.${user}) config.flake.meta.machines.a99r50.users);
+    ++ (builtins.map (
+      user: inputs.self.modules.nixos.${user}
+    ) config.flake.meta.machines.${machine}.users);
 
     home-manager.users.klchen.imports = with config.flake.modules.homeManager; [
       access-tokens

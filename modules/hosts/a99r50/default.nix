@@ -67,7 +67,9 @@ in
         inputs.disko.nixosModules.disko
 
       ]
-      ++ (builtins.map (user: inputs.self.modules.nixos.${user}) config.flake.meta.machines.a99r50.users);
+      ++ (builtins.map (
+        user: inputs.self.modules.nixos.${user}
+      ) config.flake.meta.machines.${machine}.users);
       boot.kernelParams = [
         # Since NVIDIA does not load kernel mode setting by default,
         # enabling it is required to make Wayland compositors function properly.
