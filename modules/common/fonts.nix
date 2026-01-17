@@ -1,3 +1,4 @@
+{inputs, ...} :
 let
   fonts_settings =
     {
@@ -5,6 +6,9 @@ let
       ...
     }:
     {
+      nixpkgs.overlays = [
+          inputs.chinese-fonts-overlay.overlays.default
+      ];
       fonts.packages =
         with pkgs;
         [
@@ -45,7 +49,7 @@ let
           nerd-fonts.symbols-only
           nerd-fonts.hack
 
-          tsangertypeFonts.jinkai05-w03
+          tsangertypeFonts.jinkai-05-w03
         ];
     };
 in

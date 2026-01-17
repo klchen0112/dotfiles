@@ -46,6 +46,11 @@
       };
       url = "github:BatteredBunny/brew-nix";
     };
+    chinese-fonts-overlay.url = "github:brsvh/chinese-fonts-overlay";
+    deploy-rs = {
+      inputs.nixpkgs.follows = "nixpkgs";
+      url = "github:serokell/deploy-rs";
+    };
     devshell = {
       inputs.nixpkgs.follows = "nixpkgs";
       url = "github:numtide/devshell";
