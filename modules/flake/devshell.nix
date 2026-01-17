@@ -9,10 +9,9 @@
           just
           nixd
           nix-output-monitor
-          inputs'.agenix.packages.default
+          agenix
+          deploy-rs.deploy-rs
 
-          nixfmt-rfc-style
-          neovim
           #          inputs'.allfollow.packages.default
         ];
       };

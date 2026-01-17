@@ -23,7 +23,7 @@
         inputs.disko.nixosModules.disko
       ];
 
-
+      nixpkgs.hostPlatform = "x86_64-linux";
       # Bootloader.
       boot.loader.systemd-boot.enable = true;
 

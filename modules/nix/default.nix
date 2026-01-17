@@ -4,8 +4,7 @@
     { pkgs, ... }:
     {
       home.packages = with pkgs; [
-        nixfmt-rfc-style
-        # nixfmt
+        nixfmt
         nix-du
         nil
         cachix

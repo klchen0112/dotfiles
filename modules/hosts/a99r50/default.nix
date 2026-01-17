@@ -22,6 +22,7 @@ in
       ...
     }:
     {
+      
       home-manager.users.klchen.imports = with config.flake.modules.homeManager; [
         inputmethod
         niri

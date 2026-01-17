@@ -1,9 +1,8 @@
 { inputs, lib, ... }:
 let
   mkNixos =
-    system: _cls: name:
+    _cls: name:
     inputs.nixpkgs.lib.nixosSystem {
-      inherit system;
       modules = [
         inputs.home-manager.nixosModules.home-manager
         inputs.self.modules.nixos.root
@@ -12,8 +11,6 @@ let
         inputs.self.modules.nixos.${_cls}
         inputs.self.modules.nixos.${name}
         {
-          networking.hostName = lib.mkDefault name;
-          nixpkgs.hostPlatform = lib.mkDefault system;
           system.stateVersion = "25.11";
           home-manager.extraSpecialArgs = {
             inherit inputs;
@@ -21,22 +18,18 @@ let
         }
       ];
     };
-  linux = mkNixos "x86_64-linux" "nixos";
-  linux-arm = mkNixos "aarch_64-linux" "nixos";
+  linux = mkNixos "nixos";
+  linux-arm = mkNixos "nixos";
 
-  wsl = mkNixos "x86_64-linux" "wsl";
-  mkDarwin =
-    system: name:
+  wsl = mkNixos "wsl";
+  darwin =
+    name:
     inputs.nix-darwin.lib.darwinSystem {
-      inherit system;
       modules = [
         inputs.home-manager.darwinModules.home-manager
         inputs.self.modules.darwin.nix
         inputs.self.modules.darwin.darwin
-        inputs.self.modules.darwin.${name}
         {
-          networking.hostName = lib.mkDefault name;
-          nixpkgs.hostPlatform = lib.mkDefault system;
           system.stateVersion = 6;
 
           home-manager.extraSpecialArgs = {
@@ -45,11 +38,25 @@ let
         }
       ];
     };
-  darwin = mkDarwin "aarch64-darwin";
+  mkNode =
+    name: cfg:
+    let
+      inherit (cfg.pkgs.stdenv.hostPlatform) system;
+      deployLib = inputs.deploy-rs.lib.${system};
+    in
+    {
+      hostname = "${name}.klchen.duckdns.org";
+      profiles.system = {
+        user = "root";
+        path = deployLib.activate.nixos cfg;
+      };
+    };
+
 in
 {
   flake.lib.mk-os = {
     inherit darwin;
     inherit wsl linux linux-arm;
+    inherit mkNode;
   };
 }

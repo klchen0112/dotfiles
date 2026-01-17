@@ -32,12 +32,13 @@ in
         emacs-twist
       ];
       home-manager.backupFileExtension = "hmbp";
+      nixpkgs.hostPlatform = "x86_64-linux";
 
       imports = (
         builtins.map (user: inputs.self.modules.nixos.${user}) config.flake.meta.machines.${machine}.users
       );
 
-      wsl.defaultUser = lib.lists.head config.flake.meta.machines.wsl-nixos.users;
+      wsl.defaultUser = lib.lists.head config.flake.meta.machines.${machine}.users;
 
       # Don't allow mutation of users outside of the config.
       users.mutableUsers = false;

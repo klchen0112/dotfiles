@@ -21,13 +21,13 @@
     }:
     {
       pre-commit.settings = {
-        hooks.nixfmt-rfc-style.enable = true;
+        hooks.nixfmt.enable = true;
       };
       treefmt = {
         projectRootFile = "flake.nix";
         enableDefaultExcludes = true;
         programs.nixfmt.enable = true;
-        programs.nixfmt.package = pkgs.nixfmt-rfc-style;
+        programs.nixfmt.package = pkgs.nixfmt;
         programs.shellcheck.enable = true;
         programs.stylua.enable = true;
         programs.toml-sort.enable = true;

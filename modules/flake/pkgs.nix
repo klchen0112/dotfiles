@@ -26,6 +26,7 @@
         inherit system;
         config = {
           allowUnfree = true;
+          allowUnsupportedSystem = true;
         };
         overlays = [
           (final: _prev: {
@@ -44,8 +45,9 @@
           inputs.self.overlays.default
           inputs.emacs-config.overlays.default
           inputs.firefox-addons.overlays.default
-          # inputs.deploy-rs.overlays.default
-          # (self: super: { deplkkoy-rs = { inherit (pkgs) deploy-rs; lib = super.deploy-rs.lib; }; })
+          inputs.deploy-rs.overlays.default
+          inputs.agenix.overlays.default
+          inputs.chinese-fonts-overlay.overlays.default
         ];
       };
       pkgsDirectory = ../../pkgs/by-name;
