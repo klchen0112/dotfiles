@@ -1,7 +1,4 @@
-# Like GNU `make`, but `just` rustier.
-# https://just.systems/
-# run `just` from this directory to see available commands
-
+host := `hostname`
 # Default command when 'just' is run without arguments
 default:
     @just --list
@@ -31,9 +28,19 @@ dev:
 run:
     nix run
 
+# 或者使用条件判断：
 [group('dev')]
 switch:
-    nixos-rebuild switch --sudo --flake .#"$(shell hostname)"
+    just switch-{{os()}}
+
+
+# macOS 构建命令
+switch-macos:
+	sudo darwin-rebuild switch --flake .#{{ host }}
+
+# NixOS 构建命令  
+switch-nixos:
+	sudo nixos-rebuild switch --flake .#{{ host }}
 
 [group('dev')]
 disko-install arg1:
