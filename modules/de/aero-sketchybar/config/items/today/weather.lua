@@ -66,7 +66,7 @@ weather.temp:subscribe({ "routine", "forced", "system_woke", "weather_update" },
     weather.temp:set({ popup = { drawing = false } })
 
     -- Fetch events from calendar
-    Sbar.exec("wttrbar --lang zh --location BeiJing", function(forecast)
+    Sbar.exec("wttrbar --lang zh --location Shanghai", function(forecast)
         -- Extract icon and temperature
         for i, value in ipairs(STR_SPLIT(forecast.text)) do
             -- first part of response is icon
