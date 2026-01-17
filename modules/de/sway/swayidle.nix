@@ -1,6 +1,6 @@
 # Ref: https://github.com/hallettj/home.nix/blob/main/home-manager/features/niri/swayidle.nix
 {
-  flake.moduels.nixos.sway =
+  flake.moduels.nixos.sway-idle =
     {
       pkgs,
       lib,

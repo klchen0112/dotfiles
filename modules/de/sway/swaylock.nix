@@ -1,5 +1,5 @@
 {
-  flake.moduels.nixos.sway =
+  flake.moduels.nixos.sway-lock =
     { ... }:
     {
       stylix.targets.swaylock.enable = true;
