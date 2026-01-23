@@ -82,19 +82,11 @@
       home.packages = with pkgs; [
         # screenshot
         grim
-        slurp
         # utils
         wl-clipboard
         wlr-randr
-        gnome-themes-extra
-        file-roller
-        gnome-control-center
-        gnome-text-editor
         nautilus
-        (papers.override { supportNautilus = true; })
-
-        inkscape
-        scrcpy
+ 
       ];
 
       programs.niri.settings.binds = with config.lib.niri.actions; {
