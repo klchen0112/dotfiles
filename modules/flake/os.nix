@@ -12,6 +12,7 @@ let
         inputs.self.modules.nixos.${name}
         {
           system.stateVersion = "25.11";
+          networking.hostName = "${name}";
           home-manager.extraSpecialArgs = {
             inherit inputs;
           };
