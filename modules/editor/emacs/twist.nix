@@ -21,10 +21,8 @@
       home.packages = with pkgs; [ ] ++ (lib.optionals pkgs.stdenv.isDarwin [ local.org-reminders ]);
       programs.emacs-twist = {
         enable = true;
-
         settings = {
           enableDefaultEditor = true;
-          enableYequakeScripts = true;
         };
       };
     };
