@@ -126,7 +126,7 @@
       };
       url = "github:nix-community/NUR";
     };
-    pkgs-by-name-for-flake-parts.url = "github:drupol/pkgs-by-name-for-flake-parts";
+    pkgs-by-name-for-flake-parts.url = "github:sedlund/pkgs-by-name-for-flake-parts/skip-non-vals";
     rime = {
       flake = false;
       url = "github:klchen0112/rime-snow-combo-pinyin";
