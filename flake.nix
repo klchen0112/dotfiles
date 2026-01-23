@@ -65,7 +65,6 @@
         nixpkgs.follows = "nixpkgs";
       };
       url = "github:klchen0112/.emacs.d";
-      # url = "git+file:///home/klchen/my/.emacs.d";
     };
     emacs-overlay.follows = "emacs-config/emacs-overlay";
     firefox-addons = {
