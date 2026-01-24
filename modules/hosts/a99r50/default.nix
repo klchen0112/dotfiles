@@ -89,7 +89,6 @@ in
       # Bootloader.
       boot.loader.systemd-boot.enable = true;
       environment.systemPackages = with pkgs; [
-        neovim
         pciutils
       ];
       # Load nvidia driver for Xorg and Wayland

@@ -34,7 +34,6 @@
       environment.systemPackages = with pkgs; [
         just
         git
-        neovim
         pciutils
       ];
 
