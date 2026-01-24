@@ -254,11 +254,11 @@
         "twist-overrides": "twist-overrides"
       },
       "locked": {
-        "lastModified": 1769179790,
-        "narHash": "sha256-aItKWN+q1eCVpK7XsagGsmiToRn1Ig6NwcnllvFeNzA=",
+        "lastModified": 1769229886,
+        "narHash": "sha256-nCICpyH5Cte8420BkNTmwcfltv7izE8s+WapmM4nHbg=",
         "owner": "klchen0112",
         "repo": ".emacs.d",
-        "rev": "0ef93b81ce2a72d040e9b1951103e647e8b3c0a5",
+        "rev": "5239940e5c364f7e340213326103bd21ada43564",
         "type": "github"
       },
       "original": {
@@ -273,11 +273,11 @@
         "nixpkgs-stable": "nixpkgs-stable"
       },
       "locked": {
-        "lastModified": 1768122896,
-        "narHash": "sha256-oL4268ezB8E4/06RVawD5o1IJrkK3bnPAUg6guV4NTo=",
+        "lastModified": 1769222258,
+        "narHash": "sha256-N/JT6qyw5HrYgDGKg/kCKI4z2TN4cb+RGpDBOHrWBQU=",
         "owner": "nix-community",
         "repo": "emacs-overlay",
-        "rev": "928d5c9010569c9d6533bad87f890d3734c21bc1",
+        "rev": "545948d21101e7162c1ed03451444585970964c3",
         "type": "github"
       },
       "original": {
@@ -539,11 +539,11 @@
     "gnu-elpa": {
       "flake": false,
       "locked": {
-        "lastModified": 1767587260,
-        "narHash": "sha256-knfaCHa63v71gYcaWFaguuVtT3BAlrIUjTZTJCmkbrE=",
+        "lastModified": 1769110046,
+        "narHash": "sha256-aEFf9RUC4sySMV/UpTQ11thxzLZLi7dk+scutNMECic=",
         "owner": "emacsmirror",
         "repo": "gnu_elpa",
-        "rev": "7f99da9ff3701ffed40e3cc9642737f814a776de",
+        "rev": "c7bbf6d4b420257fc9f220a4a7c30ffa4f46bae5",
         "type": "github"
       },
       "original": {
@@ -555,7 +555,7 @@
     "gnu-elpa-archive": {
       "flake": false,
       "locked": {
-        "narHash": "sha256-6n6rh0AuXUqqEnvQmagWylKzBeDfWi6Gcczkbnm4LYY=",
+        "narHash": "sha256-h8B9eEJEJL7ls+DvJIToJfxwKXxEbOIe/e06n07ESFs=",
         "type": "file",
         "url": "https://elpa.gnu.org/packages/archive-contents"
       },
@@ -602,11 +602,11 @@
     "melpa": {
       "flake": false,
       "locked": {
-        "lastModified": 1767913943,
-        "narHash": "sha256-cnsDlAlfxUSDVU6tSLZHe65ej1s79rrHZfovuoC137g=",
+        "lastModified": 1769099161,
+        "narHash": "sha256-4BNxOgTeg/yY7PdRYB9V5j4GEFjLYiMwIJ8mQSusgOc=",
         "owner": "melpa",
         "repo": "melpa",
-        "rev": "9ee021ccb4d481bc2b036aa81cec858f09d2686b",
+        "rev": "26147067d47c8666e6885e1dcf92a93d19a6b405",
         "type": "github"
       },
       "original": {
@@ -857,11 +857,11 @@
     },
     "nixpkgs_2": {
       "locked": {
-        "lastModified": 1767892417,
-        "narHash": "sha256-dhhvQY67aboBk8b0/u0XB6vwHdgbROZT3fJAjyNh5Ww=",
+        "lastModified": 1769018530,
+        "narHash": "sha256-MJ27Cy2NtBEV5tsK+YraYr2g851f3Fl1LpNHDzDX15c=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "3497aa5c9457a9d88d71fa93a4a8368816fbeeba",
+        "rev": "88d3861acdd3d2f0e361767018218e51810df8a1",
         "type": "github"
       },
       "original": {
@@ -911,11 +911,11 @@
     "nongnu-elpa": {
       "flake": false,
       "locked": {
-        "lastModified": 1767038365,
-        "narHash": "sha256-ZqFpFDkC5zEzoJxk4LOVigW4alABCqZ4XsBFOq6MQUY=",
+        "lastModified": 1768829468,
+        "narHash": "sha256-csxj9VfOaoC8EN39Pkg2mQvn1O/Qk1HTzBl6/94R59I=",
         "owner": "emacsmirror",
         "repo": "nongnu_elpa",
-        "rev": "e34e708c5adbd71f9d7abe138a62947ccae23eb2",
+        "rev": "6b078c9935f279e7971f53770d354ab6ce15deb6",
         "type": "github"
       },
       "original": {
@@ -927,7 +927,7 @@
     "nongnu-elpa-archive": {
       "flake": false,
       "locked": {
-        "narHash": "sha256-OAUXwx9WqxfmzUrVYcXRIsJ0GQllwEoqLniSzPjGVWA=",
+        "narHash": "sha256-G1gkkB2SATNcCK9GXCICzO5t/Bm0GC+cLoAH/U+FlzY=",
         "type": "file",
         "url": "https://elpa.nongnu.org/nongnu/archive-contents"
       },
@@ -976,11 +976,11 @@
     },
     "pkgs-by-name-for-flake-parts": {
       "locked": {
-        "lastModified": 1766494846,
-        "narHash": "sha256-5eaQ3iKcwUbLw7pOJJqV85qgf5L+ihfsISrifGM7czQ=",
+        "lastModified": 1768881421,
+        "narHash": "sha256-WuP/Nfm41KiY0kAVm9c/cB87fys7Y52TETr1z6il1hY=",
         "owner": "drupol",
         "repo": "pkgs-by-name-for-flake-parts",
-        "rev": "c5f7889af3f34825cec8d802220e766f7d52b699",
+        "rev": "eb126683e3d2ff697aad9fd8dee2140cda97fece",
         "type": "github"
       },
       "original": {
