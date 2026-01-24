@@ -10,8 +10,8 @@ stdenvNoCC.mkDerivation rec {
   src = pkgs.fetchFromGitHub {
     owner = "mogenson";
     repo = "WarpMouse.spoon";
-    rev = "c3b76e02704a15d22e7e6971fe76781db642d0bd";
-    sha256 = "sha256-6hDU7lM59PoMo5ykeTdvomIqEkKkmh1Xam2GIBVgSVY=";
+    rev = "c7f51d07aba13884648f05d116a0074e08f2e644";
+    sha256 = "sha256-sVWmljTKdi+uhzdS+cUuTzrv3qJpSJsRa8GDa9SRgDg=";
   };
 
   dontBuild = true;

@@ -10,8 +10,8 @@ stdenvNoCC.mkDerivation rec {
   src = pkgs.fetchFromGitHub {
     owner = "mogenson";
     repo = "PaperWM.spoon";
-    rev = "e47ca19eddb1cb6000415a6a61db7255162f4cdb";
-    sha256 = "sha256-QHEhH+Gya8KzLKH17DMDqwXu7rnUzQ5JYTF8q2RzyYE=";
+    rev = "3a283f0c3bd63d73a8a7119f4d6c46bd61ec85e1";
+    sha256 = "sha256-5KbSMHEmLeEd3mjscDgJswOZ5gc1IYYBHYnJt3nyn2s=";
   };
 
   dontBuild = true;
