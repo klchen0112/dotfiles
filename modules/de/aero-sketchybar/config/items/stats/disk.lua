@@ -21,6 +21,7 @@ local disk = Sbar.add("item", "disk", {
         color = colors.blue,
         font = {
             size = 16,
+            family = settings.nerd_font,
         },
     },
     update_freq = 60,

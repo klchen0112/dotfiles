@@ -21,6 +21,7 @@ local memory = Sbar.add("item", "memory", {
         color = colors.green,
         font = {
             size = 15,
+            family = settings.nerd_font,
         },
     },
     update_freq = 15,

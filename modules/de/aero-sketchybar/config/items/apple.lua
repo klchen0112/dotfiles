@@ -2,6 +2,7 @@
 
 local icons = require("icons")
 local colors = require("colors")
+local settings = require("settings")
 
 local popup_toggle = "sketchybar --set $NAME popup.drawing=toggle"
 
@@ -14,7 +15,8 @@ apple.logo = Sbar.add("item", "apple.logo", {
     icon = {
         string = icons.apple,
         font = {
-            style = "Black",
+            family = settings.font,
+            style = "Regular",
             size = 20.0,
         },
         color = colors.green,
@@ -29,7 +31,15 @@ apple.logo = Sbar.add("item", "apple.logo", {
 
 apple.prefs = Sbar.add("item", "apple.prefs", {
     position = "popup." .. apple.logo.name,
-    icon = icons.preferences,
+    icon = {
+        string = icons.preferences,
+        font = {
+            family = settings.font,
+            style = "Regular",
+            size = 20.0,
+        },
+        color = colors.green,
+    },
     label = "Preferences",
     background = {
         color = 0x00000000,
@@ -47,6 +57,12 @@ apple.activity = Sbar.add("item", "apple.activity", {
     position = "popup." .. apple.logo.name,
     icon = {
         string = icons.activity,
+        font = {
+            family = settings.font,
+            style = "Regular",
+            size = 20.0,
+        },
+        color = colors.green,
     },
     label = "Activity",
     background = {
@@ -83,6 +99,7 @@ apple.lock = Sbar.add("item", "apple.lock", {
     position = "popup." .. apple.logo.name,
     icon = {
         string = icons.lock,
+        family = settings.font,
     },
     label = "Lock Screen",
     background = {
@@ -103,6 +120,7 @@ apple.logout = Sbar.add("item", "apple.logout", {
     icon = {
         string = icons.logout,
         padding_left = 7,
+        family = settings.font,
     },
     label = "Logout",
     background = {
@@ -123,6 +141,7 @@ apple.sleep = Sbar.add("item", "apple.sleep", {
     icon = {
         string = icons.sleep,
         padding_left = 7,
+        family = settings.font,
     },
     label = "Sleep",
     background = {
@@ -142,6 +161,7 @@ apple.reboot = Sbar.add("item", "apple.reboot", {
     icon = {
         string = icons.reboot,
         padding_left = 7,
+        family = settings.font,
     },
     label = "Reboot",
     background = {
@@ -161,6 +181,7 @@ apple.shutdown = Sbar.add("item", "apple.shutdown", {
     icon = {
         string = icons.power,
         padding_left = 7,
+        family = settings.font,
     },
     label = "Shutdown",
     background = {

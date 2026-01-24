@@ -24,6 +24,7 @@ local cpu = Sbar.add("item", "cpu", {
         color = colors.blue,
         font = {
             size = 15,
+            family = settings.nerd_font,
         },
     },
     update_freq = 2,
