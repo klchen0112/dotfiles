@@ -18,6 +18,8 @@ let
 
           # mono fonts for coding
           nerd-fonts."m+"
+          local."pragmasevka-nerd"
+          local.Jigmo
 
           # Serif fonts
           ibm-plex
@@ -26,10 +28,9 @@ let
           twemoji-color-font
           noto-fonts-color-emoji # 彩色的表情符号字体
           # symbol font
-          # symbola
+          symbola
 
           # chinese font
-          lxgw-wenkai
 
           liberation_ttf
           overpass
@@ -50,6 +51,7 @@ let
           nerd-fonts.hack
 
           tsangertypeFonts.jinkai-05-w03
+          googlesans-code
         ];
     };
 in
