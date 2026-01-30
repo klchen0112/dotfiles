@@ -86,7 +86,7 @@
         wl-clipboard
         wlr-randr
         nautilus
- 
+
       ];
 
       programs.niri.settings.binds = with config.lib.niri.actions; {

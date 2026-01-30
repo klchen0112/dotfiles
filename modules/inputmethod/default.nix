@@ -80,7 +80,7 @@
       };
 
       home.activation.rime-install =
-        if pkgs.stdenv.isDarwin then ''run ${lib.getExe rime-install}'' else '''';
+        if pkgs.stdenv.isDarwin then "run ${lib.getExe rime-install}" else "";
 
     };
 }

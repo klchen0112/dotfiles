@@ -55,7 +55,7 @@
           eval $(${config.programs.micromamba.package}/bin/micromamba shell hook --shell zsh --prefix ${config.programs.micromamba.rootDirectory})
         '';
 
-        programs.zsh.initContent = lib.mkIf config.programs.micromamba.enableZshIntegration ''eval $(${config.programs.micromamba.package}/bin/micromamba shell hook --shell zsh --prefix ${config.programs.micromamba.rootDirectory})'';
+        programs.zsh.initContent = lib.mkIf config.programs.micromamba.enableZshIntegration "eval $(${config.programs.micromamba.package}/bin/micromamba shell hook --shell zsh --prefix ${config.programs.micromamba.rootDirectory})";
 
         programs.fish.interactiveShellInit = lib.mkIf config.programs.micromamba.enableFishIntegration ''
           ${config.programs.micromamba.package}/bin/micromamba shell hook --shell fish --prefix  ${config.programs.micromamba.rootDirectory} | source

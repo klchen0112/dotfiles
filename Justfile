@@ -1,4 +1,5 @@
 host := `hostname`
+
 # Default command when 'just' is run without arguments
 default:
     @just --list
@@ -30,16 +31,16 @@ run:
 
 [group('dev')]
 switch HOST=`hostname`:
-    just switch-{{os()}} "{{HOST}}"
+    just switch-{{ os() }} "{{ HOST }}"
 
 # macOS 构建命令
 switch-macos HOST=`hostname`:
-	sudo darwin-rebuild switch --flake .#"{{HOST}}"
+    sudo darwin-rebuild switch --flake .#"{{ HOST }}"
 
-# NixOS 构建命令  
+# NixOS 构建命令
 switch-linux HOST=`hostname`:
-	sudo nixos-rebuild switch --flake .#"{{HOST}}"
-    
+    sudo nixos-rebuild switch --flake .#"{{ HOST }}"
+
 [group('dev')]
 disko-install arg1:
     sudo nix  --experimental-features "nix-command flakes"  run 'github:nix-community/disko/latest#disko-install' -- --write-efi-boot-entries --flake '.#init' --disk main {{ arg1 }}
@@ -51,7 +52,6 @@ gen:
 
 write:
     nix run .#write-flake
-
 
 deploy:
     deploy --skip-checks --interactive-sudo true

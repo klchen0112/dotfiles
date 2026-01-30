@@ -1,6 +1,6 @@
 {
   flake.modules.darwin.aerospace =
-    { lib,... }:
+    { lib, ... }:
     {
       system.defaults.NSGlobalDomain._HIHideMenuBar = lib.mkForce true;
     };

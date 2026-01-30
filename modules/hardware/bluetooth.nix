@@ -17,7 +17,7 @@
         };
       };
 
-      boot.extraModprobeConfig = ''options bluetooth disable_ertm=1 '';
+      boot.extraModprobeConfig = "options bluetooth disable_ertm=1 ";
       systemd.user.services.telephony_client.enable = false;
 
       services.blueman.enable = true;

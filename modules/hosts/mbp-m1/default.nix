@@ -25,7 +25,6 @@ in
       [
         homebrew
         access-tokens
-        aerospace
       ]
       ++ (builtins.map (
         user: inputs.self.modules.darwin.${user}

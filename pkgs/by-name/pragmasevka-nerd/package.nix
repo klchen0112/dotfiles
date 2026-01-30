@@ -1,4 +1,8 @@
-{ stdenvNoCC, fetchurl, unzip }:
+{
+  stdenvNoCC,
+  fetchurl,
+  unzip,
+}:
 let
   pname = "pragmasevka-nerd";
   version = "1.7.0";
