@@ -46,6 +46,7 @@ in
       access-tokens
       # aerospace
       # aero-sketchybar
+      latex
     ];
     home-manager.backupFileExtension = "hmbp";
     system.primaryUser = lib.lists.head config.flake.meta.machines.${machine}.users;

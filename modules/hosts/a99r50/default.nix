@@ -22,13 +22,11 @@ in
       ...
     }:
     {
-      
+
       home-manager.users.klchen.imports = with config.flake.modules.homeManager; [
         inputmethod
         niri
-        # niri-caelestia-shell
         noctalia-shell
-        #        dankMaterialShell
         ghostty
         aria2
         kitty
@@ -43,6 +41,7 @@ in
         flatpak
         im
         office
+        latex
       ];
       home-manager.backupFileExtension = "hmbp";
 
