@@ -46,18 +46,18 @@ PaperWM:bindHotkeys({
     focus_next = { { "alt", "cmd" }, "j" },
 
     -- move windows around in tiled grid
-    swap_left = { { "ctrl", "cmd" }, "left" },
-    swap_right = { { "ctrl", "cmd" }, "right" },
-    swap_up = { { "ctrl", "cmd" }, "up" },
-    swap_down = { { "ctrl", "cmd" }, "down" },
+    swap_left = { { "alt", "shift" }, "left" },
+    swap_right = { { "alt", "shift" }, "right" },
+    swap_up = { { "alt", "shift" }, "up" },
+    swap_down = { { "alt", "shift" }, "down" },
     -- move focused window into / out of a column
-    slurp_in = { { "ctrl", "cmd" }, "i" },
-    barf_out = { { "ctrl", "cmd" }, "o" },
+    slurp_in = { { "alt", "shift" }, "i" },
+    barf_out = { { "alt", "shift" }, "o" },
     -- alternative: swap entire columns, rather than
     -- individual windows (to be used instead of
     -- swap_left / swap_right bindings)
-    swap_column_left = { { "alt", "shift" }, "left" },
-    swap_column_right = { { "alt", "shift" }, "right" },
+    swap_column_left = { { "alt", "shift", "ctrl" }, "left" },
+    swap_column_right = { { "alt", "shift", "ctrl" }, "right" },
 
     -- position and resize focused window
     center_window = { { "ctrl", "cmd" }, "c" },
@@ -88,17 +88,17 @@ PaperWM:bindHotkeys({
     focus_window_9 = { { "ctrl", "cmd" }, "9" },
 
     -- switch to a new Mission Control space
-    switch_space_l = { { "alt", "cmd" }, "," },
-    switch_space_r = { { "alt", "cmd" }, "." },
-    switch_space_1 = { { "alt", "cmd" }, "1" },
-    switch_space_2 = { { "alt", "cmd" }, "2" },
-    switch_space_3 = { { "alt", "cmd" }, "3" },
-    switch_space_4 = { { "alt", "cmd" }, "4" },
-    switch_space_5 = { { "alt", "cmd" }, "5" },
-    switch_space_6 = { { "alt", "cmd" }, "6" },
-    switch_space_7 = { { "alt", "cmd" }, "7" },
-    switch_space_8 = { { "alt", "cmd" }, "8" },
-    switch_space_9 = { { "alt", "cmd" }, "9" },
+    switch_space_l = { { "alt", "ctrl" }, "," },
+    switch_space_r = { { "alt", "ctrl" }, "." },
+    switch_space_1 = { { "alt", "ctrl" }, "1" },
+    switch_space_2 = { { "alt", "ctrl" }, "2" },
+    switch_space_3 = { { "alt", "ctrl" }, "3" },
+    switch_space_4 = { { "alt", "ctrl" }, "4" },
+    switch_space_5 = { { "alt", "ctrl" }, "5" },
+    switch_space_6 = { { "alt", "ctrl" }, "6" },
+    switch_space_7 = { { "alt", "ctrl" }, "7" },
+    switch_space_8 = { { "alt", "ctrl" }, "8" },
+    switch_space_9 = { { "alt", "ctrl" }, "9" },
 
     -- move focused window to a new space and tile
     move_window_1 = { { "alt", "shift" }, "1" },
