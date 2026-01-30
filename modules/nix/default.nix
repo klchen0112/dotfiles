@@ -6,7 +6,7 @@
       home.packages = with pkgs; [
         nixfmt
         nix-du
-        nil
+        nixd
         cachix
         # statix
         # deadnix
