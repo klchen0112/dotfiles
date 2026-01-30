@@ -79,6 +79,7 @@
           # "docker"
           # "feishu"
           # "ghostty"
+          "istat-menus"
         ];
       };
     };
