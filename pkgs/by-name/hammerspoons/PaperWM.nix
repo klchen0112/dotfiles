@@ -5,13 +5,13 @@
 }:
 stdenvNoCC.mkDerivation rec {
   pname = "PaperWM";
-  version = "unstalbe-2025-05-19";
+  version = "unstalbe-2026-01-27";
 
   src = pkgs.fetchFromGitHub {
     owner = "mogenson";
     repo = "PaperWM.spoon";
-    rev = "3a283f0c3bd63d73a8a7119f4d6c46bd61ec85e1";
-    sha256 = "sha256-5KbSMHEmLeEd3mjscDgJswOZ5gc1IYYBHYnJt3nyn2s=";
+    rev = "41c796a7edd78575aa71b77295672aa0a4a2c3ea";
+    sha256 = "sha256-u6ZmrCbEUzkQZyGv61DiErdiXR7IPn7cHyuDa9qYzGc=";
   };
 
   dontBuild = true;
