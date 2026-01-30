@@ -974,6 +974,26 @@
         "type": "github"
       }
     },
+    "paneru": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1769722271,
+        "narHash": "sha256-dVvOeqqVQRm2zF8rPvFw0UVayixqiF1kdUiM5M0YeCk=",
+        "owner": "karinushka",
+        "repo": "paneru",
+        "rev": "50ff2e1ab283ccd283bf3a1360db5e4b2dfd0fcd",
+        "type": "github"
+      },
+      "original": {
+        "owner": "karinushka",
+        "repo": "paneru",
+        "type": "github"
+      }
+    },
     "pkgs-by-name-for-flake-parts": {
       "locked": {
         "lastModified": 1769286518,
@@ -991,16 +1011,15 @@
     },
     "pkgs-by-name-for-flake-parts_2": {
       "locked": {
-        "lastModified": 1769080814,
-        "narHash": "sha256-6xNpg+oJefBEJKSqwWINyV4bAnciEyXideNt+FEeWx4=",
-        "owner": "sedlund",
+        "lastModified": 1769286518,
+        "narHash": "sha256-F7VlUICvYp2wJKyQqM6d46BNEZCzMQ6dMH9zbmjuybc=",
+        "owner": "drupol",
         "repo": "pkgs-by-name-for-flake-parts",
-        "rev": "0fd3590776a46d04f1976b9e846d3e9720bdfd68",
+        "rev": "7ba1cd4a9a72c9c6c272018a63f090f2c912a171",
         "type": "github"
       },
       "original": {
-        "owner": "sedlund",
-        "ref": "skip-non-vals",
+        "owner": "drupol",
         "repo": "pkgs-by-name-for-flake-parts",
         "type": "github"
       }
@@ -1056,6 +1075,7 @@
         "nixpkgs-unstable": "nixpkgs-unstable",
         "noctalia-shell": "noctalia-shell",
         "nur": "nur",
+        "paneru": "paneru",
         "pkgs-by-name-for-flake-parts": "pkgs-by-name-for-flake-parts_2",
         "rime": "rime",
         "srvos": "srvos",
