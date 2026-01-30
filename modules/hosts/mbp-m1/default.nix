@@ -31,7 +31,8 @@ in
       ) config.flake.meta.machines.${machine}.users);
     home-manager.users.klchen.imports = with config.flake.modules.homeManager; [
       zsh
-      hammerspoon
+      # hammerspoon
+      paneru
       homebrew
       ghostty
       aria2
