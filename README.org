@@ -1,74 +1,124 @@
 * Overview
 
 
-|                         | Mac               | Linux              |
-| Window Manager          | [[https://github.com/koekeishiya/yabai][yabai]]             | [[https://hyprland.org/][hyprland]]           |
-| Status Bar              | sketchybar        | waybar             |
-| Terminal Emulator       | Wezterm,alacritty | Wezterm, alacritty |
-| Application Runner      | raycast           | wofi               |
-| Notification Manager    |                   | Mako               |
-| Editors                 | Emacs,VSCode      | Emacs              |
-| Color scheme            | Catppuccin        | Catppuccin         |
-| Input method framework  | Squirrel          | fcitx5 with rime   |
-| System resource monitor | btop              |                    |
-| Shell                   | fish + starship   | fish + starship    |
+|                         | Mac                       | Linux              |
+| Window Manager          | hammersponn paperwm.spoon | niri               |
+| Status Bar              | sketchybar                | waybar             |
+| Terminal Emulator       | ghostty                   | ghostty            |
+| Application Runner      | spotlight                 | noctalia           |
+| Notification Manager    |                           |                    |
+| Editors                 | Emacs,VSCode              | Emacs              |
+| Color scheme            | Stylix                    | stylix             |
+| Input method framework  | Squirrel                  | fcitx5 with rime   |
+| System resource monitor | btop                      |                    |
+| Shell                   | nushell + starship        | nushell + starship |
 
 ** Directory
-default.nix for nixos system-wide config
-darwin.nix for mac system-wide config
-home.nix for nixos and darwin user-wide config
 #+begin_src shell
-├── assets # pictures
-├── flake.lock
-├── flake.nix
-├── hosts # home-manager config
-│  ├── i12500
-│  └── macbook-pro-m1
-├── machines # system-wide
-│  ├── i12500
-│  └── macbook-pro-m1
-├── Makefile
-├── modules
-│  ├── browser
-│  ├── desktop # window manager
-│  │  ├── wayland # wayland with hyprland
-│  │  └── yabai
-│  ├── downloader #
-│  ├── editors
-│  │  ├── codeblocks
-│  │  ├── emacs
-│  │  ├── helix
 
-│  │  ├── HOME.nix
-│  │  ├── jetbrains
-│  │  ├── vim
-│  │  └── vscode
-│  ├── fonts
-│  │  ├── default.nix # nixos special config
-│  │  └── fonts.nix # darwin and nixos use
-│  ├── graphics
-│  ├── hardware
-│  ├── homebrew
-│  ├── im
-│  ├── keyboard
-│  ├── lang
-│  ├── locale
-│  ├── media
-│  ├── network
-│  ├── nixpkgs # home-manager nix-darwin nixos both use these pkgs
-│  │  ├── base.nix # nixpkgs config
-│  │  ├── darwin.nix
-│  │  ├── default.nix
-│  │  └── nix.nix
-│  ├── office
-│  ├── shells
-│  ├── socialMedia
-│  ├── system
-│  ├── terminal
-│  └── vm
-├── overlays
+  .
+├── assets
+├── hsts
+├── modules
+│   ├── access-tokens
+│   ├── aria2
+│   ├── bar
+│   ├── browser
+│   │   ├── chrome
+│   │   └── zen
+│   ├── common
+│   ├── darwin
+│   ├── de
+│   │   ├── aero-sketchybar
+│   │   ├── aerospace
+│   │   ├── cosmic
+│   │   ├── gnome
+│   │   ├── hyprspace
+│   │   ├── niri
+│   │   ├── omniwm
+│   │   └── sway
+│   ├── docker
+│   ├── editor
+│   │   ├── emacs
+│   │   ├── jetbrains
+│   │   └── vscode
+│   ├── flake
+│   ├── flatpak
+│   ├── fonts
+│   ├── git
+│   ├── hammerspoon
+│   │   ├── config
+│   │   └── module
+│   ├── hardware
+│   ├── homebrew
+│   ├── hosts
+│   │   ├── a99r50
+│   │   ├── i12r20
+│   │   ├── init
+│   │   ├── mbp-m1
+│   │   ├── r2070
+│   │   ├── sanjiao
+│   │   └── wsl
+│   ├── i18n
+│   ├── im
+│   ├── inputmethod
+│   ├── keyboard
+│   ├── lang
+│   │   ├── cpp
+│   │   ├── csharp
+│   │   ├── go
+│   │   ├── java
+│   │   ├── json
+│   │   ├── julia
+│   │   ├── k8s
+│   │   ├── latex
+│   │   ├── lua
+│   │   ├── markdown
+│   │   ├── python
+│   │   ├── rust
+│   │   ├── web
+│   │   └── yaml
+│   ├── launcher
+│   │   └── walker
+│   ├── media
+│   ├── network
+│   ├── nix
+│   ├── nix-index
+│   ├── nixos
+│   ├── notes
+│   ├── office
+│   ├── qt
+│   ├── server
+│   ├── shell
+│   │   ├── bash
+│   │   ├── fish
+│   │   ├── nushell
+│   │   ├── starship
+│   │   └── zsh
+│   ├── ssh
+│   ├── stylix
+│   ├── sync
+│   ├── system
+│   ├── terminal-emulator
+│   │   ├── alacritty
+│   │   ├── ghostty
+│   │   ├── kitty
+│   │   └── wezterm
+│   ├── users
+│   ├── utils
+│   └── visualisation
 ├── pkgs
-└── README.org
+│   └── by-name
+│       ├── hammerspoons
+│       ├── Jigmo
+│       ├── org-reminders
+│       ├── rime-combo-snow-pinyin
+│       ├── sf-mono-liga
+│       ├── SF-Pro
+│       ├── sf-symbols
+│       └── sketchybarhelper
+├── scripts
+└── secrets
 #+end_src
 ** Mac Desktop
 [[./assets/mac-desktop.png]]
@@ -107,3 +157,4 @@ echo "experimental-features = nix-command flakes" >> ~/.config/nix/nix.conf
 - [[https://github.com/linuxmobile/kaku.git][linuxmobile/kaku]]
 - [[https://github.com/dileep-kishore/nixos-config][dileep-kishore/nixos-config]]
 - [[https://github.com/khaneliman/khanelinix][khaneliman/khanelinix]] sketchybar configs
+- [[https://dendrix.oeiuwq.com][dendrix]]
