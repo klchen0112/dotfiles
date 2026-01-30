@@ -25,6 +25,8 @@ topLevel: {
     };
   flake.modules.darwin.stylix =
     {
+      pkgs,
+      config,
       ...
     }:
     {
@@ -33,9 +35,15 @@ topLevel: {
       ];
       homeManagerIntegration.autoImport = false;
       homeManagerIntegration.followSystem = false;
+      stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/${
+        topLevel.config.flake.meta.users.${config.networking.hostname}.base16Scheme
+      }.yaml";
+
     };
   flake.modules.nixos.stylix =
     {
+      pkgs,
+      config,
       ...
     }:
     {
@@ -44,5 +52,9 @@ topLevel: {
       ];
       homeManagerIntegration.autoImport = false;
       homeManagerIntegration.followSystem = false;
+      stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/${
+        topLevel.config.flake.meta.users.${config.networking.hostname}.base16Scheme
+      }.yaml";
+
     };
 }
