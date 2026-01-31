@@ -185,7 +185,7 @@
               # tree-style-tab
               # multi-account-containers
               # firefox-translations # translation
-              immersive-translate
+              kiss-translator
               tridactyl-vim # vimum
               bitwarden-password-manager
               blocktube
