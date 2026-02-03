@@ -9,7 +9,9 @@
         "Print".action.screenshot-screen = {
           write-to-disk = true;
         };
-        #        "Mod+Shift+Alt+S".action = screenshot-window;
+        "Alt+Print".action.screenshot-window = {
+          write-to-disk = true;
+        };
         "Mod+Q".action = close-window;
         "Mod+F".action = maximize-column;
         # "Mod+Shift+F".action = fullscreen-window;
