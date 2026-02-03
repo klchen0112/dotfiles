@@ -55,7 +55,7 @@
         settings = {
           setupCompleted = false;
           bar = {
-            position = "right";
+            position = "top";
             monitors = [ ];
             density = "compact";
             showCapsule = true;
@@ -175,7 +175,7 @@
             panelPosition = "follow_bar";
           };
           appLauncher = {
-            enableClipboardHistory = false;
+            enableClipboardHistory = true;
             position = "center";
             pinnedExecs = [ ];
             useApp2Unit = false;
