@@ -36,7 +36,7 @@ in
         zen
         # chrome
         access-tokens
-        keyboard
+        # keyboard
         vscode
         flatpak
         im
@@ -56,6 +56,7 @@ in
         inputs.self.modules.nixos.noctalia-shell
 
         inputs.self.modules.nixos.vm
+        inputs.self.modules.nixos.keyboard
 
         inputs.nixos-hardware.nixosModules.common-cpu-amd
         inputs.nixos-hardware.nixosModules.common-cpu-amd-zenpower
