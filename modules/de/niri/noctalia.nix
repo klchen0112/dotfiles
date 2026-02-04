@@ -48,7 +48,14 @@
           };
         };
       };
-
+      home.file.".cache/noctalia/wallpapers.json" = {
+        text = builtins.toJSON {
+          defaultWallpaper = "${config.home.homeDirectory}/Pictures/Wallpapers/default.png";
+          wallpapers = {
+            "DP-1" = "${config.home.homeDirectory}/Pictures/Wallpapers/default.png";
+          };
+        };
+      };
       programs.noctalia-shell = {
         enable = true;
         systemd.enable = true;
@@ -163,7 +170,7 @@
             enableMultiMonitorDirectories = false;
             recursiveSearch = false;
             setWallpaperOnAllMonitors = true;
-            defaultWallpaper = "";
+            defaultWallpaper = "${config.home.homeDirectory}/Pictures/Wallpapers/default.png";
             fillMode = "crop";
             fillColor = "#000000";
             randomEnabled = false;

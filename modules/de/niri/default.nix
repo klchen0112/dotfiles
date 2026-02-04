@@ -81,8 +81,8 @@
     {
       home.packages = with pkgs; [
         # screenshot
-        grim
         # utils
+        loupe
         wl-clipboard
         wlr-randr
         nautilus
