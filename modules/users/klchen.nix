@@ -33,6 +33,7 @@
         ssh
         python
         nix-index
+        font
       ];
     };
 
