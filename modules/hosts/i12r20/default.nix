@@ -24,7 +24,7 @@ in
     {
       imports = [
         inputs.self.modules.nixos.font
-        inputs.self.modules.nixos.access-tokens
+        # inputs.self.modules.nixos.access-tokens
         inputs.self.modules.nixos.vm
         inputs.nixos-hardware.nixosModules.common-cpu-intel
         # offload
@@ -35,7 +35,7 @@ in
       ) config.flake.meta.machines.${machine}.users);
 
       home-manager.users.klchen.imports = with config.flake.modules.homeManager; [
-        access-tokens
+          access-tokens
         syncthing
         emacs-twist
       ];

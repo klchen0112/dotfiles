@@ -35,7 +35,7 @@ in
         emacs-twist
         zen
         # chrome
-        access-tokens
+        # access-tokens
         # keyboard
         vscode
         flatpak
@@ -52,7 +52,7 @@ in
 
         inputs.self.modules.nixos.font
         inputs.self.modules.nixos.niri
-        inputs.self.modules.nixos.access-tokens
+        # inputs.self.modules.nixos.access-tokens
         inputs.self.modules.nixos.noctalia-shell
 
         inputs.self.modules.nixos.vm
