@@ -35,6 +35,7 @@ in
   flake.nixosConfigurations = {
     a99r50 = linux "a99r50";
     i12r20 = linux "i12r20";
+    r2070 = linux "r2070";
     sanjiao = linux "sanjiao";
     wsl-nixos = wsl "wsl-nixos";
     init = linux "init";
