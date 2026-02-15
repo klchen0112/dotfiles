@@ -25,6 +25,9 @@ in
       imports = [
         inputs.self.modules.nixos.font
         # inputs.self.modules.nixos.access-tokens
+        inputs.self.modules.nixos.niri
+        inputs.self.modules.nixos.noctalia-shell
+
         inputs.self.modules.nixos.vm
         inputs.nixos-hardware.nixosModules.common-cpu-intel
         # offload
@@ -33,38 +36,25 @@ in
       ++ (builtins.map (
         user: inputs.self.modules.nixos.${user}
       ) config.flake.meta.machines.${machine}.users);
-
+      hardware.intelgpu.vaapiDriver = "intel-media-driver";
       home-manager.users.klchen.imports = with config.flake.modules.homeManager; [
-          access-tokens
+        access-tokens
         syncthing
         emacs-twist
+        noctalia-shell
+        niri
       ];
       # Bootloader.
       boot.loader.systemd-boot.enable = true;
       boot.loader.efi.canTouchEfiVariables = true;
       networking.networkmanager.enable = true;
-
       environment.systemPackages = with pkgs; [
-        vulkan-tools
         clinfo
         mesa-demos
-        intel-gpu-tools
       ];
       hardware.graphics = {
         enable = true;
-        extraPackages = with pkgs; [
-          # your Open GL, Vulkan and VAAPI drivers
-          vpl-gpu-rt # for newer GPUs on NixOS >24.05 or unstable
-          # onevpl-intel-gpu  # for newer GPUs on NixOS <= 24.05
-          # intel-media-sdk   # for older GPUs
-        ];
       };
-      services.xserver.videoDrivers = [
-        "modesetting" # example for Intel iGPU; use "amdgpu" here instead if your iGPU is AMD
-      ];
-      boot.kernelParams = [
-        "i915.force_probe=4692"
-      ];
 
       # Don't allow mutation of users outside of the config.
       users.mutableUsers = false;
