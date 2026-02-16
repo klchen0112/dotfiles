@@ -9,17 +9,20 @@
     ];
     services.flatpak.enable = true;
   };
-  flake.modules.homeManager.flatpak = {
-    imports = [
-      inputs.nix-flatpak.homeManagerModules.nix-flatpak
-    ];
-    services.flatpak.enable = true;
-    services.flatpak.update = {
-      auto = {
-        enable = true;
+  flake.modules.homeManager.flatpak =
+    { pkgs, ... }:
+    {
+      imports = [
+        inputs.nix-flatpak.homeManagerModules.nix-flatpak
+      ];
+      home.packages = with pkgs; [ flatpak ];
+      services.flatpak.enable = true;
+      services.flatpak.update = {
+        auto = {
+          enable = true;
+        };
+        onActivation = true;
       };
-      onActivation = true;
     };
-  };
 
 }
