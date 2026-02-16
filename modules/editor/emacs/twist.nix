@@ -22,8 +22,9 @@
       programs.emacs-twist = {
         enable = true;
         settings = {
-          enableDefaultEditor = true;
+          defaultEditor.enable = true;
         };
+        emacsclient.enable = true;
       };
     };
 }
