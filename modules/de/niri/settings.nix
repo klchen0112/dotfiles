@@ -50,13 +50,27 @@
       };
       screenshot-path = "~/Pictures/Screenshots/Screenshot-from-%Y-%m-%d-%H-%M-%S.png";
       outputs = {
-        "HDMI-A-1" = {
+        "PNP(AOC) Q27P1B GNXK7HA960188" = {
           mode = {
-            width = 1920;
-            height = 1080;
+            width = 2560;
+            height = 1440;
             refresh = 60.0;
           };
-          scale = 2.0;
+          scale = 1.0;
+
+          position = {
+            x = 0;
+            y = 0;
+          };
+
+        };
+        "HDMI-A-1" = {
+          mode = {
+            width = 2560;
+            height = 1440;
+            refresh = 60.0;
+          };
+          scale = 1.5;
 
           position = {
             x = 0;

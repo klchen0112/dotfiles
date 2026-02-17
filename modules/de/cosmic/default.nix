@@ -1,8 +1,8 @@
+{ inputs, ... }:
 {
   flake.modules.nixos.cosmic =
     {
       pkgs,
-      inputs,
       ...
     }:
     {
