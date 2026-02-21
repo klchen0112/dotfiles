@@ -1,4 +1,4 @@
-{
+{inputs,...}: {
   flake.modules.nixos.r2070 = {
     imports = [
         inputs.disko.nixosModules.disko
