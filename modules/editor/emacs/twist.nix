@@ -24,6 +24,7 @@
         settings = {
           defaultEditor.enable = true;
         };
+        serviceIntegration.enable = true;
         emacsclient.enable = true;
       };
     };
