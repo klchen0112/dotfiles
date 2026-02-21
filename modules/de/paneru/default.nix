@@ -49,10 +49,9 @@
 
             window_nextdisplay = "alt + shift - n";
 
-            window_manage = "alt + shift - t";
-            window_stack = "alt + shift - ]";
-            window_unstack = "alt + shift - ]";
-            quit = "ctrl + alt - q";
+            window_manage = "ctrl + cmd - t";
+            window_stack = "ctrl + cmd - ]";
+            window_unstack = "ctrl + cmd - ]";
           };
         };
       };
