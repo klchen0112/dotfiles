@@ -50,7 +50,7 @@ in
       hardware.graphics = {
         enable = true;
       };
-      
+
 
       # Load nvidia driver for Xorg and Wayland
       # Bootloader.
@@ -59,7 +59,6 @@ in
       imports = [
         inputs.nixos-hardware.nixosModules.common-cpu-amd
         inputs.nixos-hardware.nixosModules.common-cpu-amd-zenpower
-        inputs.nixos-hardware.nixosModules.common-cpu-amd-raphael-igpu
         # offload
         inputs.nixos-hardware.nixosModules.common-gpu-nvidia-nonprime
         inputs.nixos-hardware.nixosModules.common-pc-ssd
