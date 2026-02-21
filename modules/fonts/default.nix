@@ -16,8 +16,6 @@ let
 
         # mono fonts for coding
         nerd-fonts."m+"
-        local."pragmasevka-nerd"
-        local.Jigmo
 
         # Serif fonts
         ibm-plex
@@ -66,14 +64,11 @@ in
       serif = [
         "CMU Typewriter Text"
         "Noto Serif CJK SC"
-        "Source Han Serif SC"
-        "DejaVu Serif"
       ];
       sansSerif = [
-        "IBM Plex Serif"
+        "TsangerJinKai05"
         "Noto Sans CJK SC"
-        "Source Han Sans SC"
-        "DejaVu Sans"
+        "IBM Plex Serif"
       ];
       monospace = [
         "M+CodeLat50 Nerd Font Propo"
