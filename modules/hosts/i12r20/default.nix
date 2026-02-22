@@ -27,11 +27,9 @@ in
         [
           font
           # inputs.self.modules.nixos.access-tokens
-          niri
-          noctalia-shell
 
           k3s
-          k3s-node
+          k3s-master
         ]
         ++ [
           inputs.nixos-hardware.nixosModules.common-cpu-intel
@@ -43,10 +41,7 @@ in
         ) config.flake.meta.machines.${machine}.users);
       hardware.intelgpu.vaapiDriver = "intel-media-driver";
       home-manager.users.klchen.imports = with config.flake.modules.homeManager; [
-        syncthing
         emacs-twist
-        noctalia-shell
-        niri
       ];
       # Bootloader.
       boot.loader.systemd-boot.enable = true;

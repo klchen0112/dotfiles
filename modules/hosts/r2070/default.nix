@@ -47,6 +47,8 @@ in
       ]
       ++ (with inputs.self.modules.nixos; [
         font
+        niri
+        noctalia-shell
 
         k3s
         k3s-node
@@ -57,7 +59,16 @@ in
       ) config.flake.meta.machines.${machine}.users);
 
       home-manager.users.klchen.imports = with config.flake.modules.homeManager; [
+        inputmethod
+        niri
+        noctalia-shell
+        ghostty
+        aria2
+        kitty
         bash
+        syncthing
+        emacs-twist
+        zen
       ];
       environment.etc = {
         "machine-id".source = "/nix/persist/etc/machine-id";

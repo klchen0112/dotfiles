@@ -31,7 +31,6 @@
         utils
         git
         ssh
-        python
         nix-index
         font
       ];

@@ -26,6 +26,7 @@ in
 
       k3s
       k3s-master
+      k3s-master-init
     ])
     ++ (builtins.map (
       user: inputs.self.modules.nixos.${user}

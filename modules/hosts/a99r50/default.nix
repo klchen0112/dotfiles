@@ -42,22 +42,11 @@ in
         im
         office
         latex
+        python
       ];
       home-manager.backupFileExtension = "hmbp";
 
       imports = [
-        inputs.self.modules.nixos.flatpak
-        # inputs.self.nixosModules.nvidia
-        # inputs.self.modules.nixos.nvidia
-
-        inputs.self.modules.nixos.font
-        inputs.self.modules.nixos.niri
-        # inputs.self.modules.nixos.access-tokens
-        inputs.self.modules.nixos.noctalia-shell
-
-        inputs.self.modules.nixos.vm
-        inputs.self.modules.nixos.keyboard
-
         inputs.nixos-hardware.nixosModules.common-cpu-amd
         inputs.nixos-hardware.nixosModules.common-cpu-amd-zenpower
         inputs.nixos-hardware.nixosModules.common-cpu-amd-raphael-igpu
@@ -66,8 +55,18 @@ in
         inputs.nixos-hardware.nixosModules.common-pc-ssd
         inputs.nixos-hardware.nixosModules.common-hidpi
         inputs.disko.nixosModules.disko
-
       ]
+      ++ (with inputs.self.modules.nixos; [
+        font
+        niri
+        noctalia-shell
+        keyboard
+        flatpak
+
+        k3s
+        k3s-node
+        k3s-nvidia
+      ])
       ++ (builtins.map (
         user: inputs.self.modules.nixos.${user}
       ) config.flake.meta.machines.${machine}.users);
@@ -77,7 +76,6 @@ in
         "nvidia-drm.fbdev=1"
       ];
 
-      services.xserver.enable = true;
       services.hardware.openrgb = {
         enable = true;
         package = pkgs.openrgb-with-all-plugins;

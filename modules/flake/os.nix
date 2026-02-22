@@ -47,6 +47,7 @@ let
     in
     {
       hostname = "${name}.klchen.duckdns.org";
+      sshUser = "root";
       profiles.system = {
         user = "root";
         path = deployLib.activate.nixos cfg;
