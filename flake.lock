@@ -254,11 +254,11 @@
         "twist-overrides": "twist-overrides"
       },
       "locked": {
-        "lastModified": 1771676986,
-        "narHash": "sha256-K+K41KQsQu4fTFSYXwG/7iVJ5UbBuSqJa1J65Jnl3MY=",
+        "lastModified": 1771753714,
+        "narHash": "sha256-aOBG2vYWeFhqRV/xuY05/UgoUoNpylALiR4NVluAwjI=",
         "owner": "klchen0112",
         "repo": ".emacs.d",
-        "rev": "5525a3ac5326ca83c56d4013f472e73022b62aa9",
+        "rev": "57ff75e70bb753f69dc3ff5fd06d8ca7559d64e6",
         "type": "github"
       },
       "original": {
@@ -273,11 +273,11 @@
         "nixpkgs-stable": "nixpkgs-stable"
       },
       "locked": {
-        "lastModified": 1771493471,
-        "narHash": "sha256-phJ0ZmIQs99xbdC3F8dFD5n2lG8wcNRBqKN0lyNsjjU=",
+        "lastModified": 1771728721,
+        "narHash": "sha256-03w1Ka71dJlerySoIT5ZGm/+bx0qONZIjELY4ghkxIo=",
         "owner": "nix-community",
         "repo": "emacs-overlay",
-        "rev": "b50e3f1df21ca7992de400b05240edd6d47a3fd3",
+        "rev": "d7e50ce0c6e1ca698217a251d432799683d23831",
         "type": "github"
       },
       "original": {
@@ -539,11 +539,11 @@
     "gnu-elpa": {
       "flake": false,
       "locked": {
-        "lastModified": 1771382076,
-        "narHash": "sha256-ErNoa5IqtnPNO0vmQbcQ9OSTzMhBFVhS1cBrYR1+ics=",
+        "lastModified": 1771514668,
+        "narHash": "sha256-22wDvc7wkIr3i1ef7H6d8NyEj/yZu9bbVFzWrnM9lfs=",
         "owner": "emacsmirror",
         "repo": "gnu_elpa",
-        "rev": "586a256e5b666b9b7ba1e30861e4553b91118878",
+        "rev": "0823d652ac64d273e1c67d51f8d06fec6688ca5c",
         "type": "github"
       },
       "original": {
@@ -555,7 +555,7 @@
     "gnu-elpa-archive": {
       "flake": false,
       "locked": {
-        "narHash": "sha256-SAH6/p0mX3XZ+tnEk5hCQQUuexN2XEde2k089VksH7M=",
+        "narHash": "sha256-IdT5KM6fl/rgpoCRaA8E6kR+gwJ6pg7V+3YfRfLlgsA=",
         "type": "file",
         "url": "https://elpa.gnu.org/packages/archive-contents"
       },
@@ -602,11 +602,11 @@
     "melpa": {
       "flake": false,
       "locked": {
-        "lastModified": 1771357179,
-        "narHash": "sha256-iIHQJrHUrKp+Ylkiov+/M7FBwjVFJ2jyAAyKgNndzp0=",
+        "lastModified": 1771703278,
+        "narHash": "sha256-ZMAtCby91LDu1IJM40r1FsNJ6SBviZMR88TjVooWSAc=",
         "owner": "melpa",
         "repo": "melpa",
-        "rev": "a06423ee6fad174238d3800d05a260f86fe65691",
+        "rev": "665572faa09f3f04858d6d6e796a6fcac68e392a",
         "type": "github"
       },
       "original": {
@@ -927,7 +927,7 @@
     "nongnu-elpa-archive": {
       "flake": false,
       "locked": {
-        "narHash": "sha256-yWnuIsRTdZlVNcZ/51kpaHIgz+YGon3o7dY8Mvza6ec=",
+        "narHash": "sha256-k2GChwxicUenWVHsuuWPIZHoW6NSGws/nq8WUOaDcbk=",
         "type": "file",
         "url": "https://elpa.nongnu.org/nongnu/archive-contents"
       },
