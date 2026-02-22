@@ -44,6 +44,8 @@ in
     nodes = {
       a99r50 = mkNode "a99r50" self.nixosConfigurations.a99r50;
       sanjiao = mkNode "sanjiao" self.nixosConfigurations.sanjiao;
+      i12r20 = mkNode "i12r20" self.nixosConfigurations.i12r20;
+      r2070 = mkNode "r2070" self.nixosConfigurations.r2070;
     };
   };
 }

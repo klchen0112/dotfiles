@@ -38,7 +38,6 @@ in
       ) config.flake.meta.machines.${machine}.users);
       hardware.intelgpu.vaapiDriver = "intel-media-driver";
       home-manager.users.klchen.imports = with config.flake.modules.homeManager; [
-        access-tokens
         syncthing
         emacs-twist
         noctalia-shell
