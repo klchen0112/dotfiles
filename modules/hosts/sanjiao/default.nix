@@ -14,13 +14,19 @@ in
   };
   flake.modules.nixos.${machine} = {
     imports = [
-      inputs.self.modules.nixos.font
       # inputs.self.modules.nixos.access-tokens
-      inputs.self.modules.nixos.vm
       inputs.nixos-hardware.nixosModules.common-cpu-intel
       # offload
       inputs.nixos-hardware.nixosModules.common-pc-ssd
     ]
+    ++ (with inputs.self.modules.nixos; [
+      font
+
+      # k3s
+
+      k3s
+      k3s-master
+    ])
     ++ (builtins.map (
       user: inputs.self.modules.nixos.${user}
     ) config.flake.meta.machines.${machine}.users);

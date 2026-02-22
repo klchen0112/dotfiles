@@ -18,34 +18,17 @@ in
     users = [ "klchen" ];
   };
   flake.modules.nixos.${machine} =
-    { pkgs, ... }:
+    { pkgs, lib, ... }:
     {
-      boot.kernelPackages = pkgs.linuxPackages;
       hardware.nvidia = {
-        open = false;
+        open = lib.mkForce false;
         modesetting.enable = true;
         nvidiaSettings = true;
-        prime.nvidiaBusId = "PCI:10:0:0";
         # 电源管理，开启它可以防止睡眠唤醒后的黑屏或掉驱动问题
         powerManagement.enable = false;
         # 细粒度电源管理（仅限 Turing 架构及以后的显卡，如 RTX 系列）
         powerManagement.finegrained = false;
       };
-      boot.kernelParams = [
-        "nvidia-drm.modeset=1"
-        "NVreg_PreserveVideoMemoryAllocations=1" # 辅助解决内存分配问题
-        "iommu=soft"
-        "video=efifb:off" # 禁用 EFI 帧缓冲
-        "video=vesafb:off" # 禁用 VESA 帧缓冲
-      ];
-      boot.initrd.kernelModules = [
-        "nvidia"
-        "nvidia_modeset"
-        "nvidia_uvm"
-        "nvidia_drm"
-      ];
-      # 2. 确保没有加载开源驱动且强制加载闭源驱动
-      boot.blacklistedKernelModules = [ "nouveau" ];
       # Enable OpenGL
       hardware.graphics = {
         enable = true;
@@ -63,14 +46,18 @@ in
         inputs.nixos-hardware.nixosModules.common-pc-ssd
       ]
       ++ (with inputs.self.modules.nixos; [
+        font
+
+        k3s
+        k3s-node
+        k3s-nvidia
       ])
-      ++ (builtins.map (user: inputs.self.modules.nixos.${user}) config.flake.meta.machines.r2070.users);
+      ++ (builtins.map (
+        user: inputs.self.modules.nixos.${user}
+      ) config.flake.meta.machines.${machine}.users);
 
       home-manager.users.klchen.imports = with config.flake.modules.homeManager; [
-        ghostty
-        aria2
         bash
-        syncthing
       ];
     };
 }

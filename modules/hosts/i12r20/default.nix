@@ -22,20 +22,25 @@ in
       ...
     }:
     {
-      imports = [
-        inputs.self.modules.nixos.font
-        # inputs.self.modules.nixos.access-tokens
-        inputs.self.modules.nixos.niri
-        inputs.self.modules.nixos.noctalia-shell
+      imports =
+        with inputs.self.modules.nixos;
+        [
+          font
+          # inputs.self.modules.nixos.access-tokens
+          niri
+          noctalia-shell
 
-        inputs.self.modules.nixos.vm
-        inputs.nixos-hardware.nixosModules.common-cpu-intel
-        # offload
-        inputs.nixos-hardware.nixosModules.common-pc-ssd
-      ]
-      ++ (builtins.map (
-        user: inputs.self.modules.nixos.${user}
-      ) config.flake.meta.machines.${machine}.users);
+          k3s
+          k3s-node
+        ]
+        ++ [
+          inputs.nixos-hardware.nixosModules.common-cpu-intel
+          # offload
+          inputs.nixos-hardware.nixosModules.common-pc-ssd
+        ]
+        ++ (builtins.map (
+          user: inputs.self.modules.nixos.${user}
+        ) config.flake.meta.machines.${machine}.users);
       hardware.intelgpu.vaapiDriver = "intel-media-driver";
       home-manager.users.klchen.imports = with config.flake.modules.homeManager; [
         syncthing
