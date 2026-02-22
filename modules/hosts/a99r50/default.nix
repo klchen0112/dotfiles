@@ -160,5 +160,13 @@ in
         # 可选：确保 DHCP 的 DNS 优先级最高
         dhcpcd.extraConfig = "nohook resolv.conf";
       };
+
+      environment.etc = {
+        "machine-id".source = "/nix/persist/etc/machine-id";
+        "ssh/ssh_host_rsa_key".source = "/nix/persist/etc/ssh/ssh_host_rsa_key";
+        "ssh/ssh_host_rsa_key.pub".source = "/nix/persist/etc/ssh/ssh_host_rsa_key.pub";
+        "ssh/ssh_host_ed25519_key".source = "/nix/persist/etc/ssh/ssh_host_ed25519_key";
+        "ssh/ssh_host_ed25519_key.pub".source = "/nix/persist/etc/ssh/ssh_host_ed25519_key.pub";
+      };
     };
 }

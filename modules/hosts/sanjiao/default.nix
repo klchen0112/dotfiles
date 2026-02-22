@@ -26,7 +26,7 @@ in
     ) config.flake.meta.machines.${machine}.users);
 
     home-manager.users.klchen.imports = with config.flake.modules.homeManager; [
-    #  access-tokens
+      #  access-tokens
     ];
     # Bootloader.
     boot.loader.systemd-boot.enable = true;

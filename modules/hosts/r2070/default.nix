@@ -51,7 +51,6 @@ in
         enable = true;
       };
 
-
       # Load nvidia driver for Xorg and Wayland
       # Bootloader.
       boot.loader.systemd-boot.enable = true;

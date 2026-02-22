@@ -1,7 +1,8 @@
-{inputs,...}: {
+{ inputs, ... }:
+{
   flake.modules.nixos.r2070 = {
     imports = [
-        inputs.disko.nixosModules.disko
+      inputs.disko.nixosModules.disko
     ];
     # checkout the example folder for how to configure different disko layouts
     disko.devices = {

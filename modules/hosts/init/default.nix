@@ -27,10 +27,6 @@
       # Bootloader.
       boot.loader.systemd-boot.enable = true;
 
-      # networking
-      networking.useNetworkd = lib.mkForce true;
-      networking.useDHCP = lib.mkForce false;
-
       environment.systemPackages = with pkgs; [
         just
         git
