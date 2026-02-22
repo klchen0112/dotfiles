@@ -121,6 +121,12 @@ in
       # persist this file you won't be able to easily use journalctl to
       # look at journals for previous boots.
       hardware.nvidia-container-toolkit.enable = true;
+      nixpkgs = {
+        config = {
+          cudaSupport = true;
+        };
+      };
+
       hardware.nvidia = {
         modesetting.enable = true;
         nvidiaSettings = true;
