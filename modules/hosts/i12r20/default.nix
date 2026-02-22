@@ -29,7 +29,7 @@ in
           # inputs.self.modules.nixos.access-tokens
 
           k3s
-          k3s-master
+          k3s-node
         ]
         ++ [
           inputs.nixos-hardware.nixosModules.common-cpu-intel
