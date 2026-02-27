@@ -43,6 +43,7 @@ in
         office
         latex
         python
+        media
       ];
       home-manager.backupFileExtension = "hmbp";
 

@@ -1,20 +1,17 @@
 {
-  flake.modules.homeManager.meida =
+  flake.modules.homeManager.media =
     { pkgs, ... }:
     {
       programs.mpv = {
         enable = true;
         package = (
-          pkgs.mpv-unwrapped.wrapper {
+          pkgs.mpv.override {
             scripts = with pkgs.mpvScripts; [
               reload
               encode
-              decode
+              # decode
             ];
 
-            mpv = pkgs.mpv-unwrapped.override {
-              waylandSupport = pkgs.stdenv.isLinux;
-            };
           }
         );
       };
@@ -49,6 +46,12 @@
           "goto_bookmark_g" = "g<S-b>";
         };
       };
+      programs.obs-studio = {
+        enable = true;
+        plugins = with pkgs.obs-studio-plugins; [
+          wlrobs
+        ];
+      };
       home.packages =
         with pkgs;
         [
@@ -57,6 +60,6 @@
           # marginnote
         ]
         ++ lib.optionals pkgs.stdenv.isDarwin [ ]
-        ++ lib.optionals pkgs.stdenv.isLinux [ plexamp ];
+        ++ lib.optionals pkgs.stdenv.isLinux [ ];
     };
 }
