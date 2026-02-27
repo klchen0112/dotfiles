@@ -17,7 +17,7 @@
       ];
       xdg.configFile."uv/uv.toml".text = ''
         [[index]]
-        url = "https://mirrors.certnet.edu.cn/pypi/web/simple"
+        url = "https://mirrors.cernet.edu.cn/pypi/web/simple"
         default = true
       '';
       home.file.".pip/pip.conf".text = ''
