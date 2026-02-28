@@ -64,9 +64,9 @@ in
         keyboard
         flatpak
 
-        k3s
-        k3s-node
-        k3s-nvidia
+        #k3s
+        #k3s-node
+        #        k3s-nvidia
       ])
       ++ (builtins.map (
         user: inputs.self.modules.nixos.${user}
