@@ -4,11 +4,14 @@
     {
       programs.java = {
         enable = true;
-        package = pkgs.jdk8;
+        package = pkgs.jdk17;
       };
       programs.gradle = {
         enable = true;
-        package = inputs.nur.legacyPackages."${pkgs.system}".repos.moaxcp.gradle-4_10_3;
+        package = pkgs.gradle_7;
       };
+      nixpkgs.config.permittedInsecurePackages = [
+        "gradle-7.6.6"
+      ];
     };
 }
