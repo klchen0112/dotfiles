@@ -13,7 +13,6 @@
         unitConfig.DefaultDependencies = "no";
         serviceConfig.Type = "oneshot";
         wantedBy = [ "initrd.target" ];
-        after = [ "systemd-cryptsetup@crypted.service" ];
         before = [ "sysroot.mount" ];
 
         script = ''
