@@ -1,49 +1,41 @@
 {
   flake.modules.nixos.a99r50 =
-    { lib, ... }:
+    { lib, pkgs, ... }:
     let
-      disk_by_id = "/dev/disk/by-id/nvme-ZHITAI_TiPlus7100_4TB_ZTA54T0AB251540AHC_1-part3";
-      root_volume = "@root";
-      mount_p = "/btrfs_tmp";
+      dev = "/dev/disk/by-id/nvme-ZHITAI_TiPlus7100_4TB_ZTA54T0AB251540AHC_1-part3";
+      root_subvol = "@root";
+      mount_p = "/mnt";
       old_roots = "old_roots";
     in
     {
       boot.initrd.supportedFilesystems = [ "btrfs" ];
-      boot.initrd.systemd.services.rollback = {
-        description = "Rollback BTRFS root subvolume to a pristine state";
-        unitConfig.DefaultDependencies = "no";
-        serviceConfig.Type = "oneshot";
-        wantedBy = [ "initrd.target" ];
-        before = [ "sysroot.mount" ];
+      boot.initrd.postDeviceCommands = lib.mkAfter ''
+        mkdir -p ${mount_p}
+        # 挂载 Btrfs 根分区（不指定子卷，默认挂载整个分区 ID 5）
+        mount -t btrfs ${dev} ${mount_p}
+        if [[ ! -e ${mount_p}/${old_roots} ]]; then
+           btrfs subvolume create ${mount_p}/${old_roots}
+        fi
+        if [ -e "${mount_p}/${root_subvol}" ]; then
+            # 生成时间戳
+            timestamp=$(date "+%Y-%m-%d_%H:%M:%S")
+            
+            echo ">>> [Rollback] Backing up current / to ${old_roots}/$timestamp"
+            # 快照当前 root 为只读并移动到备份目录
+            btrfs subvolume snapshot -r ${mount_p}/${root_subvol} ${mount_p}/${old_roots}/$timestamp
+            
+            # 递归删除旧的 root（因为里面可能有嵌套子卷）
+            btrfs subvolume delete ${mount_p}/${root_subvol}
+        fi
 
-        script = ''
-          mkdir -p ${mount_p}
-          mount -t btrfs ${disk_by_id} ${mount_p}
+        echo ">>> [Rollback] Creating fresh / subvolume"
+        btrfs subvolume create ${mount_p}/${root_subvol}
 
-          # 1. 确保 old_roots 是一个子卷，而不是普通目录
-          if [[ ! -e ${mount_p}/${old_roots} ]]; then
-              btrfs subvolume create ${mount_p}/${old_roots}
-          fi
+        # 可选：清理超过 30 天的备份 (busybox 的 find 语法略有不同)
+        # 这里建议手动清理，防止 initrd 时间戳错误误删所有备份
 
-          if [[ -e ${mount_p}/${root_volume} ]]; then
-              timestamp=$(date "+%Y-%m-%d_%H:%M:%S")
-              
-              # 2. 备份当前 root：创建只读快照到 old_roots 子卷下
-              # 注意：snapshot 只能在同一个 Btrfs 文件系统内跨子卷存放，这没问题
-              btrfs subvolume snapshot -r ${mount_p}/${root_volume} ${mount_p}/${old_roots}/$timestamp
-              
-              btrfs subvolume delete ${mount_p}/${root_volume}
-          fi
-          for i in $(find ${mount_p}/${old_roots}/ -maxdepth 1 -mtime +30); do
-              btrfs subvolume delete ${mount_p}/${old_roots}/$i
-          done
-
-          btrfs subvolume create ${mount_p}/${root_volume}
-
-
-          umount ${mount_p}
-        '';
-      };
+        umount ${mount_p}
+      '';
       disko.devices = {
         disk.main = {
           device = "/dev/disk/by-id/nvme-ZHITAI_TiPlus7100_4TB_ZTA54T0AB251540AHC_1";
