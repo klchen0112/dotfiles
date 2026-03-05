@@ -8,6 +8,7 @@
       old_roots = "old_roots";
     in
     {
+      boot.initrd.supportedFilesystems = [ "btrfs" ];
       boot.initrd.systemd.services.rollback = {
         description = "Rollback BTRFS root subvolume to a pristine state";
         unitConfig.DefaultDependencies = "no";
@@ -45,7 +46,7 @@
       };
       disko.devices = {
         disk.main = {
-          device = "/dev/nvme1n1";
+          device = "/dev/disk/by-id/nvme-ZHITAI_TiPlus7100_4TB_ZTA54T0AB251540AHC_1";
           type = "disk";
           content = {
             type = "gpt";
