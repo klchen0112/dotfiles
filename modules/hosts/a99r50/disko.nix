@@ -5,7 +5,7 @@
       disk_by_id = "/dev/disk/by-id/nvme-ZHITAI_TiPlus7100_4TB_ZTA54T0AB251540AHC_1-part3";
       root_volume = "@root";
       mount_p = "/btrfs_tmp";
-      old_roots = "old_root";
+      old_roots = "old_roots";
     in
     {
       boot.initrd.systemd.services.rollback = {
@@ -34,8 +34,8 @@
               
               btrfs subvolume delete ${mount_p}/${root_volume}
           fi
-          for i in $(find ${mount_p}/old_roots/ -maxdepth 1 -mtime +30); do
-              btrfs subvolume delete ${mount_p}/$i
+          for i in $(find ${mount_p}/${old_roots}/ -maxdepth 1 -mtime +30); do
+              btrfs subvolume delete ${mount_p}/${old_roots}/$i
           done
 
           btrfs subvolume create ${mount_p}/${root_volume}
