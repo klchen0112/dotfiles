@@ -13,9 +13,8 @@
           hf-xet
           huggingface-hub
         ]);
-      services.ollamah= {
+      services.ollama= {
         enable = false;
-        package=pkgs.stable.ollama-cuda;
         port = 11111;
       };
     };
