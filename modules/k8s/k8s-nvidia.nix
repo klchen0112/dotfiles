@@ -25,7 +25,7 @@
         "nvidia-x11"
         "nvidia-settings"
       ];
-
+      virtualisation.docker.enable = true;
       hardware.nvidia-container-toolkit.enable = true;
       hardware.nvidia-container-toolkit.mount-nvidia-executables = true;
 

@@ -45,6 +45,7 @@ in
         python
         java
         media
+        llm
       ];
       home-manager.backupFileExtension = "hmbp";
 
@@ -66,8 +67,8 @@ in
         flatpak
 
         #k3s
-        #k3s-node
-        #        k3s-nvidia
+        #k3s-
+        k8s-nvidia
       ])
       ++ (builtins.map (
         user: inputs.self.modules.nixos.${user}
@@ -110,10 +111,6 @@ in
           # intel-media-sdk   # for older GPUs
         ];
       };
-      services.xserver.videoDrivers = [
-        # "amdgpu" # example for Intel iGPU; use "amdgpu" here instead if your iGPU is AMD
-        "nvidia"
-      ];
 
       # Don't allow mutation of users outside of the config.
       users.mutableUsers = false;
