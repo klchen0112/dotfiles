@@ -40,15 +40,14 @@
           #   # pubkeyAcceptedAlgorithms = "+ssh-rsa";
           #   hostname = "192.168.0.10";
           #   port = 22;
-          #   user = "root";
-          # };
+          #   user = "root";          # };
           "github.com" = {
             hostname = "ssh.github.com";
             port = 443;
             user = "git";
           };
-          a3400g = {
-            hostname = "a3400g.klchen.duckdns.org";
+          r2070 = {
+            hostname = "r2070.klchen.duckdns.org";
             port = 22;
             user = "klchen";
           };

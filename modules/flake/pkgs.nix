@@ -26,7 +26,7 @@
         inherit system;
         config = {
           allowUnfree = true;
-          allowUnsupportedSystem = true;
+          allowUnsupportedSystem = false;
         };
         overlays = [
           (final: _prev: {
