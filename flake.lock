@@ -1047,22 +1047,6 @@
         "type": "github"
       }
     },
-    "rime": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1769873440,
-        "narHash": "sha256-r3wPFPAWE04yppxkb2QfmN12ev0ZJOozWU51mvu0nq8=",
-        "owner": "klchen0112",
-        "repo": "rime-snow-combo-pinyin",
-        "rev": "e6c86477954b6aea5693ea7ad75981af0440d5fc",
-        "type": "github"
-      },
-      "original": {
-        "owner": "klchen0112",
-        "repo": "rime-snow-combo-pinyin",
-        "type": "github"
-      }
-    },
     "root": {
       "inputs": {
         "agenix": "agenix",
@@ -1100,7 +1084,6 @@
         "nur": "nur",
         "paneru": "paneru",
         "pkgs-by-name-for-flake-parts": "pkgs-by-name-for-flake-parts_2",
-        "rime": "rime",
         "srvos": "srvos",
         "stylix": "stylix",
         "systems": "systems_8",

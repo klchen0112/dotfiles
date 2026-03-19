@@ -131,10 +131,6 @@
       url = "github:karinushka/paneru";
     };
     pkgs-by-name-for-flake-parts.url = "github:drupol/pkgs-by-name-for-flake-parts";
-    rime = {
-      flake = false;
-      url = "github:klchen0112/rime-snow-combo-pinyin";
-    };
     srvos = {
       inputs.nixpkgs.follows = "nixpkgs";
       url = "github:nix-community/srvos";
