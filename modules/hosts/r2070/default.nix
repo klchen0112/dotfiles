@@ -47,10 +47,8 @@ in
       ]
       ++ (with inputs.self.modules.nixos; [
         font
-
-        k3s
-        k3s-node
-        k3s-nvidia
+        k8s-node
+        k8s-nvidia
       ])
       ++ (builtins.map (
         user: inputs.self.modules.nixos.${user}

@@ -22,11 +22,7 @@ in
     ++ (with inputs.self.modules.nixos; [
       font
 
-      # k3s
-
-      k3s
-      k3s-master
-      k3s-master-init
+      k8s-node
     ])
     ++ (builtins.map (
       user: inputs.self.modules.nixos.${user}
