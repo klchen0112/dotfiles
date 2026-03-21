@@ -28,8 +28,7 @@ in
           font
           # inputs.self.modules.nixos.access-tokens
 
-          k3s
-          k3s-node
+          k8s-master
         ]
         ++ [
           inputs.nixos-hardware.nixosModules.common-cpu-intel
