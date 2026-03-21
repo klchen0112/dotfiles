@@ -13,6 +13,7 @@ let
         {
           system.stateVersion = "25.11";
           networking.hostName = "${name}";
+          environment.enableAllTerminfo = true;
           home-manager.extraSpecialArgs = {
             inherit inputs;
           };
@@ -33,6 +34,7 @@ let
         inputs.self.modules.darwin.${name}
         {
           system.stateVersion = 6;
+          environment.enableAllTerminfo = true;
           home-manager.extraSpecialArgs = {
             inherit inputs;
           };
