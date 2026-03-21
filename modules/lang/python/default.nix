@@ -16,14 +16,8 @@
           ruff
           uv
           ty
-        ]
-        ++ (with pkgs.python313Packages; [
-          hf-xet
-          huggingface-hub
+        ];
 
-        ]
-
-        );
       xdg.configFile."uv/uv.toml".text = ''
         [[index]]
         url = "https://mirrors.cernet.edu.cn/pypi/web/simple"

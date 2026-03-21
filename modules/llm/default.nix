@@ -22,9 +22,10 @@
           ollama-cuda
           nvtopPackages.nvidia
         ]
-        ++ (with pkgs.python313Packages; [
+        ++ (with pkgs.python314Packages; [
           hf-xet
           huggingface-hub
+          modelscope
         ]);
       services.ollama = {
         enable = true;
