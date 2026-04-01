@@ -16,7 +16,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
-  flake.modules.homeManager.zen =
+  den.aspects.zen.homeManager =
     {
       pkgs,
       config,

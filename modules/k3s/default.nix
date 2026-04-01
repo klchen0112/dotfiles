@@ -1,6 +1,6 @@
 {
 
-  flake.modules.nixos.k3s =
+  den.aspects.k3s.nixos =
     { pkgs, ... }:
     {
       services.k3s = {

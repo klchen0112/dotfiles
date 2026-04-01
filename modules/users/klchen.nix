@@ -1,48 +1,21 @@
-{ config, inputs, ... }:
 {
-  flake.meta.users.klchen = {
-    username = "klchen";
-    fullname = "klchen0112";
-    email = "klchen0112@gmail.com";
-    authorizedKeys = [
-      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAGszCNQqxT1/s6sYjj1aewvCjaa3D7UwoOM7UD5K+ha klchen0112@mbp-m1"
-      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKx1SNaQZ6v1onDSGz1wNX1W3zIf2KkTERjKGC+k157D klchen@sanjiao"
-      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAII/c10VIo81cztYJza3e+l1JlwsTJQk1lhBOypGhYn3T klchen@a3400g"
-      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPI6HctaCnuhyOdbrYs2un7/QA/hqFPfDVRlL0klfhGc klchen@i12r20"
-      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFNgI2fAHSDQCB+DgZPsjGF+arPudVmWS4hTXbJCvwwX klchen@a99r50"
-    ];
-    base16Scheme = "gruvbox-material-dark-soft";
-    initialHashedPassword = "$6$qpLfyxefL6ImN6y8$6P2BYZEfmjdh6LeL4646LEhZnORcyxWIRxRBN2Nt6XGLk7pTu6XBy4u.mkpUs2pLW28kFx6dks8SNW2OW0AKf1";
-  };
-  flake.modules.homeManager.klchen =
-    { pkgs, lib, ... }:
-    {
-      home.username = lib.mkDefault " klchen";
-      home.homeDirectory = lib.mkDefault (
-        if pkgs.stdenvNoCC.isDarwin then "/Users/klchen" else "/home/klchen"
-      );
-      home.stateVersion = lib.mkDefault "25.11";
-      home.packages = [ pkgs.dconf ];
-      imports = with inputs.self.modules.homeManager; [
-        nushell
-        nix
-        stylix
-        starship
-        utils
-        git
-        ssh
-        nix-index
-        font
+  den,
+  inputs,
+  ...
+}:
+{
+  den.aspects.klchen =
+    let
+      keys = [
+        "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAGszCNQqxT1/s6sYjj1aewvCjaa3D7UwoOM7UD5K+ha klchen0112@mbp-m1"
+        "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKx1SNaQZ6v1onDSGz1wNX1W3zIf2KkTERjKGC+k157D klchen@sanjiao"
+        "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAII/c10VIo81cztYJza3e+l1JlwsTJQk1lhBOypGhYn3T klchen@a3400g"
+        "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPI6HctaCnuhyOdbrYs2un7/QA/hqFPfDVRlL0klfhGc klchen@i12r20"
+        "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFNgI2fAHSDQCB+DgZPsjGF+arPudVmWS4hTXbJCvwwX klchen@a99r50"
       ];
-    };
-
-  flake.modules.nixos.klchen =
-    { pkgs, ... }:
+    in
     {
-      home-manager.users.klchen.imports = with inputs.self.modules.homeManager; [ klchen ];
-      nix.settings.trusted-users = [ config.flake.meta.users.klchen.username ];
-      users.users.klchen = {
-        description = config.flake.meta.users.klchen.fullname;
+      user = {
         isNormalUser = true;
         createHome = true;
         extraGroups = [
@@ -53,22 +26,59 @@
           "tty"
           "wheel"
         ];
-        shell = pkgs.bash;
-        openssh.authorizedKeys.keys = config.flake.meta.users.klchen.authorizedKeys;
-        initialHashedPassword = config.flake.meta.users.klchen.initialHashedPassword;
+        openssh.authorizedKeys.keys = keys;
+
+        initialHashedPassword = "$y$j9T$WX1yl8edHz32y77s640GV.$M1U0keGszxKa9efTMnTG/VJAIOqtDj0mPEToL6cBF13";
+
       };
-      services.openssh.settings.AllowUsers = [ config.flake.meta.users.klchen.username ];
-      users.users.root.openssh.authorizedKeys.keys = config.flake.meta.users.klchen.authorizedKeys;
-    };
-  flake.modules.darwin.klchen =
-    { lib, ... }:
-    {
-      home-manager.users.klchen.imports = with inputs.self.modules.homeManager; [ klchen ];
-      home-manager.users.klchen.home.homeDirectory = lib.mkForce "/Users/klchen";
-      users.users.klchen = {
-        name = config.flake.meta.users.klchen.username;
+      os = {
+        services.openssh.settings.AllowUsers = [ "klchen" ];
+        users.users.root.openssh.authorizedKeys.keys = keys;
+        nix.settings.trusted-users = [ "klchen" ];
       };
-      programs.zsh.enable = true;
-      nix.settings.trusted-users = [ config.flake.meta.users.klchen.username ];
+      darwin = {
+        programs.zsh.enable = true;
+      };
+      homeManager =
+        { pkgs, lib, ... }:
+        {
+          nix.settings.trusted-users = [ "klchen" ];
+          stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/solarized-light.yaml";
+          home.username = lib.mkDefault " klchen";
+          home.homeDirectory = lib.mkDefault (
+            if pkgs.stdenvNoCC.isDarwin then "/Users/klchen" else "/home/klchen"
+          );
+
+          programs.git.settings.user = {
+
+            name = "klchen0112";
+            email = "klchen0112@gmail.com";
+
+          };
+
+        };
+      includes = [
+        den.provides.primary-user
+
+        #      (den.provides.user-shell "nu")
+      ]
+      ++ (with den.aspects; [
+        nix
+        python
+        nushell
+        bash
+        stylix
+        starship
+        utils
+        git
+        ssh
+        nix-index
+        font
+        emacs-twist
+        noctalia-shell
+        niri-home
+        ghostty
+      ]);
     };
+
 }

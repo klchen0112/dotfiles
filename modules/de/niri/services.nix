@@ -1,6 +1,5 @@
 {
-  flake.modules.homeManager.niri =
-
+  den.aspects.niri-home.niri-home =
     { lib, ... }:
     {
       # Ref: https://github.com/hallettj/home.nix/blob/main/home-manager/features/niri/default.nix

@@ -12,7 +12,7 @@
     ];
     desktop = false;
   };
-  flake.modules.nixos.init =
+  den.aspects.init.nixos =
     {
       lib,
       pkgs,

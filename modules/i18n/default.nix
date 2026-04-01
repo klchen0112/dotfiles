@@ -1,5 +1,5 @@
 {
-  flake.modules.homeManager.i18n =
+  den.aspects.i18n.homeManager =
     {
       ...
     }:

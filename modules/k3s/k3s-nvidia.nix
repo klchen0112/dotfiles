@@ -1,8 +1,13 @@
 {
 
-  flake.modules.nixos.k3s-nvidia =
+  den.aspects.k3s-nvidia.nixos =
     { pkgs, config, ... }:
     {
+      nixpkgs = {
+        config = {
+          cudaSupport = true;
+        };
+      };
 
       hardware.nvidia = {
         open = true;
@@ -26,6 +31,7 @@
 
       environment.systemPackages = with pkgs; [
         nvidia-container-toolkit
+        pciutils
       ];
 
     };

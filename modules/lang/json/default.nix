@@ -1,5 +1,5 @@
 {
-  flake.modules.homeManager.json =
+  den.aspects.json.json =
     { pkgs, ... }:
     {
       home.packages = with pkgs; [

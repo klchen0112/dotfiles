@@ -1,5 +1,5 @@
 {
-  flake.modules.nixos.server =
+  den.aspects.server.nixos =
     { inputs }:
     {
       imports = [

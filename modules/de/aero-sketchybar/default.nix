@@ -1,5 +1,5 @@
 {
-  flake.modules.homeManager.aero-sketchybar =
+  den.aspects.aero-sketchybar.areo-sketchy-bar =
     { pkgs, config, ... }:
     {
       home.packages = with pkgs; [

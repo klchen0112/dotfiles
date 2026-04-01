@@ -1,6 +1,6 @@
 { inputs, ... }:
 {
-  flake.modules.homeManager.emacs =
+  den.aspects.emacs =
     {
       lib,
       pkgs,

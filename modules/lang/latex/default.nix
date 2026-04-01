@@ -1,5 +1,5 @@
 {
-  flake.modules.homeManager.latex =
+  den.aspects.latex =
     { ... }:
     {
       programs.texlive = {

@@ -1,5 +1,5 @@
 {
-  flake.modules.homeManager.jetbrains =
+  den.aspects.jetbrains =
     # Jetbrains Toolbox
     #
     { pkgs, ... }:

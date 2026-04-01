@@ -1,5 +1,5 @@
 {
-  flake.modules.nixos.sanjiao =
+  den.aspects.sanjiao.nixos =
     {
       config,
       lib,

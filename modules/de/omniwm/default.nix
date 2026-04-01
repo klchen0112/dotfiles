@@ -1,5 +1,5 @@
 {
-  flake.modules.darwin.omniwm =
+  den.aspects.darwin.omniwm =
     { lib, ... }:
     {
       system.defaults.NSGlobalDomain._HIHideMenuBar = lib.mkForce false;

@@ -8,48 +8,43 @@ in
   ...
 }:
 {
-  flake.meta.machines.${machine} = {
-    hostName = machine;
-    platform = "aarch64-darwin";
-    base16Scheme = "selenized-dark";
-    sshKey = [
-      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIC9ZvdIrZP9su70iBKgCB0QOY0kL9Z9qu3B9Of05VS5a"
-    ];
-    users = [ "klchen" ];
-    desktop = true;
+  #  sshKey = [    "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIC9ZvdIrZP9su70iBKgCB0QOY0kL9Z9qu3B9Of05VS5a"];
+  den.hosts.aarch64-darwin.${machine} = {
+    klchen = { };
   };
-  flake.modules.darwin.${machine} = {
-    nixpkgs.system = config.flake.meta.machines.${machine}.platform;
-    imports =
-      with inputs.self.modules.darwin;
-      [
+
+  den.aspects.${machine} =
+    { den, ... }:
+    {
+      imports = with den.aspects; [
         homebrew
-        # access-tokens
-      ]
-      ++ (builtins.map (
-        user: inputs.self.modules.darwin.${user}
-      ) config.flake.meta.machines.${machine}.users);
-    home-manager.users.klchen.imports = with config.flake.modules.homeManager; [
-      zsh
-      # hammerspoon
-      paneru
-      homebrew
-      ghostty
-      aria2
-      vscode
-      inputmethod
-      zen
-      syncthing
-      emacs-twist
-      keyboard
-      darwin
-      # access-tokens
-      # aerospace
-      # aero-sketchybar
-      latex
-    ];
-    home-manager.backupFileExtension = "hmbp";
-    system.primaryUser = lib.lists.head config.flake.meta.machines.${machine}.users;
-    ids.gids.nixbld = 30000;
-  };
+        stylix
+      ];
+      darwin =
+        { pkgs, ... }:
+        {
+          stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/solarized-light.yaml";
+
+          #        home-manager.users.klchen.imports = with config.den.aspects.homeManager; [
+          #          zsh
+          #          # hammerspoon
+          #          paneru
+          #          homebrew
+          #          ghostty
+          #          aria2
+          #          vscode
+          #          inputmethod
+          #          zen
+          #          syncthing
+          #          emacs-twist
+          #          keyboard
+          #          darwin
+          #          # access-tokens
+          #          # aerospace
+          #          # aero-sketchybar
+          #          latex
+          #        ];
+          ids.gids.nixbld = 30000;
+        };
+    };
 }

@@ -1,5 +1,5 @@
 {
-  flake.modules.homeManager.wezterm =
+  den.aspects.wezterm =
     {
       pkgs,
       #

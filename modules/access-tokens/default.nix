@@ -10,7 +10,7 @@
       };
     };
   };
-  flake.modules.homeManager.access-tokens =
+  den.aspects.access-tokens.homeManager =
     {
       pkgs,
       config,
@@ -27,7 +27,7 @@
       age.secretsMountPoint = "${config.home.homeDirectory}/.local/share/agenix/agenix.d";
     };
 
-  flake.modules.nixos.access-tokens =
+  den.aspects.access-tokens.nixos =
     {
       pkgs,
       config,
@@ -41,7 +41,7 @@
         !include ${config.age.secrets.access-tokens.path}
       '';
     };
-  flake.modules.darwin.access-tokens =
+  den.aspects.darwin.access-tokens =
     {
       pkgs,
       config,

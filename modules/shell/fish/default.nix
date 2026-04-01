@@ -1,5 +1,5 @@
 {
-  flake.modules.homeManager.fish =
+  den.aspects.fish.homeManager =
     {
       pkgs,
       lib,

@@ -1,5 +1,5 @@
 {
-  flake.modules.homeManager.office =
+  den.aspects.office =
     { pkgs, ... }:
     {
       home.packages = with pkgs; [

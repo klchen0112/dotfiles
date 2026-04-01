@@ -1,6 +1,6 @@
 { inputs, ... }:
 {
-  flake.modules.nixos.r2070 = {
+  den.aspects.r2070.nixos = {
     imports = [
       inputs.disko.nixosModules.disko
     ];

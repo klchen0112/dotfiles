@@ -1,10 +1,10 @@
 {
-  flake.modules.darwin.aerospace =
+  den.aspects.darwin.aerospace =
     { lib, ... }:
     {
       system.defaults.NSGlobalDomain._HIHideMenuBar = lib.mkForce true;
     };
-  flake.modules.homeManager.aerospace =
+  den.aspects.aerospace =
     { ... }:
     {
       programs.aerospace = {

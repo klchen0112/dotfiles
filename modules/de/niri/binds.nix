@@ -1,16 +1,18 @@
 {
-  flake.modules.homeManager.niri =
+  den.aspects.niri-home.niri-home =
     {
       config,
+      lib,
       ...
     }:
     {
+      programs.nh.enable = true;
       programs.niri.settings.binds = with config.lib.niri.actions; {
         "Print".action.screenshot-screen = {
-          write-to-disk = true;
+          write-to-disk = lib.mkDefault true;
         };
         "Alt+Print".action.screenshot-window = {
-          write-to-disk = true;
+          write-to-disk = lib.mkDefault true;
         };
         "Mod+Q".action = close-window;
         "Mod+F".action = maximize-column;

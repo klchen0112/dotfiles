@@ -1,5 +1,5 @@
 {
-  flake.modules.homeManager.nushell =
+  den.aspects.nushell.homeManager =
     {
       pkgs,
       ...

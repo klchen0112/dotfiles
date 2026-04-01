@@ -1,5 +1,5 @@
 {
-  flake.modules.homeManager.bash =
+  den.aspects.bash.hmLinux =
     {
       pkgs,
       ...

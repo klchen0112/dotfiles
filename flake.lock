@@ -153,6 +153,21 @@
         "type": "github"
       }
     },
+    "den": {
+      "locked": {
+        "lastModified": 1774975215,
+        "narHash": "sha256-9wlBxlKhFUsvERdhyTj/NOFca4jlX4CssVotnhymHqc=",
+        "owner": "vic",
+        "repo": "den",
+        "rev": "d02f2d643a16bd53478ed119d756d729777e19f9",
+        "type": "github"
+      },
+      "original": {
+        "owner": "vic",
+        "repo": "den",
+        "type": "github"
+      }
+    },
     "deploy-rs": {
       "inputs": {
         "flake-compat": "flake-compat",
@@ -1069,6 +1084,7 @@
         "agenix": "agenix",
         "brew-nix": "brew-nix",
         "chinese-fonts-overlay": "chinese-fonts-overlay",
+        "den": "den",
         "deploy-rs": "deploy-rs",
         "devshell": "devshell",
         "disko": "disko",

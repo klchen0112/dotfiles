@@ -1,6 +1,6 @@
 { inputs, ... }:
 {
-  flake.modules.nixos.cosmic =
+  den.aspects.cosmic.nixos =
     {
       pkgs,
       ...

@@ -1,5 +1,5 @@
 {
-  flake.modules.homeManager.cpp =
+  den.aspects.cpp.cpp =
     { pkgs, ... }:
     {
       home.packages = with pkgs; [

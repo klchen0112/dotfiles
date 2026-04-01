@@ -1,5 +1,5 @@
 {
-  flake.modules.homeManager.ghostty =
+  den.aspects.ghostty.ghostty =
     {
       pkgs,
       config,

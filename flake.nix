@@ -6,6 +6,12 @@
 
   nixConfig = {
     allow-import-from-derivation = true;
+    accept-flake-config = true;
+    auto-optimise-store = true;
+    lazy-trees = true;
+    submodules = true;
+    use-xdg-base-directories = true;
+
     substituters = [
       "https://mirrors.cernet.edu.cn/nix-channels/store?priority=0"
       "https://nix-community.cachix.org?priority=1"
@@ -31,6 +37,7 @@
   };
 
   inputs = {
+
     agenix = {
       inputs = {
         darwin.follows = "nix-darwin";
@@ -71,6 +78,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
       url = "github:osipog/nix-firefox-addons";
     };
+    den.url = "github:vic/den";
     flake-file.url = "github:vic/flake-file";
     flake-parts = {
       inputs.nixpkgs-lib.follows = "nixpkgs-lib";

@@ -1,7 +1,7 @@
 { config, ... }:
 {
 
-  flake.modules.nixos.root =
+  den.aspects.root.nixos =
     { ... }:
     {
       nix.settings.trusted-users = [ "root" ];

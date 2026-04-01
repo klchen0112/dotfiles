@@ -9,7 +9,7 @@
       };
     };
   };
-  flake.modules.nixos.niri =
+  den.aspects.niri.nixos =
     { pkgs, ... }:
     {
       programs.xwayland.enable = true;
@@ -73,10 +73,10 @@
       #};
       # unlock GPG keyring on login
       security.polkit.enable = true; # polkit
-      services.gnome.gnome-keyring.enable = true; # secret service
+      # services.gnome.gnome-keyring.enable = true; # secret service
       security.pam.services.swaylock = { };
     };
-  flake.modules.homeManager.niri =
+  den.aspects.niri-home.niri-home =
     { pkgs, config, ... }:
     {
       home.packages = with pkgs; [
@@ -89,12 +89,12 @@
 
       ];
 
-      programs.niri.settings.binds = with config.lib.niri.actions; {
-        "Alt+Tab".action = spawn "niriswitcherctl" "show" "--window";
-        "Alt+Shift+Tab".action = spawn "niriswitcherctl" "show" "--window";
-        "Alt+Grave".action = spawn "niriswitcherctl" "show" "--workspace";
-        "Alt+Shift+Grave".action = spawn "niriswitcherctl" "show" "--workspace";
-      };
+      #programs.niri.settings.binds = with config.lib.niri.actions; {
+      # "Alt+Tab".action = next-window;
+      # "Alt+Shift+Tab".action = previous-window;
+      #"Alt+Grave".action = spawn "niriswitcherctl" "show" "--workspace";
+      # "Alt+Shift+Grave".action = spawn "niriswitcherctl" "show" "--workspace";
+      #};
       # 夜光护眼软件
       # services.wlsunset = {
       #   enable = true;

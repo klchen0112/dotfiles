@@ -1,5 +1,5 @@
 {
-  flake.modules.homeManager.qt =
+  den.aspects.qt =
     {
       ...
     }:

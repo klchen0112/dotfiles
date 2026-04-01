@@ -6,12 +6,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
-  flake.modules.darwin.paneru =
-    { lib, ... }:
-    {
-
-    };
-  flake.modules.homeManager.paneru =
+  den.aspects.paneru.hmDarwin =
     { ... }:
     {
       imports = [

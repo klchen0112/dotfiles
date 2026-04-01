@@ -1,4 +1,5 @@
-topLevel: {
+{ inputs, ... }:
+{
   flake-file.inputs = {
     stylix = {
       url = "github:nix-community/stylix";
@@ -7,7 +8,7 @@ topLevel: {
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
-  flake.modules.homeManager.stylix =
+  den.aspects.stylix.homeManager =
     {
       config,
       pkgs,
@@ -15,15 +16,13 @@ topLevel: {
     }:
     {
       imports = [
-        topLevel.inputs.stylix.homeModules.stylix
+        inputs.stylix.homeModules.stylix
       ];
+
       # enable gtk
       stylix.targets.gtk.enable = true;
-      stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/${
-        topLevel.config.flake.meta.users.${config.home.username}.base16Scheme
-      }.yaml";
     };
-  flake.modules.darwin.stylix =
+  den.aspects.stylix.darwin =
     {
       pkgs,
       config,
@@ -31,16 +30,12 @@ topLevel: {
     }:
     {
       imports = [
-        topLevel.inputs.stylix.darwinModules.stylix
+        inputs.stylix.darwinModules.stylix
       ];
       homeManagerIntegration.autoImport = false;
       homeManagerIntegration.followSystem = false;
-      stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/${
-        topLevel.config.flake.meta.users.${config.networking.hostname}.base16Scheme
-      }.yaml";
-
     };
-  flake.modules.nixos.stylix =
+  den.aspects.stylix.nixos =
     {
       pkgs,
       config,
@@ -48,13 +43,9 @@ topLevel: {
     }:
     {
       imports = [
-        topLevel.inputs.stylix.nixosModules.stylix
+        inputs.stylix.nixosModules.stylix
       ];
-      homeManagerIntegration.autoImport = false;
-      homeManagerIntegration.followSystem = false;
-      stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/${
-        topLevel.config.flake.meta.users.${config.networking.hostname}.base16Scheme
-      }.yaml";
-
+      stylix.homeManagerIntegration.autoImport = false;
+      stylix.homeManagerIntegration.followSystem = false;
     };
 }

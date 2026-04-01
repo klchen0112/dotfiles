@@ -1,6 +1,6 @@
 {
 
-  flake.modules.nixos.k3s-node =
+  den.aspects.k3s-node.nixos =
     { pkgs, ... }:
     {
       services.k3s = {
@@ -8,7 +8,7 @@
         extraFlags = toString [
           "--debug" # Optionally add additional args to k3s
         ];
-         serverAddr = "https://192.168.0.198:6443";
+        serverAddr = "https://192.168.0.198:6443";
       };
     };
 }

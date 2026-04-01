@@ -1,12 +1,12 @@
 {
-  flake.modules.homeManager.network =
+  den.aspects.network.homeManager =
     { pkgs, ... }:
     {
       home.packages = with pkgs; [
         ifstat-legacy
       ];
     };
-  flake.modules.nixos.network =
+  den.aspects.network.nixos =
     { lib, ... }:
     {
       networking.useDHCP = lib.mkDefault true;

@@ -1,5 +1,5 @@
 {
-  flake.modules.homeManager.bluetooth =
+  den.aspects.bluetooth.bluetooth =
     { pkgs, ... }:
     {
       hardware.bluetooth = {

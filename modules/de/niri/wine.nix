@@ -1,5 +1,5 @@
 {
-  flake.modules.homeManager.niri =
+  den.aspects.wine.homeManager=
     { pkgs, ... }:
     {
       home.packages = with pkgs; [

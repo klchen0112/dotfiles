@@ -1,11 +1,14 @@
 { ... }:
 {
-  flake.modules.darwin.nix = {
-    nix.channel.enable = false;
-  };
-  flake.modules.nixos.nix = {
-    nix.channel.enable = false;
 
-  };
+  den.aspects.nix = {
 
+    darwin = {
+      nix.channel.enable = false;
+    };
+    nixos = {
+      nix.channel.enable = false;
+
+    };
+  };
 }

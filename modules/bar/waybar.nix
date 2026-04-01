@@ -1,5 +1,5 @@
 {
-  flake.modules.homeManager.waybar =
+  den.aspects.waybar.waybar =
     {
       pkgs,
       ...

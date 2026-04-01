@@ -1,6 +1,6 @@
 {
 
-  flake.modules.nixos.k3s-master-init =
+  den.aspects.k3s-master-init.nixos =
     { pkgs, ... }:
     {
       services.k3s = {

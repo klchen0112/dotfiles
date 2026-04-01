@@ -1,5 +1,5 @@
 {
-  flake.modules.homeManager.keyboard =
+  den.aspects.keyboard.homeManager =
     { pkgs, ... }:
     {
       home.packages =
@@ -11,7 +11,7 @@
           vial
         ];
     };
-  flake.modules.nixos.keyboard =
+  den.aspects.keyboard.nixos =
     { pkgs, ... }:
     {
       hardware.keyboard.qmk.enable = true;

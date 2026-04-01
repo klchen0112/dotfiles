@@ -1,6 +1,6 @@
 {
 
-  flake.modules.nixos.k8s-master =
+  den.aspects.k8s-master.nixos =
     { pkgs, ... }:
     let
       # When using 'easyCerts = true;', the IP address must resolve to the master at the time of creation.

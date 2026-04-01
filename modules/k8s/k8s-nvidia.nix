@@ -1,6 +1,6 @@
 {
 
-  flake.modules.nixos.k8s-nvidia =
+  den.aspects.k8s-nvidia.nixos =
     {
       pkgs,
       config,

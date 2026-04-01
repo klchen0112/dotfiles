@@ -42,7 +42,7 @@ let
     };
 in
 {
-  flake.modules.homeManager.stylix = cfg;
-  flake.modules.darwin.stylix = cfg;
+  den.aspects.stylix.stylix = cfg;
+  den.aspects.darwin.stylix = cfg;
   flake.modules.linux.stylix = cfg;
 }

@@ -1,5 +1,5 @@
 { inputs, ... }:
-let
+{
   flake-file.inputs = {
     #  MacOS
     nix-darwin.url = "github:nix-darwin/nix-darwin/master";
@@ -9,7 +9,7 @@ let
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
-  flake.modules.darwin.darwin = {
+  den.aspects.darwin = {
     imports = [
       inputs.srvos.darwinModules.desktop
       inputs.srvos.darwinModules.mixins-terminfo
@@ -19,15 +19,5 @@ let
       inputs.self.modules.darwin.system
     ];
   };
-  flake.modules.homeManager.darwin =
-    { ... }:
-    {
-      imports = [
 
-      ];
-    };
-
-in
-{
-  inherit flake flake-file;
 }

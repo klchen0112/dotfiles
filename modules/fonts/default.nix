@@ -55,11 +55,11 @@ in
     chinese-fonts-overlay.url = "github:brsvh/chinese-fonts-overlay";
   };
 
-  flake.modules.nixos.font = fonts_settings;
+  den.aspects.font.nixos = fonts_settings;
 
-  flake.modules.darwin.font = fonts_settings;
+  den.aspects.font.darwin = fonts_settings;
 
-  flake.modules.homeManager.font = {
+  den.aspects.font.homeManager = {
     fonts.fontconfig.defaultFonts = {
       serif = [
         "CMU Typewriter Text"

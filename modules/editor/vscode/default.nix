@@ -5,7 +5,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
-  flake.modules.homeManager.vscode =
+  den.aspects.vscode.homeManager =
     {
       pkgs,
       config,

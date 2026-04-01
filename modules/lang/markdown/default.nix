@@ -1,5 +1,5 @@
 {
-  flake.modules.homeManager.markdown =
+  den.aspects.markdown.markdown =
     { pkgs, ... }:
     {
       home.packages = with pkgs; [

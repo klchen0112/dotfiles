@@ -3,7 +3,7 @@
   flake-file.inputs = {
 
   };
-  flake.modules.nixos.vm =
+  den.aspects.vm.nixos =
     { modulesPath, ... }:
     {
       ###################################################################################
@@ -20,7 +20,7 @@
       };
 
     };
-  flake.modules.nixos.waydroid =
+  den.aspects.waydroid.nixos =
     { modulesPath, ... }:
     {
       ###################################################################################
@@ -32,7 +32,7 @@
       ];
       virtualisation.waydroid.enable = true;
     };
-  flake.modules.homeManager.vm =
+  den.aspects.vm.homeManager =
     { pkgs, ... }:
     {
 

@@ -9,7 +9,7 @@
       };
     };
   };
-  flake.modules.darwin.homebrew =
+  den.aspects.homebrew.darwin =
     {
       ...
     }:
@@ -79,11 +79,10 @@
           # "docker"
           # "feishu"
           # "ghostty"
-          "istat-menus"
         ];
       };
     };
-  flake.modules.homeManager.homebrew = {
+  den.aspects.homebrew.homeManager = {
     nixpkgs.overlays = [
       inputs.brew-nix.overlays.default
     ];

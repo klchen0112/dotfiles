@@ -10,7 +10,7 @@
       follows = "emacs-config/emacs-overlay";
     };
   };
-  flake.modules.homeManager.emacs-twist =
+  den.aspects.emacs-twist.emacs-twist =
     {
       pkgs,
       lib,
@@ -22,7 +22,7 @@
       programs.emacs-twist = {
         enable = true;
         settings = {
-          defaultEditor.enable = true;
+          defaultEditor.enable = lib.mkDefault true;
         };
         serviceIntegration.enable = true;
         emacsclient.enable = true;

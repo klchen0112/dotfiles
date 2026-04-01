@@ -1,5 +1,5 @@
 {
-  flake.modules.homeManager.im =
+  den.aspects.im.im =
     { pkgs, ... }:
     {
       services.flatpak.packages = [

@@ -1,5 +1,5 @@
 {
-  flake.modules.nixos.init = {
+  den.aspects.init.nixos = {
     # checkout the example folder for how to configure different disko layouts
     disko.devices = {
       nodev."/" = {

@@ -1,5 +1,5 @@
 {
-  flake.modules.homeManager.alacritty =
+  den.aspects.alacritty =
     {
       pkgs,
       ...

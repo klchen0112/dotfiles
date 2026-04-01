@@ -1,5 +1,5 @@
 {
-  flake.modules.homeManager.mamba-cpp =
+  den.aspects.mamba-cpp =
     {
       pkgs,
       config,

@@ -1,5 +1,5 @@
 {
-  flake.modules.darwin.hyprspace = {
+  den.aspects.darwin.hyprspace = {
     homebrew = {
       taps = [
         "BarutSRB/tap"
@@ -9,7 +9,7 @@
       ];
     };
   };
-  flake.modules.homeManager.hyprspace =
+  den.aspects.hyprspace =
     { pkgs, config, ... }:
     {
       # programs.aerospace = {

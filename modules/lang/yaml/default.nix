@@ -1,5 +1,5 @@
 {
-  flake.modules.homeManager.yaml =
+  den.aspects.yaml.yaml =
     { pkgs, ... }:
     {
       home.packages = with pkgs; [

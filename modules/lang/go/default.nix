@@ -1,5 +1,5 @@
 {
-  flake.modules.homeManager.go =
+  den.aspects.go.go =
     { pkgs, ... }:
     {
       home.packages = with pkgs; [

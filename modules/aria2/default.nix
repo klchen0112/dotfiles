@@ -1,5 +1,5 @@
 {
-  flake.modules.homeManager.aria2 =
+  den.aspects.aria2 =
     {
       config,
       lib,

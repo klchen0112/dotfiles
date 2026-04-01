@@ -1,6 +1,6 @@
 {
-  flake.modules.homeManager.java =
-    { pkgs, inputs, ... }:
+  den.aspects.java.java =
+    { pkgs, ... }:
     {
       programs.java = {
         enable = true;

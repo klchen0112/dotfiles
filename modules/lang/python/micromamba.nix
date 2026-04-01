@@ -1,5 +1,5 @@
 {
-  flake.modules.homeManager.micromamba =
+  den.aspects.micromamba =
     {
       ...
     }:

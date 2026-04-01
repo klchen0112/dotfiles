@@ -1,5 +1,5 @@
 {
-  flake.modules.homeManager.lua =
+  den.aspects.lua.lua =
     { pkgs, ... }:
     {
       home.packages = with pkgs; [

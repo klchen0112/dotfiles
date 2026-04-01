@@ -1,7 +1,7 @@
 {
-  flake.modules.homeManager.niri =
+  den.aspects.niri-home.niri-home =
 
-    { ... }:
+    { config,... }:
     let
       windowRules = [
         {
@@ -30,19 +30,19 @@
               is-window-cast-target = true;
             }
           ];
-          focus-ring = {
-            active.color = "#f38ba8";
-            inactive.color = "#7d0d2d";
+          focus-ring = with config.lib.stylix.colors.withHashtag; {
+            active.color = base0D;
+            inactive.color = base03;
           };
-          border = {
-            inactive.color = "#7d0d2d";
+          border = with config.lib.stylix.colors.withHashtag; {
+            inactive.color = base03;
           };
-          shadow = {
-            color = "#7d0d2d70";
+          shadow = with config.lib.stylix.colors.withHashtag; {
+            color = base0D;
           };
-          tab-indicator = {
-            active.color = "#f38ba8";
-            inactive.color = "#7d0d2d";
+          tab-indicator = with config.lib.stylix.colors.withHashtag; {
+            active.color = base0D;
+            inactive.color = base03;
           };
         }
         {

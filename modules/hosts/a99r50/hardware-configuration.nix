@@ -1,5 +1,5 @@
 {
-  flake.modules.nixos.a99r50 =
+  den.aspects.a99r50.nixos =
     {
       config,
       lib,

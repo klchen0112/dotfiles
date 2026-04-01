@@ -1,5 +1,5 @@
 {
-  flake.modules.nixos.a99r50 =
+  den.aspects.a99r50.nixos =
     { lib, pkgs, ... }:
     let
       dev = "/dev/disk/by-id/nvme-ZHITAI_TiPlus7100_4TB_ZTA54T0AB251540AHC_1-part3";

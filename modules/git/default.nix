@@ -1,5 +1,5 @@
-topLevel: {
-  flake.modules.homeManager.git =
+{
+  den.aspects.git.homeManager =
     {
       config,
       pkgs,
@@ -9,7 +9,7 @@ topLevel: {
     {
       programs.git = {
         enable = true;
-        package = pkgs.gitFull;
+#        package = pkgs.gitFull;
         ignores = [
           "*~"
           "*.swp"
@@ -21,12 +21,6 @@ topLevel: {
 
         settings = {
 
-          user = {
-
-            name = topLevel.config.flake.meta.users.${config.home.username}.username;
-            email = topLevel.config.flake.meta.users.${config.home.username}.email;
-
-          };
           alias = {
             # common aliases
             br = "branch";

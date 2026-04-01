@@ -8,40 +8,27 @@ in
   ...
 }:
 {
-  flake.meta.machines.${machine} = {
-    hostName = "${machine}";
-    platform = "x86_64-linux";
-    base16Scheme = "selenized-light";
-    sshKey = [
+  den.hosts.x86_64-linux.${machine} = {
+    roles = [
+      "emacs-twist"
+    ];
+    users = {
+      klchen.roles = [
+        "emacs-twist"
 
-    ];
-    users = [
-      "klchen"
-    ];
-    desktop = false;
-  };
-  flake.modules.nixos.wsl-nixos =
-    {
-      lib,
-      pkgs,
-      ...
-    }:
-    {
-      home-manager.users.klchen.imports = with config.flake.modules.homeManager; [
-        bash
-        emacs-twist
       ];
-      home-manager.backupFileExtension = "hmbp";
-      nixpkgs.hostPlatform = "x86_64-linux";
-
-      imports = (
-        builtins.map (user: inputs.self.modules.nixos.${user}) config.flake.meta.machines.${machine}.users
-      );
-
-      wsl.defaultUser = lib.lists.head config.flake.meta.machines.${machine}.users;
-
-      # Don't allow mutation of users outside of the config.
-      users.mutableUsers = false;
-      zramSwap.enable = true;
     };
+    klchen = { };
+  };
+
+  den.aspects.wsl-nixos = {
+    nixos =
+      { pkgs, ... }:
+      {
+        fileSystems."/".device = "/dev/noroot";
+        boot.loader.grub.enable = false;
+        stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/solarized-light.yaml";
+
+      };
+  };
 }

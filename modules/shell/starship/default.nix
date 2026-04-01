@@ -1,5 +1,5 @@
 {
-  flake.modules.homeManager.starship = {
+  den.aspects.starship.homeManager = {
     stylix.targets.starship.enable = true;
     programs.starship = {
       enable = true;

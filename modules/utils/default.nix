@@ -1,5 +1,5 @@
 {
-  flake.modules.homeManager.utils =
+  den.aspects.utils.homeManager =
     { pkgs, ... }:
     {
       programs.delta = {

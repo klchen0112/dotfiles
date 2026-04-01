@@ -6,7 +6,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
-  flake.modules.nixos.noctalia-shell =
+  den.aspects.noctalia-shell.nixos =
     { pkgs, ... }:
     {
       networking.networkmanager.enable = true;
@@ -14,7 +14,7 @@
       services.power-profiles-daemon.enable = true;
       services.upower.enable = true;
     };
-  flake.modules.homeManager.noctalia-shell =
+  den.aspects.noctalia-shell.noctalia-shell =
     {
       config,
       pkgs,

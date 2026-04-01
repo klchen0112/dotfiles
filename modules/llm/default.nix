@@ -1,10 +1,6 @@
+{ den, inputs, ... }:
 {
-  flake.modules.nixos.llm =
-    { pkgs, ... }:
-    {
-    };
-
-  flake.modules.homeManager.llm =
+  den.aspects.llm.llm =
     { pkgs, ... }:
     {
       nixpkgs = {

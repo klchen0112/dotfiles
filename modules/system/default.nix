@@ -1,5 +1,5 @@
 {
-  flake.modules.darwin.system =
+  den.aspects.darwin.system =
     {
       lib,
       ...

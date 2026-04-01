@@ -1,5 +1,5 @@
 {
-  flake.modules.homeManager.chrome =
+  den.aspects.chrome =
     {
       pkgs,
       ...

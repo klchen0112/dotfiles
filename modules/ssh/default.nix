@@ -1,16 +1,5 @@
 {
-  flake.modules.nixos.ssh = {
-    services.openssh = {
-      enable = true;
-      authorizedKeysInHomedir = true;
-      settings = {
-        PasswordAuthentication = false;
-        KbdInteractiveAuthentication = false;
-        PermitRootLogin = "without-password";
-      };
-    };
-  };
-  flake.modules.homeManager.ssh =
+  den.aspects.ssh.homeManager =
     {
       config,
       ...

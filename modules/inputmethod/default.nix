@@ -1,6 +1,6 @@
-{ inputs, ... }:
+{ inputs, den, ... }:
 {
-  flake.modules.homeManager.inputmethod =
+  den.aspects.inputmethod.inputmethod =
     {
       pkgs,
       lib,

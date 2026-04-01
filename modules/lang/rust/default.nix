@@ -1,5 +1,5 @@
 {
-  flake.modules.homeManager.rust =
+  den.aspects.rust.rust =
     { pkgs, ... }:
     {
       home.packages = with pkgs; [

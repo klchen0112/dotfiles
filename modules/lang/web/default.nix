@@ -1,5 +1,5 @@
 {
-  flake.modules.homeManager.web =
+  den.aspects.web.web =
     { pkgs, ... }:
     {
       home.packages = with pkgs; [

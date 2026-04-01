@@ -1,5 +1,5 @@
 {
-  flake.modules.homeManager.media =
+  den.aspects.media =
     { pkgs, ... }:
     {
       programs.mpv = {

@@ -1,5 +1,5 @@
 {
-  flake.modules.homeManager.syncthing =
+  den.aspects.syncthing.homeManager =
     {
       pkgs,
       ...

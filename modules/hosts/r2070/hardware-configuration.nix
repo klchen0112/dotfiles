@@ -1,5 +1,5 @@
 {
-  flake.modules.nixos.r2070 =
+  den.aspects.r2070.nixos =
     {
       config,
       lib,

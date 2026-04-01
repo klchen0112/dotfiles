@@ -1,5 +1,5 @@
 {
-  flake.modules.homeManager.zsh =
+  den.aspects.zsh.hmDarwin =
     {
       ...
     }:

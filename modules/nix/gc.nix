@@ -9,8 +9,10 @@ let
   };
 in
 {
-  flake.modules.homeManager.nix = cfg;
-  flake.modules.darwin.nix = cfg;
-  flake.modules.nixos.nix = cfg;
+  den.aspects.nix = {
+    homeManager = cfg;
+    darwin = cfg;
+    nixos = cfg;
+  };
 
 }

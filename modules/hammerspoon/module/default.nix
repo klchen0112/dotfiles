@@ -1,5 +1,5 @@
 {
-  flake.modules.homeManager.hammerspoon =
+  den.aspects.hammerspoon =
     {
       lib,
       pkgs,

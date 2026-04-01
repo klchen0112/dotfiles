@@ -1,5 +1,5 @@
 {
-  flake.modules.homeManager.k8s =
+  den.aspects.k8s.k8s =
     { pkgs, ... }:
     {
       home.packages = with pkgs; [
