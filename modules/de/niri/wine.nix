@@ -1,5 +1,5 @@
 {
-  den.aspects.wine.homeManager=
+  den.aspects.wine.homeManager =
     { pkgs, ... }:
     {
       home.packages = with pkgs; [

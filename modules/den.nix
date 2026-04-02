@@ -53,5 +53,8 @@ in
     (inputs.den.flakeModules.dendritic or { })
   ];
 
-  den.ctx.user.includes = [ roleClass den._.mutual-provider];
+  den.ctx.user.includes = [
+    roleClass
+    den._.mutual-provider
+  ];
 }

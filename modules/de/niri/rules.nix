@@ -1,7 +1,7 @@
 {
   den.aspects.niri-home.niri-home =
 
-    { config,... }:
+    { config, ... }:
     let
       windowRules = [
         {

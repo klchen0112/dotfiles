@@ -1,4 +1,5 @@
-{inputs,...}:{
+{ inputs, ... }:
+{
   flake-file.inputs = {
     nix-index-database = {
       inputs.nixpkgs.follows = "nixpkgs";
@@ -6,7 +7,7 @@
     };
   };
   den.aspects.nix-index.homeManager =
-    {  ... }:
+    { ... }:
     {
       imports = [
         # NOTE: The nix-index DB is slow to search, until
