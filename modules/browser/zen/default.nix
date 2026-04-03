@@ -16,7 +16,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
-  den.aspects.zen.homeManager =
+  den.aspects.zen.zen =
     {
       pkgs,
       config,

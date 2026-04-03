@@ -78,6 +78,7 @@
         noctalia-shell
         niri-home
         ghostty
+        zen
       ]);
     };
 
