@@ -100,7 +100,7 @@
 
       home.packages = with pkgs; [
         inetutils
-        nodePackages.prettier
+        prettier
         shfmt
         shellcheck
         choose
