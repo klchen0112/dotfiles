@@ -1,3 +1,4 @@
+{ inputs, ... }:
 {
   den.aspects.ghostty.ghostty =
     {
@@ -6,6 +7,9 @@
       ...
     }:
     {
+      nixpkgs.overlays = [
+        inputs.brew-nix.overlays.default
+      ];
       stylix.targets.ghostty.enable = true;
       programs.ghostty = {
         enable = true;

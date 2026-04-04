@@ -46,6 +46,10 @@
   den.default.homeManager = {
     home.stateVersion = "25.11";
   };
+  den.default.darwin = {
+     system.stateVersion = 6;
+     home-manager.users.klchen.home.homeDirectory = "/Users/klchen";
+  };
 
   # enable hm by default
   den.schema.user.classes = lib.mkDefault [ "homeManager" ];

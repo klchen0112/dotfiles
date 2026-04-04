@@ -25,6 +25,7 @@
       _module.args.pkgs = import inputs.nixpkgs {
         inherit system;
         config = {
+          cudaSupport = true;
           allowUnfree = true;
           allowUnsupportedSystem = false;
         };

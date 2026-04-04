@@ -14,27 +14,36 @@
         "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFNgI2fAHSDQCB+DgZPsjGF+arPudVmWS4hTXbJCvwwX klchen@a99r50"
       ];
     in
+    { lib, pkgs, ... }:
     {
       user = {
-        isNormalUser = true;
+
         createHome = true;
-        extraGroups = [
-          "audio"
-          "input"
-          "networkmanager"
-          "sound"
-          "tty"
-          "wheel"
-        ];
+
         openssh.authorizedKeys.keys = keys;
-
-        initialHashedPassword = "$y$j9T$WX1yl8edHz32y77s640GV.$M1U0keGszxKa9efTMnTG/VJAIOqtDj0mPEToL6cBF13";
-
       };
-      os = {
+      nixos = {
         services.openssh.settings.AllowUsers = [ "klchen" ];
         users.users.root.openssh.authorizedKeys.keys = keys;
         nix.settings.trusted-users = [ "klchen" ];
+        users.users.klchen = {
+          initialHashedPassword = "$y$j9T$WX1yl8edHz32y77s640GV.$M1U0keGszxKa9efTMnTG/VJAIOqtDj0mPEToL6cBF13";
+          isNormalUser = true;
+          extraGroups = [
+            "audio"
+            "input"
+            "networkmanager"
+            "sound"
+            "tty"
+            "wheel"
+          ];
+        };
+      };
+      hmLinux = {
+        programs.bash.enable = true;
+      };
+      hmLinux = {
+        programs.zsh.enable = true;
       };
       darwin = {
         programs.zsh.enable = true;
@@ -45,7 +54,7 @@
           nix.settings.trusted-users = [ "klchen" ];
           stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/solarized-light.yaml";
           home.username = lib.mkDefault " klchen";
-          home.homeDirectory = lib.mkDefault (
+          home.homeDirectory = lib.mkForce (
             if pkgs.stdenvNoCC.isDarwin then "/Users/klchen" else "/home/klchen"
           );
 
@@ -59,7 +68,6 @@
         };
       includes = [
         den.provides.primary-user
-
         #      (den.provides.user-shell "nu")
       ]
       ++ (with den.aspects; [
@@ -67,7 +75,7 @@
         python
         nushell
         bash
-        stylix
+        stylix-home
         starship
         utils
         git
@@ -79,6 +87,7 @@
         niri-home
         ghostty
         zen
+        paneru
       ]);
     };
 

@@ -8,7 +8,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
-  den.aspects.stylix.homeManager =
+  den.aspects.stylix-home.stylix-home =
     {
       config,
       pkgs,
@@ -32,8 +32,8 @@
       imports = [
         inputs.stylix.darwinModules.stylix
       ];
-      homeManagerIntegration.autoImport = false;
-      homeManagerIntegration.followSystem = false;
+      stylix.homeManagerIntegration.autoImport = false;
+      stylix.homeManagerIntegration.followSystem = false;
     };
   den.aspects.stylix.nixos =
     {

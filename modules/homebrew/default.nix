@@ -82,9 +82,4 @@
         ];
       };
     };
-  den.aspects.homebrew.homeManager = {
-    nixpkgs.overlays = [
-      inputs.brew-nix.overlays.default
-    ];
-  };
 }

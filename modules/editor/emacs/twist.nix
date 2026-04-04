@@ -18,7 +18,7 @@
     }:
     {
       imports = [ inputs.emacs-config.homeModules.twist ];
-      home.packages = with pkgs; [ ] ++ (lib.optionals pkgs.stdenv.isDarwin [ local.org-reminders ]);
+      # home.packages = with pkgs; [ ] ++ (lib.optionals pkgs.stdenv.isDarwin [ local.org-reminders ]);
       programs.emacs-twist = {
         enable = true;
         settings = {

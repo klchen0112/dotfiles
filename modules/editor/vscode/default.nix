@@ -1,3 +1,4 @@
+{ inputs, ... }:
 {
   flake-file.inputs = {
     nix-vscode-extensions = {
@@ -19,7 +20,9 @@
         noto-fonts-cjk-sans
         overpass
       ];
-
+      nixpkgs.overlays = [
+        inputs.nix-vscode-extensions.overlays.default
+      ];
       stylix.targets.vscode.enable = true;
       programs.vscode = {
         enable = true;
