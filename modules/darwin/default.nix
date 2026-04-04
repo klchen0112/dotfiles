@@ -2,8 +2,8 @@
 {
   flake-file.inputs = {
     #  MacOS
-    nix-darwin.url = "github:nix-darwin/nix-darwin/master";
-    nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
+    darwin.url = "github:nix-darwin/nix-darwin/master";
+    darwin.inputs.nixpkgs.follows = "nixpkgs";
     srvos = {
       url = "github:nix-community/srvos";
       inputs.nixpkgs.follows = "nixpkgs";

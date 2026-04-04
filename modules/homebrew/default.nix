@@ -5,7 +5,7 @@
       url = "github:BatteredBunny/brew-nix";
       inputs = {
         nixpkgs.follows = "nixpkgs";
-        nix-darwin.follows = "nix-darwin";
+        nix-darwin.follows = "darwin";
       };
     };
   };

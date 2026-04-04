@@ -6,7 +6,7 @@
       inputs = {
         nixpkgs.follows = "nixpkgs";
         home-manager.follows = "home-manager";
-        darwin.follows = "nix-darwin";
+        darwin.follows = "darwin";
       };
     };
   };

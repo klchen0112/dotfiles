@@ -1,17 +1,14 @@
 # DO-NOT-EDIT. This file was auto-generated using github:vic/flake-file.
 # Use `nix run .#write-flake` to regenerate it.
 {
-
   outputs = inputs: inputs.flake-parts.lib.mkFlake { inherit inputs; } (inputs.import-tree ./modules);
 
   nixConfig = {
-    allow-import-from-derivation = true;
     accept-flake-config = true;
+    allow-import-from-derivation = true;
     auto-optimise-store = true;
     lazy-trees = true;
     submodules = true;
-    use-xdg-base-directories = true;
-
     substituters = [
       "https://mirrors.cernet.edu.cn/nix-channels/store?priority=0"
       "https://nix-community.cachix.org?priority=1"
@@ -34,135 +31,134 @@
       "https://niri.cachix.org"
       "https://klchen0112.cachix.org"
     ];
+    use-xdg-base-directories = true;
   };
 
   inputs = {
-
     agenix = {
+      url = "github:ryantm/agenix";
       inputs = {
-        darwin.follows = "nix-darwin";
+        darwin.follows = "darwin";
         home-manager.follows = "home-manager";
         nixpkgs.follows = "nixpkgs";
       };
-      url = "github:ryantm/agenix";
     };
     brew-nix = {
+      url = "github:BatteredBunny/brew-nix";
       inputs = {
-        nix-darwin.follows = "nix-darwin";
+        nix-darwin.follows = "darwin";
         nixpkgs.follows = "nixpkgs";
       };
-      url = "github:BatteredBunny/brew-nix";
     };
     chinese-fonts-overlay.url = "github:brsvh/chinese-fonts-overlay";
-    deploy-rs = {
+    darwin = {
+      url = "github:nix-darwin/nix-darwin/master";
       inputs.nixpkgs.follows = "nixpkgs";
+    };
+    den.url = "github:vic/den";
+    deploy-rs = {
       url = "github:serokell/deploy-rs";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
     devshell = {
-      inputs.nixpkgs.follows = "nixpkgs";
       url = "github:numtide/devshell";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
     disko = {
-      inputs.nixpkgs.follows = "nixpkgs";
       url = "github:nix-community/disko";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
     emacs-config = {
+      url = "github:klchen0112/.emacs.d";
       inputs = {
         flake-parts.follows = "flake-parts";
         nixpkgs.follows = "nixpkgs";
       };
-      url = "github:klchen0112/.emacs.d";
     };
     emacs-overlay.follows = "emacs-config/emacs-overlay";
     firefox-addons = {
-      inputs.nixpkgs.follows = "nixpkgs";
       url = "github:osipog/nix-firefox-addons";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
-    den.url = "github:vic/den";
     flake-file.url = "github:vic/flake-file";
     flake-parts = {
-      inputs.nixpkgs-lib.follows = "nixpkgs-lib";
       url = "github:hercules-ci/flake-parts";
+      inputs.nixpkgs-lib.follows = "nixpkgs-lib";
     };
     flake-utils.url = "github:numtide/flake-utils";
     git-hooks = {
-      inputs.nixpkgs.follows = "nixpkgs";
       url = "github:cachix/git-hooks.nix";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
     home-manager = {
-      inputs.nixpkgs.follows = "nixpkgs";
       url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
     import-tree.url = "github:vic/import-tree";
     niri = {
+      url = "github:sodiboo/niri-flake";
       inputs = {
         nixpkgs.follows = "nixpkgs";
         nixpkgs-stable.follows = "nixpkgs-stable";
       };
-      url = "github:sodiboo/niri-flake";
-    };
-    nix-darwin = {
-      inputs.nixpkgs.follows = "nixpkgs";
-      url = "github:nix-darwin/nix-darwin/master";
     };
     nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=latest";
     nix-index-database = {
-      inputs.nixpkgs.follows = "nixpkgs";
       url = "github:nix-community/nix-index-database";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
     nix-vscode-extensions = {
-      inputs.nixpkgs.follows = "nixpkgs";
       url = "github:nix-community/nix-vscode-extensions";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
     nixos-wsl = {
-      inputs.nixpkgs.follows = "nixpkgs";
       url = "github:nix-community/nixos-wsl";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
     nixpkgs.url = "git+https://github.com/nixos/nixpkgs?shallow=1&ref=nixos-unstable";
     nixpkgs-lib.follows = "nixpkgs";
     nixpkgs-stable.url = "git+https://github.com/nixos/nixpkgs?shallow=1&ref=release-25.11";
     nixpkgs-unstable.url = "git+https://github.com/nixos/nixpkgs?shallow=1&ref=nixpkgs-unstable";
     noctalia-shell = {
-      inputs.nixpkgs.follows = "nixpkgs";
       url = "github:noctalia-dev/noctalia-shell";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
     nur = {
+      url = "github:nix-community/NUR";
       inputs = {
         flake-parts.follows = "flake-parts";
         nixpkgs.follows = "nixpkgs";
       };
-      url = "github:nix-community/NUR";
     };
     paneru = {
-      inputs.nixpkgs.follows = "nixpkgs";
       url = "github:karinushka/paneru";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
     pkgs-by-name-for-flake-parts.url = "github:drupol/pkgs-by-name-for-flake-parts";
     srvos = {
-      inputs.nixpkgs.follows = "nixpkgs";
       url = "github:nix-community/srvos";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
     stylix = {
+      url = "github:nix-community/stylix";
       inputs = {
         flake-parts.follows = "flake-parts";
         nixpkgs.follows = "nixpkgs";
         nur.follows = "nur";
       };
-      url = "github:nix-community/stylix";
     };
     systems.url = "github:nix-systems/default";
     treefmt-nix = {
-      inputs.nixpkgs.follows = "nixpkgs";
       url = "github:numtide/treefmt-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
     zen-browser = {
+      url = "github:0xc000022070/zen-browser-flake";
       inputs = {
         home-manager.follows = "home-manager";
         nixpkgs.follows = "nixpkgs";
       };
-      url = "github:0xc000022070/zen-browser-flake";
     };
   };
-
 }
