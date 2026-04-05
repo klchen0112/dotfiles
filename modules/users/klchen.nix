@@ -88,6 +88,7 @@
         ghostty
         zen
         paneru
+        llm
       ]);
     };
 

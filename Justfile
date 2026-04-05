@@ -39,7 +39,7 @@ switch-macos HOST=`hostname`:
 
 # NixOS 构建命令
 switch-linux HOST=`hostname`:
-    sudo nixos-rebuild switch --flake .#"{{ HOST }}"
+    nixos-rebuild switch --sudo --flake .#"{{ HOST }}"
 
 [group('dev')]
 disko-install arg1:
