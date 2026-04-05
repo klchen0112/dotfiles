@@ -35,8 +35,8 @@
             port = 443;
             user = "git";
           };
-          r2070 = {
-            hostname = "r2070.klchen.duckdns.org";
+          a2700 = {
+            hostname = "a2700.klchen.duckdns.org";
             port = 22;
             user = "klchen";
           };
@@ -55,10 +55,10 @@
             port = 22;
             user = "root";
           };
-          i12r20 = {
+          i12400 = {
             # hostkeyAlgorithms = "+ssh-rsa";
             # pubkeyAcceptedAlgorithms = "+ssh-rsa";
-            hostname = "i12r20.klchen.duckdns.org";
+            hostname = "i12400.klchen.duckdns.org";
             port = 22;
             user = "klchen";
           };

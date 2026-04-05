@@ -25,6 +25,7 @@ in
       "java"
       "media"
       "niri-home"
+      "stylix-home"
     ];
     users = {
       klchen.roles = [
@@ -47,6 +48,7 @@ in
         "python"
         "java"
         "media"
+        "stylix-home"
       ];
     };
     klchen = { };
@@ -56,7 +58,7 @@ in
     nixos =
       { pkgs, ... }:
       {
-        boot.kernelPackages =  pkgs.cachyosKernels.linuxPackages-cachyos-lts-lto-zen4;
+        boot.kernelPackages = pkgs.cachyosKernels.linuxPackages-cachyos-lts-lto-zen4;
 
         imports = [
           inputs.nixos-hardware.nixosModules.common-cpu-amd
@@ -136,8 +138,9 @@ in
         font
         keyboard
         flatpak
-        #k3s-node
-        #k3s-nvidia
+        k3s
+        k3s-node
+        k3s-nvidia
         nvidia
         niri
         persist

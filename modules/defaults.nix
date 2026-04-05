@@ -22,7 +22,11 @@
         settings = {
           PasswordAuthentication = false;
           KbdInteractiveAuthentication = false;
-          PermitRootLogin = "without-password";
+          PermitRootLogin = "prohibit-password";
+          AllowUsers = [
+            "klchen"
+            "root"
+          ];
         };
       };
       #  zramSwap.enable = true;
@@ -54,8 +58,8 @@
     home.stateVersion = "25.11";
   };
   den.default.darwin = {
-     system.stateVersion = 6;
-     home-manager.users.klchen.home.homeDirectory = "/Users/klchen";
+    system.stateVersion = 6;
+    home-manager.users.klchen.home.homeDirectory = "/Users/klchen";
   };
 
   # enable hm by default

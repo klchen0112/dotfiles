@@ -1,5 +1,5 @@
 {
-  den.aspects.r2070.nixos =
+  den.aspects.a2700.nixos =
     {
       config,
       lib,

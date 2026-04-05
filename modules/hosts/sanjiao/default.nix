@@ -7,11 +7,12 @@ in
 
   den.hosts.x86_64-linux.${machine} = {
     roles = [
-      "emacs-twist"
+      "stylix-home"
+
     ];
     users = {
       klchen.roles = [
-        "emacs-twist"
+        "stylix-home"
 
       ];
     };
@@ -25,7 +26,9 @@ in
 
       includes = with den.aspects; [
         font
-        #        k3s-master
+        k3s
+        k3s-master
+        k3s-master-init
         stylix
       ];
       nixos =

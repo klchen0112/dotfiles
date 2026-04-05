@@ -1,6 +1,6 @@
 { inputs, ... }:
 {
-  den.aspects.r2070.nixos = {
+  den.aspects.a2700.nixos = {
     imports = [
       inputs.disko.nixosModules.disko
     ];

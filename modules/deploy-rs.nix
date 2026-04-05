@@ -20,8 +20,8 @@ in {
     nodes = {
       a99r50 = mkNode "a99r50" inputs.self.nixosConfigurations.a99r50;
       sanjiao = mkNode "sanjiao" inputs.self.nixosConfigurations.sanjiao;
-      i12r20 = mkNode "i12r20" inputs.self.nixosConfigurations.i12r20;
-      r2070 = mkNode "r2070" inputs.self.nixosConfigurations.r2070;
+      i12400 = mkNode "i12400" inputs.self.nixosConfigurations.i12400;
+      a2700 = mkNode "a2700" inputs.self.nixosConfigurations.a2700;
     };
   };
 

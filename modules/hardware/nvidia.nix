@@ -7,7 +7,7 @@
     }:
     {
       hardware.graphics = {
-        enable = true;
+        enable = lib.mkDefault true;
       };
       services.xserver.videoDrivers = [ "nvidia" ];
       # Load nvidia driver for Xorg and Wayland
