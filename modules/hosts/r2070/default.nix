@@ -3,25 +3,27 @@ let
 in
 {
   inputs,
-  config,
+  den,
   ...
 }:
 {
   #   sshKey = [      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAsw5gk6koAb2D1SYnHt3jhYLNCWChR6eFKJ3vPO3tZY"];
-  den.aspects.${machine} =
-    { den, lib, ... }:
-    {
-      den.hosts.x86_64-linux.${machine} = {
-        roles = [
-          "emacs-twist"
-        ];
-        users = {
-          klchen.roles = [
-            "emacs-twist"
+  den.hosts.x86_64-linux.${machine} = {
+    roles = [
+      "emacs-twist"
+    ];
+    users = {
+      klchen.roles = [
+        "emacs-twist"
 
-          ];
-        };
-      };
+      ];
+    };
+    klchen = { };
+  };
+
+  den.aspects.${machine} =
+    { lib, ... }:
+    {
 
       includes = with den.aspects; [
         font
@@ -36,6 +38,8 @@ in
           ...
         }:
         {
+          networking.hostName = "${machine}";
+
           hardware.nvidia = {
             open = lib.mkForce false;
             modesetting.enable = true;
@@ -52,7 +56,6 @@ in
 
           stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/solarized-light.yaml";
 
-          hardware.intelgpu.vaapiDriver = "intel-media-driver";
           # Bootloader.
           boot.loader.systemd-boot.enable = true;
           boot.loader.efi.canTouchEfiVariables = true;

@@ -56,6 +56,8 @@ in
     nixos =
       { pkgs, ... }:
       {
+        boot.kernelPackages =  pkgs.cachyosKernels.linuxPackages-cachyos-lts-lto-zen4;
+
         imports = [
           inputs.nixos-hardware.nixosModules.common-cpu-amd
           inputs.nixos-hardware.nixosModules.common-cpu-amd-zenpower
@@ -66,6 +68,7 @@ in
           inputs.nixos-hardware.nixosModules.common-hidpi
           inputs.srvos.nixosModules.mixins-terminfo
         ];
+        hardware.nvidia.primeBatterySaverSpecialisation = true;
         stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/solarized-light.yaml";
         boot.kernelParams = [
           # Since NVIDIA does not load kernel mode setting by default,
