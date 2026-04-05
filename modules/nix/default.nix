@@ -15,12 +15,12 @@
           nix-fast-build
           devenv
         ];
-  
-
+        nixpkgs.overlays = [
+          inputs.self.overlays.default
+        ];
       };
     nixos = {
       programs.nix-ld.enable = true;
-
     };
     os = {
       environment.etc."nix/inputs/nixpkgs".source = "${inputs.nixpkgs}";

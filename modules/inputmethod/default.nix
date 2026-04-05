@@ -1,6 +1,6 @@
 { inputs, den, ... }:
 {
-  den.aspects.inputmethod.inputmethod =
+  den.aspects.inputmethod.homeManager =
     {
       pkgs,
       lib,

@@ -89,6 +89,7 @@
         zen
         paneru
         llm
+        inputmethod
       ]);
     };
 
