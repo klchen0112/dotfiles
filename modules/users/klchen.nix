@@ -90,6 +90,7 @@
         paneru
         llm
         inputmethod
+        k8s
       ]);
     };
 
