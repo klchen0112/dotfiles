@@ -1,5 +1,5 @@
 {
-  den.aspects.chrome =
+  den.aspects.chrome.chrome =
     {
       pkgs,
       ...

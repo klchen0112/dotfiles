@@ -39,17 +39,14 @@
       boot.kernelPackages = lib.mkDefault pkgs.cachyosKernels.linuxPackages-cachyos-lts-lto-x86_64-v4;
     };
   den.default.wsl = {
-    system.stateVersion = "25.11";
-    services.openssh.enable = true;
-    time.timeZone = "Asia/Shanghai";
-    wsl = {
-      enable = true;
-      wslConf.automount.root = "/mnt";
-      wslConf.interop.appendWindowsPath = false;
-      wslConf.network.generateHosts = false;
+    # system.stateVersion = "25.11";
+    # time.timeZone = "Asia/Shanghai";
+    enable = true;
+    wslConf.automount.root = "/mnt";
+    wslConf.interop.appendWindowsPath = false;
+    wslConf.network.generateHosts = false;
 
-      startMenuLaunchers = true;
-    };
+    startMenuLaunchers = true;
     # home-manager.backupFileExtension = "hmbp";
 
   };

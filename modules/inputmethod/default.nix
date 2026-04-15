@@ -1,6 +1,6 @@
 { inputs, den, ... }:
 {
-  den.aspects.inputmethod.homeManager =
+  den.aspects.inputmethod.inputmethod =
     {
       pkgs,
       lib,
@@ -33,7 +33,7 @@
         enable = pkgs.stdenv.isLinux;
         type = "fcitx5";
         fcitx5.addons = with pkgs; [
-          (fcitx5-rime.override {
+          (fcitx5-rime.verride {
             rimeDataPkgs = [
               pkgs.local.rime-combo-snow-pinyin
               pkgs.rime-data
