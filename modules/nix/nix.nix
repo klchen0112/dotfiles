@@ -39,7 +39,7 @@ let
 in
 {
   den.aspects.nix = {
-    homeManager = cfg;
+    provides.to-users.homeManager = cfg;
     darwin = cfg;
     nixos = cfg;
   };

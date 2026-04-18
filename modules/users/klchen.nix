@@ -17,18 +17,17 @@
     { lib, pkgs, ... }:
     {
       user = {
-
         createHome = true;
-
         openssh.authorizedKeys.keys = keys;
       };
       nixos = {
         services.openssh.settings.AllowUsers = [ "klchen" ];
         users.users.root.openssh.authorizedKeys.keys = keys;
-        nix.settings.trusted-users = [ "klchen" ];
+        users.users.klchen.isNormalUser = true;
+        programs.bash.enable = true;
         users.users.klchen = {
           initialHashedPassword = "$y$j9T$WX1yl8edHz32y77s640GV.$M1U0keGszxKa9efTMnTG/VJAIOqtDj0mPEToL6cBF13";
-          isNormalUser = true;
+          group = "klchen";
           extraGroups = [
             "audio"
             "input"
@@ -42,16 +41,18 @@
       hmLinux = {
         programs.bash.enable = true;
       };
-      hmLinux = {
+      hmDarwin = {
         programs.zsh.enable = true;
       };
       darwin = {
         programs.zsh.enable = true;
       };
+      os = {
+        nix.settings.trusted-users = [ "klchen" ];
+      };
       homeManager =
         { pkgs, lib, ... }:
         {
-          nix.settings.trusted-users = [ "klchen" ];
           stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/solarized-light.yaml";
           home.username = lib.mkDefault " klchen";
           home.homeDirectory = lib.mkForce (
@@ -71,8 +72,9 @@
         #      (den.provides.user-shell "nu")
       ]
       ++ (with den.aspects; [
-        nix
+        hmPlatforms
         python
+        java
         nushell
         bash
         stylix-home

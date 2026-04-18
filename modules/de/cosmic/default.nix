@@ -11,7 +11,7 @@
       ];
       # Clipboard Manager not working
       environment.sessionVariables.COSMIC_DATA_CONTROL_ENABLED = 1;
-
+      xdg.portal.enable = true;
       # COSMIC Utilities - Observatory not working
       systemd.packages = [ pkgs.observatory ];
       systemd.services.monitord.wantedBy = [ "multi-user.target" ];

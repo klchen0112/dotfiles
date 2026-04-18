@@ -33,7 +33,7 @@
         enable = pkgs.stdenv.isLinux;
         type = "fcitx5";
         fcitx5.addons = with pkgs; [
-          (fcitx5-rime.verride {
+          (fcitx5-rime.override {
             rimeDataPkgs = [
               pkgs.local.rime-combo-snow-pinyin
               pkgs.rime-data

@@ -10,6 +10,12 @@
         enable = true;
         package = pkgs.gradle_7;
       };
+      programs.sbt = {
+        enable = true;
+      };
+      home.packages = with pkgs; [
+        maven3
+      ];
       nixpkgs.config.permittedInsecurePackages = [
         "gradle-7.6.6"
       ];

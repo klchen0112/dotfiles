@@ -5,51 +5,8 @@ in
 {
 
   den.hosts.x86_64-linux.${machine} = {
-    roles = [
-      "llm"
-      "python"
-      "noctalia-shell"
-      "emacs-twist"
-      "zen"
-      "ghostty"
-      "aria2"
-      "kitty"
-      "syncthing"
-      "vscode"
-      "flatpak"
-      "im"
-      "office"
-      "latex"
-      "python"
-      "java"
-      "media"
-      "niri-home"
-      "stylix-home"
-    ];
-    users = {
-      klchen.roles = [
-        "niri-home"
-        "llm"
-        "python"
-        "noctalia-shell"
-        "emacs-twist"
-        "zen"
-        "ghostty"
-        "aria2"
-        "kitty"
-        "syncthing"
-        "vscode"
-        "flatpak"
-        "im"
-        "office"
-        "latex"
-        "python"
-        "java"
-        "media"
-        "stylix-home"
-      ];
-    };
-    klchen = { };
+    users.klchen = {};
+    users.root = {};
   };
 
   den.aspects.${machine} = {
@@ -69,7 +26,7 @@ in
           inputs.srvos.nixosModules.mixins-terminfo
         ];
         hardware.nvidia.primeBatterySaverSpecialisation = true;
-        stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/solarized-light.yaml";
+        # stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/solarized-light.yaml";
         boot.kernelParams = [
           # Since NVIDIA does not load kernel mode setting by default,
           # enabling it is required to make Wayland compositors function properly.
@@ -80,6 +37,7 @@ in
         boot.loader.systemd-boot.enable = true;
         environment.systemPackages = with pkgs; [
           pciutils
+          git
         ];
         # Load nvidia driver for Xorg and Wayland
         hardware.graphics = {
@@ -128,20 +86,24 @@ in
             amdgpuBusId = "PCI:12:0:0";
           };
         };
+        users.users.klchen.isNormalUser = true;
       };
     includes =
       with den.aspects;
       [
-        stylix
         font
-        keyboard
+        # keyboard
         flatpak
         k3s
         k3s-node
         k3s-nvidia
         nvidia
         niri
+        noctalia-shell
+        # stylix
+        emacs-twist
         persist
+        nix
       ]
       ++ [
 

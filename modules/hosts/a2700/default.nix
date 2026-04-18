@@ -16,7 +16,7 @@ in
     users = {
       klchen.roles = [
         "emacs-twist"
-              "stylix-home"
+        "stylix-home"
 
       ];
     };

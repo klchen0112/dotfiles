@@ -19,7 +19,7 @@
         SDL_VIDEODRIVER = "wayland";
         XDG_SESSION_TYPE = "wayland";
         # for hyprland with nvidia gpu" = " ref https://wiki.hyprland.org/Nvidia/
-        "LIBVA_DRIVER_NAME" = "nvidia";
+        "LIBVA_RIVER_NAME" = "nvidia";
         "__GLX_VENDOR_LIBRARY_NAME" = "nvidia";
         # VA-API hardware video acceleration
         "NVD_BACKEND" = "direct";
@@ -29,6 +29,7 @@
       };
       imports = [
         inputs.niri.nixosModules.niri
+
       ];
       programs.niri.enable = true;
       programs.niri.package = pkgs.niri;

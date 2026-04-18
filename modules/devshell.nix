@@ -29,7 +29,7 @@
             just
             nil
             nix-output-monitor
-
+ git
           ]
           ++ (lib.optional pkgs.stdenv.isLinux [
             deploy-rs.deploy-rs

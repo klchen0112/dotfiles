@@ -1,5 +1,5 @@
-{inputs,...}:
-let 
+{ inputs, ... }:
+let
 
   mkNode =
     name: cfg:
@@ -15,7 +15,8 @@ let
         path = deployLib.activate.nixos cfg;
       };
     };
-in {
+in
+{
   flake.deploy = {
     nodes = {
       a99r50 = mkNode "a99r50" inputs.self.nixosConfigurations.a99r50;

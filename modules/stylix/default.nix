@@ -8,7 +8,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
-  den.aspects.stylix-home.stylix-home =
+  den.aspects.stylix.provides.to-users.homeManager =
     {
       config,
       pkgs,
