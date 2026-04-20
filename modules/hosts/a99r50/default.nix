@@ -5,8 +5,8 @@ in
 {
 
   den.hosts.x86_64-linux.${machine} = {
-    users.klchen = {};
-    users.root = {};
+    users.klchen = { };
+    users.root = { };
   };
 
   den.aspects.${machine} = {

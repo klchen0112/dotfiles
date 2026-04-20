@@ -8,40 +8,43 @@ in
 }:
 {
   #  sshKey = [    "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIC9ZvdIrZP9su70iBKgCB0QOY0kL9Z9qu3B9Of05VS5a"];
-  den.hosts.aarch64-darwin.${machine} =
-    let
-      common_roles = [
-        "python"
-        "emacs-twist"
-        "zen"
-        "inputmethod"
-        "ghostty"
-        "aria2"
-        "kitty"
-        "syncthing"
-        "vscode"
-        "im"
-        "latex"
-        "python"
-        "paneru"
-        "vscode"
-        "stylix-home"
-      ];
-    in
-    {
+  den.hosts.aarch64-darwin.${machine} = {
+    # roles = [
+    #   "emacs-twist"
+    #   #"zen"
+    #   #"inputmethod"
+    #   "ghostty"
+    #   #"python"
+    # ];
+    roles = [
+          #"stylix-home"
+        ];
+    users = {
+      klchen = {
+        roles = [
+          #"stylix-home"
+        ];
+        # roles = [
+        #   "emacs-twist"
+        #   #"zen"
+        #   #"inputmethod"
+        #   "ghostty"
+        #   #"python"
+        #   #"aria2"
+        #   #"kitty"
+        #   #"syncthing"
+        #   #"vscode"
+        # ];
 
-      roles = common_roles;
-      users = {
-        klchen.roles = common_roles;
       };
-      klchen = { };
     };
+  };
 
   den.aspects.${machine} = {
     includes = with den.aspects; [
       homebrew
       stylix
-      klchen
+      nix
     ];
     darwin =
       { pkgs, lib, ... }:

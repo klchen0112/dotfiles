@@ -6,7 +6,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
-  den.aspects.vscode.homeManager =
+  den.aspects.vscode.provides.mbp-m1 =
     {
       pkgs,
       config,

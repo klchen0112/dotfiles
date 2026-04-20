@@ -28,5 +28,6 @@
   imports = [
     inputs.home-manager.flakeModules.home-manager
   ];
-
+  den.hosts.aarch64-darwin.mbp-m1.users.klchen = { };
+  den.homes.aarch64-darwin."klchen@mbp-m1" = { };
 }

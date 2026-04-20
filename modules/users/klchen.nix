@@ -1,6 +1,8 @@
 {
   den,
   inputs,
+  # deadnix: skip # enable <den/brackets> syntax for demo.
+  __findFile,
   ...
 }:
 {
@@ -14,7 +16,6 @@
         "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFNgI2fAHSDQCB+DgZPsjGF+arPudVmWS4hTXbJCvwwX klchen@a99r50"
       ];
     in
-    { lib, pkgs, ... }:
     {
       user = {
         createHome = true;
@@ -38,21 +39,18 @@
           ];
         };
       };
-      hmLinux = {
-        programs.bash.enable = true;
-      };
-      hmDarwin = {
-        programs.zsh.enable = true;
-      };
-      darwin = {
-        programs.zsh.enable = true;
-      };
       os = {
         nix.settings.trusted-users = [ "klchen" ];
       };
       homeManager =
         { pkgs, lib, ... }:
         {
+          imports = [
+            inputs.stylix.homeModules.stylix
+          ];
+          #programs.bash.enable = pkgs.stdenv.isLinux;
+          #programs.zsh.enable = pkgs.stdenv.isDarwin;
+          nix.settings.trusted-users = [ "klchen" ];
           stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/solarized-light.yaml";
           home.username = lib.mkDefault " klchen";
           home.homeDirectory = lib.mkForce (
@@ -68,32 +66,33 @@
 
         };
       includes = [
+        den.provides.define-user
         den.provides.primary-user
         #      (den.provides.user-shell "nu")
       ]
-      ++ (with den.aspects; [
-        hmPlatforms
-        python
-        java
-        nushell
-        bash
-        stylix-home
-        starship
-        utils
-        git
-        ssh
-        nix-index
-        font
-        emacs-twist
-        noctalia-shell
-        niri-home
-        ghostty
-        zen
-        paneru
-        llm
-        inputmethod
-        k8s
-      ]);
+      ++ [
+        # <hmPlatforms>
+        #<stylix-home>
+        #<python>
+        #<java>
+        #<nushell>
+        #<bash>
+        #<zsh>
+        <starship>
+        <utils>
+        <git>
+        #<ssh>
+        #<nix-index>
+        #<emacs-twist>
+        #<noctalia-shell>
+        #<niri-home>
+        #<ghostty>
+        #<zen>
+        #<paneru>
+        #<llm>
+        #<inputmethod>
+        #<k8s>
+      ];
     };
 
 }

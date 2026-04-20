@@ -75,10 +75,11 @@
           "qmk-toolbox"
           "plexamp"
           "telegram"
-          "iterm2"
+          # "iterm2"
           # "docker"
           # "feishu"
           # "ghostty"
+          "vscodium"
         ];
       };
     };

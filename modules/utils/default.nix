@@ -22,7 +22,7 @@
         };
         enableSshSupport = true;
       };
-      stylix.targets.btop.enable = true;
+      # stylix.targets.btop.enable = true;
       programs.btop = {
         enable = true;
       };
@@ -37,7 +37,7 @@
         git = true;
       };
 
-      stylix.targets.bat.enable = true;
+      # stylix.targets.bat.enable = true;
       programs.bat = {
         enable = true;
         config = {
@@ -54,12 +54,12 @@
         ];
       };
 
-      stylix.targets.fzf.enable = true;
+      #stylix.targets.fzf.enable = true;
       programs.fzf = {
         enable = true;
       };
 
-      stylix.targets.tmux.enable = true;
+      #stylix.targets.tmux.enable = true;
       programs.tmux = {
         enable = true;
         # defaultKeyMode = "emacs";

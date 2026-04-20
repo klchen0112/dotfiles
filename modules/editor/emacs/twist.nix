@@ -10,7 +10,7 @@
       follows = "emacs-config/emacs-overlay";
     };
   };
-  den.aspects.emacs-twist.provides.to-users.homeManager =
+  den.aspects.emacs-twist.emacs-twist =
     {
       pkgs,
       lib,

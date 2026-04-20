@@ -6,7 +6,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
-  den.aspects.paneru.hmDarwin =
+  den.aspects.paneru.paneru =
     { ... }:
     {
       imports = [

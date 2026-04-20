@@ -1,6 +1,8 @@
 {
   lib,
   den,
+  # deadnix: skip # enable <den/brackets> syntax for demo.
+  __findFile,
   inputs,
   ...
 }:
@@ -58,10 +60,17 @@
     system.stateVersion = 6;
     home-manager.users.klchen.home.homeDirectory = "/Users/klchen";
   };
+  # These are functions that produce configs
+  den.default.includes = [
+    # ${user}.provides.${host} and ${host}.provides.${user}
+    <den/mutual-provider>
 
+    # Automatically set hostname
+    <den/hostname>
+
+    # Automatically create the user on host.
+    <den/define-user>
+  ];
   # enable hm by default
   den.schema.user.classes = lib.mkDefault [ "homeManager" ];
-
-  # host<->user provides
-  den.ctx.user.includes = [ den._.mutual-provider ];
 }
