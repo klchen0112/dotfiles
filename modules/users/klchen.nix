@@ -28,7 +28,6 @@
         programs.bash.enable = true;
         users.users.klchen = {
           initialHashedPassword = "$y$j9T$WX1yl8edHz32y77s640GV.$M1U0keGszxKa9efTMnTG/VJAIOqtDj0mPEToL6cBF13";
-          group = "klchen";
           extraGroups = [
             "audio"
             "input"
@@ -65,8 +64,9 @@
 
         };
       includes = [
-        den.provides.define-user
-        den.provides.primary-user
+
+        <den/define-user>
+        <den/primary-user>
         #      (den.provides.user-shell "nu")
       ]
       ++ [

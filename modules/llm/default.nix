@@ -37,7 +37,7 @@
         home.packages =
           with pkgs;
           [
-            llm-agents.opencode
+#            llm-agents.opencode
             llamaPackages.llama-cpp
             nvtopPackages.nvidia
           ]

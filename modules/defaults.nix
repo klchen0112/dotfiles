@@ -69,7 +69,7 @@
     <den/hostname>
 
     # Automatically create the user on host.
-    <den/define-user>
+    # <den/define-user>
   ];
   # enable hm by default
   den.schema.user.classes = lib.mkDefault [ "homeManager" ];
