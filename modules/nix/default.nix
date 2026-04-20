@@ -1,8 +1,10 @@
-{ inputs, ... }:
+{ inputs, den, ... }:
 {
   den.aspects.nix = {
-
-    homeManager =
+    includes = [
+      den.provides.mutual-provider
+    ];
+    provides.to-users.homeManager =
       { pkgs, ... }:
       {
         home.packages = with pkgs; [
@@ -24,9 +26,6 @@
     };
     os = {
       environment.etc."nix/inputs/nixpkgs".source = "${inputs.nixpkgs}";
-      nixpkgs.overlays = [
-        inputs.self.overlays.default
-      ];
     };
 
   };

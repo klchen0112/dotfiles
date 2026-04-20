@@ -1,5 +1,5 @@
 {
-  den.aspects.kitty.homeManager =
+  den.aspects.kitty.kitty =
     {
       pkgs,
       ...

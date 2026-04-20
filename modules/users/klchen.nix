@@ -48,8 +48,7 @@
           imports = [
             inputs.stylix.homeModules.stylix
           ];
-          #programs.bash.enable = pkgs.stdenv.isLinux;
-          #programs.zsh.enable = pkgs.stdenv.isDarwin;
+          nixpkgs.config.allowUnfree = true;
           nix.settings.trusted-users = [ "klchen" ];
           stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/solarized-light.yaml";
           home.username = lib.mkDefault " klchen";
@@ -66,6 +65,7 @@
 
         };
       includes = [
+        (den.provides.unfree [ "vscode" ])
         den.provides.define-user
         den.provides.primary-user
         #      (den.provides.user-shell "nu")
@@ -77,18 +77,20 @@
         #<java>
         #<nushell>
         #<bash>
-        #<zsh>
+        <zsh>
         <starship>
         <utils>
         <git>
+        <kitty>
         #<ssh>
         #<nix-index>
-        #<emacs-twist>
+        <emacs-twist>
+        <vscode>
         #<noctalia-shell>
         #<niri-home>
-        #<ghostty>
-        #<zen>
-        #<paneru>
+        <ghostty>
+        <zen>
+        <paneru>
         #<llm>
         #<inputmethod>
         #<k8s>

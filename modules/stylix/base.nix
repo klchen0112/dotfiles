@@ -42,7 +42,9 @@ let
     };
 in
 {
-  den.aspects.stylix.stylix = cfg;
+  den.aspects.stylix.provides.to-users = {
+    homeManager = cfg;
+  };
   den.aspects.stylix.darwin = cfg;
   den.aspects.stylix.nixos = cfg;
 }

@@ -15,6 +15,24 @@ let
       intoPath = _: [ ];
       fromAspect = _: lib.head aspect-chain;
     };
+  hmPlatforms =
+    { class, aspect-chain }:
+    den.provides.forward {
+      each = [
+        "Linux"
+        "Darwin"
+      ];
+      fromClass = platform: "hm${platform}";
+      intoClass = _: "homeManager";
+      intoPath = _: [ ];
+      fromAspect = _: lib.head aspect-chain;
+      guard = { pkgs, ... }: platform: lib.mkIf pkgs.stdenv."is${platform}";
+      adaptArgs =
+        { config, ... }:
+        {
+          osConfig = config;
+        };
+    };
 in
 {
   flake-file.inputs = {
@@ -35,6 +53,7 @@ in
   ];
   den.ctx.user.includes = [
     roleClass
+    hmPlatforms
     den.provides.mutual-provider
 
   ];

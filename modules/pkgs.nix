@@ -42,10 +42,8 @@
               inherit system;
             };
           })
-          inputs.nix-vscode-extensions.overlays.default
-          inputs.self.overlays.default
+
           inputs.emacs-config.overlays.default
-          inputs.firefox-addons.overlays.default
           inputs.deploy-rs.overlays.default
           inputs.agenix.overlays.default
           inputs.chinese-fonts-overlay.overlays.default

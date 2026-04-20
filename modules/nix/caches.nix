@@ -53,7 +53,7 @@ let
 in
 {
   den.aspects.nix = {
-    homeManager = {
+    provides.to-users.homeManager = {
       nix.settings = nix_settings;
     };
     darwin = {
