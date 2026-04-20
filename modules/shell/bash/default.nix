@@ -1,5 +1,5 @@
 {
-  den.aspects.bash.hmLinux =
+  den.aspects.bash.homeManager =
     {
       pkgs,
       ...

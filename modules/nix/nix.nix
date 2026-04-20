@@ -38,8 +38,8 @@ let
     };
 in
 {
-  den.aspects.nixpkgs = {
-    provides.to-users.homeManager = cfg;
+  den.aspects.nix-home.homeManager = cfg;
+  den.aspects.nix = {
     darwin = cfg;
     nixos = cfg;
   };

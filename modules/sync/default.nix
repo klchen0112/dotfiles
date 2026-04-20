@@ -1,5 +1,5 @@
 {
-  den.aspects.syncthing.homeManager =
+  den.aspects.syncthing.syncthing =
     {
       pkgs,
       ...

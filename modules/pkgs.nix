@@ -43,10 +43,10 @@
             };
           })
 
-          inputs.emacs-config.overlays.default
-          inputs.deploy-rs.overlays.default
-          inputs.agenix.overlays.default
-          inputs.chinese-fonts-overlay.overlays.default
+          # inputs.emacs-config.overlays.default
+          # inputs.deploy-rs.overlays.default
+          # inputs.agenix.overlays.default
+          # inputs.chinese-fonts-overlay.overlays.default
         ];
       };
       pkgsDirectory = ../pkgs/by-name;

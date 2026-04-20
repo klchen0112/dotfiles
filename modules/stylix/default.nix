@@ -8,20 +8,20 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
-  # den.aspects.stylix-home.stylix-home =
-  #   {
-  #     config,
-  #     pkgs,
-  #     ...
-  #   }:
-  #   {
-  #     imports = [
-  #       inputs.stylix.homeModules.stylix
-  #     ];
+  den.aspects.stylix-home.stylix-home =
+    {
+      config,
+      pkgs,
+      ...
+    }:
+    {
+      imports = [
+        inputs.stylix.homeModules.stylix
+      ];
 
-  #     # enable gtk
-  #     stylix.targets.gtk.enable = true;
-  #   };
+      # enable gtk
+      stylix.targets.gtk.enable = true;
+    };
   den.aspects.stylix.darwin =
     {
       pkgs,

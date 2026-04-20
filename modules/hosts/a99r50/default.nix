@@ -5,7 +5,38 @@ in
 {
 
   den.hosts.x86_64-linux.${machine} = {
-    users.klchen = { };
+    roles = [
+      "stylix-home"
+      "emacs-twist"
+      "ghostty"
+      "kitty"
+      "inputmethod"
+      "zen"
+      "zsh"
+      "python"
+      "syncthing"
+      "aria2"
+      "llm"
+      "noctalia-shell"
+      "nir-home"
+    ];
+    users.klchen = {
+       roles = [
+      "stylix-home"
+      "emacs-twist"
+      "ghostty"
+      "kitty"
+      "inputmethod"
+      "zen"
+      "zsh"
+      "python"
+      "syncthing"
+      "aria2"
+      "llm"
+      "noctalia-shell"
+      "nir-home"
+    ];
+     };
     users.root = { };
   };
 

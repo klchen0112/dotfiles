@@ -59,7 +59,7 @@ in
 
   den.aspects.font.darwin = fonts_settings;
 
-  den.aspects.font.homeManager = {
+  den.aspects.font-home.homeManager = {
     fonts.fontconfig.defaultFonts = {
       serif = [
         "CMU Typewriter Text"

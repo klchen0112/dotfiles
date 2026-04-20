@@ -45,8 +45,8 @@
       homeManager =
         { pkgs, lib, ... }:
         {
-          imports = [
-            inputs.stylix.homeModules.stylix
+          nixpkgs.overlays = [
+            inputs.self.overlays.default
           ];
           nixpkgs.config.allowUnfree = true;
           nix.settings.trusted-users = [ "klchen" ];
@@ -65,35 +65,38 @@
 
         };
       includes = [
-        (den.provides.unfree [ "vscode" ])
         den.provides.define-user
         den.provides.primary-user
         #      (den.provides.user-shell "nu")
       ]
       ++ [
         # <hmPlatforms>
-        #<stylix-home>
-        #<python>
-        #<java>
-        #<nushell>
-        #<bash>
+        <stylix-home>
+        <python>
+        <java>
+        <nushell>
+        <bash>
         <zsh>
         <starship>
         <utils>
         <git>
         <kitty>
-        #<ssh>
-        #<nix-index>
+        <ssh>
+        <nix-index>
+        <nix-home>
         <emacs-twist>
         <vscode>
-        #<noctalia-shell>
-        #<niri-home>
+        <noctalia-shell>
+        <niri-home>
         <ghostty>
         <zen>
         <paneru>
-        #<llm>
-        #<inputmethod>
-        #<k8s>
+        <llm>
+        <inputmethod>
+        <k8s>
+        <syncthing>
+        <font-home>
+        <aria2>
       ];
     };
 

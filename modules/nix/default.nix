@@ -1,10 +1,7 @@
 { inputs, den, ... }:
 {
-  den.aspects.nix = {
-    includes = [
-      den.provides.mutual-provider
-    ];
-    provides.to-users.homeManager =
+  den.aspects.nix-home = {
+    homeManager =
       { pkgs, ... }:
       {
         home.packages = with pkgs; [
@@ -21,12 +18,6 @@
           inputs.self.overlays.default
         ];
       };
-    nixos = {
-      programs.nix-ld.enable = true;
-    };
-    os = {
-      environment.etc."nix/inputs/nixpkgs".source = "${inputs.nixpkgs}";
-    };
 
   };
 }

@@ -9,8 +9,11 @@ let
   };
 in
 {
-  den.aspects.nix = {
+  den.aspects.nix-home = {
     homeManager = cfg;
+  };
+  den.aspects.nix = {
+
     darwin = cfg;
     nixos = cfg;
   };

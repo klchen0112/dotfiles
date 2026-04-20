@@ -1,14 +1,16 @@
-{ ... }:
+{ inputs, ... }:
 {
 
-  den.aspects.nix = {
+  den.aspects.nix =
+    let
+      cfg = {
+        nix.channel.enable = false;
+        environment.etc."nix/inputs/nixpkgs".source = "${inputs.nixpkgs}";
+      };
+    in
+    {
 
-    darwin = {
-      nix.channel.enable = false;
+      darwin = cfg;
+      nixos = cfg;
     };
-    nixos = {
-      nix.channel.enable = false;
-
-    };
-  };
 }

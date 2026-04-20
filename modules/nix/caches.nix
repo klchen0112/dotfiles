@@ -49,17 +49,20 @@ let
     ];
 
   };
+  nixos = {
+    programs.nix-ld.enable = true;
+  };
 
 in
 {
+  den.aspects.nix-home.homeManager = {
+    nix.settings = nix_settings;
+  };
   den.aspects.nix = {
-    provides.to-users.homeManager = {
-      nix.settings = nix_settings;
-    };
     darwin = {
       nix.settings = nix_settings;
     };
-    nix = {
+    nixos = {
       nix.settings = nix_settings;
     };
   };

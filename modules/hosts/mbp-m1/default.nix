@@ -9,51 +9,36 @@ in
 {
   #  sshKey = [    "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIC9ZvdIrZP9su70iBKgCB0QOY0kL9Z9qu3B9Of05VS5a"];
   den.hosts.aarch64-darwin.${machine} = {
-    # roles = [
-    #  "emacs-twist"
-    #   #"zen"
-    #   #"inputmethod"
-    #   "ghostty"
-    #   #"python"
-    # ];
     roles = [
-      #"stylix-home"
-      #"emacs-twist"
+      "stylix-home"
+      "emacs-twist"
       "ghostty"
       "kitty"
       "vscode"
-      "nix"
       "inputmethod"
       "zen"
       "paneru"
       "zsh"
+      "python"
+      "syncthing"
+      "aria2"
     ];
     users = {
       klchen = {
         roles = [
-          #"stylix-home"
-          #"emacs-twist"
+          "stylix-home"
+          "emacs-twist"
           "ghostty"
           "kitty"
           "vscode"
-          "nix"
           "inputmethod"
           "zen"
           "paneru"
           "zsh"
+          "python"
+          "syncthing"
+          "aria2"
         ];
-        # roles = [
-        #
-        #   #
-        #   #
-        #   "ghostty"
-        #   #"python"
-        #   #"aria2"
-        #   #"kitty"
-        #   #"syncthing"
-        #   #"vscode"
-        # ];
-
       };
     };
   };
@@ -63,7 +48,6 @@ in
       homebrew
       stylix
       nix
-      nixpkgs
     ];
     darwin =
       { pkgs, lib, ... }:

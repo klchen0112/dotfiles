@@ -1,5 +1,5 @@
 {
-  den.aspects.aria2 =
+  den.aspects.aria2.aria2 =
     {
       config,
       lib,
