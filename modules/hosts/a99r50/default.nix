@@ -16,27 +16,29 @@ in
       "python"
       "syncthing"
       "aria2"
-      "llm"
+      "llm-deploy"
+      "llm-agents"
       "noctalia-shell"
       "niri-home"
     ];
     users.klchen = {
-       roles = [
-      "stylix-home"
-      "emacs-twist"
-      "ghostty"
-      "kitty"
-      "inputmethod"
-      "zen"
-      "zsh"
-      "python"
-      "syncthing"
-      "aria2"
-      "llm"
-      "noctalia-shell"
-      "niri-home"
-    ];
-     };
+      roles = [
+        "stylix-home"
+        "emacs-twist"
+        "ghostty"
+        "kitty"
+        "inputmethod"
+        "zen"
+        "zsh"
+        "python"
+        "syncthing"
+        "aria2"
+        "llm-deploy"
+        "llm-agents"
+        "noctalia-shell"
+        "niri-home"
+      ];
+    };
     users.root = { };
   };
 

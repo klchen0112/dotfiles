@@ -91,7 +91,8 @@
         <ghostty>
         <zen>
         <paneru>
-        <llm>
+        <llm-deploy>
+        <llm-agents>
         <inputmethod>
         <k8s>
         <syncthing>
