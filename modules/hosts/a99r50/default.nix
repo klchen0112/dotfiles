@@ -18,7 +18,7 @@ in
       "aria2"
       "llm"
       "noctalia-shell"
-      "nir-home"
+      "niri-home"
     ];
     users.klchen = {
        roles = [
@@ -34,7 +34,7 @@ in
       "aria2"
       "llm"
       "noctalia-shell"
-      "nir-home"
+      "niri-home"
     ];
      };
     users.root = { };

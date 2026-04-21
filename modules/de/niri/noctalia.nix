@@ -14,7 +14,7 @@
       services.power-profiles-daemon.enable = true;
       services.upower.enable = true;
     };
-  den.aspects.noctalia-shell.provides.to-users =
+  den.aspects.noctalia-shell.noctalia-shell =
     {
       config,
       pkgs,
