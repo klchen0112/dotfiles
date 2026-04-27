@@ -2,13 +2,13 @@
   den.aspects.im.im =
     { pkgs, ... }:
     {
-      services.flatpak.packages = [
+      #services.flatpak.packages = [
         # "com.tencent.WeChat"
-        "com.qq.QQ"
-      ];
+ #       "com.qq.QQ"
+      #];
       home.packages = with pkgs; [
         telegram-desktop
-        wechat-uos
+#        wechat-uos
       ];
     };
 }
