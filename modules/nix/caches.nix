@@ -49,9 +49,6 @@ let
     ];
 
   };
-  nixos = {
-    programs.nix-ld.enable = true;
-  };
 
 in
 {
@@ -64,6 +61,8 @@ in
     };
     nixos = {
       nix.settings = nix_settings;
+      programs.nix-ld.enable = true;
+
     };
   };
   flake-file.nixConfig = nix_settings // {
