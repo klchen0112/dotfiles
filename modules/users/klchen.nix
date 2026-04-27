@@ -98,6 +98,7 @@
         <syncthing>
         <font-home>
         <aria2>
+        <im>
       ];
     };
 
