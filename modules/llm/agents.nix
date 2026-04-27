@@ -13,7 +13,6 @@
           inputs.llm-agents.overlays.default
         ];
 
-
         nix.settings = {
           extra-substituters = [
             "https://cache.numtide.com"
@@ -26,8 +25,11 @@
           with pkgs;
           [
             llm-agents.opencode
+            llm-agents.hermes-agent
+            llm-agents.gemini-cli
           ]
           ++ (with pkgs.python314Packages; [
+            python-telegram-bot
           ]);
       };
   };
