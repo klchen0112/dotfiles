@@ -20,6 +20,7 @@ in
       "llm-agents"
       "noctalia-shell"
       "niri-home"
+      "im"
     ];
     users.klchen = {
       roles = [
