@@ -2,7 +2,8 @@
 {
   flake-file.inputs = {
     llama-cpp = {
-      url = "github:ggml-org/llama.cpp";
+      # url = "github:ggml-org/llama.cpp";
+      url = "github:spiritbuun/buun-llama-cpp";
     };
   };
   den.aspects.llm-deploy = {
