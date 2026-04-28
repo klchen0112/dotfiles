@@ -99,7 +99,6 @@
     flake-file.url = "github:vic/flake-file";
     flake-parts = {
       url = "github:hercules-ci/flake-parts";
-      inputs.nixpkgs-lib.follows = "nixpkgs-lib";
     };
     flake-utils.url = "github:numtide/flake-utils";
     git-hooks = {
@@ -111,7 +110,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     import-tree.url = "github:vic/import-tree";
-    llama-cpp.url = "github:ggml-org/llama.cpp";
+    llama-cpp.url = "github:spiritbuun/buun-llama-cpp";
     llm-agents.url = "github:numtide/llm-agents.nix";
     niri = {
       url = "github:sodiboo/niri-flake";
@@ -136,7 +135,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nixpkgs.url = "git+https://github.com/nixos/nixpkgs?shallow=1&ref=nixos-unstable";
-    nixpkgs-lib.follows = "nixpkgs";
     nixpkgs-stable.url = "git+https://github.com/nixos/nixpkgs?shallow=1&ref=release-25.11";
     nixpkgs-unstable.url = "git+https://github.com/nixos/nixpkgs?shallow=1&ref=nixpkgs-unstable";
     noctalia-shell = {
