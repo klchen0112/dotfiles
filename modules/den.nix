@@ -40,7 +40,6 @@ in
     flake-file.url = "github:vic/flake-file";
     flake-parts = {
       url = "github:hercules-ci/flake-parts";
-      inputs.nixpkgs-lib.follows = "nixpkgs-lib";
     };
     systems.url = "github:nix-systems/default";
     flake-utils = {

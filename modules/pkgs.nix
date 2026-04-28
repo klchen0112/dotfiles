@@ -44,7 +44,7 @@
           })
 
           # inputs.emacs-config.overlays.default
-          # inputs.deploy-rs.overlays.default
+          inputs.deploy-rs.overlays.default
           # inputs.agenix.overlays.default
           # inputs.chinese-fonts-overlay.overlays.default
         ];
