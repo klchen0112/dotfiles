@@ -38,6 +38,7 @@ in
         "llm-agents"
         "noctalia-shell"
         "niri-home"
+        "im"
       ];
     };
     users.root = { };
@@ -120,6 +121,14 @@ in
             amdgpuBusId = "PCI:12:0:0";
           };
         };
+        networking.firewall.allowedTCPPorts = [
+          8080
+        ];
+        networking.firewall.allowedUDPPorts = [
+          8080
+
+        ];
+
         users.users.klchen.isNormalUser = true;
       };
     includes =
