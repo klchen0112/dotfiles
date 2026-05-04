@@ -30,6 +30,7 @@ in
         k3s-master
         k3s-master-init
         stylix
+        nix
       ];
       nixos =
         {
@@ -37,18 +38,7 @@ in
           ...
         }:
         {
-          # 1. 开启硬件图形支持
-          hardware.graphics = {
-            enable = true;
-            extraPackages = with pkgs; [
-              intel-media-driver # 适用于 Broadwell (第5代) 及更新的硬件
-            ];
-          };
-
-          # 2. 指定使用 modesetting 驱动 (Intel 推荐方案)
-          services.xserver.videoDrivers = [ "modesetting" ];
           networking.hostName = "${machine}";
-          boot.kernelPackages = pkgs.linuxPackages;
 
           stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/solarized-light.yaml";
 
@@ -56,20 +46,17 @@ in
             inputs.nixos-hardware.nixosModules.common-cpu-intel
             # offload
             inputs.nixos-hardware.nixosModules.common-pc-ssd
+            inputs.srvos.nixosModules.mixins-terminfo
           ];
-          hardware.intelgpu.vaapiDriver = "intel-media-driver";
-          # Bootloader.
           boot.loader.systemd-boot.enable = true;
           boot.loader.efi.canTouchEfiVariables = true;
           networking.networkmanager.enable = true;
-          environment.systemPackages = with pkgs; [
-            clinfo
-            mesa-demos
-          ];
 
           # Don't allow mutation of users outside of the config.
           # machine-id is used by systemd for the journal, if you don't
           # persist this file you won't be able to easily use journalctl to
+          boot.kernelPackages = pkgs.cachyosKernels.linuxPackages-cachyos-lts-lto;
+
         };
     };
 }

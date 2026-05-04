@@ -12,11 +12,18 @@ in
     roles = [
       "emacs-twist"
       "stylix-home"
+      "llm-deploy-rocm"
+      "python"
+      "llm-agents"
+
     ];
     users = {
       klchen.roles = [
         "emacs-twist"
         "stylix-home"
+        "llm-deploy-rocm"
+        "python"
+        "llm-agents"
 
       ];
     };
@@ -33,7 +40,7 @@ in
         k3s
         k3s-node
         stylix
-
+        nix
       ];
       nixos =
         {
@@ -56,6 +63,7 @@ in
           hardware.graphics = {
             enable = true;
           };
+          boot.kernelPackages = pkgs.cachyosKernels.linuxPackages-cachyos-lts-lto-zen4;
 
           stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/solarized-light.yaml";
 
@@ -67,12 +75,12 @@ in
             clinfo
             mesa-demos
           ];
-          imports = [
-            inputs.nixos-hardware.nixosModules.common-cpu-amd
-            inputs.nixos-hardware.nixosModules.common-cpu-amd-zenpower
+          imports = with inputs; [
+            nixos-hardware.nixosModules.common-cpu-intel
+            nixos-hardware.nixosModules.common-gpu-nvidia-nonprime
             # offload
-            inputs.nixos-hardware.nixosModules.common-gpu-nvidia-nonprime
-            inputs.nixos-hardware.nixosModules.common-pc-ssd
+            nixos-hardware.nixosModules.common-pc-ssd
+            srvos.nixosModules.mixins-terminfo
           ];
 
           # Don't allow mutation of users outside of the config.

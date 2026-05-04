@@ -12,7 +12,6 @@ in
       "kitty"
       "inputmethod"
       "zen"
-      "zsh"
       "python"
       "syncthing"
       "aria2"
@@ -30,7 +29,6 @@ in
         "kitty"
         "inputmethod"
         "zen"
-        "zsh"
         "python"
         "syncthing"
         "aria2"
@@ -60,7 +58,7 @@ in
           inputs.nixos-hardware.nixosModules.common-hidpi
           inputs.srvos.nixosModules.mixins-terminfo
         ];
-        hardware.nvidia.primeBatterySaverSpecialisation = true;
+        hardware.nvidia.primeBatterySaverSpecialisation = false;
         # stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/solarized-light.yaml";
         boot.kernelParams = [
           # Since NVIDIA does not load kernel mode setting by default,
@@ -147,7 +145,9 @@ in
         emacs-twist
         persist
         nix
+        # hermes
       ]
+        
       ++ [
 
         (den.provides.tty-autologin "klchen")

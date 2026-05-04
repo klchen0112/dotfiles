@@ -41,4 +41,30 @@
           ]);
       };
   };
+  den.aspects.llm-deploy-rocm = {
+    llm-deploy-rocm =
+      { pkgs, ... }:
+      {
+        nixpkgs.overlays = [
+          inputs.llama-cpp.overlays.default
+        ];
+
+        nixpkgs = {
+          config = {
+            rocmSupport = true;
+          };
+        };
+        home.packages =
+          with pkgs;
+          [
+            llamaPackages.llama-cpp-rocm
+          ]
+          ++ (with pkgs.python314Packages; [
+            hf-xet
+            huggingface-hub
+            modelscope
+          ]);
+      };
+  };
+
 }

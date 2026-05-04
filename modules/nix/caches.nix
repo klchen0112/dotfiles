@@ -13,6 +13,7 @@ let
       "https://klchen0112.cachix.org?priority=2"
       "https://cache.numtide.com"
       "https://cuda-maintainers.cachix.org"
+      "https://cache.garnix.io"
       "https://attic.xuyh0120.win/lantian"
     ];
     trusted-public-keys = [
@@ -22,6 +23,7 @@ let
       "niri.cachix.org-1:Wv0OmO7PsuocRKzfDoJ3mulSl7Z6oezYhGhR+3W2964="
       "cuda-maintainers.cachix.org-1:0dq3bujKpuEPMCX6U4WylrUDZ9JyUG0VpVZa7CNfq5E="
       "lantian:EeAUQ+W+6r7EtwnmYjeVwx5kOGEBpjlBfPlzGlTNvHc="
+      "cache.garnix.io:CTFPyKSLcx5RMJKfLo5EEPUObbA78b0YQ2DTCJXqr9g="
     ];
     trusted-substituters = [
       "https://mirrors.cernet.edu.cn/nix-channels/store"
@@ -44,6 +46,7 @@ let
     ];
     extra-trusted-public-keys = [
       "niks3.numtide.com-1:DTx8wZduET09hRmMtKdQDxNNthLQETkc/yaX7M4qK0g="
+      "cache.numtide.com-1:DTx8wZduET09hRmMtKdQDxNNthLQETkc/yaX7M4qK0g="
       "cuda-maintainers.cachix.org-1:0dq3bujKpuEPMCX6U4WylrUDZ9JyUG0VpVZa7CNfq5E="
 
     ];

@@ -4,6 +4,21 @@
     llm-agents = {
       url = "github:numtide/llm-agents.nix";
     };
+    hermes-agent.url = "github:NousResearch/hermes-agent";
+  };
+  den.aspects.hermes = {
+    nixos = {
+      imports = with inputs; [
+        hermes-agent.nixosModules.default
+      ];
+      # configuration.nix
+      services.hermes-agent = {
+        enable = true;
+        # settings.model.default = "anthropic/claude-sonnet-4";
+        addToSystemPackages = true;
+      };
+
+    };
   };
   den.aspects.llm-agents = {
     llm-agents =
@@ -26,7 +41,7 @@
           [
             llm-agents.opencode
             llm-agents.hermes-agent
-            llm-agents.gemini-cli
+            # llm-agents.gemini-cli
           ]
           ++ (with pkgs.python314Packages; [
             python-telegram-bot
