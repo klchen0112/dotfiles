@@ -145,7 +145,8 @@ in
         emacs-twist
         persist
         nix
-        # hermes
+        hermes
+        sops
       ]
         
       ++ [

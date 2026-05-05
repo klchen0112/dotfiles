@@ -92,6 +92,7 @@
         <zen>
         <paneru>
         <llm-deploy>
+        <llm-deploy-rocm>
         <llm-agents>
         <inputmethod>
         <k8s>

@@ -10,12 +10,16 @@ in
       "emacs-twist"
       "stylix-home"
       "python"
+      "llm-agents"
+      "llm-deploy-rocm"
     ];
     users = {
       klchen.roles = [
         "emacs-twist"
         "stylix-home"
         "python"
+        "llm-agents"
+        "llm-deploy-rocm"
       ];
     };
     klchen = { };
@@ -32,6 +36,7 @@ in
         k3s-node
         stylix
         nix
+        hermes
       ];
       nixos =
         {
@@ -63,6 +68,13 @@ in
           # machine-id is used by systemd for the journal, if you don't
           # persist this file you won't be able to easily use journalctl to
           boot.kernelPackages = pkgs.cachyosKernels.linuxPackages-cachyos-lts-x86_64-v4;
+          networking.firewall.allowedTCPPorts = [
+            8080
+          ];
+          networking.firewall.allowedUDPPorts = [
+            8080
+
+          ];
 
         };
     };

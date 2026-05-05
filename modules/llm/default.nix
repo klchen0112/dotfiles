@@ -46,7 +46,7 @@
       { pkgs, ... }:
       {
         nixpkgs.overlays = [
-          inputs.llama-cpp.overlays.default
+          # inputs.llama-cpp.overlays.default
         ];
 
         nixpkgs = {
@@ -57,7 +57,8 @@
         home.packages =
           with pkgs;
           [
-            llamaPackages.llama-cpp-rocm
+            llama-cpp
+            nvtopPackages.amd
           ]
           ++ (with pkgs.python314Packages; [
             hf-xet

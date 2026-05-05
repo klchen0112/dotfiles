@@ -51,17 +51,13 @@ in
           networking.hostName = "${machine}";
 
           hardware.nvidia = {
-            open = lib.mkForce false;
+            open = false;
             modesetting.enable = true;
             nvidiaSettings = true;
             # 电源管理，开启它可以防止睡眠唤醒后的黑屏或掉驱动问题
             powerManagement.enable = false;
             # 细粒度电源管理（仅限 Turing 架构及以后的显卡，如 RTX 系列）
             powerManagement.finegrained = false;
-          };
-          # Enable OpenGL
-          hardware.graphics = {
-            enable = true;
           };
           boot.kernelPackages = pkgs.cachyosKernels.linuxPackages-cachyos-lts-lto-zen4;
 
@@ -74,6 +70,7 @@ in
           environment.systemPackages = with pkgs; [
             clinfo
             mesa-demos
+            pciutils
           ];
           imports = with inputs; [
             nixos-hardware.nixosModules.common-cpu-intel

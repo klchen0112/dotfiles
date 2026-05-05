@@ -3,22 +3,32 @@
   flake-file.inputs = {
     llm-agents = {
       url = "github:numtide/llm-agents.nix";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
-    hermes-agent.url = "github:NousResearch/hermes-agent";
+    hermes-agent = {
+      url = "github:NousResearch/hermes-agent";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
   den.aspects.hermes = {
-    nixos = {
-      imports = with inputs; [
-        hermes-agent.nixosModules.default
-      ];
-      # configuration.nix
-      services.hermes-agent = {
-        enable = true;
-        # settings.model.default = "anthropic/claude-sonnet-4";
-        addToSystemPackages = true;
-      };
+    nixos =
+      { pkgs, ... }:
+      {
+        imports = with inputs; [
+          hermes-agent.nixosModules.default
+        ];
+        nixpkgs.overlays = [
+          inputs.llm-agents.overlays.default
+        ];
 
-    };
+        # configuration.nix
+        services.hermes-agent = {
+          enable = true;
+
+          # settings.model.default = "anthropic/claude-sonnet-4";
+          addToSystemPackages = true;
+        };
+      };
   };
   den.aspects.llm-agents = {
     llm-agents =
@@ -34,18 +44,14 @@
           ];
           extra-trusted-public-keys = [
             "niks3.numtide.com-1:DTx8wZduET09hRmMtKdQDxNNthLQETkc/yaX7M4qK0g="
+            "cache.numtide.com-1:DTx8wZduET09hRmMtKdQDxNNthLQETkc/yaX7M4qK0g="
           ];
         };
-        home.packages =
-          with pkgs;
-          [
-            llm-agents.opencode
-            llm-agents.hermes-agent
-            # llm-agents.gemini-cli
-          ]
-          ++ (with pkgs.python314Packages; [
-            python-telegram-bot
-          ]);
+        home.packages = with pkgs; [
+          #llm-agents.hermes-agent
+          # llm-agents.opencode
+          opencode
+        ];
       };
   };
 }
