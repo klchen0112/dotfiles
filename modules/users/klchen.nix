@@ -99,6 +99,7 @@
         <font-home>
         <aria2>
         <im>
+        <sops-home>
       ];
     };
 
