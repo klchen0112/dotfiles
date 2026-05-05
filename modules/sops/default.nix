@@ -15,6 +15,10 @@
         sops-nix.homeManagerModules.sops
       ];
 
+      sops = {
+        age.sshKeyPaths = [ "${config.home.homeDirectory}" ];
+        age.generateKey = false;
+      };
     };
 
   den.aspects.sops.nixos =
@@ -27,6 +31,13 @@
       imports = with inputs; [
         sops-nix.nixosModules.sops
       ];
+      sops = {
+        age.sshKeyPaths = [
+          "/etc/ssh/ssh_host_ed25519_key"
+        ];
+        age.generateKey = false;
+      };
+
     };
   den.aspects.sops.darwin =
     {
@@ -38,6 +49,12 @@
       imports = with inputs; [
         sops-nix.darwinModules.sops
       ];
+      sops = {
+        age.sshKeyPaths = [
+          "/etc/ssh/ssh_host_ed25519_key"
+        ];
+        age.generateKey = false;
+      };
     };
 
 }
