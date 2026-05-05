@@ -30,6 +30,8 @@
             nil
             nix-output-monitor
             git
+            ssh-to-age
+            sops
           ]
           ++ (lib.optional pkgs.stdenv.isLinux [
             deploy-rs.deploy-rs

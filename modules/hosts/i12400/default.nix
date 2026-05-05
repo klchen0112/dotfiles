@@ -37,6 +37,7 @@ in
         stylix
         nix
         hermes
+        sops
       ];
       nixos =
         {

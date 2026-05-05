@@ -12,7 +12,7 @@
   };
   den.aspects.hermes = {
     nixos =
-      { pkgs, ... }:
+      { pkgs, config, ... }:
       {
         imports = with inputs; [
           hermes-agent.nixosModules.default
@@ -20,12 +20,26 @@
         nixpkgs.overlays = [
           inputs.llm-agents.overlays.default
         ];
-
+        sops.secrets.hermes-env = {
+          sopsFile = ../../secrets/hermes.env;
+          format = "dotenv";
+        };
         # configuration.nix
         services.hermes-agent = {
           enable = true;
-
-          # settings.model.default = "anthropic/claude-sonnet-4";
+          # container.enable = true;
+          settings = {
+            model.default = "mudler/Carnice-Qwen3.6-MoE-35B-A3B-APEX";
+            memory = {
+              memory_enabled = true;
+              user_profile_enabled = true;
+            };
+            terminal = {
+              backend = "local";
+              timeout = 180;
+            };
+          };
+          environmentFiles = [ config.sops.secrets."hermes-env".path ];
           addToSystemPackages = true;
         };
       };

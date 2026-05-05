@@ -16,7 +16,7 @@
       ];
 
       sops = {
-        age.sshKeyPaths = [ "${config.home.homeDirectory}" ];
+        age.sshKeyPaths = [ "${config.home.homeDirectory}/id_ed25519" ];
         age.generateKey = false;
       };
     };
