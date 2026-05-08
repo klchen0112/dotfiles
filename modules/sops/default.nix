@@ -4,7 +4,7 @@
     sops-nix.url = "github:Mic92/sops-nix";
     sops-nix.inputs.nixpkgs.follows = "nixpkgs";
   };
-  den.aspects.sops-home.sops-home =
+  den.aspects.sops-home.homeManager =
     {
       pkgs,
       config,

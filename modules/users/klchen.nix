@@ -42,7 +42,12 @@
         nix.settings.trusted-users = [ "klchen" ];
       };
       homeManager =
-        { pkgs, lib, ... }:
+        {
+          pkgs,
+          lib,
+          config,
+          ...
+        }:
         {
           nixpkgs.overlays = [
             inputs.self.overlays.default
@@ -61,7 +66,11 @@
             email = "klchen0112@gmail.com";
 
           };
-
+          sops.secrets.hermes-env = {
+            sopsFile = ../../secrets/hermes.env;
+            format = "dotenv";
+            path = "${config.home.homeDirectory}/.hermes/.env";
+          };
         };
       includes = [
 

@@ -20,10 +20,6 @@
         nixpkgs.overlays = [
           inputs.llm-agents.overlays.default
         ];
-        sops.secrets.hermes-env = {
-          sopsFile = ../../secrets/hermes.env;
-          format = "dotenv";
-        };
         # configuration.nix
         services.hermes-agent = {
           enable = true;
