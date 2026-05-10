@@ -67,7 +67,7 @@
 
           };
           sops.secrets.hermes-env = {
-            sopsFile = ../../secrets/hermes.env;
+            sopsFile = ../../secrets/klchen/hermes.env;
             format = "dotenv";
             path = "${config.home.homeDirectory}/.hermes/.env";
           };

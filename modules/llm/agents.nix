@@ -35,8 +35,8 @@
               timeout = 180;
             };
           };
-          environmentFiles = [ config.sops.secrets."hermes-env".path ];
-          addToSystemPackages = true;
+          # environmentFiles = [ config.sops.secrets."hermes-env".path ];
+          addToSystemPackages = false;
         };
       };
   };
@@ -46,6 +46,7 @@
       {
         nixpkgs.overlays = [
           inputs.llm-agents.overlays.default
+          inputs.hermes-agent.overlays.default
         ];
 
         nix.settings = {
@@ -58,9 +59,9 @@
           ];
         };
         home.packages = with pkgs; [
-          #llm-agents.hermes-agent
+         hermes-agent
           # llm-agents.opencode
-          opencode
+          # opencode
         ];
       };
   };
