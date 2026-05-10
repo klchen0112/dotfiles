@@ -17,7 +17,7 @@
 
       sops = {
         age.sshKeyPaths = [ "${config.home.homeDirectory}/.ssh/id_ed25519" ];
-        age.generateKey = true;
+        age.generateKey = false;
       };
     };
 
@@ -37,7 +37,10 @@
         ];
         age.generateKey = false;
       };
-
+      sops.secrets.hermes-env = {
+        sopsFile = ../../secrets/klchen/hermes.env;
+        format = "dotenv";
+      };
     };
   den.aspects.sops.darwin =
     {

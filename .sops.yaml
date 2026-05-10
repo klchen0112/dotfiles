@@ -3,7 +3,7 @@
 # Also see https://github.com/Mic92/dotfiles/blob/d6114726d859df36ccaa32891c4963ae5717ef7f/nixos/.sops.yaml
 # for a more complex example.
 keys:
-  - &a99r50 age16w26krhg9k43nr2hnftzjldjuyap0wsmnr2kayj255fqm7te25ks4skjkv
+  - &a99r50 age14nfg039yshypd0v97eru4s6dxfyjgxg3jl7jk9dkx5wgydgjgeuse60rmd
   - &a99r50_klchen age1j9kp2agklhtqct7mmvvavztveffqx9ghpnj7r0ptslu6qp5m8dfseka9pe
   - &i12400 age13drr6nyk2a03uwkec3yl0zf820j587ahrkermwe0q80d7vxfcu9qnplucf
   - &i12400_klchen age1fcvv4atrvhxual3nhku9dhythf2dt3pqft6sqdtevuxxcnqunazshhsu57
@@ -11,7 +11,9 @@ creation_rules:
   - path_regex: secrets/klchen/[^/]+\.(yaml|json|env|ini)$
     key_groups:
     - age:
+      - *a99r50 
       - *a99r50_klchen
+      - *i12400
       - *i12400_klchen
 
 

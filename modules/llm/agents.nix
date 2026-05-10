@@ -21,22 +21,56 @@
           inputs.llm-agents.overlays.default
         ];
         # configuration.nix
+        security.sudo.extraRules = [
+          {
+            users = [ "klchen" ];
+            commands = [
+              {
+                command = "/run/current-system/sw/bin/docker";
+                options = [ "NOPASSWD" ];
+              }
+            ];
+          }
+        ];
         services.hermes-agent = {
           enable = true;
-          # container.enable = true;
+          container = {
+            enable = true;
+            hostUsers = [ "klchen" ];
+          };
           settings = {
-            model.default = "mudler/Carnice-Qwen3.6-MoE-35B-A3B-APEX";
+            model = {
+              "default" = "mudler/Carnice-Qwen3.6-MoE-35B-A3B-APEX";
+              "provider" = "custom";
+              "base_url" = "http://i12400.klchen.duckdns.org:8080/v1";
+            };
+            toolsets = [ "all" ];
+            max_turns = 100;
+            terminal = {
+              backend = "local";
+              cwd = ".";
+              timeout = 180;
+            };
+            compression = {
+              enabled = true;
+              threshold = 0.85;
+              summary_model = "deepseek/deepseek-v4-pro";
+            };
             memory = {
               memory_enabled = true;
               user_profile_enabled = true;
             };
-            terminal = {
-              backend = "local";
-              timeout = 180;
+            display = {
+              compact = false;
+              personality = "kawaii";
+            };
+            agent = {
+              max_turns = 60;
+              verbose = false;
             };
           };
-          # environmentFiles = [ config.sops.secrets."hermes-env".path ];
-          addToSystemPackages = false;
+          environmentFiles = [ config.sops.secrets."hermes-env".path ];
+          addToSystemPackages = true;
         };
       };
   };
@@ -59,7 +93,7 @@
           ];
         };
         home.packages = with pkgs; [
-         hermes-agent
+          hermes-agent
           # llm-agents.opencode
           # opencode
         ];

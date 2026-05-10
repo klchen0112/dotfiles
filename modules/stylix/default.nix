@@ -18,7 +18,7 @@
       imports = [
         inputs.stylix.homeModules.stylix
       ];
-
+      stylix.autoEnable = true;
       # enable gtk
       stylix.targets.gtk.enable = true;
     };
@@ -32,6 +32,7 @@
       imports = [
         inputs.stylix.darwinModules.stylix
       ];
+      stylix.autoEnable = true;
       stylix.homeManagerIntegration.autoImport = false;
       stylix.homeManagerIntegration.followSystem = false;
     };
@@ -45,6 +46,7 @@
       imports = [
         inputs.stylix.nixosModules.stylix
       ];
+      stylix.autoEnable = true;
       stylix.homeManagerIntegration.autoImport = false;
       stylix.homeManagerIntegration.followSystem = false;
     };
