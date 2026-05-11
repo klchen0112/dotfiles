@@ -35,7 +35,7 @@
         services.hermes-agent = {
           enable = true;
           container = {
-            enable = true;
+            enable = false;
             hostUsers = [ "klchen" ];
           };
           #         extraPlugins = [ my-plugin-src ];          # plugin source
