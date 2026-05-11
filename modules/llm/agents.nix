@@ -38,6 +38,9 @@
             enable = true;
             hostUsers = [ "klchen" ];
           };
+          #         extraPlugins = [ my-plugin-src ];          # plugin source
+          extraPythonPackages = [ pkgs.local.graphify ]; # its Python dep
+          #extraPackages = [ pkgs.redis ];            # system binary it needs
           settings = {
             model = {
               "default" = "mudler/Carnice-Qwen3.6-MoE-35B-A3B-APEX";

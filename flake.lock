@@ -852,19 +852,21 @@
     "llama-cpp": {
       "inputs": {
         "flake-parts": "flake-parts_3",
-        "nixpkgs": "nixpkgs_3"
+        "nixpkgs": [
+          "nixpkgs"
+        ]
       },
       "locked": {
-        "lastModified": 1777658979,
-        "narHash": "sha256-hXWS2R5GuRPTgmci4OxLkBNbmEHH84TmOhdeVYEnocM=",
-        "owner": "spiritbuun",
-        "repo": "buun-llama-cpp",
-        "rev": "aecbbd5daa47abd4229fb2c0906e8f102d814022",
+        "lastModified": 1778414809,
+        "narHash": "sha256-ZijoIYLBMSCj7wIgsB6Y5QCD5caaX/6u1kfv4bmPKiw=",
+        "owner": "Anbeeld",
+        "repo": "beellama.cpp",
+        "rev": "4ba8002dfd3a1f63132b0127c0c16be45a126212",
         "type": "github"
       },
       "original": {
-        "owner": "spiritbuun",
-        "repo": "buun-llama-cpp",
+        "owner": "Anbeeld",
+        "repo": "beellama.cpp",
         "type": "github"
       }
     },
@@ -975,7 +977,7 @@
         "cachyos-kernel-patches": "cachyos-kernel-patches",
         "flake-compat": "flake-compat_3",
         "flake-parts": "flake-parts_5",
-        "nixpkgs": "nixpkgs_4"
+        "nixpkgs": "nixpkgs_3"
       },
       "locked": {
         "lastModified": 1777746826,
@@ -1232,22 +1234,6 @@
     },
     "nixpkgs_3": {
       "locked": {
-        "lastModified": 1732014248,
-        "narHash": "sha256-y/MEyuJ5oBWrWAic/14LaIr/u5E0wRVzyYsouYY3W6w=",
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "rev": "23e89b7da85c3640bbc2173fe04f4bd114342367",
-        "type": "github"
-      },
-      "original": {
-        "owner": "NixOS",
-        "ref": "nixos-unstable",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
-    "nixpkgs_4": {
-      "locked": {
         "lastModified": 1777718177,
         "narHash": "sha256-qq56SczKpUNKcm8xdOsXYLzaX37p1bLS0fFaCMB7s3Y=",
         "owner": "NixOS",
@@ -1262,7 +1248,7 @@
         "type": "github"
       }
     },
-    "nixpkgs_5": {
+    "nixpkgs_4": {
       "locked": {
         "lastModified": 1777578337,
         "narHash": "sha256-Ad49moKWeXtKBJNy2ebiTQUEgdLyvGmTeykAQ9xM+Z4=",
@@ -1582,7 +1568,7 @@
         "nix-vscode-extensions": "nix-vscode-extensions",
         "nixos-hardware": "nixos-hardware",
         "nixos-wsl": "nixos-wsl",
-        "nixpkgs": "nixpkgs_5",
+        "nixpkgs": "nixpkgs_4",
         "nixpkgs-stable": "nixpkgs-stable_2",
         "nixpkgs-unstable": "nixpkgs-unstable",
         "noctalia-shell": "noctalia-shell",
