@@ -35,6 +35,7 @@
             "sound"
             "tty"
             "wheel"
+            "hermes"
           ];
         };
       };
