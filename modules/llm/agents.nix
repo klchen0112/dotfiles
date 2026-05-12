@@ -13,12 +13,16 @@
   den.aspects.hermes = {
     nixos =
       { pkgs, config, ... }:
+      let
+        cfg = config.services.hermes-agent;
+      in
       {
         imports = with inputs; [
           hermes-agent.nixosModules.default
         ];
-        nixpkgs.overlays = [
-          inputs.llm-agents.overlays.default
+        nixpkgs.overlays = with inputs; [
+          hermes-agent.overlays.default
+          llm-agents.overlays.default
         ];
         # configuration.nix
         security.sudo.extraRules = [
@@ -74,6 +78,46 @@
           };
           environmentFiles = [ config.sops.secrets."hermes-env".path ];
           addToSystemPackages = true;
+        };
+        networking.firewall.allowedTCPPorts = [
+          9119
+        ];
+        networking.firewall.allowedUDPPorts = [
+          9119
+        ];
+
+        # Hermes dashboard systemd service (system-level)
+        systemd.services.hermes-dashboard = {
+          description = "Hermes Agent Web Dashboard";
+          after = [
+            "hermes-agent.service"
+            "network-online.target"
+          ];
+          wants = [ "network-online.target" ];
+
+          environment = {
+            HOME = cfg.stateDir;
+            HERMES_HOME = "${cfg.stateDir}/.hermes";
+            HERMES_MANAGED = "true";
+            MESSAGING_CWD = cfg.workingDirectory;
+          };
+
+          serviceConfig = {
+            Type = "simple";
+            User = cfg.user;
+            Group = cfg.group;
+            Restart = "on-failure";
+            RestartSec = 10;
+
+            # --host 0.0.0.0: listen on all interfaces (LAN-accessible)
+            # --insecure: needed to bind to non-localhost addresses
+            # --no-open: no browser auto-open in headless service
+            ExecStart = "${pkgs.hermes-agent}/bin/hermes dashboard --no-open --host 0.0.0.0 --insecure";
+
+            StandardOutput = "journal";
+            StandardError = "journal";
+          };
+
         };
       };
   };
