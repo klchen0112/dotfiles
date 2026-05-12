@@ -1,4 +1,5 @@
-{ den, inputs, ... }: {
+{ den, inputs, ... }:
+{
   flake-file.inputs = {
     llama-cpp = {
       # url = "github:ggml-org/llama.cpp";
@@ -70,7 +71,14 @@
                 --spec-ngram-mod-n-match 24 \
                 --spec-ngram-mod-n-min 48 \
                 --spec-ngram-mod-n-max 64 \
-                -c 262144
+                -c 262144 \
+                --flash-attn on \
+                -t 8 \
+                --batch-size 512 \
+                --ubatch-size 1024 \
+                 -np 4 \
+                 --no-perf
+
             '';
 
             StandardOutput = "journal";
@@ -132,12 +140,18 @@
                 --top-k 20 \
                 --presence_penalty 1.5 \
                 -mm "$MMPROJ" \
-                --alias "mudler/Carnice-Qwen3.6-MoE-35B-A3B-APEX" \
+               --alias "mudler/Carnice-Qwen3.6-MoE-35B-A3B-APEX" \
                 --spec-type ngram-mod \
                 --spec-ngram-mod-n-match 24 \
                 --spec-ngram-mod-n-min 48 \
                 --spec-ngram-mod-n-max 64 \
-                -c 262144
+                -c 262144 \
+                --flash-attn on \
+                -t 8 \
+                --batch-size 512 \
+                --ubatch-size 1024 \
+                 -np 4 \
+                 --no-perf
             '';
 
             StandardOutput = "journal";
