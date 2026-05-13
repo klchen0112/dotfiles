@@ -47,7 +47,7 @@
           #extraPackages = [ pkgs.redis ];            # system binary it needs
           settings = {
             model = {
-              "default" = "mudler/Carnice-Qwen3.6-MoE-35B-A3B-APEX";
+              "default" = "unsloth/Qwen3.6-27B-GGUF-MTP";
               "provider" = "custom";
               "base_url" = "http://i12400.klchen.duckdns.org:8080/v1";
             };

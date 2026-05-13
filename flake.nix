@@ -110,7 +110,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     import-tree.url = "github:vic/import-tree";
-    llama-cpp.url = "github:acerspyro/beellama.cpp";
+    llama-cpp = {
+      url = "github:am17an/llama.cpp/mtp-clean";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     llm-agents = {
       url = "github:numtide/llm-agents.nix";
       inputs.nixpkgs.follows = "nixpkgs";
