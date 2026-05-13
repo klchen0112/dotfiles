@@ -852,20 +852,18 @@
     "llama-cpp": {
       "inputs": {
         "flake-parts": "flake-parts_3",
-        "nixpkgs": [
-          "nixpkgs"
-        ]
+        "nixpkgs": "nixpkgs_3"
       },
       "locked": {
-        "lastModified": 1778414809,
-        "narHash": "sha256-ZijoIYLBMSCj7wIgsB6Y5QCD5caaX/6u1kfv4bmPKiw=",
-        "owner": "Anbeeld",
+        "lastModified": 1778645880,
+        "narHash": "sha256-7L5uD8Vdn9NPiTBwi5PmDVyOqlM5QCQ35Ts7Ma5bGtg=",
+        "owner": "acerspyro",
         "repo": "beellama.cpp",
-        "rev": "4ba8002dfd3a1f63132b0127c0c16be45a126212",
+        "rev": "2962d942c6f88ba9abfbd6977ac3b315c6d9e5c0",
         "type": "github"
       },
       "original": {
-        "owner": "Anbeeld",
+        "owner": "acerspyro",
         "repo": "beellama.cpp",
         "type": "github"
       }
@@ -977,7 +975,7 @@
         "cachyos-kernel-patches": "cachyos-kernel-patches",
         "flake-compat": "flake-compat_3",
         "flake-parts": "flake-parts_5",
-        "nixpkgs": "nixpkgs_3"
+        "nixpkgs": "nixpkgs_4"
       },
       "locked": {
         "lastModified": 1777746826,
@@ -1234,6 +1232,22 @@
     },
     "nixpkgs_3": {
       "locked": {
+        "lastModified": 1778443072,
+        "narHash": "sha256-zi7/fsqM/kFdNuED//4WOCUtezGtKKqRNORjMvfwjnA=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "da5ad661ba4e5ef59ba743f0d112cbc30e474f32",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "nixos-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "nixpkgs_4": {
+      "locked": {
         "lastModified": 1777718177,
         "narHash": "sha256-qq56SczKpUNKcm8xdOsXYLzaX37p1bLS0fFaCMB7s3Y=",
         "owner": "NixOS",
@@ -1248,7 +1262,7 @@
         "type": "github"
       }
     },
-    "nixpkgs_4": {
+    "nixpkgs_5": {
       "locked": {
         "lastModified": 1777578337,
         "narHash": "sha256-Ad49moKWeXtKBJNy2ebiTQUEgdLyvGmTeykAQ9xM+Z4=",
@@ -1568,7 +1582,7 @@
         "nix-vscode-extensions": "nix-vscode-extensions",
         "nixos-hardware": "nixos-hardware",
         "nixos-wsl": "nixos-wsl",
-        "nixpkgs": "nixpkgs_4",
+        "nixpkgs": "nixpkgs_5",
         "nixpkgs-stable": "nixpkgs-stable_2",
         "nixpkgs-unstable": "nixpkgs-unstable",
         "noctalia-shell": "noctalia-shell",

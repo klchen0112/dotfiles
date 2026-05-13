@@ -3,7 +3,7 @@
   flake-file.inputs = {
     llama-cpp = {
       # url = "github:ggml-org/llama.cpp";
-      url = "github:spiritbuun/buun-llama-cpp";
+      url = "github:acerspyro/beellama.cpp";
     };
   };
   den.aspects.llm-deploy = {
@@ -71,14 +71,7 @@
                 --spec-ngram-mod-n-match 24 \
                 --spec-ngram-mod-n-min 48 \
                 --spec-ngram-mod-n-max 64 \
-                -c 262144 \
-                --flash-attn on \
-                -t 8 \
-                --batch-size 512 \
-                --ubatch-size 1024 \
-                 -np 4 \
-                 --no-perf
-
+                -c 262144 
             '';
 
             StandardOutput = "journal";
@@ -145,13 +138,7 @@
                 --spec-ngram-mod-n-match 24 \
                 --spec-ngram-mod-n-min 48 \
                 --spec-ngram-mod-n-max 64 \
-                -c 262144 \
-                --flash-attn on \
-                -t 8 \
-                --batch-size 512 \
-                --ubatch-size 1024 \
-                 -np 4 \
-                 --no-perf
+                -c 262144 
             '';
 
             StandardOutput = "journal";

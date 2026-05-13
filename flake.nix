@@ -1,8 +1,3 @@
-
-
-
-
-
 # DO-NOT-EDIT. This file was auto-generated using github:vic/flake-file.
 # Use `nix run .#write-flake` to regenerate it.
 {
@@ -115,10 +110,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     import-tree.url = "github:vic/import-tree";
-    llama-cpp = {
-      url = "github:Anbeeld/beellama.cpp";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    llama-cpp.url = "github:acerspyro/beellama.cpp";
     llm-agents = {
       url = "github:numtide/llm-agents.nix";
       inputs.nixpkgs.follows = "nixpkgs";
