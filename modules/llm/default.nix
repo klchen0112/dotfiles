@@ -4,8 +4,8 @@
     llama-cpp = {
       # url = "github:ggml-org/llama.cpp";
       # url = "github:acerspyro/beellama.cpp";
-      url = "github:am17an/llama.cpp/mtp-clean";
-      inputs.nixpkgs.follows = "nixpkgs";
+      url = "github:EsmaeelNabil/llama.cpp-mtp-turbo-quant/feat/mtp-turboquant-kv-cache"; 
+     inputs.nixpkgs.follows = "nixpkgs";
 
     };
   };
@@ -123,29 +123,13 @@
             RestartSec = 5;
             ExecStart = pkgs.writeShellScript "run-llama-server-rocm" ''
               #!/usr/bin/env bash
-              export MODEL=${config.home.homeDirectory}/.cache/modelscope/hub/models/mudler/Carnice-Qwen3.6-MoE-35B-A3B-APEX-GGUF/Carnice-Qwen3.6-MoE-35B-A3B-APEX-I-Compact.gguf
-              export MMPROJ=${config.home.homeDirectory}/.cache/modelscope/hub/models/mudler/Qwen3.6-35B-A3B-APEX-GGUF/mmproj.gguf
-              exec ${pkgs.llamaPackages.llama-cpp}/bin/llama-server \
-                -m "$MODEL" \
-                --host 0.0.0.0 \
-                --spec-default \
-                --temp 1.0 \
-                --min-p 0.0 \
-                --top-p 0.95 \
-                --top-k 20 \
-                --presence_penalty 1.5 \
-                -mm "$MMPROJ" \
-                --alias "mudler/Carnice-Qwen3.6-MoE-35B-A3B-APEX" \
-                --spec-type ngram-mod \
-                --spec-ngram-mod-n-match 24 \
-                --spec-ngram-mod-n-min 48 \
-                --spec-ngram-mod-n-max 64 \
-                -c 262144 
+              export MODEL_DIR=${config.home.homeDirectory}/model/Dyluhn/lordx64-Qwen3.6-35B-A3B-Claude-4.7-Opus-Reasoning-Distilled-MTP-GGUF
+              ${pkgs.llama-cpp}/bin/llama-server -mm $MODEL_DIR/mmproj-BF16.gguf -m $MODEL_DIR/lordx64-distill-MTP-Q4_K_M.gguf --alias Qwen3.6-35B-A3B --parallel 1 --ctx-size 262144  --flash-attn on --jinja   --chat-template-kwargs '{"preserve_thinking": true}' --reasoning on  --reasoning-budget 4096   --temp 0.6 --top-k 20 --top-p 0.95 --min-p 0   --spec-type draft --spec-draft-n-max 2 -ctk turbo4 -ctv turbo4  --host 0.0.0.0
             '';
                           
 
-            StandardOutput = "journal";
-            StandardError = "journal";
+#            StandardOutput = "journal";
+#            StandardError = "journal";
           };
 
           Install.WantedBy = [ "default.target" ];

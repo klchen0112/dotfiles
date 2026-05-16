@@ -111,7 +111,7 @@
     };
     import-tree.url = "github:vic/import-tree";
     llama-cpp = {
-      url = "github:am17an/llama.cpp/mtp-clean";
+      url = "github:EsmaeelNabil/llama.cpp-mtp-turbo-quant/feat/mtp-turboquant-kv-cache";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     llm-agents = {

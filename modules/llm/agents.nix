@@ -47,9 +47,10 @@
           #extraPackages = [ pkgs.redis ];            # system binary it needs
           settings = {
             model = {
-              "default" = "mudler/Carnice-Qwen3.6-MoE-35B-A3B-APEX";
-              "provider" = "custom";
-              "base_url" = "http://localhost:8080/v1";
+              "default" = "deepseek/deepseek-v4-pro";
+              #"default" = "Qwen3.6-35B-A3B";
+              #"provider" = "custom";
+              #"base_url" = "http://192.168.0.199:8080/v1";
             };
             toolsets = [ "all" ];
             max_turns = 100;
