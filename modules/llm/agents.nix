@@ -49,9 +49,15 @@
             model = {
               "default" = "deepseek/deepseek-v4-pro";
               #"default" = "Qwen3.6-35B-A3B";
-              #"provider" = "custom";
-              #"base_url" = "http://192.168.0.199:8080/v1";
+              provider = "auto";
+              #"base_url" = "http://localhost:8080/v1";
             };
+            providers = {
+              custom = {
+                "base_url" = "http://localhost:8080/v1";
+              };
+            };
+
             toolsets = [ "all" ];
             max_turns = 100;
             terminal = {
