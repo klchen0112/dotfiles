@@ -6,11 +6,11 @@ let
     use-xdg-base-directories = true;
 
     substituters = [
-      "https://mirrors.cernet.edu.cn/nix-channels/store?priority=0"
-      "https://nix-community.cachix.org?priority=1"
-      "https://niri.cachix.org?priority=1"
-      "https://cache.nixos.org?priority=1"
-      "https://klchen0112.cachix.org?priority=2"
+      "https://mirrors.cernet.edu.cn/nix-channels/store"
+      "https://nix-community.cachix.org"
+      "https://niri.cachix.org"
+      "https://cache.nixos.org"
+      "https://klchen0112.cachix.org"
       "https://cache.numtide.com"
       "https://cuda-maintainers.cachix.org"
       "https://cache.garnix.io"
