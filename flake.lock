@@ -1584,6 +1584,7 @@
         "stylix": "stylix",
         "systems": "systems_8",
         "treefmt-nix": "treefmt-nix_3",
+        "wondelai-skills": "wondelai-skills",
         "zen-browser": "zen-browser"
       }
     },
@@ -2008,6 +2009,22 @@
       "original": {
         "owner": "pyproject-nix",
         "repo": "uv2nix",
+        "type": "github"
+      }
+    },
+    "wondelai-skills": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1778845215,
+        "narHash": "sha256-H7GQY67SkugEnCJwI1jQTSdOQgfKrWgSVAswQ2q6My4=",
+        "owner": "wondelai",
+        "repo": "skills",
+        "rev": "eff8b3cab2d9afab9dc09c4cc04e80ad9641db29",
+        "type": "github"
+      },
+      "original": {
+        "owner": "wondelai",
+        "repo": "skills",
         "type": "github"
       }
     },

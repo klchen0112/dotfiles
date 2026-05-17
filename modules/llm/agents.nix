@@ -9,12 +9,32 @@
       url = "github:NousResearch/hermes-agent";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    wondelai-skills = {
+      url = "github:wondelai/skills";
+      flake = false;
+    };
   };
   den.aspects.hermes = {
     nixos =
-      { pkgs, config, ... }:
+      {
+        pkgs,
+        lib,
+        config,
+        ...
+      }:
       let
         cfg = config.services.hermes-agent;
+
+        # Derivation: wondelai/skills → ~/.hermes/skills/wondelai/<name>/SKILL.md
+        wondelaiSkills = pkgs.runCommand "hermes-wondelai-skills" { } ''
+          mkdir -p $out/wondelai
+          for skill_src in ${inputs.wondelai-skills}/*/SKILL.md; do
+            skill_dir=$(dirname "$skill_src")
+            skill_name=$(basename "$skill_dir")
+            mkdir -p "$out/wondelai/$skill_name"
+            cp -r "$skill_dir"/* "$out/wondelai/$skill_name/"
+          done
+        '';
       in
       {
         imports = with inputs; [
@@ -43,18 +63,42 @@
             hostUsers = [ "klchen" ];
           };
           #         extraPlugins = [ my-plugin-src ];          # plugin source
-          extraPythonPackages = [ pkgs.local.graphify ]; # its Python dep
+          extraPythonPackages = [
+            pkgs.local.graphify
+          ]
+          ++ (with pkgs.python312Packages; [
+            # httpx
+            #aiohttp
+            #cryptography
+          ]); # its Python dep
           #extraPackages = [ pkgs.redis ];            # system binary it needs
+          extraDependencyGroups = [
+            "voice"
+            "cli"
+            "messaging"
+            "mcp"
+            "matrix"
+            "termux-all"
+          ];
           settings = {
             model = {
               "default" = "deepseek/deepseek-v4-pro";
               #"default" = "Qwen3.6-35B-A3B";
-              provider = "auto";
+              provider = "deepseek";
+              base_url = "https://api.deepseek.com";
               #"base_url" = "http://localhost:8080/v1";
             };
             providers = {
               custom = {
                 "base_url" = "http://localhost:8080/v1";
+                models = {
+                  "mudler/Qwen3.6-35B-A3B-Claude-4.7-Opus-Reasoning-Distilled-APEX-MTP-GGUF" = {
+                    stale_timeout_seconds = 1800;
+                  };
+                };
+              };
+              deepseek = {
+                base_url = "https://api.deepseek.com";
               };
             };
 
@@ -77,6 +121,7 @@
             display = {
               compact = false;
               personality = "kawaii";
+              show_reasoning = true;
             };
             agent = {
               max_turns = 60;
@@ -93,8 +138,23 @@
           9119
         ];
 
+        # Symlink wondelai/skills into hermes stateDir on every rebuild
+        system.activationScripts."hermes-wondelai-skills" = lib.stringAfter [ "hermes-agent-setup" ] ''
+          SKILLS_DIR="${cfg.stateDir}/.hermes/skills/wondelai"
+          mkdir -p "$SKILLS_DIR"
+          # Remove all old managed symlinks (skills removed upstream get cleaned)
+          find "$SKILLS_DIR" -maxdepth 1 -type l -delete 2>/dev/null || true
+          # Create fresh symlinks for all current skills
+          for skill_dir in ${wondelaiSkills}/wondelai/*; do
+            skill_name=$(basename "$skill_dir")
+            ln -sfn "$skill_dir" "$SKILLS_DIR/$skill_name"
+          done
+          chown -R ${cfg.user}:${cfg.group} "$SKILLS_DIR"
+        '';
+
         # Hermes dashboard systemd service (system-level)
         systemd.services.hermes-dashboard = {
+          enable = true;
           description = "Hermes Agent Web Dashboard";
           after = [
             "hermes-agent.service"
