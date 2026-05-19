@@ -89,19 +89,20 @@
               #"base_url" = "http://localhost:8080/v1";
             };
             providers = {
-              custom = {
-                "base_url" = "http://localhost:8080/v1";
-                models = {
-                  "mudler/Qwen3.6-35B-A3B-Claude-4.7-Opus-Reasoning-Distilled-APEX-MTP-GGUF" = {
-                    stale_timeout_seconds = 1800;
-                  };
-                };
-              };
               deepseek = {
                 base_url = "https://api.deepseek.com";
               };
+              custom = {
+                base_url = "http://localhost:8080/v1";
+              };
             };
-
+            model_aliases = {
+              "Qwen3.6-35B-A3B" = {
+                model = "Qwen3.6-35B-A3B-Claude-4.7-Opus-Reasoning-Distilled-APEX-MTP-GGUF";
+                base_url = "http://localhost:8080/v1";
+                provider = "custom";
+              };
+            };
             toolsets = [ "all" ];
             max_turns = 100;
             terminal = {

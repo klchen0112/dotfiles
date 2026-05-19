@@ -1,5 +1,28 @@
 {
   "nodes": {
+    "agent-skills-nix": {
+      "inputs": {
+        "home-manager": [
+          "home-manager"
+        ],
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1778976376,
+        "narHash": "sha256-BoLtbQ1OnYDL6yEK99409ZXmIhyhcStoUv9FQgA4pPc=",
+        "owner": "Kyure-A",
+        "repo": "agent-skills-nix",
+        "rev": "e1c086fcb4bc3b5805b87d32d86e9c189eb1f200",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Kyure-A",
+        "repo": "agent-skills-nix",
+        "type": "github"
+      }
+    },
     "base16": {
       "inputs": {
         "fromYaml": "fromYaml"
@@ -786,11 +809,11 @@
         "uv2nix": "uv2nix_2"
       },
       "locked": {
-        "lastModified": 1778942494,
-        "narHash": "sha256-iP+nzy6EQ+87mLCsC38YCOQkUpbxGqfpeMUuqqzUktQ=",
+        "lastModified": 1779125500,
+        "narHash": "sha256-njN31Ae5hcjc88bq/MYnF8xMnveWSLGWiL1Wz3W1Xwo=",
         "owner": "NousResearch",
         "repo": "hermes-agent",
-        "rev": "3034eee38ec516109566c00975be4d0276747c34",
+        "rev": "b570e0fdd0d64742fd96c928821ecc0cf5d91ef7",
         "type": "github"
       },
       "original": {
@@ -846,6 +869,22 @@
       "original": {
         "owner": "vic",
         "repo": "import-tree",
+        "type": "github"
+      }
+    },
+    "litprog-skill": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1775787844,
+        "narHash": "sha256-gmOSejef125lzCzMVrGxkQ9lMbXJr3eayuzD6BD8EDM=",
+        "owner": "tlehman",
+        "repo": "litprog-skill",
+        "rev": "7ca90701555d4c70d3ac43eb2e405e0b9b9aa8dc",
+        "type": "github"
+      },
+      "original": {
+        "owner": "tlehman",
+        "repo": "litprog-skill",
         "type": "github"
       }
     },
@@ -1543,6 +1582,7 @@
     },
     "root": {
       "inputs": {
+        "agent-skills-nix": "agent-skills-nix",
         "brew-nix": "brew-nix",
         "chinese-fonts-overlay": "chinese-fonts-overlay",
         "darwin": "darwin",
@@ -1563,6 +1603,7 @@
         "hermes-agent": "hermes-agent",
         "home-manager": "home-manager",
         "import-tree": "import-tree",
+        "litprog-skill": "litprog-skill",
         "llama-cpp": "llama-cpp",
         "llm-agents": "llm-agents",
         "niri": "niri",
@@ -1585,6 +1626,7 @@
         "systems": "systems_8",
         "treefmt-nix": "treefmt-nix_3",
         "wondelai-skills": "wondelai-skills",
+        "youtube-skills": "youtube-skills",
         "zen-browser": "zen-browser"
       }
     },
@@ -2058,6 +2100,22 @@
       "original": {
         "owner": "Supreeeme",
         "repo": "xwayland-satellite",
+        "type": "github"
+      }
+    },
+    "youtube-skills": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1777488364,
+        "narHash": "sha256-YDNQgJu8pWouoxnS1yNw6Z1xC7VHpKcL/cqp43trKPI=",
+        "owner": "ZeroPointRepo",
+        "repo": "youtube-skills",
+        "rev": "2a3eece32ea42fe15047f6d6d529885dd619cb99",
+        "type": "github"
+      },
+      "original": {
+        "owner": "ZeroPointRepo",
+        "repo": "youtube-skills",
         "type": "github"
       }
     },

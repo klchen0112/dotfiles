@@ -97,6 +97,7 @@
         <llm-deploy>
         <llm-deploy-rocm>
         <llm-agents>
+        <skill>
         <inputmethod>
         <k8s>
         <syncthing>

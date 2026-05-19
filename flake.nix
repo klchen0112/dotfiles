@@ -19,7 +19,7 @@
     lazy-trees = true;
     submodules = true;
     substituters = [
-      # "https://mirrors.cernet.edu.cn/nix-channels/store"
+      "https://mirrors.cernet.edu.cn/nix-channels/store"
       "https://nix-community.cachix.org"
       "https://niri.cachix.org"
       "https://cache.nixos.org"
@@ -54,6 +54,13 @@
   };
 
   inputs = {
+    agent-skills-nix = {
+      url = "github:Kyure-A/agent-skills-nix";
+      inputs = {
+        home-manager.follows = "home-manager";
+        nixpkgs.follows = "nixpkgs";
+      };
+    };
     brew-nix = {
       url = "github:BatteredBunny/brew-nix";
       inputs = {
@@ -110,6 +117,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     import-tree.url = "github:vic/import-tree";
+    litprog-skill = {
+      url = "github:tlehman/litprog-skill";
+      flake = false;
+    };
     llama-cpp = {
       url = "github:EsmaeelNabil/llama.cpp-mtp-turbo-quant/feat/mtp-turboquant-kv-cache";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -180,16 +191,20 @@
       url = "github:numtide/treefmt-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    wondelai-skills = {
+      url = "github:wondelai/skills";
+      flake = false;
+    };
+    youtube-skills = {
+      url = "github:ZeroPointRepo/youtube-skills";
+      flake = false;
+    };
     zen-browser = {
       url = "github:0xc000022070/zen-browser-flake";
       inputs = {
         home-manager.follows = "home-manager";
         nixpkgs.follows = "nixpkgs";
       };
-    };
-    wondelai-skills = {
-      url = "github:wondelai/skills";
-      flake = false;
     };
   };
 }
