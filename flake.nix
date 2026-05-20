@@ -19,7 +19,7 @@
     lazy-trees = true;
     submodules = true;
     substituters = [
-      "https://mirrors.cernet.edu.cn/nix-channels/store"
+      # "https://mirrors.cernet.edu.cn/nix-channels/store"
       "https://nix-community.cachix.org"
       "https://niri.cachix.org"
       "https://cache.nixos.org"
@@ -109,7 +109,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     hermes-agent = {
-      url = "github:NousResearch/hermes-agent";
+      url = "github:NousResearch/hermes-agent/v2026.4.30";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     home-manager = {
