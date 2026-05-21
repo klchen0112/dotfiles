@@ -83,7 +83,7 @@
           settings = {
             model = {
               #"default" = "deepseek/deepseek-v4-pro";
-              "default" = "Qwen3.6-35B-A3B";
+              "default" = "Qwen3.6-27B";
               #provider = "deepseek";
               provider = "custom";
               #base_url = "https://api.deepseek.com";

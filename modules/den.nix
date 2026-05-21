@@ -50,11 +50,10 @@ in
     (inputs.flake-file.flakeModules.dendritic or { })
     (inputs.den.flakeModules.dendritic or { })
   ];
-  den.ctx.user.includes = [
+  den.schema.user.includes = [
     roleClass
     hmPlatforms
     den.provides.mutual-provider
-
   ];
   _module.args.__findFile = den.lib.__findFile;
 }
