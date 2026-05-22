@@ -5,6 +5,7 @@
       # url = "github:ggml-org/llama.cpp";
       # url = "github:acerspyro/beellama.cpp";
       url = "github:EsmaeelNabil/llama.cpp-mtp-turbo-quant/feat/mtp-turboquant-kv-cache";
+      # url = "github:TheTom/llama-cpp-turboquant";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
@@ -119,22 +120,30 @@
             After = [ "network.target" ];
           };
 
-          Service = {
-            Type = "simple";
-            Restart = "on-failure";
-            RestartSec = 5;
-            ExecStart = pkgs.writeShellScript "run-llama-server-rocm" ''
-              #!/usr/bin/env bash
-              #export MODEL_DIR=${config.home.homeDirectory}/model/mudler/Qwen3.6-35B-A3B-Claude-4.7-Opus-Reasoning-Distilled-APEX-MTP-GGUF
-              #${pkgs.llama-cpp}/bin/llama-server -mm $MODEL_DIR/mmproj-BF16.gguf -m $MODEL_DIR/Qwen3.6-35B-A3B-Claude-4.7-Opus-Reasoning-Distilled-APEX-MTP-I-Compact.gguf  --alias "Qwen3.6-35B-A3B" --host 0.0.0.0 --parallel 1 --flash-attn on --jinja --chat-template-kwargs '{"preserve_thinking": true}' --reasoning on --reasoning-budget 4096 --temp 0.6 --top-k 20 --top-p 0.95 --min-p 0 --spec-type mtp --spec-draft-n-max 2 -ctk turbo4 -ctv turbo4  --presence-penalty 0.0 -kvu -kvo -ctkd turbo4 -ctvd turbo4  -c 180000
-              export MODEL_DIR=${config.home.homeDirectory}/model/noctrex/Qwopus3.6-27B-v1-preview-MTP-GGUF
+          Service =
+            let
+              llama-cpp = pkgs.llama-cpp;
+            in
+            {
+              Type = "simple";
+              Restart = "on-failure";
+              RestartSec = 5;
+              ExecStart = pkgs.writeShellScript "run-llama-server-rocm" ''
+                #!/usr/bin/env bash
+                #export MODEL_DIR=${config.home.homeDirectory}/model/mudler/Qwen3.6-35B-A3B-Claude-4.7-Opus-Reasoning-Distilled-APEX-MTP-GGUF
+                #${llama-cpp}/bin/llama-server -mm $MODEL_DIR/mmproj-BF16.gguf -m $MODEL_DIR/Qwen3.6-35B-A3B-Claude-4.7-Opus-Reasoning-Distilled-APEX-MTP-I-Compact.gguf  --alias "Qwen3.6-35B-A3B" --host 0.0.0.0 --parallel 1 --flash-attn on --jinja --chat-template-kwargs '{"preserve_thinking": true}' --reasoning on --reasoning-budget 4096 --temp 0.6 --top-k 20 --top-p 0.95 --min-p 0 --spec-type mtp --spec-draft-n-max 2 -ctk turbo4 -ctv turbo4  --presence-penalty 0.0 -kvu -kvo -ctkd turbo4 -ctvd turbo4  -c 180000
+                export MODEL_DIR=${config.home.homeDirectory}/model/noctrex/Qwopus3.6-27B-v1-preview-MTP-GGUF
 
-               ${pkgs.llama-cpp}/bin/llama-server  -mm $MODEL_DIR/mmproj-BF16.gguf -m $MODEL_DIR/Qwopus3.6-27B-v1-preview-MTP-IQ4_XS.gguf --alias "Qwen3.6-27B" --host 0.0.0.0 --parallel 1 --flash-attn on --jinja --chat-template-kwargs '{"preserve_thinking": true}' --reasoning on --reasoning-budget 4096 --temp 0.6 --top-k 20 --top-p 0.95 --min-p 0 --spec-type mtp --spec-draft-n-max 6 -ctk turbo4 -ctv turbo4  --presence-penalty 0.0 -kvu -kvo -ctkd turbo4 -ctvd turbo4  -c 131072
-            '';
+                 ${llama-cpp}/bin/llama-server \
+                     -mm $MODEL_DIR/mmproj-BF16.gguf  \
+                     -m $MODEL_DIR/Qwopus3.6-27B-v1-preview-MTP-IQ4_XS.gguf \
+                     --alias "Qwen3.6-27B" \
+                     --host 0.0.0.0 --flash-attn on --jinja --chat-template-kwargs '{"preserve_thinking": true}' --reasoning on --reasoning-budget 4096 --temp 0.6 --top-k 20 --top-p 0.95 --min-p 0 --spec-type mtp --spec-draft-n-max 6 -ctk q8_0 -ctv turbo3  --presence-penalty 0.0 -kvu -kvo -ctkd q8_0 -ctvd turbo3  -c 131072
+              '';
 
-            #            StandardOutput = "journal";
-            #            StandardError = "journal";
-          };
+              #            StandardOutput = "journal";
+              #            StandardError = "journal";
+            };
 
           Install.WantedBy = [ "default.target" ];
         };

@@ -54,6 +54,7 @@ in
             # offload
             inputs.nixos-hardware.nixosModules.common-pc-ssd
             inputs.srvos.nixosModules.mixins-terminfo
+            inputs.nixos-hardware.nixosModules.common-gpu-amd
 
           ];
           # Bootloader.
@@ -71,11 +72,9 @@ in
           boot.kernelPackages = pkgs.cachyosKernels.linuxPackages-cachyos-lts-x86_64-v4;
           networking.firewall.allowedTCPPorts = [
             8080
-            9119
           ];
           networking.firewall.allowedUDPPorts = [
             8080
-            9119
           ];
 
         };
