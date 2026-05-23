@@ -124,9 +124,9 @@
             let
               llama-cpp = pkgs.llama-cpp;
               mmproj = "${config.home.homeDirectory}/model/mudler/Qwen3.6-35B-A3B-Claude-4.7-Opus-Reasoning-Distilled-APEX-MTP-GGUF/mmproj-BF16.gguf";
-              model-path = "${config.home.homeDirectory}/model/mudler/Qwen3.6-35B-A3B-Claude-4.7-Opus-Reasoning-Distilled-APEX-MTP-GGUF/Qwen3.6-35B-A3B-Claude-4.7-Opus-Reasoning-Distilled-APEX-MTP-I-Compact.gguf";
-              model-name = "Qwen3.6-35B-A3B-Claude-4.7-Opus-Reasoning-Distilled-APEX-MTP-I-Compact";
-              template-file = "${config.home.homeDirectory}/model/mudler/Qwen3.6-35B-A3B-Claude-4.7-Opus-Reasoning-Distilled-APEX-MTP-GGUF/chat_template.jinja";
+              model-path = "${config.home.homeDirectory}/model/Jackrong/Qwopus3.6-27B-v2-MTP-GGUF/Qwopus3.6-27B-v2-MTP-IQ4_XS.gguf";
+              model-name = "Qwopus3.6-27B-v2-MTP-IQ4_XS";
+              template-file = "${config.home.homeDirectory}/model/Jackrong/Qwopus3.6-27B-v2-MTP-GGUF/chat_template.jinja";
             in
             {
               Type = "simple";
@@ -134,7 +134,7 @@
               RestartSec = 5;
               ExecStart = pkgs.writeShellScript "run-llama-server-rocm" ''
                 #!/usr/bin/env bash
-                ${llama-cpp}/bin/llama-server -mm ${mmproj} -m ${model-path}  --alias ${model-name} --host 0.0.0.0 --flash-attn on --temp 0.6 --top-k 20 --top-p 0.95 --min-p 0 -ctk q8_0 -ctv turbo2 -ctkd q8_0 -ctvd turbo2 --chat-template-kwargs '{"preserved_thinking":true}' -c 131072 --jinja --chat-template-file ${template-file} --spec-type mtp --spec-draft-n-max 2  --spec-draft-p-min 0.75
+                ${llama-cpp}/bin/llama-server -m ${model-path}  --alias ${model-name} --host 0.0.0.0 --flash-attn on --temp 1.0 --top-k 20 --top-p 0.95 --min-p 0 -ctk q8_0 -ctv turbo3 --chat-template-kwargs '{"preserved_thinking":true}' -c 80000 --jinja --chat-template-file ${template-file} --spec-type mtp --spec-draft-n-max 6  --spec-draft-p-min 0.75 -kvu -np 1 -ctkd q8_0 -ctvd turbo3
               '';
 
               #            StandardOutput = "journal";
