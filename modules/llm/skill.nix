@@ -1,4 +1,9 @@
-{ den, inputs, lib, ... }:
+{
+  den,
+  inputs,
+  lib,
+  ...
+}:
 {
   # Declarative agent skill management via agent-skills-nix.
   # Syncs SKILL.md directories from pinned flake sources to $HOME/.agents/skills.
@@ -9,6 +14,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.home-manager.follows = "home-manager";
     };
+    wondelai-skills = {
+      url = "github:wondelai/skills";
+      flake = false;
+    };
+
     litprog-skill = {
       url = "github:tlehman/litprog-skill";
       flake = false;
@@ -33,7 +43,7 @@
       imports = [
         inputs.agent-skills-nix.homeManagerModules.default
       ];
-
+      home.packages = with pkgs; [ bun ];
       programs.agent-skills = {
         enable = true;
 
@@ -63,6 +73,12 @@
 
         # Sync to $HOME/.agents/skills for use by Claude Code, OpenCode, Hermes, etc.
         targets.agents.enable = true;
+        targets.hermes = {
+          enable = true;
+          dest = "$HOME/.hermes/skills";
+        };
+
       };
+
     };
 }

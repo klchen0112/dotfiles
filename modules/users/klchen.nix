@@ -105,6 +105,8 @@
         <aria2>
         <im>
         <sops-home>
+        <skill>
+        <hermes>
       ];
     };
 

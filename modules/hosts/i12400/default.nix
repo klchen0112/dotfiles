@@ -12,6 +12,7 @@ in
       "python"
       "llm-agents"
       "llm-deploy-rocm"
+      "hermes"
     ];
     users = {
       klchen.roles = [
@@ -20,6 +21,7 @@ in
         "python"
         "llm-agents"
         "llm-deploy-rocm"
+        "hermes"
       ];
     };
     klchen = { };
@@ -72,11 +74,12 @@ in
           boot.kernelPackages = pkgs.cachyosKernels.linuxPackages-cachyos-lts-x86_64-v4;
           networking.firewall.allowedTCPPorts = [
             8080
+            9119
           ];
           networking.firewall.allowedUDPPorts = [
             8080
+            9119
           ];
-
         };
     };
 }

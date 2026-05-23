@@ -6,16 +6,13 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     hermes-agent = {
-      url = "github:NousResearch/hermes-agent";
+      # url = "github:NousResearch/hermes-agent/v2026.4.30";
+      url = "github:klchen0112/hermes-agent/feat/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
-    };
-    wondelai-skills = {
-      url = "github:wondelai/skills";
-      flake = false;
     };
   };
   den.aspects.hermes = {
-    nixos =
+    hermes =
       {
         pkgs,
         lib,
@@ -23,54 +20,27 @@
         ...
       }:
       let
-        cfg = config.services.hermes-agent;
-
-        # Derivation: wondelai/skills → ~/.hermes/skills/wondelai/<name>/SKILL.md
-        wondelaiSkills = pkgs.runCommand "hermes-wondelai-skills" { } ''
-          mkdir -p $out/wondelai
-          for skill_src in ${inputs.wondelai-skills}/*/SKILL.md; do
-            skill_dir=$(dirname "$skill_src")
-            skill_name=$(basename "$skill_dir")
-            mkdir -p "$out/wondelai/$skill_name"
-            cp -r "$skill_dir"/* "$out/wondelai/$skill_name/"
-          done
-        '';
+        cfg = config.programs.hermes-agent;
       in
       {
         imports = with inputs; [
-          hermes-agent.nixosModules.default
+          hermes-agent.homeManagerModules.default
         ];
         nixpkgs.overlays = with inputs; [
           hermes-agent.overlays.default
           llm-agents.overlays.default
         ];
-        # configuration.nix
-        security.sudo.extraRules = [
-          {
-            users = [ "klchen" ];
-            commands = [
-              {
-                command = "/run/current-system/sw/bin/docker";
-                options = [ "NOPASSWD" ];
-              }
-            ];
-          }
-        ];
-        services.hermes-agent = {
+        programs.hermes-agent = {
           enable = true;
-          container = {
-            enable = false;
-            hostUsers = [ "klchen" ];
-          };
           #         extraPlugins = [ my-plugin-src ];          # plugin source
-          extraPythonPackages = [
-            pkgs.local.graphify
-          ]
-          ++ (with pkgs.python312Packages; [
-            # httpx
-            #aiohttp
-            #cryptography
-          ]); # its Python dep
+          #extraPythonPackages = [
+          #  pkgs.local.graphify
+          #]
+          #++ (with pkgs.python312Packages; [
+          # httpx
+          #aiohttp
+          #cryptography
+          #]); # its Python dep
           #extraPackages = [ pkgs.redis ];            # system binary it needs
           # extraDependencyGroups = [
           #   "voice"
@@ -125,63 +95,42 @@
             };
           };
           environmentFiles = [ config.sops.secrets."hermes-env".path ];
-          addToSystemPackages = true;
         };
-        networking.firewall.allowedTCPPorts = [
-          9119
-        ];
-        networking.firewall.allowedUDPPorts = [
-          9119
-        ];
-
-        # Symlink wondelai/skills into hermes stateDir on every rebuild
-        system.activationScripts."hermes-wondelai-skills" = lib.stringAfter [ "hermes-agent-setup" ] ''
-          SKILLS_DIR="${cfg.stateDir}/.hermes/skills/wondelai"
-          mkdir -p "$SKILLS_DIR"
-          # Remove all old managed symlinks (skills removed upstream get cleaned)
-          find "$SKILLS_DIR" -maxdepth 1 -type l -delete 2>/dev/null || true
-          # Create fresh symlinks for all current skills
-          for skill_dir in ${wondelaiSkills}/wondelai/*; do
-            skill_name=$(basename "$skill_dir")
-            ln -sfn "$skill_dir" "$SKILLS_DIR/$skill_name"
-          done
-          chown -R ${cfg.user}:${cfg.group} "$SKILLS_DIR"
-        '';
 
         # Hermes dashboard systemd service (system-level)
-        systemd.services.hermes-dashboard = {
-          enable = true;
-          description = "Hermes Agent Web Dashboard";
-          after = [
-            "hermes-agent.service"
-            "network-online.target"
-          ];
-          wants = [ "network-online.target" ];
+        #         systemd.user.services.hermes-dashboard = {
+        #           enable = true;
+        #           Unit = {
+        #             Description = "Hermes Agent Web Dashboard";
+        #             After = [
+        #               "hermes-agent.service"
+        #             ];
+        #             Wants = [
+        #               "hermes-agent.service"
+        #             ];
+        #           };
+        #           environment = {
+        #             HOME = cfg.stateDir;
+        #             HERMES_HOME = "${cfg.stateDir}/.hermes";
+        #             HERMES_MANAGED = "true";
+        #             MESSAGING_CWD = cfg.workingDirectory;
+        #           };
+        #
+        #           serviceConfig = {
+        #             Type = "simple";
+        #             Restart = "on-failure";
+        #             RestartSec = 10;
+        #
+        #             # --host 0.0.0.0: listen on all interfaces (LAN-accessible)
+        #             # --insecure: needed to bind to non-localhost addresses
+        #             # --no-open: no browser auto-open in headless service
+        #             ExecStart = "${pkgs.hermes-agent}/bin/hermes dashboard --no-open --host 0.0.0.0 --insecure";
+        #
+        #             StandardOutput = "journal";
+        #             StandardError = "journal";
+        #           };
 
-          environment = {
-            HOME = cfg.stateDir;
-            HERMES_HOME = "${cfg.stateDir}/.hermes";
-            HERMES_MANAGED = "true";
-            MESSAGING_CWD = cfg.workingDirectory;
-          };
-
-          serviceConfig = {
-            Type = "simple";
-            User = cfg.user;
-            Group = cfg.group;
-            Restart = "on-failure";
-            RestartSec = 10;
-
-            # --host 0.0.0.0: listen on all interfaces (LAN-accessible)
-            # --insecure: needed to bind to non-localhost addresses
-            # --no-open: no browser auto-open in headless service
-            ExecStart = "${pkgs.hermes-agent}/bin/hermes dashboard --no-open --host 0.0.0.0 --insecure";
-
-            StandardOutput = "journal";
-            StandardError = "journal";
-          };
-
-        };
+        # };
       };
   };
   den.aspects.llm-agents = {
