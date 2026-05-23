@@ -83,8 +83,8 @@
           settings = {
             model = {
               #"default" = "deepseek/deepseek-v4-pro";
-              "default" = "Qwen3.6-27B";
-              #provider = "deepseek";
+              "default" = "Qwen3.6-35B-A3B-Claude-4.7-Opus-Reasoning-Distilled-APEX-MTP-I-Compact";
+              # provider = "deepseek";
               provider = "custom";
               #base_url = "https://api.deepseek.com";
               "base_url" = "http://localhost:8080/v1";
@@ -95,10 +95,7 @@
               };
               custom = {
                 base_url = "http://localhost:8080/v1";
-		"Qwen3.6-35B-A3B" = {
- timeout_second = 600;
 
-};
               };
             };
             toolsets = [ "all" ];
