@@ -53,7 +53,7 @@
           settings = {
             model = {
               #"default" = "deepseek/deepseek-v4-pro";
-              "default" = "Qwopus3.6-27B-v2-MTP-IQ4_XS";
+              "default" = "Qwopus3.6-35B-A3B-v1-APEX-MTP-I-Compact";
               # provider = "deepseek";
               provider = "custom";
               #base_url = "https://api.deepseek.com";
@@ -97,40 +97,24 @@
           environmentFiles = [ config.sops.secrets."hermes-env".path ];
         };
 
-        # Hermes dashboard systemd service (system-level)
-        #         systemd.user.services.hermes-dashboard = {
-        #           enable = true;
-        #           Unit = {
-        #             Description = "Hermes Agent Web Dashboard";
-        #             After = [
-        #               "hermes-agent.service"
-        #             ];
-        #             Wants = [
-        #               "hermes-agent.service"
-        #             ];
-        #           };
-        #           environment = {
-        #             HOME = cfg.stateDir;
-        #             HERMES_HOME = "${cfg.stateDir}/.hermes";
-        #             HERMES_MANAGED = "true";
-        #             MESSAGING_CWD = cfg.workingDirectory;
-        #           };
-        #
-        #           serviceConfig = {
-        #             Type = "simple";
-        #             Restart = "on-failure";
-        #             RestartSec = 10;
-        #
-        #             # --host 0.0.0.0: listen on all interfaces (LAN-accessible)
-        #             # --insecure: needed to bind to non-localhost addresses
-        #             # --no-open: no browser auto-open in headless service
-        #             ExecStart = "${pkgs.hermes-agent}/bin/hermes dashboard --no-open --host 0.0.0.0 --insecure";
-        #
-        #             StandardOutput = "journal";
-        #             StandardError = "journal";
-        #           };
+        # Hermes dashboard systemd user service
+        systemd.user.services.hermes-dashboard = {
+          Unit = {
+            Description = "Hermes Agent Web Dashboard";
+            After = [ "network.target" ];
+          };
 
-        # };
+          Service = {
+            Type = "simple";
+            Restart = "on-failure";
+            RestartSec = 10;
+            ExecStart = "${pkgs.hermes-agent}/bin/hermes dashboard --no-open --host 0.0.0.0 --insecure";
+            StandardOutput = "journal";
+            StandardError = "journal";
+          };
+
+          Install.WantedBy = [ "default.target" ];
+        };
       };
   };
   den.aspects.llm-agents = {
