@@ -809,17 +809,18 @@
         "uv2nix": "uv2nix_2"
       },
       "locked": {
-        "lastModified": 1779857788,
+        "lastModified": 1779900528,
         "narHash": "sha256-h7iiU6ey0VCz4MarADBN+bCDHE+Brmz6AUF/Ocoxpaw=",
-        "ref": "refs/heads/feat/home-manager",
-        "rev": "eb5cfbf41180786abbc15581c8074ff688007fa3",
-        "revCount": 9606,
-        "type": "git",
-        "url": "file:///home/klchen/my/hermes-agent"
+        "owner": "klchen0112",
+        "repo": "hermes-agent",
+        "rev": "2c3fa9d9e3cdcddfedc65a76b18c763f622c985a",
+        "type": "github"
       },
       "original": {
-        "type": "git",
-        "url": "file:///home/klchen/my/hermes-agent"
+        "owner": "klchen0112",
+        "ref": "feat/home-manager",
+        "repo": "hermes-agent",
+        "type": "github"
       }
     },
     "home-manager": {
