@@ -129,6 +129,10 @@
       url = "github:numtide/llm-agents.nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    mattpocock-skills = {
+      url = "github:mattpocock/skills";
+      flake = false;
+    };
     niri = {
       url = "github:sodiboo/niri-flake";
       inputs = {
@@ -140,6 +144,10 @@
     nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=latest";
     nix-index-database = {
       url = "github:nix-community/nix-index-database";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    nix-skills = {
+      url = "github:sudosubin/nix-skills";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nix-vscode-extensions = {

@@ -809,18 +809,17 @@
         "uv2nix": "uv2nix_2"
       },
       "locked": {
-        "lastModified": 1779554470,
-        "narHash": "sha256-yRkoSIUpzs98s2UiGuh8a54w11y65FVvJVUxGEcRUzs=",
-        "owner": "klchen0112",
-        "repo": "hermes-agent",
-        "rev": "4798f141645abde24d97f8e092e6fc156eaa5911",
-        "type": "github"
+        "lastModified": 1779857788,
+        "narHash": "sha256-h7iiU6ey0VCz4MarADBN+bCDHE+Brmz6AUF/Ocoxpaw=",
+        "ref": "refs/heads/feat/home-manager",
+        "rev": "eb5cfbf41180786abbc15581c8074ff688007fa3",
+        "revCount": 9606,
+        "type": "git",
+        "url": "file:///home/klchen/my/hermes-agent"
       },
       "original": {
-        "owner": "klchen0112",
-        "ref": "feat/home-manager",
-        "repo": "hermes-agent",
-        "type": "github"
+        "type": "git",
+        "url": "file:///home/klchen/my/hermes-agent"
       }
     },
     "home-manager": {
@@ -933,6 +932,22 @@
       "original": {
         "owner": "numtide",
         "repo": "llm-agents.nix",
+        "type": "github"
+      }
+    },
+    "mattpocock-skills": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1779885382,
+        "narHash": "sha256-XVT4fggiumXwGBO74JbscqMjHIUCMr3rAH0/ZXvBc5s=",
+        "owner": "mattpocock",
+        "repo": "skills",
+        "rev": "0288510dd61ff6ef7c2003834082ab8f2387e80e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "mattpocock",
+        "repo": "skills",
         "type": "github"
       }
     },
@@ -1090,6 +1105,26 @@
       "original": {
         "owner": "nix-community",
         "repo": "nix-index-database",
+        "type": "github"
+      }
+    },
+    "nix-skills": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1779903591,
+        "narHash": "sha256-T0dPJ+nxVdb7IEJzxTPqeXRxz3mEeSCHYlqCPmXWqJg=",
+        "owner": "sudosubin",
+        "repo": "nix-skills",
+        "rev": "8aa40c7cf7d26bf9f6af5f35a00893575c835e40",
+        "type": "github"
+      },
+      "original": {
+        "owner": "sudosubin",
+        "repo": "nix-skills",
         "type": "github"
       }
     },
@@ -1608,10 +1643,12 @@
         "litprog-skill": "litprog-skill",
         "llama-cpp": "llama-cpp",
         "llm-agents": "llm-agents",
+        "mattpocock-skills": "mattpocock-skills",
         "niri": "niri",
         "nix-cachyos-kernel": "nix-cachyos-kernel",
         "nix-flatpak": "nix-flatpak",
         "nix-index-database": "nix-index-database",
+        "nix-skills": "nix-skills",
         "nix-vscode-extensions": "nix-vscode-extensions",
         "nixos-hardware": "nixos-hardware",
         "nixos-wsl": "nixos-wsl",

@@ -7,7 +7,9 @@
     };
     hermes-agent = {
       # url = "github:NousResearch/hermes-agent/v2026.4.30";
+      # url = "git+file:///home/klchen/my/hermes-agent";
       url = "github:klchen0112/hermes-agent/feat/home-manager";
+
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
@@ -30,42 +32,71 @@
           hermes-agent.overlays.default
           llm-agents.overlays.default
         ];
+        home.packages = with pkgs; [
+          # local.graphify
+        ];
         programs.hermes-agent = {
           enable = true;
           #         extraPlugins = [ my-plugin-src ];          # plugin source
-          #extraPythonPackages = [
-          #  pkgs.local.graphify
-          #]
-          #++ (with pkgs.python312Packages; [
-          # httpx
-          #aiohttp
-          #cryptography
-          #]); # its Python dep
-          #extraPackages = [ pkgs.redis ];            # system binary it needs
-          # extraDependencyGroups = [
-          #   "voice"
-          #   "cli"
-          #   "messaging"
-          #   "mcp"
-          #   "matrix"
-          #   "termux-all"
-          # ];
+          extraPythonPackages = [
+            # pkgs.local.graphify
+          ]
+          ++ (with pkgs.python312Packages; [
+            # graphifyy
+            # playwright
+            # playwright
+            # httpx
+            #aiohttp
+            #cryptography
+            #python-telegram-bot
+          ]); # its Python dep
+          extraPlugins = with pkgs; [
+            (pkgs.fetchFromGitHub {
+              owner = "stephenschoettler";
+              repo = "hermes-lcm";
+              name = "hermes-lcm";
+              rev = "v0.12.0";
+              hash = "sha256-RyzKjtNChDtuWi51JTAL0og0X+NzD7mHLUHhqTdko2g=";
+            })
+          ];
+          extraPackages = with pkgs; [
+            agent-browser
+            playwright
+          ]; # system binary it needs
+          extraDependencyGroups = [
+            "acp"
+            "voice"
+            "cli"
+            "messaging"
+            "mcp"
+            "matrix"
+            "termux-all"
+          ];
           settings = {
+            plugins = {
+              enabled = [
+                "hermes-lcm"
+              ];
+            };
+            context = {
+              engine = "lcm";
+            };
             model = {
-              #"default" = "deepseek/deepseek-v4-pro";
-              "default" = "Qwopus3.6-35B-A3B-v1-APEX-MTP-I-Compact";
-              # provider = "deepseek";
-              provider = "custom";
-              #base_url = "https://api.deepseek.com";
-              "base_url" = "http://localhost:8080/v1";
+              "default" = "deepseek-v4-pro";
+              provider = "DeepSeek";
+              #provider = "custom";
+              base_url = "https://api.deepseek.com";
+              #"base_url" = "http://localhost:8080/v1";
             };
             providers = {
-              deepseek = {
-                base_url = "https://api.deepseek.com";
-              };
               custom = {
                 base_url = "http://localhost:8080/v1";
-
+                models = {
+                  "Qwopus3.6-35B-A3B-v1-APEX-MTP-I-Compact" = {
+                    base_url = "http://localhost:8080/v1";
+                    request_timeout_seconds = 30;
+                  };
+                };
               };
             };
             toolsets = [ "all" ];
@@ -92,6 +123,19 @@
             agent = {
               max_turns = 60;
               verbose = false;
+            };
+            auxiliary = {
+              vision = {
+                provider = "custom";
+                base_url = "http://localhost:8080/v1";
+                model = "Qwopus3.6-35B-A3B-v1-APEX-MTP-I-Compact";
+              };
+            };
+            skills = {
+              external_dirs = [
+                "~/.agents/skills"
+              ];
+
             };
           };
           environmentFiles = [ config.sops.secrets."hermes-env".path ];
@@ -136,7 +180,7 @@
           ];
         };
         home.packages = with pkgs; [
-          hermes-agent
+          # hermes-agent is provided by programs.hermes-agent (home-manager module) above
           # llm-agents.opencode
           # opencode
         ];

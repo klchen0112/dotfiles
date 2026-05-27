@@ -135,7 +135,7 @@
               RestartSec = 5;
               ExecStart = pkgs.writeShellScript "run-llama-server-rocm" ''
                 #!/usr/bin/env bash
-                ${llama-cpp}/bin/llama-server -m ${model-path} -mm ${mmproj} --alias ${model-name} --host 0.0.0.0 --flash-attn on --temp 0.6 --top-k 20 --top-p 0.95 --min-p 0 -ctk q8_0 -ctv turbo3 --chat-template-kwargs '{"preserved_thinking":true}' -c ${ctx-size} --jinja --chat-template-file ${template-file} --spec-type mtp --spec-draft-n-max 5  --spec-draft-p-min 0.75 -kvu -np 1 -ctkd q8_0 -ctvd turbo2
+                ${llama-cpp}/bin/llama-server -m ${model-path} -mm ${mmproj} --alias ${model-name} --host 0.0.0.0 --flash-attn on --temp 0.6 --top-k 20 --top-p 0.95 --min-p 0 -ctk q8_0 -ctv turbo3 --chat-template-kwargs '{"preserved_thinking":true}' -c ${ctx-size} --jinja --chat-template-file ${template-file} --spec-type mtp --spec-draft-n-max 5  --spec-draft-p-min 0.75 -kvu -np 1 -ctkd q8_0 -ctvd turbo2 --reasoning off
               '';
             };
 

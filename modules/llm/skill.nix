@@ -23,8 +23,16 @@
       url = "github:tlehman/litprog-skill";
       flake = false;
     };
+    nix-skills = {
+      url = "github:sudosubin/nix-skills";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     youtube-skills = {
       url = "github:ZeroPointRepo/youtube-skills";
+      flake = false;
+    };
+    mattpocock-skills = {
+      url = "github:mattpocock/skills";
       flake = false;
     };
   };
@@ -60,11 +68,25 @@
             input = "litprog-skill";
             subdir = ".";
           };
+          mattpocock-skills = {
+            input = "mattpocock-skills";
+            subdir = "skills";
+            idPrefix = "mattpocock";
+
+            filter.maxDepth = 3;
+          };
+          # sudosubin/nix-skills — 480,000+ skills from skills.sh/skillsdirectory.com (individual packages)
+          #          nix-skills = {
+          #            input = "nix-skills";
+          #            subdir = "skills";
+          #            filter.maxDepth = 1;
+          #          };
 
           # ZeroPointRepo/youtube-skills — YouTube transcript/search skills
           youtube = {
             input = "youtube-skills";
             subdir = "skills";
+            idPrefix = "ZeroPointRepo";
             filter.maxDepth = 1;
           };
         };
