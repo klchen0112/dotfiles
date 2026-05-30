@@ -97,7 +97,7 @@
         targets.agents.enable = true;
         targets.hermes = {
           enable = true;
-          dest = "$HOME/.hermes/skills";
+          dest = "${config.programs.hermes-agent.stateDir}/.hermes/skills";
         };
 
       };

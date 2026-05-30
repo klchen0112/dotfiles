@@ -109,7 +109,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     hermes-agent = {
-      url = "github:klchen0112/hermes-agent/feat/home-manager";
+      url = "github:klchen0112/hermes-agent/own";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     home-manager = {

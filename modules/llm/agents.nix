@@ -76,6 +76,8 @@
             plugins = {
               enabled = [
                 "hermes-lcm"
+                "model-providers/deepseek"
+                "model-providers/custom"
               ];
             };
             context = {
@@ -130,6 +132,11 @@
                 base_url = "http://localhost:8080/v1";
                 model = "Qwopus3.6-35B-A3B-v1-APEX-MTP-I-Compact";
               };
+              web_extract = {
+                provider = "custom";
+                base_url = "http://localhost:8080/v1";
+                model = "Qwopus3.6-35B-A3B-v1-APEX-MTP-I-Compact";
+              };
             };
             skills = {
               external_dirs = [
@@ -152,6 +159,9 @@
             Type = "simple";
             Restart = "on-failure";
             RestartSec = 10;
+            Environment = [
+              "HERMES_HOME=${cfg.stateDir}/.hermes"
+            ];
             ExecStart = "${pkgs.hermes-agent}/bin/hermes dashboard --no-open --host 0.0.0.0 --insecure";
             StandardOutput = "journal";
             StandardError = "journal";
