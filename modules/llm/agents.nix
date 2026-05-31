@@ -137,12 +137,39 @@
                 base_url = "http://localhost:8080/v1";
                 model = "Qwopus3.6-35B-A3B-v1-APEX-MTP-I-Compact";
               };
+              curator = {
+                provider = "custom";
+                base_url = "http://localhost:8080/v1";
+                model = "Qwopus3.6-35B-A3B-v1-APEX-MTP-I-Compact";
+              };
+
             };
             skills = {
               external_dirs = [
                 "~/.agents/skills"
               ];
 
+            };
+            checkpoints = {
+              enabled = true;
+            };
+            lsp = {
+              enabled = true;
+              # 每次写入后等待诊断结果的方式。
+              wait_mode = "document"; # "document" 或 "full"
+              wait_timeout = 5.0;
+
+              # 处理缺失服务器二进制文件的策略。
+              #   auto    — 通过 npm/pip/go install 安装到 <HERMES_HOME>/lsp/bin
+              #   manual  — 仅使用已在 PATH 上的二进制文件
+              install_strategy = "manual";
+            };
+            curator = {
+              enabled = true;
+              interval_hours = 168; # 7 days
+              min_idle_hours = 2;
+              stale_after_days = 30;
+              archive_after_days = 90;
             };
           };
           environmentFiles = [ config.sops.secrets."hermes-env".path ];
