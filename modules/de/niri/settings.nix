@@ -124,13 +124,12 @@
             enable = true;
           };
           preset-column-widths = [
-            { proportion = 0.25; }
-            { proportion = 0.5; }
-            { proportion = 0.75; }
+            { proportion = 0.33; }
+            { proportion = 0.67; }
             { proportion = 1.0; }
           ];
           default-column-width = {
-            proportion = 0.5;
+            proportion = 0.33;
           };
 
           gaps = 6;
