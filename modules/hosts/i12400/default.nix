@@ -10,18 +10,14 @@ in
       "emacs-twist"
       "stylix-home"
       "python"
-      "llm-agents"
       "llm-deploy-rocm"
-      "hermes"
     ];
     users = {
       klchen.roles = [
         "emacs-twist"
         "stylix-home"
         "python"
-        "llm-agents"
         "llm-deploy-rocm"
-        "hermes"
       ];
     };
     klchen = { };

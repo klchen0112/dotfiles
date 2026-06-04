@@ -15,7 +15,7 @@ in
       "python"
       "syncthing"
       "aria2"
-      "llm-deploy"
+      #"llm-deploy"
       "llm-agents"
       "noctalia-shell"
       "niri-home"
@@ -46,10 +46,11 @@ in
     nixos =
       { pkgs, ... }:
       {
-        boot.kernelPackages = pkgs.cachyosKernels.linuxPackages-cachyos-lts-lto-zen4;
+        boot.kernelPackages = pkgs.cachyosKernels.linuxPackages-cachyos-lts-zen4;
 
         imports = [
           inputs.nixos-hardware.nixosModules.common-cpu-amd
+        hermes
           inputs.nixos-hardware.nixosModules.common-cpu-amd-zenpower
           inputs.nixos-hardware.nixosModules.common-cpu-amd-raphael-igpu
           # offload
@@ -145,10 +146,9 @@ in
         emacs-twist
         persist
         nix
-        hermes
         sops
       ]
-        
+
       ++ [
 
         (den.provides.tty-autologin "klchen")
