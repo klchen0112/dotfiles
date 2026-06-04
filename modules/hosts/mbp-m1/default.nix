@@ -22,6 +22,7 @@ in
       "python"
       "syncthing"
       "aria2"
+      "hermes"
     ];
     users = {
       klchen = {
@@ -38,6 +39,7 @@ in
           "python"
           "syncthing"
           "aria2"
+          "hermes"
         ];
       };
     };

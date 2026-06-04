@@ -65,12 +65,12 @@
           ]; # system binary it needs
           extraDependencyGroups = [
             "acp"
-            "voice"
+            #"voice"
             "cli"
             "messaging"
             "mcp"
-            "matrix"
-            "termux-all"
+            #"matrix"
+            #"termux-all"
           ];
           settings = {
             plugins = {

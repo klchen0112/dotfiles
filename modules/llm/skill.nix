@@ -39,7 +39,7 @@
 
   # Pass flake inputs to home-manager so agent-skills-nix can resolve source
   # `input` references (e.g. "wondelai-skills" -> inputs.wondelai-skills).
-  den.aspects.skill.nixos =
+  den.aspects.skill.os =
     { lib, config, ... }:
     {
       home-manager.extraSpecialArgs.inputs = inputs;
