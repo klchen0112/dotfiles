@@ -50,7 +50,6 @@ in
 
         imports = [
           inputs.nixos-hardware.nixosModules.common-cpu-amd
-        hermes
           inputs.nixos-hardware.nixosModules.common-cpu-amd-zenpower
           inputs.nixos-hardware.nixosModules.common-cpu-amd-raphael-igpu
           # offload
