@@ -8,7 +8,7 @@
     hermes-agent = {
       # url = "github:NousResearch/hermes-agent/v2026.4.30";
       # url = "git+file:///home/klchen/my/hermes-agent";
-      url = "github:klchen0112/hermes-agent/feat/home-manager";
+      url = "github:klchen0112/hermes-agent/own";
 
       inputs.nixpkgs.follows = "nixpkgs";
     };
@@ -19,10 +19,51 @@
         pkgs,
         lib,
         config,
+        inputs,
         ...
       }:
       let
         cfg = config.programs.hermes-agent;
+
+        # Build Understand-Anything plugin from source via Nix.
+        # Produces the built plugin with pnpm deps and compiled TypeScript.
+        understand-anything-plugin = pkgs.stdenv.mkDerivation {
+          pname = "understand-anything-plugin";
+          version = "unstable";
+          src = inputs.understand-anything;
+
+          nativeBuildInputs = [
+            pkgs.nodejs_22
+            pkgs.pnpm_9
+            pkgs.pnpmConfigHook
+          ];
+
+          pnpmDeps = pkgs.fetchPnpmDeps {
+            pname = "understand-anything-plugin";
+            src = inputs.understand-anything;
+            pnpm = pkgs.pnpm_9;
+            pnpmWorkspaces = [ "@understand-anything/core" ];
+            fetcherVersion = 3;
+            # Placeholder — replace with real hash after first build attempt
+            hash = "sha256-gZhRLMOzq9kxD0dnRM4KYjWmW18hOpvVIW6gXUZ26Qo=";
+          };
+
+          pnpmWorkspaces = [ "@understand-anything/core" ];
+
+          buildPhase = ''
+            runHook preBuild
+            pnpm install --frozen-lockfile --offline --filter @understand-anything/core
+            pnpm --filter @understand-anything/core build
+            runHook postBuild
+          '';
+
+          installPhase = ''
+            runHook preInstall
+            mkdir -p $out
+            cp -r . $out/
+            runHook postInstall
+          '';
+        };
       in
       {
         imports = with inputs; [
@@ -62,6 +103,7 @@
           extraPackages = with pkgs; [
             agent-browser
             playwright
+            nodejs_22
           ]; # system binary it needs
           extraDependencyGroups = [
             "acp"
@@ -174,6 +216,11 @@
           };
           environmentFiles = [ config.sops.secrets."hermes-env".path ];
         };
+
+        # Symlink ~/.understand-anything-plugin → Nix-built plugin so the
+        # skills' runtime scripts can resolve @understand-anything/core.
+        home.file.".understand-anything-plugin".source =
+          "${understand-anything-plugin}/understand-anything-plugin";
 
         # Hermes dashboard systemd user service
         systemd.user.services.hermes-dashboard = {
