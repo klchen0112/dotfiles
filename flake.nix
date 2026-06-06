@@ -19,7 +19,7 @@
     lazy-trees = true;
     submodules = true;
     substituters = [
-     # "https://mirrors.cernet.edu.cn/nix-channels/store"
+      "https://mirrors.cernet.edu.cn/nix-channels/store"
       "https://nix-community.cachix.org"
       "https://niri.cachix.org"
       "https://cache.nixos.org"
@@ -30,7 +30,6 @@
       "https://attic.xuyh0120.win/lantian"
     ];
     trusted-public-keys = [
-      "cache.numtide.com-1:DTx8wZduET09hRmMtKdQDxNNthLQETkc/yaX7M4qK0g="
       "klchen0112.cachix.org-1:cO5Ek4gcvoWtHslHjWn9U5ymU8ZiN7+tJo0jifbtRz4="
       "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
       "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
@@ -123,7 +122,7 @@
       flake = false;
     };
     llama-cpp = {
-      url = "github:EsmaeelNabil/llama.cpp-mtp-turbo-quant/feat/mtp-turboquant-kv-cache";
+      url = "github:Anbeeld/beellama.cpp/v0.3.2";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     llm-agents = {
@@ -199,6 +198,10 @@
     treefmt-nix = {
       url = "github:numtide/treefmt-nix";
       inputs.nixpkgs.follows = "nixpkgs";
+    };
+    understand-anything = {
+      url = "github:Lum1104/Understand-Anything";
+      flake = false;
     };
     wondelai-skills = {
       url = "github:wondelai/skills";

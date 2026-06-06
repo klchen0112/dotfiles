@@ -897,17 +897,17 @@
         ]
       },
       "locked": {
-        "lastModified": 1778608591,
-        "narHash": "sha256-pQLwOTQzhQuSwEDQvQ9QPzKntVlpTlpWLa9d7lbYnlM=",
-        "owner": "EsmaeelNabil",
-        "repo": "llama.cpp-mtp-turbo-quant",
-        "rev": "a578bb6b94529b7b2721d0ee49eaea5dbb2c6d07",
+        "lastModified": 1780741249,
+        "narHash": "sha256-yrgq1vaeZ6dH/CODXbxaJkc8p4QcwWTWJQOGNauSoR8=",
+        "owner": "Anbeeld",
+        "repo": "beellama.cpp",
+        "rev": "13ad92aaae5e5c639423d85d16965ce0f5235fda",
         "type": "github"
       },
       "original": {
-        "owner": "EsmaeelNabil",
-        "ref": "feat/mtp-turboquant-kv-cache",
-        "repo": "llama.cpp-mtp-turbo-quant",
+        "owner": "Anbeeld",
+        "ref": "v0.3.2",
+        "repo": "beellama.cpp",
         "type": "github"
       }
     },
@@ -1665,6 +1665,7 @@
         "stylix": "stylix",
         "systems": "systems_8",
         "treefmt-nix": "treefmt-nix_3",
+        "understand-anything": "understand-anything",
         "wondelai-skills": "wondelai-skills",
         "youtube-skills": "youtube-skills",
         "zen-browser": "zen-browser"
@@ -2024,6 +2025,22 @@
       "original": {
         "owner": "emacs-twist",
         "repo": "overrides",
+        "type": "github"
+      }
+    },
+    "understand-anything": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1780742820,
+        "narHash": "sha256-W03Aumg4PCN4BpAuoY6MiQzLSR6tfNffF993X3yV+PQ=",
+        "owner": "Lum1104",
+        "repo": "Understand-Anything",
+        "rev": "5c1e35f90be029efb012a41e1122b08abef5cbb2",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Lum1104",
+        "repo": "Understand-Anything",
         "type": "github"
       }
     },

@@ -3,8 +3,8 @@
   flake-file.inputs = {
     llama-cpp = {
       # url = "github:ggml-org/llama.cpp";
-      # url = "github:acerspyro/beellama.cpp";
-      url = "github:EsmaeelNabil/llama.cpp-mtp-turbo-quant/feat/mtp-turboquant-kv-cache";
+      url = "github:Anbeeld/beellama.cpp/v0.3.2";
+      #  url = "github:EsmaeelNabil/llama.cpp-mtp-turbo-quant/feat/mtp-turboquant-kv-cache";
       # url = "github:TheTom/llama-cpp-turboquant";
       inputs.nixpkgs.follows = "nixpkgs";
     };
