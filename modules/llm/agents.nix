@@ -126,27 +126,24 @@
               engine = "lcm";
             };
             model = {
-              "default" = "deepseek-v4-pro";
-              provider = "DeepSeek";
+              default = "unsloth/gemma-4-26B-A4B-it-qat-GGUF";
+              provider = "i12400";
               #provider = "custom";
-              base_url = "https://api.deepseek.com";
+              # base_url = "https://api.deepseek.com";
               #"base_url" = "http://localhost:8080/v1";
             };
-            providers = {
-              custom = {
+
+            custom_providers = [
+              {
+                name = "i12400";
                 base_url = "http://i12400.klchen.duckdns.org:8080/v1";
-                models = {
-                  "Qwopus3.6-35B-A3B-v1-APEX-MTP-I-Compact" = {
-                    base_url = "http://i12400.klchen.duckdns.org:8080/v1";
-                    request_timeout_seconds = 30;
-                  };
-                  "unsloth/gemma-4-26B-A4B-it-qat-GGUF" = {
-                    base_url = "http://i12400.klchen.duckdns.org:8080/v1";
-                    request_timeout_seconds = 30;
-                  };
-                };
-              };
-            };
+                models = [
+                  "unsloth/gemma-4-26B-A4B-it-qat-GGUF"
+                  "Qwopus3.6-35B-A3B-v1-APEX-MTP-I-Compact"
+                ];
+              }
+            ];
+
             toolsets = [ "all" ];
             max_turns = 100;
             terminal = {
@@ -188,7 +185,6 @@
                 model = "unsloth/gemma-4-26B-A4B-it-qat-GGUF";
                 base_url = "http://i12400.klchen.duckdns.org:8080/v1";
               };
-
             };
             skills = {
               external_dirs = [
@@ -221,12 +217,7 @@
           environmentFiles = [ config.sops.secrets."hermes-env".path ];
         };
 
-        # Symlink ~/.understand-anything-plugin → Nix-built plugin so the
-        # skills' runtime scripts can resolve @understand-anything/core.
-        home.file.".understand-anything-plugin".source =
-          "${understand-anything-plugin}/understand-anything-plugin";
-
-        # Hermes dashboard systemd user service
+        # Hermes dashboard systemd user service (Linux)
         systemd.user.services.hermes-dashboard = {
           Unit = {
             Description = "Hermes Agent Web Dashboard";
@@ -246,6 +237,38 @@
           };
 
           Install.WantedBy = [ "default.target" ];
+        };
+
+        # Symlink ~/.understand-anything-plugin → Nix-built plugin so the
+        # skills' runtime scripts can resolve @understand-anything/core.
+        home.file.".understand-anything-plugin".source =
+          "${understand-anything-plugin}/understand-anything-plugin";
+
+        # Hermes dashboard launchd user agent (macOS / Darwin)
+        launchd.agents.hermes-dashboard = {
+          enable = true;
+          config = {
+            Label = "org.nix-community.home.hermes-dashboard";
+            ProgramArguments = [
+              "${pkgs.hermes-agent}/bin/hermes"
+              "dashboard"
+              "--no-open"
+              "--host"
+              "0.0.0.0"
+              "--insecure"
+            ];
+            RunAtLoad = true;
+            KeepAlive = {
+              SuccessfulExit = false;
+              Crashed = true;
+            };
+            EnvironmentVariables = {
+              HERMES_HOME = "${cfg.stateDir}/.hermes";
+            };
+            StandardOutPath = "${config.home.homeDirectory}/Library/Logs/hermes-dashboard.log";
+            StandardErrorPath = "${config.home.homeDirectory}/Library/Logs/hermes-dashboard.err.log";
+            ProcessType = "Background";
+          };
         };
       };
   };
