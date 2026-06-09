@@ -24,7 +24,7 @@
         onActivation = {
           autoUpdate = true; # Auto update packages
           upgrade = true;
-          cleanup = "zap"; # Uninstall not listed packages and casks
+          # cleanup = "zap"; # Uninstall not listed packages and casks
         };
         global.autoUpdate = true;
         masApps = {
@@ -35,8 +35,8 @@
           # xcode = 497799835;
 
           # "goodnotes-5" = 1444383602;
-          qq = 451108668;
-          wechat = 836500024;
+          #qq = 451108668;
+          #wechat = 836500024;
           # spark = 1176895641;
           # onedrive = 823766827;
           # tencent-meeting = 1484048379;
