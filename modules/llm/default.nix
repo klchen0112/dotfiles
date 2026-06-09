@@ -125,7 +125,7 @@
               llama-cpp = pkgs.llama-cpp;
               mmproj = "${config.home.homeDirectory}/model/unsloth/gemma-4-26B-A4B-it-qat-GGUF/mmproj-BF16.gguf";
               model-path = "${config.home.homeDirectory}/model/unsloth/gemma-4-26B-A4B-it-qat-GGUF/gemma-4-26B-A4B-it-qat-UD-Q4_K_XL.gguf";
-              md-path = "${config.home.homeDirectory}/model/unsloth/gemma-4-26B-A4B-it-qat-GGUF/gemma-4-31b-qat-it-assistant-Q4_0-Q4emb.gguf";
+              md-path = "${config.home.homeDirectory}/model/unsloth/gemma-4-26B-A4B-it-qat-GGUF/gemma-4-26b-A4B-it-assistant-Q4_0-q4emb.gguf";
               model-name = "unsloth/gemma-4-26B-A4B-it-qat-GGUF";
               template-file = "${config.home.homeDirectory}/model/Jackrong/Qwopus3.6-27B-v2-MTP-GGUF/chat_template.jinja";
               ctx-size = "262144";
