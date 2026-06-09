@@ -3,12 +3,12 @@
     { pkgs, ... }:
     {
       #services.flatpak.packages = [
-        # "com.tencent.WeChat"
- #       "com.qq.QQ"
+      # "com.tencent.WeChat"
+      #       "com.qq.QQ"
       #];
       home.packages = with pkgs; [
         telegram-desktop
-#        wechat-uos
+        #        wechat-uos
       ];
     };
 }
