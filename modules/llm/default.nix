@@ -2,8 +2,8 @@
 {
   flake-file.inputs = {
     llama-cpp = {
-      # url = "github:ggml-org/llama.cpp";
-      url = "github:Anbeeld/beellama.cpp/v0.3.2";
+      url = "github:ggml-org/llama.cpp";
+      # url = "github:Anbeeld/beellama.cpp/v0.3.2";
       #  url = "github:EsmaeelNabil/llama.cpp-mtp-turbo-quant/feat/mtp-turboquant-kv-cache";
       # url = "github:TheTom/llama-cpp-turboquant";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -123,11 +123,12 @@
           Service =
             let
               llama-cpp = pkgs.llama-cpp;
-              mmproj = "${config.home.homeDirectory}/model/mudler/Qwopus3.6-35B-A3B-v1-APEX-MTP-GGUF/mmproj-BF16.gguf";
-              model-path = "${config.home.homeDirectory}/model/mudler/Qwopus3.6-35B-A3B-v1-APEX-MTP-GGUF/Qwopus3.6-35B-A3B-v1-APEX-MTP-I-Compact.gguf";
-              model-name = "Qwopus3.6-35B-A3B-v1-APEX-MTP-I-Compact";
+              mmproj = "${config.home.homeDirectory}/model/unsloth/gemma-4-26B-A4B-it-qat-GGUF/mmproj-BF16.gguf";
+              model-path = "${config.home.homeDirectory}/model/unsloth/gemma-4-26B-A4B-it-qat-GGUF/gemma-4-26B-A4B-it-qat-UD-Q4_K_XL.gguf";
+              md-path = "${config.home.homeDirectory}/model/unsloth/gemma-4-26B-A4B-it-qat-GGUF/gemma-4-31b-qat-it-assistant-Q4_0-Q4emb.gguf";
+              model-name = "unsloth/gemma-4-26B-A4B-it-qat-GGUF";
               template-file = "${config.home.homeDirectory}/model/Jackrong/Qwopus3.6-27B-v2-MTP-GGUF/chat_template.jinja";
-              ctx-size = "128000";
+              ctx-size = "262144";
             in
             {
               Type = "simple";
@@ -135,7 +136,7 @@
               RestartSec = 5;
               ExecStart = pkgs.writeShellScript "run-llama-server-rocm" ''
                 #!/usr/bin/env bash
-                ${llama-cpp}/bin/llama-server -m ${model-path} -mm ${mmproj} --alias ${model-name} --host 0.0.0.0 --flash-attn on --temp 0.6 --top-k 20 --top-p 0.95 --min-p 0 -ctk q8_0 -ctv turbo3 --chat-template-kwargs '{"preserved_thinking":true}' -c ${ctx-size} --jinja --chat-template-file ${template-file} --spec-type mtp --spec-draft-n-max 5  --spec-draft-p-min 0.75 -kvu -np 1 -ctkd q8_0 -ctvd turbo2 --reasoning off
+                ${llama-cpp}/bin/llama-server -m ${model-path} -mm ${mmproj} --alias ${model-name} --host 0.0.0.0 --flash-attn on --temp 1.0 --top-k 64 --top-p 0.95 --chat-template-kwargs '{"preserved_thinking":true}' -c ${ctx-size} --spec-type draft-mtp --spec-draft-n-max 3  -np 1 -md ${md-path}
               '';
             };
 

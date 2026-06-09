@@ -134,10 +134,14 @@
             };
             providers = {
               custom = {
-                base_url = "http://localhost:8080/v1";
+                base_url = "http://i12400.klchen.duckdns.org:8080/v1";
                 models = {
                   "Qwopus3.6-35B-A3B-v1-APEX-MTP-I-Compact" = {
-                    base_url = "http://localhost:8080/v1";
+                    base_url = "http://i12400.klchen.duckdns.org:8080/v1";
+                    request_timeout_seconds = 30;
+                  };
+                  "unsloth/gemma-4-26B-A4B-it-qat-GGUF" = {
+                    base_url = "http://i12400.klchen.duckdns.org:8080/v1";
                     request_timeout_seconds = 30;
                   };
                 };
@@ -171,18 +175,18 @@
             auxiliary = {
               vision = {
                 provider = "custom";
-                base_url = "http://localhost:8080/v1";
-                model = "Qwopus3.6-35B-A3B-v1-APEX-MTP-I-Compact";
+                base_url = "http://i12400.klchen.duckdns.org:8080/v1";
+                model = "unsloth/gemma-4-26B-A4B-it-qat-GGUF";
               };
               web_extract = {
                 provider = "custom";
-                base_url = "http://localhost:8080/v1";
-                model = "Qwopus3.6-35B-A3B-v1-APEX-MTP-I-Compact";
+                model = "unsloth/gemma-4-26B-A4B-it-qat-GGUF";
+                base_url = "http://i12400.klchen.duckdns.org:8080/v1";
               };
               curator = {
                 provider = "custom";
-                base_url = "http://localhost:8080/v1";
-                model = "Qwopus3.6-35B-A3B-v1-APEX-MTP-I-Compact";
+                model = "unsloth/gemma-4-26B-A4B-it-qat-GGUF";
+                base_url = "http://i12400.klchen.duckdns.org:8080/v1";
               };
 
             };
