@@ -110,6 +110,7 @@
     };
     hermes-agent = {
       url = "github:klchen0112/hermes-agent/own";
+      # url = "git+file:///home/klchen/open/hermes-agent";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     home-manager = {
