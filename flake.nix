@@ -141,7 +141,7 @@
         nixpkgs-stable.follows = "nixpkgs-stable";
       };
     };
-    nix-cachyos-kernel.url = "github:xddxdd/nix-cachyos-kernel/release";
+    nix-cachyos-kernel.url = "github:xddxdd/nix-cachyos-kernel";
     nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=latest";
     nix-index-database = {
       url = "github:nix-community/nix-index-database";

@@ -36,7 +36,7 @@
       nixpkgs.overlays = [
         # Use nixpkgs from your environment, nixpkgs.config will apply.
         # Has small chance of kernel modules not being compatible with kernel version.
-        inputs.nix-cachyos-kernel.overlays.default
+        inputs.nix-cachyos-kernel.overlays.pinned
         inputs.self.overlays.default
       ];
       boot.kernelPackages = lib.mkDefault pkgs.cachyosKernels.linuxPackages-cachyos-lts-lto-x86_64-v4;
