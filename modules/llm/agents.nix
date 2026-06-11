@@ -128,6 +128,7 @@
             model = {
               default = "unsloth/gemma-4-26B-A4B-it-qat-GGUF";
               provider = "i12400";
+              base_url = "http://i12400.klchen.duckdns.org:8080/v1";
               #provider = "custom";
               # base_url = "https://api.deepseek.com";
               #"base_url" = "http://localhost:8080/v1";
