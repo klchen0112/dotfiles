@@ -60,12 +60,30 @@
           home.homeDirectory = lib.mkForce (
             if pkgs.stdenvNoCC.isDarwin then "/Users/klchen" else "/home/klchen"
           );
+          sops.secrets.hermes-env = {
+            sopsFile = ../../secrets/klchen/hermes.env;
+            format = "dotenv";
+          };
 
           programs.git.settings.user = {
             name = "klchen0112";
             email = "klchen0112@gmail.com";
           };
+          programs.hermes-agent = {
+            environmentFiles = [ config.sops.secrets."hermes-env".path ];
+          };
         };
+      provides.i12400 = {
+        homeManager = { config, ... }: {
+          sops.secrets.hermes-telegram-env = {
+            sopsFile = ../../secrets/klchen/hermes-telegram.env;
+            format = "dotenv";
+          };
+          programs.hermes-agent = {
+            environmentFiles = [ config.sops.secrets."hermes-telegram-env".path ];
+          };
+        };
+      };
       includes = [
 
         <den/define-user>

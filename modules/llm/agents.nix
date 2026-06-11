@@ -215,7 +215,6 @@
               archive_after_days = 90;
             };
           };
-          environmentFiles = [ config.sops.secrets."hermes-env".path ];
         };
 
         # Hermes dashboard systemd user service (Linux)
