@@ -172,17 +172,17 @@
             };
             auxiliary = {
               vision = {
-                provider = "custom";
+                provider = "i12400";
                 base_url = "http://i12400.klchen.duckdns.org:8080/v1";
                 model = "unsloth/gemma-4-26B-A4B-it-qat-GGUF";
               };
               web_extract = {
-                provider = "custom";
+                provider = "i12400";
                 model = "unsloth/gemma-4-26B-A4B-it-qat-GGUF";
                 base_url = "http://i12400.klchen.duckdns.org:8080/v1";
               };
               curator = {
-                provider = "custom";
+                provider = "i12400";
                 model = "unsloth/gemma-4-26B-A4B-it-qat-GGUF";
                 base_url = "http://i12400.klchen.duckdns.org:8080/v1";
               };
