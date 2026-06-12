@@ -123,11 +123,10 @@
           Service =
             let
               llama-cpp = pkgs.llama-cpp;
-              mmproj = "${config.home.homeDirectory}/model/unsloth/gemma-4-26B-A4B-it-qat-GGUF/mmproj-BF16.gguf";
-              model-path = "${config.home.homeDirectory}/model/unsloth/gemma-4-26B-A4B-it-qat-GGUF/gemma-4-26B-A4B-it-qat-UD-Q4_K_XL.gguf";
-              md-path = "${config.home.homeDirectory}/model/unsloth/gemma-4-26B-A4B-it-qat-GGUF/gemma-4-26b-A4B-it-assistant-Q4_0-q4emb.gguf";
-              model-name = "unsloth/gemma-4-26B-A4B-it-qat-GGUF";
-              template-file = "${config.home.homeDirectory}/model/Jackrong/Qwopus3.6-27B-v2-MTP-GGUF/chat_template.jinja";
+              mmproj = "${config.home.homeDirectory}/model/mudler/Darwin-36B-Opus-APEX-GGUF/mmproj-BF16.gguf";
+              model-path = "${config.home.homeDirectory}/model/mudler/Darwin-36B-Opus-APEX-GGUF/Darwin-36B-Opus-APEX-I-Compact.gguf";
+              model-name = "mudler/Darwin-36B-Opus-APEX-GGUF";
+              template-file = "${config.home.homeDirectory}/model/mudler/Darwin-36B-Opus-APEX-GGUF/chat_template.jinja";
               ctx-size = "262144";
             in
             {
@@ -136,7 +135,7 @@
               RestartSec = 5;
               ExecStart = pkgs.writeShellScript "run-llama-server-rocm" ''
                 #!/usr/bin/env bash
-                ${llama-cpp}/bin/llama-server -m ${model-path} -mm ${mmproj} --alias ${model-name} --host 0.0.0.0 --flash-attn on --temp 1.0 --top-k 64 --top-p 0.95 --chat-template-kwargs '{"preserved_thinking":true}' -c ${ctx-size} --spec-type draft-mtp --spec-draft-n-max 3  -np 1 -md ${md-path}
+                ${llama-cpp}/bin/llama-server -m ${model-path} -mm ${mmproj} --host 0.0.0.0 --temp 0.6 --top-p 0.95 --top-k 20 --min-p 0.00 --jinja --chat-template-file ${template-file} --alias ${model-name}
               '';
             };
 

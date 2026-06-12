@@ -126,7 +126,7 @@
               engine = "lcm";
             };
             model = {
-              default = "unsloth/gemma-4-26B-A4B-it-qat-GGUF";
+              default = "mudler/Darwin-36B-Opus-APEX-GGUF";
               provider = "i12400";
               base_url = "http://i12400.klchen.duckdns.org:8080/v1";
               #provider = "custom";
@@ -139,6 +139,7 @@
                 name = "i12400";
                 base_url = "http://i12400.klchen.duckdns.org:8080/v1";
                 models = [
+                  "mudler/Darwin-36B-Opus-APEX-GGUF"
                   "unsloth/gemma-4-26B-A4B-it-qat-GGUF"
                   "Qwopus3.6-35B-A3B-v1-APEX-MTP-I-Compact"
                 ];
@@ -174,16 +175,16 @@
               vision = {
                 provider = "i12400";
                 base_url = "http://i12400.klchen.duckdns.org:8080/v1";
-                model = "unsloth/gemma-4-26B-A4B-it-qat-GGUF";
+                model = "mudler/Darwin-36B-Opus-APEX-GGUF";
               };
               web_extract = {
                 provider = "i12400";
-                model = "unsloth/gemma-4-26B-A4B-it-qat-GGUF";
+                model = "mudler/Darwin-36B-Opus-APEX-GGUF";
                 base_url = "http://i12400.klchen.duckdns.org:8080/v1";
               };
               curator = {
+                model = "mudler/Darwin-36B-Opus-APEX-GGUF";
                 provider = "i12400";
-                model = "unsloth/gemma-4-26B-A4B-it-qat-GGUF";
                 base_url = "http://i12400.klchen.duckdns.org:8080/v1";
               };
             };
