@@ -113,20 +113,20 @@
             modelscope
           ]);
 
-        # llama-server systemd user service
-        systemd.user.services.llama-server = {
+        # llama-server systemd user service (rocm)
+        systemd.user.services.llama-server-rocm = {
           Unit = {
-            Description = "llama-server: local LLM inference server (Carnice-Qwen3.6-MoE-35B-A3B-APEX)";
+            Description = "llama-server: local LLM inference server (Carnice-Qwen3.6-MoE-35B-A3B-APEX-MTP)";
             After = [ "network.target" ];
           };
 
           Service =
             let
               llama-cpp = pkgs.llama-cpp;
-              mmproj = "${config.home.homeDirectory}/model/mudler/Darwin-36B-Opus-APEX-GGUF/mmproj-BF16.gguf";
-              model-path = "${config.home.homeDirectory}/model/mudler/Darwin-36B-Opus-APEX-GGUF/Darwin-36B-Opus-APEX-I-Compact.gguf";
-              model-name = "mudler/Darwin-36B-Opus-APEX-GGUF";
-              template-file = "${config.home.homeDirectory}/model/mudler/Darwin-36B-Opus-APEX-GGUF/chat_template.jinja";
+              mmproj = "${config.home.homeDirectory}/model/mudler/Carnice-Qwen3.6-MoE-35B-A3B-APEX-MTP-GGUF/mmproj-BF16.gguf";
+              model-path = "${config.home.homeDirectory}/model/mudler/Carnice-Qwen3.6-MoE-35B-A3B-APEX-MTP-GGUF/Carnice-Qwen3.6-MoE-35B-A3B-APEX-MTP-I-Compact.gguf";
+              model-name = "Carnice-Qwen3.6-MoE-35B-A3B-APEX-MTP-I-Compact";
+              template-file = "${config.home.homeDirectory}/model/mudler/Carnice-Qwen3.6-MoE-35B-A3B-APEX-MTP-GGUF/chat_template.jinja";
               ctx-size = "262144";
             in
             {
@@ -135,7 +135,7 @@
               RestartSec = 5;
               ExecStart = pkgs.writeShellScript "run-llama-server-rocm" ''
                 #!/usr/bin/env bash
-                ${llama-cpp}/bin/llama-server -m ${model-path} -mm ${mmproj} --host 0.0.0.0 --temp 0.6 --top-p 0.95 --top-k 20 --min-p 0.00 --jinja --chat-template-file ${template-file} --alias ${model-name}
+                ${llama-cpp}/bin/llama-server -m ${model-path} -mm ${mmproj} --host 0.0.0.0 --temp 0.6 --top-p 0.95 --top-k 20 --min-p 0.00 --jinja --chat-template-file ${template-file} --alias ${model-name} --spec-type draft-mtp --spec-draft-n-max 3
               '';
             };
 

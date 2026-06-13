@@ -126,7 +126,7 @@
               engine = "lcm";
             };
             model = {
-              default = "mudler/Darwin-36B-Opus-APEX-GGUF";
+              default = "Carnice-Qwen3.6-MoE-35B-A3B-APEX-MTP-I-Compact";
               provider = "i12400";
               base_url = "http://i12400.klchen.duckdns.org:8080/v1";
               #provider = "custom";
@@ -139,7 +139,7 @@
                 name = "i12400";
                 base_url = "http://i12400.klchen.duckdns.org:8080/v1";
                 models = [
-                  "mudler/Darwin-36B-Opus-APEX-GGUF"
+                  "Carnice-Qwen3.6-MoE-35B-A3B-APEX-MTP-I-Compact"
                   "unsloth/gemma-4-26B-A4B-it-qat-GGUF"
                   "Qwopus3.6-35B-A3B-v1-APEX-MTP-I-Compact"
                 ];
@@ -175,15 +175,15 @@
               vision = {
                 provider = "i12400";
                 base_url = "http://i12400.klchen.duckdns.org:8080/v1";
-                model = "mudler/Darwin-36B-Opus-APEX-GGUF";
+                model = "Carnice-Qwen3.6-MoE-35B-A3B-APEX-MTP-I-Compact";
               };
               web_extract = {
                 provider = "i12400";
-                model = "mudler/Darwin-36B-Opus-APEX-GGUF";
+                model = "Carnice-Qwen3.6-MoE-35B-A3B-APEX-MTP-I-Compact";
                 base_url = "http://i12400.klchen.duckdns.org:8080/v1";
               };
               curator = {
-                model = "mudler/Darwin-36B-Opus-APEX-GGUF";
+                model = "Carnice-Qwen3.6-MoE-35B-A3B-APEX-MTP-I-Compact";
                 provider = "i12400";
                 base_url = "http://i12400.klchen.duckdns.org:8080/v1";
               };
