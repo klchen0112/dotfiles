@@ -36,14 +36,6 @@
       nixpkgs.overlays = [
         inputs.niri.overlays.niri
       ];
-      services.displayManager = {
-        gdm = {
-          enable = true;
-        };
-        sessionPackages = with pkgs; [
-          niri
-        ];
-      };
       xdg = {
         autostart.enable = true;
         portal = {
@@ -55,6 +47,21 @@
             pkgs.xdg-desktop-portal
           ];
           config.common.default = [ "gnome" ];
+        };
+      };
+      services.greetd.enable = true;
+
+      # 3. 启用并配置 ReGreet 模块
+      programs.regreet = {
+        enable = true;
+
+        # 这里可以自定义 ReGreet 的视觉外观（可选，不写则使用默认的丑丑的主题）
+        settings = {
+
+          # 欢迎语
+          appearance = {
+            greeting_msg = "Welcome to Niri!";
+          };
         };
       };
       #services.greetd = {

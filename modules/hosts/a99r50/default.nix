@@ -137,9 +137,9 @@ in
         font
         # keyboard
         flatpak
-        k3s
-        k3s-node
-        k3s-nvidia
+        #k3s
+        #k3s-node
+        #k3s-nvidia
         nvidia
         niri
         noctalia-shell
