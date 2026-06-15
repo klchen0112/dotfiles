@@ -114,6 +114,7 @@
         <paneru>
         <llm-deploy>
         <llm-deploy-rocm>
+        <llm-deploy-vulkan>
         <llm-agents>
         <skill>
         <inputmethod>

@@ -2,9 +2,9 @@
 {
   flake-file.inputs = {
     llama-cpp = {
-      url = "github:ggml-org/llama.cpp";
+      # url = "github:ggml-org/llama.cpp";
       # url = "github:Anbeeld/beellama.cpp/v0.3.2";
-      #  url = "github:EsmaeelNabil/llama.cpp-mtp-turbo-quant/feat/mtp-turboquant-kv-cache";
+      url = "github:danielhanchen/llama.cpp/diffusion-visual-updates";
       # url = "github:TheTom/llama-cpp-turboquant";
       inputs.nixpkgs.follows = "nixpkgs";
     };
@@ -136,6 +136,82 @@
               ExecStart = pkgs.writeShellScript "run-llama-server-rocm" ''
                 #!/usr/bin/env bash
                 ${llama-cpp}/bin/llama-server -m ${model-path} -mm ${mmproj} --host 0.0.0.0 --temp 0.6 --top-p 0.95 --top-k 20 --min-p 0.00 --jinja --chat-template-file ${template-file} --alias ${model-name} --spec-type draft-mtp --spec-draft-n-max 3
+              '';
+            };
+
+          Install.WantedBy = [ "default.target" ];
+        };
+      };
+  };
+
+  den.aspects.llm-deploy-vulkan = {
+    llm-deploy-vulkan =
+      { pkgs, config, ... }:
+      let
+        llama-cpp = pkgs.llama-cpp.override { useVulkan = true; };
+      in
+      {
+        nixpkgs.overlays = [
+          inputs.llama-cpp.overlays.default
+        ];
+
+        nixpkgs = {
+          config = {
+            vulkanSupport = true;
+          };
+        };
+        home.packages =
+          with pkgs;
+          [
+            llama-cpp
+            vulkan-loader
+            vulkan-headers
+            vulkan-tools
+            vulkan-validation-layers
+          ]
+          ++ (with pkgs.python314Packages; [
+            hf-xet
+            huggingface-hub
+            modelscope
+          ]);
+
+        # llama-server systemd user service (vulkan)
+        systemd.user.services.llama-server-vulkan = {
+          Unit = {
+            Description = "llama-server: local LLM inference server (Carnice-Qwen3.6-MoE-35B-A3B-APEX-Vulkan)";
+            After = [ "network.target" ];
+          };
+
+          Service =
+            let
+              mmproj = "${config.home.homeDirectory}/.cache/modelscope/hub/models/mudler/Qwen3.6-35B-A3B-APEX-GGUF/mmproj.gguf";
+              model-path = "${config.home.homeDirectory}/.cache/modelscope/hub/models/mudler/Carnice-Qwen3.6-MoE-35B-A3B-APEX-GGUF/Carnice-Qwen3.6-MoE-35B-A3B-APEX-I-Compact.gguf";
+              model-name = "Carnice-Qwen3.6-MoE-35B-A3B-APEX-Vulkan";
+              template-file = "${config.home.homeDirectory}/.cache/modelscope/hub/models/mudler/Carnice-Qwen3.6-MoE-35B-A3B-APEX-GGUF/chat_template.jinja";
+              ctx-size = "262144";
+            in
+            {
+              Type = "simple";
+              Restart = "on-failure";
+              RestartSec = 5;
+              ExecStart = pkgs.writeShellScript "run-llama-server-vulkan" ''
+                #!/usr/bin/env bash
+                ${llama-cpp}/bin/llama-server \
+                  -mm ${mmproj} \
+                  -m ${model-path} \
+                  --alias ${model-name} \
+                  --parallel 1 \
+                  --ctx-size 262144 \
+                  --flash-attn on \
+                  --jinja \
+                  --chat-template-kwargs '{"preserve_thinking": true}' \
+                  --reasoning on \
+                  --reasoning-budget 4096 \
+                  --temp 0.6 \
+                  --top-k 20 \
+                  --top-p 0.95 \
+                  --min-p 0 \
+                  --host 0.0.0.0
               '';
             };
 

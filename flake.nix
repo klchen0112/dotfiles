@@ -110,7 +110,6 @@
     };
     hermes-agent = {
       url = "github:klchen0112/hermes-agent/own";
-      # url = "git+file:///home/klchen/open/hermes-agent";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     home-manager = {
@@ -123,7 +122,7 @@
       flake = false;
     };
     llama-cpp = {
-      url = "github:ggml-org/llama.cpp";
+      url = "github:danielhanchen/llama.cpp/diffusion-visual-updates";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     llm-agents = {
@@ -141,7 +140,7 @@
         nixpkgs-stable.follows = "nixpkgs-stable";
       };
     };
-    nix-cachyos-kernel.url = "github:xddxdd/nix-cachyos-kernel";
+    nix-cachyos-kernel.url = "github:xddxdd/nix-cachyos-kernel/release";
     nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=latest";
     nix-index-database = {
       url = "github:nix-community/nix-index-database";

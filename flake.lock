@@ -209,11 +209,11 @@
     "cachyos-kernel-patches": {
       "flake": false,
       "locked": {
-        "lastModified": 1781033505,
-        "narHash": "sha256-SvfM/ziqApiL+1pp68lzGYgNp1MvFFb7+onT3P5KeMU=",
+        "lastModified": 1781257359,
+        "narHash": "sha256-J2/PBS+5u6osnWZUB7UTjLaD+S8diM+6hlOWDoX/+bw=",
         "owner": "CachyOS",
         "repo": "kernel-patches",
-        "rev": "4d08f658d3d979d958dcae2af3aa3838f219852f",
+        "rev": "46b45d26b536195f3ee8bc510b96b7fa47567163",
         "type": "github"
       },
       "original": {
@@ -897,15 +897,16 @@
         ]
       },
       "locked": {
-        "lastModified": 1781095301,
-        "narHash": "sha256-UhtoFuVFtqGRK+0kO6Tocuzbr556TaP+yrflTt6YUPc=",
-        "owner": "ggml-org",
+        "lastModified": 1781417311,
+        "narHash": "sha256-z00F+IWcZgbFZoCaIZFubSl1JabJ3Knvg9O9F+x3Ztk=",
+        "owner": "danielhanchen",
         "repo": "llama.cpp",
-        "rev": "d2462f8f7ac6d80070a587ffebf6cd73730f4280",
+        "rev": "9b4dae81f48b96765b6e24539c229c6ec304fc6c",
         "type": "github"
       },
       "original": {
-        "owner": "ggml-org",
+        "owner": "danielhanchen",
+        "ref": "diffusion-visual-updates",
         "repo": "llama.cpp",
         "type": "github"
       }
@@ -1036,15 +1037,16 @@
         "nixpkgs": "nixpkgs_3"
       },
       "locked": {
-        "lastModified": 1781033818,
-        "narHash": "sha256-6d1UzDpFSbh9xd9Yu2wehC2OsmrJIFmWnoEZ/h8gtZ4=",
+        "lastModified": 1781292859,
+        "narHash": "sha256-etlzg6/H1NuHGTnrxxhvdmhDYQls/AMHk1IrBbNc0WM=",
         "owner": "xddxdd",
         "repo": "nix-cachyos-kernel",
-        "rev": "889464fbe0d872b40c15f3b9c9e5b83a7797fa00",
+        "rev": "c57a7ab46f5e9b4eb32ed74ba6e7cd5bcd3a6e64",
         "type": "github"
       },
       "original": {
         "owner": "xddxdd",
+        "ref": "release",
         "repo": "nix-cachyos-kernel",
         "type": "github"
       }
@@ -1313,11 +1315,11 @@
     },
     "nixpkgs_3": {
       "locked": {
-        "lastModified": 1780981259,
-        "narHash": "sha256-GVdFp/OsVrwtvNe5f/o4PAv31sjxykYH3Kp2zIyJTeg=",
+        "lastModified": 1781246015,
+        "narHash": "sha256-C3D5TBgght7LBaqm5oGNRf6CynGl5lGED4jcDw2ZOOk=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "58f254b2fae09cec435a9480741ba3c749c4e1b6",
+        "rev": "7bd229cbe77d7746d64a1e8c1a6f6cc08f606fc4",
         "type": "github"
       },
       "original": {
