@@ -122,7 +122,7 @@
       flake = false;
     };
     llama-cpp = {
-      url = "github:danielhanchen/llama.cpp/diffusion-visual-updates";
+      url = "github:Anbeeld/beellama.cpp";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     llm-agents = {

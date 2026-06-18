@@ -897,17 +897,16 @@
         ]
       },
       "locked": {
-        "lastModified": 1781417311,
-        "narHash": "sha256-z00F+IWcZgbFZoCaIZFubSl1JabJ3Knvg9O9F+x3Ztk=",
-        "owner": "danielhanchen",
-        "repo": "llama.cpp",
-        "rev": "9b4dae81f48b96765b6e24539c229c6ec304fc6c",
+        "lastModified": 1780665516,
+        "narHash": "sha256-6Cl2uyacoGjpvoONKMpRLfdfeahfb1tFRU5uQWUalvA=",
+        "owner": "Anbeeld",
+        "repo": "beellama.cpp",
+        "rev": "85e22ea0b3099aed28c0d5ef73befe929fd74090",
         "type": "github"
       },
       "original": {
-        "owner": "danielhanchen",
-        "ref": "diffusion-visual-updates",
-        "repo": "llama.cpp",
+        "owner": "Anbeeld",
+        "repo": "beellama.cpp",
         "type": "github"
       }
     },

@@ -37,10 +37,6 @@
         ];
         age.generateKey = false;
       };
-      sops.secrets.hermes-env = {
-        sopsFile = ../../secrets/klchen/hermes.env;
-        format = "dotenv";
-      };
     };
   den.aspects.sops.darwin =
     {
