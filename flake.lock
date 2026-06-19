@@ -377,11 +377,11 @@
         "twist-overrides": "twist-overrides"
       },
       "locked": {
-        "lastModified": 1781105262,
-        "narHash": "sha256-C6QcQPeVAYs/akGt0Oz2iy5q++lhcEBKIAxnkJN90f4=",
+        "lastModified": 1781877193,
+        "narHash": "sha256-dAd7AFK1XMp+Zuyq0ABEdz0jdI1Tezl+KvjEteGf3Kw=",
         "owner": "klchen0112",
         "repo": ".emacs.d",
-        "rev": "22fa14bdfe82b49efd737ce920269d41f5529de9",
+        "rev": "82965e6f5c08874af4b13e784c40cc4a23a4af0d",
         "type": "github"
       },
       "original": {
@@ -1330,10 +1330,10 @@
     },
     "nixpkgs_4": {
       "locked": {
-        "lastModified": 1780749050,
-        "narHash": "sha256-3av0pIjlOWQ6rDbNOmpUSvbNnJkGORQKKjb4LtCZsIY=",
+        "lastModified": 1781577229,
+        "narHash": "sha256-lrp67w8AulE9Ks53n27I45ADSzbOCn4H+CNW1Ck8B+8=",
         "ref": "nixos-unstable",
-        "rev": "a799d3e3886da994fa307f817a6bc705ae538eeb",
+        "rev": "567a49d1913ce81ac6e9582e3553dd90a955875f",
         "shallow": true,
         "type": "git",
         "url": "https://github.com/nixos/nixpkgs"
@@ -1999,15 +1999,16 @@
         "elisp-helpers": "elisp-helpers"
       },
       "locked": {
-        "lastModified": 1780483602,
-        "narHash": "sha256-ElHIzapNdyGGajrhMzuZQrd87H6qqmZ9XD8Hx9Aa718=",
-        "owner": "emacs-twist",
+        "lastModified": 1781876394,
+        "narHash": "sha256-4Ph81Y5ON2itam1BnMJRgG/FfMgIETeVAbcCfisOYlY=",
+        "owner": "klchen0112",
         "repo": "twist.nix",
-        "rev": "2979b8376d6845b8cfd2ec98de4f13f06469f3fa",
+        "rev": "c4f737b2f95366cf889552c933993e0438d2e9f0",
         "type": "github"
       },
       "original": {
-        "owner": "emacs-twist",
+        "owner": "klchen0112",
+        "ref": "darwin",
         "repo": "twist.nix",
         "type": "github"
       }
