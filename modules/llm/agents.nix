@@ -126,8 +126,7 @@
               engine = "lcm";
             };
             model = {
-              model = "Qwopus3.6-27B-Coder-MTP-Q5_K_M";
-
+              default = "Qwopus3.6-27B-Coder-MTP-Q5_K_M";
               provider = "i12400";
               base_url = "http://i12400.klchen.duckdns.org:8080/v1";
               #provider = "custom";
