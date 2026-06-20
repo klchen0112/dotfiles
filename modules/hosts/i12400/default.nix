@@ -10,8 +10,8 @@ in
       "emacs-twist"
       "stylix-home"
       "python"
-      #      "llm-deploy-vulkan"
-      "llm-deploy-rocm"
+      "llm-deploy-vulkan"
+      #"llm-deploy-rocm"
       "hermes"
     ];
     users = {
@@ -20,8 +20,8 @@ in
         "stylix-home"
         "python"
         "hermes"
-        "llm-deploy-rocm"
-        #        "llm-deploy-vulkan"
+        #"llm-deploy-rocm"
+        "llm-deploy-vulkan"
       ];
     };
     klchen = { };

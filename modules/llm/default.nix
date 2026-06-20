@@ -2,8 +2,8 @@
 {
   flake-file.inputs = {
     llama-cpp = {
-      # url = "github:ggml-org/llama.cpp";
-      url = "github:Anbeeld/beellama.cpp";
+      url = "github:ggml-org/llama.cpp";
+      # url = "github:Anbeeld/beellama.cpp";
       # url = "github:danielhanchen/llama.cpp/diffusion-visual-updates";
       # url = "github:TheTom/llama-cpp-turboquant";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -123,11 +123,13 @@
           Service =
             let
               llama-cpp = pkgs.llama-cpp;
-              mmproj = "${config.home.homeDirectory}/model/mudler/Carnice-Qwen3.6-MoE-35B-A3B-APEX-MTP-GGUF/mmproj-BF16.gguf";
-              model-path = "${config.home.homeDirectory}/model/mudler/Carnice-Qwen3.6-MoE-35B-A3B-APEX-MTP-GGUF/Carnice-Qwen3.6-MoE-35B-A3B-APEX-MTP-I-Compact.gguf";
-              model-name = "Carnice-Qwen3.6-MoE-35B-A3B-APEX-MTP-I-Compact";
-              template-file = "${config.home.homeDirectory}/model/mudler/Carnice-Qwen3.6-MoE-35B-A3B-APEX-MTP-GGUF/chat_template.jinja";
-              ctx-size = "262144";
+              mmproj = "${config.home.homeDirectory}/model/Jackrong/Qwopus3.6-27B-Coder-MTP-GGUF/mmproj-BF16.gguf";
+              model-path = "${config.home.homeDirectory}/model/Jackrong/Qwopus3.6-27B-Coder-MTP-GGUF/Qwopus3.6-27B-Coder-MTP-IQ4_XS.gguf";
+              ctk = "q5_0";
+              ctv = "q4_1";
+              model-name = "Qwopus3.6-27B-Coder-MTP-IQ4_XS";
+              template-file = "${config.home.homeDirectory}/.cache/modelscope/hub/models/froggeric/Qwen-Fixed-Chat-Templates/chat_template.jinja";
+              ctx-size = "131072";
             in
             {
               Type = "simple";
@@ -135,7 +137,19 @@
               RestartSec = 5;
               ExecStart = pkgs.writeShellScript "run-llama-server-rocm" ''
                 #!/usr/bin/env bash
-                ${llama-cpp}/bin/llama-server -m ${model-path} -mm ${mmproj} --host 0.0.0.0 --temp 0.6 --top-p 0.95 --top-k 20 --min-p 0.00 --jinja --chat-template-file ${template-file} --alias ${model-name} --spec-type draft-mtp --spec-draft-n-max 3
+                ${llama-cpp}/bin/llama-server \
+                 -m ${model-path} \
+                 -mm ${mmproj} \
+                 --host 0.0.0.0\
+                 --temp 0.6 --top-p 0.95 --top-k 20 --min-p 0.00 \
+                 --jinja --chat-template-file ${template-file} \
+                 --alias ${model-name} \
+                 -ctk ${ctk} -ctv ${ctv} -fa on\
+                 -ngl all -ngld all \
+                 --spec-type draft-mtp --spec-draft-n-max 5 \
+                 -c ${ctx-size} \
+                 --parallel 1 \
+                 --ctx-size ${ctx-size}
               '';
             };
 
@@ -163,7 +177,6 @@
         home.packages =
           with pkgs;
           [
-            llama-cpp
             vulkan-loader
             vulkan-headers
             vulkan-tools
@@ -184,38 +197,39 @@
 
           Service =
             let
-              mmproj = "${config.home.homeDirectory}/.cache/modelscope/hub/models/mudler/Qwen3.6-35B-A3B-APEX-GGUF/mmproj.gguf";
-              model-path = "${config.home.homeDirectory}/.cache/modelscope/hub/models/mudler/Carnice-Qwen3.6-MoE-35B-A3B-APEX-GGUF/Carnice-Qwen3.6-MoE-35B-A3B-APEX-I-Compact.gguf";
-              model-name = "Carnice-Qwen3.6-MoE-35B-A3B-APEX-Vulkan";
-              template-file = "${config.home.homeDirectory}/.cache/modelscope/hub/models/mudler/Carnice-Qwen3.6-MoE-35B-A3B-APEX-GGUF/chat_template.jinja";
-              ctx-size = "262144";
+              llama-cpp = pkgs.llama-cpp.override { useVulkan = true; };
+              mmproj = "${config.home.homeDirectory}/model/Jackrong/Qwopus3.6-27B-Coder-MTP-GGUF/mmproj-BF16.gguf";
+              model-path = "${config.home.homeDirectory}/model/Jackrong/Qwopus3.6-27B-Coder-MTP-GGUF/Qwopus3.6-27B-Coder-MTP-Q5_K_M.gguf";
+              ctk = "q5_0";
+              ctv = "q4_1";
+              model-name = "Qwopus3.6-27B-Coder-MTP-Q5_K_M";
+              template-file = "${config.home.homeDirectory}/.cache/modelscope/hub/models/froggeric/Qwen-Fixed-Chat-Templates/chat_template.jinja";
+              ctx-size = "131072";
             in
             {
               Type = "simple";
               Restart = "on-failure";
               RestartSec = 5;
-              ExecStart = pkgs.writeShellScript "run-llama-server-vulkan" ''
+              ExecStart = pkgs.writeShellScript "run-llama-server-rocm" ''
                 #!/usr/bin/env bash
                 ${llama-cpp}/bin/llama-server \
-                  -mm ${mmproj} \
-                  -m ${model-path} \
-                  --alias ${model-name} \
-                  --parallel 1 \
-                  --ctx-size 262144 \
-                  --flash-attn on \
-                  --jinja \
-                  --chat-template-kwargs '{"preserve_thinking": true}' \
-                  --reasoning on \
-                  --reasoning-budget 4096 \
-                  --temp 0.6 \
-                  --top-k 20 \
-                  --top-p 0.95 \
-                  --min-p 0 \
-                  --host 0.0.0.0
+                 -m ${model-path} \
+                 -mm ${mmproj} \
+                 --host 0.0.0.0\
+                 --temp 0.6 --top-p 0.95 --top-k 20 --min-p 0.00 \
+                 --jinja --chat-template-file ${template-file} \
+                 --alias ${model-name} \
+                 -ctk ${ctk} -ctv ${ctv} -fa on\
+                 -ngl all -ngld all \
+                 --spec-type draft-mtp --spec-draft-n-max 3 \
+                 -c ${ctx-size} \
+                 --parallel 1 \
+                 --ctx-size ${ctx-size}
               '';
             };
-
-          Install.WantedBy = [ "default.target" ];
+          Install.WantedBy = [
+            "default.target"
+          ];
         };
       };
   };
