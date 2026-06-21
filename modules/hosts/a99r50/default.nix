@@ -60,6 +60,10 @@ in
           inputs.nixos-hardware.nixosModules.common-hidpi
           inputs.srvos.nixosModules.mixins-terminfo
         ];
+        services.hardware.openrgb = {
+          enable = true;
+          motherboard = "amd";
+        };
         hardware.nvidia.primeBatterySaverSpecialisation = false;
         # stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/solarized-light.yaml";
         boot.kernelParams = [
@@ -148,6 +152,7 @@ in
         persist
         nix
         sops
+        keyboard
       ]
 
       ++ [
