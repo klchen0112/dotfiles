@@ -31,6 +31,7 @@ in
         k3s-master-init
         stylix
         nix
+        nix-build-machine
       ];
       nixos =
         {

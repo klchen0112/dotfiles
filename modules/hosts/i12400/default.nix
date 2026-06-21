@@ -40,6 +40,7 @@ in
         nix
         hermes
         sops
+        nix-build-machines
       ];
       nixos =
         {

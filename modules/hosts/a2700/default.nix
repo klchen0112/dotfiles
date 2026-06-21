@@ -41,6 +41,7 @@ in
         k3s-node
         stylix
         nix
+        nix-build-machines
       ];
       nixos =
         {
