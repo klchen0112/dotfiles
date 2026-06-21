@@ -204,7 +204,7 @@
               ctv = "q4_1";
               model-name = "Qwopus3.6-27B-Coder-MTP-Q5_K_M";
               template-file = "${config.home.homeDirectory}/.cache/modelscope/hub/models/froggeric/Qwen-Fixed-Chat-Templates/chat_template.jinja";
-              ctx-size = "160000";
+              ctx-size = "131072";
             in
             {
               Type = "simple";
@@ -218,11 +218,14 @@
                  --host 0.0.0.0\
                  --temp 0.6 --top-p 0.95 --top-k 20 --min-p 0.00 \
                  --jinja --chat-template-file ${template-file} \
+                 --reasoning on \
+                 --chat-template-kwargs '{"preserve_thinking":true}' \
                  --alias ${model-name} \
                  -ctk ${ctk} -ctv ${ctv} -fa on\
                  -ngl all -ngld all \
                  --spec-type draft-mtp --spec-draft-n-max 3 \
                  --rope-scaling yarn --rope-scale 4 --yarn-orig-ctx 32768 \
+                 -b 256 \
                  -c ${ctx-size} \
                  --parallel 1
               '';
