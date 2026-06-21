@@ -198,13 +198,13 @@
           Service =
             let
               llama-cpp = pkgs.llama-cpp.override { useVulkan = true; };
-              mmproj = "${config.home.homeDirectory}/model/Jackrong/Qwopus3.6-27B-Coder-MTP-GGUF/mmproj-BF16.gguf";
-              model-path = "${config.home.homeDirectory}/model/Jackrong/Qwopus3.6-27B-Coder-MTP-GGUF/Qwopus3.6-27B-Coder-MTP-Q5_K_M.gguf";
+              mmproj = "${config.home.homeDirectory}/model/Jackrong/Qwopus3.6-27B-Coder-Compat-MTP-GGUF/mmproj-F32.gguf";
+              model-path = "${config.home.homeDirectory}/model/Jackrong/Qwopus3.6-27B-Coder-Compat-MTP-GGUF/Qwopus3.6-27B-Coder-Compat-MTP-Q5_K_M.gguf";
               ctk = "q5_0";
               ctv = "q4_1";
               model-name = "Qwopus3.6-27B-Coder-MTP-Q5_K_M";
               template-file = "${config.home.homeDirectory}/.cache/modelscope/hub/models/froggeric/Qwen-Fixed-Chat-Templates/chat_template.jinja";
-              ctx-size = "131072";
+              ctx-size = "160000";
             in
             {
               Type = "simple";
@@ -222,9 +222,9 @@
                  -ctk ${ctk} -ctv ${ctv} -fa on\
                  -ngl all -ngld all \
                  --spec-type draft-mtp --spec-draft-n-max 3 \
+                 --rope-scaling yarn --rope-scale 4 --yarn-orig-ctx 32768 \
                  -c ${ctx-size} \
-                 --parallel 1 \
-                 --ctx-size ${ctx-size}
+                 --parallel 1
               '';
             };
           Install.WantedBy = [

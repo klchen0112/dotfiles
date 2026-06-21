@@ -67,6 +67,7 @@ in
           environment.systemPackages = with pkgs; [
             clinfo
             mesa-demos
+            nvtopPackages.amd
           ];
 
           # Don't allow mutation of users outside of the config.
