@@ -5,28 +5,57 @@ let
       hostName = "i12400";
       maxJobs = 16;
       speedFactor = 1;
-      supportedFeatures = [ "kvm" "big-parallel" ];
+      supportedFeatures = [
+        "kvm"
+        "big-parallel"
+      ];
     };
     a2700 = {
       hostName = "a2700";
       maxJobs = 16;
       speedFactor = 1;
-      supportedFeatures = [ "kvm" "big-parallel" ];
+      supportedFeatures = [
+        "kvm"
+        "big-parallel"
+      ];
     };
   };
 in
 {
   den.aspects.nix-build-machines = {
     nixos =
-      { lib, ... }:
+      { lib, pkgs, ... }:
       {
-        nix.settings.build-machines = lib.mapAttrsToList
-          (name: cfg: {
-            inherit (cfg) hostName maxJobs speedFactor supportedFeatures;
-            user = "root";
-            system = "x86_64-linux";
-          })
-          (lib.filterAttrs (name: _: lib.any (h: h == name) (den.hosts.x86_64-linux or { })) machines);
+        users.groups.remotebuild = { };
+        users.users.remotebuild = {
+          isSystemUser = true;
+          group = "remotebuild";
+          useDefaultShell = true;
+        };
+        nix.settings.trusted-users = [ "remotebuild" ];
+
+        nix.distributedBuilds = true;
+        nix.settings.builders-use-substitutes = true;
+        nix.buildMachines = [
+          {
+            hostName = "i12400";
+            sshUser = "remotebuild";
+            system = pkgs.stdenv.hostPlatform.system;
+            supportedFeatures = [
+              "big-parallel"
+              "kvm"
+            ];
+          }
+          {
+            hostName = "a2700";
+            sshUser = "remotebuild";
+            system = pkgs.stdenv.hostPlatform.system;
+            supportedFeatures = [
+              "big-parallel"
+              "kvm"
+            ];
+          }
+        ];
       };
   };
 }

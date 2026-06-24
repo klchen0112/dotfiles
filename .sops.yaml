@@ -8,6 +8,7 @@ keys:
   - &i12400 age13drr6nyk2a03uwkec3yl0zf820j587ahrkermwe0q80d7vxfcu9qnplucf
   - &i12400_klchen age1fcvv4atrvhxual3nhku9dhythf2dt3pqft6sqdtevuxxcnqunazshhsu57
   - &mbp_m1_klchen age1u2shmtyyk7hfwas3rzwde33jnjukv6nu3g3yjylyj7ek5mc5fstq43tptn
+  - &sanjiao_klchen age1fdjuj7mu2n447hfpxtszs42ph6dj3fnhznyq2qerxfhhkjwney2qktpfn7
 creation_rules:
   - path_regex: secrets/klchen/[^/]+\.(yaml|json|env|ini)$
     key_groups:
@@ -17,5 +18,6 @@ creation_rules:
       - *i12400
       - *i12400_klchen
       - *mbp_m1_klchen
+      - *sanjiao_klchen
 
 

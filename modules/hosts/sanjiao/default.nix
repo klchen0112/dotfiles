@@ -8,12 +8,12 @@ in
   den.hosts.x86_64-linux.${machine} = {
     roles = [
       "stylix-home"
-
+      "hermes"
     ];
     users = {
       klchen.roles = [
         "stylix-home"
-
+        "hermes"
       ];
     };
 
@@ -25,13 +25,14 @@ in
     {
 
       includes = with den.aspects; [
+        persist
         font
         k3s
         k3s-master
         k3s-master-init
         stylix
         nix
-        nix-build-machine
+        nix-build-machines
       ];
       nixos =
         {
