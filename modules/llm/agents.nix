@@ -126,7 +126,7 @@
               engine = "lcm";
             };
             model = {
-              default = "Qwopus3.6-27B-Coder-MTP-Q5_K_M";
+              default = "Carnice-Qwen3.6-MoE-35B-A3B-APEX-MTP-I-Compact";
               provider = "i12400";
               base_url = "http://i12400.klchen.duckdns.org:8080/v1";
               #provider = "custom";
@@ -177,16 +177,16 @@
               vision = {
                 provider = "i12400";
                 base_url = "http://i12400.klchen.duckdns.org:8080/v1";
-                model = "Qwopus3.6-27B-Coder-MTP-Q5_K_M";
+                model = "Carnice-Qwen3.6-MoE-35B-A3B-APEX-MTP-I-Compact";
               };
               web_extract = {
-                model = "Qwopus3.6-27B-Coder-MTP-Q5_K_M";
+                model = "Carnice-Qwen3.6-MoE-35B-A3B-APEX-MTP-I-Compact";
                 provider = "i12400";
                 base_url = "http://i12400.klchen.duckdns.org:8080/v1";
               };
 
               curator = {
-                model = "Qwopus3.6-27B-Coder-MTP-Q5_K_M";
+                model = "Carnice-Qwen3.6-MoE-35B-A3B-APEX-MTP-I-Compact";
                 provider = "i12400";
                 base_url = "http://i12400.klchen.duckdns.org:8080/v1";
               };

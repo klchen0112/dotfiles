@@ -181,6 +181,7 @@
             vulkan-headers
             vulkan-tools
             vulkan-validation-layers
+            llama-cpp
           ]
           ++ (with pkgs.python314Packages; [
             hf-xet
@@ -191,32 +192,32 @@
         # llama-server systemd user service (vulkan)
         systemd.user.services.llama-server-vulkan = {
           Unit = {
-            Description = "llama-server: local LLM inference server (Carnice-Qwen3.6-MoE-35B-A3B-APEX-Vulkan)";
+            Description = "llama-server: local LLM inference server (Carnice-Qwen3.6-MoE-35B-A3B-APEX-MTP-Vulkan)";
             After = [ "network.target" ];
           };
 
           Service =
             let
-              llama-cpp = pkgs.llama-cpp.override { useVulkan = true; };
-              mmproj = "${config.home.homeDirectory}/model/Jackrong/Qwopus3.6-27B-Coder-Compat-MTP-GGUF/mmproj-F32.gguf";
-              model-path = "${config.home.homeDirectory}/model/Jackrong/Qwopus3.6-27B-Coder-Compat-MTP-GGUF/Qwopus3.6-27B-Coder-Compat-MTP-Q5_K_M.gguf";
-              ctk = "q5_0";
-              ctv = "q4_1";
-              model-name = "Qwopus3.6-27B-Coder-MTP-Q5_K_M";
+              model-dir = "${config.home.homeDirectory}/model/mudler/Carnice-Qwen3.6-MoE-35B-A3B-APEX-MTP-GGUF";
+              mmproj = "${model-dir}/mmproj-BF16.gguf";
+              model-path = "${model-dir}/Carnice-Qwen3.6-MoE-35B-A3B-APEX-MTP-I-Compact.gguf";
+              ctk = "q8_0";
+              ctv = "q8_0";
+              model-name = "Carnice-Qwen3.6-MoE-35B-A3B-APEX-MTP-I-Compact";
               template-file = "${config.home.homeDirectory}/.cache/modelscope/hub/models/froggeric/Qwen-Fixed-Chat-Templates/chat_template.jinja";
-              ctx-size = "131072";
+              ctx-size = "262144";
             in
             {
               Type = "simple";
               Restart = "on-failure";
               RestartSec = 5;
-              ExecStart = pkgs.writeShellScript "run-llama-server-rocm" ''
+              ExecStart = pkgs.writeShellScript "run-llama-server-vulkan" ''
                 #!/usr/bin/env bash
                 ${llama-cpp}/bin/llama-server \
                  -m ${model-path} \
                  -mm ${mmproj} \
                  --host 0.0.0.0\
-                 --temp 0.6 --top-p 0.95 --top-k 20 --min-p 0.00 \
+                 --temp 1.0 --top-p 0.95 --top-k 20 --min-p 0.00 \
                  --jinja --chat-template-file ${template-file} \
                  --reasoning on \
                  --chat-template-kwargs '{"preserve_thinking":true}' \
