@@ -39,7 +39,12 @@
         inputs.nix-cachyos-kernel.overlays.pinned
         inputs.self.overlays.default
       ];
-      boot.kernelPackages = lib.mkDefault pkgs.cachyosKernels.linuxPackages-cachyos-lts-lto-x86_64-v4;
+      users.groups.remotebuild = { };
+      users.users.remotebuild = {
+        isSystemUser = true;
+        group = "remotebuild";
+        useDefaultShell = true;
+      };
     };
   den.default.wsl = {
     # system.stateVersion = "25.11";
