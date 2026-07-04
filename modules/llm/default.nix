@@ -193,18 +193,18 @@
         # llama-server systemd user service (vulkan)
         systemd.user.services.llama-server-vulkan = {
           Unit = {
-            Description = "llama-server: local LLM inference server (Carnice-Qwen3.6-MoE-35B-A3B-APEX-MTP-Vulkan)";
+            Description = "llama-server: local LLM inference server (Ornith-1.0-35B-MTP-APEX-I-Compact-Vulkan)";
             After = [ "network.target" ];
           };
 
           Service =
             let
-              model-dir = "${config.home.homeDirectory}/model/mudler/Carnice-Qwen3.6-MoE-35B-A3B-APEX-MTP-GGUF";
-              mmproj = "${model-dir}/mmproj-BF16.gguf";
-              model-path = "${model-dir}/Carnice-Qwen3.6-MoE-35B-A3B-APEX-MTP-I-Compact.gguf";
+              model-dir = "${config.home.homeDirectory}/model/Ornith-1.0-35B-MTP-APEX-GGUF";
+              mmproj = "${model-dir}/mmproj-F16.gguf";
+              model-path = "${model-dir}/Ornith-1.0-35B-MTP-APEX-I-Compact.gguf";
               ctk = "q8_0";
               ctv = "q8_0";
-              model-name = "Carnice-Qwen3.6-MoE-35B-A3B-APEX-MTP-I-Compact";
+              model-name = "Ornith-1.0-35B-MTP-APEX-I-Compact";
               template-file = "${config.home.homeDirectory}/.cache/modelscope/hub/models/froggeric/Qwen-Fixed-Chat-Templates/chat_template.jinja";
               ctx-size = "262144";
             in
@@ -217,18 +217,19 @@
                 ${llama-cpp}/bin/llama-server \
                  -m ${model-path} \
                  -mm ${mmproj} \
-                 --host 0.0.0.0\
-                 --temp 1.0 --top-p 0.95 --top-k 20 --min-p 0.00 \
-                 --jinja --chat-template-file ${template-file} \
-                 --reasoning on \
-                 --chat-template-kwargs '{"preserve_thinking":true}' \
-                 --alias ${model-name} \
-                 -ctk ${ctk} -ctv ${ctv} -fa on\
-                 -ngl all -ngld all \
-                 --spec-type draft-mtp --spec-draft-n-max 3 \
-                 --rope-scaling yarn --rope-scale 4 --yarn-orig-ctx 32768 \
-                 -b 256 \
-                 -c ${ctx-size} \
+                 --host 0.0.0.0\\
+                 --temp 1.0 --top-p 0.95 --top-k 20 --min-p 0.00 \\
+                 --jinja --chat-template-file ${template-file} \\
+                 --reasoning on \\
+                 --chat-template-kwargs '{"preserve_thinking":true}' \\
+                 --alias ${model-name} \\
+                 -ctk ${ctk} -ctv ${ctv} -fa on\\
+                 -ngl all -ngld all \\
+                 --spec-type draft-mtp --spec-draft-n-max 3 \\
+                 --rope-scaling yarn --rope-scale 4 --yarn-orig-ctx 32768 \\
+                 -b 256 \\
+                 -
+                 -c ${ctx-size} \\
                  --parallel 1
               '';
             };
