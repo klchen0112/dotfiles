@@ -10,7 +10,7 @@
   den.default.nixos =
     { pkgs, lib, ... }:
     {
-      system.stateVersion = "25.11";
+      system.stateVersion = "26.05";
       programs.dconf.enable = true;
       time.timeZone = "Asia/Shanghai";
       imports = [
@@ -55,7 +55,7 @@
   };
 
   den.default.homeManager = {
-    home.stateVersion = "25.11";
+    home.stateVersion = "26.05";
   };
   den.default.darwin = {
     system.stateVersion = 6;

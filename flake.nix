@@ -159,8 +159,8 @@
       url = "github:nix-community/nixos-wsl";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    nixpkgs.url = "git+https://github.com/nixos/nixpkgs?shallow=1&ref=nixos-unstable-small";
-    nixpkgs-stable.url = "git+https://github.com/nixos/nixpkgs?shallow=1&ref=release-26.05";
+    nixpkgs.url = "git+https://github.com/nixos/nixpkgs?shallow=1&ref=nixos-unstable";
+    nixpkgs-stable.url = "git+https://github.com/nixos/nixpkgs?shallow=1&ref=release-25.11";
     nixpkgs-unstable.url = "git+https://github.com/nixos/nixpkgs?shallow=1&ref=nixpkgs-unstable";
     noctalia-shell = {
       url = "github:noctalia-dev/noctalia-shell";
@@ -198,10 +198,6 @@
     treefmt-nix = {
       url = "github:numtide/treefmt-nix";
       inputs.nixpkgs.follows = "nixpkgs";
-    };
-    understand-anything = {
-      url = "github:Lum1104/Understand-Anything";
-      flake = false;
     };
     wondelai-skills = {
       url = "github:wondelai/skills";
