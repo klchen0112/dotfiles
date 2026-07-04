@@ -35,10 +35,6 @@
       url = "github:mattpocock/skills";
       flake = false;
     };
-    understand-anything = {
-      url = "github:Lum1104/Understand-Anything";
-      flake = false;
-    };
   };
 
   # Pass flake inputs to home-manager so agent-skills-nix can resolve source
@@ -95,11 +91,6 @@
           };
 
           # Lum1104/Understand-Anything — interactive codebase knowledge graphs
-          understand-anything = {
-            input = "understand-anything";
-            subdir = "understand-anything-plugin/skills";
-            filter.maxDepth = 1;
-          };
         };
 
         skills.enableAll = true;
