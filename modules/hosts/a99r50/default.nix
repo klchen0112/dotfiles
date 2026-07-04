@@ -49,6 +49,12 @@ in
       { pkgs, ... }:
       {
         boot.kernelPackages = pkgs.cachyosKernels.linuxPackages-cachyos-lts-zen4;
+        nixpkgs = {
+          config = {
+            cudaSupport = true;
+            cudaVersion = "13";
+          };
+        };
 
         imports = [
           inputs.nixos-hardware.nixosModules.common-cpu-amd
@@ -131,6 +137,12 @@ in
         networking.firewall.allowedUDPPorts = [
           8080
 
+        ];
+        programs.nix-ld.enable = true;
+        programs.nix-ld.libraries = with pkgs; [
+          stdenv.cc.cc
+          glibc
+          # zlib, glib, etc.
         ];
 
         users.users.klchen.isNormalUser = true;
