@@ -1264,16 +1264,16 @@
     },
     "nixpkgs-stable_2": {
       "locked": {
-        "lastModified": 1783099355,
-        "narHash": "sha256-f5xKXJRIukAgj0kVoTOHRoSI4v3x41PynJBRsz9Mm60=",
-        "ref": "release-26.05",
-        "rev": "ba19688dbea394bc40c49d3a8c8d693235986c62",
+        "lastModified": 1782904953,
+        "narHash": "sha256-ESJ4VgytmAt+98YLM8466luln4HyEZ9Q36b9+Bb4P5w=",
+        "ref": "release-25.11",
+        "rev": "0921fdb3e13e40fe25fbc52b89661a9d6d32ac68",
         "shallow": true,
         "type": "git",
         "url": "https://github.com/nixos/nixpkgs"
       },
       "original": {
-        "ref": "release-26.05",
+        "ref": "release-25.11",
         "shallow": true,
         "type": "git",
         "url": "https://github.com/nixos/nixpkgs"
@@ -1330,16 +1330,16 @@
     },
     "nixpkgs_4": {
       "locked": {
-        "lastModified": 1783089885,
-        "narHash": "sha256-02ary8OtZROV9b1sqlNaU2NEhzA706qmTBfX8Alvyk0=",
-        "ref": "nixos-unstable-small",
-        "rev": "04b4e759e84353279524e23661cd1622f76df6ed",
+        "lastModified": 1782959384,
+        "narHash": "sha256-xnJJk+ct+D2+wdRxj1wk36w5zV9RVESwRqcklPdt3fM=",
+        "ref": "nixos-unstable",
+        "rev": "65179426c83bb3f6bc14898b42ea1c6f01d374b0",
         "shallow": true,
         "type": "git",
         "url": "https://github.com/nixos/nixpkgs"
       },
       "original": {
-        "ref": "nixos-unstable-small",
+        "ref": "nixos-unstable",
         "shallow": true,
         "type": "git",
         "url": "https://github.com/nixos/nixpkgs"
@@ -1664,7 +1664,6 @@
         "stylix": "stylix",
         "systems": "systems_8",
         "treefmt-nix": "treefmt-nix_3",
-        "understand-anything": "understand-anything",
         "wondelai-skills": "wondelai-skills",
         "youtube-skills": "youtube-skills",
         "zen-browser": "zen-browser"
@@ -2025,22 +2024,6 @@
       "original": {
         "owner": "emacs-twist",
         "repo": "overrides",
-        "type": "github"
-      }
-    },
-    "understand-anything": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1780742820,
-        "narHash": "sha256-W03Aumg4PCN4BpAuoY6MiQzLSR6tfNffF993X3yV+PQ=",
-        "owner": "Lum1104",
-        "repo": "Understand-Anything",
-        "rev": "5c1e35f90be029efb012a41e1122b08abef5cbb2",
-        "type": "github"
-      },
-      "original": {
-        "owner": "Lum1104",
-        "repo": "Understand-Anything",
         "type": "github"
       }
     },
