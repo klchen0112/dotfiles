@@ -62,9 +62,13 @@ in
     darwin = {
       nix.settings = nix_settings;
     };
-    nixos = {
+    nixos = { pkgs, ... }: {
       nix.settings = nix_settings;
       programs.nix-ld.enable = true;
+      programs.nix-ld.libraries = with pkgs; [
+        stdenv.cc.cc
+        # zlib, glib, etc.
+      ];
 
     };
   };

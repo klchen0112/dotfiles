@@ -20,6 +20,7 @@
         nixpkgs = {
           config = {
             cudaSupport = true;
+            cudaVersion = "13";
           };
         };
 

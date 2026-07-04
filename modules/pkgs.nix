@@ -28,6 +28,7 @@
           cudaSupport = true;
           allowUnfree = true;
           allowUnsupportedSystem = false;
+          cudaVersion = "13";
         };
         overlays = [
           (final: _prev: {
