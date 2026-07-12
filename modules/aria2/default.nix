@@ -310,7 +310,7 @@
           lib.concatStringsSep "\n" ([ ] ++ lib.mapAttrsToList formatLine settings);
       }
       (lib.mkIf pkgs.stdenv.isLinux {
-        systemd.user.services.cachix-agent = {
+        systemd.user.services.aria2 = {
           Unit.Description = "Cachix Deploy Agent";
 
           Service = {
