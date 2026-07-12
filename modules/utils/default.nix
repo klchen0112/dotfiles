@@ -56,7 +56,7 @@
 
       #stylix.targets.fzf.enable = true;
       programs.fzf = {
-        enable = true;
+        enable = false;
       };
 
       #stylix.targets.tmux.enable = true;
