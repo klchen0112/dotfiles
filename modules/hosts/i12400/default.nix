@@ -42,6 +42,29 @@ in
         sops
         nix-build-machines
       ];
+      provides.klchen = {
+        homeManager = { ... }: {
+          programs.hermes-agent.settings = {
+            model = {
+              default = "Carnice-Qwen3.6-MoE-35B-A3B-APEX-MTP-I-Compact";
+              provider = "i12400";
+              base_url = "http://i12400.klchen.duckdns.org:8080/v1";
+
+            };
+            custom_providers = [
+              {
+                name = "i12400";
+                base_url = "http://127.0.0.1:8080/v1";
+                models = [
+                  "Carnice-Qwen3.6-MoE-35B-A3B-APEX-MTP-I-Compact"
+                ];
+              }
+            ];
+
+          };
+        };
+      };
+
       nixos =
         {
           pkgs,

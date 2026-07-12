@@ -47,7 +47,7 @@
         # llama-server systemd user service
         systemd.user.services.llama-server = {
           Unit = {
-            Description = "llama-server: local LLM inference server (Carnice-Qwen3.6-MoE-35B-A3B-APEX)";
+            Description = "llama-server: local LLM inference server";
             After = [ "network.target" ];
           };
 
@@ -57,30 +57,10 @@
             RestartSec = 5;
             ExecStart = pkgs.writeShellScript "run-llama-server" ''
               #!/usr/bin/env bash
-              export MODEL_DIR=${config.home.homeDirectory}/.cache/modelscope/hub/models/mudler/Carnice-Qwen3.6-MoE-35B-A3B-APEX-GGUF
+              export MODEL_DIR=${config.home.homeDirectory}/model/Ornith-1.0-9B-NVFP4-MTP-GGUF
               export MMPROJ=${config.home.homeDirectory}/.cache/modelscope/hub/models/mudler/Qwen3.6-35B-A3B-APEX-GGUF/mmproj.gguf
-              ${pkgs.llama-cpp}/bin/llama-server \
-                -mm "$MMPROJ" \
-                -m $MODEL_DIR/Carnice-Qwen3.6-MoE-35B-A3B-APEX-I-Compact.gguf \
-                --alias Carnice-Qwen3.6-MoE-35B-A3B-APEX \
-                --parallel 1 \
-                --ctx-size 262144 \
-                --flash-attn on \
-                --jinja \
-                --chat-template-kwargs '{"preserve_thinking": true}' \
-                --reasoning on \
-                --reasoning-budget 4096 \
-                --temp 0.6 \
-                --top-k 20 \
-                --top-p 0.95 \
-                --min-p 0 \
-                --spec-type draft \
-                --spec-draft-n-max 2 \
-                -ctk turbo4 \
-                -ctv turbo4 \
-                --host 0.0.0.0
+              ${pkgs.llama-cpp}/bin/llama-server   -m $MODEL_DIR/ornith-1.0-9b-NVFP4-MTP.gguf --port 8080 --no-mmap --mlock   --jinja -fa on -ngl 99   --chat-template-file $MODEL_DIR/chat_template.jinja   --spec-type draft-mtp   --spec-draft-n-max 3   --temp 0.9 --top-p 0.95 --top-k 20 --min-p 0.01 --repeat-penalty 1.1 --alias Ornith-1.0-9B-NVFP4-MTP-GGUF 
             '';
-
             StandardOutput = "journal";
             StandardError = "journal";
           };

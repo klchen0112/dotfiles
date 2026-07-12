@@ -86,14 +86,6 @@
             context = {
               engine = "lcm";
             };
-            model = {
-              default = "Carnice-Qwen3.6-MoE-35B-A3B-APEX-MTP-I-Compact";
-              provider = "i12400";
-              base_url = "http://i12400.klchen.duckdns.org:8080/v1";
-              #provider = "custom";
-              # base_url = "https://api.deepseek.com";
-              #"base_url" = "http://localhost:8080/v1";
-            };
 
             custom_providers = [
               {
