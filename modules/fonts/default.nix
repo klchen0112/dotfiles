@@ -45,8 +45,7 @@ let
 
         nerd-fonts.symbols-only
         nerd-fonts.hack
-
-        tsangertypeFonts.jinkai-05-w03
+        #tsangertypePackages.tsangerjinkai
       ];
     };
 in
