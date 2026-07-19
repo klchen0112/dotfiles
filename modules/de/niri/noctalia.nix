@@ -28,10 +28,6 @@
       programs.niri = {
         settings = {
 
-          spawn-at-startup = [
-            { command = [ "noctalia-shell" ]; }
-          ];
-
           # ...
           binds = with config.lib.niri.actions; {
             "Mod+Space".action.spawn = [
@@ -66,7 +62,9 @@
 
       programs.noctalia = {
         enable = true;
+        systemd.enable = true;
         package = pkgs.noctalia-shell;
+        validateConfig = false;
       };
     };
 
