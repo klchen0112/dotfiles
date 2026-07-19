@@ -32,7 +32,6 @@
         ];
         nixpkgs.overlays = with inputs; [
           hermes-agent.overlays.default
-          llm-agents.overlays.default
         ];
         home.packages = with pkgs; [
           # local.graphify
@@ -229,8 +228,7 @@
       { pkgs, ... }:
       {
         nixpkgs.overlays = [
-          inputs.llm-agents.overlays.default
-          inputs.hermes-agent.overlays.default
+          inputs.llm-agents.overlays.shared-nixpkgs
         ];
 
         nix.settings = {
