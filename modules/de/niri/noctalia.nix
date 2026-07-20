@@ -31,20 +31,23 @@
           # ...
           binds = with config.lib.niri.actions; {
             "Mod+Space".action.spawn = [
-              "noctalia-shell"
-              "ipc"
-              "call"
+              "noctalia"
+              "msg"
+              "panel-toggle"
               "launcher"
-              "toggle" # ✅
-
             ];
             "Mod+P".action.spawn = [
-              "noctalia-shell"
-              "ipc"
-              "call"
-              "sessionMenu"
-              "toggle" # ❌
+              "noctalia"
+              "msg"
+              "panel-toggle"
+              "control-center"
             ];
+            "Alt+Tab".action.spawn = [
+              "noctalia"
+              "msg"
+              "window-switcher"
+            ];
+
           };
         };
       };
@@ -63,8 +66,7 @@
       programs.noctalia = {
         enable = true;
         systemd.enable = true;
-        package = pkgs.noctalia-shell;
-        validateConfig = false;
+        package = pkgs.noctalia;
       };
     };
 
