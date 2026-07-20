@@ -849,16 +849,16 @@
         ]
       },
       "locked": {
-        "lastModified": 1784472312,
-        "narHash": "sha256-Gl2tHv0z9eDO6+jb3ZrF5G1NAMkiICoa3wl+1UqeCek=",
-        "owner": "Anbeeld",
-        "repo": "beellama.cpp",
-        "rev": "6f96399a0f9e5291fcf439f273ec0ff76de0ba91",
+        "lastModified": 1784526537,
+        "narHash": "sha256-mjHeImLxneKvBIAMEM+0sB7syy1408sX1GuWfVC5D6E=",
+        "owner": "ggml-org",
+        "repo": "llama.cpp",
+        "rev": "178a6c44937154dc4c4eff0d166f4a044c4fceba",
         "type": "github"
       },
       "original": {
-        "owner": "Anbeeld",
-        "repo": "beellama.cpp",
+        "owner": "ggml-org",
+        "repo": "llama.cpp",
         "type": "github"
       }
     },

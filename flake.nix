@@ -124,7 +124,7 @@
       flake = false;
     };
     llama-cpp = {
-      url = "github:Anbeeld/beellama.cpp";
+      url = "github:ggml-org/llama.cpp";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     llm-agents = {
