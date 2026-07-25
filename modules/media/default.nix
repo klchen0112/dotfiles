@@ -1,5 +1,5 @@
 {
-  den.aspects.media =
+  den.aspects.media.media =
     { pkgs, ... }:
     {
       programs.mpv = {

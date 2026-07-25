@@ -21,6 +21,7 @@ in
       "noctalia-shell"
       "niri-home"
       "im"
+      "media"
     ];
     users.klchen = {
       roles = [
@@ -39,6 +40,7 @@ in
         "noctalia-shell"
         "niri-home"
         "im"
+        "media"
       ];
     };
     users.root = { };

@@ -127,6 +127,7 @@
         <sops-home>
         <skill>
         <hermes>
+        <media>
       ];
     };
 
