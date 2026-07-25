@@ -45,18 +45,19 @@
         };
 
         extraPackages = with pkgs.bat-extras; [
-          # batdiff
-          # batman
-          # batgrep
-          # batwatch
-          # batpipe
-          # prettybat
+          batdiff
+          batman
+          batgrep
+          batwatch
+          batpipe
+          prettybat
         ];
       };
 
       #stylix.targets.fzf.enable = true;
       programs.fzf = {
-        enable = false;
+        enable = true;
+        historyWidget.command = "";
       };
 
       #stylix.targets.tmux.enable = true;
