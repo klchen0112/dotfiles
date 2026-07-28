@@ -2,8 +2,8 @@
 {
   flake-file.inputs = {
     llama-cpp = {
-      url = "github:ggml-org/llama.cpp";
-      # url = "github:Anbeeld/beellama.cpp";
+      # url = "github:ggml-org/llama.cpp";
+      url = "github:Anbeeld/beellama.cpp";
       # url = "github:danielhanchen/llama.cpp/diffusion-visual-updates";
       # url = "github:TheTom/llama-cpp-turboquant";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -104,13 +104,13 @@
           Service =
             let
               llama-cpp = pkgs.llama-cpp;
-              mmproj = "${config.home.homeDirectory}/model/Jackrong/Qwopus3.6-27B-Coder-MTP-GGUF/mmproj-BF16.gguf";
-              model-path = "${config.home.homeDirectory}/model/Jackrong/Qwopus3.6-27B-Coder-MTP-GGUF/Qwopus3.6-27B-Coder-MTP-IQ4_XS.gguf";
-              ctk = "q5_0";
-              ctv = "q4_1";
-              model-name = "Qwopus3.6-27B-Coder-MTP-IQ4_XS";
+              mmproj = "${config.home.homeDirectory}/model/mudler/Qwopus3.6-35B-A3B-Coder-APEX-MTP-GGUF/mmproj.gguf";
+              model-path = "${config.home.homeDirectory}/model/mudler/Qwopus3.6-35B-A3B-Coder-APEX-MTP-GGUF/Qwopus3.6-35B-A3B-Coder-APEX-MTP-I-Compact.gguf";
+              model-name = "Qwopus3.6-35B-A3B-Coder-APEX-MTP-I-Compact.gguf";
               template-file = "${config.home.homeDirectory}/.cache/modelscope/hub/models/froggeric/Qwen-Fixed-Chat-Templates/chat_template.jinja";
-              ctx-size = "131072";
+              ctk = "kvarn6";
+              ctv = "kvarn6";
+              ctx-size = "262144";
             in
             {
               Type = "simple";
@@ -121,6 +121,7 @@
                 ${llama-cpp}/bin/llama-server \
                  -m ${model-path} \
                  -mm ${mmproj} \
+                 --kv-tail-tokens 1024\
                  --host 0.0.0.0\
                  --temp 0.6 --top-p 0.95 --top-k 20 --min-p 0.00 \
                  --jinja --chat-template-file ${template-file} \

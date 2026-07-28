@@ -8,13 +8,12 @@
     allow-import-from-derivation = true;
     auto-optimise-store = true;
     extra-substituters = [
-      "https://cache.numtide.com"
+#      "https://cache.numtide.com"
       "https://cuda-maintainers.cachix.org"
       "https://noctalia.cachix.org"
     ];
     extra-trusted-public-keys = [
       "niks3.numtide.com-1:DTx8wZduET09hRmMtKdQDxNNthLQETkc/yaX7M4qK0g="
-      "cache.numtide.com-1:DTx8wZduET09hRmMtKdQDxNNthLQETkc/yaX7M4qK0g="
       "cuda-maintainers.cachix.org-1:0dq3bujKpuEPMCX6U4WylrUDZ9JyUG0VpVZa7CNfq5E="
       "noctalia.cachix.org-1:pCOR47nnMEo5thcxNDtzWpOxNFQsBRglJzxWPp3dkU4="
     ];
@@ -25,8 +24,6 @@
       "https://nix-community.cachix.org"
       "https://niri.cachix.org"
       "https://cache.nixos.org"
-      "https://klchen0112.cachix.org"
-      "https://cache.numtide.com"
       "https://cuda-maintainers.cachix.org"
       "https://cache.garnix.io"
       "https://attic.xuyh0120.win/lantian"
@@ -124,7 +121,7 @@
       flake = false;
     };
     llama-cpp = {
-      url = "github:ggml-org/llama.cpp";
+      url = "github:Anbeeld/beellama.cpp";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     llm-agents = {
