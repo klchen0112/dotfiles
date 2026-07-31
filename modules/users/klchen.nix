@@ -22,7 +22,7 @@
         openssh.authorizedKeys.keys = keys;
       };
       nixos = {
-        services.openssh.settings.AllowUsers = [ "klchen" ];
+        services.openssh.settings.AllowUsers = [ "klchen" "remotebuild"];
         users.users.root.openssh.authorizedKeys.keys = keys;
         users.users.remotebuild.openssh.authorizedKeys.keys = keys;
         users.users.klchen.isNormalUser = true;

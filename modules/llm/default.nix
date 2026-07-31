@@ -104,34 +104,34 @@
           Service =
             let
               llama-cpp = pkgs.llama-cpp;
-              mmproj = "${config.home.homeDirectory}/model/mudler/Qwopus3.6-35B-A3B-Coder-APEX-MTP-GGUF/mmproj.gguf";
-              model-path = "${config.home.homeDirectory}/model/mudler/Qwopus3.6-35B-A3B-Coder-APEX-MTP-GGUF/Qwopus3.6-35B-A3B-Coder-APEX-MTP-I-Compact.gguf";
-              model-name = "Qwopus3.6-35B-A3B-Coder-APEX-MTP-I-Compact.gguf";
+              mmproj = "${config.home.homeDirectory}/model/LuffyTheFox/Qwen3.6-35B-A3B-Uncensored-Genesis-Hermes-V6-GGUF/mmproj-Hermes3.6-35B-A3B-Uncensored-Genesis-F16.gguf";
+              model-path = "${config.home.homeDirectory}/model/LuffyTheFox/Qwen3.6-35B-A3B-Uncensored-Genesis-Hermes-V6-GGUF/Hermes3.6-35B-A3B-Uncensored-Genesis-V6-APEX-Compact.gguf";
+              model-name = "Qwen3.6-35B-A3B-Uncensored-Genesis-Hermes-V6-GGUF";
               template-file = "${config.home.homeDirectory}/.cache/modelscope/hub/models/froggeric/Qwen-Fixed-Chat-Templates/chat_template.jinja";
               ctk = "kvarn6";
               ctv = "kvarn6";
-              ctx-size = "262144";
+              ctx-size = "131077";
             in
             {
               Type = "simple";
               Restart = "on-failure";
               RestartSec = 5;
               ExecStart = pkgs.writeShellScript "run-llama-server-rocm" ''
-                #!/usr/bin/env bash
-                ${llama-cpp}/bin/llama-server \
-                 -m ${model-path} \
-                 -mm ${mmproj} \
-                 --kv-tail-tokens 1024\
-                 --host 0.0.0.0\
-                 --temp 0.6 --top-p 0.95 --top-k 20 --min-p 0.00 \
-                 --jinja --chat-template-file ${template-file} \
-                 --alias ${model-name} \
-                 -ctk ${ctk} -ctv ${ctv} -fa on\
-                 -ngl all -ngld all \
-                 --spec-type draft-mtp --spec-draft-n-max 5 \
-                 -c ${ctx-size} \
-                 --parallel 1 \
-                 --ctx-size ${ctx-size}
+                                #!/usr/bin/env bash
+                                ${llama-cpp}/bin/llama-server \
+                                 -m ${model-path} \
+                                 -mm ${mmproj} \
+                                 --kv-tail-tokens 1024\
+                                 --host 0.0.0.0\
+                                 --temp 0.6 --top-p 0.95 --top-k 20 --min-p 0.00 \
+                                 --jinja --chat-template-file ${template-file} \
+                                 --alias ${model-name} \
+                                 -ctk ${ctk} -ctv ${ctv} -fa on\
+                                 -ngl all \
+                                 --cache-ram 2048 -b 2048 -ub 1024\
+                	               --cache-prompt 
+                                 #--parallel 1 \
+                                 #--spec-type draft-mtp --spec-draft-n-max 5 \
               '';
             };
 
@@ -144,7 +144,6 @@
     llm-deploy-vulkan =
       { pkgs, config, ... }:
       let
-        llama-cpp = pkgs.llama-cpp.override { useVulkan = true; };
       in
       {
         nixpkgs.overlays = [
@@ -180,43 +179,37 @@
 
           Service =
             let
-              model-dir = "${config.home.homeDirectory}/model/Ornith-1.0-35B-MTP-APEX-GGUF";
-              mmproj = "${model-dir}/mmproj-F16.gguf";
-              model-path = "${model-dir}/Ornith-1.0-35B-MTP-APEX-I-Compact.gguf";
-              ctk = "q8_0";
-              ctv = "q8_0";
-              model-name = "Ornith-1.0-35B-MTP-APEX-I-Compact";
+              llama-cpp = pkgs.llama-cpp.override { useVulkan = true; };
+              mmproj = "${config.home.homeDirectory}/model/LuffyTheFox/Qwen3.6-35B-A3B-Uncensored-Genesis-Hermes-V6-GGUF/mmproj-Hermes3.6-35B-A3B-Uncensored-Genesis-F16.gguf";
+              model-path = "${config.home.homeDirectory}/model/LuffyTheFox/Qwen3.6-35B-A3B-Uncensored-Genesis-Hermes-V6-GGUF/Hermes3.6-35B-A3B-Uncensored-Genesis-V6-APEX-Compact.gguf";
+              model-name = "Qwen3.6-35B-A3B-Uncensored-Genesis-Hermes-V6-GGUF";
               template-file = "${config.home.homeDirectory}/.cache/modelscope/hub/models/froggeric/Qwen-Fixed-Chat-Templates/chat_template.jinja";
-              ctx-size = "262144";
+              ctk = "kvarn6";
+              ctv = "kvarn6";
+              ctx-size = "131077";
             in
             {
               Type = "simple";
               Restart = "on-failure";
               RestartSec = 5;
               ExecStart = pkgs.writeShellScript "run-llama-server-vulkan" ''
-                #!/usr/bin/env bash
-                ${llama-cpp}/bin/llama-server \
-                 -m ${model-path} \
-                 -mm ${mmproj} \
-                 --host 0.0.0.0\\
-                 --temp 1.0 --top-p 0.95 --top-k 20 --min-p 0.00 \\
-                 --jinja --chat-template-file ${template-file} \\
-                 --reasoning on \\
-                 --chat-template-kwargs '{"preserve_thinking":true}' \\
-                 --alias ${model-name} \\
-                 -ctk ${ctk} -ctv ${ctv} -fa on\\
-                 -ngl all -ngld all \\
-                 --spec-type draft-mtp --spec-draft-n-max 3 \\
-                 --rope-scaling yarn --rope-scale 4 --yarn-orig-ctx 32768 \\
-                 -b 256 \\
-                 -
-                 -c ${ctx-size} \\
-                 --parallel 1
+                                #!/usr/bin/env bash
+                                ${llama-cpp}/bin/llama-server \
+                                 -m ${model-path} \
+                                 -mm ${mmproj} \
+                                 --kv-tail-tokens 1024\
+                                 --host 0.0.0.0\
+                                 --temp 0.6 --top-p 0.95 --top-k 20 --min-p 0.00 \
+                                 --jinja --chat-template-file ${template-file} \
+                                 --alias ${model-name} \
+                                 -ctk ${ctk} -ctv ${ctv} -fa on\
+                                 -ngl all \
+                                 --cache-ram 2048 -b 2048 -ub 1024\
+                	               --cache-prompt 
               '';
             };
-          Install.WantedBy = [
-            "default.target"
-          ];
+
+          Install.WantedBy = [ "default.target" ];
         };
       };
   };

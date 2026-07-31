@@ -72,7 +72,7 @@
             "messaging"
             "mcp"
             #"matrix"
-            #"termux-all"
+            "termux-all"
           ];
           settings = {
             plugins = {
@@ -91,11 +91,7 @@
                 name = "i12400";
                 base_url = "http://i12400.klchen.duckdns.org:8080/v1";
                 models = [
-                  "Qwen3.6-35B-A3B-Claude-4.7-Opus-Reasoning-Distilled-APEX-MTP-I-Compact"
-                  "Carnice-Qwen3.6-MoE-35B-A3B-APEX-MTP-I-Compact"
-                  "unsloth/gemma-4-26B-A4B-it-qat-GGUF"
-                  "Qwopus3.6-27B-Coder-MTP-Q5_K_M"
-                  "Qwopus3.6-35B-A3B-v1-APEX-MTP-I-Compact"
+                  "Qwen3.6-35B-A3B-Uncensored-Genesis-Hermes-V6-GGUF"
                 ];
               }
             ];
@@ -129,16 +125,16 @@
               vision = {
                 provider = "i12400";
                 base_url = "http://i12400.klchen.duckdns.org:8080/v1";
-                model = "Carnice-Qwen3.6-MoE-35B-A3B-APEX-MTP-I-Compact";
+                model = "Qwen3.6-35B-A3B-Uncensored-Genesis-Hermes-V6-GGUF";
               };
               web_extract = {
-                model = "Carnice-Qwen3.6-MoE-35B-A3B-APEX-MTP-I-Compact";
+                model = "Qwen3.6-35B-A3B-Uncensored-Genesis-Hermes-V6-GGUF";
                 provider = "i12400";
                 base_url = "http://i12400.klchen.duckdns.org:8080/v1";
               };
 
               curator = {
-                model = "Carnice-Qwen3.6-MoE-35B-A3B-APEX-MTP-I-Compact";
+                model = "Qwen3.6-35B-A3B-Uncensored-Genesis-Hermes-V6-GGUF";
                 provider = "i12400";
                 base_url = "http://i12400.klchen.duckdns.org:8080/v1";
               };
