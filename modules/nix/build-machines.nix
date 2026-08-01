@@ -31,6 +31,12 @@ in
           isSystemUser = true;
           group = "remotebuild";
           useDefaultShell = true;
+
+          openssh.authorizedKeys.keys =
+            [
+
+              "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIO3hO4yhyrO8JHbP6yokAEbRDPb4FR/bhtoIb2rIBP5q root@i12r20"
+            ];
         };
         nix.settings.trusted-users = [ "remotebuild" ];
 
@@ -38,7 +44,7 @@ in
         nix.settings.builders-use-substitutes = true;
         nix.buildMachines = [
           {
-            hostName = "i12400";
+            hostName = "i12400.klchen.duckdns.org";
             sshUser = "remotebuild";
             system = pkgs.stdenv.hostPlatform.system;
             supportedFeatures = [
@@ -47,7 +53,7 @@ in
             ];
           }
           {
-            hostName = "a2700";
+            hostName = "a99r50.klchen.duckdns.org";
             sshUser = "remotebuild";
             system = pkgs.stdenv.hostPlatform.system;
             supportedFeatures = [
@@ -55,6 +61,7 @@ in
               "kvm"
             ];
           }
+
         ];
       };
   };

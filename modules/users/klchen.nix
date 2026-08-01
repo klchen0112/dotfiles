@@ -24,7 +24,6 @@
       nixos = {
         services.openssh.settings.AllowUsers = [ "klchen" "remotebuild"];
         users.users.root.openssh.authorizedKeys.keys = keys;
-        users.users.remotebuild.openssh.authorizedKeys.keys = keys;
         users.users.klchen.isNormalUser = true;
         programs.bash.enable = true;
         users.users.klchen = {
