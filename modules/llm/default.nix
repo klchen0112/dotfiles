@@ -104,12 +104,13 @@
           Service =
             let
               llama-cpp = pkgs.llama-cpp;
-              mmproj = "${config.home.homeDirectory}/model/LuffyTheFox/Qwen3.6-35B-A3B-Uncensored-Genesis-Hermes-V6-GGUF/mmproj-Hermes3.6-35B-A3B-Uncensored-Genesis-F16.gguf";
-              model-path = "${config.home.homeDirectory}/model/LuffyTheFox/Qwen3.6-35B-A3B-Uncensored-Genesis-Hermes-V6-GGUF/Hermes3.6-35B-A3B-Uncensored-Genesis-V6-APEX-Compact.gguf";
-              model-name = "Qwen3.6-35B-A3B-Uncensored-Genesis-Hermes-V6-GGUF";
+              model-dir = "${config.home.homeDirectory}/model/Qwen3.6-35B-A3B-uncensored-heretic-Native-MTP-Preserved-APEX-GGUF";
+              mmproj = "${model-dir}/mmproj-Qwen3.6-35B-A3B-uncensored-heretic-Native-MTP-Preserved-APEX-F16.gguf";
+              model-path = "${model-dir}/Qwen3.6-35B-A3B-uncensored-heretic-Native-MTP-Preserved-APEX-I-Compact.gguf";
+              model-name = "Qwen3.6-35B-A3B-uncensored-heretic-Native-MTP-Preserved-APEX-GGUF";
               template-file = "${config.home.homeDirectory}/.cache/modelscope/hub/models/froggeric/Qwen-Fixed-Chat-Templates/chat_template.jinja";
-              ctk = "kvarn6";
-              ctv = "kvarn6";
+              ctk = "q8_0";
+              ctv = "q6_0";
               ctx-size = "131077";
             in
             {
@@ -121,17 +122,15 @@
                                 ${llama-cpp}/bin/llama-server \
                                  -m ${model-path} \
                                  -mm ${mmproj} \
-                                 --kv-tail-tokens 1024\
                                  --host 0.0.0.0\
                                  --temp 0.6 --top-p 0.95 --top-k 20 --min-p 0.00 \
                                  --jinja --chat-template-file ${template-file} \
                                  --alias ${model-name} \
                                  -ctk ${ctk} -ctv ${ctv} -fa on\
-                                 -ngl all \
                                  --cache-ram 2048 -b 2048 -ub 1024\
-                	               --cache-prompt 
-                                 #--parallel 1 \
-                                 #--spec-type draft-mtp --spec-draft-n-max 5 \
+                	               --cache-prompt \
+                                 --parallel 1 \
+                                 --spec-type draft-mtp --spec-draft-n-max 3
               '';
             };
 
