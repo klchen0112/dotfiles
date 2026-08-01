@@ -52,7 +52,7 @@
       services.greetd.enable = true;
 
       # 3. 启用并配置 ReGreet 模块
-      programs.regreet = {
+      services.displayManager.regreet = {
         enable = true;
 
         # 这里可以自定义 ReGreet 的视觉外观（可选，不写则使用默认的丑丑的主题）
