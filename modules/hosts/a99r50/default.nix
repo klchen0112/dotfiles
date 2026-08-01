@@ -190,6 +190,7 @@ in
         emacs-twist
         persist
         nix
+        nix-build-machines
         sops
         keyboard
       ]
