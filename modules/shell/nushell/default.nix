@@ -47,7 +47,7 @@
           }
         '';
         plugins = with pkgs.nushellPlugins; [
-          polars
+          # polars
           # highlight
           query
           gstat
