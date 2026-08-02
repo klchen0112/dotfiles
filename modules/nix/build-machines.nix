@@ -15,6 +15,10 @@
               "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHRBuSM5DLKYUtS1gmoZEA+y2xGrWWtxs3HEutD1LCwx root@init"
             ];
         };
+        services.openssh.settings.AllowUsers = [
+          "remotebuild"
+        ];
+
         nix.settings.trusted-users = [ "remotebuild" ];
 
         nix.distributedBuilds = true;

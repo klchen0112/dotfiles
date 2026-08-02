@@ -24,8 +24,8 @@
       "https://nix-community.cachix.org"
       "https://niri.cachix.org"
       "https://cache.nixos.org"
-      "https://cuda-maintainers.cachix.org"
-      "https://cache.garnix.io"
+      #"https://cuda-maintainers.cachix.org"
+      #"https://cache.garnix.io"
       "https://attic.xuyh0120.win/lantian"
     ];
     trusted-public-keys = [
