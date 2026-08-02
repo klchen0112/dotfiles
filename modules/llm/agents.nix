@@ -125,16 +125,16 @@
               vision = {
                 provider = "i12400";
                 base_url = "http://i12400.klchen.duckdns.org:8080/v1";
-                model = "Qwen3.6-35B-A3B-uncensored-heretic-Native-MTP-Preserved-APEX-GGUF";
+                model = "Qwen3.6-35B-A3B-Uncensored-Genesis-Hermes-V6-GGUF";
               };
               web_extract = {
-                model = "Qwen3.6-35B-A3B-uncensored-heretic-Native-MTP-Preserved-APEX-GGUF";
+                model = "Qwen3.6-35B-A3B-Uncensored-Genesis-Hermes-V6-GGUF";
                 provider = "i12400";
                 base_url = "http://i12400.klchen.duckdns.org:8080/v1";
               };
 
               curator = {
-                model = "Qwen3.6-35B-A3B-uncensored-heretic-Native-MTP-Preserved-APEX-GGUF";
+                model = "Qwen3.6-35B-A3B-Uncensored-Genesis-Hermes-V6-GGUF";
                 provider = "i12400";
                 base_url = "http://i12400.klchen.duckdns.org:8080/v1";
               };

@@ -58,8 +58,7 @@
             ExecStart = pkgs.writeShellScript "run-llama-server" ''
               #!/usr/bin/env bash
               export MODEL_DIR=${config.home.homeDirectory}/model/Ornith-1.0-9B-NVFP4-MTP-GGUF
-              export MMPROJ=${config.home.homeDirectory}/.cache/modelscope/hub/models/mudler/Qwen3.6-35B-A3B-APEX-GGUF/mmproj.gguf
-              ${pkgs.llama-cpp}/bin/llama-server   -m $MODEL_DIR/ornith-1.0-9b-NVFP4-MTP.gguf --port 8080 --no-mmap --mlock   --jinja -fa on -ngl 99   --chat-template-file $MODEL_DIR/chat_template.jinja   --spec-type draft-mtp   --spec-draft-n-max 3   --temp 0.9 --top-p 0.95 --top-k 20 --min-p 0.01 --repeat-penalty 1.1 --alias Ornith-1.0-9B-NVFP4-MTP-GGUF 
+              ${pkgs.llama-cpp}/bin/llama-server   -m $MODEL_DIR/ornith-1.0-9b-NVFP4-MTP.gguf --port 8080 --no-mmap --mlock   --jinja -fa on -ngl 99   --chat-template-file $MODEL_DIR/chat_template.jinja   --spec-type draft-mtp   --spec-draft-n-max 3   --temp 0.9 --top-p 0.95 --top-k 20 --min-p 0.01 --repeat-penalty 1.1 --alias Ornith-1.0-9B-NVFP4-MTP-GGUF
             '';
             StandardOutput = "journal";
             StandardError = "journal";
@@ -104,10 +103,10 @@
           Service =
             let
               llama-cpp = pkgs.llama-cpp;
-              model-dir = "${config.home.homeDirectory}/model/Qwen3.6-35B-A3B-uncensored-heretic-Native-MTP-Preserved-APEX-GGUF";
-              mmproj = "${model-dir}/mmproj-Qwen3.6-35B-A3B-uncensored-heretic-Native-MTP-Preserved-APEX-F16.gguf";
-              model-path = "${model-dir}/Qwen3.6-35B-A3B-uncensored-heretic-Native-MTP-Preserved-APEX-I-Compact.gguf";
-              model-name = "Qwen3.6-35B-A3B-uncensored-heretic-Native-MTP-Preserved-APEX-GGUF";
+              model-dir = "${config.home.homeDirectory}/model/LuffyTheFox/Qwen3.6-35B-A3B-Uncensored-Genesis-Hermes-V6-GGUF";
+              mmproj = "${model-dir}/mmproj-Hermes3.6-35B-A3B-Uncensored-Genesis-F16.gguf";
+              model-path = "${model-dir}/Hermes3.6-35B-A3B-Uncensored-Genesis-V6-APEX-MTP-Compact.gguf";
+              model-name = "LuffyTheFox-Qwen3.6-35B-A3B-Uncensored-Genesis-Hermes-V6-GGUF";
               template-file = "${config.home.homeDirectory}/.cache/modelscope/hub/models/froggeric/Qwen-Fixed-Chat-Templates/chat_template.jinja";
               ctk = "q8_0";
               ctv = "q6_0";

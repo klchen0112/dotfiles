@@ -47,7 +47,7 @@ in
           programs.hermes-agent.settings = {
             model = {
               
-              default = "Qwen3.6-35B-A3B-uncensored-heretic-Native-MTP-Preserved-APEX-GGUF";
+              default = "Qwen3.6-35B-A3B-Uncensored-Genesis-Hermes-V6-GGUF";
               provider = "i12400";
               base_url = "http://i12400.klchen.duckdns.org:8080/v1";
 
@@ -57,7 +57,7 @@ in
                 name = "i12400";
                 base_url = "http://127.0.0.1:8080/v1";
                 models = [
-                  "Qwen3.6-35B-A3B-uncensored-heretic-Native-MTP-Preserved-APEX-GGUF"
+                  "Qwen3.6-35B-A3B-Uncensored-Genesis-Hermes-V6-GGUF"
                 ];
               }
             ];
