@@ -42,11 +42,42 @@ in
         sops
         nix-build-machines
       ];
+      provides.nix-builder = {
+        nixos = { ... }: {
+          nix.buildMachines = [
+            {
+              hostName = "i12400.klchen.duckdns.org";
+              sshKey = "/etc/ssh/ssh_host_ed25519_key";
+              sshUser = "remotebuild";
+              system = "x86_64-linux";
+              supportedFeatures = [
+                "big-parallel"
+                "kvm"
+                "nixos-test"
+              ];
+            }
+            {
+              hostName = "a99r50.klchen.duckdns.org";
+              sshUser = "remotebuild";
+              system = "x86_64-linux";
+              sshKey = "/etc/ssh/ssh_host_ed25519_key";
+              supportedFeatures = [
+                "big-parallel"
+                "kvm"
+                "nixos-test"
+              ];
+            }
+
+          ];
+
+        };
+
+      };
       provides.klchen = {
         homeManager = { ... }: {
           programs.hermes-agent.settings = {
             model = {
-              
+
               default = "Qwen3.6-35B-A3B-Uncensored-Genesis-Hermes-V6-GGUF";
               provider = "i12400";
               base_url = "http://i12400.klchen.duckdns.org:8080/v1";
