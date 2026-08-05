@@ -119,7 +119,7 @@
       flake = false;
     };
     llama-cpp = {
-      url = "github:Anbeeld/beellama.cpp";
+      url = "github:TheTom/llama-cpp-turboquant";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     llm-agents = {
