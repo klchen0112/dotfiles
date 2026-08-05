@@ -10,14 +10,12 @@
     extra-substituters = [
       "https://cuda-maintainers.cachix.org"
       "https://cache.numtide.com"
-      "https://attic.xuyh0120.win/lantian"
       "https://cache.numtide.com"
       "https://noctalia.cachix.org"
       "https://niri.cachix.org"
       "https://klchen0112.cachix.org"
       "https://cache.numtide.com"
       "https://cuda-maintainers.cachix.org"
-      "https://attic.xuyh0120.win/lantian"
     ];
     extra-trusted-public-keys = [
       "niks3.numtide.com-1:DTx8wZduET09hRmMtKdQDxNNthLQETkc/yaX7M4qK0g="
@@ -26,7 +24,6 @@
       "niri.cachix.org-1:Wv0OmO7PsuocRKzfDoJ3mulSl7Z6oezYhGhR+3W2964="
       "noctalia.cachix.org-1:pCOR47nnMEo5thcxNDtzWpOxNFQsBRglJzxWPp3dkU4="
       "cuda-maintainers.cachix.org-1:0dq3bujKpuEPMCX6U4WylrUDZ9JyUG0VpVZa7CNfq5E="
-      "lantian:EeAUQ+W+6r7EtwnmYjeVwx5kOGEBpjlBfPlzGlTNvHc="
     ];
     lazy-trees = true;
     submodules = true;
@@ -34,10 +31,12 @@
       "https://mirrors.cernet.edu.cn/nix-channels/store"
       "https://nix-community.cachix.org"
       "https://cache.nixos.org"
+      "https://attic.xuyh0120.win/lantian"
     ];
     trusted-public-keys = [
       "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
       "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+      "lantian:EeAUQ+W+6r7EtwnmYjeVwx5kOGEBpjlBfPlzGlTNvHc="
     ];
     trusted-substituters = [
       "https://mirrors.cernet.edu.cn/nix-channels/store"
