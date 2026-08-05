@@ -22,7 +22,10 @@
         openssh.authorizedKeys.keys = keys;
       };
       nixos = {
-        services.openssh.settings.AllowUsers = [ "klchen" "remotebuild"];
+        services.openssh.settings.AllowUsers = [
+          "klchen"
+          "remotebuild"
+        ];
         users.users.root.openssh.authorizedKeys.keys = keys;
         users.users.klchen.isNormalUser = true;
         programs.bash.enable = true;
@@ -79,8 +82,16 @@
             sopsFile = ../../secrets/klchen/hermes-telegram.env;
             format = "dotenv";
           };
+          sops.secrets.hermes-discord-env = {
+            sopsFile = ../../secrets/klchen/hermes-discord.env;
+            format = "dotenv";
+          };
+
           programs.hermes-agent = {
-            environmentFiles = [ config.sops.secrets."hermes-telegram-env".path ];
+            environmentFiles = [
+              config.sops.secrets."hermes-telegram-env".path
+              config.sops.secrets."hermes-discord-env".path
+            ];
           };
         };
       };

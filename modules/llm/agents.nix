@@ -106,7 +106,7 @@
             compression = {
               enabled = true;
               threshold = 0.85;
-              summary_model = "deepseek/deepseek-v4-pro";
+              summary_model = "deepseek/deepseek-v4-flash";
             };
             memory = {
               memory_enabled = true;
@@ -183,7 +183,7 @@
             Environment = [
               "HERMES_HOME=${cfg.stateDir}/.hermes"
             ];
-            ExecStart = "${pkgs.hermes-agent}/bin/hermes dashboard --no-open --host 0.0.0.0 --insecure";
+            ExecStart = "${pkgs.hermes-agent}/bin/hermes dashboard";
             StandardOutput = "journal";
             StandardError = "journal";
           };
