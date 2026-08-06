@@ -4,8 +4,8 @@
     llama-cpp = {
       # url = "github:ggml-org/llama.cpp";
       # url = "github:Anbeeld/beellama.cpp";
-      # url = "github:danielhanchen/llama.cpp/diffusion-visual-updates";
-      url = "github:TheTom/llama-cpp-turboquant";
+      url = "github:spiritbuun/buun-llama-cpp";
+      # url = "github:TheTom/llama-cpp-turboquant";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
@@ -105,7 +105,7 @@
               llama-cpp = pkgs.llama-cpp;
               model-dir = "${config.home.homeDirectory}/model/LuffyTheFox/Qwen3.6-35B-A3B-Uncensored-Genesis-Hermes-V6-GGUF";
               mmproj = "${model-dir}/mmproj-Hermes3.6-35B-A3B-Uncensored-Genesis-F16.gguf";
-              model-path = "${model-dir}/Hermes3.6-35B-A3B-Uncensored-Genesis-V6-APEX-MTP-Compact.gguf";
+              model-path = "${model-dir}/Hermes3.6-35B-A3B-Uncensored-Genesis-V6-APEX-Compact.gguf";
               model-name = "LuffyTheFox-Qwen3.6-35B-A3B-Uncensored-Genesis-Hermes-V6-GGUF";
               template-file = "${config.home.homeDirectory}/.cache/modelscope/hub/models/froggeric/Qwen-Fixed-Chat-Templates/chat_template.jinja";
               ctk = "q8_0";
@@ -125,11 +125,9 @@
                                  --temp 0.6 --top-p 0.95 --top-k 20 --min-p 0.00 \
                                  --jinja --chat-template-file ${template-file} \
                                  --alias ${model-name} \
-                                 -ctk ${ctk} -ctv ${ctv} -fa on\
-                                 --cache-ram 2048 -b 2048 -ub 1024\
-                	               --cache-prompt \
-                                 --parallel 1 \
-                                 --spec-type draft-mtp --spec-draft-n-max 3
+                                 -fa on
+                                 #--parallel 1 \
+                                 #--spec-type draft-mtp --spec-draft-n-max 3
               '';
             };
 

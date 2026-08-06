@@ -819,16 +819,16 @@
         ]
       },
       "locked": {
-        "lastModified": 1785933683,
-        "narHash": "sha256-FkiwjHpvzlrOZdywHc8o5JsZO27008jCSOuFuGSZmQo=",
-        "owner": "TheTom",
-        "repo": "llama-cpp-turboquant",
-        "rev": "284ffc73181f019d7a4f919ba5b9dc8e1c85c388",
+        "lastModified": 1785876900,
+        "narHash": "sha256-wuUPxmkVKK9GrVLfSMqHRSo+Z0CGRZz0vVX0sBYyK0o=",
+        "owner": "spiritbuun",
+        "repo": "buun-llama-cpp",
+        "rev": "5741bdfa78e371973d3e4b0b7c83392807c96f55",
         "type": "github"
       },
       "original": {
-        "owner": "TheTom",
-        "repo": "llama-cpp-turboquant",
+        "owner": "spiritbuun",
+        "repo": "buun-llama-cpp",
         "type": "github"
       }
     },
