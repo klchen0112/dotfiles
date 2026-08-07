@@ -819,11 +819,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1785876900,
-        "narHash": "sha256-wuUPxmkVKK9GrVLfSMqHRSo+Z0CGRZz0vVX0sBYyK0o=",
+        "lastModified": 1786109223,
+        "narHash": "sha256-KVF0QcpOVBZNhdrCPzj3fjjytIhrFKrChpoUCSv0N9M=",
         "owner": "spiritbuun",
         "repo": "buun-llama-cpp",
-        "rev": "5741bdfa78e371973d3e4b0b7c83392807c96f55",
+        "rev": "7b9bf9d5052921d299a8fca947897514caea6261",
         "type": "github"
       },
       "original": {
