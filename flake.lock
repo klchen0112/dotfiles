@@ -819,16 +819,16 @@
         ]
       },
       "locked": {
-        "lastModified": 1786109223,
-        "narHash": "sha256-KVF0QcpOVBZNhdrCPzj3fjjytIhrFKrChpoUCSv0N9M=",
-        "owner": "spiritbuun",
-        "repo": "buun-llama-cpp",
-        "rev": "7b9bf9d5052921d299a8fca947897514caea6261",
+        "lastModified": 1785606311,
+        "narHash": "sha256-oI05HmD/jDAahHPsaE6Uuuvz/kPKK9V07lzJA+NR16o=",
+        "owner": "Anbeeld",
+        "repo": "beellama.cpp",
+        "rev": "d71585e3fa6fd30b55fadb0528170edb5de17126",
         "type": "github"
       },
       "original": {
-        "owner": "spiritbuun",
-        "repo": "buun-llama-cpp",
+        "owner": "Anbeeld",
+        "repo": "beellama.cpp",
         "type": "github"
       }
     },
