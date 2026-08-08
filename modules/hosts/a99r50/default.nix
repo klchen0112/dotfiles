@@ -51,23 +51,19 @@ in
       homeManager = { ... }: {
         programs.hermes-agent.settings = {
           model = {
-            default = "Ornith-1.0-9B-NVFP4-MTP-GGUF";
-            provider = "a99r50";
-            base_url = "http://127.0.0.1:8080/v1";
-            #provider = "custom";
-            # base_url = "https://api.deepseek.com";
-            #"base_url" = "http://localhost:8080/v1";
+            default = "Qwen3.6-35B-A3B-Uncensored-Genesis-Hermes-V6-GGUF";
+            provider = "i12400";
+            base_url = "http://i12400.klchen.duckdns.org:8080/v1";
           };
           custom_providers = [
             {
-              name = "a99r50";
-              base_url = "http://127.0.0.1:8080/v1";
+              name = "i12400";
+              base_url = "http://i12400.klchen.duckdns.org:8080/v1";
               models = [
-                "Ornith-1.0-9B-NVFP4-MTP-GGUF"
+                "Qwen3.6-35B-A3B-Uncensored-Genesis-Hermes-V6-GGUF"
               ];
             }
           ];
-
         };
       };
     };
@@ -163,7 +159,6 @@ in
         ];
         networking.firewall.allowedUDPPorts = [
           8080
-
         ];
         programs.nix-ld.enable = true;
         programs.nix-ld.libraries = with pkgs; [
