@@ -108,8 +108,8 @@
               model-path = "${model-dir}/Hermes3.6-35B-A3B-Uncensored-Genesis-V7-MTP-APEX-Compact.gguf";
               model-name = "LuffyTheFox-Qwen3.6-35B-A3B-Uncensored-Genesis-Hermes-V6-GGUF";
               template-file = "${config.home.homeDirectory}/.cache/modelscope/hub/models/froggeric/Qwen-Fixed-Chat-Templates/chat_template.jinja";
-              ctk = "q8_0";
-              ctv = "q6_0";
+              ctk = "q5_0";
+              ctv = "q4_1";
               ctx-size = "131077";
             in
             {
