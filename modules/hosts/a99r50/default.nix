@@ -170,14 +170,14 @@ in
         users.users.klchen.isNormalUser = true;
       };
 
-    provides.nix-builder = {
-      nixos = { ... }: {
+    nix-builder = {
+      os = { pkgs, ... }: {
         nix.buildMachines = [
           {
             hostName = "a99r50.klchen.duckdns.org";
             sshUser = "remotebuild";
-            system = "x86_64-linux";
             sshKey = "/etc/ssh/ssh_host_ed25519_key";
+            system = pkgs.stdenv.hostPlatform.system;
             supportedFeatures = [
               "big-parallel"
               "kvm"

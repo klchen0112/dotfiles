@@ -50,6 +50,8 @@ in
       homebrew
       stylix
       nix
+      a99r50.nix-builder
+      i12400.nix-builder
     ];
     darwin =
       { pkgs, lib, ... }:
