@@ -41,6 +41,7 @@ in
         hermes
         sops
         nix-build-machines
+        a99r50.nix-builder
       ];
       nix-builder = {
         os = { pkgs,... }: {
