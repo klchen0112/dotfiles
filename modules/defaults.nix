@@ -39,12 +39,6 @@
         inputs.nix-cachyos-kernel.overlays.pinned
         inputs.self.overlays.default
       ];
-      users.groups.remotebuild = { };
-      users.users.remotebuild = {
-        isSystemUser = true;
-        group = "remotebuild";
-        useDefaultShell = true;
-      };
     };
   den.default.wsl = {
     # system.stateVersion = "25.11";
