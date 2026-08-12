@@ -12,6 +12,10 @@
 
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    pi = {
+      url = "github:lukasl-dev/pi.nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
   den.aspects.hermes = {
     hermes =
@@ -29,9 +33,20 @@
       {
         imports = with inputs; [
           hermes-agent.homeManagerModules.default
+          pi.homeModules.default
         ];
+        programs.pi.coding-agent = {
+          enable = true;
+          # rules = ''Be concise.'';
+          # skills = [ ./skills/my-skill ];
+          # models = ./models.json;
+          # settings.model = "gpt-5";
+          # environment.PI_CODING_AGENT_DIR.value = "${config.home.homeDirectory}/.pi/agent";
+          # environment.OPENAI_API_KEY.file = config.sops.secrets.openai-api-key.path;
+        };
         nixpkgs.overlays = with inputs; [
           hermes-agent.overlays.default
+          pi.overlays.default
         ];
         home.packages = with pkgs; [
           # local.graphify
