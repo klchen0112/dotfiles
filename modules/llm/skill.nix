@@ -59,6 +59,7 @@
           # wondelai/skills — 42 business/craft/design skills
           wondelai = {
             input = "wondelai-skills";
+            idPrefix = "wondelai";
             subdir = ".";
             filter.maxDepth = 1; # top-level directories are skills; skip .claude/.cursor etc.
           };
@@ -67,12 +68,12 @@
           litprog = {
             input = "litprog-skill";
             subdir = ".";
+            idPrefix = "litprog";
           };
           mattpocock-skills = {
             input = "mattpocock-skills";
             subdir = "skills";
             idPrefix = "mattpocock";
-
             filter.maxDepth = 3;
           };
           # sudosubin/nix-skills — 480,000+ skills from skills.sh/skillsdirectory.com (individual packages)
