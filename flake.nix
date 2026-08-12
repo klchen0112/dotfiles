@@ -92,6 +92,13 @@
       };
     };
     emacs-overlay.follows = "emacs-config/emacs-overlay";
+    fast-nix-gc = {
+      url = "github:Mic92/fast-nix-gc";
+      inputs = {
+        nix-darwin.follows = "darwin";
+        nixpkgs.follows = "nixpkgs";
+      };
+    };
     firefox-addons = {
       url = "github:osipog/nix-firefox-addons";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -173,6 +180,10 @@
     };
     paneru = {
       url = "github:karinushka/paneru";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    pi = {
+      url = "github:lukasl-dev/pi.nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     pkgs-by-name-for-flake-parts.url = "github:drupol/pkgs-by-name-for-flake-parts";
