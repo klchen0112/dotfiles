@@ -121,7 +121,6 @@
                                 ${llama-cpp}/bin/llama-server \
                                  -m ${model-path} \
                                  -mm ${mmproj} \
-                                 -ctk ${ctk} -ctv ${ctv} \
                                  --host 0.0.0.0\
                                  --temp 0.6 --top-p 0.95 --top-k 20 --min-p 0.00 \
                                  --jinja --chat-template-file ${template-file} \
