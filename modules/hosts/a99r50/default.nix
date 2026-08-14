@@ -177,6 +177,7 @@ in
             hostName = "a99r50.klchen.duckdns.org";
             sshUser = "remotebuild";
             sshKey = "/etc/ssh/ssh_host_ed25519_key";
+            protocol = "ssh-ng";
             system = pkgs.stdenv.hostPlatform.system;
             supportedFeatures = [
               "big-parallel"

@@ -20,7 +20,7 @@ in
         "stylix-home"
         "python"
         "hermes"
-        "llm-deploy-rocm"
+     "llm-deploy-rocm"
         #"llm-deploy-vulkan"
       ];
     };
@@ -44,12 +44,13 @@ in
         a99r50.nix-builder
       ];
       nix-builder = {
-        os = { pkgs,... }: {
+        os = { pkgs, ... }: {
           nix.buildMachines = [
             {
               hostName = "i12400.klchen.duckdns.org";
               sshKey = "/etc/ssh/ssh_host_ed25519_key";
               sshUser = "remotebuild";
+              protocol = "ssh-ng";
               system = pkgs.stdenv.hostPlatform.system;
               supportedFeatures = [
                 "big-parallel"
