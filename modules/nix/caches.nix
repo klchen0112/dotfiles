@@ -6,6 +6,7 @@ let
     use-xdg-base-directories = true;
 
     substituters = [
+      "https://mirrors.tuna.tsinghua.edu.cn/nix-channels/store"
       "https://mirrors.cernet.edu.cn/nix-channels/store"
       "https://nix-community.cachix.org"
       "https://cache.nixos.org"
