@@ -931,15 +931,16 @@
         ]
       },
       "locked": {
-        "lastModified": 1786716752,
-        "narHash": "sha256-MDqlqeqeLUMw2eu2p8lV6TnsMgQFXdtRcasFGMim+Ps=",
-        "owner": "spiritbuun",
+        "lastModified": 1786782271,
+        "narHash": "sha256-DOLB2I4ljjHk3wTxukh2nILoOSquFsT5k51JgEbOsDA=",
+        "owner": "klchen0112",
         "repo": "buun-llama-cpp",
-        "rev": "686d8a9bf93a2bcd638b70e5e51c3858181afaec",
+        "rev": "f415dcfc290a7d0ff10b0e51eeb8483f6aad2618",
         "type": "github"
       },
       "original": {
-        "owner": "spiritbuun",
+        "owner": "klchen0112",
+        "ref": "fix-rocm-mmproj-swap",
         "repo": "buun-llama-cpp",
         "type": "github"
       }

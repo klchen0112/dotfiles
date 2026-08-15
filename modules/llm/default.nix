@@ -4,7 +4,7 @@
     llama-cpp = {
       # url = "github:ggml-org/llama.cpp";
       # url = "github:Anbeeld/beellama.cpp";
-      url = "github:spiritbuun/buun-llama-cpp";
+      url = "github:klchen0112/buun-llama-cpp/fix-rocm-mmproj-swap";
       # url = "github:TheTom/llama-cpp-turboquant";
       inputs.nixpkgs.follows = "nixpkgs";
     };
@@ -126,7 +126,6 @@
                                  --jinja --chat-template-file ${template-file} \
                                  --alias ${model-name} \
                                  -fa on -kvu \
-                                 --parallel 1\
                                  --spec-type draft-mtp --spec-draft-n-max 2
               '';
             };
