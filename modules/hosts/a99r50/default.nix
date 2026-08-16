@@ -22,6 +22,7 @@ in
       "niri-home"
       "im"
       "media"
+      "game"
     ];
     users.klchen = {
       roles = [
@@ -41,6 +42,7 @@ in
         "niri-home"
         "im"
         "media"
+        "game"
       ];
     };
     users.root = { };
@@ -208,6 +210,7 @@ in
         nix-build-machines
         sops
         keyboard
+      game
       ]
 
       ++ [
