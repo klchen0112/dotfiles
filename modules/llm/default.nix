@@ -96,7 +96,7 @@
         # llama-server systemd user service (rocm)
         systemd.user.services.llama-server-rocm = {
           Unit = {
-            Description = "llama-server: local LLM inference server (Carnice-Qwen3.6-MoE-35B-A3B-APEX-MTP)";
+            Description = "llama-server: local LLM inference server (Hermes3.6-35B-A3B-Uncensored-Genesis-APEX-Compact)";
             After = [ "network.target" ];
           };
 
@@ -104,9 +104,9 @@
             let
               llama-cpp = pkgs.llama-cpp;
               model-dir = "${config.home.homeDirectory}/model/LuffyTheFox/Qwen3.6-35B-A3B-Uncensored-Genesis-Hermes-V6-GGUF";
-              mmproj = "${model-dir}/mmproj-Hermes3.6-35B-A3B-Uncensored-Genesis-F16.gguf";
-              model-path = "${model-dir}/Hermes3.6-35B-A3B-Uncensored-Genesis-V7-MTP-APEX-Compact.gguf";
-              model-name = "LuffyTheFox-Qwen3.6-35B-A3B-Uncensored-Genesis-Hermes-V6-GGUF";
+              mmproj = "${model-dir}/mmproj-BF16.gguf";
+              model-path = "${model-dir}/Hermes3.6-35B-A3B-Uncensored-Genesis-V8-MTP-APEX-Compact.gguf";
+              model-name = "Hermes3.6-35B-A3B-Uncensored-Genesis-APEX-Compact";
               template-file = "${config.home.homeDirectory}/.cache/modelscope/hub/models/froggeric/Qwen-Fixed-Chat-Templates/chat_template.jinja";
               ctk = "q5_0";
               ctv = "q4_1";
@@ -126,6 +126,7 @@
                                  --jinja --chat-template-file ${template-file} \
                                  --alias ${model-name} \
                                  -fa on -kvu \
+                                 --image-min-tokens 1024 \
                                  --spec-type draft-mtp --spec-draft-n-max 2
               '';
             };
