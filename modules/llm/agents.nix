@@ -16,9 +16,14 @@
       url = "github:lukasl-dev/pi.nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    oh-my-pi = {
+      url = "github:can1357/oh-my-pi";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
   };
-  den.aspects.hermes = {
-    hermes =
+  den.aspects.pi = {
+    pi =
       {
         pkgs,
         lib,
@@ -26,13 +31,8 @@
         inputs,
         ...
       }:
-      let
-        cfg = config.programs.hermes-agent;
-
-      in
       {
         imports = with inputs; [
-          hermes-agent.homeManagerModules.default
           pi.homeModules.default
         ];
         programs.pi.coding-agent = {
@@ -44,9 +44,46 @@
           # environment.PI_CODING_AGENT_DIR.value = "${config.home.homeDirectory}/.pi/agent";
           # environment.OPENAI_API_KEY.file = config.sops.secrets.openai-api-key.path;
         };
+
+      };
+  };
+  den.aspects.oh-my-pi = {
+    oh-my-pi =
+      {
+        pkgs,
+        lib,
+        config,
+        inputs,
+        ...
+      }:
+      {
+        imports = with inputs; [
+          oh-my-pi.homeManagerModules.default
+        ];
+        programs.omp = {
+          enable = true;
+        };
+      };
+  };
+
+  den.aspects.hermes = {
+    hermes =
+      {
+        pkgs,
+        lib,
+        config,
+        inputs,
+        ...
+      }:
+      let
+        cfg = config.programs.hermes-agent;
+      in
+      {
+        imports = with inputs; [
+          hermes-agent.homeManagerModules.default
+        ];
         nixpkgs.overlays = with inputs; [
           hermes-agent.overlays.default
-          pi.overlays.default
         ];
         home.packages = with pkgs; [
           # local.graphify

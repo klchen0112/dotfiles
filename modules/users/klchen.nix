@@ -137,6 +137,8 @@
         <sops-home>
         <skill>
         <hermes>
+        <pi>
+        <oh-my-pi>
         <media>
       ];
     };

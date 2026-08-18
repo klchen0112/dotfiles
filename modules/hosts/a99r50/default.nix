@@ -23,6 +23,8 @@ in
       "im"
       "media"
       "game"
+      "pi"
+      "oh-my-pi"
     ];
     users.klchen = {
       roles = [
@@ -43,6 +45,8 @@ in
         "im"
         "media"
         "game"
+        "pi"
+        "oh-my-pi"
       ];
     };
     users.root = { };
