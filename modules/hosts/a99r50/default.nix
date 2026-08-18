@@ -214,7 +214,7 @@ in
         nix-build-machines
         sops
         keyboard
-      game
+        game
       ]
 
       ++ [
