@@ -117,17 +117,17 @@
               Restart = "on-failure";
               RestartSec = 5;
               ExecStart = pkgs.writeShellScript "run-llama-server-rocm" ''
-                                #!/usr/bin/env bash
-                                ${llama-cpp}/bin/llama-server \
-                                 -m ${model-path} \
-                                 -mm ${mmproj} \
-                                 --host 0.0.0.0\
-                                 --temp 0.6 --top-p 0.95 --top-k 20 --min-p 0.00 \
-                                 --jinja --chat-template-file ${template-file} \
-                                 --alias ${model-name} \
-                                 -fa on -kvu \
-                                 --image-min-tokens 1024 \
-                                 --spec-type draft-mtp --spec-draft-n-max 2
+                #!/usr/bin/env bash
+                ${llama-cpp}/bin/llama-server \
+                 -m ${model-path} \
+                 -mm ${mmproj} \
+                 --host 0.0.0.0\
+                 --temp 0.6 --top-p 0.95 --top-k 20 --min-p 0.00 \
+                 --jinja --chat-template-file ${template-file} \
+                 --alias ${model-name} \
+                 -fa on -kvu \
+                 --image-min-tokens 1024 \
+                 --spec-type draft-mtp --spec-draft-n-max 2
               '';
             };
 
