@@ -6,9 +6,9 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     hermes-agent = {
-      # url = "github:NousResearch/hermes-agent/v2026.4.30";
+      url = "github:NousResearch/hermes-agent";
       # url = "git+file:///home/klchen/my/hermes-agent";
-      url = "github:klchen0112/hermes-agent/own";
+      # url = "github:klchen0112/hermes-agent/own";
 
       inputs.nixpkgs.follows = "nixpkgs";
     };
@@ -76,7 +76,7 @@
         ...
       }:
       let
-        cfg = config.programs.hermes-agent;
+        cfg = config.services.hermes-agent;
       in
       {
         imports = with inputs; [
@@ -88,9 +88,14 @@
         home.packages = with pkgs; [
           # local.graphify
         ];
-        programs.hermes-agent = {
+        services.hermes-agent = {
           enable = true;
           #         extraPlugins = [ my-plugin-src ];          # plugin source
+          hermesHome = "${config.home.homeDirectory}/.local/share/hermes/.hermes";
+          gateway.enable = true;
+          backend = {
+            mode = "dashboard";
+          };
           extraPythonPackages = [
             # pkgs.local.graphify
           ]
@@ -120,7 +125,6 @@
           extraDependencyGroups = [
             "acp"
             #"voice"
-            "cli"
             "messaging"
             "mcp"
             #"matrix"
@@ -221,54 +225,6 @@
           };
         };
 
-        # Hermes dashboard systemd user service (Linux)
-        systemd.user.services.hermes-dashboard = {
-          Unit = {
-            Description = "Hermes Agent Web Dashboard";
-            After = [ "network.target" ];
-          };
-
-          Service = {
-            Type = "simple";
-            Restart = "on-failure";
-            RestartSec = 10;
-            Environment = [
-              "HERMES_HOME=${cfg.stateDir}/.hermes"
-            ];
-            ExecStart = "${pkgs.hermes-agent}/bin/hermes dashboard";
-            StandardOutput = "journal";
-            StandardError = "journal";
-          };
-
-          Install.WantedBy = [ "default.target" ];
-        };
-
-        # Hermes dashboard launchd user agent (macOS / Darwin)
-        launchd.agents.hermes-dashboard = {
-          enable = true;
-          config = {
-            Label = "org.nix-community.home.hermes-dashboard";
-            ProgramArguments = [
-              "${pkgs.hermes-agent}/bin/hermes"
-              "dashboard"
-              "--no-open"
-              "--host"
-              "0.0.0.0"
-              "--insecure"
-            ];
-            RunAtLoad = true;
-            KeepAlive = {
-              SuccessfulExit = false;
-              Crashed = true;
-            };
-            EnvironmentVariables = {
-              HERMES_HOME = "${cfg.stateDir}/.hermes";
-            };
-            StandardOutPath = "${config.home.homeDirectory}/Library/Logs/hermes-dashboard.log";
-            StandardErrorPath = "${config.home.homeDirectory}/Library/Logs/hermes-dashboard.err.log";
-            ProcessType = "Background";
-          };
-        };
       };
   };
   den.aspects.llm-agents = {

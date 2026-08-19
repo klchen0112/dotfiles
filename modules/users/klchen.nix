@@ -72,7 +72,7 @@
             name = "klchen0112";
             email = "klchen0112@gmail.com";
           };
-          programs.hermes-agent = {
+          services.hermes-agent = {
             environmentFiles = [ config.sops.secrets."hermes-env".path ];
           };
         };
@@ -87,7 +87,7 @@
             format = "dotenv";
           };
 
-          programs.hermes-agent = {
+          services.hermes-agent = {
             environmentFiles = [
               config.sops.secrets."hermes-telegram-env".path
               config.sops.secrets."hermes-discord-env".path

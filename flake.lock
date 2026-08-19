@@ -613,15 +613,16 @@
     "flake-parts_2": {
       "inputs": {
         "nixpkgs-lib": [
+          "hermes-agent",
           "nixpkgs"
         ]
       },
       "locked": {
-        "lastModified": 1785627969,
-        "narHash": "sha256-4dtXQk/NMePegK/nWp5NSeuZKLATItOq61lpEvmXqGw=",
+        "lastModified": 1782949081,
+        "narHash": "sha256-vp6Y/Grm98ESt6ceOkWiHWyZRDV3J1RID4w+6NWK9yA=",
         "owner": "hercules-ci",
         "repo": "flake-parts",
-        "rev": "427bf4bd9435fdf21321c8cc628c24efc14c0f7a",
+        "rev": "17c9d6cdfc60c64f4ee8d306f9bc0b4ccb51481e",
         "type": "github"
       },
       "original": {
@@ -909,6 +910,7 @@
     "hermes-agent": {
       "inputs": {
         "flake-parts": "flake-parts_2",
+        "home-manager": "home-manager",
         "nixpkgs": [
           "nixpkgs"
         ],
@@ -918,21 +920,41 @@
         "uv2nix": "uv2nix"
       },
       "locked": {
-        "lastModified": 1786182365,
-        "narHash": "sha256-YQh3zP4WHZRAYly+GPDd832OOrlPtyXuAwF78Fc3td0=",
-        "owner": "klchen0112",
+        "lastModified": 1787157690,
+        "narHash": "sha256-iNwvriM6t7m9N8E8hbeSB1aB3zPGVWrKWevQxQ1H8TE=",
+        "owner": "NousResearch",
         "repo": "hermes-agent",
-        "rev": "15f4e121178b308dfa80ce9e4f70606f4426c5b8",
+        "rev": "0a0497060ad4bf1ccd7f6846b0c4d4b03f8476f1",
         "type": "github"
       },
       "original": {
-        "owner": "klchen0112",
-        "ref": "own",
+        "owner": "NousResearch",
         "repo": "hermes-agent",
         "type": "github"
       }
     },
     "home-manager": {
+      "inputs": {
+        "nixpkgs": [
+          "hermes-agent",
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1786487128,
+        "narHash": "sha256-ad60hrRVhH/bo3Jl1YLzO+QcS3mUNZr9LNJdzhMO2P4=",
+        "owner": "nix-community",
+        "repo": "home-manager",
+        "rev": "f404edbfa4117810c96b97048299242fc50e5362",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-community",
+        "repo": "home-manager",
+        "type": "github"
+      }
+    },
+    "home-manager_2": {
       "inputs": {
         "nixpkgs": [
           "nixpkgs"
@@ -1763,7 +1785,7 @@
         "flake-utils": "flake-utils_2",
         "git-hooks": "git-hooks",
         "hermes-agent": "hermes-agent",
-        "home-manager": "home-manager",
+        "home-manager": "home-manager_2",
         "import-tree": "import-tree",
         "litprog-skill": "litprog-skill",
         "llama-cpp": "llama-cpp",

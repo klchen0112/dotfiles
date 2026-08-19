@@ -63,7 +63,7 @@ in
       };
       provides.klchen = {
         homeManager = { ... }: {
-          programs.hermes-agent.settings = {
+          services.hermes-agent.settings = {
             model = {
 
               default = "Qwen3.6-35B-A3B-Uncensored-Genesis-Hermes-V6-GGUF";
