@@ -215,6 +215,7 @@ in
         sops
         keyboard
         game
+        btrfs-scrub
       ]
 
       ++ [
