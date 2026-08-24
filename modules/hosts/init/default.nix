@@ -1,17 +1,20 @@
+let
+  machine = "init";
+in
 { inputs, den, ... }:
 {
-  flake.meta.machines.init = {
-    hostName = "init";
-    platform = "x86_64-linux";
-    base16Scheme = "selenized-light";
-    sshKey = [
-
+  den.hosts.x86_64-linux.${machine} = {
+    roles = [
+      "stylix-home"
     ];
-    users = [
-      "klchen"
-    ];
-    desktop = false;
+    users.klchen = {
+      roles = [
+        "stylix-home"
+      ];
+    };
+    users.root = { };
   };
+
   den.aspects.init = {
     nixos =
       {
@@ -32,6 +35,7 @@
           just
           git
           pciutils
+          neovim
         ];
         # Don't allow mutation of users outside of the config.
         users.mutableUsers = false;

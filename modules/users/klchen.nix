@@ -67,13 +67,9 @@
             sopsFile = ../../secrets/klchen/hermes.env;
             format = "dotenv";
           };
-
           programs.git.settings.user = {
             name = "klchen0112";
             email = "klchen0112@gmail.com";
-          };
-          services.hermes-agent = {
-            environmentFiles = [ config.sops.secrets."hermes-env".path ];
           };
         };
       provides.i12400 = {
@@ -91,6 +87,8 @@
             environmentFiles = [
               config.sops.secrets."hermes-telegram-env".path
               config.sops.secrets."hermes-discord-env".path
+              config.sops.secrets."hermes-env".path
+
             ];
           };
         };
