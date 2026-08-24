@@ -1,4 +1,4 @@
-{ inputs, ... }:
+{ inputs, den, ... }:
 {
   flake.meta.machines.init = {
     hostName = "init";
@@ -12,29 +12,48 @@
     ];
     desktop = false;
   };
-  den.aspects.init.nixos =
-    {
-      lib,
-      pkgs,
-      ...
-    }:
-    {
-      imports = [
-        inputs.disko.nixosModules.disko
+  den.aspects.init = {
+    nixos =
+      {
+        lib,
+        pkgs,
+        ...
+      }:
+      {
+        imports = [
+          inputs.disko.nixosModules.disko
+        ];
+
+        nixpkgs.hostPlatform = "x86_64-linux";
+        # Bootloader.
+        boot.loader.systemd-boot.enable = true;
+
+        environment.systemPackages = with pkgs; [
+          just
+          git
+          pciutils
+        ];
+        # Don't allow mutation of users outside of the config.
+        users.mutableUsers = false;
+        zramSwap.enable = true;
+      };
+    includes =
+      with den.aspects;
+      [
+        font
+        # keyboard
+        niri
+        persist
+        nix
+        btrfs-scrub
+        sops
+      ]
+
+      ++ [
+
+        (den.provides.tty-autologin "klchen")
+
       ];
 
-      nixpkgs.hostPlatform = "x86_64-linux";
-      # Bootloader.
-      boot.loader.systemd-boot.enable = true;
-
-      environment.systemPackages = with pkgs; [
-        just
-        git
-        pciutils
-      ];
-
-      # Don't allow mutation of users outside of the config.
-      users.mutableUsers = false;
-      zramSwap.enable = true;
-    };
+  };
 }
