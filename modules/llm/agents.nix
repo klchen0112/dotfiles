@@ -93,9 +93,6 @@
           #         extraPlugins = [ my-plugin-src ];          # plugin source
           hermesHome = "${config.home.homeDirectory}/.local/share/hermes/.hermes";
           gateway.enable = true;
-          backend = {
-            mode = "dashboard";
-          };
           extraPythonPackages = [
             # pkgs.local.graphify
           ]
@@ -113,7 +110,7 @@
               owner = "stephenschoettler";
               repo = "hermes-lcm";
               name = "hermes-lcm";
-              rev = "v0.12.0";
+              rev = "v0.20.0";
               hash = "sha256-RyzKjtNChDtuWi51JTAL0og0X+NzD7mHLUHhqTdko2g=";
             })
           ];
@@ -150,6 +147,14 @@
                   "Qwen3.6-35B-A3B-Uncensored-Genesis-Hermes-V6-GGUF"
                 ];
               }
+              {
+                name = "a99r50";
+                base_url = "http://a99r50.klchen.duckdns.org:8080/v1";
+                models = [
+                  "Ornith-1.0-9B-NVFP4-MTP-GGUF"
+                ];
+              }
+
             ];
 
             toolsets = [ "all" ];

@@ -920,11 +920,11 @@
         "uv2nix": "uv2nix"
       },
       "locked": {
-        "lastModified": 1787157690,
-        "narHash": "sha256-iNwvriM6t7m9N8E8hbeSB1aB3zPGVWrKWevQxQ1H8TE=",
+        "lastModified": 1787677620,
+        "narHash": "sha256-lCabErM7qXGXbSGrBvr9EPRIScXqdJyjZZC2MgYm6Io=",
         "owner": "NousResearch",
         "repo": "hermes-agent",
-        "rev": "0a0497060ad4bf1ccd7f6846b0c4d4b03f8476f1",
+        "rev": "02c7ae956e42891d5e337a921b45de0a6067146d",
         "type": "github"
       },
       "original": {

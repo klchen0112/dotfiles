@@ -57,19 +57,10 @@ in
       homeManager = { ... }: {
         services.hermes-agent.settings = {
           model = {
-            default = "Qwen3.6-35B-A3B-Uncensored-Genesis-Hermes-V6-GGUF";
-            provider = "i12400";
-            base_url = "http://i12400.klchen.duckdns.org:8080/v1";
+            default = "Ornith-1.0-9B-NVFP4-MTP-GGUF";
+            provider = "a99r50";
+            base_url = "http://a99r50.klchen.duckdns.org:8080/v1";
           };
-          custom_providers = [
-            {
-              name = "i12400";
-              base_url = "http://i12400.klchen.duckdns.org:8080/v1";
-              models = [
-                "Qwen3.6-35B-A3B-Uncensored-Genesis-Hermes-V6-GGUF"
-              ];
-            }
-          ];
         };
       };
     };
