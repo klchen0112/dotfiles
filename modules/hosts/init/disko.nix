@@ -8,7 +8,8 @@
     };
   };
 
-  den.aspects.init.nixos =
+  # init 与 initIso 共享的磁盘配置（disko 布局 + 滚动 + impermanence）
+  den.aspects.init-base.nixos =
     { lib, ... }:
     let
       # btrfs 分区（disko 自动生成的 partlabel）
