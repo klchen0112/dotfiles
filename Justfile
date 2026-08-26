@@ -48,7 +48,7 @@ disko-install arg1:
 # Build init live ISO image (output: result/iso/*.iso)
 [group('dev')]
 iso:
-    nix build --accept-flake-config .#nixosConfigurations.init.config.system.build.isoImage
+    nix build --accept-flake-config .#nixosConfigurations.initIso.config.system.build.isoImage
 
 # Burn the built ISO to a USB device (e.g. /dev/sdb, rebuilds first)
 [group('dev')]
