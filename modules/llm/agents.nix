@@ -175,6 +175,7 @@
             };
             display = {
               compact = false;
+              interface = "tui";
               personality = "kawaii";
               show_reasoning = true;
             };
