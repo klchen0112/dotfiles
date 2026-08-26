@@ -45,6 +45,16 @@ switch-linux HOST=`hostname`:
 disko-install arg1:
     sudo nix  --experimental-features "nix-command flakes" --accept-flake-config run 'github:nix-community/disko/latest#disko-install' -- --write-efi-boot-entries --flake '.#init' --disk main {{ arg1 }} 
 
+# Build init live ISO image (output: result/iso/*.iso)
+[group('dev')]
+iso:
+    nix build --accept-flake-config .#nixosConfigurations.init.config.system.build.isoImage
+
+# Burn the built ISO to a USB device (e.g. /dev/sdb, rebuilds first)
+[group('dev')]
+iso-burn DEVICE:
+    sudo dd if=result/iso/*.iso of={{ DEVICE }} bs=4M status=progress conv=fsync
+
 [group('dev')]
 gen:
     nixos-generate-config --root /tmp/config --no-filesystems
