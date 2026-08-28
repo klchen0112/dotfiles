@@ -84,6 +84,10 @@ in
         imports = [
           (modulesPath + "/installer/cd-dvd/iso-image.nix")
         ];
+        # 支持 BIOS (legacy) 与 UEFI 双启动：
+        # makeUsbBootable 会写入 isohybrid MBR + 分区表，dd 到 U 盘后 BIOS 才能引导
+        isoImage.makeUsbBootable = true;
+        isoImage.makeEfiBootable = true;
         # ISO 是 live 镜像：无实际磁盘布局、无持久化、无 root 滚动
         disko.enableConfig = lib.mkForce false;
         environment.persistence = lib.mkForce { };
