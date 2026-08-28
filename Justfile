@@ -50,10 +50,10 @@ disko-install arg1:
 iso:
     nix build --accept-flake-config .#nixosConfigurations.initIso.config.system.build.isoImage
 
-# Burn the built ISO to a USB device (e.g. /dev/sdb, rebuilds first)
+# Scan ISOs in result/iso/, let you pick one, then burn to a USB device (e.g. /dev/sdb).
 [group('dev')]
 iso-burn DEVICE:
-    sudo dd if=result/iso/*.iso of={{ DEVICE }} bs=4M status=progress conv=fsync
+    bash scripts/iso-burn.sh {{ DEVICE }}
 
 [group('dev')]
 gen:
