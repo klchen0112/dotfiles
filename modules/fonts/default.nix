@@ -45,7 +45,7 @@ let
 
         nerd-fonts.symbols-only
         nerd-fonts.hack
-        #tsangertypePackages.tsangerjinkai
+        tsangertypePackages.tsangerjinkai
       ];
     };
 in

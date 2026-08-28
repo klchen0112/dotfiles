@@ -24,6 +24,7 @@
       nixpkgs.overlays = [
         inputs.emacs-overlay.overlays.default
       ];
+      stylix.targets.emacs.enable = false;
       programs.emacs = {
         enable = true;
         package = emacsPackage;

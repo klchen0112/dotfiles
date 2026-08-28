@@ -12,15 +12,15 @@
     {
       config,
       pkgs,
+      lib,
       ...
     }:
     {
       imports = [
         inputs.stylix.homeModules.stylix
       ];
-      stylix.autoEnable = true;
-      # enable gtk
-      stylix.targets.gtk.enable = true;
+      # 不自动开启所有 targets；各程序的主题开启写在对应 aspect 的 programs.<name> 旁
+      stylix.autoEnable = false;
     };
   den.aspects.stylix.darwin =
     {

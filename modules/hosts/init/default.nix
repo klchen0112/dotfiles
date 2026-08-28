@@ -6,12 +6,10 @@ in
   den.hosts.x86_64-linux.${machine} = {
     roles = [
       "stylix-home"
-      "emacs-twist"
     ];
     users.klchen = {
       roles = [
         "stylix-home"
-        "emacs-twist"
       ];
     };
     users.root = { };
@@ -68,6 +66,14 @@ in
   # （去掉 niri / emacs-twist / stylix-home，与 disko-install 生成的 init 系统配置一致）
   # 构建：nix build .#nixosConfigurations.initIso.config.system.build.isoImage
   den.hosts.x86_64-linux.initIso = {
+    roles = [
+      "stylix-home"
+    ];
+    users.klchen = {
+      roles = [
+        "stylix-home"
+      ];
+    };
     users.root = { };
   };
 
@@ -85,7 +91,10 @@ in
         fileSystems."/persist" = lib.mkForce {
           device = "/dev/disk/by-partlabel/disk-main-root";
           fsType = "btrfs";
-          options = [ "subvol=persist" "noauto" ];
+          options = [
+            "subvol=persist"
+            "noauto"
+          ];
         };
         boot.initrd.systemd.services.my-btrfs-backup.enable = lib.mkForce false;
         boot.loader.systemd-boot.enable = lib.mkForce false;
@@ -94,20 +103,9 @@ in
         # live 环境 tty 直接以 root 登录
         services.getty.autologinUser = "root";
         # SSH：保留 sshd，klchen 密钥可远程连接（live 调试用）
-        users.users.klchen = {
-          isNormalUser = true;
-          openssh.authorizedKeys.keys = [
-            "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAGszCNQqxT1/s6sYjj1aewvCjaa3D7UwoOM7UD5K+ha klchen0112@mbp-m1"
-            "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKx1SNaQZ6v1onDSGz1wNX1W3zIf2KkTERjKGC+k157D klchen@sanjiao"
-            "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAII/c10VIo81cztYJza3e+l1JlwsTJQk1lhBOypGhYn3T klchen@a3400g"
-            "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPI6HctaCnuhyOdbrYs2un7/QA/hqFPfDVRlL0klfhGc klchen@i12r20"
-            "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFNgI2fAHSDQCB+DgZPsjGF+arPudVmWS4hTXbJCvwwX klchen@a99r50"
-          ];
-        };
       };
     includes = with den.aspects; [
       init-base
-      font
       nix
       btrfs-scrub
       sops

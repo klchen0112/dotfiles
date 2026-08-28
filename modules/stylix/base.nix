@@ -5,7 +5,6 @@ let
       ...
     }:
     {
-      stylix.autoEnable = true;
       stylix = {
         enable = true;
         opacity = {
