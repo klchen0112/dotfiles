@@ -56,7 +56,7 @@ in
           # Don't allow mutation of users outside of the config.
           # machine-id is used by systemd for the journal, if you don't
           # persist this file you won't be able to easily use journalctl to
-          boot.kernelPackages = pkgs.cachyosKernels.linuxPackages-cachyos-lts-lto;
+          # boot.kernelPackages = pkgs.cachyosKernels.linuxPackages-cachyos-lts-lto;
 
         };
     };
