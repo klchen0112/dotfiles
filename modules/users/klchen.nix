@@ -67,6 +67,10 @@
             name = "klchen0112";
             email = "klchen0112@gmail.com";
           };
+          sops.secrets.hermes-env = {
+            sopsFile = ../../secrets/klchen/hermes.yaml;
+            format = "yaml";
+          };
         };
       provides.i12400 = {
         homeManager = { config, ... }: {
@@ -90,10 +94,6 @@
       };
       provides.a99r50 = {
         homeManager = { config, ... }: {
-          sops.secrets.hermes-env = {
-            sopsFile = ../../secrets/klchen/hermes.yaml;
-            format = "yaml";
-          };
           programs.hermes-agent = {
             enable = true;
             desktop.enable = true;
