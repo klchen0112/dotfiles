@@ -1,50 +1,100 @@
+{ inputs, ... }:
 {
   den.aspects.a99r50.nixos =
-    { lib, pkgs, ... }:
+    { lib, ... }:
     let
-      dev = "/dev/disk/by-id/nvme-ZHITAI_TiPlus7100_4TB_ZTA54T0AB251540AHC_1-part3";
+      # btrfs 分区（disko 自动生成的 partlabel）
+      dev = "/dev/disk/by-partlabel/disk-main-root";
       root_subvol = "@root";
       mount_p = "/mnt";
       old_roots = "old_roots";
+      keep_days = 30; # 清理超过 N 天的旧 root 快照
     in
     {
+      imports = [
+        inputs.impermanence.nixosModules.impermanence
+      ];
+
+      # --- 1. 开机自动清空 root（btrfs 滚动） ---
+      # 参考 impermanence README 的 BTRFS subvolumes 方案；
+      # 26.11 默认 systemd initrd，故用 boot.initrd.systemd.services
+      # 实现（旧式 boot.initrd.postResumeCommands 已不生效）。
       boot.initrd.supportedFilesystems = [ "btrfs" ];
       boot.initrd.systemd.services.my-btrfs-backup = {
-        description = "Run commands after devices are loaded";
+        description = "Rollback BTRFS root subvolume to a pristine state";
         wantedBy = [ "initrd.target" ];
-        after = [ "initrd-nixos-chroot.target" ]; # Or your specific device
         before = [ "sysroot.mount" ];
+        unitConfig.DefaultDependencies = false;
+        serviceConfig.Type = "oneshot";
         script = ''
+          set -eu
+          # 等待根分区设备就绪（最多约 30 秒）
+          i=0
+          while [ ! -e ${dev} ] && [ "$i" -lt 60 ]; do
+            sleep 0.5
+            i=$((i + 1))
+          done
+
           mkdir -p ${mount_p}
-          # 挂载 Btrfs 根分区（不指定子卷，默认挂载整个分区 ID 5）
           mount -t btrfs ${dev} ${mount_p}
-          if [[ ! -e ${mount_p}/${old_roots} ]]; then
-             btrfs subvolume create ${mount_p}/${old_roots}
-          fi
+
           if [ -e "${mount_p}/${root_subvol}" ]; then
-              # 生成时间戳
-              timestamp=$(date "+%Y-%m-%d_%H:%M:%S")
-              
-              echo ">>> [Rollback] Backing up current / to ${old_roots}/$timestamp"
-              # 快照当前 root 为只读并移动到备份目录
-              btrfs subvolume snapshot -r ${mount_p}/${root_subvol} ${mount_p}/${old_roots}/$timestamp
-              
-              # 递归删除旧的 root（因为里面可能有嵌套子卷）
-              btrfs subvolume delete ${mount_p}/${root_subvol}
+            timestamp=$(date "+%Y-%m-%d_%H:%M:%S")
+            mkdir -p ${mount_p}/${old_roots}
+            echo ">>> [Rollback] snapshot current / to ${old_roots}/$timestamp"
+            btrfs subvolume snapshot -r ${mount_p}/${root_subvol} ${mount_p}/${old_roots}/$timestamp
+            echo ">>> [Rollback] delete old root subvolume"
+            btrfs subvolume delete ${mount_p}/${root_subvol}
           fi
 
-          echo ">>> [Rollback] Creating fresh / subvolume"
+          echo ">>> [Rollback] create fresh root subvolume"
           btrfs subvolume create ${mount_p}/${root_subvol}
 
-          # 可选：清理超过 30 天的备份 (busybox 的 find 语法略有不同)
-          # 这里建议手动清理，防止 initrd 时间戳错误误删所有备份
+          # 递归删除旧快照（防止嵌套子卷残留），保留最近 ${toString keep_days} 天
+          delete_subvolume_recursively() {
+              local sv="$1"
+              local child
+              for child in $(btrfs subvolume list -o "$sv" | cut -f 9- -d ' '); do
+                  delete_subvolume_recursively "${mount_p}/$child"
+              done
+              btrfs subvolume delete "$sv"
+          }
+          if [ -d "${mount_p}/${old_roots}" ]; then
+            for snap in $(find ${mount_p}/${old_roots} -maxdepth 1 -mindepth 1 -mtime +${toString keep_days}); do
+              delete_subvolume_recursively "$snap"
+            done
+          fi
 
           umount ${mount_p}
         '';
       };
+
+      # --- 2. impermanence：控制哪些目录持久化 ---
+      # /persist 需要在 initrd 阶段就挂载（impermanence 模块的断言要求）
+      fileSystems."/persist".neededForBoot = true;
+
+      environment.persistence."/persist" = {
+        hideMounts = true;
+        directories = [
+          "/var/log"
+          "/var/lib/bluetooth"
+          "/var/lib/nixos" # 用户/组 uid/gid 分配记录
+          "/var/lib/systemd/coredump"
+          "/var/lib/flatpak"
+          "/etc/NetworkManager/system-connections"
+          "/etc/ssh" # ssh host key + sops age key
+          "/root"
+        ];
+        files = [
+          "/etc/machine-id"
+        ];
+      };
+
+      # --- 3. disko 磁盘布局 ---
+      # root 用 btrfs subvol @root（每次开机由上面的服务滚动重建）
       disko.devices = {
         disk.main = {
-          device = "/dev/disk/by-id/nvme-ZHITAI_TiPlus7100_4TB_ZTA54T0AB251540AHC_1";
+          device = "/dev/nvme1n1";
           type = "disk";
           content = {
             type = "gpt";
@@ -74,18 +124,16 @@
                   subvolumes = {
                     "@root" = {
                       mountpoint = "/";
-                    };
-
-                    "etc" = {
-                      mountpoint = "/etc";
                       mountOptions = [
                         "compress=zstd"
+                        "noatime"
                       ];
                     };
-                    "log" = {
-                      mountpoint = "/var/log";
+                    "persist" = {
+                      mountpoint = "/persist";
                       mountOptions = [
                         "compress=zstd"
+                        "noatime"
                       ];
                     };
                     "nix" = {
@@ -95,16 +143,11 @@
                         "noatime"
                       ];
                     };
-                    "root" = {
-                      mountpoint = "/root";
-                      mountOptions = [
-                        "compress=zstd"
-                      ];
-                    };
                     "home" = {
                       mountpoint = "/home";
                       mountOptions = [
                         "compress=zstd"
+                        "noatime"
                       ];
                     };
                     "/swap" = {

@@ -27,54 +27,9 @@
       boot.kernelParams = [ ];
       boot.kernelModules = [
         "kvm-intel"
-        "nvidia"
       ];
       boot.extraModulePackages = [ ];
 
-      fileSystems."/" = {
-        device = "none";
-        fsType = "tmpfs";
-        options = [
-          "defaults"
-          "size=2G"
-          "mode=755"
-        ];
-      };
-
-      fileSystems."/nix" = {
-        device = "/dev/disk/by-uuid/1b84bbac-b67f-4722-971e-dc701ef1c2ca";
-        fsType = "btrfs";
-        options = [ "subvol=@nix" ];
-      };
-
-      fileSystems."/var/log" = {
-        device = "/nix/@nix/persist/var/log";
-        fsType = "none";
-        options = [ "bind" ];
-      };
-
-      fileSystems."/etc/nixos" = {
-        device = "/nix/@nix/persist/etc/nixos";
-        fsType = "none";
-        options = [ "bind" ];
-      };
-
-      fileSystems."/home" = {
-        device = "/dev/disk/by-uuid/1b84bbac-b67f-4722-971e-dc701ef1c2ca";
-        fsType = "btrfs";
-        options = [ "subvol=@nix" ];
-      };
-
-      fileSystems."/boot" = {
-        device = "/dev/disk/by-uuid/E5AB-DC3D";
-        fsType = "vfat";
-        options = [
-          "fmask=0022"
-          "dmask=0022"
-        ];
-      };
-
-      swapDevices = [ ];
 
       # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
       # (the default) this is the recommended approach. When using systemd-networkd it's

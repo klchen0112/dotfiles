@@ -1,6 +1,6 @@
 { inputs, ... }:
 {
-  den.aspects.a2700.nixos =
+  den.aspects.i12400.nixos =
     { lib, ... }:
     let
       # btrfs 分区（disko 自动生成的 partlabel）
