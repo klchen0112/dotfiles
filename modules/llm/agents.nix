@@ -106,13 +106,13 @@
             #python-telegram-bot
           ]); # its Python dep
           extraPlugins = with pkgs; [
-            (pkgs.fetchFromGitHub {
-              owner = "stephenschoettler";
-              repo = "hermes-lcm";
-              name = "hermes-lcm";
-              rev = "v0.20.0";
-              hash = "sha256-RyzKjtNChDtuWi51JTAL0og0X+NzD7mHLUHhqTdko2g=";
-            })
+            # (pkgs.fetchFromGitHub {
+            #   owner = "stephenschoettler";
+            #   repo = "hermes-lcm";
+            #   name = "hermes-lcm";
+            #   rev = "v0.20.0";
+            #   hash = "sha256-RyzKjtNChDtuWi51JTAL0og0X+NzD7mHLUHhqTdko2g=";
+            # })
           ];
           extraPackages = with pkgs; [
             agent-browser
