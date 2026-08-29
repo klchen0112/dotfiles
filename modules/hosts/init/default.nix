@@ -42,16 +42,31 @@ in
   };
 
   den.aspects.init = {
+    nixos =
+      { lib, modulesPath, ... }:
+      {
+        services.openssh = {
+          enable = true;
+          authorizedKeysInHomedir = true;
+          settings = {
+            PasswordAuthentication = false;
+            KbdInteractiveAuthentication = false;
+            PermitRootLogin = "prohibit-password";
+            AllowUsers = [
+              "klchen"
+              "root"
+            ];
+          };
+        };
+      };
     includes =
       with den.aspects;
       [
         init-base
-        font
-        # keyboard
-        niri
         nix
         btrfs-scrub
         sops
+        network
       ]
 
       ++ [

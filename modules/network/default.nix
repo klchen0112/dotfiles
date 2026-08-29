@@ -1,6 +1,7 @@
 {
   den.aspects.network.homeManager =
     { pkgs, ... }:
+
     {
       home.packages = with pkgs; [
         ifstat-legacy
