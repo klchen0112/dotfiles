@@ -161,7 +161,7 @@
                     };
                     "/swap" = {
                       mountpoint = "/.swapvol";
-                      swap.swapfile.size = "48G";
+                      swap.swapfile.size = "4G";
                     };
                   };
                   mountpoint = "/partition-root";
