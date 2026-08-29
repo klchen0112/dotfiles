@@ -633,16 +633,14 @@
     },
     "flake-parts_3": {
       "inputs": {
-        "nixpkgs-lib": [
-          "nixpkgs"
-        ]
+        "nixpkgs-lib": "nixpkgs-lib"
       },
       "locked": {
-        "lastModified": 1785627969,
-        "narHash": "sha256-4dtXQk/NMePegK/nWp5NSeuZKLATItOq61lpEvmXqGw=",
+        "lastModified": 1787559586,
+        "narHash": "sha256-onL0VLf9vPllmT0H/OlURIU5r5t5WIEl7t4tVNKT0Nw=",
         "owner": "hercules-ci",
         "repo": "flake-parts",
-        "rev": "427bf4bd9435fdf21321c8cc628c24efc14c0f7a",
+        "rev": "9d0d87172c374f89da73c1cfe6d81ae62feac1f1",
         "type": "github"
       },
       "original": {
@@ -1066,16 +1064,15 @@
         ]
       },
       "locked": {
-        "lastModified": 1786782271,
-        "narHash": "sha256-DOLB2I4ljjHk3wTxukh2nILoOSquFsT5k51JgEbOsDA=",
-        "owner": "klchen0112",
+        "lastModified": 1787796802,
+        "narHash": "sha256-/vI/c/hGieQslYwOs6K+0WhOD2ot+flTHU40Pwf6Rk0=",
+        "owner": "spiritbuun",
         "repo": "buun-llama-cpp",
-        "rev": "f415dcfc290a7d0ff10b0e51eeb8483f6aad2618",
+        "rev": "2174ad63bc8dea3022aa47db17a2b02ad9e5e538",
         "type": "github"
       },
       "original": {
-        "owner": "klchen0112",
-        "ref": "fix-rocm-mmproj-swap",
+        "owner": "spiritbuun",
         "repo": "buun-llama-cpp",
         "type": "github"
       }
@@ -1406,6 +1403,21 @@
         "owner": "NixOS",
         "ref": "nixpkgs-26.05-darwin",
         "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "nixpkgs-lib": {
+      "locked": {
+        "lastModified": 1785031560,
+        "narHash": "sha256-OmshNvn2vupOFpYinLUu+1Dnpu4n7Q5N3ggGVNHpkUI=",
+        "owner": "nix-community",
+        "repo": "nixpkgs.lib",
+        "rev": "0e79af5e3d4dcfcd676ab5ba3f95d2e3352e078c",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-community",
+        "repo": "nixpkgs.lib",
         "type": "github"
       }
     },

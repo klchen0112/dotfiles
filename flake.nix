@@ -135,7 +135,7 @@
       flake = false;
     };
     llama-cpp = {
-      url = "github:klchen0112/buun-llama-cpp/fix-rocm-mmproj-swap";
+      url = "github:spiritbuun/buun-llama-cpp";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     llm-agents = {

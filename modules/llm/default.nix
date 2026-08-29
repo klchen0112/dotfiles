@@ -4,7 +4,8 @@
     llama-cpp = {
       # url = "github:ggml-org/llama.cpp";
       # url = "github:Anbeeld/beellama.cpp";
-      url = "github:klchen0112/buun-llama-cpp/fix-rocm-mmproj-swap";
+      # url = "github:klchen0112/buun-llama-cpp/fix-rocm-mmproj-swap";
+      url = "github:spiritbuun/buun-llama-cpp";
       # url = "github:TheTom/llama-cpp-turboquant";
       inputs.nixpkgs.follows = "nixpkgs";
     };
@@ -16,7 +17,6 @@
         nixpkgs.overlays = [
           inputs.llama-cpp.overlays.default
         ];
-
         nixpkgs = {
           config = {
             cudaSupport = true;
