@@ -25,7 +25,6 @@ in
     {
 
       includes = with den.aspects; [
-        persist
         font
         k3s
         k3s-master

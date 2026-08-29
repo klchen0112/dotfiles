@@ -36,7 +36,6 @@ in
 
       includes = with den.aspects; [
         font
-        persist
         k3s
         k3s-node
         stylix

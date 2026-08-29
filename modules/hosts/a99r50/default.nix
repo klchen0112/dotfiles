@@ -200,7 +200,6 @@ in
         noctalia-shell
         # stylix
         emacs-twist
-        persist
         nix
         nix-build-machines
         sops
