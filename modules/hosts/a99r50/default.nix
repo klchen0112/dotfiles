@@ -45,8 +45,8 @@ in
         "im"
         "media"
         "game"
-        "pi"
-        "oh-my-pi"
+        # "pi"
+        # "oh-my-pi"
       ];
     };
     users.root = { };
