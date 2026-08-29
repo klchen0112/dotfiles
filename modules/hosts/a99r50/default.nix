@@ -37,7 +37,7 @@ in
         "python"
         "syncthing"
         "aria2"
-        "llm-deploy"
+        # "llm-deploy"
         "hermes"
         "llm-agents"
         "noctalia-shell"

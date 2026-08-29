@@ -12,8 +12,8 @@
         "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAGszCNQqxT1/s6sYjj1aewvCjaa3D7UwoOM7UD5K+ha klchen0112@mbp-m1"
         "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKx1SNaQZ6v1onDSGz1wNX1W3zIf2KkTERjKGC+k157D klchen@sanjiao"
         "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAII/c10VIo81cztYJza3e+l1JlwsTJQk1lhBOypGhYn3T klchen@a3400g"
-        "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPI6HctaCnuhyOdbrYs2un7/QA/hqFPfDVRlL0klfhGc klchen@i12r20"
-        "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFNgI2fAHSDQCB+DgZPsjGF+arPudVmWS4hTXbJCvwwX klchen@a99r50"
+        "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEG8gTw2jmEZ5Qs/KprEb5lWzYjflOQlmA6vjXqnq8Bu klchen@i12400"
+        "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBxpox++VSFrTqPj8+Ixt99DdCeS5jDVpeX5rZ9fz5Il klchen@a99r50"
       ];
     in
     {
@@ -67,29 +67,29 @@
             name = "klchen0112";
             email = "klchen0112@gmail.com";
           };
-          sops.secrets.hermes-env = {
-            sopsFile = ../../secrets/klchen/hermes.yaml;
-            format = "yaml";
-          };
+          # sops.secrets.hermes-env = {
+          #   sopsFile = ../../secrets/klchen/hermes.yaml;
+          #   format = "yaml";
+          # };
         };
       provides.i12400 = {
         homeManager = { config, ... }: {
-          sops.secrets.hermes-telegram-env = {
-            sopsFile = ../../secrets/klchen/hermes-telegram.env;
-            format = "dotenv";
-          };
-          sops.secrets.hermes-discord-env = {
-            sopsFile = ../../secrets/klchen/hermes-discord.env;
-            format = "dotenv";
-          };
+          # sops.secrets.hermes-telegram-env = {
+          #   sopsFile = ../../secrets/klchen/hermes-telegram.env;
+          #   format = "dotenv";
+          # };
+          # sops.secrets.hermes-discord-env = {
+          #   sopsFile = ../../secrets/klchen/hermes-discord.env;
+          #   format = "dotenv";
+          # };
 
-          services.hermes-agent = {
-            environmentFiles = [
-              config.sops.secrets."hermes-telegram-env".path
-              config.sops.secrets."hermes-discord-env".path
-              config.sops.secrets."hermes-env".path
-            ];
-          };
+          # services.hermes-agent = {
+          #   environmentFiles = [
+          #     config.sops.secrets."hermes-telegram-env".path
+          #     config.sops.secrets."hermes-discord-env".path
+          #     config.sops.secrets."hermes-env".path
+          #   ];
+          # };
         };
       };
       provides.a99r50 = {
@@ -104,7 +104,7 @@
               mode = "dashboard";
             };
             environmentFiles = [
-              config.sops.secrets."hermes-env".path
+              # config.sops.secrets."hermes-env".path
             ];
 
           };
