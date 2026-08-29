@@ -47,7 +47,6 @@ in
       {
         services.openssh = {
           enable = true;
-          authorizedKeysInHomedir = true;
           settings = {
             PasswordAuthentication = false;
             KbdInteractiveAuthentication = false;
