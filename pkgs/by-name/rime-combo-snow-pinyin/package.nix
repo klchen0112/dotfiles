@@ -11,7 +11,7 @@ stdenvNoCC.mkDerivation {
     owner = "klchen0112";
     repo = "rime-snow-combo-pinyin";
     rev = "e6c86477954b6aea5693ea7ad75981af0440d5fc";
-    sha256 = "1jqkinjkmlkzn1aw27vw5mi9lpyyykyggsyaivjnpxypvq8mn25w";
+    sha256 = "r3wPFPAWE04yppxkb2QfmN12ev0ZJOozWU51mvu0nq8=";
   };
 
   installPhase = ''
