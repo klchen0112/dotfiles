@@ -88,6 +88,10 @@
         home.packages = with pkgs; [
           # local.graphify
         ];
+        programs.hermes-agent = {
+          enable = true;
+        };
+
         services.hermes-agent = {
           enable = true;
           #         extraPlugins = [ my-plugin-src ];          # plugin source
@@ -144,7 +148,7 @@
                 name = "i12400";
                 base_url = "http://i12400.klchen.duckdns.org:8080/v1";
                 models = [
-                  "Qwen3.6-35B-A3B-Uncensored-Genesis-Hermes-V6-GGUF"
+                  "Tiel-Coder-35B-A3B-Genesis-Hermes-APEX-Compact"
                 ];
               }
               {
@@ -187,16 +191,16 @@
               vision = {
                 provider = "i12400";
                 base_url = "http://i12400.klchen.duckdns.org:8080/v1";
-                model = "Qwen3.6-35B-A3B-Uncensored-Genesis-Hermes-V6-GGUF";
+                model = "Tiel-Coder-35B-A3B-Genesis-Hermes-APEX-Compact";
               };
               web_extract = {
-                model = "Qwen3.6-35B-A3B-Uncensored-Genesis-Hermes-V6-GGUF";
+                model = "Tiel-Coder-35B-A3B-Genesis-Hermes-APEX-Compact";
                 provider = "i12400";
                 base_url = "http://i12400.klchen.duckdns.org:8080/v1";
               };
 
               curator = {
-                model = "Qwen3.6-35B-A3B-Uncensored-Genesis-Hermes-V6-GGUF";
+                model = "Tiel-Coder-35B-A3B-Genesis-Hermes-APEX-Compact";
                 provider = "i12400";
                 base_url = "http://i12400.klchen.duckdns.org:8080/v1";
               };

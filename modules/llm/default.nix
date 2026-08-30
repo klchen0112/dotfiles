@@ -2,10 +2,10 @@
 {
   flake-file.inputs = {
     llama-cpp = {
-      # url = "github:ggml-org/llama.cpp";
+      url = "github:ggml-org/llama.cpp";
       # url = "github:Anbeeld/beellama.cpp";
       # url = "github:klchen0112/buun-llama-cpp/fix-rocm-mmproj-swap";
-      url = "github:spiritbuun/buun-llama-cpp";
+      # url = "github:spiritbuun/buun-llama-cpp";
       # url = "github:TheTom/llama-cpp-turboquant";
       inputs.nixpkgs.follows = "nixpkgs";
     };
@@ -103,11 +103,11 @@
           Service =
             let
               llama-cpp = pkgs.llama-cpp;
-              model-dir = "${config.home.homeDirectory}/model/LuffyTheFox/Qwen3.6-35B-A3B-Uncensored-Genesis-Hermes-V6-GGUF";
+              model-dir = "${config.home.homeDirectory}/model/Tiel-Coder-35B-A3B-Genesis-Hermes-GGUF";
               mmproj = "${model-dir}/mmproj-BF16.gguf";
-              model-path = "${model-dir}/Hermes3.6-35B-A3B-Uncensored-Genesis-V8-MTP-APEX-Compact.gguf";
-              model-name = "Hermes3.6-35B-A3B-Uncensored-Genesis-APEX-Compact";
-              template-file = "${config.home.homeDirectory}/.cache/modelscope/hub/models/froggeric/Qwen-Fixed-Chat-Templates/chat_template.jinja";
+              model-path = "${model-dir}/Tiel-Coder-35B-A3B-Genesis-Hermes-APEX-Compact.gguf";
+              model-name = "Tiel-Coder-35B-A3B-Genesis-Hermes-APEX-Compact";
+              template-file = "${model-dir}/chat_template.jinja";
               ctk = "q5_0";
               ctv = "q4_1";
               ctx-size = "131077";
@@ -122,12 +122,11 @@
                  -m ${model-path} \
                  -mm ${mmproj} \
                  --host 0.0.0.0\
-                 --temp 0.6 --top-p 0.95 --top-k 20 --min-p 0.00 \
-                 --jinja --chat-template-file ${template-file} \
+                 --temp 0.6 --top-p 0.95 --top-k 20 --min-p 0.00 --repeat-penalty 1.05\
+                 --jinja --chat-template-file ${template-file} --reasoning-format deepseek \
                  --alias ${model-name} \
                  -fa on -kvu \
-                 --image-min-tokens 1024 \
-                 --spec-type draft-mtp --spec-draft-n-max 2
+                 --image-min-tokens 1024 
               '';
             };
 

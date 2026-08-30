@@ -93,7 +93,7 @@ in
         hardware.nvidia.primeBatterySaverSpecialisation = false;
         # stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/solarized-light.yaml";
         boot.kernelParams = [
-          # Since NVIDIA does not load kernel mode setting by default,
+          # Since NVi12400/i12400/IDIA does not load kernel mode setting by default,
           # enabling it is required to make Wayland compositors function properly.
           "nvidia-drm.fbdev=1"
         ];

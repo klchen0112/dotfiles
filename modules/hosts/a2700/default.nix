@@ -12,19 +12,15 @@ in
     roles = [
       "emacs-twist"
       "stylix-home"
-      "llm-deploy-rocm"
       "python"
       "llm-agents"
-
     ];
     users = {
       klchen.roles = [
         "emacs-twist"
         "stylix-home"
-        "llm-deploy-rocm"
         "python"
         "llm-agents"
-
       ];
     };
     klchen = { };
@@ -37,8 +33,8 @@ in
       includes = with den.aspects; [
         font
         k3s
-        k3s-node
-        stylix
+        #k3s-node
+        #stylix
         nix
         nix-build-machines
       ];

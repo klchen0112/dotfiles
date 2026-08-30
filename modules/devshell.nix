@@ -34,7 +34,7 @@
             sops
           ]
           ++ (lib.optional pkgs.stdenv.isLinux [
-            deploy-rs.deploy-rs
+           # deploy-rs.deploy-rs
 
           ]);
       };

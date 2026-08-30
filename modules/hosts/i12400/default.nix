@@ -64,22 +64,11 @@ in
         homeManager = { ... }: {
           services.hermes-agent.settings = {
             model = {
-
-              default = "Qwen3.6-35B-A3B-Uncensored-Genesis-Hermes-V6-GGUF";
+              model = "Tiel-Coder-35B-A3B-Genesis-Hermes-APEX-Compact";
               provider = "i12400";
               base_url = "http://i12400.klchen.duckdns.org:8080/v1";
 
             };
-            custom_providers = [
-              {
-                name = "i12400";
-                base_url = "http://127.0.0.1:8080/v1";
-                models = [
-                  "Qwen3.6-35B-A3B-Uncensored-Genesis-Hermes-V6-GGUF"
-                ];
-              }
-            ];
-
           };
         };
       };

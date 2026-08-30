@@ -67,30 +67,31 @@
             name = "klchen0112";
             email = "klchen0112@gmail.com";
           };
-          # sops.secrets.hermes-env = {
-          #   sopsFile = ../../secrets/klchen/hermes.yaml;
-          #   format = "yaml";
-          # };
+          sops.secrets.hermes-env = {
+            sopsFile = ../../secrets/klchen/hermes.yaml;
+            format = "yaml";
+          };
         };
       provides.i12400 = {
         homeManager = { config, ... }: {
-          # sops.secrets.hermes-telegram-env = {
-          #   sopsFile = ../../secrets/klchen/hermes-telegram.env;
-          #   format = "dotenv";
-          # };
-          # sops.secrets.hermes-discord-env = {
-          #   sopsFile = ../../secrets/klchen/hermes-discord.env;
-          #   format = "dotenv";
-          # };
+          sops.secrets.hermes-telegram-env = {
+            sopsFile = ../../secrets/klchen/hermes-telegram.env;
+            format = "dotenv";
+          };
+          sops.secrets.hermes-discord-env = {
+            sopsFile = ../../secrets/klchen/hermes-discord.env;
+            format = "dotenv";
+          };
 
-          # services.hermes-agent = {
-          #   environmentFiles = [
-          #     config.sops.secrets."hermes-telegram-env".path
-          #     config.sops.secrets."hermes-discord-env".path
-          #     config.sops.secrets."hermes-env".path
-          #   ];
-          # };
+          services.hermes-agent = {
+            environmentFiles = [
+              config.sops.secrets."hermes-telegram-env".path
+              config.sops.secrets."hermes-discord-env".path
+              config.sops.secrets."hermes-env".path
+            ];
+          };
         };
+
       };
       provides.a99r50 = {
         homeManager = { config, ... }: {
@@ -104,7 +105,7 @@
               mode = "dashboard";
             };
             environmentFiles = [
-              # config.sops.secrets."hermes-env".path
+              config.sops.secrets."hermes-env".path
             ];
 
           };

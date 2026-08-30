@@ -1064,16 +1064,16 @@
         ]
       },
       "locked": {
-        "lastModified": 1787796802,
-        "narHash": "sha256-/vI/c/hGieQslYwOs6K+0WhOD2ot+flTHU40Pwf6Rk0=",
-        "owner": "spiritbuun",
-        "repo": "buun-llama-cpp",
-        "rev": "2174ad63bc8dea3022aa47db17a2b02ad9e5e538",
+        "lastModified": 1788060860,
+        "narHash": "sha256-OS4kUZ5bVs4vnX+eHYHaXzz7OwkTcBQ4FprM2tfblhk=",
+        "owner": "ggml-org",
+        "repo": "llama.cpp",
+        "rev": "57291f2644af8c9df0dd8d44395881c5bdcf0ecd",
         "type": "github"
       },
       "original": {
-        "owner": "spiritbuun",
-        "repo": "buun-llama-cpp",
+        "owner": "ggml-org",
+        "repo": "llama.cpp",
         "type": "github"
       }
     },
