@@ -85,6 +85,10 @@
       url = "github:nix-community/disko";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    dsh-nix = {
+      url = "github:Samuka007/dsh-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     emacs-config = {
       url = "github:klchen0112/.emacs.d";
       inputs = {

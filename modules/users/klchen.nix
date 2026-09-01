@@ -154,6 +154,7 @@
         <sops-home>
         <skill>
         <hermes>
+        <dsh>
         <pi>
         <oh-my-pi>
         <media>
