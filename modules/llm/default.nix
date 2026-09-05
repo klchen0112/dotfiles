@@ -9,6 +9,14 @@
       # url = "github:TheTom/llama-cpp-turboquant";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    llama-cpp-vulkan = {
+      url = "github:LaurentZuijdwijk/llama.cpp";
+      # url = "github:Anbeeld/beellama.cpp";
+      # url = "github:klchen0112/buun-llama-cpp/fix-rocm-mmproj-swap";
+      # url = "github:spiritbuun/buun-llama-cpp";
+      # url = "github:TheTom/llama-cpp-turboquant";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
   den.aspects.llm-deploy = {
     llm-deploy =
@@ -142,7 +150,7 @@
       in
       {
         nixpkgs.overlays = [
-          inputs.llama-cpp.overlays.default
+          inputs.llama-cpp-vulkan.overlays.default
         ];
 
         nixpkgs = {
@@ -175,32 +183,15 @@
           Service =
             let
               llama-cpp = pkgs.llama-cpp.override { useVulkan = true; };
-              mmproj = "${config.home.homeDirectory}/model/LuffyTheFox/Qwen3.6-35B-A3B-Uncensored-Genesis-Hermes-V6-GGUF/mmproj-Hermes3.6-35B-A3B-Uncensored-Genesis-F16.gguf";
-              model-path = "${config.home.homeDirectory}/model/LuffyTheFox/Qwen3.6-35B-A3B-Uncensored-Genesis-Hermes-V6-GGUF/Hermes3.6-35B-A3B-Uncensored-Genesis-V6-APEX-Compact.gguf";
-              model-name = "Qwen3.6-35B-A3B-Uncensored-Genesis-Hermes-V6-GGUF";
-              template-file = "${config.home.homeDirectory}/.cache/modelscope/hub/models/froggeric/Qwen-Fixed-Chat-Templates/chat_template.jinja";
-              ctk = "kvarn6";
-              ctv = "kvarn6";
-              ctx-size = "131077";
             in
             {
               Type = "simple";
               Restart = "on-failure";
               RestartSec = 5;
               ExecStart = pkgs.writeShellScript "run-llama-server-vulkan" ''
-                                #!/usr/bin/env bash
-                                ${llama-cpp}/bin/llama-server \
-                                 -m ${model-path} \
-                                 -mm ${mmproj} \
-                                 --kv-tail-tokens 1024\
-                                 --host 0.0.0.0\
-                                 --temp 0.6 --top-p 0.95 --top-k 20 --min-p 0.00 \
-                                 --jinja --chat-template-file ${template-file} \
-                                 --alias ${model-name} \
-                                 -ctk ${ctk} -ctv ${ctv} -fa on\
-                                 -ngl all \
-                                 --cache-ram 2048 -b 2048 -ub 1024\
-                	               --cache-prompt 
+                #!/usr/bin/env bash
+                ${llama-cpp}/bin/llama-server \
+                 --models-preset /home/klchen/model/Ornith-1.5-35B-A3B-ROCmFP4-GGUF/ornith.ini --host 0.0.0.0
               '';
             };
 
