@@ -18,7 +18,9 @@
     }:
     {
       imports = [ inputs.emacs-config.homeModules.twist ];
-      # home.packages = with pkgs; [ ] ++ (lib.optionals pkgs.stdenv.isDarwin [ local.org-reminders ]);
+      home.packages =
+        with pkgs;
+        [ qrencode ] ++ (lib.optionals pkgs.stdenv.isDarwin [ local.org-reminders ]);
       stylix.targets.emacs.enable = false;
       programs.emacs-twist = {
         enable = true;
