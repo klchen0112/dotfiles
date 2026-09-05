@@ -992,11 +992,11 @@
         "uv2nix": "uv2nix"
       },
       "locked": {
-        "lastModified": 1788362467,
-        "narHash": "sha256-O9vzueCewURU4dchWUYXrgYLMYloEGlvH7d6sBR9Nd4=",
+        "lastModified": 1788586517,
+        "narHash": "sha256-qQfN5JUchYVJ6uSP3scdRTugSOCwef2+bFa9DD50jpg=",
         "owner": "NousResearch",
         "repo": "hermes-agent",
-        "rev": "afc3d9d34c9c3b01fa2e1332d2c66a5b5fabae3f",
+        "rev": "1e69c12b64dba4090eddffeae27f5a147068d34b",
         "type": "github"
       },
       "original": {

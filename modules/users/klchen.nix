@@ -96,8 +96,7 @@
       provides.a99r50 = {
         homeManager = { config, ... }: {
           programs.hermes-agent = {
-            enable = true;
-            desktop.enable = true;
+            desktop.enable = false;
           };
           services.hermes-agent = {
             enable = true;
@@ -156,7 +155,6 @@
         <hermes>
         <dsh>
         <pi>
-        <oh-my-pi>
         <media>
       ];
     };

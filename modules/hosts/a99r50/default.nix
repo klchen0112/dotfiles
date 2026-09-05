@@ -25,7 +25,6 @@ in
       "media"
       "game"
       "pi"
-      "oh-my-pi"
     ];
     users.klchen = {
       roles = [
@@ -40,14 +39,14 @@ in
         "aria2"
         # "llm-deploy"
         "hermes"
-        "dsh"
+        #"dsh"
         "llm-agents"
         "noctalia-shell"
         "niri-home"
         "im"
         "media"
         "game"
-        # "pi"
+        "pi"
         # "oh-my-pi"
       ];
     };
@@ -58,11 +57,6 @@ in
     provides.klchen = {
       homeManager = { ... }: {
         services.hermes-agent.settings = {
-          model = {
-            default = "Ornith-1.0-9B-NVFP4-MTP-GGUF";
-            provider = "a99r50";
-            base_url = "http://a99r50.klchen.duckdns.org:8080/v1";
-          };
         };
       };
     };

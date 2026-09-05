@@ -1,0 +1,15 @@
+{
+  "providers": {
+    "hermes": {
+      "baseUrl": "http://i12400.klchen.duckdns.org:8080/v1",
+      "api": "openai-completions",
+      "models": [
+        {
+          "id": "Ornith-1.5-35B-A3B-ROCmFP4",
+          "name": "Ornith-1.5-35B-A3B-ROCmFP4 (hermes-i12400)",
+          "contextWindow": 128000
+        }
+      ]
+    }
+  }
+}
