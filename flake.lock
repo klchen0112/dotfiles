@@ -1065,11 +1065,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1789137752,
-        "narHash": "sha256-apS54HmrNGZY48eTf6x485Dy39Q2MVHW/x9jxGQoUm4=",
+        "lastModified": 1789205238,
+        "narHash": "sha256-H32VGxZzk1B0DEJhVEdfwOM0Hn+okVMeli9JeN+f9Ys=",
         "owner": "spiritbuun",
         "repo": "buun-llama-cpp",
-        "rev": "c74a53314e37ddb102f703cb952c9766866b1580",
+        "rev": "4d90517b1e6f38ed3ca72ccab81b79bacf16fa9b",
         "type": "github"
       },
       "original": {
@@ -1739,15 +1739,15 @@
         "systems": "systems_7"
       },
       "locked": {
-        "lastModified": 1788857715,
-        "narHash": "sha256-QrGCBqM2ZBH0e5g3fxTPVwX/vi5piAzm15T1JT65jbg=",
-        "owner": "lukasl-dev",
+        "lastModified": 1789218870,
+        "narHash": "sha256-0RlG2ZZnaN3XWxLV9UkpMiKB7dIJDoLRObIebC8dWWw=",
+        "owner": "klchen0112",
         "repo": "pi.nix",
-        "rev": "f41e1136297ccd039ead5131739da85d0ac4a77c",
+        "rev": "b608c2cef86984de3f4e2cb89a2198656c1136bf",
         "type": "github"
       },
       "original": {
-        "owner": "lukasl-dev",
+        "owner": "klchen0112",
         "repo": "pi.nix",
         "type": "github"
       }

@@ -38,7 +38,7 @@ in
         "python"
         "syncthing"
         "aria2"
-        # "llm-deploy"
+        "llm-deploy"
         "hermes"
         #"dsh"
         "llm-agents"
@@ -47,7 +47,7 @@ in
         "im"
         "media"
         "game"
-        #"pi"
+        "pi"
         "chrome"
       ];
     };

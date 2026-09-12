@@ -2,7 +2,7 @@
 {
   flake-file.inputs = {
     pi = {
-      url = "github:lukasl-dev/pi.nix";
+      url = "github:klchen0112/pi.nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };

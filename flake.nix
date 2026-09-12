@@ -203,7 +203,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     pi = {
-      url = "github:lukasl-dev/pi.nix";
+      url = "github:klchen0112/pi.nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     pkgs-by-name-for-flake-parts.url = "github:drupol/pkgs-by-name-for-flake-parts";

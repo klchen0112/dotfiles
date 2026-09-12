@@ -38,6 +38,9 @@
           config = {
             cudaSupport = true;
             cudaVersion = "13";
+            permittedInsecurePackages = [
+              "python3.14-modelscope-1.39.1"
+            ];
           };
         };
 
@@ -90,7 +93,7 @@
       { pkgs, config, ... }:
       {
         nixpkgs.overlays = [
-          inputs.llama-cpp-rocm.overlays.default
+          inputs.llama-cpp.overlays.default
         ];
         nixpkgs = {
           config = {

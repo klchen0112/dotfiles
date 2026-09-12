@@ -53,13 +53,13 @@
             #python-telegram-bot
           ]); # its Python dep
           extraPlugins = with pkgs; [
-            # (pkgs.fetchFromGitHub {
-            #   owner = "stephenschoettler";
-            #   repo = "hermes-lcm";
-            #   name = "hermes-lcm";
-            #   rev = "v0.20.0";
-            #   hash = "sha256-RyzKjtNChDtuWi51JTAL0og0X+NzD7mHLUHhqTdko2g=";
-            # })
+            (pkgs.fetchFromGitHub {
+              owner = "stephenschoettler";
+              repo = "hermes-lcm";
+              name = "hermes-lcm";
+              rev = "v0.20.0";
+              hash = "sha256-yJ1Nn+su7YbKd+cgVOizXChzLbKHqTprSprF1p9/HYk=";
+            })
           ];
           extraPackages = with pkgs; [
             agent-browser
@@ -75,6 +75,11 @@
             "termux-all"
           ];
           settings = {
+            model = {
+              default = "deepseek-flash";
+              provider = "deepseek";
+              base_url = "https://api.deepseek.com";
+            };
             plugins = {
               enabled = [
                 "hermes-lcm"

@@ -20,8 +20,8 @@ in
         "stylix-home"
         "python"
         "hermes"
-        #"llm-deploy-rocm"
-        "llm-deploy-vulkan"
+        "llm-deploy-rocm"
+        #"llm-deploy-vulkan"
       ];
     };
     klchen = { };
