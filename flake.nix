@@ -139,7 +139,11 @@
       flake = false;
     };
     llama-cpp = {
-      url = "github:ggml-org/llama.cpp";
+      url = "github:spiritbuun/buun-llama-cpp";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    llama-cpp-rocm = {
+      url = "github:ROCmFPX/ROCmFPX";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     llama-cpp-vulkan = {
@@ -193,10 +197,6 @@
         flake-parts.follows = "flake-parts";
         nixpkgs.follows = "nixpkgs";
       };
-    };
-    oh-my-pi = {
-      url = "github:can1357/oh-my-pi";
-      inputs.nixpkgs.follows = "nixpkgs";
     };
     paneru = {
       url = "github:karinushka/paneru";

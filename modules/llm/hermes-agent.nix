@@ -91,7 +91,7 @@
                 name = "i12400";
                 base_url = "http://i12400.klchen.duckdns.org:8080/v1";
                 models = [
-                  "Ornith-1.5-35B-A3B-ROCmFP4"
+                  "Ornith-1.5-35B-A3B-Heretic-MTP-APEX"
                 ];
               }
               {
@@ -134,16 +134,16 @@
               vision = {
                 provider = "i12400";
                 base_url = "http://i12400.klchen.duckdns.org:8080/v1";
-                model = "Ornith-1.5-35B-A3B-ROCmFP4";
+                model = "Ornith-1.5-35B-A3B-Heretic-MTP-APEX";
               };
               web_extract = {
-                model = "Ornith-1.5-35B-A3B-ROCmFP4";
+                model = "Ornith-1.5-35B-A3B-Heretic-MTP-APEX";
                 provider = "i12400";
                 base_url = "http://i12400.klchen.duckdns.org:8080/v1";
               };
 
               curator = {
-                model = "Ornith-1.5-35B-A3B-ROCmFP4";
+                model = "Ornith-1.5-35B-A3B-Heretic-MTP-APEX";
                 provider = "i12400";
                 base_url = "http://i12400.klchen.duckdns.org:8080/v1";
               };

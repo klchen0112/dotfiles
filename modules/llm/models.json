@@ -5,9 +5,8 @@
       "api": "openai-completions",
       "models": [
         {
-          "id": "Ornith-1.5-35B-A3B-ROCmFP4",
-          "name": "Ornith-1.5-35B-A3B-ROCmFP4 (hermes-i12400)",
-          "contextWindow": 128000
+          "id": "Ornith-1.5-35B-A3B-Heretic-MTP-APEX",
+          "name": "Ornith-1.5-35B-A3B-ROCmFP4 (hermes-i12400)"
         }
       ]
     }

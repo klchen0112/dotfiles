@@ -22,7 +22,7 @@
         programs.pi.coding-agent = {
           enable = true;
           models = ./models.json;
-          settings.model = "Ornith-1.5-35B-A3B-ROCmFP4";
+          settings.model = "Ornith-1.5-35B-A3B-Heretic-MTP-APEX";
           # rules = ''Be concise.'';
           # skills = [ ./skills/my-skill ];
           # models = ./models.json;

@@ -2,10 +2,10 @@
 {
   flake-file.inputs = {
     llama-cpp = {
-      url = "github:ggml-org/llama.cpp";
+      # url = "github:ggml-org/llama.cpp";
       # url = "github:Anbeeld/beellama.cpp";
       # url = "github:klchen0112/buun-llama-cpp/fix-rocm-mmproj-swap";
-      # url = "github:spiritbuun/buun-llama-cpp";
+      url = "github:spiritbuun/buun-llama-cpp";
       # url = "github:TheTom/llama-cpp-turboquant";
       inputs.nixpkgs.follows = "nixpkgs";
     };
@@ -17,6 +17,15 @@
       # url = "github:TheTom/llama-cpp-turboquant";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    llama-cpp-rocm = {
+      url = "github:ROCmFPX/ROCmFPX";
+      # url = "github:Anbeeld/beellama.cpp";
+      # url = "github:klchen0112/buun-llama-cpp/fix-rocm-mmproj-swap";
+      # url = "github:spiritbuun/buun-llama-cpp";
+      # url = "github:TheTom/llama-cpp-turboquant";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
   };
   den.aspects.llm-deploy = {
     llm-deploy =
@@ -81,18 +90,22 @@
       { pkgs, config, ... }:
       {
         nixpkgs.overlays = [
-          inputs.llama-cpp.overlays.default
+          inputs.llama-cpp-rocm.overlays.default
         ];
-
         nixpkgs = {
           config = {
             rocmSupport = true;
+            permittedInsecurePackages = [
+              "python3.14-modelscope-1.39.1"
+            ];
           };
         };
         home.packages =
           with pkgs;
           [
-            llama-cpp
+            (llama-cpp.override {
+              rocmGpuTargets = "gfx1100";
+            })
             nvtopPackages.amd
           ]
           ++ (with pkgs.python314Packages; [
@@ -104,21 +117,15 @@
         # llama-server systemd user service (rocm)
         systemd.user.services.llama-server-rocm = {
           Unit = {
-            Description = "llama-server: local LLM inference server (Hermes3.6-35B-A3B-Uncensored-Genesis-APEX-Compact)";
+            Description = "llama-server: local LLM inference server (Ornith-1.5-35B-A3B-Heretic-MTP-APEX)";
             After = [ "network.target" ];
           };
 
           Service =
             let
-              llama-cpp = pkgs.llama-cpp;
-              model-dir = "${config.home.homeDirectory}/model/Tiel-Coder-35B-A3B-Genesis-Hermes-GGUF";
-              mmproj = "${model-dir}/mmproj-BF16.gguf";
-              model-path = "${model-dir}/Tiel-Coder-35B-A3B-Genesis-Hermes-APEX-Compact.gguf";
-              model-name = "Tiel-Coder-35B-A3B-Genesis-Hermes-APEX-Compact";
-              template-file = "${model-dir}/chat_template.jinja";
-              ctk = "q5_0";
-              ctv = "q4_1";
-              ctx-size = "131077";
+              llama-cpp = pkgs.llama-cpp.override {
+                rocmGpuTargets = "gfx1100";
+              };
             in
             {
               Type = "simple";
@@ -127,14 +134,7 @@
               ExecStart = pkgs.writeShellScript "run-llama-server-rocm" ''
                 #!/usr/bin/env bash
                 ${llama-cpp}/bin/llama-server \
-                 -m ${model-path} \
-                 -mm ${mmproj} \
-                 --host 0.0.0.0\
-                 --temp 0.6 --top-p 0.95 --top-k 20 --min-p 0.00 --repeat-penalty 1.05\
-                 --jinja --chat-template-file ${template-file} --reasoning-format deepseek \
-                 --alias ${model-name} \
-                 -fa on -kvu \
-                 --image-min-tokens 1024 
+                 --models-preset /home/klchen/model/Ornith-1.5-35B-A3B-Heretic-MTP-APEX-GGUF/Ornith-35B.ini --host 0.0.0.0
               '';
             };
 
@@ -156,6 +156,9 @@
         nixpkgs = {
           config = {
             vulkanSupport = true;
+            permittedInsecurePackages = [
+              "python3.14-modelscope-1.39.1"
+            ];
           };
         };
         home.packages =
@@ -165,7 +168,7 @@
             vulkan-headers
             vulkan-tools
             vulkan-validation-layers
-            llama-cpp
+            (llama-cpp.override { useVulkan = true; })
           ]
           ++ (with pkgs.python314Packages; [
             hf-xet
@@ -191,7 +194,7 @@
               ExecStart = pkgs.writeShellScript "run-llama-server-vulkan" ''
                 #!/usr/bin/env bash
                 ${llama-cpp}/bin/llama-server \
-                 --models-preset /home/klchen/model/Ornith-1.5-35B-A3B-ROCmFP4-GGUF/ornith.ini --host 0.0.0.0
+                 --models-preset /home/klchen/model/Ornith-1.5-35B-A3B-Heretic-MTP-APEX-GGUF/Ornith-35B.ini --host 0.0.0.0
               '';
             };
 
