@@ -61,7 +61,7 @@
           stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/tomorrow-night-eighties.yaml";
           home.username = lib.mkDefault " klchen";
           home.homeDirectory = lib.mkForce (
-            if pkgs.stdenvNoCC.isDarwin then "/Users/klchen" else "/home/klchen"
+            if pkgs.stdenvNoCC.hostPlatform.isDarwin then "/Users/klchen" else "/home/klchen"
           );
           programs.git.settings.user = {
             name = "klchen0112";
@@ -156,6 +156,7 @@
         <dsh>
         <pi>
         <media>
+        <chrome>
       ];
     };
 

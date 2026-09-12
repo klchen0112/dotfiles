@@ -10,7 +10,7 @@
         enable = true;
         extraConfig =
           let
-            fontsize = if pkgs.stdenv.isDarwin then "14.0" else "13.0";
+            fontsize = if pkgs.stdenv.hostPlatform.isDarwin then "14.0" else "13.0";
           in
           ''
             -- Pull in the wezterm API
@@ -80,7 +80,7 @@
             config.font_size = ${fontsize}
           ''
           + (
-            if pkgs.stdenv.isDarwin then
+            if pkgs.stdenv.hostPlatform.isDarwin then
               ''
                 -- Spawn a fish shell in login mod
                 config.default_prog = { '/run/current-system/sw/bin/fish', '-l' }

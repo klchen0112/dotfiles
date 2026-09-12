@@ -14,7 +14,7 @@
             dynamic_title = true;
             dynamic_padding = true;
             option_as_alt = "Both";
-            decorations = if pkgs.stdenv.isDarwin then "buttonless" else "Full";
+            decorations = if pkgs.stdenv.hostPlatform.isDarwin then "buttonless" else "Full";
             blur = true;
           };
           scrolling = {
@@ -23,7 +23,7 @@
           };
           font =
             let
-              fontname = if pkgs.stdenv.isLinux then "Iosevka Nerd Font" else "SF Mono";
+              fontname = if pkgs.stdenv.hostPlatform.isLinux then "Iosevka Nerd Font" else "SF Mono";
             in
             {
               normal = {

@@ -8,7 +8,7 @@
     }:
     let
       emacsPackage = pkgs.emacsWithPackagesFromUsePackage {
-        package = if pkgs.stdenv.isDarwin then pkgs.local.emacsIGC else pkgs.emacs-igc-pgtk;
+        package = if pkgs.stdenv.hostPlatform.isDarwin then pkgs.local.emacsIGC else pkgs.emacs-igc-pgtk;
         alwaysEnsure = true;
         alwaysTangle = true;
         defaultInitFile = true;
@@ -59,7 +59,7 @@
           emacs-lsp-booster
           pkg-config
         ]
-        ++ (lib.optionals pkgs.stdenv.isDarwin) [
+        ++ (lib.optionals pkgs.stdenv.hostPlatform.isDarwin) [
           # pngpaste for org mode download clip
           pngpaste
           hugo

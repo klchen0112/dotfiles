@@ -6,7 +6,7 @@
     }:
     {
       programs.bash = {
-        enable = pkgs.stdenv.isLinux;
+        enable = pkgs.stdenv.hostPlatform.isLinux;
       };
       home.packages = with pkgs; [
         bash-language-server

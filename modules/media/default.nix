@@ -59,7 +59,7 @@
           # tidgi
           # marginnote
         ]
-        ++ lib.optionals pkgs.stdenv.isDarwin [ ]
-        ++ lib.optionals pkgs.stdenv.isLinux [ ];
+        ++ lib.optionals pkgs.stdenv.hostPlatform.isDarwin [ ]
+        ++ lib.optionals pkgs.stdenv.hostPlatform.isLinux [ ];
     };
 }

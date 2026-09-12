@@ -22,7 +22,7 @@
           #-------------------------------------------- Font --------------------------------------------
 
           #-------------------------------------------- Window --------------------------------------------
-          hide_window_decorations = if pkgs.stdenv.isDarwin then "titlebar-only " else true;
+          hide_window_decorations = if pkgs.stdenv.hostPlatform.isDarwin then "titlebar-only " else true;
           # Animation
           cursor_trail = 3;
           #-------------------------------------------- Mouse --------------------------------------------

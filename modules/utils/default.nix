@@ -113,7 +113,6 @@
         lrzsz
         python312Packages.editorconfig
         just
-        gcr
         dig
       ];
 

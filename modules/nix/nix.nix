@@ -28,7 +28,7 @@ let
         settings = {
           max-jobs = "auto";
           # I don't have an Intel mac.
-          extra-platforms = lib.mkIf pkgs.stdenv.isDarwin "aarch64-darwin x86_64-darwin";
+          extra-platforms = lib.mkIf pkgs.stdenv.hostPlatform.isDarwin "aarch64-darwin x86_64-darwin";
           extra-experimental-features = "nix-command flakes";
           accept-flake-config = true;
         };

@@ -14,12 +14,12 @@
       stylix.targets.ghostty.enable = true;
       programs.ghostty = {
         enable = true;
-        package = if pkgs.stdenv.isDarwin then pkgs.brewCasks.ghostty else pkgs.ghostty;
+        package = if pkgs.stdenv.hostPlatform.isDarwin then pkgs.brewCasks.ghostty else pkgs.ghostty;
         installBatSyntax = true;
         settings = {
-          window-colorspace = if pkgs.stdenv.isDarwin then "display-p3" else "srgb";
+          window-colorspace = if pkgs.stdenv.hostPlatform.isDarwin then "display-p3" else "srgb";
           macos-titlebar-style = "hidden";
-          command = "${config.home.homeDirectory}/.nix-profile/bin/nu";
+          command = "${config.home.homeDirectory}/.local/state/nix/profile/bin/nu";
           clipboard-read = "allow";
           clipboard-write = "allow";
           copy-on-select = "clipboard";

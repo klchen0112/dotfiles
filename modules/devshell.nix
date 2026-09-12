@@ -33,7 +33,7 @@
             ssh-to-age
             sops
           ]
-          ++ (lib.optional pkgs.stdenv.isLinux [
+          ++ (lib.optional pkgs.stdenv.hostPlatform.isLinux [
            # deploy-rs.deploy-rs
 
           ]);

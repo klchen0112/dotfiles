@@ -9,7 +9,7 @@
     }:
     {
       home.activation.installRime = lib.hm.dag.entryAfter [ "writeBoundary" ] (
-        if pkgs.stdenv.isDarwin then
+        if pkgs.stdenv.hostPlatform.isDarwin then
           ''
             $DRY_RUN_CMD mkdir -p "${config.home.homeDirectory}/Library/Rime"
 
@@ -30,7 +30,7 @@
           ""
       );
       i18n.inputMethod = {
-        enable = pkgs.stdenv.isLinux;
+        enable = pkgs.stdenv.hostPlatform.isLinux;
         type = "fcitx5";
         fcitx5.addons = with pkgs; [
           (fcitx5-rime.override {
@@ -57,7 +57,7 @@
       services.syncthing.settings.folders."rime-sync" = {
         id = "w4pgi-mnhem";
         path =
-          if pkgs.stdenv.isDarwin then
+          if pkgs.stdenv.hostPlatform.isDarwin then
             "~/Library/Mobile Documents/iCloud~dev~fuxiao~app~hamsterapp/Documents/sync"
           else
             "${config.home.homeDirectory}/.local/share/fcitx5/rime/sync";

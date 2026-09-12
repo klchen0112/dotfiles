@@ -309,7 +309,7 @@
           in
           lib.concatStringsSep "\n" ([ ] ++ lib.mapAttrsToList formatLine settings);
       }
-      (lib.mkIf pkgs.stdenv.isLinux {
+      (lib.mkIf pkgs.stdenv.hostPlatform.isLinux {
         systemd.user.services.aria2 = {
           Unit.Description = "Cachix Deploy Agent";
 
@@ -328,7 +328,7 @@
           Install.WantedBy = [ "default.target" ];
         };
       })
-      (lib.mkIf pkgs.stdenv.isDarwin {
+      (lib.mkIf pkgs.stdenv.hostPlatform.isDarwin {
         launchd.agents.aria2 = {
           enable = true;
           config = {
