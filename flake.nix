@@ -142,6 +142,10 @@
       url = "github:spiritbuun/buun-llama-cpp";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    llama-cpp-k2 = {
+      url = "github:MBZUAI-IFM/llama.cpp/model/K2Horizon";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     llama-cpp-rocm = {
       url = "github:ROCmFPX/ROCmFPX";
       inputs.nixpkgs.follows = "nixpkgs";

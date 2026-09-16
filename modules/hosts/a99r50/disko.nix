@@ -6,6 +6,7 @@
       # btrfs 分区（disko 自动生成的 partlabel）
       dev = "/dev/disk/by-partlabel/disk-main-root";
       root_subvol = "@root";
+      docker_subvol = "docker"; # /var/lib/docker：独立子卷，不压缩 + nodatacow，不随 @root 回滚
       mount_p = "/mnt";
       old_roots = "old_roots";
       keep_days = 30; # 清理超过 N 天的旧 root 快照
@@ -49,6 +50,13 @@
 
           echo ">>> [Rollback] create fresh root subvolume"
           btrfs subvolume create ${mount_p}/${root_subvol}
+
+          # docker 子卷独立于 @root（不压缩、不随回滚清空），缺失时补建，
+          # 否则 /var/lib/docker 的 mount unit 会失败
+          if [ ! -e "${mount_p}/${docker_subvol}" ]; then
+            echo ">>> [Rollback] create ${docker_subvol} subvolume"
+            btrfs subvolume create "${mount_p}/${docker_subvol}"
+          fi
 
           # 递归删除旧快照（防止嵌套子卷残留），保留最近 ${toString keep_days} 天
           delete_subvolume_recursively() {
@@ -94,7 +102,9 @@
       # root 用 btrfs subvol @root（每次开机由上面的服务滚动重建）
       disko.devices = {
         disk.main = {
-          device = "/dev/nvme1n1";
+          # 注意：本机的 NixOS 盘是 ZHITAI TiPlus7100 4TB（disk-main-* partlabel 所在盘），
+          # 现为 /dev/nvme0n1；/dev/nvme1n1 是 FIKWOT 2TB（Windows NTFS），别写错
+          device = "/dev/nvme0n1";
           type = "disk";
           content = {
             type = "gpt";
@@ -148,6 +158,15 @@
                       mountOptions = [
                         "compress=zstd"
                         "noatime"
+                      ];
+                    };
+                    # docker 数据卷：独立子卷、不压缩、关闭 CoW（nodatacow，镜像层少碎片），
+                    # 独立于 @root 所以不会被开机回滚清空
+                    "docker" = {
+                      mountpoint = "/var/lib/docker";
+                      mountOptions = [
+                        "noatime"
+                        "nodatacow"
                       ];
                     };
                     "/swap" = {

@@ -55,6 +55,11 @@ iso:
 iso-burn DEVICE:
     bash scripts/iso-burn.sh {{ DEVICE }}
 
+# 新建 volume 阶段：按 disko.nix 的声明创建 + 挂载 btrfs subvolume（可只跑指定名字）
+[group('dev')]
+create-subvolumes *NAMES:
+    sudo bash scripts/create-subvolumes.sh {{ NAMES }}
+
 [group('dev')]
 gen:
     nixos-generate-config --root /tmp/config --no-filesystems

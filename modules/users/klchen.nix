@@ -139,7 +139,7 @@
         <ghostty>
         <zen>
         <paneru>
-        <llm-deploy>
+        <llm-deploy-cuda>
         <llm-deploy-rocm>
         <llm-deploy-vulkan>
         <llm-agents>

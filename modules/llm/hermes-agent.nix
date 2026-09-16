@@ -96,17 +96,10 @@
                 name = "i12400";
                 base_url = "http://i12400.klchen.duckdns.org:8080/v1";
                 models = [
-                  "Ornith-1.5-35B-A3B-Heretic-MTP-APEX"
+                  "Qwen3.8-27B-GSQ-RCO-IQ3_S"
+                  "Tiel-Coder-35B-A3B-APEX-MTP-I-Compact"
                 ];
               }
-              {
-                name = "a99r50";
-                base_url = "http://a99r50.klchen.duckdns.org:8080/v1";
-                models = [
-                  "Ornith-1.0-9B-NVFP4-MTP-GGUF"
-                ];
-              }
-
             ];
 
             toolsets = [ "all" ];

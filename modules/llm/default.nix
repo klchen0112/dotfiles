@@ -25,14 +25,22 @@
       # url = "github:TheTom/llama-cpp-turboquant";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
+    llama-cpp-k2 = {
+      url = "github:MBZUAI-IFM/llama.cpp/model/K2Horizon";
+      # url = "github:Anbeeld/beellama.cpp";
+      # url = "github:klchen0112/buun-llama-cpp/fix-rocm-mmproj-swap";
+      # url = "github:spiritbuun/buun-llama-cpp";
+      # url = "github:TheTom/llama-cpp-turboquant";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    
   };
-  den.aspects.llm-deploy = {
-    llm-deploy =
+  den.aspects.llm-deploy-cuda = {
+    llm-deploy-cuda =
       { pkgs, config, ... }:
       {
         nixpkgs.overlays = [
-          inputs.llama-cpp.overlays.default
+          inputs.llama-cpp-k2.overlays.default
         ];
         nixpkgs = {
           config = {
@@ -149,8 +157,6 @@
   den.aspects.llm-deploy-vulkan = {
     llm-deploy-vulkan =
       { pkgs, config, ... }:
-      let
-      in
       {
         nixpkgs.overlays = [
           inputs.llama-cpp-vulkan.overlays.default
@@ -196,8 +202,7 @@
               RestartSec = 5;
               ExecStart = pkgs.writeShellScript "run-llama-server-vulkan" ''
                 #!/usr/bin/env bash
-                ${llama-cpp}/bin/llama-server \
-                 --models-preset /home/klchen/model/Ornith-1.5-35B-A3B-Heretic-MTP-APEX-GGUF/Ornith-35B.ini --host 0.0.0.0
+                ${llama-cpp}/bin/llama-server --models-preset ${config.home.homeDirectory}/model/llama-models.ini --models-max 1 --host 0.0.0.0
               '';
             };
 

@@ -9,14 +9,16 @@ let
     model = "ornith-ai/Ornith-1.5-9B-NVFP4";
     servedName = "Ornith-1.5-9B";
     port = 8000;
-    maxModelLen = 262144;
-    # host dir bind-mounted at /root/.cache/huggingface
-    cacheDir = "/home/klchen/model/hf-cache";
+    maxModelLen = "131072";
+    cacheDir = "/home/klchen/.cache/huggingface";
+    modelscopeCacheDir = "/home/klchen/.cache/modelscope";
+    # docker --env-file for this container; edit it to flip the download source
+    # at runtime (no rebuild): systemctl restart docker-vllm
   };
 in
 {
   den.aspects.llm-vllm.nixos =
-    { lib, ... }:
+    { lib, pkgs, ... }:
     {
       # ── docker + NVIDIA GPU access for containers ─────────────────────
       virtualisation.docker.enable = true;
@@ -26,12 +28,10 @@ in
 
       users.users.klchen.extraGroups = [ "docker" ];
 
-      systemd.tmpfiles.rules = [
-        "d ${vllm.cacheDir} 0755 klchen users - -"
-      ];
-
       networking.firewall.allowedTCPPorts = [ vllm.port ];
-
+      environment.systemPackages = with pkgs; [
+        nvtopPackages.nvidia
+      ];
       # ── `vllm serve` as a systemd service ─────────────────────────────
       virtualisation.oci-containers = {
         backend = "docker";
@@ -48,12 +48,10 @@ in
             "--port"
             (toString vllm.port)
             "--max-model-len"
-            (toString vllm.maxModelLen)
-            "--gpu-memory-utilization"
-            "0.90"
+            vllm.maxModelLen
             # bf16 KV for 262144 tokens is 8 GiB; the quant config ships FP8 KV
             "--kv-cache-dtype"
-            "fp8"
+            "auto"
             "--enable-prefix-caching"
             "--enable-auto-tool-choice"
             "--tool-call-parser"
@@ -63,10 +61,18 @@ in
             "--trust-remote-code"
           ];
           ports = [ "${toString vllm.port}:${toString vllm.port}" ];
-          volumes = [ "${vllm.cacheDir}:/root/.cache/huggingface" ];
+          volumes = [
+            "${vllm.cacheDir}:/root/.cache/huggingface"
+            "${vllm.modelscopeCacheDir}:/root/.cache/modelscope"
+          ];
           environment = {
+            VLLM_USE_MODELSCOPE = "true";
             HF_HOME = "/root/.cache/huggingface";
+            MODELSCOPE_HOME = "/root/.cache/huggingface";
           };
+          # runtime switch for the download source (VLLM_USE_MODELSCOPE=true
+          # makes vllm resolve --model through modelscope.snapshot_download,
+          # using MODELSCOPE_CACHE=/root/.cache/modelscope)
           devices = [ "nvidia.com/gpu=all" ];
           # --ipc=host is what the vLLM docker docs recommend
           extraOptions = [ "--ipc=host" ];
