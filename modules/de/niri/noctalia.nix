@@ -47,6 +47,12 @@
               "msg"
               "window-switcher"
             ];
+            "Mod+V".action.spawn = [
+              "noctalia"
+              "msg"
+              "panel-toggle"
+              "clipboard"
+            ];
 
           };
         };
