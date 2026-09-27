@@ -76,9 +76,9 @@
           ];
           settings = {
             model = {
-              default = "deepseek-flash";
-              provider = "deepseek";
-              base_url = "https://api.deepseek.com";
+              default = "Tiel-Coder-35B-A3B-APEX-MTP-I-Compact";
+              provider = "i12400";
+              base_url = "http://i12400.klchen.duckdns.org:8080/v1";
             };
             plugins = {
               enabled = [
