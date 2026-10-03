@@ -66,6 +66,7 @@ in
       { pkgs, ... }:
       {
         boot.kernelPackages = pkgs.cachyosKernels.linuxPackages-cachyos-lts-zen4;
+        programs.localsend.enable = true;
         nixpkgs = {
           config = {
             cudaSupport = true;
@@ -191,7 +192,7 @@ in
         flatpak
         #k3s
         #k3s-node
-        #k3s-nvidia
+        k3s-nvidia
         nvidia
         # llm-vllm
         niri
