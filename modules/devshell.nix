@@ -34,7 +34,7 @@
             sops
           ]
           ++ (lib.optional pkgs.stdenv.hostPlatform.isLinux [
-           # deploy-rs.deploy-rs
+            # deploy-rs.deploy-rs
 
           ]);
       };

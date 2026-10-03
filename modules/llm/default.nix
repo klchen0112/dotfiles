@@ -33,7 +33,7 @@
       # url = "github:TheTom/llama-cpp-turboquant";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    
+
   };
   den.aspects.llm-deploy-cuda = {
     llm-deploy-cuda =
