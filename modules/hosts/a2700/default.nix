@@ -34,7 +34,7 @@ in
         font
         k3s
         #k3s-node
-        #stylix
+        stylix
         nix
         nix-build-machines
       ];
