@@ -154,7 +154,6 @@
         <sops-home>
         <skill>
         <hermes>
-        <dsh>
         <pi>
         <media>
         <chrome>
