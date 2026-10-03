@@ -45,7 +45,9 @@
             echo ">>> [Rollback] snapshot current / to ${old_roots}/$timestamp"
             btrfs subvolume snapshot -r ${mount_p}/${root_subvol} ${mount_p}/${old_roots}/$timestamp
             echo ">>> [Rollback] delete old root subvolume"
-            btrfs subvolume delete ${mount_p}/${root_subvol}
+            # -R：@root 里可能有嵌套子卷（/tmp、/srv、/var/tmp 等），普通 delete 会
+            # 报 "Directory not empty" 导致回滚静默失败；必须递归删除
+            btrfs subvolume delete -R ${mount_p}/${root_subvol}
           fi
 
           echo ">>> [Rollback] create fresh root subvolume"
