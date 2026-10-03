@@ -11,7 +11,6 @@
       "https://cuda-maintainers.cachix.org"
       "https://cache.numtide.com"
       "https://cache.numtide.com"
-      "https://noctalia.cachix.org"
       "https://niri.cachix.org"
       "https://klchen0112.cachix.org"
       "https://cache.numtide.com"
@@ -33,7 +32,7 @@
       "https://nix-community.cachix.org"
       "https://cache.nixos.org"
       "https://attic.xuyh0120.win/lantian"
-      "https://cache.xinux.uz"
+      #"https://cache.xinux.uz"
     ];
     trusted-public-keys = [
       "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
@@ -191,10 +190,6 @@
     nixpkgs.url = "git+https://github.com/nixos/nixpkgs?shallow=1&ref=nixos-unstable";
     nixpkgs-stable.url = "git+https://github.com/nixos/nixpkgs?shallow=1&ref=release-26.05";
     nixpkgs-unstable.url = "git+https://github.com/nixos/nixpkgs?shallow=1&ref=nixpkgs-unstable";
-    noctalia-shell = {
-      url = "github:noctalia-dev/noctalia-shell";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     nur = {
       url = "github:nix-community/NUR";
       inputs = {

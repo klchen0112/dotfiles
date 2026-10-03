@@ -31,7 +31,6 @@ let
       "https://cuda-maintainers.cachix.org"
       "https://cache.numtide.com"
       "https://cache.numtide.com"
-      "https://noctalia.cachix.org"
       "https://niri.cachix.org"
       "https://klchen0112.cachix.org"
       "https://cache.numtide.com"
@@ -42,7 +41,6 @@ let
       "cache.numtide.com-1:DTx8wZduET09hRmMtKdQDxNNthLQETkc/yaX7M4qK0g="
       "cuda-maintainers.cachix.org-1:0dq3bujKpuEPMCX6U4WylrUDZ9JyUG0VpVZa7CNfq5E="
       "niri.cachix.org-1:Wv0OmO7PsuocRKzfDoJ3mulSl7Z6oezYhGhR+3W2964="
-      "noctalia.cachix.org-1:pCOR47nnMEo5thcxNDtzWpOxNFQsBRglJzxWPp3dkU4="
       "cuda-maintainers.cachix.org-1:0dq3bujKpuEPMCX6U4WylrUDZ9JyUG0VpVZa7CNfq5E="
     ];
 

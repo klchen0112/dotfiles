@@ -21,9 +21,6 @@
       ...
     }:
     {
-      imports = [
-        inputs.noctalia-shell.homeModules.default
-      ];
 
       programs.niri = {
         settings = {
@@ -65,14 +62,10 @@
       #          };
       #        };
       #      };
-      nixpkgs.overlays = [
-        inputs.noctalia-shell.overlays.default
-      ];
 
       programs.noctalia = {
         enable = true;
         systemd.enable = true;
-        package = pkgs.noctalia;
       };
     };
 
