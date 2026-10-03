@@ -1,11 +1,5 @@
 { den, inputs, ... }:
 {
-  flake-file.inputs = {
-    dsh-nix = {
-      url = "github:Samuka007/dsh-nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-  };
   den.aspects.dsh = {
     dsh =
       {
@@ -33,8 +27,9 @@
         #};
         home.packages = with pkgs; [
 
-          #llm-agents.dsh
+          llm-agents.dsh
         ];
       };
   };
 }
+
