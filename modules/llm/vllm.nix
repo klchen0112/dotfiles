@@ -18,13 +18,31 @@ let
 in
 {
   den.aspects.llm-vllm.nixos =
-    { lib, pkgs, ... }:
+    {
+      config,
+      lib,
+      pkgs,
+      ...
+    }:
+    let
+      # cachyos kernels come from the nix-cachyos-kernel flake, built with its
+      # own pinned nixpkgs. Its glibc can differ from the system's, so mount it
+      # too: the injected nvidia executables (nvidia-smi, ...) link against it
+      # and otherwise fail with "cannot execute: required file not found".
+      driverGlibc = config.boot.kernelPackages.stdenv.cc.libc or pkgs.glibc;
+    in
     {
       # ── docker + NVIDIA GPU access for containers ─────────────────────
       virtualisation.docker.enable = true;
       # generates /var/run/cdi/nvidia-container-toolkit.json on boot;
       # containers reach the GPU via `--device nvidia.com/gpu=all`
       hardware.nvidia-container-toolkit.enable = true;
+      hardware.nvidia-container-toolkit.mounts = [
+        {
+          hostPath = "${driverGlibc}";
+          containerPath = "${driverGlibc}";
+        }
+      ];
 
       users.users.klchen.extraGroups = [ "docker" ];
 
