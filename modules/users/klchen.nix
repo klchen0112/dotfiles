@@ -39,6 +39,7 @@
             "tty"
             "wheel"
             "hermes"
+            "docker"
           ];
         };
       };
