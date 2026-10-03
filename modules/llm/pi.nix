@@ -29,7 +29,7 @@
             prompt = "Available besides stdlib: polars, matplotlib, requests, plumbum, pexpect, pyelftools. Drive interactive programs (ssh, REPLs, debuggers) with pexpect: child = pexpect.spawn(cmd, encoding='utf-8') persists across calls, always pass timeout= to expect().";
           };
         };
-        home.packages = with pkgs; [llm-agents.pi];
+        home.packages = with pkgs; [ llm-agents.pi ];
       };
   };
 }
