@@ -15,11 +15,6 @@ let
       };
       nix = {
 
-        nixPath = [
-          "nixpkgs=${inputs.nixpkgs}"
-          "nixpkgs-unstable=${inputs.nixpkgs-unstable}"
-          "nixpkgs-stable=${inputs.nixpkgs-stable}"
-        ]; # Enables use of `nix-shell -p ...` etc
         # registry = {
         #   nixpkgs.flake = inputs.nixpkgs;
         #   nixpkgs-unstable.flake = inputs.nixpkgs-unstable;
@@ -31,6 +26,12 @@ let
           extra-platforms = lib.mkIf pkgs.stdenv.hostPlatform.isDarwin "aarch64-darwin x86_64-darwin";
           extra-experimental-features = "nix-command flakes";
           accept-flake-config = true;
+          nix-path = [
+            "nixpkgs=${inputs.nixpkgs}"
+            "nixpkgs-unstable=${inputs.nixpkgs-unstable}"
+            "nixpkgs-stable=${inputs.nixpkgs-stable}"
+          ]; # Enables use of `nix-shell -p ...` etc
+
         };
 
       };
