@@ -32,6 +32,7 @@
         programs.stylua.enable = true;
         programs.toml-sort.enable = true;
         programs.jsonfmt.enable = true;
+        programs.yamlfmt.enable = true;
         programs.clang-format.enable = true;
         programs.just.enable = true;
 
@@ -43,6 +44,7 @@
           "*rc"
           "*/makefile"
           "*.age"
+          "secrets/**"
           ".vscode/settings.json"
         ];
         settings.global.on-unmatched = "warn";

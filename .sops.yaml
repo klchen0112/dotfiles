@@ -14,12 +14,12 @@ keys:
 creation_rules:
   - path_regex: secrets/klchen/[^/]+\.(yaml|json|env|ini)$
     key_groups:
-    - age:
-      - *a99r50 
-      - *a99r50_klchen
-      - *i12400
-      - *i12400_klchen
-      - *mbp_m1_klchen
-      - *sanjiao_klchen
-      - *a2700
-      - *a2700_klchen
+      - age:
+          - *a99r50
+          - *a99r50_klchen
+          - *i12400
+          - *i12400_klchen
+          - *mbp_m1_klchen
+          - *sanjiao_klchen
+          - *a2700
+          - *a2700_klchen
