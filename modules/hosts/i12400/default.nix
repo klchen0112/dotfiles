@@ -13,6 +13,7 @@ in
       "llm-deploy-vulkan"
       "llm-deploy-rocm"
       "hermes"
+      "llm-agents"
     ];
     users = {
       klchen.roles = [
@@ -21,6 +22,7 @@ in
         "python"
         "hermes"
         #"llm-deploy-rocm"
+        "llm-agents"
         "llm-deploy-vulkan"
       ];
     };
