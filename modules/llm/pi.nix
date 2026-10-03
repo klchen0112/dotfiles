@@ -2,7 +2,7 @@
 {
   flake-file.inputs = {
     pi = {
-      url = "github:klchen0112/pi.nix";
+      url = "github:lukasl-dev/pi.nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
@@ -15,14 +15,36 @@
         inputs,
         ...
       }:
+      let
+        piPython = pkgs.python3.withPackages (ps: [
+          ps.matplotlib
+          ps.pexpect
+          ps.plumbum
+          ps.polars
+          ps.pyelftools
+          ps.requests
+        ]);
+      in
       {
         imports = with inputs; [
           pi.homeModules.default
         ];
+        # interpreter + tool prompt for the pi-agent-extensions python tool
+        xdg.configFile."pi-agent-extensions/python/config.json" = {
+          # replaces the hand-written file from before this was managed here
+          force = true;
+          text = builtins.toJSON {
+            python = "${piPython}/bin/python3";
+            prompt = "Available besides stdlib: polars, matplotlib, requests, plumbum, pexpect, pyelftools. Drive interactive programs (ssh, REPLs, debuggers) with pexpect: child = pexpect.spawn(cmd, encoding='utf-8') persists across calls, always pass timeout= to expect().";
+          };
+        };
         programs.pi.coding-agent = {
           enable = true;
           models = ./models.json;
-          settings.model = "Ornith-1.5-35B-A3B-Heretic-MTP-APEX";
+          settings = {
+            model = "Ornith-1.5-35B-A3B-Heretic-MTP-APEX";
+
+          };
           # rules = ''Be concise.'';
           # skills = [ ./skills/my-skill ];
           # models = ./models.json;
