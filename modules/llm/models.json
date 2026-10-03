@@ -1,12 +1,22 @@
 {
   "providers": {
-    "hermes": {
+    "i12400": {
       "baseUrl": "http://i12400.klchen.duckdns.org:8080/v1",
       "api": "openai-completions",
       "models": [
         {
           "id": "Ornith-1.5-35B-A3B-Heretic-MTP-APEX",
           "name": "Ornith-1.5-35B-A3B-ROCmFP4 (hermes-i12400)"
+        }
+      ]
+    },
+    "a99r50": {
+      "baseUrl": "http://127.0.0.1:8080/v1",
+      "api": "openai-completions",
+      "models": [
+        {
+          "id": "swift-1.5-iq2_xs",
+          "name": "swift-1.5-iq2_xs"
         }
       ]
     }
