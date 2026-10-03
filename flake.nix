@@ -1,4 +1,4 @@
-# DO-NOT-EDIT. This file was auto-generated using github:vic/flake-file.
+# DO-NOT-EDIT. This file was auto-generated using github:denful/flake-file.
 # Use `nix run .#write-flake` to regenerate it.
 {
   outputs = inputs: inputs.flake-parts.lib.mkFlake { inherit inputs; } (inputs.import-tree ./modules);
@@ -21,7 +21,6 @@
       "cache.numtide.com-1:DTx8wZduET09hRmMtKdQDxNNthLQETkc/yaX7M4qK0g="
       "cuda-maintainers.cachix.org-1:0dq3bujKpuEPMCX6U4WylrUDZ9JyUG0VpVZa7CNfq5E="
       "niri.cachix.org-1:Wv0OmO7PsuocRKzfDoJ3mulSl7Z6oezYhGhR+3W2964="
-      "noctalia.cachix.org-1:pCOR47nnMEo5thcxNDtzWpOxNFQsBRglJzxWPp3dkU4="
       "cuda-maintainers.cachix.org-1:0dq3bujKpuEPMCX6U4WylrUDZ9JyUG0VpVZa7CNfq5E="
     ];
     lazy-trees = true;
@@ -32,7 +31,7 @@
       "https://nix-community.cachix.org"
       "https://cache.nixos.org"
       "https://attic.xuyh0120.win/lantian"
-      #"https://cache.xinux.uz"
+      "https://cache.xinux.uz"
     ];
     trusted-public-keys = [
       "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
@@ -127,7 +126,7 @@
         nixpkgs.follows = "nixpkgs";
       };
     };
-    import-tree.url = "github:vic/import-tree";
+    import-tree.url = "github:denful/import-tree";
     litprog-skill = {
       url = "github:tlehman/litprog-skill";
       flake = false;
@@ -185,6 +184,10 @@
     nixpkgs.url = "git+https://github.com/nixos/nixpkgs?shallow=1&ref=nixos-unstable";
     nixpkgs-stable.url = "git+https://github.com/nixos/nixpkgs?shallow=1&ref=release-26.05";
     nixpkgs-unstable.url = "git+https://github.com/nixos/nixpkgs?shallow=1&ref=nixpkgs-unstable";
+    noctalia-shell = {
+      url = "github:noctalia-dev/noctalia-shell";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     nur = {
       url = "github:nix-community/NUR";
       inputs = {
@@ -194,10 +197,6 @@
     };
     paneru = {
       url = "github:karinushka/paneru";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    pi = {
-      url = "github:klchen0112/pi.nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     pkgs-by-name-for-flake-parts.url = "github:drupol/pkgs-by-name-for-flake-parts";
