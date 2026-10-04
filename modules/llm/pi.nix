@@ -1,5 +1,14 @@
 { den, inputs, ... }:
 {
+  flake-file.inputs = {
+    pi = {
+      url = "github:earendil-works/pi/stable";
+      # url = "git+file:///home/klchen/my/hermes-agent";
+      # url = "github:klchen0112/hermes-agent/own";
+
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+  };
   den.aspects.pi = {
     pi =
       {
@@ -29,7 +38,10 @@
             prompt = "Available besides stdlib: polars, matplotlib, requests, plumbum, pexpect, pyelftools. Drive interactive programs (ssh, REPLs, debuggers) with pexpect: child = pexpect.spawn(cmd, encoding='utf-8') persists across calls, always pass timeout= to expect().";
           };
         };
-        home.packages = with pkgs; [ llm-agents.pi ];
+        nixpkgs.overlays = [
+          inputs.pi.overlays.default
+        ];
+        home.packages = with pkgs; [ pi ];
       };
   };
 }

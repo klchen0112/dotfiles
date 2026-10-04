@@ -53,9 +53,7 @@
   inputs = {
     agent-skills-nix = {
       url = "github:Kyure-A/agent-skills-nix";
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-      };
+      inputs.nixpkgs.follows = "nixpkgs";
     };
     brew-nix = {
       url = "github:BatteredBunny/brew-nix";
@@ -197,6 +195,10 @@
     };
     paneru = {
       url = "github:karinushka/paneru";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    pi = {
+      url = "github:earendil-works/pi/stable";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     pkgs-by-name-for-flake-parts.url = "github:drupol/pkgs-by-name-for-flake-parts";
