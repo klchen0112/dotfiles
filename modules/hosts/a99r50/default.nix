@@ -15,7 +15,7 @@ in
       "python"
       "syncthing"
       "aria2"
-      "llm-deploy-cuda"
+      #"llm-deploy-cuda"
       "llm-agents"
       "hermes"
       "noctalia-shell"
@@ -208,6 +208,7 @@ in
         k3s-nvidia
         nvidia
         # llm-vllm
+        llm-strata
         niri
         noctalia-shell
         # stylix
