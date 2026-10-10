@@ -26,6 +26,7 @@
         package = pkgs.llm-agents.opencode;
       };
       home.packages = with pkgs; [
+        bun
         #llm-agents.dsh
         # graphify
         # hermes-agent is provided by programs.hermes-agent (home-manager module) above
