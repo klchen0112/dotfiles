@@ -64,7 +64,7 @@
           extraPackages = with pkgs; [
             agent-browser
             playwright
-            nodejs_22
+            nodejs
           ]; # system binary it needs
           extraDependencyGroups = [
             "acp"
