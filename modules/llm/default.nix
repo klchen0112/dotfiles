@@ -2,10 +2,10 @@
 {
   flake-file.inputs = {
     llama-cpp = {
-      # url = "github:ggml-org/llama.cpp";
+      url = "github:ggml-org/llama.cpp";
       # url = "github:Anbeeld/beellama.cpp";
       # url = "github:klchen0112/buun-llama-cpp/fix-rocm-mmproj-swap";
-      url = "github:spiritbuun/buun-llama-cpp";
+      # url = "github:spiritbuun/buun-llama-cpp";
       # url = "github:TheTom/llama-cpp-turboquant";
       inputs.nixpkgs.follows = "nixpkgs";
     };
@@ -25,14 +25,6 @@
       # url = "github:TheTom/llama-cpp-turboquant";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    llama-cpp-k2 = {
-      url = "github:MBZUAI-IFM/llama.cpp/model/K2Horizon";
-      # url = "github:Anbeeld/beellama.cpp";
-      # url = "github:klchen0112/buun-llama-cpp/fix-rocm-mmproj-swap";
-      # url = "github:spiritbuun/buun-llama-cpp";
-      # url = "github:TheTom/llama-cpp-turboquant";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
 
   };
   den.aspects.llm-deploy-cuda = {
@@ -40,7 +32,6 @@
       { pkgs, config, ... }:
       {
         nixpkgs.overlays = [
-          inputs.llama-cpp-k2.overlays.default
         ];
         nixpkgs = {
           config = {

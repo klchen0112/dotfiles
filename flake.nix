@@ -130,11 +130,7 @@
       flake = false;
     };
     llama-cpp = {
-      url = "github:spiritbuun/buun-llama-cpp";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    llama-cpp-k2 = {
-      url = "github:MBZUAI-IFM/llama.cpp/model/K2Horizon";
+      url = "github:ggml-org/llama.cpp";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     llama-cpp-rocm = {
