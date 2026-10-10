@@ -15,7 +15,7 @@ let
     context = "131044";
     port = 8080;
     # local GGUF checkout mounted as the container's /data
-    modelDir = "/home/klchen/model/ukisai/Swift-1.5-Qwen3.8-Flash-Next-GSQ-RCO-GGUF";
+    modelDir = "/home/klchen/Strata-data/";
   };
 in
 {
@@ -36,6 +36,9 @@ in
             MODEL = strata.model;
             KV = strata.kv;
             CONTEXT = strata.context;
+            VISION = "yes";
+            UID = "1000";
+            GUID = "100";
           };
           # CDI device path: the nvidia-container-toolkit generates
           # /var/run/cdi/nvidia-container-toolkit.json on boot
