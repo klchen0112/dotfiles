@@ -64,6 +64,9 @@
           home.homeDirectory = lib.mkForce (
             if pkgs.stdenvNoCC.hostPlatform.isDarwin then "/Users/klchen" else "/home/klchen"
           );
+
+          # npm global prefix (see ~/.npmrc: prefix=/home/klchen/.npm-global)
+          home.sessionPath = [ "$HOME/.npm-global/bin" ];
           programs.git.settings.user = {
             name = "klchen0112";
             email = "klchen0112@gmail.com";

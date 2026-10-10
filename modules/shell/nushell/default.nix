@@ -36,6 +36,12 @@
           show_banner = false;
         };
         envFile.text = ''
+          # npm global prefix (see ~/.npmrc: prefix=$HOME/.npm-global)
+          $env.PATH = (
+              $env.PATH
+              | prepend $"($env.HOME)/.npm-global/bin"
+          )
+
           if (sys host).name == "Darwin" {
               $env.PATH = (
                   $env.PATH
