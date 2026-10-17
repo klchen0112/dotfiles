@@ -70,7 +70,6 @@
 
       programs.zen-browser = {
         enable = true;
-        enableGnomeExtensions = false;
         policies = {
           AutofillAddressEnabled = true;
           AutofillCreditCardEnabled = false;
