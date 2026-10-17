@@ -30,7 +30,7 @@
       "https://mirrors.cernet.edu.cn/nix-channels/store"
       "https://nix-community.cachix.org"
       "https://cache.nixos.org"
-      #"https://attic.xuyh0120.win/lantian"
+      "https://attic.xuyh0120.win/lantian"
       "https://cache.xinux.uz"
     ];
     trusted-public-keys = [
