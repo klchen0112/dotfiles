@@ -8,7 +8,9 @@
     pkgs-by-name-for-flake-parts = {
       url = "github:drupol/pkgs-by-name-for-flake-parts";
     };
-    nixpkgs.url = "git+https://github.com/nixos/nixpkgs?shallow=1&ref=nixos-unstable"; # Nix Packages
+    # Determinate Systems' weekly-updated nixpkgs (NixOS Weekly): one bump per week,
+    # each revision adopted only after a 7-day cooldown. Published on FlakeHub.
+    nixpkgs.url = "https://flakehub.com/f/DeterminateSystems/nixpkgs-weekly/0.1"; # Nix Packages
     nixpkgs-unstable.url = "git+https://github.com/nixos/nixpkgs?shallow=1&ref=nixpkgs-unstable"; # Nix Packages
     nixpkgs-stable.url = "git+https://github.com/nixos/nixpkgs?shallow=1&ref=release-26.05"; # Nix Packages
   };
