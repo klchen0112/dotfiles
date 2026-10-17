@@ -8,66 +8,87 @@
       programs.ssh = {
         enable = true;
 
-        matchBlocks = {
+        # Home Manager used to inject a "Host *" block with these defaults
+        # (programs.ssh.enableDefaultConfig). That behaviour is being removed,
+        # so keep the values we depend on explicitly.
+        enableDefaultConfig = false;
+
+        # Upstream OpenSSH directive names, in a dag keyed by host pattern.
+        # Bare names are prefixed with "Host ", so "*" becomes "Host *".
+        settings = {
           "*" = {
-            serverAliveInterval = 30;
-            serverAliveCountMax = 6;
-            compression = true;
-            controlMaster = "auto";
-            controlPath = "${config.home.homeDirectory}/.ssh/cm/%r@%h";
-            controlPersist = "10m";
+            ForwardAgent = false;
+            AddKeysToAgent = "no";
+            HashKnownHosts = false;
+            UserKnownHostsFile = "~/.ssh/known_hosts";
+            ServerAliveInterval = 30;
+            ServerAliveCountMax = 6;
+            Compression = true;
+            ControlMaster = "auto";
+            ControlPath = "${config.home.homeDirectory}/.ssh/cm/%r@%h";
+            ControlPersist = "10m";
           };
+
           xiaomi-ax6000 = {
-            # hostkeyAlgorithms = "+ssh-rsa";
-            # pubkeyAcceptedAlgorithms = "+ssh-rsa";
-            hostname = "192.168.0.10";
-            port = 22;
-            user = "root";
+            # HostKeyAlgorithms = "+ssh-rsa";
+            # PubkeyAcceptedAlgorithms = "+ssh-rsa";
+            HostName = "192.168.0.10";
+            Port = 22;
+            User = "root";
           };
+
           # ax5 = {
-          #   # hostkeyAlgorithms = "+ssh-rsa";
-          #   # pubkeyAcceptedAlgorithms = "+ssh-rsa";
-          #   hostname = "192.168.0.10";
-          #   port = 22;
-          #   user = "root";          # };
+          #   # HostKeyAlgorithms = "+ssh-rsa";
+          #   # PubkeyAcceptedAlgorithms = "+ssh-rsa";
+          #   HostName = "192.168.0.10";
+          #   Port = 22;
+          #   User = "root";
+          # };
+
           "github.com" = {
-            hostname = "ssh.github.com";
-            port = 443;
-            user = "git";
+            HostName = "ssh.github.com";
+            Port = 443;
+            User = "git";
           };
+
           a2700 = {
-            hostname = "a2700.klchen.duckdns.org";
-            port = 22;
-            user = "klchen";
+            HostName = "a2700.klchen.duckdns.org";
+            Port = 22;
+            User = "klchen";
           };
+
           sanjiao = {
-            hostname = "sanjiao.klchen.duckdns.org";
-            port = 22;
-            user = "klchen";
+            HostName = "sanjiao.klchen.duckdns.org";
+            Port = 22;
+            User = "klchen";
           };
+
           woniu = {
-            hostname = "woniu.klchen.duckdns.org";
-            port = 22;
-            user = "klchen";
+            HostName = "woniu.klchen.duckdns.org";
+            Port = 22;
+            User = "klchen";
           };
+
           unraid = {
-            hostname = "192.168.0.200";
-            port = 22;
-            user = "root";
+            HostName = "192.168.0.200";
+            Port = 22;
+            User = "root";
           };
+
           i12400 = {
-            # hostkeyAlgorithms = "+ssh-rsa";
-            # pubkeyAcceptedAlgorithms = "+ssh-rsa";
-            hostname = "i12400.klchen.duckdns.org";
-            port = 22;
-            user = "klchen";
+            # HostKeyAlgorithms = "+ssh-rsa";
+            # PubkeyAcceptedAlgorithms = "+ssh-rsa";
+            HostName = "i12400.klchen.duckdns.org";
+            Port = 22;
+            User = "klchen";
           };
+
           a99r50 = {
-            # hostkeyAlgorithms = "+ssh-rsa";
-            # pubkeyAcceptedAlgorithms = "+ssh-rsa";
-            hostname = "a99r50.klchen.duckdns.org";
-            port = 22;
-            user = "klchen";
+            # HostKeyAlgorithms = "+ssh-rsa";
+            # PubkeyAcceptedAlgorithms = "+ssh-rsa";
+            HostName = "a99r50.klchen.duckdns.org";
+            Port = 22;
+            User = "klchen";
           };
         };
       };

@@ -26,7 +26,7 @@ let
       intoClass = _: "homeManager";
       intoPath = _: [ ];
       fromAspect = _: lib.head aspect-chain;
-      guard = { pkgs, ... }: platform: lib.mkIf pkgs.stdenv."is${platform}";
+      guard = { pkgs, ... }: platform: lib.mkIf pkgs.stdenv.hostPlatform."is${platform}";
       adaptArgs =
         { config, ... }:
         {

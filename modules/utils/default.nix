@@ -13,12 +13,11 @@
         enable = false;
         pinentry = {
           package =
-            if pkgs.stdenv.isLinux then
-
+            if pkgs.stdenv.hostPlatform.isLinux then
               pkgs.pinentry-gnome3
             else
               pkgs.pinentry_mac;
-          program = if pkgs.stdenv.isLinux then "pinentry-gnome3" else "pinentry-mac";
+          program = if pkgs.stdenv.hostPlatform.isLinux then "pinentry-gnome3" else "pinentry-mac";
         };
         enableSshSupport = true;
       };
