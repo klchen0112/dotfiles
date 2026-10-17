@@ -208,7 +208,7 @@ in
         k3s-nvidia
         nvidia
         # llm-vllm
-        llm-strata
+        #llm-strata
         niri
         noctalia-shell
         # stylix
