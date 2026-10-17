@@ -12,10 +12,16 @@ let
     family = "swift";
     model = "IQ2_XS";
     kv = "k8v4"; # INT8 K + 4-bit V, keeps KV in VRAM from 64K up
-    context = "131044";
+    context = "262144";
     port = 8080;
     # local GGUF checkout mounted as the container's /data
     modelDir = "/home/klchen/Strata-data/";
+    # run the container as klchen's uid/gid so the files it writes into the
+    # /data bind mount (config, pack, mtp) are klchen's, not root's. The image
+    # owns /opt/strata as 1000:100 too, so the config symlink, __pycache__ and
+    # the engine log land on the same uid.
+    uid = 1000;
+    gid = 100;
   };
 in
 {
@@ -37,8 +43,7 @@ in
             KV = strata.kv;
             CONTEXT = strata.context;
             VISION = "yes";
-            UID = "1000";
-            GUID = "100";
+            STRATA_PIN_BY_NEED = "1";
           };
           # CDI device path: the nvidia-container-toolkit generates
           # /var/run/cdi/nvidia-container-toolkit.json on boot
@@ -47,6 +52,9 @@ in
           # ulimit needs to be carried over here. Each list element is passed
           # as a separate argv token, so `--ulimit` and its value must be split.
           extraOptions = [
+            # each element is passed as its own argv token
+            "--user"
+            "${toString strata.uid}:${toString strata.gid}"
             "--ulimit"
             "memlock=-1"
           ];
