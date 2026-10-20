@@ -31,6 +31,36 @@
         home.packages = with pkgs; [
           # local.graphify
         ];
+
+        # upstream hermes-agent 把 environment/environmentFiles 写进
+        # $HERMES_HOME/.env 的 home.activation 项叫 "hermesAgentSetup"，只排在
+        # writeBoundary/linkGeneration 之后；而真正解密 sops secret 的
+        # "sops-nix" 项按名字排在它后面。于是新声明的 secret 在第一次重建时
+        # 还不存在，合并脚本只打印 WARNING 就静默跳过（telegram/discord 就这么
+        # 丢过一次）。不能给已有条目追加 after，也不能去读同一 option 的兄弟项
+        # （会无限递归），所以在 sops-nix 之后自己重写一遍 .env——每次都从零
+        # 重写，所以幂等。
+        home.activation.hermesEnvAfterSops =
+          let
+            envBase = pkgs.writeText "hermes-env-base" (
+              lib.concatStringsSep "\n" (lib.mapAttrsToList (k: v: "${k}=${v}") cfg.environment)
+              + lib.optionalString (cfg.environment != { }) "\n"
+            );
+          in
+          lib.mkIf (cfg.enable && (cfg.environment != { } || cfg.environmentFiles != [ ])) (
+            lib.hm.dag.entryAfter [ "sops-nix" ] ''
+              dest=${lib.escapeShellArg "${cfg.hermesHome}/.env"}
+              $DRY_RUN_CMD install -m 0600 ${envBase} "$dest"
+              for f in ${lib.concatMapStringsSep " " lib.escapeShellArg cfg.environmentFiles}; do
+                if [ -r "$f" ]; then
+                  printf '\n' >> "$dest"
+                  cat "$f" >> "$dest"
+                else
+                  echo "hermes-agent: WARNING cannot read environmentFile $f" >&2
+                fi
+              done
+            ''
+          );
         programs.hermes-agent = {
           enable = true;
         };
@@ -67,6 +97,7 @@
             nodejs
           ]; # system binary it needs
           extraDependencyGroups = [
+            # `hermes acp` / `hermes-acp` / `python -m acp_adapter`（ACP server）
             "acp"
             #"voice"
             "messaging"

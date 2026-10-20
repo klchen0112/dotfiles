@@ -76,7 +76,7 @@
             format = "yaml";
           };
         };
-      provides.i12400 = {
+      provides.a99r50 = {
         homeManager = { config, ... }: {
           sops.secrets.hermes-telegram-env = {
             sopsFile = ../../secrets/klchen/hermes-telegram.env;
@@ -87,20 +87,8 @@
             format = "dotenv";
           };
 
-          services.hermes-agent = {
-            environmentFiles = [
-              config.sops.secrets."hermes-telegram-env".path
-              config.sops.secrets."hermes-discord-env".path
-              config.sops.secrets."hermes-env".path
-            ];
-          };
-        };
-
-      };
-      provides.a99r50 = {
-        homeManager = { config, ... }: {
           programs.hermes-agent = {
-            desktop.enable = false;
+            desktop.enable = true;
           };
           services.hermes-agent = {
             enable = true;
@@ -108,9 +96,18 @@
               mode = "dashboard";
             };
             environmentFiles = [
+              config.sops.secrets."hermes-telegram-env".path
+              config.sops.secrets."hermes-discord-env".path
               config.sops.secrets."hermes-env".path
             ];
-
+            settings.platforms = {
+              telegram = {
+                enabled = true;
+              };
+              discord = {
+                enabled = true;
+              };
+            };
           };
         };
       };

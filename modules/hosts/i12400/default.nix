@@ -12,7 +12,6 @@ in
       "python"
       "llm-deploy-vulkan"
       "llm-deploy-rocm"
-      "hermes"
       "llm-agents"
     ];
     users = {
@@ -20,7 +19,6 @@ in
         "emacs-twist"
         "stylix-home"
         "python"
-        "hermes"
         "llm-deploy-rocm"
         "llm-agents"
         #"llm-deploy-vulkan"
@@ -39,7 +37,6 @@ in
         #k3s-node
         stylix
         nix
-        hermes
         sops
         nix-build-machines
         a99r50.nix-builder
@@ -62,19 +59,6 @@ in
           ];
         };
       };
-      provides.klchen = {
-        homeManager = { ... }: {
-          services.hermes-agent.settings = {
-            model = {
-              model = "Tiel-Coder-35B-A3B-Genesis-Hermes-APEX-Compact";
-              provider = "i12400";
-              base_url = "http://i12400.klchen.duckdns.org:8080/v1";
-
-            };
-          };
-        };
-      };
-
       nixos =
         {
           pkgs,
