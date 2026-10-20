@@ -157,6 +157,7 @@
         <pi>
         <media>
         <chrome>
+        <dsh>
       ];
     };
 

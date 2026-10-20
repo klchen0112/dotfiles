@@ -25,6 +25,7 @@ in
       "game"
       "pi"
       "chrome"
+      "dsh"
     ];
     users.klchen = {
       roles = [
@@ -47,6 +48,7 @@ in
         "game"
         "pi"
         "chrome"
+        "dsh"
       ];
     };
     users.root = { };
