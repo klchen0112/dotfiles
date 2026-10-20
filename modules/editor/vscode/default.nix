@@ -52,6 +52,9 @@
 
             ]
             ++ (with pkgs.vscode-marketplace; [
+              # ACP (Agent Client Protocol) client: 连 hermes / pi 等 ACP agent
+              formulahendry.acp-client
+
               spadin.zmk-tools
               #themes
               mechatroner.rainbow-csv
@@ -300,6 +303,27 @@
                 "a99r50" = "linux";
               };
               "remote.SSH.localServerDownload" = false;
+
+              # --------------------------------------------
+              # ACP (Agent Client Protocol): Hermes + pi
+              # --------------------------------------------
+              "acp.agents" = {
+                "Hermes Agent" = {
+                  command = "hermes";
+                  args = [ "acp" ];
+                  env = { };
+                };
+                "pi" = {
+                  command = "pi-acp";
+                  args = [ ];
+                  env = {
+                    # 允许客户端把文件/选区作为内联上下文传给 pi
+                    PI_ACP_ENABLE_EMBEDDED_CONTEXT = "true";
+                  };
+                };
+              };
+              # 不自动放行 / 危险命令，弹审批卡片
+              "acp.autoApprovePermissions" = "ask";
 
               # --------------------------------------------
               # --------------------------------------------
