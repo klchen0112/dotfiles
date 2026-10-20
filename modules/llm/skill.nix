@@ -97,7 +97,7 @@
 
         # Sync to $HOME/.agents/skills for use by Claude Code, OpenCode, Hermes, etc.
         targets.agents.enable = true;
-
+        targets.pi.enable = true;
       };
 
     };
