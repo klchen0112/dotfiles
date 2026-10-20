@@ -19,6 +19,7 @@
   den.aspects.zen.zen =
     {
       pkgs,
+      lib,
       config,
       ...
     }:
@@ -31,42 +32,20 @@
         # inputs.nix-darwin-browsers.overlays
       ];
       stylix.targets.zen-browser.profileNames = [ "${config.home.username}" ];
-      xdg.mimeApps =
-        let
-          value =
-            let
-              zen-browser = inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform}.beta; # or twilight
-            in
-            zen-browser.meta.desktopFileName;
-
-          associations = builtins.listToAttrs (
-            map
-              (name: {
-                inherit name value;
-              })
-              [
-                "application/x-extension-shtml"
-                "application/x-extension-xhtml"
-                "application/x-extension-html"
-                "application/x-extension-xht"
-                "application/x-extension-htm"
-                "x-scheme-handler/unknown"
-                "x-scheme-handler/mailto"
-                "x-scheme-handler/chrome"
-                "x-scheme-handler/about"
-                "x-scheme-handler/https"
-                "x-scheme-handler/http"
-                "application/xhtml+xml"
-                "application/json"
-                "text/plain"
-                "text/html"
-              ]
-          );
-        in
-        {
-          associations.added = associations;
-          defaultApplications = associations;
+      # 默认浏览器（仅 Linux）：写入 XDG mimeapps.list 并导出 BROWSER。
+      # 注意：home-manager 的 xdg.mimeApps.enable 默认是 false，必须显式开启，
+      # 否则 defaultApplications 不会落到 ~/.config/mimeapps.list。
+      # darwin 上 xdg.mimeApps 不支持该平台，必须跳过。
+      xdg.mimeApps = lib.mkIf pkgs.stdenv.hostPlatform.isLinux {
+        enable = true;
+        # 保留其它应用自己注册的 scheme，避免生成只读 mimeapps.list 后丢失
+        associations.added = {
+          "x-scheme-handler/hermes" = "hermes.desktop";
+          "x-scheme-handler/tg" = "org.telegram.desktop.desktop";
+          "x-scheme-handler/tonsite" = "org.telegram.desktop.desktop";
         };
+      };
+      programs.zen-browser.setAsDefaultBrowser = true;
 
       programs.zen-browser = {
         enable = true;
