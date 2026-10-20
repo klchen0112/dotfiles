@@ -1282,22 +1282,6 @@
         "url": "https://github.com/NixOS/nixpkgs.git"
       }
     },
-    "nixpkgs-darwin-x64": {
-      "locked": {
-        "lastModified": 1788334797,
-        "narHash": "sha256-nskSa8kDimM7F0VFSP8IdoSNo4G0vKzOtxwvOFpoGDI=",
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "rev": "c19db427a1fdfc7591c0b0baeb4665dcef2c61da",
-        "type": "github"
-      },
-      "original": {
-        "owner": "NixOS",
-        "ref": "nixpkgs-26.05-darwin",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
     "nixpkgs-lib": {
       "locked": {
         "lastModified": 1790477367,
@@ -1613,28 +1597,6 @@
         "type": "github"
       }
     },
-    "pi": {
-      "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ],
-        "nixpkgs-darwin-x64": "nixpkgs-darwin-x64"
-      },
-      "locked": {
-        "lastModified": 1792090647,
-        "narHash": "sha256-AsutbwnjiwwLkB5tqLW+1GdGZyLmXsU0W+SNdNhJu7U=",
-        "owner": "earendil-works",
-        "repo": "pi",
-        "rev": "71023aec1546d6d677a65669c5665c0927ce0dd0",
-        "type": "github"
-      },
-      "original": {
-        "owner": "earendil-works",
-        "ref": "stable",
-        "repo": "pi",
-        "type": "github"
-      }
-    },
     "pkgs-by-name-for-flake-parts": {
       "locked": {
         "lastModified": 1789628227,
@@ -1760,7 +1722,6 @@
         "noctalia-shell": "noctalia-shell",
         "nur": "nur",
         "paneru": "paneru",
-        "pi": "pi",
         "pkgs-by-name-for-flake-parts": "pkgs-by-name-for-flake-parts_2",
         "sops-nix": "sops-nix",
         "srvos": "srvos",

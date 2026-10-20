@@ -1,14 +1,5 @@
 { den, inputs, ... }:
 {
-  flake-file.inputs = {
-    pi = {
-      url = "github:earendil-works/pi/stable";
-      # url = "git+file:///home/klchen/my/hermes-agent";
-      # url = "github:klchen0112/hermes-agent/own";
-
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-  };
   den.aspects.pi = {
     pi =
       {
@@ -38,10 +29,11 @@
             prompt = "Available besides stdlib: polars, matplotlib, requests, plumbum, pexpect, pyelftools. Drive interactive programs (ssh, REPLs, debuggers) with pexpect: child = pexpect.spawn(cmd, encoding='utf-8') persists across calls, always pass timeout= to expect().";
           };
         };
-        nixpkgs.overlays = [
-          inputs.pi.overlays.default
+        home.packages = with pkgs; [
+          llm-agents.pi
+          # ACP (Agent Client Protocol) 适配器: ACP client <-> `pi --mode rpc`
+          llm-agents.pi-acp
         ];
-        home.packages = with pkgs; [ pi ];
       };
   };
 }
