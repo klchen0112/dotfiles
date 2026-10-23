@@ -32,10 +32,8 @@
           detect_urls = true;
 
           #-------------------------------------------- Shell --------------------------------------------
-          #      shell =
-          #
-          #        "${config.home.homeDirectory}/bin/nu";
-          #
+          # always start nushell, regardless of the login shell
+          shell = "${pkgs.nushell}/bin/nu";
           #-------------------------------------------- Macos Settings --------------------------------------------
 
           macos_titlebar_color = "system";
