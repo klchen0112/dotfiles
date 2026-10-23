@@ -47,6 +47,7 @@
         };
         brews = [
           "mas"
+          "mole"
         ];
 
         casks = [
@@ -79,7 +80,7 @@
           # "docker"
           # "feishu"
           # "ghostty"
-          "vscodium"
+          "localsend"
         ];
       };
     };
