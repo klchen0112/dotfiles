@@ -15,6 +15,7 @@
       "https://klchen0112.cachix.org"
       "https://cache.numtide.com"
       "https://cuda-maintainers.cachix.org"
+      "https://deepseek-harness-nix.cachix.org"
     ];
     extra-trusted-public-keys = [
       "niks3.numtide.com-1:DTx8wZduET09hRmMtKdQDxNNthLQETkc/yaX7M4qK0g="
@@ -22,6 +23,7 @@
       "cuda-maintainers.cachix.org-1:0dq3bujKpuEPMCX6U4WylrUDZ9JyUG0VpVZa7CNfq5E="
       "niri.cachix.org-1:Wv0OmO7PsuocRKzfDoJ3mulSl7Z6oezYhGhR+3W2964="
       "cuda-maintainers.cachix.org-1:0dq3bujKpuEPMCX6U4WylrUDZ9JyUG0VpVZa7CNfq5E="
+      "deepseek-harness-nix.cachix.org-1:5NrkwLN9veNMhiINtU5ZeV4isXFhFsOwn6Ms7J1M+TA="
     ];
     lazy-trees = true;
     submodules = true;
@@ -67,6 +69,7 @@
       url = "github:nix-darwin/nix-darwin/master";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    deepseek-harness.url = "github:Moraxyc/deepseek-harness.nix";
     den.url = "github:vic/den";
     deploy-rs = {
       url = "github:serokell/deploy-rs";
