@@ -1,5 +1,4 @@
 {
-  inputs,
   stdenvNoCC,
   fetchFromGitHub,
   lib,
@@ -10,8 +9,8 @@ stdenvNoCC.mkDerivation {
   src = fetchFromGitHub {
     owner = "klchen0112";
     repo = "rime-snow-combo-pinyin";
-    rev = "e6c86477954b6aea5693ea7ad75981af0440d5fc";
-    sha256 = "r3wPFPAWE04yppxkb2QfmN12ev0ZJOozWU51mvu0nq8=";
+    rev = "edcb5cd927fbc8f70371213dade8419e707310f6";
+    hash = "sha256-IcbONNEx8rGX4AT//UScNUt1gur6D71pJmo1KvnTi/E=";
   };
 
   installPhase = ''
