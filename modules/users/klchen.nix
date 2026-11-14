@@ -1,6 +1,7 @@
 {
   den,
   inputs,
+  lib,
   # deadnix: skip # enable <den/brackets> syntax for demo.
   __findFile,
   ...
@@ -8,6 +9,16 @@
 {
   den.aspects.klchen =
     let
+      # codex CLI / ChatGPT 桌面应用目前只装在 a99r50 / mbp-m1 上
+      agentHosts = [
+        "a99r50"
+        "mbp-m1"
+      ];
+      # obsidian 只在 a99r50 / mbp-m1 上装
+      obsidianHosts = [
+        "a99r50"
+        "mbp-m1"
+      ];
       keys = [
         "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAGszCNQqxT1/s6sYjj1aewvCjaa3D7UwoOM7UD5K+ha klchen0112@mbp-m1"
         "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKx1SNaQZ6v1onDSGz1wNX1W3zIf2KkTERjKGC+k157D klchen@sanjiao"
@@ -158,6 +169,24 @@
         <media>
         <chrome>
         <dsh>
+        (
+          { host, ... }:
+          {
+            includes = lib.optional (builtins.elem host.name agentHosts) den.aspects.codex;
+          }
+        )
+        (
+          { host, ... }:
+          {
+            includes = lib.optional (builtins.elem host.name agentHosts) den.aspects.chatgpt;
+          }
+        )
+        (
+          { host, ... }:
+          {
+            includes = lib.optional (builtins.elem host.name obsidianHosts) den.aspects.obsidian;
+          }
+        )
       ];
     };
 
