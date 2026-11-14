@@ -57,7 +57,6 @@ in
                 agent-teams
                 subagent-codex
                 better-sidebar
-                billion-context
 
               ];
             in
@@ -78,6 +77,7 @@ in
                   with dshBundles;
                   [
                     web-app
+                    notification
                   ]
                   ++ common;
                 mode = "managed";
