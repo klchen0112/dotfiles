@@ -137,7 +137,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     llama-cpp-rocm = {
-      url = "github:ROCmFPX/ROCmFPX";
+      url = "github:freriadoc/Avalon";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     llama-cpp-vulkan = {
