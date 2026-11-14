@@ -6,10 +6,6 @@ in
 {
 
   den.hosts.x86_64-linux.${machine} = {
-    roles = [
-      "stylix-home"
-      "hermes"
-    ];
     users = {
       klchen.roles = [
         "stylix-home"

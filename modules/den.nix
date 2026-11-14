@@ -5,6 +5,12 @@
   ...
 }:
 let
+  rolesOption = lib.mkOption {
+    type = lib.types.listOf lib.types.str;
+    default = [ ];
+    apply = lib.unique;
+    description = "Role classes enabled for this host or user.";
+  };
   roleClass =
     { host, user }:
     { class, aspect-chain }:
@@ -49,6 +55,14 @@ in
   imports = [
     (inputs.flake-file.flakeModules.dendritic or { })
     (inputs.den.flakeModules.dendritic or { })
+  ];
+  den.schema.host = { config, ... }: {
+    options.roles = rolesOption;
+    # Include every user's roles while preserving explicit host-only roles.
+    config.roles = lib.concatMap (user: user.roles) (lib.attrValues config.users);
+  };
+  den.schema.user.imports = [
+    { options.roles = rolesOption; }
   ];
   den.schema.user.includes = [
     roleClass

@@ -9,21 +9,6 @@ in
 {
   #  sshKey = [    "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIC9ZvdIrZP9su70iBKgCB0QOY0kL9Z9qu3B9Of05VS5a"];
   den.hosts.aarch64-darwin.${machine} = {
-    roles = [
-      "stylix-home"
-      "emacs-twist"
-      "ghostty"
-      "kitty"
-      "vscode"
-      "inputmethod"
-      "zen"
-      "paneru"
-      "zsh"
-      "python"
-      "syncthing"
-      "aria2"
-      "hermes"
-    ];
     users = {
       klchen = {
         roles = [
@@ -40,6 +25,7 @@ in
           "syncthing"
           "aria2"
           "hermes"
+          "llm-agents"
         ];
       };
     };

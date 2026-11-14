@@ -6,25 +6,6 @@ in
 
   den.hosts.x86_64-linux.${machine} = {
     roles = [
-      "stylix-home"
-      "emacs-twist"
-      "ghostty"
-      "kitty"
-      "inputmethod"
-      "zen"
-      "python"
-      "syncthing"
-      "aria2"
-      #"llm-deploy-cuda"
-      "llm-agents"
-      "hermes"
-      "noctalia-shell"
-      "niri-home"
-      "im"
-      "media"
-      "game"
-      "pi"
-      "chrome"
       "dsh"
     ];
     users.klchen = {
@@ -38,7 +19,7 @@ in
         "python"
         "syncthing"
         "aria2"
-        "llm-deploy-cuda"
+        # "llm-deploy-cuda"
         "hermes"
         "llm-agents"
         "noctalia-shell"
@@ -48,7 +29,7 @@ in
         "game"
         "pi"
         "chrome"
-        "dsh"
+        # "dsh"
       ];
     };
     users.root = { };

@@ -7,12 +7,7 @@ in
   #   sshKey = [    "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIO3hO4yhyrO8JHbP6yokAEbRDPb4FR/bhtoIb2rIBP5q root@i12r20"];
   den.hosts.x86_64-linux.${machine} = {
     roles = [
-      "emacs-twist"
-      "stylix-home"
-      "python"
       "llm-deploy-vulkan"
-      "llm-deploy-rocm"
-      "llm-agents"
     ];
     users = {
       klchen.roles = [

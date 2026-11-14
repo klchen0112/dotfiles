@@ -9,12 +9,6 @@ in
 {
   #   sshKey = [      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAsw5gk6koAb2D1SYnHt3jhYLNCWChR6eFKJ3vPO3tZY"];
   den.hosts.x86_64-linux.${machine} = {
-    roles = [
-      "emacs-twist"
-      "stylix-home"
-      "python"
-      "llm-agents"
-    ];
     users = {
       klchen.roles = [
         "emacs-twist"

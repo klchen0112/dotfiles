@@ -123,6 +123,23 @@
 ** Mac Desktop
 [[./assets/mac-desktop.png]]
 
+** User / Host roles
+
+在 =den.hosts.<system>.<host>.users.<user>.roles= 中声明用户需要的 role。
+=modules/den.nix= 会将本机所有用户的 roles 自动合并到 host roles，并去重。
+显式声明的 host roles 仍会合并保留；只属于 host 的 role 不会自动分配给用户。
+
+#+begin_src nix
+  den.hosts.x86_64-linux.example = {
+    roles = [ "host-only" ];
+    users.klchen.roles = [ "python" "llm-agents" ];
+  };
+  # 最终 host.roles 包含 host-only、python、llm-agents。
+#+end_src
+
+禁用某个用户的 role 时，从该用户的 roles 中删除或注释即可；
+只删除 host 中的条目不会禁用用户声明的 role。
+
 * Installation
 ** Nix Darwin Installation
 *** Setup

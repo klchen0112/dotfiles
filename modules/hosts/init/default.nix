@@ -4,9 +4,6 @@ in
 { inputs, den, ... }:
 {
   den.hosts.x86_64-linux.${machine} = {
-    roles = [
-      "stylix-home"
-    ];
     users.klchen = {
       roles = [
         "stylix-home"
@@ -80,9 +77,6 @@ in
   # （去掉 niri / emacs-twist / stylix-home，与 disko-install 生成的 init 系统配置一致）
   # 构建：nix build .#nixosConfigurations.initIso.config.system.build.isoImage
   den.hosts.x86_64-linux.initIso = {
-    roles = [
-      "stylix-home"
-    ];
     users.klchen = {
       roles = [
         "stylix-home"

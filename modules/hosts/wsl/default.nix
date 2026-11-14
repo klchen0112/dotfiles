@@ -10,13 +10,6 @@ in
 }:
 {
   den.hosts.x86_64-linux.${machine} = {
-    roles = [
-      "emacs-twist"
-      "stylix-home"
-      "python"
-      "java"
-
-    ];
     users = {
       klchen.roles = [
         "emacs-twist"
