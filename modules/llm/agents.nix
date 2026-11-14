@@ -21,10 +21,6 @@
           "cache.numtide.com-1:DTx8wZduET09hRmMtKdQDxNNthLQETkc/yaX7M4qK0g="
         ];
       };
-      programs.opencode = {
-        enable = true;
-        package = pkgs.llm-agents.opencode;
-      };
       home.packages = with pkgs; [
         bun
         #llm-agents.dsh
