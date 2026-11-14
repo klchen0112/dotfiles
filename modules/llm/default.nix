@@ -92,7 +92,7 @@
       { pkgs, config, ... }:
       {
         nixpkgs.overlays = [
-          inputs.llama-cpp.overlays.default
+          inputs.llama-cpp-rocm.overlays.default
         ];
         nixpkgs = {
           config = {
