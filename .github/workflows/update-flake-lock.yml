@@ -3,19 +3,8 @@ name: Update flake.lock
 on:
   workflow_dispatch:
   schedule:
-    # nixpkgs-weekly (flakehub.com/flake/DeterminateSystems/nixpkgs-weekly)
-    # publishes every Tuesday ~05:35-06:45 UTC, so run ~2h afterwards.
-    # Tuesday 08:00 UTC = Tuesday 16:00 Asia/Shanghai.
-    - cron: "0 8 * * 2"
-
-
-
-name: "Flake.lock: update Nix dependencies"
-
-on:
-  workflow_dispatch: # allows manual triggering
-  schedule:
-    - cron: "0 0 * * 0" # runs weekly on Sunday at 00:00
+    # GitHub cron uses UTC: every Friday 01:00 UTC = 09:00 Asia/Shanghai
+    - cron: "0 1 * * 5"
 
 jobs:
   nix-flake-update:
