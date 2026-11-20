@@ -8,16 +8,14 @@
       };
       programs.gradle = {
         enable = true;
-        package = pkgs.gradle_7;
+        # gradle_7 was removed from nixpkgs (EOL); 8.x is the current stable line.
+        package = pkgs.gradle_8;
       };
       programs.sbt = {
         enable = true;
       };
       home.packages = with pkgs; [
         maven3
-      ];
-      nixpkgs.config.permittedInsecurePackages = [
-        "gradle-7.6.6"
       ];
     };
 }

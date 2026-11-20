@@ -11,6 +11,10 @@ let
         config = {
           allowUnfree = true;
           allowUnsupportedSystem = false;
+          # lutris 0.5.22's FHS env still pulls gtk2, which nixpkgs now flags as
+          # broken (removal planned for NixOS 27.05).
+          # https://github.com/NixOS/nixpkgs/issues/410814
+          problems.handlers."gtk+".broken = "warn";
         };
       };
       nix = {

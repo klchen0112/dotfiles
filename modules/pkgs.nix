@@ -31,6 +31,10 @@
           allowUnfree = true;
           allowUnsupportedSystem = false;
           cudaVersion = "13";
+          # lutris 0.5.22's FHS env still pulls gtk2, which nixpkgs now flags as
+          # broken (removal planned for NixOS 27.05). Keep evaluating until lutris
+          # drops it: https://github.com/NixOS/nixpkgs/issues/410814
+          problems.handlers."gtk+".broken = "warn";
         };
         overlays = [
           (final: _prev: {

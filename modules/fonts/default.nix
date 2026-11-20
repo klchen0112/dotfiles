@@ -51,7 +51,10 @@ let
 in
 {
   flake-file.inputs = {
-    chinese-fonts-overlay.url = "github:brsvh/chinese-fonts-overlay";
+    chinese-fonts-overlay = {
+      url = "github:brsvh/chinese-fonts-overlay";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   den.aspects.font.nixos = fonts_settings;
