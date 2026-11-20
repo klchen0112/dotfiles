@@ -190,7 +190,7 @@ in
         #k3s-node
         k3s-nvidia
         nvidia
-        # llm-vllm
+        llm-vllm
         #llm-strata
         niri
         noctalia-shell
