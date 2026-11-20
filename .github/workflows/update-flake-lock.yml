@@ -3,54 +3,34 @@ name: Update flake.lock
 on:
   workflow_dispatch:
   schedule:
-    # GitHub cron uses UTC: every Friday 01:00 UTC = 09:00 Asia/Shanghai
-    - cron: "0 1 * * 5"
+    # nixpkgs-weekly (flakehub.com/flake/DeterminateSystems/nixpkgs-weekly)
+    # publishes every Tuesday ~05:35-06:45 UTC, so run ~2h afterwards.
+    # Tuesday 08:00 UTC = Tuesday 16:00 Asia/Shanghai.
+    - cron: "0 8 * * 2"
 
-permissions:
-  # Requires Settings -> Actions -> General -> Workflow permissions:
-  # "Allow GitHub Actions to create and approve pull requests"
-  contents: write
-  id-token: write
-  issues: write
-  pull-requests: write
 
-concurrency:
-  group: update-flake-lock
-  cancel-in-progress: false
+
+name: "Flake.lock: update Nix dependencies"
+
+on:
+  workflow_dispatch: # allows manual triggering
+  schedule:
+    - cron: "0 0 * * 0" # runs weekly on Sunday at 00:00
 
 jobs:
-  update:
-    name: Update all flake inputs
+  nix-flake-update:
+    permissions:
+      contents: write
+      id-token: write
+      issues: write
+      pull-requests: write
     runs-on: ubuntu-latest
-    timeout-minutes: 60
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v6
-
-      - name: Install Determinate Nix
-        uses: DeterminateSystems/determinate-nix-action@v3
-
-      - name: Update flake.lock
-        uses: DeterminateSystems/update-flake-lock@v26
+      - uses: actions/checkout@v6
+      - uses: DeterminateSystems/determinate-nix-action@v3
+      - uses: DeterminateSystems/update-flake-lock@main
         with:
-          commit-msg: "chore(flake): bump all inputs"
-          pr-title: "chore(flake): bump all inputs"
-          pr-body: |
-            Automated `nix flake update` of **all** root flake inputs.
-
-            Verify before merging:
-
-            ```sh
-            nix flake check
-            ```
-
-            Then rebuild the affected host:
-
-            ```sh
-            sudo nixos-rebuild build --flake .#YOUR_HOST
-            # or
-            sudo darwin-rebuild build --flake .#YOUR_HOST
-            ```
-
-            > Workflows do not run on PRs opened with `GITHUB_TOKEN`.
-            > Close and reopen the PR to trigger CI if needed.
+          pr-title: "Update Nix flake inputs" # Title of PR to be created
+          pr-labels: | # Labels to be set on the PR
+            dependencies
+            automated
