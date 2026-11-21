@@ -12,6 +12,6 @@
   den.aspects.chatgpt.homeManager =
     { pkgs, lib, ... }:
     {
-      home.packages = lib.optional (!pkgs.stdenv.hostPlatform.isDarwin) pkgs.chatgpt;
+      home.packages = lib.optional (!pkgs.stdenv.hostPlatform.isDarwin) pkgs.llm-agents.chatgpt;
     };
 }
