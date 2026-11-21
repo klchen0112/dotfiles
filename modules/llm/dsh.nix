@@ -53,6 +53,16 @@ in
           # tui / web 两个变体，材料化后分别是 nix-tui / nix-web
           profiles =
             let
+              memoryPatch = [
+                {
+                  insert = [
+                    {
+                      id = "org-wiki-memory";
+                      name = "/home/klchen/open/org-wiki/packages/dsh/index.js";
+                    }
+                  ];
+                }
+              ];
               common = with dshBundles; [
                 agent-teams
                 subagent-codex
@@ -63,6 +73,7 @@ in
 
             {
               tui = {
+                patch = memoryPatch;
                 bundles =
                   with dshBundles;
                   [
@@ -73,6 +84,7 @@ in
                 mode = "managed";
               };
               web = {
+                patch = memoryPatch;
                 bundles =
                   with dshBundles;
                   [
