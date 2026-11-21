@@ -56,7 +56,7 @@
           # polars
           # highlight
           query
-          gstat
+          #gstat
         ];
         extraConfig = ''
           use ${nu_scripts}/modules/nix/nix.nu *
