@@ -107,28 +107,28 @@ in
           format = "dotenv";
         };
 
-        programs.hermes-agent = {
-          desktop.enable = true;
-        };
-        services.hermes-agent = {
-          enable = true;
-          backend = {
-            mode = "dashboard";
-          };
-          environmentFiles = [
-            config.sops.secrets."hermes-telegram-env".path
-            config.sops.secrets."hermes-discord-env".path
-            config.sops.secrets."hermes-env".path
-          ];
-          settings.platforms = {
-            telegram = {
-              enabled = true;
-            };
-            discord = {
-              enabled = true;
-            };
-          };
-        };
+        #programs.hermes-agent = {
+        #  desktop.enable = true;
+        #};
+       #  services.hermes-agent = {
+       #    enable = true;
+       #    backend = {
+       #      mode = "dashboard";
+       #    };
+       #    environmentFiles = [
+       #      config.sops.secrets."hermes-telegram-env".path
+       #      config.sops.secrets."hermes-discord-env".path
+       #      config.sops.secrets."hermes-env".path
+       #    ];
+       #    settings.platforms = {
+       #      telegram = {
+       #        enabled = true;
+       #      };
+       #      discord = {
+       #        enabled = true;
+       #      };
+       #    };
+       #  };
       };
     };
 
