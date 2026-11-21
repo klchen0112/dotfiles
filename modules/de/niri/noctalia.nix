@@ -6,14 +6,15 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
-  den.aspects.noctalia-shell.nixos =
-    { pkgs, ... }:
-    {
-      networking.networkmanager.enable = true;
-      hardware.bluetooth.enable = true;
-      services.power-profiles-daemon.enable = true;
-      services.upower.enable = true;
-    };
+  # 桌面环境的基础服务：只有跑桌面环境的 host 才需要，所以不再默认给所有 nixos。
+  # 由 `den.aspects.niri` include（见 modules/de/niri/default.nix）；不用 niri 的 host
+  # 想要蓝牙/upower 时可以单独 include `<desktop>`。
+  den.aspects.desktop.nixos = {
+    networking.networkmanager.enable = true;
+    hardware.bluetooth.enable = true;
+    services.power-profiles-daemon.enable = true;
+    services.upower.enable = true;
+  };
   den.aspects.noctalia-shell.noctalia-shell =
     {
       config,

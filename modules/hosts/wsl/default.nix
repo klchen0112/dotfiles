@@ -32,6 +32,14 @@ in
         networking.hostName = "${machine}";
         stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/solarized-light.yaml";
         system.build.installBootLoader = lib.mkForce "${pkgs.coreutils}/bin/true";
+
+        # 原 `den.default.wsl`：#694 之后 `den.default` 会在 user 作用域留下一条
+        # 无法归属的 nixos 内容（den 的 lostAt 记账问题），因此直接写到 host 上。
+        wsl.enable = true;
+        wsl.wslConf.automount.root = "/mnt";
+        wsl.wslConf.interop.appendWindowsPath = false;
+        wsl.wslConf.network.generateHosts = false;
+        wsl.startMenuLaunchers = true;
       };
   };
 }

@@ -1,7 +1,6 @@
 {
   den,
   inputs,
-  lib,
   ...
 }:
 {
@@ -38,14 +37,13 @@
 
   # Pass flake inputs to home-manager so agent-skills-nix can resolve source
   # `input` references (e.g. "wondelai-skills" -> inputs.wondelai-skills).
-  den.aspects.skill.os =
-    { lib, config, ... }:
-    {
-      home-manager.extraSpecialArgs.inputs = inputs;
-    };
+  # `home-manager.extraSpecialArgs` 是 host 级 NixOS 选项（喂给该 host 上所有 HM
+  # 模块）。这里用 `provides.to-hosts` 点名投递：只有“有用到 skill 的用户”的 host
+  # 才拿到它，不假定所有 host 都如此。
+  den.aspects.skill.provides.to-hosts.nixos.home-manager.extraSpecialArgs.inputs = inputs;
 
   den.aspects.skill.homeManager =
-    { pkgs, config, ... }:
+    { pkgs, ... }:
     {
       imports = [
         inputs.agent-skills-nix.homeManagerModules.default

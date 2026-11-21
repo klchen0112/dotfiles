@@ -11,18 +11,19 @@ let
     apply = lib.unique;
     description = "Role classes enabled for this host or user.";
   };
+  # 空 class 会触发 forward 的回退查找，只从当前用户的 aspect 重新解析。
+  # aspect-chain 的首项在 flake 求值时可能覆盖整组主机，引入投递循环。
   roleClass =
     { host, user }:
-    { class, aspect-chain }:
     den._.forward {
       each = lib.intersectLists (host.roles or [ ]) (user.roles or [ ]);
       fromClass = lib.id;
       intoClass = _: "homeManager";
       intoPath = _: [ ];
-      fromAspect = _: lib.head aspect-chain;
+      fromAspect = _: user.aspect;
     };
   hmPlatforms =
-    { class, aspect-chain }:
+    { user }:
     den.provides.forward {
       each = [
         "Linux"
@@ -31,7 +32,7 @@ let
       fromClass = platform: "hm${platform}";
       intoClass = _: "homeManager";
       intoPath = _: [ ];
-      fromAspect = _: lib.head aspect-chain;
+      fromAspect = _: user.aspect;
       guard = { pkgs, ... }: platform: lib.mkIf pkgs.stdenv.hostPlatform."is${platform}";
       adaptArgs =
         { config, ... }:
@@ -69,5 +70,7 @@ in
     hmPlatforms
     den.provides.mutual-provider
   ];
+
+  den.migrations.user-host-content.acknowledged = true;
   _module.args.__findFile = den.lib.__findFile;
 }

@@ -1,4 +1,4 @@
-{ inputs, ... }:
+{ den, inputs, ... }:
 {
   flake-file.inputs = {
     niri = {
@@ -9,6 +9,7 @@
       };
     };
   };
+  den.aspects.niri.includes = [ den.aspects.desktop ];
   den.aspects.niri.nixos =
     { pkgs, ... }:
     {
