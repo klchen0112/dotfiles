@@ -70,6 +70,10 @@ in
     hmPlatforms
     den.provides.mutual-provider
   ];
+  # A standalone user@host home needs the same role forwarding as the host's user.
+  den.schema.home.includes = [
+    ({ home, ... }: roleClass { inherit (home) host user; })
+  ];
 
   den.migrations.user-host-content.acknowledged = true;
   _module.args.__findFile = den.lib.__findFile;

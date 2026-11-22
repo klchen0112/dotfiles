@@ -1,8 +1,4 @@
-{
-  den,
-  inputs,
-  ...
-}:
+{ inputs, ... }:
 {
   # Declarative agent skill management via agent-skills-nix.
   # Syncs SKILL.md directories from pinned flake sources to $HOME/.agents/skills.
@@ -35,13 +31,6 @@
     };
   };
 
-  # Pass flake inputs to home-manager so agent-skills-nix can resolve source
-  # `input` references (e.g. "wondelai-skills" -> inputs.wondelai-skills).
-  # `home-manager.extraSpecialArgs` 是 host 级 NixOS 选项（喂给该 host 上所有 HM
-  # 模块）。这里用 `provides.to-hosts` 点名投递：只有“有用到 skill 的用户”的 host
-  # 才拿到它，不假定所有 host 都如此。
-  den.aspects.skill.provides.to-hosts.nixos.home-manager.extraSpecialArgs.inputs = inputs;
-
   den.aspects.skill.homeManager =
     { pkgs, ... }:
     {
@@ -55,7 +44,7 @@
         sources = {
           # wondelai/skills — 42 business/craft/design skills
           wondelai = {
-            input = "wondelai-skills";
+            path = inputs.wondelai-skills.outPath;
             idPrefix = "wondelai";
             subdir = ".";
             filter.maxDepth = 1; # top-level directories are skills; skip .claude/.cursor etc.
@@ -63,26 +52,26 @@
 
           # tlehman/litprog-skill — literate programming skill
           litprog = {
-            input = "litprog-skill";
+            path = inputs.litprog-skill.outPath;
             subdir = ".";
             idPrefix = "litprog";
           };
           mattpocock-skills = {
-            input = "mattpocock-skills";
+            path = inputs.mattpocock-skills.outPath;
             subdir = "skills";
             idPrefix = "mattpocock";
             filter.maxDepth = 3;
           };
           # sudosubin/nix-skills — 480,000+ skills from skills.sh/skillsdirectory.com (individual packages)
           #          nix-skills = {
-          #            input = "nix-skills";
+          #            path = inputs.nix-skills.outPath;
           #            subdir = "skills";
           #            filter.maxDepth = 1;
           #          };
 
           # ZeroPointRepo/youtube-skills — YouTube transcript/search skills
           youtube = {
-            input = "youtube-skills";
+            path = inputs.youtube-skills.outPath;
             subdir = "skills";
             idPrefix = "ZeroPointRepo";
             filter.maxDepth = 1;

@@ -15,19 +15,14 @@
         pkgs,
         lib,
         config,
-        inputs,
         ...
       }:
       let
         cfg = config.services.hermes-agent;
       in
       {
-        imports = with inputs; [
-          hermes-agent.homeManagerModules.default
-        ];
-        nixpkgs.overlays = with inputs; [
-          hermes-agent.overlays.default
-        ];
+        imports = [ inputs.hermes-agent.homeManagerModules.default ];
+        nixpkgs.overlays = [ inputs.hermes-agent.overlays.default ];
         home.packages = with pkgs; [
           # local.graphify
         ];
