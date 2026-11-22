@@ -56,7 +56,6 @@
           # hunspell
           # languagetool
           # for emacs lsp booster
-          emacs-lsp-booster
           pkg-config
         ]
         ++ (lib.optionals pkgs.stdenv.hostPlatform.isDarwin) [
