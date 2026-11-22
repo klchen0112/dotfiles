@@ -30,7 +30,6 @@ in
       { pkgs, ... }:
       {
         networking.hostName = "${machine}";
-        stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/solarized-light.yaml";
         system.build.installBootLoader = lib.mkForce "${pkgs.coreutils}/bin/true";
 
         # 原 `den.default.wsl`：#694 之后 `den.default` 会在 user 作用域留下一条

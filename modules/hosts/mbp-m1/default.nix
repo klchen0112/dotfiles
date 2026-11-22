@@ -43,7 +43,6 @@ in
       { pkgs, lib, ... }:
       {
         system.primaryUser = "klchen";
-        stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/solarized-light.yaml";
         ids.gids.nixbld = 30000;
         imports = [
           inputs.srvos.darwinModules.mixins-terminfo

@@ -64,6 +64,11 @@
       #        };
       #      };
 
+      stylix.targets.noctalia = {
+        enable = true;
+        polarity.override = config.lib.stylix.colors.variant;
+      };
+
       programs.noctalia = {
         enable = true;
         systemd.enable = true;

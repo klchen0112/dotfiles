@@ -51,8 +51,6 @@ in
           };
           boot.kernelPackages = pkgs.cachyosKernels.linuxPackages-cachyos-lts-lto-zen4;
 
-          stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/solarized-light.yaml";
-
           # Bootloader.
           boot.loader.systemd-boot.enable = true;
           boot.loader.efi.canTouchEfiVariables = true;

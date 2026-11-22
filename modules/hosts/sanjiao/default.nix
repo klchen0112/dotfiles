@@ -37,8 +37,6 @@ in
         {
           networking.hostName = "${machine}";
 
-          stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/solarized-light.yaml";
-
           imports = [
             inputs.nixos-hardware.nixosModules.common-cpu-intel
             # offload

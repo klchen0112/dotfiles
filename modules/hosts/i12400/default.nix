@@ -61,7 +61,6 @@ in
         }:
         {
 
-          stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/solarized-light.yaml";
           networking.hostName = "${machine}";
 
           imports = [

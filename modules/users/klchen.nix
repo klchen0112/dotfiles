@@ -79,7 +79,6 @@ in
         ];
         nixpkgs.config.allowUnfree = true;
         nix.settings.trusted-users = [ "klchen" ];
-        stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/tomorrow-night-eighties.yaml";
         home.username = lib.mkDefault " klchen";
         home.homeDirectory = lib.mkForce (
           if pkgs.stdenvNoCC.hostPlatform.isDarwin then "/Users/klchen" else "/home/klchen"
