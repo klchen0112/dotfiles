@@ -16,7 +16,7 @@ in
 
   den.aspects.dsh = {
     dsh =
-      { pkgs, ... }:
+      { config, pkgs, ... }:
       let
         system = pkgs.stdenv.hostPlatform.system;
         dshPkgs = harness.packages.${system};
@@ -51,18 +51,26 @@ in
           package = dshPackage;
 
           # tui / web 两个变体，材料化后分别是 nix-tui / nix-web
-          profiles =
-            let
-              memoryPatch = [
+          patch = [
+            {
+              insert = [
                 {
-                  insert = [
-                    {
-                      id = "org-wiki-memory";
-                      name = "/home/klchen/open/org-wiki/packages/dsh/index.js";
-                    }
-                  ];
+                  id = "org-wiki-memory";
+                  name = "@deepseek-ai/dsh-mcp-client";
+                  config = {
+                    serverName = "org_wiki_memory";
+                    transport = "stdio";
+                    command = "${pkgs.local.org-wiki-memory}/bin/org-wiki-memory";
+                    # The Web profile shares this server across sessions.
+                    cwd = "${config.home.homeDirectory}/open/org-wiki";
+                  };
                 }
               ];
+            }
+          ];
+
+          profiles =
+            let
               common = with dshBundles; [
                 agent-teams
                 subagent-codex
@@ -73,7 +81,6 @@ in
 
             {
               tui = {
-                patch = memoryPatch;
                 bundles =
                   with dshBundles;
                   [
@@ -84,7 +91,6 @@ in
                 mode = "managed";
               };
               web = {
-                patch = memoryPatch;
                 bundles =
                   with dshBundles;
                   [

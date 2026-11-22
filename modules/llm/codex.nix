@@ -10,11 +10,14 @@
   # host roles 会由 modules/den.nix 自动补全。
   #
   # 凭证与配置交给 codex 自己管理（$CODEX_HOME，默认 ~/.codex 下的
-  # config.toml / auth.json，首次运行 `codex login` 生成），所以这里只装二进制，
-  # 不用 home-manager 接管配置文件（只读软链会挡住登录/写入）。
+  # 用 Codex CLI 合并记忆服务条目，以便 config.toml 保持可写。
   den.aspects.codex.homeManager =
-    { pkgs, ... }:
+    { lib, pkgs, ... }:
     {
+      home.activation.codexOrgWikiMemory = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+        run ${pkgs.llm-agents.codex}/bin/codex mcp add org_wiki_memory -- \
+          ${pkgs.local.org-wiki-memory}/bin/org-wiki-memory
+      '';
       home.packages = [
         pkgs.llm-agents.codex
       ];
