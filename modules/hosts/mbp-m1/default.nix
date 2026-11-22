@@ -25,6 +25,7 @@ in
           "syncthing"
           "aria2"
           "hermes"
+          "pi"
           "llm-agents"
         ];
       };
