@@ -13,8 +13,8 @@ buildNpmPackage {
   src = fetchFromGitHub {
     owner = "klchen0112";
     repo = "org-wiki";
-    rev = "df9f82e3eb5a16f2ddbc641d2a6abf8a1b414a87";
-    hash = "sha256-0NwE/BGyFyn8v8PCCMuiXKcXaT7CRJr0a74MiOwromI=";
+    rev = "92484d1d4fbfb410756f6c31bf10928bf482992b";
+    hash = "sha256-6SYBjp475SNnGKyHRnr6soW9pd3Q0AI987XfWwdVDRc=";
   };
   npmDepsHash = "sha256-tHA1A9ZypuKC2RCBXS7YIlZZVzjRKSmit5hpn6ougVs=";
   dontBuild = true;
