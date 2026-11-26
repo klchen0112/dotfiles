@@ -127,10 +127,6 @@
       };
     };
     import-tree.url = "github:denful/import-tree";
-    litprog-skill = {
-      url = "github:tlehman/litprog-skill";
-      flake = false;
-    };
     llama-cpp = {
       url = "github:ggml-org/llama.cpp";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -162,10 +158,6 @@
     nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=latest";
     nix-index-database = {
       url = "github:nix-community/nix-index-database";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    nix-skills = {
-      url = "github:sudosubin/nix-skills";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nix-vscode-extensions = {
@@ -226,10 +218,6 @@
     };
     wondelai-skills = {
       url = "github:wondelai/skills";
-      flake = false;
-    };
-    youtube-skills = {
-      url = "github:ZeroPointRepo/youtube-skills";
       flake = false;
     };
     zen-browser = {
