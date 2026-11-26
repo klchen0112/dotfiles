@@ -16,6 +16,7 @@ in
         "python"
         "llm-deploy-rocm"
         "llm-agents"
+        "pi"
         #"llm-deploy-vulkan"
       ];
     };

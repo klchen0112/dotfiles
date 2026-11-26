@@ -12,11 +12,6 @@ let
     "a99r50"
     "mbp-m1"
   ];
-  # obsidian 只在 a99r50 / mbp-m1 上装
-  obsidianHosts = [
-    "a99r50"
-    "mbp-m1"
-  ];
   keys = [
     "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAGszCNQqxT1/s6sYjj1aewvCjaa3D7UwoOM7UD5K+ha klchen0112@mbp-m1"
     "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKx1SNaQZ6v1onDSGz1wNX1W3zIf2KkTERjKGC+k157D klchen@sanjiao"
@@ -96,7 +91,7 @@ in
         };
       };
     provides.a99r50 = {
-      homeManager = { config, ... }: {
+      homeManager = { ... }: {
         sops.secrets.hermes-telegram-env = {
           sopsFile = ../../secrets/klchen/hermes-telegram.env;
           format = "dotenv";
@@ -178,6 +173,7 @@ in
       <chrome>
       <dsh>
       <codex>
+      <org-wiki-mcp>
       <chatgpt>
       <obsidian>
     ];

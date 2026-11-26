@@ -76,8 +76,6 @@
           "qmk-toolbox"
           "plexamp"
           "telegram"
-          # OpenAI ChatGPT / Codex 桌面应用（macOS 走 cask，Linux 走 pkgs.chatgpt）
-          "chatgpt"
           # "iterm2"
           # "docker"
           # "feishu"

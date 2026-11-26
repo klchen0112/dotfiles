@@ -15,6 +15,7 @@
         ...
       }:
       let
+        orgWikiMcp = import ../../lib/org-wiki-mcp.nix { inherit pkgs; };
         authFile = ../../secrets/klchen/pi-auth.json;
         authRevision = builtins.hashFile "sha256" authFile;
         authSecret = "pi-auth-${authRevision}";
@@ -102,7 +103,8 @@
 
         xdg.configFile."mcp/mcp.json".text = builtins.toJSON {
           mcpServers.org_wiki_memory = {
-            command = "${pkgs.local.org-wiki-memory}/bin/org-wiki-memory";
+            # 服务由常驻的 org-wiki-mcp 代理暴露，这里只连地址。
+            url = orgWikiMcp.url;
             directTools = true;
           };
         };
@@ -119,6 +121,7 @@
         home.packages = with pkgs; [
           # ACP (Agent Client Protocol) 适配器: ACP client <-> `pi --mode rpc`
           llm-agents.pi-acp
+          nodejs
         ];
       };
   };

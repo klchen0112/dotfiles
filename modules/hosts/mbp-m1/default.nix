@@ -27,6 +27,8 @@ in
           "hermes"
           "pi"
           "llm-agents"
+          "chatgpt"
+          "dsh"
         ];
       };
     };
@@ -44,6 +46,7 @@ in
       { pkgs, lib, ... }:
       {
         system.primaryUser = "klchen";
+        homebrew.casks = [ "chatgpt" ];
         ids.gids.nixbld = 30000;
         imports = [
           inputs.srvos.darwinModules.mixins-terminfo

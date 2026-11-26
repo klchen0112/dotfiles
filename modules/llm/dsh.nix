@@ -16,8 +16,9 @@ in
 
   den.aspects.dsh = {
     dsh =
-      { config, pkgs, ... }:
+      { pkgs, ... }:
       let
+        orgWikiMcp = import ../../lib/org-wiki-mcp.nix { inherit pkgs; };
         system = pkgs.stdenv.hostPlatform.system;
         dshPkgs = harness.packages.${system};
         dshBundles = harness.legacyPackages.${system}.bundles;
@@ -37,6 +38,11 @@ in
       {
         imports = [ harness.homeModules.default ];
 
+        # HM 模块顶层无条件读取 pkgs.dsh.mkDshRuntime / mkDshDesktop，
+        # 缺这个 overlay 时求值直接报 `pkgs.dsh` 不存在。overlay 只新增 dsh 作用域（
+        # helper 函数），不会替换下面显式指定的 programs.dsh.package。
+        nixpkgs.overlays = [ harness.overlays.default ];
+
         # 输入的 flake nixConfig 不会被继承，这里显式声明 harnes 的二进制缓存
         nix.settings = {
           extra-substituters = [ "https://deepseek-harness-nix.cachix.org" ];
@@ -47,7 +53,7 @@ in
 
         programs.dsh = {
           enable = true;
-          # 显式使用 flake 构建产物（模块顶层会无条件求值 cfg.package，故不用 overlay）
+          # 显式使用 flake 构建产物（不走 overlay 的 dsh 包，才能命中 cachix）
           package = dshPackage;
 
           # tui / web 两个变体，材料化后分别是 nix-tui / nix-web
@@ -59,10 +65,9 @@ in
                   name = "@deepseek-ai/dsh-mcp-client";
                   config = {
                     serverName = "org_wiki_memory";
-                    transport = "stdio";
-                    command = "${pkgs.local.org-wiki-memory}/bin/org-wiki-memory";
-                    # The Web profile shares this server across sessions.
-                    cwd = "${config.home.homeDirectory}/open/org-wiki";
+                    transport = "streamable-http";
+                    # 服务由常驻的 org-wiki-mcp 代理暴露，这里只连地址。
+                    url = orgWikiMcp.url;
                   };
                 }
               ];
@@ -95,7 +100,7 @@ in
                   with dshBundles;
                   [
                     web-app
-                    notification
+                    # notification bundle 已被 harness 移除（0.2.2-rc.5）
                   ]
                   ++ common;
                 mode = "managed";

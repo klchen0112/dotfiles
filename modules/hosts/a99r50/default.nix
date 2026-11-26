@@ -22,6 +22,7 @@ in
         # "llm-deploy-cuda"
         # "hermes"
         "llm-agents"
+        "chatgpt"
         "noctalia-shell"
         "niri-home"
         "im"
@@ -29,7 +30,7 @@ in
         "game"
         "pi"
         "chrome"
-        # "dsh"
+        "dsh"
       ];
     };
     users.root = { };
@@ -38,23 +39,23 @@ in
   den.aspects.${machine} = {
     provides.klchen = {
       homeManager = { ... }: {
-       # services.hermes-agent.settings = {
-       #   model = {
-       #     default = "swift-1.5-iq2_xs";
-       #     provider = "a99r50";
-       #     base_url = "http://127.0.0.1:8080/v1";
-       #   };
-       #   custom_providers = [
-       #     {
-       #       name = "a99r50";
-       #       base_url = "http://127.0.0.1:8080/v1";
-       #       models = [
-       #         "swift-1.5-iq2_xs"
-       #       ];
-       #     }
-       #   ];
+        # services.hermes-agent.settings = {
+        #   model = {
+        #     default = "swift-1.5-iq2_xs";
+        #     provider = "a99r50";
+        #     base_url = "http://127.0.0.1:8080/v1";
+        #   };
+        #   custom_providers = [
+        #     {
+        #       name = "a99r50";
+        #       base_url = "http://127.0.0.1:8080/v1";
+        #       models = [
+        #         "swift-1.5-iq2_xs"
+        #       ];
+        #     }
+        #   ];
 
-       # };
+        # };
       };
     };
 
