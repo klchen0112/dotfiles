@@ -3,7 +3,7 @@ let
   # vLLM 0.34.0 serves both pooling models and includes the VL scoring template.
   vllmImage = "vllm/vllm-openai@sha256:20fdb089454afbb324efa4110a2c025ff7b27cc1a086e07aa580b18df8ad1ce1";
   network = "llm-inference";
-  routerPort = 8000;
+  gatewayPort = 8000;
   vllm = {
     modelscopeCacheDir = "/home/klchen/.cache/modelscope";
     # ModelScope keeps the actual model files below snapshots/master.
@@ -24,32 +24,70 @@ in
       ...
     }:
     let
-      routerConfig = (pkgs.formats.yaml { }).generate "litellm.yaml" {
-        # LiteLLM's OpenAI embeddings endpoint requires "input". Preserve the
-        # native vLLM request format ("messages" with images, audio or video).
-        general_settings.pass_through_endpoints = [
+      matchPaths =
+        method:
+        map (path: {
+          inherit method;
+          path.exact = path;
+        });
+
+      gatewayConfig = (pkgs.formats.yaml { }).generate "agentgateway.yaml" {
+        # This gateway only serves HTTP inference. Keep the config mount read-only.
+        config.session.key = "disabled";
+        gateways.default = {
+          port = gatewayPort;
+          apiKey = {
+            mode = "strict";
+            # Expanded by agentgateway from the existing Docker env file.
+            keys = [ { key = "$LITELLM_MASTER_KEY"; } ];
+          };
+        };
+        routes = [
           {
-            path = "/gemma/v1/embeddings";
-            target = "http://vllm:8000/v1/embeddings";
-            methods = [ "POST" ];
+            name = "embeddings";
+            matches = matchPaths "POST" [
+              "/embeddings"
+              "/v1/embeddings"
+              "/gemma/v1/embeddings"
+            ];
+            # Preserve vLLM's native multimodal "messages" body as well as "input".
+            policies.urlRewrite.path.full = "/v1/embeddings";
+            backends = [ { host = "vllm:8000"; } ];
           }
-        ];
-        model_list = [
           {
-            model_name = vllm.servedName;
-            litellm_params = {
-              model = "hosted_vllm/${vllm.servedName}";
-              api_base = "http://vllm:8000/v1";
-            };
-            model_info.mode = "embedding";
+            name = "rerank";
+            matches = matchPaths "POST" [
+              "/rerank"
+              "/v1/rerank"
+              "/v2/rerank"
+            ];
+            backends = [ { host = "vllm-reranker:8000"; } ];
           }
           {
-            model_name = reranker.servedName;
-            litellm_params = {
-              model = "hosted_vllm/${reranker.servedName}";
-              api_base = "http://vllm-reranker:8000";
+            name = "models";
+            matches = matchPaths "GET" [
+              "/models"
+              "/v1/models"
+            ];
+            policies.directResponse = {
+              status = 200;
+              headers."content-type" = ''"application/json"'';
+              body = builtins.toJSON {
+                object = "list";
+                data =
+                  map
+                    (id: {
+                      inherit id;
+                      object = "model";
+                      created = 0;
+                      owned_by = "vllm";
+                    })
+                    [
+                      vllm.servedName
+                      reranker.servedName
+                    ];
+              };
             };
-            model_info.mode = "rerank";
           }
         ];
       };
@@ -63,7 +101,7 @@ in
 
       users.users.klchen.extraGroups = [ "docker" ];
 
-      networking.firewall.allowedTCPPorts = [ routerPort ];
+      networking.firewall.allowedTCPPorts = [ gatewayPort ];
       environment.systemPackages = with pkgs; [
         nvtopPackages.nvidia
       ];
@@ -145,18 +183,16 @@ in
           devices = [ "nvidia.com/gpu=all" ];
           extraOptions = [ "--ipc=host" ];
         };
-        containers.llm-router = {
-          image = "ghcr.io/berriai/litellm@sha256:ef798594ca3db8d81bad2e1439f536f49b71fe095ee9f20416f5e149b4e22035";
+        containers.agentgateway = {
+          image = "cr.agentgateway.dev/agentgateway:v1.7.0@sha256:60216aafb03d37f94e952ff3d51d2f630a65b10ecaebdc0a864882f92610c45b";
           environmentFiles = [ "/home/klchen/.config/litellm/router.env" ];
-          volumes = [ "${routerConfig}:/etc/litellm.yaml:ro" ];
+          volumes = [ "${gatewayConfig}:/etc/agentgateway.yaml:ro" ];
           cmd = [
-            "--config"
-            "/etc/litellm.yaml"
-            "--port"
-            "8000"
+            "-f"
+            "/etc/agentgateway.yaml"
           ];
           networks = [ network ];
-          ports = [ "${toString routerPort}:8000" ];
+          ports = [ "${toString gatewayPort}:${toString gatewayPort}" ];
         };
       };
 
@@ -175,7 +211,7 @@ in
           '';
         };
       }
-      // lib.genAttrs [ "docker-vllm" "docker-vllm-reranker" "docker-llm-router" ] (_: {
+      // lib.genAttrs [ "docker-vllm" "docker-vllm-reranker" "docker-agentgateway" ] (_: {
         requires = [ "llm-network.service" ];
         after = [ "llm-network.service" ];
         serviceConfig = {
