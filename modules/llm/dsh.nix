@@ -16,7 +16,11 @@ in
 
   den.aspects.dsh = {
     dsh =
-      { pkgs, ... }:
+      {
+        lib,
+        pkgs,
+        ...
+      }:
       let
         orgWikiMcp = import ../../lib/org-wiki-mcp.nix { inherit pkgs; };
         system = pkgs.stdenv.hostPlatform.system;
@@ -111,8 +115,10 @@ in
           defaultProfile = "nix-tui";
         };
 
-        # 用户级 web 服务 dsh-web.service（默认 127.0.0.1:3080），与 CLI 共用 ~/.dsh
-        services.dsh = {
+        # 用户级 web 服务 dsh-web.service（默认 127.0.0.1:3080），与 CLI 共用 ~/.dsh。
+        # 上游模块内部写的是 systemd.user.services 和 systemd.user.tmpfiles，
+        # 这两样只在 Linux 落地，所以在 Darwin 上根本不声明这个服务（CLI 照常可用）。
+        services.dsh = lib.mkIf (!pkgs.stdenv.hostPlatform.isDarwin) {
           enable = true;
           profile = "nix-web";
           port = 3080;
