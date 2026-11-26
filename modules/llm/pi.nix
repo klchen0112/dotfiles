@@ -1,7 +1,7 @@
 { inputs, ... }:
 {
   flake-file.inputs.pi-config = {
-    url = "path:/home/klchen/pi-config";
+    url = "github:klchen0112/pi-config";
     inputs.nixpkgs.follows = "nixpkgs";
     inputs.home-manager.follows = "home-manager";
   };
@@ -15,7 +15,6 @@
         ...
       }:
       let
-        orgWikiMcp = import ../../lib/org-wiki-mcp.nix { inherit pkgs; };
         authFile = ../../secrets/klchen/pi-auth.json;
         authRevision = builtins.hashFile "sha256" authFile;
         authSecret = "pi-auth-${authRevision}";
@@ -101,13 +100,7 @@
           ''
         );
 
-        xdg.configFile."mcp/mcp.json".text = builtins.toJSON {
-          mcpServers.org_wiki_memory = {
-            # 服务由常驻的 org-wiki-mcp 代理暴露，这里只连地址。
-            url = orgWikiMcp.url;
-            directTools = true;
-          };
-        };
+        # MCP 服务表（含 org-wiki 记忆服务）由 pi-config 的 my.pi.mcp 生成。
 
         # interpreter + tool prompt for the pi-agent-extensions python tool
         xdg.configFile."pi-agent-extensions/python/config.json" = {

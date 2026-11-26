@@ -188,7 +188,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     pi-config = {
-      url = "path:/home/klchen/pi-config";
+      url = "github:klchen0112/pi-config";
       inputs = {
         home-manager.follows = "home-manager";
         nixpkgs.follows = "nixpkgs";

@@ -1735,14 +1735,17 @@
         "pi": "pi"
       },
       "locked": {
-        "lastModified": 1795280467,
-        "narHash": "sha256-vr7N3ha80/Mqrt3znbcBo/qHlDlZlrFnT7f2nh/VP7A=",
-        "path": "/home/klchen/pi-config",
-        "type": "path"
+        "lastModified": 1795708213,
+        "narHash": "sha256-IEvMBl4dP6INu2AbZcXI6YnyUnTairjWDE+PNtAreos=",
+        "owner": "klchen0112",
+        "repo": "pi-config",
+        "rev": "6bd23cdf47d401ed2f3a90bdd95b89a1d93eb746",
+        "type": "github"
       },
       "original": {
-        "path": "/home/klchen/pi-config",
-        "type": "path"
+        "owner": "klchen0112",
+        "repo": "pi-config",
+        "type": "github"
       }
     },
     "pkgs-by-name-for-flake-parts": {
