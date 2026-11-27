@@ -59,10 +59,14 @@
         historyWidget.command = "";
       };
 
-      stylix.targets.tmux.enable = true;
-      programs.tmux = {
+      stylix.targets.zellij.enable = true;
+      programs.zellij = {
         enable = true;
-        # defaultKeyMode = "emacs";
+        settings = {
+          theme = "stylix";
+          # 终端里默认跑 nu，但 $SHELL 还是 bash，zellij 默认取 $SHELL 会开成 bash。
+          default_shell = "${pkgs.nushell}/bin/nu";
+        };
       };
       programs.direnv = {
         enable = true;
